@@ -8,7 +8,7 @@
 
 #import <BitmessageKit/BitmessageKit.h>
 #import "BMDictView.h"
-#import "NSView+sizing.h"
+#import <NavKit/NavKit.h>
 #import "KVFieldView.h"
 
 @implementation BMDictView

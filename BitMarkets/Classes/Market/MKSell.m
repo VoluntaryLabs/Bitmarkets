@@ -7,16 +7,20 @@
 //
 
 #import "MKSell.h"
-#import "NSDate+extra.h"
+#import <NavKit/NavKit.h>
 
 @implementation MKSell
 
 - (id)init
 {
     self = [super init];
-    self.actions = [NSMutableArray arrayWithObjects:@"delete", nil];
     self.date = [NSDate date];
     return self;
+}
+
+- (NSArray *)modelActions
+{
+    return [NSArray arrayWithObjects:@"delete", nil];
 }
 
 - (NSString *)nodeTitle

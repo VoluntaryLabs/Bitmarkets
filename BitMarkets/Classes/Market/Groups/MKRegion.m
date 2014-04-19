@@ -14,10 +14,16 @@
 - (id)init
 {
     self = [super init];
-    self.actions = [NSMutableArray array];
     //[self setCanPost:NO];
     return self;
 }
+
+/*
+- (NSArray *)modelActions
+{
+    
+}
+*/
 
 
 - (NSString *)dbName

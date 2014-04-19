@@ -7,9 +7,8 @@
 //
 
 #import "MKSellView.h"
-#import "NSTextView+extra.h"
-#import "NSView+sizing.h"
-#import "Theme.h"
+#import <NavKit/NavKit.h>
+#import "BMDictView.h"
 
 @implementation MKSellView
 

@@ -18,6 +18,9 @@
 		AA0E587118FDC0890095DEBD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA0E585018FDC0880095DEBD /* Cocoa.framework */; };
 		AA0E587918FDC0890095DEBD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA0E587718FDC0890095DEBD /* InfoPlist.strings */; };
 		AA0E587B18FDC0890095DEBD /* BitMarketsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0E587A18FDC0890095DEBD /* BitMarketsTests.m */; };
+		AA1FC8871901E0A200D00431 /* BitmessageKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA1FC8711901E06C00D00431 /* BitmessageKit.framework */; };
+		AA1FC8881901E0A200D00431 /* FoundationCategoriesKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA1FC87A1901E07C00D00431 /* FoundationCategoriesKit.framework */; };
+		AA1FC8891901E0A200D00431 /* NavKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA1FC8841901E08200D00431 /* NavKit.framework */; };
 		AAA2E6A919006F0A0098C357 /* BMBuys.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA2E68019006F0A0098C357 /* BMBuys.m */; };
 		AAA2E6AA19006F0A0098C357 /* BMSells.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA2E68219006F0A0098C357 /* BMSells.m */; };
 		AAA2E6AB19006F0A0098C357 /* BMWallet.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA2E68419006F0A0098C357 /* BMWallet.m */; };
@@ -35,7 +38,6 @@
 		AAA2E6B719006F0A0098C357 /* MKWallet.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA2E69E19006F0A0098C357 /* MKWallet.m */; };
 		AAA2E6B819006F0A0098C357 /* BMDictView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA2E6A219006F0A0098C357 /* BMDictView.m */; };
 		AAA2E6B919006F0A0098C357 /* KVFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA2E6A419006F0A0098C357 /* KVFieldView.m */; };
-		AAA2E6BA19006F0A0098C357 /* MKSellView copy.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA2E6A619006F0A0098C357 /* MKSellView copy.m */; };
 		AAA2E6BB19006F0A0098C357 /* MKSellView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA2E6A819006F0A0098C357 /* MKSellView.m */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +48,48 @@
 			proxyType = 1;
 			remoteGlobalIDString = AA0E584C18FDC0880095DEBD;
 			remoteInfo = BitMarkets;
+		};
+		AA1FC8701901E06C00D00431 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA1FC86A1901E06C00D00431 /* BitmessageKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8EDE5B7A18F59414009A726A;
+			remoteInfo = BitmessageKit;
+		};
+		AA1FC8721901E06C00D00431 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA1FC86A1901E06C00D00431 /* BitmessageKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8EDE5B9118F59414009A726A;
+			remoteInfo = BitmessageKitTests;
+		};
+		AA1FC8791901E07C00D00431 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA1FC8741901E07C00D00431 /* FoundationCategoriesKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AAE31E8D18FF1E3F00405754;
+			remoteInfo = FoundationCategoriesKit;
+		};
+		AA1FC87B1901E07C00D00431 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA1FC8741901E07C00D00431 /* FoundationCategoriesKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AAE31EA418FF1E3F00405754;
+			remoteInfo = FoundationCategoriesKitTests;
+		};
+		AA1FC8831901E08200D00431 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA1FC87D1901E08200D00431 /* NavKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AAE31DCC18FF1C0700405754;
+			remoteInfo = NavKit;
+		};
+		AA1FC8851901E08200D00431 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA1FC87D1901E08200D00431 /* NavKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AAE31DE318FF1C0700405754;
+			remoteInfo = NavKitTests;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -69,6 +113,9 @@
 		AA0E587618FDC0890095DEBD /* BitMarketsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BitMarketsTests-Info.plist"; sourceTree = "<group>"; };
 		AA0E587818FDC0890095DEBD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AA0E587A18FDC0890095DEBD /* BitMarketsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BitMarketsTests.m; sourceTree = "<group>"; };
+		AA1FC86A1901E06C00D00431 /* BitmessageKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BitmessageKit.xcodeproj; path = ../BitmessageKit/BitmessageKit.xcodeproj; sourceTree = "<group>"; };
+		AA1FC8741901E07C00D00431 /* FoundationCategoriesKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FoundationCategoriesKit.xcodeproj; path = ../FoundationCategoriesKit/FoundationCategoriesKit.xcodeproj; sourceTree = "<group>"; };
+		AA1FC87D1901E08200D00431 /* NavKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = NavKit.xcodeproj; path = ../NavKit/NavKit.xcodeproj; sourceTree = "<group>"; };
 		AAA2E67F19006F0A0098C357 /* BMBuys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMBuys.h; sourceTree = "<group>"; };
 		AAA2E68019006F0A0098C357 /* BMBuys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMBuys.m; sourceTree = "<group>"; };
 		AAA2E68119006F0A0098C357 /* BMSells.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMSells.h; sourceTree = "<group>"; };
@@ -103,8 +150,6 @@
 		AAA2E6A219006F0A0098C357 /* BMDictView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMDictView.m; sourceTree = "<group>"; };
 		AAA2E6A319006F0A0098C357 /* KVFieldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVFieldView.h; sourceTree = "<group>"; };
 		AAA2E6A419006F0A0098C357 /* KVFieldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KVFieldView.m; sourceTree = "<group>"; };
-		AAA2E6A519006F0A0098C357 /* MKSellView copy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKSellView copy.h"; sourceTree = "<group>"; };
-		AAA2E6A619006F0A0098C357 /* MKSellView copy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKSellView copy.m"; sourceTree = "<group>"; };
 		AAA2E6A719006F0A0098C357 /* MKSellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKSellView.h; sourceTree = "<group>"; };
 		AAA2E6A819006F0A0098C357 /* MKSellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKSellView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -114,6 +159,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA1FC8871901E0A200D00431 /* BitmessageKit.framework in Frameworks */,
+				AA1FC8881901E0A200D00431 /* FoundationCategoriesKit.framework in Frameworks */,
+				AA1FC8891901E0A200D00431 /* NavKit.framework in Frameworks */,
 				AA0E585118FDC0880095DEBD /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -135,6 +183,9 @@
 			children = (
 				AA0E585618FDC0880095DEBD /* BitMarkets */,
 				AA0E587418FDC0890095DEBD /* BitMarketsTests */,
+				AA1FC87D1901E08200D00431 /* NavKit.xcodeproj */,
+				AA1FC86A1901E06C00D00431 /* BitmessageKit.xcodeproj */,
+				AA1FC8741901E07C00D00431 /* FoundationCategoriesKit.xcodeproj */,
 				AA0E584F18FDC0880095DEBD /* Frameworks */,
 				AA0E584E18FDC0880095DEBD /* Products */,
 			);
@@ -210,6 +261,33 @@
 				AA0E587718FDC0890095DEBD /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AA1FC86B1901E06C00D00431 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AA1FC8711901E06C00D00431 /* BitmessageKit.framework */,
+				AA1FC8731901E06C00D00431 /* BitmessageKitTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AA1FC8751901E07C00D00431 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AA1FC87A1901E07C00D00431 /* FoundationCategoriesKit.framework */,
+				AA1FC87C1901E07C00D00431 /* FoundationCategoriesKitTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AA1FC87E1901E08200D00431 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AA1FC8841901E08200D00431 /* NavKit.framework */,
+				AA1FC8861901E08200D00431 /* NavKitTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		AAA2E67D19006F0A0098C357 /* Classes */ = {
@@ -289,8 +367,6 @@
 				AAA2E6A219006F0A0098C357 /* BMDictView.m */,
 				AAA2E6A319006F0A0098C357 /* KVFieldView.h */,
 				AAA2E6A419006F0A0098C357 /* KVFieldView.m */,
-				AAA2E6A519006F0A0098C357 /* MKSellView copy.h */,
-				AAA2E6A619006F0A0098C357 /* MKSellView copy.m */,
 				AAA2E6A719006F0A0098C357 /* MKSellView.h */,
 				AAA2E6A819006F0A0098C357 /* MKSellView.m */,
 			);
@@ -361,6 +437,20 @@
 			mainGroup = AA0E584418FDC0880095DEBD;
 			productRefGroup = AA0E584E18FDC0880095DEBD /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = AA1FC86B1901E06C00D00431 /* Products */;
+					ProjectRef = AA1FC86A1901E06C00D00431 /* BitmessageKit.xcodeproj */;
+				},
+				{
+					ProductGroup = AA1FC8751901E07C00D00431 /* Products */;
+					ProjectRef = AA1FC8741901E07C00D00431 /* FoundationCategoriesKit.xcodeproj */;
+				},
+				{
+					ProductGroup = AA1FC87E1901E08200D00431 /* Products */;
+					ProjectRef = AA1FC87D1901E08200D00431 /* NavKit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				AA0E584C18FDC0880095DEBD /* BitMarkets */,
@@ -368,6 +458,51 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		AA1FC8711901E06C00D00431 /* BitmessageKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = BitmessageKit.framework;
+			remoteRef = AA1FC8701901E06C00D00431 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AA1FC8731901E06C00D00431 /* BitmessageKitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = BitmessageKitTests.xctest;
+			remoteRef = AA1FC8721901E06C00D00431 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AA1FC87A1901E07C00D00431 /* FoundationCategoriesKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = FoundationCategoriesKit.framework;
+			remoteRef = AA1FC8791901E07C00D00431 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AA1FC87C1901E07C00D00431 /* FoundationCategoriesKitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = FoundationCategoriesKitTests.xctest;
+			remoteRef = AA1FC87B1901E07C00D00431 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AA1FC8841901E08200D00431 /* NavKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = NavKit.framework;
+			remoteRef = AA1FC8831901E08200D00431 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AA1FC8861901E08200D00431 /* NavKitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = NavKitTests.xctest;
+			remoteRef = AA1FC8851901E08200D00431 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		AA0E584B18FDC0880095DEBD /* Resources */ = {
@@ -415,7 +550,6 @@
 				AAA2E6A919006F0A0098C357 /* BMBuys.m in Sources */,
 				AAA2E6B819006F0A0098C357 /* BMDictView.m in Sources */,
 				AAA2E6B019006F0A0098C357 /* MKMessage.m in Sources */,
-				AAA2E6BA19006F0A0098C357 /* MKSellView copy.m in Sources */,
 				AAA2E6B619006F0A0098C357 /* MKSells.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

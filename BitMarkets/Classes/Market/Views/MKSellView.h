@@ -7,11 +7,9 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "NavView.h"
+#import <NavKit/NavKit.h>
 #import "MKSell.h"
 #import "BMDictView.h"
-#import "ColoredView.h"
-#import "BMRoundButtonView.h"
 
 @interface MKSellView : NSView <NSTextViewDelegate>
 

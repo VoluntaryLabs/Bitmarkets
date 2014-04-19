@@ -8,7 +8,7 @@
 
 #import "MKCategory.h"
 #import <BitMessageKit/BitMessageKit.h>
-#import "AppController.h"
+#import <NavKit/NavKit.h>
 
 @implementation MKCategory
 

@@ -72,6 +72,7 @@
 {
     BOOL hasAdd = [self.actions containsObject:@"add"];
     
+    /*
     if (aBool)
     {
         if (!hasAdd)
@@ -86,6 +87,7 @@
             [self.actions removeObject:@"add"];
         }
     }
+    */
 }
 
 + (MKGroup *)withDict:(NSDictionary *)dict

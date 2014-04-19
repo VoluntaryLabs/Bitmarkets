@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "BMTextView.h"
+#import <NavKit/NavKit.h>
 
 @interface KVFieldView : NSView
 

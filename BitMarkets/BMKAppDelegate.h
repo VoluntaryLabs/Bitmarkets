@@ -7,9 +7,9 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <NavKit/NavKit.h>
 
-@interface BMKAppDelegate : NSObject <NSApplicationDelegate>
+@interface BMKAppDelegate : NavAppController
 
-@property (assign) IBOutlet NSWindow *window;
 
 @end
