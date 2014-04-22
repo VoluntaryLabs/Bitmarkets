@@ -21,28 +21,28 @@
         [self setAutoresizesSubviews:YES];
         [self setAutoresizingMask:NSViewHeightSizable | NSViewWidthSizable];
 
-        _title = [[BMTextView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
+        _title = [[NavTextView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
         [self addSubview:_title];
         _title.string = @"Powerbass 4-Channel Amplifier";
         [_title setThemePath:@"sell/title"];
         //@property (strong) IBOutlet NSTextView *quantity;
         
-        self.price = [[BMTextView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
+        self.price = [[NavTextView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
         self.price.string = @"0.23BTC";
         [self.price setThemePath:@"sell/price"];
         [self addSubview:self.price];
         
-        _postOrBuyButton = [[BMRoundButtonView alloc] initWithFrame:NSMakeRect(0, 0, 120, 32)];
+        _postOrBuyButton = [[NavRoundButtonView alloc] initWithFrame:NSMakeRect(0, 0, 120, 32)];
         _postOrBuyButton.title = @"Buy Now";
         //[_postOrBuyButton setThemePath:@"sell/button"];
-        [_postOrBuyButton setTitleAttributes:[Theme.sharedTheme attributesDictForPath:@"sell/button"]];
+        [_postOrBuyButton setTitleAttributes:[NavTheme.sharedNavTheme attributesDictForPath:@"sell/button"]];
         [self addSubview:_postOrBuyButton];
         
-        self.separator = [[ColoredView alloc] initWithFrame:NSMakeRect(0, 0, self.width, 1)];
+        self.separator = [[NavColoredView alloc] initWithFrame:NSMakeRect(0, 0, self.width, 1)];
         [self.separator setThemePath:@"sell/separator"];
         [self addSubview:self.separator];
         
-        self.description = [[BMTextView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
+        self.description = [[NavTextView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
         self.description.string = @"I've had this TOA amp in the closet for a while waiting to setup in my shop space but I need the space so my loss is your gain. Works fine and is in mostly decent condition with a few dings on the corners. I'm available during the day near 7th and Folsom but I can also meet up in the evening in the Mission.";
         [self.description setThemePath:@"sell/description"];
         [self addSubview:self.description];
@@ -53,7 +53,7 @@
         [_regionIcon setImage:[NSImage imageNamed:@"icon_location.png"]];
         [self addSubview:self.regionIcon];
  
-        self.region = [[BMTextView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
+        self.region = [[NavTextView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
         self.region.string = @"United States";
         [self.region setThemePath:@"sell/label"];
         [self addSubview:self.region];
@@ -64,7 +64,7 @@
         [_categoryIcon setImage:[NSImage imageNamed:@"icon_right.png"]];
         [self addSubview:self.categoryIcon];
         
-        self.category = [[BMTextView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
+        self.category = [[NavTextView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
         self.category.string = @"Electronics";
         [self.category setThemePath:@"sell/label"];
         [self addSubview:self.category];
@@ -75,7 +75,7 @@
         [_fromAddressIcon setImage:[NSImage imageNamed:@"icon_profile.png"]];
         [self addSubview:self.fromAddressIcon];
         
-        self.fromAddress = [[BMTextView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
+        self.fromAddress = [[NavTextView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
         self.fromAddress.string = @"fromAddress";
         [self.fromAddress setThemePath:@"sell/address"];
         [self addSubview:self.fromAddress];

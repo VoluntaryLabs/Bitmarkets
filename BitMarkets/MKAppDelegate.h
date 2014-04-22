@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import <NavKit/NavKit.h>
 
-@interface BMKAppDelegate : NavAppController
+@interface MKAppDelegate : NavAppController
 
 
 @end

@@ -20,9 +20,9 @@
 @property (strong) NSTextView *title;
 //@property (strong) IBOutlet NSTextView *quantity;
 @property (strong) NSTextView *price;
-@property (strong) BMRoundButtonView *postOrBuyButton;
+@property (strong) NavRoundButtonView *postOrBuyButton;
 
-@property (strong) ColoredView *separator;
+@property (strong) NavColoredView *separator;
 
 @property (strong) NSTextView *description;
 

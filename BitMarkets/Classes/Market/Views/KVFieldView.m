@@ -21,20 +21,20 @@
     
     if (self)
     {
-        self.keyText = [[BMTextView alloc] initWithFrame:NSMakeRect(0, 0, w, self.height)];
+        self.keyText = [[NavTextView alloc] initWithFrame:NSMakeRect(0, 0, w, self.height)];
         [self.keyText setupForDisplay];
         //[self.keyText setBackgroundColor:[NSColor colorWithCalibratedWhite:1.0 alpha:0.1]];
         //[self.keyText setDrawsBackground:YES];
         [self addSubview:self.keyText];
-        self.keyText.font = [NSFont fontWithName:[Theme.sharedTheme lightFontName] size:16.0];
+        //self.keyText.font = [NSFont fontWithName:[Theme.sharedTheme lightFontName] size:16.0];
         self.keyText.alignment = NSRightTextAlignment;
         
-        self.valueText = [[BMTextView alloc] initWithFrame:NSMakeRect(0, 0, w, self.height)];
+        self.valueText = [[NavTextView alloc] initWithFrame:NSMakeRect(0, 0, w, self.height)];
         [self.valueText setupForEditing];
         [self.valueText setBackgroundColor:[NSColor colorWithCalibratedWhite:1.0 alpha:0.1]];
         [self.valueText setDrawsBackground:YES];
         [self addSubview:self.valueText];
-        self.valueText.font = [NSFont fontWithName:[Theme.sharedTheme lightFontName] size:16.0];
+        //self.valueText.font = [NSFont fontWithName:[Theme.sharedTheme lightFontName] size:16.0];
         self.valueText.alignment = NSLeftTextAlignment;
 
         [self layout];

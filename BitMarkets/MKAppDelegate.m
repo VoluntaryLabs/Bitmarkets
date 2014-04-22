@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 voluntary.net. All rights reserved.
 //
 
-#import "BMKAppDelegate.h"
+#import "MKAppDelegate.h"
 
-@implementation BMKAppDelegate
+@implementation MKAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {

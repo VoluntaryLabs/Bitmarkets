@@ -13,8 +13,8 @@
 
 @property (strong, nonatomic) NSString *key;
 
-@property (strong, nonatomic) BMTextView *keyText;
-@property (strong, nonatomic) BMTextView *valueText;
+@property (strong, nonatomic) NavTextView *keyText;
+@property (strong, nonatomic) NavTextView *valueText;
 
 //@property (assign, nonatomic) CGFloat keyWidth;
 //@property (assign, nonatomic) CGFloat valueWidth;

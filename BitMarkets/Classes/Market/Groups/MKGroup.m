@@ -70,7 +70,7 @@
 
 - (void)setCanPost:(BOOL)aBool
 {
-    BOOL hasAdd = [self.actions containsObject:@"add"];
+    //BOOL hasAdd = [self.actions containsObject:@"add"];
     
     /*
     if (aBool)
