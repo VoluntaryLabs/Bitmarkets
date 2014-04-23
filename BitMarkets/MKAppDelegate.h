@@ -8,8 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 #import <NavKit/NavKit.h>
+#import <BitmessageKit/BitmessageKit.h>
 
 @interface MKAppDelegate : NavAppController
 
+@property (strong, nonatomic) BMClient *bmClient;
 
 @end

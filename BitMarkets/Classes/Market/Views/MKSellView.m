@@ -148,7 +148,7 @@
     [self layout];
 }
 
-- (void)setNode:(id <NavNode>)node
+- (void)setNode:(NavNode *)node
 {
     _node = node;
 }

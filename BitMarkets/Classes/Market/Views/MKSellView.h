@@ -14,7 +14,7 @@
 @interface MKSellView : NSView <NSTextViewDelegate>
 
 @property (assign, nonatomic) NavView *navView;
-@property (assign, nonatomic) id <NavNode> node;
+@property (assign, nonatomic) NavNode *node;
 
 
 @property (strong) NSTextView *title;
