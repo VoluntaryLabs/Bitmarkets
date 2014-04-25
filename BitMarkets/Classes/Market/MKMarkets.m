@@ -31,9 +31,8 @@
     [self.children addObject:self.rootCategory];
     */
     
-    self.channel = [[MKMarketChannel alloc] init];
-    [self addChild:self.channel];
-
+    self.mkChannel = [[MKMarketChannel alloc] init];
+    [self addChild:self.mkChannel];
 
     self.buys  = [[MKBuys alloc] init];
     [self addChild:self.buys];

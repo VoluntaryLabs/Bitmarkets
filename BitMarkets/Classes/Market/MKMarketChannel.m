@@ -24,13 +24,18 @@
     return self;
 }
 
+- (BMChannel *)channel
+{
+    if (!_channel)
+    {
+        _channel = [BMClient.sharedBMClient.channels channelWithPassphraseJoinIfNeeded:self.passphrase];
+    }
+    
+    return _channel;
+}
+
 - (void)fetch
 {
-    if (!self.channel)
-    {
-        self.channel = [BMClient.sharedBMClient.channels channelWithPassphraseJoinIfNeeded:self.passphrase];
-    }
-
     // just make sure this is in the fetch chain from BMClient?
     //[[[BMClient sharedBMClient] channels] fetch];
 

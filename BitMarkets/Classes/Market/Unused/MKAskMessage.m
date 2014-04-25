@@ -59,7 +59,7 @@
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     NSMutableDictionary *bodyDict = [NSMutableDictionary dictionary];
     
-    [dict setObject:self.standardHeader forKey:@"header"];
+    [dict setObject:self.class.standardHeader forKey:@"header"];
     [dict setObject:bodyDict forKey:@"body"];
     
     [bodyDict setObject:self.category forKey:@"category"];

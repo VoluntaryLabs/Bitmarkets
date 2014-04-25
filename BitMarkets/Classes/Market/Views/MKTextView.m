@@ -41,6 +41,7 @@
     {
         self.suffixView = [[NavTextView alloc] initWithFrame:NSMakeRect(0, 0, 100, self.height)];
         self.suffixView.autoresizingMask = self.autoresizingMask;
+        [self.suffixView setEditable:NO];
         [self.superview addSubview:self.suffixView];
     }
     
@@ -71,6 +72,9 @@
 
 - (void)textShouldBeginEditing
 {
+    self.realHeight = self.height;
+    self.realY = self.y;
+    
     if ([self.string isEqualToString:self.uneditedTextString])
     {
         self.string = @"";
@@ -125,12 +129,20 @@
         {
             self.string = [self.string stringByReplacingOccurrencesOfString:@"\n" withString:@""];
             self.string = [self.string stringByReplacingOccurrencesOfString:@"\t" withString:@""];
+            self.height = self.realHeight;
+            self.y = self.realY;
+            
+            NSLog(@"string '%@'", self.string);
+            
             [self.window makeFirstResponder:self.nextKeyView];
         }
     }
 
     [self updateTheme];
     [self updateSuffixView];
+    
+    NSLog(@"self.y %f", self.y);
+    NSLog(@"self.suffixView.y %f\n", self.suffixView.y);
 }
 
 - (void)textDidEndEditing

@@ -332,10 +332,12 @@
 
 - (void)post
 {
-    if (self.readyToPost)
+    if (!self.readyToPost)
     {
-        
+        return;
     }
+    
+    [self.mkSell post];
 }
 
 @end

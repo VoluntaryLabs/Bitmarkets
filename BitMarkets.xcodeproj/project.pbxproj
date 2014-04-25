@@ -52,17 +52,16 @@
 		AA5DFDAA1909C83000383283 /* reply_inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = AA5DFD9B1909C83000383283 /* reply_inactive.png */; };
 		AA5DFDAB1909C83000383283 /* send_active.png in Resources */ = {isa = PBXBuildFile; fileRef = AA5DFD9C1909C83000383283 /* send_active.png */; };
 		AA5DFDAC1909C83000383283 /* send_inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = AA5DFD9D1909C83000383283 /* send_inactive.png */; };
+		AA5DFDAF190A24B300383283 /* MKMarketChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5DFDAE190A24B300383283 /* MKMarketChannel.m */; };
 		AA9227081905F94900C3D9D7 /* categories.json in Resources */ = {isa = PBXBuildFile; fileRef = AA9226F61905F94900C3D9D7 /* categories.json */; };
 		AA9227171905F94900C3D9D7 /* regions.json in Resources */ = {isa = PBXBuildFile; fileRef = AA9227071905F94900C3D9D7 /* regions.json */; };
 		AA92271A1905F9C000C3D9D7 /* themes.json in Resources */ = {isa = PBXBuildFile; fileRef = AA9227191905F9C000C3D9D7 /* themes.json */; };
 		AAA2E6AC19006F0A0098C357 /* MKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA2E68719006F0A0098C357 /* MKCategory.m */; };
 		AAA2E6AD19006F0A0098C357 /* MKGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA2E68919006F0A0098C357 /* MKGroup.m */; };
 		AAA2E6AE19006F0A0098C357 /* MKRegion.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA2E68B19006F0A0098C357 /* MKRegion.m */; };
-		AAA2E6AF19006F0A0098C357 /* MKAskMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA2E68E19006F0A0098C357 /* MKAskMessage.m */; };
 		AAA2E6B019006F0A0098C357 /* MKMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA2E69019006F0A0098C357 /* MKMessage.m */; };
 		AAA2E6B119006F0A0098C357 /* MKBuy.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA2E69219006F0A0098C357 /* MKBuy.m */; };
 		AAA2E6B219006F0A0098C357 /* MKBuys.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA2E69419006F0A0098C357 /* MKBuys.m */; };
-		AAA2E6B319006F0A0098C357 /* MKMarketChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA2E69619006F0A0098C357 /* MKMarketChannel.m */; };
 		AAA2E6B419006F0A0098C357 /* MKMarkets.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA2E69819006F0A0098C357 /* MKMarkets.m */; };
 		AAA2E6B519006F0A0098C357 /* MKSell.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA2E69A19006F0A0098C357 /* MKSell.m */; };
 		AAA2E6B619006F0A0098C357 /* MKSells.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA2E69C19006F0A0098C357 /* MKSells.m */; };
@@ -205,6 +204,8 @@
 		AA5DFD9B1909C83000383283 /* reply_inactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reply_inactive.png; sourceTree = "<group>"; };
 		AA5DFD9C1909C83000383283 /* send_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = send_active.png; sourceTree = "<group>"; };
 		AA5DFD9D1909C83000383283 /* send_inactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = send_inactive.png; sourceTree = "<group>"; };
+		AA5DFDAD190A24B300383283 /* MKMarketChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKMarketChannel.h; sourceTree = "<group>"; };
+		AA5DFDAE190A24B300383283 /* MKMarketChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKMarketChannel.m; sourceTree = "<group>"; };
 		AA9226E61905F88200C3D9D7 /* NavNodeKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = NavNodeKit.xcodeproj; path = ../NavNodeKit/NavNodeKit.xcodeproj; sourceTree = "<group>"; };
 		AA9226F61905F94900C3D9D7 /* categories.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = categories.json; sourceTree = "<group>"; };
 		AA9227071905F94900C3D9D7 /* regions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = regions.json; sourceTree = "<group>"; };
@@ -215,16 +216,12 @@
 		AAA2E68919006F0A0098C357 /* MKGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKGroup.m; sourceTree = "<group>"; };
 		AAA2E68A19006F0A0098C357 /* MKRegion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKRegion.h; sourceTree = "<group>"; };
 		AAA2E68B19006F0A0098C357 /* MKRegion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKRegion.m; sourceTree = "<group>"; };
-		AAA2E68D19006F0A0098C357 /* MKAskMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKAskMessage.h; sourceTree = "<group>"; };
-		AAA2E68E19006F0A0098C357 /* MKAskMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKAskMessage.m; sourceTree = "<group>"; };
 		AAA2E68F19006F0A0098C357 /* MKMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKMessage.h; sourceTree = "<group>"; };
 		AAA2E69019006F0A0098C357 /* MKMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKMessage.m; sourceTree = "<group>"; };
 		AAA2E69119006F0A0098C357 /* MKBuy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKBuy.h; sourceTree = "<group>"; };
 		AAA2E69219006F0A0098C357 /* MKBuy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKBuy.m; sourceTree = "<group>"; };
 		AAA2E69319006F0A0098C357 /* MKBuys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKBuys.h; sourceTree = "<group>"; };
 		AAA2E69419006F0A0098C357 /* MKBuys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKBuys.m; sourceTree = "<group>"; };
-		AAA2E69519006F0A0098C357 /* MKMarketChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKMarketChannel.h; sourceTree = "<group>"; };
-		AAA2E69619006F0A0098C357 /* MKMarketChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKMarketChannel.m; sourceTree = "<group>"; };
 		AAA2E69719006F0A0098C357 /* MKMarkets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKMarkets.h; sourceTree = "<group>"; };
 		AAA2E69819006F0A0098C357 /* MKMarkets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKMarkets.m; sourceTree = "<group>"; };
 		AAA2E69919006F0A0098C357 /* MKSell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKSell.h; sourceTree = "<group>"; };
@@ -476,22 +473,22 @@
 		AAA2E67E19006F0A0098C357 /* Market */ = {
 			isa = PBXGroup;
 			children = (
+				AA5DFDAD190A24B300383283 /* MKMarketChannel.h */,
+				AA5DFDAE190A24B300383283 /* MKMarketChannel.m */,
 				AA4A0E291909BB6400AB78D0 /* MKRootNode.h */,
 				AA4A0E2A1909BB6400AB78D0 /* MKRootNode.m */,
+				AAA2E69719006F0A0098C357 /* MKMarkets.h */,
+				AAA2E69819006F0A0098C357 /* MKMarkets.m */,
+				AAA2E69D19006F0A0098C357 /* MKWallet.h */,
+				AAA2E69E19006F0A0098C357 /* MKWallet.m */,
 				AAA2E68519006F0A0098C357 /* Groups */,
 				AAA2E68C19006F0A0098C357 /* Messages */,
 				AAA2E69119006F0A0098C357 /* MKBuy.h */,
 				AAA2E69219006F0A0098C357 /* MKBuy.m */,
 				AAA2E69319006F0A0098C357 /* MKBuys.h */,
 				AAA2E69419006F0A0098C357 /* MKBuys.m */,
-				AAA2E69519006F0A0098C357 /* MKMarketChannel.h */,
-				AAA2E69619006F0A0098C357 /* MKMarketChannel.m */,
-				AAA2E69719006F0A0098C357 /* MKMarkets.h */,
-				AAA2E69819006F0A0098C357 /* MKMarkets.m */,
 				AAA2E69B19006F0A0098C357 /* MKSells.h */,
 				AAA2E69C19006F0A0098C357 /* MKSells.m */,
-				AAA2E69D19006F0A0098C357 /* MKWallet.h */,
-				AAA2E69E19006F0A0098C357 /* MKWallet.m */,
 				AAA2E69919006F0A0098C357 /* MKSell.h */,
 				AAA2E69A19006F0A0098C357 /* MKSell.m */,
 				AAA2E6A019006F0A0098C357 /* Views */,
@@ -515,8 +512,6 @@
 		AAA2E68C19006F0A0098C357 /* Messages */ = {
 			isa = PBXGroup;
 			children = (
-				AAA2E68D19006F0A0098C357 /* MKAskMessage.h */,
-				AAA2E68E19006F0A0098C357 /* MKAskMessage.m */,
 				AAA2E68F19006F0A0098C357 /* MKMessage.h */,
 				AAA2E69019006F0A0098C357 /* MKMessage.m */,
 			);
@@ -764,6 +759,7 @@
 				AAA2E6B219006F0A0098C357 /* MKBuys.m in Sources */,
 				AAA2E6B419006F0A0098C357 /* MKMarkets.m in Sources */,
 				AA4A0E2B1909BB6400AB78D0 /* MKRootNode.m in Sources */,
+				AA5DFDAF190A24B300383283 /* MKMarketChannel.m in Sources */,
 				AA4A0DDB19086A3400AB78D0 /* MKTextView.m in Sources */,
 				AA0E586418FDC0880095DEBD /* MKAppDelegate.m in Sources */,
 				AAA2E6AC19006F0A0098C357 /* MKCategory.m in Sources */,
@@ -771,8 +767,6 @@
 				AAA2E6BB19006F0A0098C357 /* MKSellView.m in Sources */,
 				AAA2E6B519006F0A0098C357 /* MKSell.m in Sources */,
 				AAA2E6B119006F0A0098C357 /* MKBuy.m in Sources */,
-				AAA2E6AF19006F0A0098C357 /* MKAskMessage.m in Sources */,
-				AAA2E6B319006F0A0098C357 /* MKMarketChannel.m in Sources */,
 				AAA2E6B019006F0A0098C357 /* MKMessage.m in Sources */,
 				AAA2E6B619006F0A0098C357 /* MKSells.m in Sources */,
 			);

@@ -7,8 +7,11 @@
 //
 
 #import "MKSell.h"
+#import "MKMessage.h"
+
 #import <NavKit/NavKit.h>
 #import <BitmessageKit/BitmessageKit.h>
+#import "MKRootNode.h"
 
 @implementation MKSell
 
@@ -17,7 +20,7 @@
     self = [super init];
     self.date = [NSDate date];
     
-    self.uuid = [NSUUID UUID];
+    //self.uuid = [NSUUID UUID];
     
     self.title = @"";
     self.price = @0;
@@ -61,6 +64,15 @@
     [self.nodeParent removeChild:self];
 }
 
+- (void)setDict:(NSDictionary *)aDict
+{
+    self.title = [aDict objectForKey:@"title"];
+    self.price = [aDict objectForKey:@"price"];
+    self.description = [aDict objectForKey:@"description"];
+    self.regionPath = [aDict objectForKey:@"regionPath"];
+    self.categoryPath = [aDict objectForKey:@"categoryPath"];
+}
+
 - (NSDictionary *)dict
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
@@ -76,15 +88,22 @@
     return dict;
 }
 
+- (NSString *)jsonString
+{
+    MKMessage *m = [[MKMessage alloc] init];
+    [m setInstance:self];
+    return [m jsonString];
+}
+
 - (void)post
 {
-    NSString *channelAddress;
+    NSString *channelAddress = MKRootNode.sharedMKRootNode.markets.mkChannel.channel.address;
     
     BMMessage *m = [[BMMessage alloc] init];
     [m setFromAddress:self.sellerAddress];
     [m setToAddress:channelAddress];
     [m setSubject:self.title];
-    [m setMessage:self.dict.description];
+    [m setMessage:self.jsonString];
     [m send];
 }
 

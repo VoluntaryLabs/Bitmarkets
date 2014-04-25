@@ -10,9 +10,24 @@
 
 @interface MKMessage : NavNode
 
-@property (strong, nonatomic) BMMessage *bmMessage;
++ (NSMutableDictionary *)standardHeader;
 
-- (NSMutableDictionary *)standardHeader;
 + (MKMessage *)withBMMessage:(BMMessage *)bmMessage;
+
+
+@property (strong, nonatomic) NSMutableDictionary *dict;
+
+- (void)setHeaderDict:(NSDictionary *)aDict;
+- (NSDictionary *)headerDict;
+
+- (void)setBodyDict:(NSDictionary *)aDict;
+- (NSDictionary *)bodyDict;
+
+- (id)instance;
+- (void)setInstance:anObject;
+
+// json
+
+- (NSString *)jsonString;
 
 @end

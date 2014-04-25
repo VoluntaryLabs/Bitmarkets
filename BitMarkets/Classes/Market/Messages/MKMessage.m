@@ -7,6 +7,7 @@
 //
 
 #import "MKMessage.h"
+#import "MKRootNode.h"
 
 @implementation MKMessage
 
@@ -20,20 +21,21 @@
     return @"1.0";
 }
 
-/*
++ (NSMutableDictionary *)standardHeader
 {
-    header:
-    {
-        service: "bitmarket",
-        version: "1.0",
-        type: "AskMessage"
-    },
-     ...
-}
-*/
 
-- (NSMutableDictionary *)standardHeader
-{
+    /*
+    {
+        header:
+        {
+            service: "bitmarket",
+            version: "1.0",
+            type: "AskMessage"
+        },
+        ...
+    }
+    */
+    
     NSMutableDictionary *header = [NSMutableDictionary dictionary];
     [header setObject:@"bitmarket" forKey:@"service"];
     [header setObject:@"1.0" forKey:@"version"];
@@ -43,13 +45,15 @@
 + (NSSet *)typeClassNames
 {
     NSSet *names = [NSSet setWithObjects:
-                    @"AskMessage",
-                    @"BidMessage",
-                    @"AcceptMessage",
-                    @"DeliveryMessage",
-                    @"CommentMessage",
-                    @"RequestRefundMessage",
-                    @"SentPaymentMessage",
+                    @"Sell",
+                    @"Bid",
+                    /*
+                    @"Accept",
+                    @"Delivery",
+                    @"Comment",
+                    @"RequestRefund",
+                    @"Sent",
+                    */
                     nil];
     return names;
 }
@@ -81,39 +85,60 @@
 
 + (MKMessage *)withBMMessage:(BMMessage *)bmMessage
 {
-    if (![bmMessage.subjectString isEqualToString:@"bitmarkets"])
+    MKMessage *message = [[MKMessage alloc] init];
+    message.dict = [NSMutableDictionary dictionaryWithJsonString:bmMessage.messageString];
+    
+    if (message.hasValidHeader)
     {
-        return nil;
+        return message;
     }
     
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithJsonString:bmMessage.messageString];
-    if (!dict)
-    {
-        return nil;
-    }
+    return nil;
+}
+
+- (id)init
+{
+    self = [super init];
+    [self setHeaderDict:self.class.standardHeader];
+    //[self setBodyDict:[NSMutableDictionary dictionary]];
+    return self;
+}
     
+- (BOOL)hasValidHeader
+{
     // todo: make a MKMessageHeader class to handle this
     
-    NSDictionary *header = [dict objectForKey:@"header"];
+    NSDictionary *header = self.headerDict;
     if (!header || ![header isKindOfClass:[NSDictionary class]])
     {
-        return nil;
+        return NO;
     }
     
-    BOOL correctService = [[header objectForKey:@"service"] isEqualToString:self.serviceName];
+    BOOL correctService = [[header objectForKey:@"service"] isEqualToString:self.class.serviceName];
     if (!correctService)
     {
-        return nil;
+        return NO;
     }
     
-    BOOL supportedVersion = [[header objectForKey:@"version"] isEqualToString:self.serviceVersion];
+    BOOL supportedVersion = [[header objectForKey:@"version"] isEqualToString:self.class.serviceVersion];
     if (!supportedVersion)
     {
-        return nil;
+        return NO;
     }
     
-    NSString *type = [header objectForKey:@"type"];
-    if (!type || [self.typeClassNames member:type])
+    if (!self.classFromHeader)
+    {
+        return NO;
+    }
+
+    return YES;
+}
+
+- (Class)classFromHeader
+{
+    NSString *type = [self.headerDict objectForKey:@"type"];
+    
+    if (!type || [self.class.typeClassNames member:type])
     {
         return nil;
     }
@@ -124,8 +149,26 @@
         return nil;
     }
     
-    MKMessage *instance = [[msgClass alloc] init];
-    [instance setBmMessage:bmMessage];
+    return msgClass;
+}
+
+// instance
+
+- (void)setInstance:(id)anObject
+{
+    NSString *className = NSStringFromClass(((NSObject *)anObject).class);
+    NSString *typeName = [className after:@"MK"];
+    
+    NSMutableDictionary *header = [NSMutableDictionary dictionaryWithDictionary:self.headerDict];
+    [header setObject:typeName forKey:@"type"];
+    self.headerDict = header;
+    self.bodyDict = [anObject dict];
+}
+
+- (id)instance
+{
+    id instance = [[self.classFromHeader alloc] init];
+    [instance setDict:self.bodyDict];
     return instance;
 }
 
@@ -134,5 +177,57 @@
     [NSException raise:@"Missing implementation" format:@"subclasses should implement this method"];
 }
 
+// header
+
+- (void)setHeaderDict:(NSDictionary *)aDict
+{
+    [self.dict setObject:aDict forKey:@"header"];
+}
+
+- (NSDictionary *)headerDict
+{
+    return [self.dict objectForKey:@"header"];
+}
+
+// body
+
+- (void)setBodyDict:(NSDictionary *)aDict
+{
+    [self.dict setObject:aDict forKey:@"body"];
+}
+
+- (NSDictionary *)bodyDict
+{
+    return [self.dict objectForKey:@"body"];
+}
+
+// json
+
+- (NSString *)jsonString
+{
+    return self.dict.asJsonString;
+}
+
+- (NSString *)channelAddress
+{
+    return MKRootNode.sharedMKRootNode.markets.mkChannel.channel.address;
+}
+
+- (NSString *)myAddress
+{
+    return @"";
+//    return MKRootNode.sharedMKRootNode.bmClient;
+}
+
+
+- (void)post
+{
+    BMMessage *m = [[BMMessage alloc] init];
+    [m setFromAddress:self.myAddress];
+    [m setToAddress:self.channelAddress];
+    [m setSubject:@"bitmarkets"];
+    [m setMessage:self.jsonString];
+    [m send];
+}
 
 @end
