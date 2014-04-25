@@ -9,12 +9,43 @@
 #import "MKCategory.h"
 #import <BitMessageKit/BitMessageKit.h>
 #import <NavKit/NavKit.h>
+#import "MKMarkets.h"
+#import "MKRootNode.h"
+#import "MKAppDelegate.h"
 
 @implementation MKCategory
 
 - (NSString *)dbName
 {
     return @"categories.json";
+}
+
+- (BOOL)isLeafCategory
+{
+    return ![self.childClass isSubclassOfClass:MKCategory.class];
+}
+
+- (NSArray *)uiActions
+{
+    if (self.isLeafCategory)
+    {
+        NSArray *uiActions = [NSMutableArray arrayWithObjects:@"add", nil];
+        return  [uiActions arrayByAddingObjectsFromArray:super.uiActions];
+    }
+    else
+    {
+        return super.uiActions;
+    }
+}
+
+- (CGFloat)nodeSuggestedWidth
+{
+    if (self.isLeafCategory)
+    {
+        return 0;
+    }
+    
+    return 200;
 }
 
 - (void)setDict:(NSDictionary *)dict
@@ -27,23 +58,45 @@
     }
 }
 
+- (NavView *)navView
+{
+    MKAppDelegate *app = (MKAppDelegate *)[[NSApplication sharedApplication] delegate];
+    return app.navWindow.navView;
+}
+
+// these path methods are a hack
+// change later to backtrack to region to separate paths instead
+
+- (NSArray *)regionPath
+{
+    NSMutableArray *path = [NSMutableArray arrayWithArray:self.groupPath];
+    [path removeLastObject];
+    return path;
+}
+
+- (NSArray *)categoryPath
+{
+    return [NSArray arrayWithObject:self.groupPath.lastObject];
+}
+
 - (void)add
 {
-    /*
-    // find a way to move this to UI layer
+    // move to UI layer category
     
-    BMClient *client = [BMClient sharedBMClient];
-    MKMarkets *markets = [client markets];
-    MKSells *sells = [markets sells];
-    MKSell *sell = [sells justAdd];
+    MKRootNode *root   = [MKRootNode sharedMKRootNode];
+    MKMarkets *markets = [root markets];
+    MKSells *sells     = [markets sells];
+    MKSell *sell       = [sells justAdd];
     
-    NSArray *nodes = [NSArray arrayWithObjects:client, markets, sells, sell, nil];
+    //NSLog(@"%@", self.groupPath);
+
+    sell.regionPath = self.regionPath;
+    sell.categoryPath = self.categoryPath;
     
-    NSLog(@"%@", self.groupPath);
+    NSArray *nodes = [NSArray arrayWithObjects:root, markets, sells, sell, nil];
     
-    AppController *app = (AppController *)[[NSApplication sharedApplication] delegate];
-    [app.navView selectNodePath:nodes];
-     */
+    
+    [self.navView selectNodePath:nodes];
 }
 
 @end

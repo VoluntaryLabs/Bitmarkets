@@ -8,6 +8,7 @@
 
 #import "MKSell.h"
 #import <NavKit/NavKit.h>
+#import <BitmessageKit/BitmessageKit.h>
 
 @implementation MKSell
 
@@ -15,6 +16,18 @@
 {
     self = [super init];
     self.date = [NSDate date];
+    
+    self.uuid = [NSUUID UUID];
+    
+    self.title = @"";
+    self.price = @0;
+    self.description = @"";
+    
+    self.regionPath = @[@"North America", @"United States"];
+    self.categoryPath = @[@"Electronics"];
+    self.sellerAddress = @"sellerAddress";
+    
+    self.status = @"Draft";
     return self;
 }
 
@@ -25,13 +38,12 @@
 
 - (NSString *)nodeTitle
 {
-    return @"(Draft)";
+    return self.title;
 }
 
 - (NSString *)nodeSubtitle
 {
-    //return @"Draft";
-    return nil;
+    return self.status;
 }
 
 - (NSString *)nodeNote
@@ -41,7 +53,7 @@
 
 - (CGFloat)nodeSuggestedWidth
 {
-    return 150;
+    return 0;
 }
 
 - (void)delete
@@ -49,17 +61,31 @@
     [self.nodeParent removeChild:self];
 }
 
-- (NSArray *)properties
+- (NSDictionary *)dict
 {
-    NSMutableArray *p = [NSMutableArray array];
-    
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setObject:@"category" forKey:@"name"];
-    [dict setObject:@"category" forKey:@"choices"];
-    [p addObject:dict];
     
+    [dict setObject:self.title forKey:@"title"];
+    [dict setObject:self.price forKey:@"price"];
+    [dict setObject:@"BTC" forKey:@"currency"];
+    [dict setObject:self.description forKey:@"description"];
+    [dict setObject:self.regionPath forKey:@"regionPath"];
+    [dict setObject:self.categoryPath forKey:@"categoryPath"];
+    [dict setObject:self.sellerAddress forKey:@"sellerAddress"]; // Bitmessage address?
     
-    return p;
+    return dict;
+}
+
+- (void)post
+{
+    NSString *channelAddress;
+    
+    BMMessage *m = [[BMMessage alloc] init];
+    [m setFromAddress:self.sellerAddress];
+    [m setToAddress:channelAddress];
+    [m setSubject:self.title];
+    [m setMessage:self.dict.description];
+    [m send];
 }
 
 

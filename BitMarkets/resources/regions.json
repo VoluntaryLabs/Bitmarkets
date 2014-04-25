@@ -7,7 +7,7 @@
         	"name" : "North America",
         	"children" : 
         	[
-        		{ "name" : "US" },
+        		{ "name" : "United States" },
         		{ "name" : "Canada" },
         	]
     	},

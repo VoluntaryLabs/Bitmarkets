@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import <NavKit/NavKit.h>
 #import "MKSell.h"
-#import "BMDictView.h"
+#import "MKTextView.h"
 
 @interface MKSellView : NSView <NSTextViewDelegate>
 
@@ -17,14 +17,14 @@
 @property (assign, nonatomic) NavNode *node;
 
 
-@property (strong) NSTextView *title;
+@property (strong) MKTextView *title;
 //@property (strong) IBOutlet NSTextView *quantity;
-@property (strong) NSTextView *price;
+@property (strong) MKTextView *price;
 @property (strong) NavRoundButtonView *postOrBuyButton;
 
 @property (strong) NavColoredView *separator;
 
-@property (strong) NSTextView *description;
+@property (strong) MKTextView *description;
 
 @property (strong) NSImageView *regionIcon;
 @property (strong) NSTextView *region;

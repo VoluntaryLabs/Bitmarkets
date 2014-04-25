@@ -8,7 +8,7 @@
 
 #import <BitmessageKit/BitmessageKit.h>
 
-@interface MKMessage : BMNode
+@interface MKMessage : NavNode
 
 @property (strong, nonatomic) BMMessage *bmMessage;
 

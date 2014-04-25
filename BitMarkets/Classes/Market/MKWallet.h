@@ -7,7 +7,11 @@
 //
 
 #import <BitMessageKit/BitMessageKit.h>
+#import <BitnashKit/BitnashKit.h>
 
-@interface MKWallet : BMNode
+@interface MKWallet : NavNode
+
+@property (strong, nonatomic) BNWallet *bnWallet;
+
 
 @end

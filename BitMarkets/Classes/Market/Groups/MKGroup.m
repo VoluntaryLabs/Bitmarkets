@@ -104,6 +104,8 @@
     
     if (childrenDicts)
     {
+        self.childClass = self.class;
+        
         NSMutableArray *children = [NSMutableArray array];
         
         for (NSDictionary *childDict in childrenDicts)

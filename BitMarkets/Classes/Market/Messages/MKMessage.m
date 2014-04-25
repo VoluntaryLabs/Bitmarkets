@@ -131,7 +131,7 @@
 
 - (void)setDict:(NSDictionary *)dict
 {
-    [NSException raise:@"Missing implementatio " format:@"subclasses should implement this method"];
+    [NSException raise:@"Missing implementation" format:@"subclasses should implement this method"];
 }
 
 

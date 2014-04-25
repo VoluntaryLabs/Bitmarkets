@@ -10,9 +10,23 @@
                 "color" : "#000000",
             },
             
+            "title-unedited" :
+            {
+                "fontName" : "Open Sans Italic",
+                "fontSize" : 22,
+                "color" : "#CCCCCC",
+            },
+            
             "price" :
             {
                 "fontName" : "Open Sans",
+                "fontSize" : 16,
+                "color" : "#CCCCCC",
+            },
+            
+            "price-unedited" :
+            {
+                "fontName" : "Open Sans Italic",
                 "fontSize" : 16,
                 "color" : "#CCCCCC",
             },
@@ -22,6 +36,13 @@
                 "fontName" : "Open Sans",
                 "fontSize" : 13,
                 "color" : "#999999",
+            },
+            
+            "description-unedited" :
+            {
+                "fontName" : "Open Sans Italic",
+                "fontSize" : 13,
+                "color" : "#CCCCCC",
             },
             
             "label" :
@@ -49,6 +70,14 @@
                 "fontSize" : 14,
                 "color" : "#FFFFFF",
                 "backgroundColor" : "#000000",
+            },
+            
+            "button-disabled" :
+            {
+                "fontName" : "Open Sans",
+                "fontSize" : 14,
+                "color" : "#FFFFFF",
+                "backgroundColor" : "#CCCCCC",
             },
         },
         

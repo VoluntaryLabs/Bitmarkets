@@ -14,7 +14,17 @@
 @property (strong, nonatomic) NSDate *date;
 @property (strong, nonatomic) MKAskMessage *askMessage;
 
-//- (NSDictionary *)propertiesDict;
+@property (strong, nonatomic) NSString *uuid;
+@property (strong, nonatomic) NSString *status;
 
+@property (strong, nonatomic) NSString *title;
+@property (strong, nonatomic) NSNumber *price;
+@property (strong, nonatomic) NSString *description;
+
+@property (strong, nonatomic) NSArray *regionPath;
+@property (strong, nonatomic) NSArray  *categoryPath;
+@property (strong, nonatomic) NSString *sellerAddress;
+
+- (NSDictionary *)dict;
 
 @end

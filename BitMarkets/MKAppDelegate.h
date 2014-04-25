@@ -9,9 +9,10 @@
 #import <Cocoa/Cocoa.h>
 #import <NavKit/NavKit.h>
 #import <BitmessageKit/BitmessageKit.h>
+//#import "MKRootNode.h"
 
 @interface MKAppDelegate : NavAppController
 
-@property (strong, nonatomic) BMClient *bmClient;
+//@property (strong, nonatomic) MKRootNode *rootNode;
 
 @end

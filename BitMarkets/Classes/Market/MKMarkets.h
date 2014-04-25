@@ -26,7 +26,7 @@
 
 //@property (strong, nonatomic) MKCategory *rootCategory;
 @property (strong, nonatomic) MKMarketChannel *channel;
-@property (strong, nonatomic) MKWallet *wallet;
+//@property (strong, nonatomic) MKWallet *wallet;
 
 @property (strong, nonatomic) MKBuys *buys;
 @property (strong, nonatomic) MKSells *sells;

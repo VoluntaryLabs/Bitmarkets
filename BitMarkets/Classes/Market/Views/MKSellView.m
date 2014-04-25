@@ -8,6 +8,7 @@
 
 #import "MKSellView.h"
 #import <NavKit/NavKit.h>
+#import "MKRootNode.h"
 
 
 @implementation MKSellView
@@ -21,62 +22,80 @@
         [self setAutoresizesSubviews:YES];
         [self setAutoresizingMask:NSViewHeightSizable | NSViewWidthSizable];
 
-        _title = [[NavTextView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
+        _title = [[MKTextView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
+        _title.uneditedTextString = @"Enter title";
         [self addSubview:_title];
-        _title.string = @"Powerbass 4-Channel Amplifier";
-        [_title setThemePath:@"sell/title"];
+        [_title setEditedThemePath:@"sell/title"];
+        [_title setDelegate:self];
+        _title.endsOnReturn = YES;
         //@property (strong) IBOutlet NSTextView *quantity;
         
-        self.price = [[NavTextView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
-        self.price.string = @"0.23BTC";
-        [self.price setThemePath:@"sell/price"];
+        _price = [[MKTextView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
+        _price.autoresizingMask = NSViewMinYMargin | NSViewMaxXMargin;
         [self addSubview:self.price];
+        _price.uneditedTextString = @"Enter price in BTC";
+        _price.suffix = @"BTC";
+        [_price setDelegate:self];
+        [_price setEditedThemePath:@"sell/price"];
+        _price.endsOnReturn = YES;
+        
+        _title.nextKeyView = _price;
         
         _postOrBuyButton = [[NavRoundButtonView alloc] initWithFrame:NSMakeRect(0, 0, 120, 32)];
-        _postOrBuyButton.title = @"Buy Now";
+        //_postOrBuyButton.title = @"Buy Now";
+        _postOrBuyButton.title = @"Post";
         //[_postOrBuyButton setThemePath:@"sell/button"];
         [_postOrBuyButton setTitleAttributes:[NavTheme.sharedNavTheme attributesDictForPath:@"sell/button"]];
         [self addSubview:_postOrBuyButton];
+        [_postOrBuyButton setTarget:self];
+        [_postOrBuyButton setAction:@selector(post)];
         
         self.separator = [[NavColoredView alloc] initWithFrame:NSMakeRect(0, 0, self.width, 1)];
         [self.separator setThemePath:@"sell/separator"];
         [self addSubview:self.separator];
         
-        self.description = [[NavTextView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
-        self.description.string = @"I've had this TOA amp in the closet for a while waiting to setup in my shop space but I need the space so my loss is your gain. Works fine and is in mostly decent condition with a few dings on the corners. I'm available during the day near 7th and Folsom but I can also meet up in the evening in the Mission.";
-        [self.description setThemePath:@"sell/description"];
-        [self addSubview:self.description];
-        
+        _description = [[MKTextView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
+        _description.uneditedTextString = @"Enter description";
+        [_description setDelegate:self];
+        //self.description.string = @"I've had this TOA amp in the closet for a while waiting to setup in my shop space but I need the space so my loss is your gain. Works fine and is in mostly decent condition with a few dings on the corners. I'm available during the day near 7th and Folsom but I can also meet up in the evening in the Mission.";
+        [self.description setEditedThemePath:@"sell/description"];
+        [self addSubview:_description];
+ 
+        _price.nextKeyView = _description;
+
         // region
         
         self.regionIcon = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 0, 16, 16)];
-        [_regionIcon setImage:[NSImage imageNamed:@"icon_location.png"]];
+        [_regionIcon setImage:[NSImage imageNamed:@"location_active.png"]];
         [self addSubview:self.regionIcon];
  
         self.region = [[NavTextView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
-        self.region.string = @"United States";
+        [self.region setEditable:NO];
+        //self.region.string = @"United States";
         [self.region setThemePath:@"sell/label"];
         [self addSubview:self.region];
         
         // category
         
         self.categoryIcon = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 0, 16, 16)];
-        [_categoryIcon setImage:[NSImage imageNamed:@"icon_right.png"]];
+        [_categoryIcon setImage:[NSImage imageNamed:@"right_active.png"]];
         [self addSubview:self.categoryIcon];
         
         self.category = [[NavTextView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
-        self.category.string = @"Electronics";
+        //self.category.string = @"Electronics";
+        [self.category setEditable:NO];
         [self.category setThemePath:@"sell/label"];
         [self addSubview:self.category];
         
         // fromAddress
         
         self.fromAddressIcon = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 0, 16, 16)];
-        [_fromAddressIcon setImage:[NSImage imageNamed:@"icon_profile.png"]];
+        [_fromAddressIcon setImage:[NSImage imageNamed:@"profile_active.png"]];
         [self addSubview:self.fromAddressIcon];
         
         self.fromAddress = [[NavTextView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
-        self.fromAddress.string = @"fromAddress";
+        [self.fromAddress setEditable:NO];
+        //self.fromAddress.string = @"fromAddress";
         [self.fromAddress setThemePath:@"sell/address"];
         [self addSubview:self.fromAddress];
 
@@ -151,6 +170,77 @@
 - (void)setNode:(NavNode *)node
 {
     _node = node;
+    [self syncFromNode];
+}
+
+- (MKSell *)mkSell
+{
+    return (MKSell *)self.node;
+}
+
+- (void)syncFromNode
+{
+    _title.string = self.mkSell.title;
+    [_title textDidChange];
+    [_title useUneditedTextStringIfNeeded];
+    
+    _price.string = [NSString stringWithFormat:@"%@", self.mkSell.price];
+    if ([_price.string isEqualToString:@"0"])
+    {
+        _price.string = @"";
+    }
+    
+    [_price textDidChange];
+    [_price useUneditedTextStringIfNeeded];
+    
+    self.description.string = self.mkSell.description;
+    [_description textDidChange];
+    [_description useUneditedTextStringIfNeeded];
+
+    _region.string      = self.mkSell.regionPath.lastObject;
+    _category.string    = self.mkSell.categoryPath.lastObject;
+    _fromAddress.string = self.mkSell.sellerAddress;
+    
+    [self updateButton];
+}
+
+- (void)syncToNode
+{
+    self.mkSell.title = _title.stringSansUneditedString;
+    self.mkSell.price = [NSNumber numberWithDouble:_price.stringSansUneditedString.doubleValue];
+    self.mkSell.description = _description.stringSansUneditedString;
+    [self.mkSell postParentChanged];
+}
+
+/*
+- (NSNumber *)priceNumber
+{
+    return [NSNumber numberWithDouble:self.price.string.doubleValue];
+}
+*/
+
+- (BOOL)readyToPost
+{
+    BOOL hasTitle = self.title.isReady;
+    BOOL hasPrice = self.price.string.doubleValue > 0.0;
+    BOOL hasDescription = self.description.isReady;
+    
+    return hasTitle && hasPrice && hasDescription;
+}
+
+- (void)updateButton
+{
+    if (self.readyToPost)
+    {
+        [_postOrBuyButton setTitleAttributes:[NavTheme.sharedNavTheme attributesDictForPath:@"sell/button"]];
+    }
+    else
+    {
+        _postOrBuyButton.backgroundColor = [NSColor colorWithCalibratedWhite:0.9 alpha:1.0];
+        [_postOrBuyButton setTitleAttributes:[NavTheme.sharedNavTheme attributesDictForPath:@"sell/button-disabled"]];
+    }
+    
+    [_postOrBuyButton setNeedsDisplay:YES];
 }
 
 - (MKSell *)sell
@@ -179,11 +269,49 @@
 }
 */
 
+- (void)textDidChange:(NSNotification *)aNotification
+{
+    NSTextView *aTextView = [aNotification object];
+    
+    if ([aTextView respondsToSelector:@selector(textDidChange)])
+    {
+        [(MKTextView *)aTextView textDidChange];
+    }
+    
+    [self updateButton];
+    [self syncToNode]; // to show on table cell
+}
+
+- (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)aTextView
+{
+    if ([aTextView respondsToSelector:@selector(textDidBeginEditing)])
+    {
+        [(MKTextView *)aTextView textShouldBeginEditing];
+    }
+    
+    return YES;
+}
+
+- (void)textDidBeginEditing:(NSText *)aTextView
+{
+    if ([aTextView respondsToSelector:@selector(textDidBeginEditing)])
+    {
+        [(MKTextView *)aTextView textDidBeginEditing];
+    }
+}
 
 - (void)textDidEndEditing:(NSNotification *)aNotification
 {
+    NSTextView *aTextView = [aNotification object];
+    
+    if ([aTextView respondsToSelector:@selector(textDidEndEditing)])
+    {
+        [(MKTextView *)aTextView textDidEndEditing];
+    }
+    
     [[aNotification object] endEditing];
     [self saveChanges];
+    [self updateButton];
 }
 
 - (void)saveChanges
@@ -198,6 +326,16 @@
     //[self.window makeFirstResponder:self.labelField];
     //[self.labelField selectAll:nil];
     //[labelField becomeFirstResponder];
+}
+
+// actions
+
+- (void)post
+{
+    if (self.readyToPost)
+    {
+        
+    }
 }
 
 @end
