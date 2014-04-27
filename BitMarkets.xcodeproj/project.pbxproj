@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8EBC9AEE190D7F1700FE71FA /* MKBitcoinExchangeRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EBC9AED190D7F1700FE71FA /* MKBitcoinExchangeRate.m */; };
+		8EBC9B02190DBBF200FE71FA /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 8EBC9B01190DBBF200FE71FA /* fonts */; };
+		8EBC9B08190DBC3000FE71FA /* fonts in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8EBC9B01190DBBF200FE71FA /* fonts */; };
 		AA0E585118FDC0880095DEBD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA0E585018FDC0880095DEBD /* Cocoa.framework */; };
 		AA0E585B18FDC0880095DEBD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA0E585918FDC0880095DEBD /* InfoPlist.strings */; };
 		AA0E585D18FDC0880095DEBD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0E585C18FDC0880095DEBD /* main.m */; };
@@ -149,7 +152,23 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		8EBC9B07190DBC2300FE71FA /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				8EBC9B08190DBC3000FE71FA /* fonts in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		8EBC9AEC190D7F1700FE71FA /* MKBitcoinExchangeRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKBitcoinExchangeRate.h; sourceTree = "<group>"; };
+		8EBC9AED190D7F1700FE71FA /* MKBitcoinExchangeRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKBitcoinExchangeRate.m; sourceTree = "<group>"; };
+		8EBC9B01190DBBF200FE71FA /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fonts; path = Vendor/fonts; sourceTree = SOURCE_ROOT; };
 		AA0E584D18FDC0880095DEBD /* BitMarkets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitMarkets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA0E585018FDC0880095DEBD /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		AA0E585318FDC0880095DEBD /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -319,6 +338,7 @@
 		AA0E585718FDC0880095DEBD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8EBC9B01190DBBF200FE71FA /* fonts */,
 				AA0E586518FDC0880095DEBD /* MainMenu.xib */,
 				AA9226F51905F94900C3D9D7 /* resources */,
 				AA0E585818FDC0880095DEBD /* BitMarkets-Info.plist */,
@@ -473,6 +493,8 @@
 		AAA2E67E19006F0A0098C357 /* Market */ = {
 			isa = PBXGroup;
 			children = (
+				8EBC9AEC190D7F1700FE71FA /* MKBitcoinExchangeRate.h */,
+				8EBC9AED190D7F1700FE71FA /* MKBitcoinExchangeRate.m */,
 				AA4A0E291909BB6400AB78D0 /* MKRootNode.h */,
 				AA4A0E2A1909BB6400AB78D0 /* MKRootNode.m */,
 				AAA2E69719006F0A0098C357 /* MKMarkets.h */,
@@ -539,6 +561,7 @@
 				AA0E584918FDC0880095DEBD /* Sources */,
 				AA0E584A18FDC0880095DEBD /* Frameworks */,
 				AA0E584B18FDC0880095DEBD /* Resources */,
+				8EBC9B07190DBC2300FE71FA /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -732,6 +755,7 @@
 				AA5DFDA01909C83000383283 /* compose_active.png in Resources */,
 				AA5DFDA51909C83000383283 /* message_active.png in Resources */,
 				AA4A0E1F1909ADF600AB78D0 /* computing.png in Resources */,
+				8EBC9B02190DBBF200FE71FA /* fonts in Resources */,
 				AA9227171905F94900C3D9D7 /* regions.json in Resources */,
 				AA5DFDA91909C83000383283 /* reply_active.png in Resources */,
 				AA4A0E271909ADF600AB78D0 /* profile_active.png in Resources */,
@@ -760,6 +784,7 @@
 				AAA2E6B419006F0A0098C357 /* MKMarkets.m in Sources */,
 				AA4A0E2B1909BB6400AB78D0 /* MKRootNode.m in Sources */,
 				AA5DFDAF190A24B300383283 /* MKMarketChannel.m in Sources */,
+				8EBC9AEE190D7F1700FE71FA /* MKBitcoinExchangeRate.m in Sources */,
 				AA4A0DDB19086A3400AB78D0 /* MKTextView.m in Sources */,
 				AA0E586418FDC0880095DEBD /* MKAppDelegate.m in Sources */,
 				AAA2E6AC19006F0A0098C357 /* MKCategory.m in Sources */,
