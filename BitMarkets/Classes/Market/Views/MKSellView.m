@@ -308,6 +308,12 @@
         [(MKTextView *)aTextView textDidChange];
     }
     
+    if (aTextView == self.price)
+    {
+        NSLog(@"price change");
+        [self.price setSuffix:@"BTC    ?USD    ?EUR"];
+    }
+    
     [self updateButton];
     [self syncToNode]; // to show on table cell
 }

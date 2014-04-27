@@ -32,7 +32,7 @@
 {
     if (!self.suffixView)
     {
-        self.suffixView = [[NavTextView alloc] initWithFrame:NSMakeRect(0, 0, 100, self.height)];
+        self.suffixView = [[NavTextView alloc] initWithFrame:NSMakeRect(0, 0, 300, self.height)];
         self.suffixView.autoresizingMask = self.autoresizingMask;
         [self.suffixView setEditable:NO];
         [self.superview addSubview:self.suffixView];
