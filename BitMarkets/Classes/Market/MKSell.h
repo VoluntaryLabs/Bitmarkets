@@ -36,6 +36,7 @@
 @interface MKSell : BMNode
 
 @property (strong, nonatomic) NSDate *date;
+@property (assign, nonatomic) BOOL isLocal; // is local persisted sell
 
 @property (strong, nonatomic) NSString *uuid;
 @property (strong, nonatomic) NSString *status;

@@ -254,13 +254,19 @@
 
 - (void)updateButton
 {
-    if (self.readyToPost)
+    [_postOrBuyButton setHidden:NO];
+    
+    if (self.readyToPost && [self.mkSell isDraft])
     {
         [_postOrBuyButton setTitleAttributes:[NavTheme.sharedNavTheme attributesDictForPath:@"sell/button"]];
     }
+    else if (self.readyToPost && ![self.mkSell isDraft] && self.mkSell.isLocal)
+    {
+        [_postOrBuyButton setHidden:YES];
+    }
     else
     {
-        _postOrBuyButton.backgroundColor = [NSColor colorWithCalibratedWhite:0.9 alpha:1.0];
+        //_postOrBuyButton.backgroundColor = [NSColor colorWithCalibratedWhite:0.9 alpha:1.0];
         [_postOrBuyButton setTitleAttributes:[NavTheme.sharedNavTheme attributesDictForPath:@"sell/button-disabled"]];
     }
     
@@ -362,6 +368,7 @@
     }
     
     [self.mkSell post];
+    [self updateButton];
 }
 
 - (void)buy

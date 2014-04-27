@@ -62,7 +62,7 @@
 
 - (void)delete
 {
-    [self.nodeParent removeChild:self];
+    [self removeFromParent];
 }
 
 - (void)setDict:(NSDictionary *)aDict
@@ -70,7 +70,6 @@
     self.uuid = [aDict objectForKey:@"uuid"];
     self.title = [aDict objectForKey:@"title"];
     self.price = [aDict objectForKey:@"price"];
-    NSLog(@"price = %@", NSStringFromClass(self.price.class));
     
     self.description = [aDict objectForKey:@"description"];
     self.regionPath = [aDict objectForKey:@"regionPath"];
@@ -117,6 +116,8 @@
     [m setSubject:subject];
     [m setMessage:message];
     [m send];
+    self.status = @"posted";
+    [self postParentChanged];
 }
 
 - (NSArray *)fullPath
@@ -132,7 +133,7 @@
     NavNode *root = MKRootNode.sharedMKRootNode.markets.rootRegion;
     NSArray *nodePath = [root nodeTitlePath:self.fullPath];
     
-    NSLog(@"self.fullPath = '%@'", self.fullPath);
+    //NSLog(@"self.fullPath = '%@'", self.fullPath);
     
     if (nodePath)
     {
@@ -151,5 +152,14 @@
     // add code to look through followup posts
     [self setStatus:@"posted"];
 }
+
+/*
+- (NSView *)nodeView
+{
+    NSView *view =  [super nodeView];
+    NSLog(@"nodeView = %@", NSStringFromClass(view.class));
+    return view;
+}
+*/
 
 @end

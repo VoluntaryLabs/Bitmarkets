@@ -25,6 +25,10 @@
 }
 */
 
+- (CGFloat)nodeSuggestedWidth
+{
+    return 170;
+}
 
 - (NSString *)dbName
 {

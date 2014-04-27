@@ -49,10 +49,25 @@
 {
     if (self.isLeafCategory)
     {
-        return 0;
+        return 250;
     }
     
-    return 200;
+    return 250;
+}
+
+- (BOOL)canSearch
+{
+    return self.isLeafCategory && (self.children.count > 0);
+}
+
+- (NSInteger)count
+{
+    if (self.isLeafCategory)
+    {
+        return self.children.count;
+    }
+    
+    return [super count];
 }
 
 - (void)setDict:(NSDictionary *)dict

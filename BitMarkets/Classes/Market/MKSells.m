@@ -26,6 +26,7 @@
 - (MKSell *)justAdd
 {
     MKSell *sell = [[MKSell alloc] init];
+    sell.isLocal = YES;
     [self addChild:sell];
     return sell;
 }

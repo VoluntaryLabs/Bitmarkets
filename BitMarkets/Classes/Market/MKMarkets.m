@@ -42,6 +42,7 @@
     [self addChild:self.sells];
     
     [self.mkChannel performSelector:@selector(fetch) withObject:nil afterDelay:0.0];
+    [self.rootRegion updateCounts];
     return self;
 }
 

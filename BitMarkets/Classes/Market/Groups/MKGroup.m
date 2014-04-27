@@ -177,6 +177,12 @@
         if ([group isKindOfClass:[MKGroup class]])
         {
             [group updateCounts];
+            
+            if ([group count])
+            {
+                NSLog(@"--------> %@ %i", group.nodeTitle, (int)group.count);
+            }
+            
             self.count += group.count;
         }
         else if ([group respondsToSelector:@selector(count)])
@@ -185,5 +191,34 @@
         }
     }
 }
+
+// node note
+
+/*
+- (NSString *)nodeNote
+{
+    if (self.isLeafCategory && self.children.count > 0)
+    {
+        return [NSString stringWithFormat:@"%i", (int)self.children.count];
+    }
+    
+    return nil;
+}
+
+- (NSInteger)countOfLeafChildren
+{
+    NSInteger count = 0;
+    
+    for (MKGroup *childGroup in self.children)
+    {
+        if ([childGroup respondsToSelector:@selector(countOfLeafChildren)])
+        {
+            count += childGroup.countOfLeafChildren;
+        }
+    }
+    
+    return count;
+}
+*/
 
 @end
