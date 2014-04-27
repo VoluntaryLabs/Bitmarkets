@@ -34,7 +34,7 @@
         _price.autoresizingMask = NSViewMinYMargin | NSViewMaxXMargin;
         [self addSubview:self.price];
         _price.uneditedTextString = @"Enter price in BTC";
-        _price.suffix = @"BTC";
+        //_price.suffix = @"BTC";
         [_price setDelegate:self];
         [_price setEditedThemePath:@"sell/price"];
         _price.endsOnReturn = YES;
@@ -111,13 +111,8 @@
 - (void)setEditable:(BOOL)isEditable
 {
     [_description setEditable:isEditable];
-//    [_description setSelectable:isEditable];
-    
     [_title setEditable:isEditable];
-//    [_title setSelectable:isEditable];
-    
     [_price setEditable:isEditable];
-//    [_price setSelectable:isEditable];
 }
 
 
@@ -211,12 +206,14 @@
     [_title textDidChange];
     [_title useUneditedTextStringIfNeeded];
     
-    _price.string = [NSString stringWithFormat:@"%@", self.mkSell.price];
+    NSString *priceString = [NSString stringWithFormat:@"%@", self.mkSell.price].strip;
+    _price.string = priceString;
     if ([_price.string isEqualToString:@"0"])
     {
         _price.string = @"";
     }
     
+    [_price setSuffix:@"BTC"];
     [_price textDidChange];
     [_price useUneditedTextStringIfNeeded];
     

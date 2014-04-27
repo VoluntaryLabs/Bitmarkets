@@ -15,6 +15,13 @@
 
 @implementation MKCategory
 
+- (id)init
+{
+    self = [super init];
+    //self.shouldSortChildren = YES;
+    return self;
+}
+
 - (NSString *)dbName
 {
     return @"categories.json";

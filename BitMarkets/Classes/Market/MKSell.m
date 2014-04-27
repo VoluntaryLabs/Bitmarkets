@@ -21,7 +21,7 @@
     self = [super init];
     self.date = [NSDate date];
     
-    self.uuid = [NSUUID UUID];
+    self.uuid = [[NSUUID UUID] UUIDString];
     
     self.title = @"";
     self.price = @0;
@@ -131,6 +131,8 @@
 {
     NavNode *root = MKRootNode.sharedMKRootNode.markets.rootRegion;
     NSArray *nodePath = [root nodeTitlePath:self.fullPath];
+    
+    NSLog(@"self.fullPath = '%@'", self.fullPath);
     
     if (nodePath)
     {

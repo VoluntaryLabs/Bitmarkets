@@ -41,7 +41,7 @@
     self.sells = [[MKSells alloc] init];
     [self addChild:self.sells];
     
-    [self.mkChannel fetch];
+    [self.mkChannel performSelector:@selector(fetch) withObject:nil afterDelay:0.0];
     return self;
 }
 

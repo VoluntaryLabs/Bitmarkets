@@ -19,14 +19,7 @@
         // Initialization code here.
     }
     return self;
-}
-
-- (void)drawRect:(NSRect)dirtyRect
-{
-    [super drawRect:dirtyRect];
-    
-    // Drawing code here.
-}
+}å
 */
 
 - (void)removeFromSuperview
@@ -45,7 +38,13 @@
         [self.superview addSubview:self.suffixView];
     }
     
-    self.suffixView.string = aString;
+    self.suffixView.string = aString.strip;
+    [self updateSuffixView];
+}
+
+- (void)setFrame:(NSRect)frameRect
+{
+    [super setFrame:frameRect];
     [self updateSuffixView];
 }
 
@@ -54,7 +53,7 @@
     if (self.suffixView)
     {
         self.suffixView.x = self.textStorage.size.width + self.suffixView.textStorage.size.width + 5;
-        self.suffixView.y = self.y;
+        self.suffixView.y = self.y + self.height - self.suffixView.height;
     }
 }
 
@@ -63,7 +62,6 @@
     return ![self.string isEqualToString:self.uneditedTextString] &&
         ![self.string.strip isEqualToString:@""];
 }
-
 
 - (BOOL)isEmpty
 {
@@ -130,6 +128,12 @@
 }
  */
 
+- (void)setString:(NSString *)string
+{
+    [super setString:string];
+    [self updateSuffixView];
+}
+
 - (void)textDidChange
 {
     [self useUneditedTextStringIfNeeded];
@@ -139,14 +143,7 @@
 
 - (void)textDidEndEditing
 {
-    /*
-    if (self.suffix)
-    {
-        self.string = [self.stringSansSuffix stringByAppendingString:self.suffix];
-    }
-    */
 }
-
 
 - (BOOL)becomeFirstResponder
 {
@@ -175,12 +172,12 @@
 
 - (void)keyDown:(NSEvent *)theEvent
 {
+    // go to next keyView on return or tab instead of inserting
+    
     unsigned int returnKeyCode = 36;
     unsigned int tabKeyCode    = 48;
     
     unsigned int keyCode = [theEvent keyCode];
-    
-    NSLog(@"keyCode %i", keyCode);
     
     if (self.endsOnReturn)
     {

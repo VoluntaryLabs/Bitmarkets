@@ -15,7 +15,7 @@
 
 - (NSString *)nodeTitle
 {
-    return @"Raw Channel";
+    return @"Channel";
 }
 
 - (id)init
@@ -23,15 +23,21 @@
     self = [super init];
     self.passphrase = @"bitmarkets";
     self.allAsks = [[NavInfoNode alloc] init];
-    self.allAsks.nodeSuggestedWidth = 300;
-    [self.allAsks setNodeTitle:@"allAsks"];
+    self.allAsks.nodeSuggestedWidth = 250;
+    [self.allAsks setNodeTitle:@"Sells"];
     [self addChild:self.allAsks];
     
     self.validMessages = [[NavInfoNode alloc] init];
-    [self.validMessages setNodeTitle:@"validMessages"];
+    [self.validMessages setNodeTitle:@"Messages"];
+    self.validMessages.nodeSuggestedWidth = 250;
     [self addChild:self.validMessages];
     
     return self;
+}
+
+- (CGFloat)nodeSuggestedWidth
+{
+    return 250;
 }
 
 - (BMChannel *)channel
@@ -80,6 +86,7 @@
     for (MKSell *sell in self.allAsks.children)
     {
         [sell findStatus];
+        [sell placeInMarketsPath];
     }
 }
 

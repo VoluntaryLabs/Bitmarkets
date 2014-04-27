@@ -13,7 +13,7 @@
 #import <BitMessageKit/BitMessageKit.h>
 #import <NavKit/NavKit.h>
 
-@interface MKMarketChannel : BMNode
+@interface MKMarketChannel : NavNode
 
 @property (strong, nonatomic) NSString *passphrase;
 @property (strong, nonatomic) BMChannel *channel;
