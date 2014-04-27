@@ -8,6 +8,7 @@
 
 #import "MKMarkets.h"
 #import <BitMessageKit/BitMessageKit.h>
+#import <NavKit/NavKit.h>
 
 @implementation MKMarkets
 
@@ -39,6 +40,8 @@
 
     self.sells = [[MKSells alloc] init];
     [self addChild:self.sells];
+    
+    [self.mkChannel fetch];
     return self;
 }
 
@@ -51,6 +54,5 @@
 {
     return 150;
 }
-
 
 @end

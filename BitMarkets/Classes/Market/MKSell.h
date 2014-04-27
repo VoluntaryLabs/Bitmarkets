@@ -37,7 +37,7 @@
 
 @property (strong, nonatomic) NSDate *date;
 
-//@property (strong, nonatomic) NSString *uuid;
+@property (strong, nonatomic) NSString *uuid;
 @property (strong, nonatomic) NSString *status;
 
 // dict properties
@@ -54,5 +54,10 @@
 - (NSDictionary *)dict;
 
 - (void)post;
+
+- (void)placeInMarketsPath;
+
+- (void)findStatus;
+- (BOOL)isDraft;
 
 @end

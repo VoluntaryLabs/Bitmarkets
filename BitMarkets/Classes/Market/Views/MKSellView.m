@@ -108,6 +108,19 @@
     return self;
 }
 
+- (void)setEditable:(BOOL)isEditable
+{
+    [_description setEditable:isEditable];
+//    [_description setSelectable:isEditable];
+    
+    [_title setEditable:isEditable];
+//    [_title setSelectable:isEditable];
+    
+    [_price setEditable:isEditable];
+//    [_price setSelectable:isEditable];
+}
+
+
 - (void)layout
 {
     CGFloat leftMargin = 30;
@@ -170,6 +183,20 @@
 - (void)setNode:(NavNode *)node
 {
     _node = node;
+    
+    [self setEditable:self.mkSell.isDraft];
+    
+    if (self.mkSell.isDraft)
+    {
+        [self.postOrBuyButton setTitle:@"Post"];
+        [self.postOrBuyButton setAction:@selector(post)];
+    }
+    else
+    {
+        [self.postOrBuyButton setTitle:@"Buy"];
+        [self.postOrBuyButton setAction:@selector(buy)];
+    }
+    
     [self syncFromNode];
 }
 
@@ -338,6 +365,11 @@
     }
     
     [self.mkSell post];
+}
+
+- (void)buy
+{
+    //[self.mkSell post];
 }
 
 @end

@@ -9,11 +9,14 @@
 #import "MKMessage.h"
 #import "MKRootNode.h"
 
+
 @implementation MKMessage
+
+//@synthetize instance = _instance;
 
 + (NSString *)serviceName
 {
-    return @"bitmarkets";
+    return @"bitmarket";
 }
 
 + (NSString *)serviceVersion
@@ -37,8 +40,8 @@
     */
     
     NSMutableDictionary *header = [NSMutableDictionary dictionary];
-    [header setObject:@"bitmarket" forKey:@"service"];
-    [header setObject:@"1.0" forKey:@"version"];
+    [header setObject:self.class.serviceName forKey:@"service"];
+    [header setObject:self.class.serviceVersion forKey:@"version"];
     return header;
 }
 
@@ -60,7 +63,8 @@
 
 - (NSString *)nodeTitle
 {
-    return NSStringFromClass([self class]);
+    //return NSStringFromClass([self class]);
+    return [self.headerDict objectForKey:@"type"];
 }
 
 - (NSString *)nodeSubtitle
@@ -99,6 +103,7 @@
 - (id)init
 {
     self = [super init];
+    self.dict = [NSMutableDictionary dictionary];
     [self setHeaderDict:self.class.standardHeader];
     //[self setBodyDict:[NSMutableDictionary dictionary]];
     return self;
@@ -138,7 +143,7 @@
 {
     NSString *type = [self.headerDict objectForKey:@"type"];
     
-    if (!type || [self.class.typeClassNames member:type])
+    if (!type || ![self.class.typeClassNames member:type])
     {
         return nil;
     }
@@ -156,6 +161,8 @@
 
 - (void)setInstance:(id)anObject
 {
+    _object = anObject;
+    
     NSString *className = NSStringFromClass(((NSObject *)anObject).class);
     NSString *typeName = [className after:@"MK"];
     
@@ -167,14 +174,12 @@
 
 - (id)instance
 {
-    id instance = [[self.classFromHeader alloc] init];
-    [instance setDict:self.bodyDict];
-    return instance;
-}
-
-- (void)setDict:(NSDictionary *)dict
-{
-    [NSException raise:@"Missing implementation" format:@"subclasses should implement this method"];
+    if (!_object)
+    {
+        _object = [[self.classFromHeader alloc] init];
+        [_object setDict:self.bodyDict];
+    }
+    return _object;
 }
 
 // header
@@ -215,10 +220,8 @@
 
 - (NSString *)myAddress
 {
-    return @"";
-//    return MKRootNode.sharedMKRootNode.bmClient;
+    return MKRootNode.sharedMKRootNode.bmClient.identities.firstIdentity.address;
 }
-
 
 - (void)post
 {

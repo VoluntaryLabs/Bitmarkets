@@ -16,6 +16,7 @@
 
 
 @property (strong, nonatomic) NSMutableDictionary *dict;
+@property (strong, nonatomic) id object;
 
 - (void)setHeaderDict:(NSDictionary *)aDict;
 - (NSDictionary *)headerDict;

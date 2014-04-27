@@ -72,9 +72,6 @@
 
 - (void)textShouldBeginEditing
 {
-    self.realHeight = self.height;
-    self.realY = self.y;
-    
     if ([self.string isEqualToString:self.uneditedTextString])
     {
         self.string = @"";
@@ -118,31 +115,26 @@
     [self setNeedsDisplay:YES];
 }
 
+
+/*
+- (void)forceToBeNumber
+{
+    if (self.lastString && self.string.doubleValue == 0)
+    {
+        [self.string rangeOfCharacterFromSet:[NSCharacterSet letterCharacterSet]];
+        self.string = self.lastString;
+        NSBeep();
+    }
+    
+    self.lastString = self.string;
+}
+ */
+
 - (void)textDidChange
 {
-    [self useUneditedTextStringIfNeeded];    
-
-    if (self.endsOnReturn)
-    {
-        if ([self.string containsCaseInsensitiveString:@"\n"] ||
-            [self.string containsCaseInsensitiveString:@"\t"])
-        {
-            self.string = [self.string stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-            self.string = [self.string stringByReplacingOccurrencesOfString:@"\t" withString:@""];
-            self.height = self.realHeight;
-            self.y = self.realY;
-            
-            NSLog(@"string '%@'", self.string);
-            
-            [self.window makeFirstResponder:self.nextKeyView];
-        }
-    }
-
+    [self useUneditedTextStringIfNeeded];
     [self updateTheme];
     [self updateSuffixView];
-    
-    NSLog(@"self.y %f", self.y);
-    NSLog(@"self.suffixView.y %f\n", self.suffixView.y);
 }
 
 - (void)textDidEndEditing
@@ -181,5 +173,25 @@
     return [self.string stringByReplacingOccurrencesOfString:self.uneditedTextString withString:@""];
 }
 
+- (void)keyDown:(NSEvent *)theEvent
+{
+    unsigned int returnKeyCode = 36;
+    unsigned int tabKeyCode    = 48;
+    
+    unsigned int keyCode = [theEvent keyCode];
+    
+    NSLog(@"keyCode %i", keyCode);
+    
+    if (self.endsOnReturn)
+    {
+        if (keyCode == returnKeyCode ||
+            keyCode == tabKeyCode)
+        {
+            [self.window makeFirstResponder:self.nextKeyView];
+            return;
+        }
+    }
+    [super keyDown:theEvent];
+}
 
 @end

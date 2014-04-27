@@ -14,8 +14,7 @@
 @property (strong, nonatomic) NSString *uneditedTextString;
 @property (strong, nonatomic) NavTextView *suffixView;
 @property (assign, nonatomic) BOOL endsOnReturn;
-@property (assign, nonatomic) CGFloat realHeight;
-@property (assign, nonatomic) CGFloat realY;
+@property (strong, nonatomic) NSString *lastString;
 
 - (void)setSuffix:(NSString *)aString;
 

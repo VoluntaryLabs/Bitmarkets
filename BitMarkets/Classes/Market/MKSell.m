@@ -11,6 +11,7 @@
 
 #import <NavKit/NavKit.h>
 #import <BitmessageKit/BitmessageKit.h>
+#import <FoundationCategoriesKit/FoundationCategoriesKit.h>
 #import "MKRootNode.h"
 
 @implementation MKSell
@@ -20,7 +21,7 @@
     self = [super init];
     self.date = [NSDate date];
     
-    //self.uuid = [NSUUID UUID];
+    self.uuid = [NSUUID UUID];
     
     self.title = @"";
     self.price = @0;
@@ -28,9 +29,9 @@
     
     self.regionPath = @[@"North America", @"United States"];
     self.categoryPath = @[@"Electronics"];
-    self.sellerAddress = @"sellerAddress";
+    self.sellerAddress = BMClient.sharedBMClient.identities.firstIdentity.address; // make this tx specific later
     
-    self.status = @"Draft";
+    self.status = @"draft";
     return self;
 }
 
@@ -66,17 +67,25 @@
 
 - (void)setDict:(NSDictionary *)aDict
 {
+    self.uuid = [aDict objectForKey:@"uuid"];
     self.title = [aDict objectForKey:@"title"];
     self.price = [aDict objectForKey:@"price"];
+    NSLog(@"price = %@", NSStringFromClass(self.price.class));
+    
     self.description = [aDict objectForKey:@"description"];
     self.regionPath = [aDict objectForKey:@"regionPath"];
     self.categoryPath = [aDict objectForKey:@"categoryPath"];
+    
+    self.title = self.title.strip;
+    //self.price = self.price.strip;
+    self.description = self.description.strip;
 }
 
 - (NSDictionary *)dict
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     
+    [dict setObject:self.uuid forKey:@"uuid"];
     [dict setObject:self.title forKey:@"title"];
     [dict setObject:self.price forKey:@"price"];
     [dict setObject:@"BTC" forKey:@"currency"];
@@ -98,14 +107,47 @@
 - (void)post
 {
     NSString *channelAddress = MKRootNode.sharedMKRootNode.markets.mkChannel.channel.address;
+    NSString *sellerAddress = self.sellerAddress;
+    NSString *subject = @"bitmarkets"; // self.title
+    NSString *message = self.jsonString;
     
     BMMessage *m = [[BMMessage alloc] init];
-    [m setFromAddress:self.sellerAddress];
+    [m setFromAddress:sellerAddress];
     [m setToAddress:channelAddress];
-    [m setSubject:self.title];
-    [m setMessage:self.jsonString];
+    [m setSubject:subject];
+    [m setMessage:message];
     [m send];
 }
 
+- (NSArray *)fullPath
+{
+    NSMutableArray *path = [NSMutableArray array];
+    [path addObjectsFromArray:self.regionPath];
+    [path addObjectsFromArray:self.categoryPath];
+    return path;
+}
+
+- (void)placeInMarketsPath
+{
+    NavNode *root = MKRootNode.sharedMKRootNode.markets.rootRegion;
+    NSArray *nodePath = [root nodeTitlePath:self.fullPath];
+    
+    if (nodePath)
+    {
+        MKCategory *cat = nodePath.lastObject;
+        [cat addChild:self];
+    }
+}
+
+- (BOOL)isDraft
+{
+    return [self.status isEqualToString:@"draft"];
+}
+
+- (void)findStatus
+{
+    // add code to look through followup posts
+    [self setStatus:@"posted"];
+}
 
 @end

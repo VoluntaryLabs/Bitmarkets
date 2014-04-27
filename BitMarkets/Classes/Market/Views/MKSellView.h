@@ -16,28 +16,25 @@
 @property (assign, nonatomic) NavView *navView;
 @property (assign, nonatomic) NavNode *node;
 
+@property (strong, nonatomic) MKTextView *title;
+//@property (strong, nonatomic) IBOutlet NSTextView *quantity;
+@property (strong, nonatomic) MKTextView *price;
+@property (strong, nonatomic) NavRoundButtonView *postOrBuyButton;
 
-@property (strong) MKTextView *title;
-//@property (strong) IBOutlet NSTextView *quantity;
-@property (strong) MKTextView *price;
-@property (strong) NavRoundButtonView *postOrBuyButton;
+@property (strong, nonatomic) NavColoredView *separator;
 
-@property (strong) NavColoredView *separator;
+@property (strong, nonatomic) MKTextView *description;
 
-@property (strong) MKTextView *description;
+@property (strong, nonatomic) NSImageView *regionIcon;
+@property (strong, nonatomic) NSTextView *region;
 
-@property (strong) NSImageView *regionIcon;
-@property (strong) NSTextView *region;
+@property (strong, nonatomic) NSImageView *categoryIcon;
+@property (strong, nonatomic) NSTextView *category;
 
-@property (strong) NSImageView *categoryIcon;
-@property (strong) NSTextView *category;
+@property (strong, nonatomic) NSImageView *fromAddressIcon;
+@property (strong, nonatomic) NSTextView *fromAddress;
 
-@property (strong) NSImageView *fromAddressIcon;
-@property (strong) NSTextView *fromAddress;
-
-@property (strong) NSImageView *attachedImage;
-
-
+@property (strong, nonatomic) NSImageView *attachedImage;
 
 
 @property (assign, nonatomic) BOOL isUpdating;
@@ -46,5 +43,7 @@
 
 - (void)prepareToDisplay;
 - (void)selectFirstResponder;
+
+- (void)setEditable:(BOOL)isEditable;
 
 @end

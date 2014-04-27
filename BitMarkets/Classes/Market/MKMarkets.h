@@ -33,5 +33,6 @@
 @property (strong, nonatomic) MKSells *sells;
 
 
+//- (void)addMKMessage:(MKMessage *)
 
 @end

@@ -9,18 +9,28 @@
 #import "MKMarketChannel.h"
 #import <BitMessageKit/BitMessageKit.h>
 #import "MKMessage.h"
+#import "MKSell.h"
 
 @implementation MKMarketChannel
 
 - (NSString *)nodeTitle
 {
-    return @"Channel";
+    return @"Raw Channel";
 }
 
 - (id)init
 {
     self = [super init];
     self.passphrase = @"bitmarkets";
+    self.allAsks = [[NavInfoNode alloc] init];
+    self.allAsks.nodeSuggestedWidth = 300;
+    [self.allAsks setNodeTitle:@"allAsks"];
+    [self addChild:self.allAsks];
+    
+    self.validMessages = [[NavInfoNode alloc] init];
+    [self.validMessages setNodeTitle:@"validMessages"];
+    [self addChild:self.validMessages];
+    
     return self;
 }
 
@@ -38,8 +48,17 @@
 {
     // just make sure this is in the fetch chain from BMClient?
     //[[[BMClient sharedBMClient] channels] fetch];
+    //
+    // 1. run through messages
+    //
+    // 2. turn valid ones to children as MKMessage objects
+    //    (need to add persisted user initiated sells?)
+    //
+    // 3. add asks to appropriate categories (hand to markets?)
+    //
+    // 4. add non-asks under their asks
+    //
 
-    NSMutableArray *children = [NSMutableArray array];
     NSArray *messages = self.channel.children;
     
     for (BMReceivedMessage *bmMessage in messages)
@@ -48,11 +67,21 @@
         
         if (mkMessage)
         {
-            [children addObject:mkMessage];
+            [self.validMessages addChild:bmMessage];
+        }
+        
+        MKSell *instance = [mkMessage instance];
+        if ([instance isKindOfClass:MKSell.class])
+        {
+            [self.allAsks addChild:instance];
         }
     }
     
-    [self setChildren:children];
+    for (MKSell *sell in self.allAsks.children)
+    {
+        [sell findStatus];
+    }
 }
+
 
 @end
