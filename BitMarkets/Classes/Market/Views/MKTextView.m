@@ -52,7 +52,7 @@
 {
     if (self.suffixView)
     {
-        self.suffixView.x = self.textStorage.size.width + self.suffixView.textStorage.size.width + 5;
+        self.suffixView.x = self.textStorage.size.width + /*self.suffixView.textStorage.size.width*/ + 31;
         self.suffixView.y = self.y + self.height - self.suffixView.height;
     }
 }
