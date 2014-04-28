@@ -310,11 +310,11 @@
 		AA0E584418FDC0880095DEBD = {
 			isa = PBXGroup;
 			children = (
+				AA0E585618FDC0880095DEBD /* BitMarkets */,
 				AA5DFE1B190DF06300383283 /* NavKit.framework */,
 				AA5DFE19190DF05C00383283 /* FoundationCategoriesKit.framework */,
 				AA5DFE17190DF05300383283 /* NavNodeKit.framework */,
 				AA5DFE15190DF04B00383283 /* BitnashKit.framework */,
-				AA0E585618FDC0880095DEBD /* BitMarkets */,
 				AA0E587418FDC0890095DEBD /* BitMarketsTests */,
 				AA0F52C819073E8300F7370B /* BitnashKit.xcodeproj */,
 				AA1FC87D1901E08200D00431 /* NavKit.xcodeproj */,

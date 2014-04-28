@@ -8,10 +8,13 @@
 
 #import <BitMessageKit/BitMessageKit.h>
 #import <BitnashKit/BitnashKit.h>
+#import <NavKit/NavKit.h>
 
 @interface MKWallet : NavNode
 
 @property (strong, nonatomic) BNWallet *bnWallet;
+@property (strong, nonatomic) NavInfoNode *balance;
+@property (strong, nonatomic) NavInfoNode *transactions;
 
 
 @end

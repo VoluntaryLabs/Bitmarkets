@@ -15,26 +15,34 @@
 {
     self = [super init];
     
-    //self.bnWallet = [[BNWallet alloc] init];
-
+    _bnWallet = [[BNWallet alloc] init];
+    [_bnWallet.server start];
+    _bnWallet.server.logsStderr = YES;
+    
     {
-        NavInfoNode *balance = [[NavInfoNode alloc] init];
-        [self addChild:balance];
-        balance.nodeTitle = @"Balance";
-        balance.nodeSubtitle = @"(unavailable)";
-        balance.nodeSuggestedWidth = 200;
+        _balance = [[NavInfoNode alloc] init];
+        [self addChild:_balance];
+        _balance.nodeTitle = @"Balance";
+        _balance.nodeSubtitle = @"(unavailable)";
+        _balance.nodeSuggestedWidth = 200;
     }
     
     {
-        NavInfoNode *transactions = [[NavInfoNode alloc] init];
-        [self addChild:transactions];
-        transactions.nodeTitle = @"Transactions";
-        transactions.nodeSubtitle =  @"(unavailable)";
+        _transactions = [[NavInfoNode alloc] init];
+        [self addChild:_transactions];
+        _transactions.nodeTitle = @"Transactions";
+        _transactions.nodeSubtitle =  @"(unavailable)";
         //transactions.nodeNote =  @"0";
-        transactions.nodeSuggestedWidth = 200;
+        _transactions.nodeSuggestedWidth = 200;
     }
 
+    [self update];
     return self;
+}
+
+- (void)update
+{
+    _balance.nodeSubtitle = [NSString stringWithFormat:@"%.4f", self.bnWallet.balance.floatValue];
 }
 
 - (NSString *)nodeTitle
