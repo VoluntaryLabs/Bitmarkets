@@ -16,8 +16,8 @@
     self = [super init];
     
     _bnWallet = [[BNWallet alloc] init];
-    [_bnWallet.server start];
     _bnWallet.server.logsStderr = YES;
+    [_bnWallet.server start];
     
     {
         _balance = [[NavInfoNode alloc] init];
