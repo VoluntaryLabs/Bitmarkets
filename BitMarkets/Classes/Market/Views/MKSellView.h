@@ -36,8 +36,6 @@
 
 @property (strong, nonatomic) NSImageView *attachedImage;
 
-@property (strong, nonatomic) MKBitcoinExchangeRate *rate;
-
 @property (assign, nonatomic) BOOL isUpdating;
 
 - (MKSell *)sell;

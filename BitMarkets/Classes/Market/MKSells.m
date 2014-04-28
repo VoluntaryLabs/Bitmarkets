@@ -36,4 +36,17 @@
     [self justAdd];
 }
 
+// dict
+
+- (void)setDict:(NSDictionary *)aDict
+{
+    
+}
+
+- (NSDictionary *)dict
+{
+    return nil;
+}
+
+
 @end

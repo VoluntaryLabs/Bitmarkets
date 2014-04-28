@@ -8,9 +8,13 @@
 
 #import <BitmessageKit/BMNode.h>
 #import "MKSell.h"
+#import "MKGroup.h"
 
-@interface MKSells : BMNode
+@interface MKSells : MKGroup
 
 - (MKSell *)justAdd;
+
+- (void)load;
+- (void)save;
 
 @end

@@ -104,15 +104,15 @@
     
     if (childrenDicts)
     {
-        self.childClass = self.class;
+        self.childClass = self.class; 
         
         NSMutableArray *children = [NSMutableArray array];
         
         for (NSDictionary *childDict in childrenDicts)
         {
-            [children addObject:[self.class withDict:childDict]];
+            Class childClass = self.childClass ? self.childClass : self.class;
+            [children addObject:[childClass withDict:childDict]];
         }
-        
         
         [self setChildren:children];
     }
@@ -218,6 +218,36 @@
     }
     
     return count;
+}
+*/
+
+// persistence
+
+/*
+- (JSONDB *)appSupportDb
+{
+    JSONDB *db = [[JSONDB alloc] init];
+    db.isInAppWrapper = YES;
+    db.name = @"Sells";
+    return db;
+}
+
+- (void)read
+{
+    JSONDB *db = self.appSupportDb;
+    [db read];
+    
+    if (db.dict)
+    {
+        [self setDict:db.dict];
+    }
+}
+
+- (void)write
+{
+    JSONDB *db = self.appSupportDb;
+    [db setDict:[NSMutableDictionary dictionaryWithDictionary:self.dict]];
+    [db write];
 }
 */
 

@@ -9,6 +9,26 @@
 #import "MKBitcoinExchangeRate.h"
 
 @implementation MKBitcoinExchangeRate
+
+static MKBitcoinExchangeRate *shared;
+
++ (MKBitcoinExchangeRate *)shared
+{
+    if (!shared)
+    {
+        shared = [[self alloc] init];
+        [shared update];
+    }
+    
+    return shared;
+}
+
+- (void)update
+{
+    [self btcPerSymbol:@"USD"];
+    [self btcPerSymbol:@"EUR"];
+}
+
 - (id) init
 {
     if ( self = [super init] ) {
@@ -73,4 +93,5 @@
     }
     
 }
+
 @end

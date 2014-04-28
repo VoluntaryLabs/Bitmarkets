@@ -104,9 +104,6 @@
 
         self.attachedImage = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
         [self addSubview:self.attachedImage];
-        
-        // exchange rate
-        self.rate = [[MKBitcoinExchangeRate alloc] init];
     }
     
     return self;
@@ -230,6 +227,7 @@
     _fromAddress.string = self.mkSell.sellerAddress;
     
     [self updateButton];
+    [self updatePriceSuffix];
 }
 
 - (void)syncToNode
@@ -314,18 +312,32 @@
     
     if (aTextView == self.price)
     {
-        NSLog(@"price change");
-        
-        NSNumber *usdRate = [self.rate btcPerSymbol:@"USD"];
-        NSNumber *eurRate = [self.rate btcPerSymbol:@"EUR"];
-        float btc = [[[self.price textStorage] string] floatValue];
-        float usd = btc / [usdRate floatValue];
-        float eur = btc / [eurRate floatValue];
-        [self.price setSuffix:[NSString stringWithFormat:@"BTC    %1.2fUSD    %1.2fEUR", usd, eur]];
+        [self updatePriceSuffix];
     }
     
     [self updateButton];
     [self syncToNode]; // to show on table cell
+}
+
+- (void)updatePriceSuffix
+{
+    float btc = [[[self.price textStorage] string] floatValue];
+    if (btc)
+    {
+        MKBitcoinExchangeRate *rate = [MKBitcoinExchangeRate shared];
+
+        NSNumber *usdRate = [rate btcPerSymbol:@"USD"];
+        NSNumber *eurRate = [rate btcPerSymbol:@"EUR"];
+        float usd = btc / [usdRate floatValue];
+        float eur = btc / [eurRate floatValue];
+        /*
+        NSString *usdSymbol = @"$";
+        NSString *eurSymbol = @"€";
+        NSString *btcSymbol = @"฿";
+        */
+        //[self.price setSuffix:[NSString stringWithFormat:@"BTC   $%1.0f   €%1.0f", usd, eur]];
+        [self.price setSuffix:[NSString stringWithFormat:@"BTC  %1.2fUSD  %1.2fEUR", usd, eur]];
+    }
 }
 
 - (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)aTextView

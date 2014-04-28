@@ -20,11 +20,6 @@
 		AA0E587118FDC0890095DEBD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA0E585018FDC0880095DEBD /* Cocoa.framework */; };
 		AA0E587918FDC0890095DEBD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA0E587718FDC0890095DEBD /* InfoPlist.strings */; };
 		AA0E587B18FDC0890095DEBD /* BitMarketsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0E587A18FDC0890095DEBD /* BitMarketsTests.m */; };
-		AA0F52D91907407400F7370B /* BitnashKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA0F52D019073E8300F7370B /* BitnashKit.framework */; };
-		AA0F52DA1907407400F7370B /* NavNodeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA9226F21905F88200C3D9D7 /* NavNodeKit.framework */; };
-		AA1FC8871901E0A200D00431 /* BitmessageKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA1FC8711901E06C00D00431 /* BitmessageKit.framework */; };
-		AA1FC8881901E0A200D00431 /* FoundationCategoriesKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA1FC87A1901E07C00D00431 /* FoundationCategoriesKit.framework */; };
-		AA1FC8891901E0A200D00431 /* NavKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA1FC8841901E08200D00431 /* NavKit.framework */; };
 		AA4A0DDB19086A3400AB78D0 /* MKTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4A0DDA19086A3400AB78D0 /* MKTextView.m */; };
 		AA4A0E1C1909ADF600AB78D0 /* bitcoin.png in Resources */ = {isa = PBXBuildFile; fileRef = AA4A0E0E1909ADF600AB78D0 /* bitcoin.png */; };
 		AA4A0E1D1909ADF600AB78D0 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = AA4A0E0F1909ADF600AB78D0 /* camera.png */; };
@@ -56,6 +51,16 @@
 		AA5DFDAB1909C83000383283 /* send_active.png in Resources */ = {isa = PBXBuildFile; fileRef = AA5DFD9C1909C83000383283 /* send_active.png */; };
 		AA5DFDAC1909C83000383283 /* send_inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = AA5DFD9D1909C83000383283 /* send_inactive.png */; };
 		AA5DFDAF190A24B300383283 /* MKMarketChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5DFDAE190A24B300383283 /* MKMarketChannel.m */; };
+		AA5DFE22190DF0CF00383283 /* BitnashKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA5DFE1D190DF0CF00383283 /* BitnashKit.framework */; };
+		AA5DFE23190DF0CF00383283 /* NavNodeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA5DFE1E190DF0CF00383283 /* NavNodeKit.framework */; };
+		AA5DFE24190DF0CF00383283 /* BitmessageKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA5DFE1F190DF0CF00383283 /* BitmessageKit.framework */; };
+		AA5DFE25190DF0CF00383283 /* FoundationCategoriesKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA5DFE20190DF0CF00383283 /* FoundationCategoriesKit.framework */; };
+		AA5DFE26190DF0CF00383283 /* NavKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA5DFE21190DF0CF00383283 /* NavKit.framework */; };
+		AA5DFE27190DF0DA00383283 /* BitnashKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AA5DFE1D190DF0CF00383283 /* BitnashKit.framework */; };
+		AA5DFE28190DF0DA00383283 /* NavNodeKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AA5DFE1E190DF0CF00383283 /* NavNodeKit.framework */; };
+		AA5DFE29190DF0DA00383283 /* BitmessageKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AA5DFE1F190DF0CF00383283 /* BitmessageKit.framework */; };
+		AA5DFE2A190DF0DA00383283 /* FoundationCategoriesKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AA5DFE20190DF0CF00383283 /* FoundationCategoriesKit.framework */; };
+		AA5DFE2B190DF0DA00383283 /* NavKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AA5DFE21190DF0CF00383283 /* NavKit.framework */; };
 		AA9227081905F94900C3D9D7 /* categories.json in Resources */ = {isa = PBXBuildFile; fileRef = AA9226F61905F94900C3D9D7 /* categories.json */; };
 		AA9227171905F94900C3D9D7 /* regions.json in Resources */ = {isa = PBXBuildFile; fileRef = AA9227071905F94900C3D9D7 /* regions.json */; };
 		AA92271A1905F9C000C3D9D7 /* themes.json in Resources */ = {isa = PBXBuildFile; fileRef = AA9227191905F9C000C3D9D7 /* themes.json */; };
@@ -159,6 +164,11 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				AA5DFE27190DF0DA00383283 /* BitnashKit.framework in CopyFiles */,
+				AA5DFE28190DF0DA00383283 /* NavNodeKit.framework in CopyFiles */,
+				AA5DFE29190DF0DA00383283 /* BitmessageKit.framework in CopyFiles */,
+				AA5DFE2A190DF0DA00383283 /* FoundationCategoriesKit.framework in CopyFiles */,
+				AA5DFE2B190DF0DA00383283 /* NavKit.framework in CopyFiles */,
 				8EBC9B08190DBC3000FE71FA /* fonts in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -225,6 +235,15 @@
 		AA5DFD9D1909C83000383283 /* send_inactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = send_inactive.png; sourceTree = "<group>"; };
 		AA5DFDAD190A24B300383283 /* MKMarketChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKMarketChannel.h; sourceTree = "<group>"; };
 		AA5DFDAE190A24B300383283 /* MKMarketChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKMarketChannel.m; sourceTree = "<group>"; };
+		AA5DFE15190DF04B00383283 /* BitnashKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BitnashKit.framework; path = "/Users/steve/projects/hobby/bitmarkets/BitmessageKit/../../../../Library/Developer/Xcode/DerivedData/BitMarkets-eenrgxhlyrwgqccvbetldvfypzkj/Build/Products/Debug/BitnashKit.framework"; sourceTree = "<absolute>"; };
+		AA5DFE17190DF05300383283 /* NavNodeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NavNodeKit.framework; path = "/Users/steve/projects/hobby/bitmarkets/BitmessageKit/../../../../Library/Developer/Xcode/DerivedData/BitMarkets-eenrgxhlyrwgqccvbetldvfypzkj/Build/Products/Debug/NavNodeKit.framework"; sourceTree = "<absolute>"; };
+		AA5DFE19190DF05C00383283 /* FoundationCategoriesKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FoundationCategoriesKit.framework; path = "/Users/steve/projects/hobby/bitmarkets/BitmessageKit/../../../../Library/Developer/Xcode/DerivedData/BitMarkets-eenrgxhlyrwgqccvbetldvfypzkj/Build/Products/Debug/FoundationCategoriesKit.framework"; sourceTree = "<absolute>"; };
+		AA5DFE1B190DF06300383283 /* NavKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NavKit.framework; path = "/Users/steve/projects/hobby/bitmarkets/BitmessageKit/../../../../Library/Developer/Xcode/DerivedData/BitMarkets-eenrgxhlyrwgqccvbetldvfypzkj/Build/Products/Debug/NavKit.framework"; sourceTree = "<absolute>"; };
+		AA5DFE1D190DF0CF00383283 /* BitnashKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BitnashKit.framework; path = "../../../../Library/Developer/Xcode/DerivedData/BitMarkets-eenrgxhlyrwgqccvbetldvfypzkj/Build/Products/Debug/BitnashKit.framework"; sourceTree = "<group>"; };
+		AA5DFE1E190DF0CF00383283 /* NavNodeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NavNodeKit.framework; path = "../../../../Library/Developer/Xcode/DerivedData/BitMarkets-eenrgxhlyrwgqccvbetldvfypzkj/Build/Products/Debug/NavNodeKit.framework"; sourceTree = "<group>"; };
+		AA5DFE1F190DF0CF00383283 /* BitmessageKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BitmessageKit.framework; path = "../../../../Library/Developer/Xcode/DerivedData/BitMarkets-eenrgxhlyrwgqccvbetldvfypzkj/Build/Products/Debug/BitmessageKit.framework"; sourceTree = "<group>"; };
+		AA5DFE20190DF0CF00383283 /* FoundationCategoriesKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FoundationCategoriesKit.framework; path = "../../../../Library/Developer/Xcode/DerivedData/BitMarkets-eenrgxhlyrwgqccvbetldvfypzkj/Build/Products/Debug/FoundationCategoriesKit.framework"; sourceTree = "<group>"; };
+		AA5DFE21190DF0CF00383283 /* NavKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NavKit.framework; path = "../../../../Library/Developer/Xcode/DerivedData/BitMarkets-eenrgxhlyrwgqccvbetldvfypzkj/Build/Products/Debug/NavKit.framework"; sourceTree = "<group>"; };
 		AA9226E61905F88200C3D9D7 /* NavNodeKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = NavNodeKit.xcodeproj; path = ../NavNodeKit/NavNodeKit.xcodeproj; sourceTree = "<group>"; };
 		AA9226F61905F94900C3D9D7 /* categories.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = categories.json; sourceTree = "<group>"; };
 		AA9227071905F94900C3D9D7 /* regions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = regions.json; sourceTree = "<group>"; };
@@ -258,12 +277,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA0F52D91907407400F7370B /* BitnashKit.framework in Frameworks */,
-				AA0F52DA1907407400F7370B /* NavNodeKit.framework in Frameworks */,
-				AA1FC8871901E0A200D00431 /* BitmessageKit.framework in Frameworks */,
-				AA1FC8881901E0A200D00431 /* FoundationCategoriesKit.framework in Frameworks */,
-				AA1FC8891901E0A200D00431 /* NavKit.framework in Frameworks */,
+				AA5DFE25190DF0CF00383283 /* FoundationCategoriesKit.framework in Frameworks */,
+				AA5DFE24190DF0CF00383283 /* BitmessageKit.framework in Frameworks */,
+				AA5DFE23190DF0CF00383283 /* NavNodeKit.framework in Frameworks */,
+				AA5DFE22190DF0CF00383283 /* BitnashKit.framework in Frameworks */,
 				AA0E585118FDC0880095DEBD /* Cocoa.framework in Frameworks */,
+				AA5DFE26190DF0CF00383283 /* NavKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +301,10 @@
 		AA0E584418FDC0880095DEBD = {
 			isa = PBXGroup;
 			children = (
+				AA5DFE1B190DF06300383283 /* NavKit.framework */,
+				AA5DFE19190DF05C00383283 /* FoundationCategoriesKit.framework */,
+				AA5DFE17190DF05300383283 /* NavNodeKit.framework */,
+				AA5DFE15190DF04B00383283 /* BitnashKit.framework */,
 				AA0E585618FDC0880095DEBD /* BitMarkets */,
 				AA0E587418FDC0890095DEBD /* BitMarketsTests */,
 				AA0F52C819073E8300F7370B /* BitnashKit.xcodeproj */,
@@ -306,6 +329,11 @@
 		AA0E584F18FDC0880095DEBD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AA5DFE1D190DF0CF00383283 /* BitnashKit.framework */,
+				AA5DFE1E190DF0CF00383283 /* NavNodeKit.framework */,
+				AA5DFE1F190DF0CF00383283 /* BitmessageKit.framework */,
+				AA5DFE20190DF0CF00383283 /* FoundationCategoriesKit.framework */,
+				AA5DFE21190DF0CF00383283 /* NavKit.framework */,
 				AA0E585018FDC0880095DEBD /* Cocoa.framework */,
 				AA0E586F18FDC0890095DEBD /* XCTest.framework */,
 				AA0E585218FDC0880095DEBD /* Other Frameworks */,
@@ -919,6 +947,10 @@
 				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/BitMarkets-eenrgxhlyrwgqccvbetldvfypzkj/Build/Products/Debug",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BitMarkets/BitMarkets-Prefix.pch";
 				INFOPLIST_FILE = "BitMarkets/BitMarkets-Info.plist";
@@ -933,6 +965,10 @@
 				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/BitMarkets-eenrgxhlyrwgqccvbetldvfypzkj/Build/Products/Debug",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BitMarkets/BitMarkets-Prefix.pch";
 				INFOPLIST_FILE = "BitMarkets/BitMarkets-Info.plist";

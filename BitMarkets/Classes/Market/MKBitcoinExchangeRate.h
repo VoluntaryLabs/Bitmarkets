@@ -16,4 +16,6 @@
 
     - (NSNumber *) btcPerSymbol: (NSString *) symbol;
 
++ (MKBitcoinExchangeRate *)shared;
+
 @end
