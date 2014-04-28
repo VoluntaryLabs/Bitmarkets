@@ -11,6 +11,7 @@
 #import "MKRootNode.h"
 
 
+
 @implementation MKSellView
 
 - (id)initWithFrame:(NSRect)frame
@@ -103,6 +104,9 @@
 
         self.attachedImage = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
         [self addSubview:self.attachedImage];
+        
+        // exchange rate
+        self.rate = [[MKBitcoinExchangeRate alloc] init];
     }
     
     return self;
@@ -311,7 +315,13 @@
     if (aTextView == self.price)
     {
         NSLog(@"price change");
-        [self.price setSuffix:@"BTC    ?USD    ?EUR"];
+        
+        NSNumber *usdRate = [self.rate btcPerSymbol:@"USD"];
+        NSNumber *eurRate = [self.rate btcPerSymbol:@"EUR"];
+        float btc = [[[self.price textStorage] string] floatValue];
+        float usd = btc / [usdRate floatValue];
+        float eur = btc / [eurRate floatValue];
+        [self.price setSuffix:[NSString stringWithFormat:@"BTC    %1.2fUSD    %1.2fEUR", usd, eur]];
     }
     
     [self updateButton];

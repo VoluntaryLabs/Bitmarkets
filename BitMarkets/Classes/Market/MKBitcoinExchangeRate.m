@@ -12,10 +12,10 @@
 - (id) init
 {
     if ( self = [super init] ) {
-        _responseData = [[NSMutableData alloc] init];
-        _rates = [[NSMutableDictionary alloc] init];
-        _ratesFetchedAt = [[NSMutableDictionary alloc] init];
-        _cacheTtl = 10 * 60;
+        self.responseData = [[NSMutableData alloc] init];
+        self.rates = [[NSMutableDictionary alloc] init];
+        self.ratesFetchedAt = [[NSMutableDictionary alloc] init];
+        self.cacheTtl = 10 * 60;
     }
     return self;
 }
@@ -25,7 +25,7 @@
 }
 
 // Accepts a currency symbol as a string.
-// Retrns an NSNumber indicating the exchange rate in BTC.
+// Returns an NSNumber indicating the exchange rate in BTC.
 // The list of acceptable symbols can be found here:
 // https://blockchain.info/api/exchange_rates_api
 
@@ -39,7 +39,7 @@
         
         // Update last fetch date
         
-        [_ratesFetchedAt setValue:currentDate forKey:symbol];
+        [self.ratesFetchedAt setValue:currentDate forKey:symbol];
 
         // Create the url we will use to ping the blockchain.info API
         
@@ -64,7 +64,7 @@
         // Convert response to float and store in cache.
         
         rate = [NSNumber numberWithFloat:[rateString floatValue]];
-        [_rates setValue:rate forKey:symbol];
+        [self.rates setValue:rate forKey:symbol];
         
         return rate;
     }

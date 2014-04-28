@@ -7,6 +7,7 @@
 //
 
 #import <BitMessageKit/BitMessageKit.h>
+#import "MKBitcoinExchangeRate.h"
 
 /*
  {
@@ -50,6 +51,7 @@
 @property (strong, nonatomic) NSArray *regionPath;
 @property (strong, nonatomic) NSArray  *categoryPath;
 @property (strong, nonatomic) NSString *sellerAddress;
+
 
 - (void)setDict:(NSDictionary *)aDict;
 - (NSDictionary *)dict;
