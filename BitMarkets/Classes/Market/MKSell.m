@@ -65,7 +65,7 @@
     [self removeFromParent];
 }
 
-- (void)setDict:(NSDictionary *)aDict
+- (void)setMessageDict:(NSDictionary *)aDict
 {
     self.uuid = [aDict objectForKey:@"uuid"];
     self.title = [aDict objectForKey:@"title"];
@@ -80,7 +80,7 @@
     self.description = self.description.strip;
 }
 
-- (NSDictionary *)dict
+- (NSDictionary *)messageDict
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     

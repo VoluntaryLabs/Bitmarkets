@@ -34,7 +34,6 @@
     return buy;
 }
 
-
 - (void)read
 {
     [self.db read];

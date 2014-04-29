@@ -47,7 +47,14 @@
 
 - (void)update
 {
-    _balance.nodeSubtitle = [NSString stringWithFormat:@"%.4f", self.bnWallet.balance.floatValue];
+    if ([_bnWallet.server.status isEqualToString:@"started"])
+    {
+        _balance.nodeSubtitle = [NSString stringWithFormat:@"%.4f", self.bnWallet.balance.floatValue];
+    }
+    else
+    {
+        _balance.nodeSubtitle = @"(waiting for server)";
+    }
 }
 
 - (NSString *)nodeTitle

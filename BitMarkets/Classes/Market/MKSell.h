@@ -53,8 +53,8 @@
 @property (strong, nonatomic) NSString *sellerAddress;
 
 
-- (void)setDict:(NSDictionary *)aDict;
-- (NSDictionary *)dict;
+- (void)setMessageDict:(NSDictionary *)aDict;
+- (NSDictionary *)messageDict;
 
 - (void)post;
 

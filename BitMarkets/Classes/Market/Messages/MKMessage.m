@@ -169,7 +169,7 @@
     NSMutableDictionary *header = [NSMutableDictionary dictionaryWithDictionary:self.headerDict];
     [header setObject:typeName forKey:@"type"];
     self.headerDict = header;
-    self.bodyDict = [anObject dict];
+    self.bodyDict = [anObject messageDict];
 }
 
 - (id)instance
@@ -177,7 +177,7 @@
     if (!_object)
     {
         _object = [[self.classFromHeader alloc] init];
-        [_object setDict:self.bodyDict];
+        [_object setMessageDict:self.bodyDict];
     }
     return _object;
 }
