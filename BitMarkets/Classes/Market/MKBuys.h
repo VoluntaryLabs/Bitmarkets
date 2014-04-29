@@ -7,10 +7,12 @@
 //
 
 #import <BitMessageKit/BitMessageKit.h>
-
+#import "MKBuy.h"
 
 @interface MKBuys : BMNode
 
 @property (strong, nonatomic) JSONDB *db;
+
+- (MKBuy *)justAdd;
 
 @end

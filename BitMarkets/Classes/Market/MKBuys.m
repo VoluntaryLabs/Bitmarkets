@@ -27,6 +27,14 @@
     return @"Buys";
 }
 
+- (MKBuy *)justAdd
+{
+    MKBuy *buy = [[MKBuy alloc] init];
+    [self addChild:buy];
+    return buy;
+}
+
+
 - (void)read
 {
     [self.db read];

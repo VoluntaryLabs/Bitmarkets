@@ -180,19 +180,6 @@
 {
     _node = node;
     
-    [self setEditable:self.mkSell.isDraft];
-    
-    if (self.mkSell.isDraft)
-    {
-        [self.postOrBuyButton setTitle:@"Post"];
-        [self.postOrBuyButton setAction:@selector(post)];
-    }
-    else
-    {
-        [self.postOrBuyButton setTitle:@"Buy"];
-        [self.postOrBuyButton setAction:@selector(buy)];
-    }
-    
     [self syncFromNode];
 }
 
@@ -203,6 +190,8 @@
 
 - (void)syncFromNode
 {
+    [self setEditable:self.mkSell.isDraft];
+
     _title.string = self.mkSell.title;
     [_title textDidChange];
     [_title useUneditedTextStringIfNeeded];
@@ -256,8 +245,22 @@
 
 - (void)updateButton
 {
-    [_postOrBuyButton setHidden:NO];
+    // this is a mess - need to clean it up
     
+    if (self.mkSell.isDraft)
+    {
+        [self.postOrBuyButton setTitle:@"Post"];
+        [self.postOrBuyButton setAction:@selector(post)];
+    }
+    else
+    {
+        [self.postOrBuyButton setTitle:@"Buy"];
+        [self.postOrBuyButton setAction:@selector(buy)];
+    }
+    
+    [_postOrBuyButton setHidden:NO];
+
+
     if (self.readyToPost && [self.mkSell isDraft])
     {
         [_postOrBuyButton setTitleAttributes:[NavTheme.sharedNavTheme attributesDictForPath:@"sell/button"]];
@@ -266,10 +269,13 @@
     {
         [_postOrBuyButton setHidden:YES];
     }
-    else
+    else if ([self.mkSell isDraft])
     {
-        //_postOrBuyButton.backgroundColor = [NSColor colorWithCalibratedWhite:0.9 alpha:1.0];
         [_postOrBuyButton setTitleAttributes:[NavTheme.sharedNavTheme attributesDictForPath:@"sell/button-disabled"]];
+    }
+    else // is buy
+    {
+        [_postOrBuyButton setTitleAttributes:[NavTheme.sharedNavTheme attributesDictForPath:@"sell/button"]];
     }
     
     [_postOrBuyButton setNeedsDisplay:YES];
@@ -286,20 +292,6 @@
     [[NSColor whiteColor] set];
     NSRectFill(dirtyRect);
 }
-
-/*
-- (void)updateAddressColor
-{
-    if (self.hasValidAddress)
-    {
-        self.addressField.textColor = [Theme.sharedTheme formText2Color];
-    }
-    else
-    {
-        self.addressField.textColor = [Theme.sharedTheme formTextErrorColor];
-    }
-}
-*/
 
 - (void)textDidChange:(NSNotification *)aNotification
 {
@@ -324,7 +316,7 @@
     float btc = [[[self.price textStorage] string] floatValue];
     if (btc)
     {
-        MKBitcoinExchangeRate *rate = [MKBitcoinExchangeRate shared];
+        MKExchangeRate *rate = [MKExchangeRate shared];
 
         NSNumber *usdRate = [rate btcPerSymbol:@"USD"];
         NSNumber *eurRate = [rate btcPerSymbol:@"EUR"];
@@ -397,10 +389,21 @@
     
     [self.mkSell post];
     [self updateButton];
+    [self setEditable:NO];
 }
 
 - (void)buy
 {
+    NSLog(@"buy");
+    //MKBuy *buy = MKRootNode.sharedMKRootNode.markets.buys.justAdd;
+
+    // compose escrow
+    // check for funds in wallet
+    // request funds if needed and cancel
+    // post BuyerEscrow
+    
+    
+    
     //[self.mkSell post];
 }
 

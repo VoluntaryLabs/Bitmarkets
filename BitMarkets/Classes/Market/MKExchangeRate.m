@@ -1,18 +1,18 @@
 //
-//  MKBitcoinExchangeRate.m
+//  MKExchangeRate.m
 //  BitMarkets
 //
 //  Created by Adam Thorsen on 4/27/14.
 //  Copyright (c) 2014 voluntary.net. All rights reserved.
 //
 
-#import "MKBitcoinExchangeRate.h"
+#import "MKExchangeRate.h"
 
-@implementation MKBitcoinExchangeRate
+@implementation MKExchangeRate
 
-static MKBitcoinExchangeRate *shared;
+static MKExchangeRate *shared;
 
-+ (MKBitcoinExchangeRate *)shared
++ (MKExchangeRate *)shared
 {
     if (!shared)
     {

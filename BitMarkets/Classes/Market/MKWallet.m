@@ -17,7 +17,6 @@
     
     _bnWallet = [[BNWallet alloc] init];
     _bnWallet.server.logsStderr = YES;
-    [_bnWallet.server start];
     
     {
         _balance = [[NavInfoNode alloc] init];
@@ -36,8 +35,14 @@
         _transactions.nodeSuggestedWidth = 200;
     }
 
-    [self update];
+    [self performSelector:@selector(startWallet) withObject:nil afterDelay:0.0];
     return self;
+}
+
+- (void)startWallet
+{
+    [_bnWallet.server start];
+    [self update];
 }
 
 - (void)update

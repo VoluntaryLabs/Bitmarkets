@@ -44,7 +44,7 @@
     [self.mkChannel performSelector:@selector(fetch) withObject:nil afterDelay:0.0];
     [self.rootRegion updateCounts];
     
-    [MKBitcoinExchangeRate shared];
+    [MKExchangeRate shared];
 
     return self;
 }

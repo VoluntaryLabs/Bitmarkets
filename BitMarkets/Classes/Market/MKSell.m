@@ -137,8 +137,13 @@
     
     if (nodePath)
     {
+        NSLog(@"placing sell in path '%@'", self.fullPath);
         MKCategory *cat = nodePath.lastObject;
         [cat addChild:self];
+    }
+    else
+    {
+        NSLog(@"---- unable to find node for path '%@'", self.fullPath);
     }
 }
 

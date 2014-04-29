@@ -38,4 +38,11 @@
     return nil;
 }
 
+- (MKBuy *)justAdd
+{
+    MKBuy *buy = [[MKBuy alloc] init];
+    [self addChild:buy];
+    return buy;
+}
+
 @end

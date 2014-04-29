@@ -13,4 +13,6 @@
 - (void)setDict:(NSMutableDictionary *)aDict;
 - (NSMutableDictionary *)dict;
 
+- (MKBuy *)justAdd;
+
 @end

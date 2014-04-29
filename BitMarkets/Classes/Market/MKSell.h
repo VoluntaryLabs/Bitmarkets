@@ -7,7 +7,7 @@
 //
 
 #import <BitMessageKit/BitMessageKit.h>
-#import "MKBitcoinExchangeRate.h"
+#import "MKExchangeRate.h"
 
 /*
  {

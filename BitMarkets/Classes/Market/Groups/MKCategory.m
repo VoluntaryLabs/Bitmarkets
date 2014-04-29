@@ -8,6 +8,7 @@
 
 #import "MKCategory.h"
 #import <BitMessageKit/BitMessageKit.h>
+#import <FoundationCategoriesKit/FoundationCategoriesKit.h>
 #import <NavKit/NavKit.h>
 #import "MKMarkets.h"
 #import "MKRootNode.h"
@@ -92,6 +93,7 @@
 - (NSArray *)regionPath
 {
     NSMutableArray *path = [NSMutableArray arrayWithArray:self.groupPath];
+    [path removeFirstObject]; // remove "Regions"
     [path removeLastObject];
     return path;
 }

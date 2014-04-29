@@ -14,7 +14,9 @@
 
 - (MKSell *)justAdd;
 
+/*
 - (void)load;
 - (void)save;
+*/
 
 @end

@@ -52,7 +52,7 @@
 {
     JSONDB *db = [[JSONDB alloc] init];
     [db setName:self.dbName];
-    db.isInAppWrapper = YES;
+    db.location = JSONDB_IN_APP_WRAPPER;
     return db;
 }
 

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8EBC9AEE190D7F1700FE71FA /* MKBitcoinExchangeRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EBC9AED190D7F1700FE71FA /* MKBitcoinExchangeRate.m */; };
+		8EBC9AEE190D7F1700FE71FA /* MKExchangeRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EBC9AED190D7F1700FE71FA /* MKExchangeRate.m */; };
 		8EBC9B02190DBBF200FE71FA /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 8EBC9B01190DBBF200FE71FA /* fonts */; };
 		8EBC9B08190DBC3000FE71FA /* fonts in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8EBC9B01190DBBF200FE71FA /* fonts */; };
 		AA0E585118FDC0880095DEBD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA0E585018FDC0880095DEBD /* Cocoa.framework */; };
@@ -185,8 +185,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		8EBC9AEC190D7F1700FE71FA /* MKBitcoinExchangeRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKBitcoinExchangeRate.h; sourceTree = "<group>"; };
-		8EBC9AED190D7F1700FE71FA /* MKBitcoinExchangeRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKBitcoinExchangeRate.m; sourceTree = "<group>"; };
+		8EBC9AEC190D7F1700FE71FA /* MKExchangeRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKExchangeRate.h; sourceTree = "<group>"; };
+		8EBC9AED190D7F1700FE71FA /* MKExchangeRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKExchangeRate.m; sourceTree = "<group>"; };
 		8EBC9B01190DBBF200FE71FA /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fonts; path = Vendor/fonts; sourceTree = SOURCE_ROOT; };
 		AA0E584D18FDC0880095DEBD /* BitMarkets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitMarkets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA0E585018FDC0880095DEBD /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -530,8 +530,8 @@
 		AAA2E67E19006F0A0098C357 /* Market */ = {
 			isa = PBXGroup;
 			children = (
-				8EBC9AEC190D7F1700FE71FA /* MKBitcoinExchangeRate.h */,
-				8EBC9AED190D7F1700FE71FA /* MKBitcoinExchangeRate.m */,
+				8EBC9AEC190D7F1700FE71FA /* MKExchangeRate.h */,
+				8EBC9AED190D7F1700FE71FA /* MKExchangeRate.m */,
 				AA4A0E291909BB6400AB78D0 /* MKRootNode.h */,
 				AA4A0E2A1909BB6400AB78D0 /* MKRootNode.m */,
 				AAA2E69719006F0A0098C357 /* MKMarkets.h */,
@@ -542,10 +542,10 @@
 				AAA2E69E19006F0A0098C357 /* MKWallet.m */,
 				AAA2E68519006F0A0098C357 /* Groups */,
 				AAA2E68C19006F0A0098C357 /* Messages */,
-				AAA2E69119006F0A0098C357 /* MKBuy.h */,
-				AAA2E69219006F0A0098C357 /* MKBuy.m */,
 				AAA2E69319006F0A0098C357 /* MKBuys.h */,
 				AAA2E69419006F0A0098C357 /* MKBuys.m */,
+				AAA2E69119006F0A0098C357 /* MKBuy.h */,
+				AAA2E69219006F0A0098C357 /* MKBuy.m */,
 				AAA2E69B19006F0A0098C357 /* MKSells.h */,
 				AAA2E69C19006F0A0098C357 /* MKSells.m */,
 				AAA2E69919006F0A0098C357 /* MKSell.h */,
@@ -822,7 +822,7 @@
 				AAA2E6B419006F0A0098C357 /* MKMarkets.m in Sources */,
 				AA4A0E2B1909BB6400AB78D0 /* MKRootNode.m in Sources */,
 				AA5DFDAF190A24B300383283 /* MKMarketChannel.m in Sources */,
-				8EBC9AEE190D7F1700FE71FA /* MKBitcoinExchangeRate.m in Sources */,
+				8EBC9AEE190D7F1700FE71FA /* MKExchangeRate.m in Sources */,
 				AA4A0DDB19086A3400AB78D0 /* MKTextView.m in Sources */,
 				AA0E586418FDC0880095DEBD /* MKAppDelegate.m in Sources */,
 				AAA2E6AC19006F0A0098C357 /* MKCategory.m in Sources */,

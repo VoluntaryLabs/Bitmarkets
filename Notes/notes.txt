@@ -1,0 +1,37 @@
+
+- persist Buys and Sells
+
+Markets
+  Ask/Post (seller to channel) 
+    *SellerAddress+UUID
+
+    bids
+
+      Bid (buyer to seller)
+      - get delivery address (save this for next time)
+
+      AskClosed (seller to channel)
+
+      BuyerEscrow (buyer to seller)
+
+      SellerEscrow (seller to buyer)
+      - buyer signs and posts
+      - both parties see escrow in blockchain
+
+      DeliveryDetails (buyer to seller)
+      
+      DeliverySent (seller to buyer)
+      DeliveryReceived (buyer to seller)
+      RefundRequest (buyer to seller) (includes escrow1)
+      RefundRequestAccepted (seller to buyer) (includes escrow2)
+	- buyers signs and submits to network
+
+
+Buys
+  Buy
+    stages
+
+Sells
+  Sell
+    stages
+
