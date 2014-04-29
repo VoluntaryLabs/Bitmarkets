@@ -51,29 +51,25 @@
 - (void)update
 {
     NSString *status = _bnWallet.server.status;
-
-    if ([status isEqualToString:@"started"])
+    BOOL isStarted = [status isEqualToString:@"started"];
+    
+    NSString *balanceSubtitle = nil;
+    
+    if (isStarted)
     {
         float balanceValue = self.bnWallet.balance.floatValue;
-        NSString *balance = [NSString stringWithFormat:@"%.4f BTC", balanceValue];
-        
-        status = balance;
-        
-        _balance.nodeSubtitle = balance;
+        balanceSubtitle = [NSString stringWithFormat:@"%.4f BTC", balanceValue];
     }
     else
     {
-        if ([status isEqualToString:@"starting"])
-        {
-            status = @"starting...";
-        }
-        
-        _balance.nodeSubtitle = status;
+        balanceSubtitle = @"starting...";
     }
-    
-    self.nodeSubtitle = status;
-    [self postParentChanged];
+
+    _balance.nodeSubtitle = balanceSubtitle;
     [_balance postParentChanged];
+    
+    self.nodeSubtitle = balanceSubtitle;
+    [self postParentChanged];
 
     [self performSelector:@selector(update) withObject:nil afterDelay:5.0];
 }
