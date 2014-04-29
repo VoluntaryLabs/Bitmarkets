@@ -18,6 +18,8 @@
     _bnWallet = [[BNWallet alloc] init];
     _bnWallet.server.logsStderr = YES;
     
+    self.nodeTitle = @"Wallet";
+
     {
         _balance = [[NavInfoNode alloc] init];
         [self addChild:_balance];
@@ -28,7 +30,7 @@
     
     {
         _transactions = [[NavInfoNode alloc] init];
-        [self addChild:_transactions];
+        //[self addChild:_transactions];
         _transactions.nodeTitle = @"Transactions";
         _transactions.nodeSubtitle =  @"(unavailable)";
         //transactions.nodeNote =  @"0";
@@ -43,36 +45,37 @@
 {
     [_bnWallet.server start];
     [self update];
+    //[self performSelector:@selector(startWallet) withObject:nil afterDelay:0.0];
 }
 
 - (void)update
 {
-    if ([_bnWallet.server.status isEqualToString:@"started"])
+    NSString *status = _bnWallet.server.status;
+
+    if ([status isEqualToString:@"started"])
     {
-        _balance.nodeSubtitle = [NSString stringWithFormat:@"%.4f", self.bnWallet.balance.floatValue];
+        float balanceValue = self.bnWallet.balance.floatValue;
+        NSString *balance = [NSString stringWithFormat:@"%.4f BTC", balanceValue];
+        
+        status = balance;
+        
+        _balance.nodeSubtitle = balance;
     }
     else
     {
-        _balance.nodeSubtitle = @"(waiting for server)";
+        if ([status isEqualToString:@"starting"])
+        {
+            status = @"starting...";
+        }
+        
+        _balance.nodeSubtitle = status;
     }
-}
-
-- (NSString *)nodeTitle
-{
-    return @"Wallet";
-}
-
-- (NSString *)nodeSubtitle
-{
-    /*
-    if (self.bnWallet)
-    {
-        float btc = self.bnWallet.balance.longLongValue / 100000000;
-        return [NSString stringWithFormat:@"balance: %.4f BTC", (float)btc];
-    }
-   */
     
-    return nil;
+    self.nodeSubtitle = status;
+    [self postParentChanged];
+    [_balance postParentChanged];
+
+    [self performSelector:@selector(update) withObject:nil afterDelay:5.0];
 }
 
 

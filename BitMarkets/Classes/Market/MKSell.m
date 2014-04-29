@@ -67,7 +67,7 @@
 
 - (void)setMessageDict:(NSDictionary *)aDict
 {
-    self.uuid = [aDict objectForKey:@"uuid"];
+    self.uuid  = [aDict objectForKey:@"uuid"];
     self.title = [aDict objectForKey:@"title"];
     self.price = [aDict objectForKey:@"price"];
     

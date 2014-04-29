@@ -26,7 +26,6 @@
 
 + (NSMutableDictionary *)standardHeader
 {
-
     /*
     {
         header:

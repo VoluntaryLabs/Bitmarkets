@@ -10,7 +10,7 @@
 #import <BitnashKit/BitnashKit.h>
 #import <NavKit/NavKit.h>
 
-@interface MKWallet : NavNode
+@interface MKWallet : NavInfoNode
 
 @property (strong, nonatomic) BNWallet *bnWallet;
 @property (strong, nonatomic) NavInfoNode *balance;
