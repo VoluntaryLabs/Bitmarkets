@@ -93,6 +93,7 @@
     
     if (message.hasValidHeader)
     {
+        message.bmMessage = bmMessage;
         return message;
     }
     

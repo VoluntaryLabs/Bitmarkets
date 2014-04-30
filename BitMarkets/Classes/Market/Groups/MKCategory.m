@@ -31,7 +31,19 @@
 
 - (BOOL)isLeafCategory
 {
-    return ![self.childClass isSubclassOfClass:MKCategory.class];
+    if (self.children.count == 0)
+    {
+        return YES;
+    }
+    
+    NSObject *firstChild = self.children.firstObject;
+    
+    if ([firstChild isKindOfClass:MKSell.class])
+    {
+        return YES;
+    }
+    
+    return NO;
 }
 
 - (NSInteger)countOfLeafChildren

@@ -15,6 +15,7 @@
 + (MKMessage *)withBMMessage:(BMMessage *)bmMessage;
 
 
+@property (strong, nonatomic) BMMessage *bmMessage;
 @property (strong, nonatomic) NSMutableDictionary *dict;
 @property (strong, nonatomic) id object;
 

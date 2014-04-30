@@ -114,21 +114,32 @@
     
     if (childrenDicts)
     {
-        self.childClass = self.class; 
-        
         NSMutableArray *children = [NSMutableArray array];
         
         for (NSDictionary *childDict in childrenDicts)
         {
-            Class childClass = self.childClass ? self.childClass : self.class;
-            NSString *childType = [dict objectForKey:@"_type"];
+            Class childClass = nil;
+            NSString *childType = [childDict objectForKey:@"_type"];
+            NSString *className = nil;
             
             if (childType)
             {
-                childClass = NSClassFromString([childType withPrefix:@"MK"]);
+                className = [childType withPrefix:@"MK"];
+                childClass = NSClassFromString(className);
             }
 
-            [children addObject:[childClass withDict:childDict]];
+            if (childClass)
+            {
+                self.childClass = childClass;
+            }
+            else
+            {
+                [NSException raise:@"No child class" format:@"missing _type slot in persisted dictionary"];
+            }
+            
+            NavNode *child = [childClass withDict:childDict];
+            [children addObject:child];
+            //NSLog(@"read child %@ %@", NSStringFromClass(child.class), child.nodeTitle);
         }
         
         [self setChildren:children];
@@ -216,12 +227,6 @@
 
 - (NSString *)nodeNote
 {
-    //if ([self isKindOfClass:MKCategory.class])
-    if ([self.nodeTitle isEqualToString:@"Antiques"])
-    {
-        NSLog(@"%@ nodeNote", NSStringFromClass(self.class));
-    }
-    
     if (self.countOfLeafChildren > 0)
     {
         return [NSString stringWithFormat:@"%i", (int)self.countOfLeafChildren];

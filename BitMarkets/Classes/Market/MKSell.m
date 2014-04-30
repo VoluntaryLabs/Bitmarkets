@@ -129,7 +129,7 @@
     return path;
 }
 
-- (void)placeInMarketsPath
+- (BOOL)placeInMarketsPath
 {
     NavNode *root = MKRootNode.sharedMKRootNode.markets.rootRegion;
     NSArray *nodePath = [root nodeTitlePath:self.fullPath];
@@ -141,10 +141,12 @@
         NSLog(@"placing sell in path '%@'", self.fullPath);
         MKCategory *cat = nodePath.lastObject;
         [cat addChild:self];
+        return YES;
     }
     else
     {
         NSLog(@"---- unable to find node for path '%@'", self.fullPath);
+        return NO;
     }
 }
 

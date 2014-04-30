@@ -66,6 +66,7 @@
     //
 
     NSArray *messages = self.channel.children;
+    NSMutableArray *messagesToDelete = [NSMutableArray array];
     
     for (BMReceivedMessage *bmMessage in messages)
     {
@@ -74,6 +75,11 @@
         if (mkMessage)
         {
             [self.validMessages addChild:bmMessage];
+        }
+        else
+        {
+            [messagesToDelete addObject:bmMessage];
+            continue;
         }
         
         MKSell *instance = [mkMessage instance];
@@ -86,7 +92,16 @@
     for (MKSell *sell in self.allAsks.children)
     {
         [sell findStatus];
-        [sell placeInMarketsPath];
+        if (![sell placeInMarketsPath])
+        {
+            //[messagesToDelete addChild:sell.bmMessage];
+        }
+    }
+    
+    for (BMMessage *message in messagesToDelete)
+    {
+        NSLog(@"deleteing invalid message %@", message);
+        [message delete];
     }
 }
 

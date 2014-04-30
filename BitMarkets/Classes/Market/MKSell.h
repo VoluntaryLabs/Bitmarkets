@@ -58,7 +58,7 @@
 
 - (void)post;
 
-- (void)placeInMarketsPath;
+- (BOOL)placeInMarketsPath;
 
 - (void)findStatus;
 - (BOOL)isDraft;

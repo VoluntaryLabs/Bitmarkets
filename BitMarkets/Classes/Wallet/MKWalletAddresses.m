@@ -26,4 +26,15 @@
     return  [uiActions arrayByAddingObjectsFromArray:super.uiActions];
 }
 
+- (NSString *)nodeNote
+{
+    if (self.children.count > 0)
+    {
+        return [NSString stringWithFormat:@"%i", (int)self.children.count];
+    }
+    
+    return nil;
+}
+
+
 @end
