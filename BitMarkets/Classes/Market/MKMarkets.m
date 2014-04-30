@@ -15,22 +15,20 @@
 - (id)init
 {
     self = [super init];
+    self.nodeTitle = @"BitMarkets";
+    self.nodeSuggestedWidth = 150;
     
     self.shouldSortChildren = NO;
     
     _rootRegion = (MKRegion *)[MKRegion rootInstance];
-    [_rootRegion setName:@"Regions"];
     [self.children addObject:self.rootRegion];
-    [_rootRegion updateCounts]; // do this after refresh
-    //[_rootRegion setShouldInlineChildren:YES];
-    //[self setShouldInlineChildren:YES];
     
-    /*
-    self.rootCategory = (MKCategory *)[MKCategory rootInstance];
-    [self.rootCategory setName:@"For Sale"];
-    [self.rootCategory setCanPost:NO];
-    [self.children addObject:self.rootCategory];
-    */
+    if (NO)
+    {
+        [_rootRegion setShouldInlineChildren:YES];
+        _rootRegion.nodeSuggestedWidth = 600;
+    }
+    //[self setShouldInlineChildren:YES];
     
     self.mkChannel = [[MKMarketChannel alloc] init];
     [self addChild:self.mkChannel];
@@ -46,17 +44,8 @@
     
     [MKExchangeRate shared];
 
+
     return self;
-}
-
-- (NSString *)nodeTitle
-{
-    return @"BitMarkets";
-}
-
-- (CGFloat)nodeSuggestedWidth
-{
-    return 150;
 }
 
 @end

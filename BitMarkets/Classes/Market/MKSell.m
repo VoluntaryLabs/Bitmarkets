@@ -52,7 +52,8 @@
 
 - (NSString *)nodeNote
 {
-    return self.date.itemDateString;
+    //return self.date.itemDateString;
+    return nil;
 }
 
 - (CGFloat)nodeSuggestedWidth

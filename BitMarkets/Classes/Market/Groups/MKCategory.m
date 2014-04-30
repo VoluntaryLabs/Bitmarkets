@@ -14,6 +14,7 @@
 #import "MKRootNode.h"
 #import "MKAppDelegate.h"
 
+
 @implementation MKCategory
 
 - (id)init
@@ -31,6 +32,16 @@
 - (BOOL)isLeafCategory
 {
     return ![self.childClass isSubclassOfClass:MKCategory.class];
+}
+
+- (NSInteger)countOfLeafChildren
+{
+    if (self.isLeafCategory)
+    {
+        return self.children.count;
+    }
+    
+    return [super countOfLeafChildren];
 }
 
 - (NSArray *)uiActions
@@ -59,16 +70,6 @@
 - (BOOL)canSearch
 {
     return self.isLeafCategory && (self.children.count > 0);
-}
-
-- (NSInteger)count
-{
-    if (self.isLeafCategory)
-    {
-        return self.children.count;
-    }
-    
-    return [super count];
 }
 
 - (void)setDict:(NSDictionary *)dict
@@ -117,7 +118,8 @@
     sell.regionPath = self.regionPath;
     sell.categoryPath = self.categoryPath;
     
-    NSArray *nodes = [NSArray arrayWithObjects:root, markets, sells, sell, nil];
+    //NSArray *nodes = [NSArray arrayWithObjects:root, markets, sells, sell, nil];
+    NSArray *nodes = [NSArray arrayWithObjects:root, sells, sell, nil];
     
     
     [self.navView selectNodePath:nodes];

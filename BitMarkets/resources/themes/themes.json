@@ -1,6 +1,17 @@
 {
 	"default": 
 	{
+        "qr" :
+        {
+            "address" :
+            {
+                "fontName" : "Open Sans Bold",
+                "fontSize" : 22,
+                "color" : "#999999",
+                "align" : "center",
+           },
+        },
+        
         "sell" :
         {
             "title" :

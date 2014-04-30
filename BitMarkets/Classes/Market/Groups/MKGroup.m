@@ -8,7 +8,7 @@
 
 #import "MKGroup.h"
 #import <BitmessageKit/BitmessageKit.h>
-
+#import "MKCategory.h"
 
 @implementation MKGroup
 
@@ -23,7 +23,7 @@
 {
     self = [super init];
     //self.actions = [NSMutableArray arrayWithObjects:@"add", nil];
-    self.count = 0;
+    //self.count = 0;
     return self;
 }
 
@@ -38,6 +38,7 @@
     return self.name;
 }
 
+/*
 - (NSString *)nodeNote
 {
     if (self.count)
@@ -47,6 +48,7 @@
     
     return nil;
 }
+*/
 
 - (JSONDB *)db
 {
@@ -97,9 +99,17 @@
     return obj;
 }
 
+/*
+- (NSString *)name
+{
+    return self.nodeTitle;
+}
+*/
+
 - (void)setDict:(NSDictionary *)dict
 {
     self.name = [dict objectForKey:@"name"];
+    self.nodeTitle = self.name;
     NSArray *childrenDicts = [dict objectForKey:@"children"];
     
     if (childrenDicts)
@@ -111,6 +121,13 @@
         for (NSDictionary *childDict in childrenDicts)
         {
             Class childClass = self.childClass ? self.childClass : self.class;
+            NSString *childType = [dict objectForKey:@"_type"];
+            
+            if (childType)
+            {
+                childClass = NSClassFromString([childType withPrefix:@"MK"]);
+            }
+
             [children addObject:[childClass withDict:childDict]];
         }
         
@@ -123,6 +140,7 @@
 - (NSDictionary *)dict
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    [dict setObject:[NSStringFromClass(self.class) sansPrefix:@"MK"] forKey:@"_type"];
     [dict setObject:self.name forKey:@"name"];
     NSMutableArray *childrenDicts = [NSMutableArray array];
     
@@ -169,6 +187,7 @@
 
 - (void)updateCounts
 {
+    /*
     self.count = 0;
     //self.count = self.children.count;
     
@@ -190,16 +209,22 @@
             self.count += group.count;
         }
     }
+    */
 }
 
 // node note
 
-/*
 - (NSString *)nodeNote
 {
-    if (self.isLeafCategory && self.children.count > 0)
+    //if ([self isKindOfClass:MKCategory.class])
+    if ([self.nodeTitle isEqualToString:@"Antiques"])
     {
-        return [NSString stringWithFormat:@"%i", (int)self.children.count];
+        NSLog(@"%@ nodeNote", NSStringFromClass(self.class));
+    }
+    
+    if (self.countOfLeafChildren > 0)
+    {
+        return [NSString stringWithFormat:@"%i", (int)self.countOfLeafChildren];
     }
     
     return nil;
@@ -219,7 +244,6 @@
     
     return count;
 }
-*/
 
 // persistence
 

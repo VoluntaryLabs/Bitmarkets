@@ -14,13 +14,18 @@
 - (id)init
 {
     self = [super init];
-    [self add];
+    //[self add];
     return self;
 }
 
 - (NSString *)nodeTitle
 {
     return @"Sells";
+}
+
+- (BOOL)canSearch
+{
+    return self.children.count > 0;
 }
 
 - (MKSell *)justAdd

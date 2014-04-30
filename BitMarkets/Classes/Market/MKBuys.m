@@ -22,6 +22,11 @@
     return self;
 }
 
+- (BOOL)canSearch
+{
+    return self.children.count > 0;
+}
+
 - (NSString *)nodeTitle
 {
     return @"Buys";

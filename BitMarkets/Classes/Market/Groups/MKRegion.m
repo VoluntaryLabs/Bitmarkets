@@ -15,6 +15,7 @@
 {
     self = [super init];
     //[self setCanPost:NO];
+    self.nodeSuggestedWidth = 170;
     return self;
 }
 
@@ -24,11 +25,6 @@
     
 }
 */
-
-- (CGFloat)nodeSuggestedWidth
-{
-    return 170;
-}
 
 - (NSString *)dbName
 {
@@ -44,7 +40,6 @@
         //[self addChild:[MKCategory rootInstance]];
         [self setChildren:[MKCategory rootInstance].children];
     }
-    
 }
 
 @end

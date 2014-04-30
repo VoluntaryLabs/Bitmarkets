@@ -6,12 +6,13 @@
 //  Copyright (c) 2014 Bitmarkets.org. All rights reserved.
 //
 
-#import <BitmessageKit/BitmessageKit.h>
+//#import <BitmessageKit/BitmessageKit.h>
+#import <NavKit/NavKit.h>
 
-@interface MKGroup : BMNode
+@interface MKGroup : NavInfoNode
 
 @property (strong, nonatomic) NSString *name;
-@property (assign, nonatomic) NSInteger count;
+//@property (assign, nonatomic) NSInteger count;
 
 + (MKGroup *)rootInstance;
 
@@ -26,5 +27,6 @@
 - (NSArray *)groupPath;
 
 - (void)updateCounts;
+- (NSInteger)countOfLeafChildren;
 
 @end

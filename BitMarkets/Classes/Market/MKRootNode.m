@@ -32,7 +32,14 @@ static MKRootNode *sharedMKRootNode = nil;
     self.nodeSuggestedWidth = 150;
     
     _markets = [[MKMarkets alloc] init];
-    [self addChild:_markets];
+    //[self addChild:_markets];
+    
+    {
+        //_markets.rootRegion.nodeTitle = @"Markets";
+        [self addChild:_markets.rootRegion];
+        [self addChild:_markets.buys];
+        [self addChild:_markets.sells];
+    }
 
     _wallet  = [[MKWallet alloc] init];
     [self addChild:_wallet];
@@ -54,6 +61,7 @@ static MKRootNode *sharedMKRootNode = nil;
 - (void)addAbout
 {
     NavInfoNode *about = [[NavInfoNode alloc] init];
+    about.shouldSortChildren = NO;
     [(BMNode *)self addChild:about];
     about.nodeTitle = @"About";
     about.nodeSuggestedWidth = 150;
@@ -62,25 +70,26 @@ static MKRootNode *sharedMKRootNode = nil;
     [about addChild:contributors];
     contributors.nodeTitle = @"Contributors";
     contributors.nodeSuggestedWidth = 200;
-    
+    contributors.shouldSortChildren = NO;
+
     {
         NavInfoNode *contributor = [[NavInfoNode alloc] init];
-        contributor.nodeTitle = @"Chris Robinson";
-        contributor.nodeSubtitle = @"Designer";
+        contributor.nodeTitle = @"Steve Dekorte";
+        contributor.nodeSubtitle = @"Lead";
         [contributors addChild:contributor];
     }
     
     {
         NavInfoNode *contributor = [[NavInfoNode alloc] init];
         contributor.nodeTitle = @"Rich Collins";
-        contributor.nodeSubtitle = @"Bitcoin integration";
+        contributor.nodeSubtitle = @"Bitcoin";
         [contributors addChild:contributor];
     }
     
     {
         NavInfoNode *contributor = [[NavInfoNode alloc] init];
-        contributor.nodeTitle = @"Steve Dekorte";
-        contributor.nodeSubtitle = @"Lead & UI Dev";
+        contributor.nodeTitle = @"Chris Robinson";
+        contributor.nodeSubtitle = @"Design";
         [contributors addChild:contributor];
     }
     
@@ -94,7 +103,7 @@ static MKRootNode *sharedMKRootNode = nil;
     {
         NavInfoNode *contributor = [[NavInfoNode alloc] init];
         contributor.nodeTitle = @"Dru Nelson";
-        contributor.nodeSubtitle = @"Unix Guru";
+        contributor.nodeSubtitle = @"Unix";
         [contributors addChild:contributor];
     }
 }

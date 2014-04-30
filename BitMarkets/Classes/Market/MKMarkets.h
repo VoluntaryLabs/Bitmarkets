@@ -21,7 +21,7 @@
 #import "MKSells.h"
 #import "MKSell.h"
 
-@interface MKMarkets : BMNode
+@interface MKMarkets : NavInfoNode
 
 @property (strong, nonatomic) MKRegion *rootRegion;
 
