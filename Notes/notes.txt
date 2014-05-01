@@ -1,8 +1,10 @@
 
+- implement recursive isDirty and clean methods on NavNode
+
 - check inbox for direct messages (bids, etc)
 - persist Buys and Sells
 
--  add code to adjust _description height to fit text
+- add code to adjust _description height to fit text
 - fix vertical centering of node cells (nodeNote and NodeTitle are not aligned right)
 
 Markets

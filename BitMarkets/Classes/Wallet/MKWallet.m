@@ -8,6 +8,8 @@
 
 #import "MKWallet.h"
 #import <NavKit/NavKit.h>
+#import "MKWalletAddress.h"
+#import "MKWalletTx.h"
 
 @implementation MKWallet
 
@@ -17,8 +19,6 @@
     
     self.nodeTitle = @"Wallet";
     self.nodeSuggestedWidth = 200;
-
-
 
     [self performSelector:@selector(open) withObject:nil afterDelay:0.0];
     return self;
@@ -55,24 +55,38 @@
         _balance.nodeSuggestedWidth = 200;
     }
     
-    /*
     {
         _transactions = [[NavInfoNode alloc] init];
         [self addChild:_transactions];
         _transactions.nodeTitle = @"Transactions";
-        _transactions.nodeSubtitle =  @"(unavailable)";
+        //_transactions.nodeSubtitle =  @"(unavailable)";
         //transactions.nodeNote =  @"0";
         _transactions.nodeSuggestedWidth = 200;
+        _transactions.shouldUseCountForNodeNote = YES;
+        
+        for (id tx in _bnWallet.transactions)
+        {
+            NSLog(@"tx %@", tx);
+
+            MKWalletTx *mkTx = [[MKWalletTx alloc] init];
+            //mkAddress.address = address;
+            [_addresses addChild:mkTx];
+        }
     }
-    */
+
+    NSLog(@" wallet transactions %@ ", _bnWallet.transactions);
     
     {
         _addresses = [[MKWalletAddresses alloc] init];
         [self addChild:_addresses];
-        _addresses.nodeTitle = @"Addresses";
-        _addresses.nodeSubtitle =  nil;
-        _addresses.nodeSuggestedWidth = 200;
-        NSLog(@" addresses %@ ", _bnWallet.addresses);
+        //NSLog(@" wallet addresses %@ ", _bnWallet.addresses);
+        
+        for (NSString *address in _bnWallet.addresses)
+        {
+            MKWalletAddress *mkAddress = [[MKWalletAddress alloc] init];
+            mkAddress.address = address;
+            [_addresses addChild:mkAddress];
+        }
     }
 }
 

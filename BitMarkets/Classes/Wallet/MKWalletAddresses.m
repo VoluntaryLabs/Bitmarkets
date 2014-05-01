@@ -17,6 +17,7 @@
     self = [super init];
     self.nodeTitle = @"Addresses";
     self.childClass = MKWalletAddress.class;
+    self.nodeSuggestedWidth = 325;
     return self;
 }
 
@@ -35,6 +36,8 @@
     
     return nil;
 }
+
+
 
 
 @end

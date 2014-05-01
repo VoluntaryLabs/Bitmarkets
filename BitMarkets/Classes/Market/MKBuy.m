@@ -14,7 +14,7 @@
 
 - (NSString *)nodeTitle
 {
-    return self.sell.nodeTitle;
+    return [self.sellUuid substringToIndex:8];
 }
 
 - (NSString *)nodeSubtitle
@@ -28,7 +28,6 @@
     self.sellUuid      = [aDict objectForKey:@"sellUuid"];
     self.sellerAddress = [aDict objectForKey:@"sellerAddress"];
     self.buyerAddress  = [aDict objectForKey:@"buyerAddress"];
-    
     [super setDict:aDict];
 }
 
@@ -36,8 +35,8 @@
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setObject:@"Buy" forKey:@"_type"];
-    [dict setObject:self.sellUuid forKey:@"sellUuid"];
-    [dict setObject:self.buyerAddress forKey:@"buyerAddress"];
+    [dict setObject:self.sellUuid      forKey:@"sellUuid"];
+    [dict setObject:self.buyerAddress  forKey:@"buyerAddress"];
     [dict setObject:self.sellerAddress forKey:@"sellerAddress"];
     return dict;
 }

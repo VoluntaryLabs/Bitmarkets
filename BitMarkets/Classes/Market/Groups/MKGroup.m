@@ -122,7 +122,11 @@
         [childrenDicts addObject:[child dict]];
     }
     
-    [dict setObject:childrenDicts forKey:@"children"];
+    if (childrenDicts.count)
+    {
+        [dict setObject:childrenDicts forKey:@"children"];
+    }
+    
     return dict;
 }
 

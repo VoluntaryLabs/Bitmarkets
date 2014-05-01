@@ -14,7 +14,7 @@
 - (id)init
 {
     self = [super init];
-    self.nodeSubtitle = @"balance unknown";
+    //self.nodeSubtitle = @"balance unknown";
     return self;
 }
 
@@ -23,13 +23,16 @@
     // do this so we only generate it if it isn't set
     // which it would be if we unpersisted it
     
+    /*
     if ([super nodeTitle] == nil)
     {
         self.address = self.wallet.bnWallet.createAddress;
         self.nodeTitle = self.address;
     }
+    */
     
-    return [super nodeTitle];
+    return self.address;
+//    return [[self.address substringToIndex:12] stringByAppendingString:@"..."];
 }
 
 - (MKWallet *)wallet

@@ -34,7 +34,41 @@
     self.sellerAddress = BMClient.sharedBMClient.identities.firstIdentity.address; // make this tx specific later
     
     self.status = @"draft";
+    self.shouldSortChildren = NO;
+    
+
+    
+    self.nodeSuggestedWidth = 150;
     return self;
+}
+
+- (void)setStatus:(NSString *)status
+{
+    _status = status;
+    
+    if (![_status isEqualToString:@"draft"]
+        && _status != nil && ![_status isEqualToString:@""]
+        )
+    {
+        //[self addChildrenIfNeeded];
+    }
+}
+
+- (void)addChildrenIfNeeded
+{
+    if (self.children.count == 0)
+    {
+        NavInfoNode *post = [[NavInfoNode alloc] init];
+        post.nodeTitle = @"Post";
+        post.shouldUseCountForNodeNote = YES;
+        post.nodeView = self.nodeView;
+        [self addChild:post];
+        
+        NavInfoNode *bids = [[NavInfoNode alloc] init];
+        bids.nodeTitle = @"Bids";
+        bids.shouldUseCountForNodeNote = YES;
+        [self addChild:bids];
+    }
 }
 
 - (NSArray *)modelActions
@@ -44,6 +78,11 @@
 
 - (NSString *)nodeTitle
 {
+    if ([self.title isEqualToString:@""])
+    {
+        return @"Untitled Post";
+    }
+    
     return self.title;
 }
 
@@ -72,6 +111,7 @@
 - (void)setDict:(NSDictionary *)aDict
 {
     self.uuid  = [aDict objectForKey:@"uuid"];
+    self.status  = [aDict objectForKey:@"status"];
     self.title = [aDict objectForKey:@"title"];
     self.price = [aDict objectForKey:@"price"];
     
@@ -88,6 +128,7 @@
 - (NSDictionary *)dict
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    [dict setObject:self.status forKey:@"status"];
     [dict addEntriesFromDictionary:self.messageDict];
     return dict;
 }
