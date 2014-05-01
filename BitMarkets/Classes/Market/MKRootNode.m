@@ -39,6 +39,7 @@ static MKRootNode *sharedMKRootNode = nil;
         [self addChild:_markets.rootRegion];
         [self addChild:_markets.buys];
         [self addChild:_markets.sells];
+        [self addChild:_markets.mkChannel];
     }
 
     _wallet  = [[MKWallet alloc] init];

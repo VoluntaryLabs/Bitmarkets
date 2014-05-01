@@ -1,4 +1,5 @@
 
+- check inbox for direct messages (bids, etc)
 - persist Buys and Sells
 
 Markets

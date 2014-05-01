@@ -38,18 +38,6 @@
     return self.name;
 }
 
-/*
-- (NSString *)nodeNote
-{
-    if (self.count)
-    {
-        return [NSString stringWithFormat:@"%i", (int)self.count];
-    }
-    
-    return nil;
-}
-*/
-
 - (JSONDB *)db
 {
     JSONDB *db = [[JSONDB alloc] init];

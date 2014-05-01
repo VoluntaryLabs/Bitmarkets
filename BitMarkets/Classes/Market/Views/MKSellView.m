@@ -395,13 +395,33 @@
 - (void)buy
 {
     NSLog(@"buy");
-    //MKBuy *buy = MKRootNode.sharedMKRootNode.markets.buys.justAdd;
+    
+    MKBuy *buy = MKRootNode.sharedMKRootNode.markets.buys.addBuy;
 
+    [buy setSell:self.mkSell];
+    [buy post];
+    [self.navView selectNodePath:buy.nodePathArray];
+    
     // compose escrow
     // check for funds in wallet
     // request funds if needed and cancel
     // post BuyerEscrow
     
+    /*
+    
+    MKRootNode *root   = [MKRootNode sharedMKRootNode];
+    MKMarkets *markets = [root markets];
+    MKSells *buys     = [markets buys];
+    MKSell *sell       = [sells justAdd];
+    
+    //NSLog(@"%@", self.groupPath);
+    
+    sell.regionPath = self.regionPath;
+    sell.categoryPath = self.categoryPath;
+    
+    //NSArray *nodes = [NSArray arrayWithObjects:root, markets, sells, sell, nil];
+    NSArray *nodes = [NSArray arrayWithObjects:root, sells, sell, nil];
+    */
     
     
     //[self.mkSell post];

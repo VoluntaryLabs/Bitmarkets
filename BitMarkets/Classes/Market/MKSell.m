@@ -108,7 +108,7 @@
 {
     NSString *channelAddress = MKRootNode.sharedMKRootNode.markets.mkChannel.channel.address;
     NSString *sellerAddress = self.sellerAddress;
-    NSString *subject = @"bitmarkets"; // self.title
+    NSString *subject = [NSString stringWithFormat:@"%@ ask", [self.uuid substringToIndex:5]];
     NSString *message = self.jsonString;
     
     BMMessage *m = [[BMMessage alloc] init];
@@ -138,7 +138,7 @@
     
     if (nodePath)
     {
-        NSLog(@"placing sell in path '%@'", self.fullPath);
+        //NSLog(@"placing sell in path '%@'", self.fullPath);
         MKCategory *cat = nodePath.lastObject;
         [cat addChild:self];
         return YES;

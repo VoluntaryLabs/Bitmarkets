@@ -8,11 +8,12 @@
 
 #import <BitMessageKit/BitMessageKit.h>
 #import "MKBuy.h"
+#import "MKGroup.h"
 
-@interface MKBuys : BMNode
+@interface MKBuys : MKGroup
 
 @property (strong, nonatomic) JSONDB *db;
 
-- (MKBuy *)justAdd;
+- (MKBuy *)addBuy;
 
 @end

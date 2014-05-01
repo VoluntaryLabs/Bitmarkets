@@ -15,8 +15,10 @@
 {
     self = [super init];
     
-    self.db = [[JSONDB alloc] init];
+    //self.db = [[JSONDB alloc] init];
     [self.db setName:@"Buys"];
+    self.childClass = MKBuy.class;
+    self.shouldUseCountForNodeNote = YES;
     
     [self read];
     return self;
@@ -32,13 +34,25 @@
     return @"Buys";
 }
 
-- (MKBuy *)justAdd
+- (NSString *)nodeNote
+{
+    if (self.children.count > 0)
+    {
+        return [NSString stringWithFormat:@"%i", (int)self.children.count];
+    }
+    
+    return nil;
+}
+
+ - (MKBuy *)addBuy;
 {
     MKBuy *buy = [[MKBuy alloc] init];
     [self addChild:buy];
+    [self postParentChanged];
     return buy;
 }
 
+/*
 - (void)read
 {
     [self.db read];
@@ -68,5 +82,6 @@
     self.db.dict = d;
     [self.db write];
 }
+*/
 
 @end
