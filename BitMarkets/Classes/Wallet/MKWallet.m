@@ -72,6 +72,7 @@
         _addresses.nodeTitle = @"Addresses";
         _addresses.nodeSubtitle =  nil;
         _addresses.nodeSuggestedWidth = 200;
+        NSLog(@" addresses %@ ", _bnWallet.addresses);
     }
 }
 

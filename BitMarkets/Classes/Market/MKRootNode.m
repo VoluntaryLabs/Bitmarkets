@@ -45,11 +45,11 @@ static MKRootNode *sharedMKRootNode = nil;
     _wallet  = [[MKWallet alloc] init];
     [self addChild:_wallet];
     
-    //_bmClient = [BMClient sharedBMClient];
+    _bmClient = [BMClient sharedBMClient];
+    [[_bmClient identities] createFirstIdentityIfAbsent];
     
     [self addAbout];
     
-    [[[BMClient sharedBMClient] identities] createFirstIdentityIfAbsent];
     
     return self;
 }

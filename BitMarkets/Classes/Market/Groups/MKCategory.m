@@ -24,9 +24,12 @@
     return self;
 }
 
-- (NSString *)dbName
+- (JSONDB *)db
 {
-    return @"categories.json";
+    JSONDB *db = [super db];
+    db.name = @"categories.json";
+    db.location = JSONDB_IN_APP_WRAPPER;
+    return db;
 }
 
 - (BOOL)isLeafCategory
@@ -82,16 +85,6 @@
 - (BOOL)canSearch
 {
     return self.isLeafCategory && (self.children.count > 0);
-}
-
-- (void)setDict:(NSDictionary *)dict
-{
-    [super setDict:dict];
-    
-    if (self.children.count == 0)
-    {
-        [self setCanPost:YES];
-    }
 }
 
 - (NavView *)navView

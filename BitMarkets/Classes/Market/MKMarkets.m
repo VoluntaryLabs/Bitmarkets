@@ -7,6 +7,7 @@
 //
 
 #import "MKMarkets.h"
+#import "MKExchangeRate.h"
 #import <BitMessageKit/BitMessageKit.h>
 #import <NavKit/NavKit.h>
 
@@ -34,10 +35,12 @@
     [self addChild:self.mkChannel];
 
     self.buys  = [[MKBuys alloc] init];
-    [self addChild:self.buys];
+    [_buys read];
+    [self addChild:_buys];
 
     self.sells = [[MKSells alloc] init];
-    [self addChild:self.sells];
+    [_sells read];
+    [self addChild:_sells];
     
     [self.mkChannel performSelector:@selector(fetch) withObject:nil afterDelay:0.0];
     [self.rootRegion updateCounts];

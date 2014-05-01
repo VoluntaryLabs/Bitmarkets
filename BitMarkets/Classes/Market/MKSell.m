@@ -12,7 +12,9 @@
 #import <NavKit/NavKit.h>
 #import <BitmessageKit/BitmessageKit.h>
 #import <FoundationCategoriesKit/FoundationCategoriesKit.h>
+
 #import "MKRootNode.h"
+#import "MKExchangeRate.h"
 
 @implementation MKSell
 
@@ -64,27 +66,42 @@
 - (void)delete
 {
     [self removeFromParent];
+    [self postParentChanged];
 }
 
-- (void)setMessageDict:(NSDictionary *)aDict
+- (void)setDict:(NSDictionary *)aDict
 {
     self.uuid  = [aDict objectForKey:@"uuid"];
     self.title = [aDict objectForKey:@"title"];
     self.price = [aDict objectForKey:@"price"];
     
-    self.description = [aDict objectForKey:@"description"];
-    self.regionPath = [aDict objectForKey:@"regionPath"];
+    self.description  = [aDict objectForKey:@"description"];
+    self.regionPath   = [aDict objectForKey:@"regionPath"];
     self.categoryPath = [aDict objectForKey:@"categoryPath"];
     
     self.title = self.title.strip;
-    //self.price = self.price.strip;
     self.description = self.description.strip;
+    
+    [super setDict:aDict];
+}
+
+- (NSDictionary *)dict
+{
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    [dict addEntriesFromDictionary:self.messageDict];
+    return dict;
+}
+
+- (void)setMessageDict:(NSDictionary *)aDict
+{
+    [self setDict:aDict];
 }
 
 - (NSDictionary *)messageDict
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     
+    [dict setObject:@"Sell" forKey:@"_type"];
     [dict setObject:self.uuid forKey:@"uuid"];
     [dict setObject:self.title forKey:@"title"];
     [dict setObject:self.price forKey:@"price"];

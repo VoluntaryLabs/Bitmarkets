@@ -14,14 +14,19 @@
 - (id)init
 {
     self = [super init];
-    
-    //self.db = [[JSONDB alloc] init];
-    [self.db setName:@"Buys"];
     self.childClass = MKBuy.class;
     self.shouldUseCountForNodeNote = YES;
     
     [self read];
     return self;
+}
+
+- (JSONDB *)db
+{
+    JSONDB *db = [super db];
+    db.name = @"buys";
+    db.location = JSONDB_IN_APP_SUPPORT_FOLDER;
+    return db;
 }
 
 - (BOOL)canSearch
@@ -49,39 +54,8 @@
     MKBuy *buy = [[MKBuy alloc] init];
     [self addChild:buy];
     [self postParentChanged];
+    //[self write];
     return buy;
 }
-
-/*
-- (void)read
-{
-    [self.db read];
-    
-    NSDictionary *d = self.db.dict;
-    
-    for (NSString *k in d.allKeys)
-    {
-        MKBuy *buy = [[MKBuy alloc] init];
-        [buy setDict:[d objectForKey:k]];
-        [self.children addObject:buy];
-    }
-    
-    [self sortChildren];
-}
-
-- (void)write
-{
-    NSMutableDictionary *d = [NSMutableDictionary dictionary];
-    
-    for (MKBuy *buy in self.children)
-    {
-        NSString *k = [buy.dict objectForKey:@"id"];
-        [d setObject:buy.dict forKey:k];
-    }
-    
-    self.db.dict = d;
-    [self.db write];
-}
-*/
 
 @end

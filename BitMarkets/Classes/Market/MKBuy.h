@@ -8,11 +8,16 @@
 
 #import <BitmessageKit/BitMessageKit.h>
 #import "MKSell.h"
+#import "MKGroup.h"
 
-@interface MKBuy : BMNode
+@interface MKBuy : MKGroup
 
 @property (strong, nonatomic) MKSell *sell;
 @property (strong, nonatomic) NSString *status;
+
+@property (strong, nonatomic) NSString *sellUuid;
+@property (strong, nonatomic) NSString *buyerAddress;
+@property (strong, nonatomic) NSString *sellerAddress;
 
 - (void)setDict:(NSMutableDictionary *)aDict;
 - (NSMutableDictionary *)dict;

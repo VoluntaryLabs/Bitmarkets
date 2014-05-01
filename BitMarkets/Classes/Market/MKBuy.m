@@ -24,24 +24,22 @@
 
 - (void)setDict:(NSMutableDictionary *)aDict
 {
-    /*
-    NSMutableArray *children = [NSMutableArray array];
+    //if ([[aDict objectForKey:@"_type"] isEqualToString:@"Buy"])
+    self.sellUuid      = [aDict objectForKey:@"sellUuid"];
+    self.sellerAddress = [aDict objectForKey:@"sellerAddress"];
+    self.buyerAddress  = [aDict objectForKey:@"buyerAddress"];
     
-    for (NSString *k in aDict.allKeys)
-    {
-        NSMutableDictionary *messageDict = [aDict objectForKey:k];
-        MKMessage *msg = [MKMessage withDict:messageDict];
-        [children addObject:msg];
-    }
-    
-    [self setChildren:children];
-    */
+    [super setDict:aDict];
 }
 
 - (NSMutableDictionary *)dict
 {
-    
-    return nil;
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    [dict setObject:@"Buy" forKey:@"_type"];
+    [dict setObject:self.sellUuid forKey:@"sellUuid"];
+    [dict setObject:self.buyerAddress forKey:@"buyerAddress"];
+    [dict setObject:self.sellerAddress forKey:@"sellerAddress"];
+    return dict;
 }
 
 - (MKBuy *)justAdd
@@ -51,17 +49,20 @@
     return buy;
 }
 
+/*
 - (NSString *)myAddress
 {
     return MKRootNode.sharedMKRootNode.bmClient.identities.firstIdentity.address;
 }
+*/
 
-- (NSDictionary *)messageDict
+- (NSDictionary *)composeMessageDict
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    
     [dict setObject:@"Buy" forKey:@"_type"];
-    [dict setObject:self.sell.uuid forKey:@"sellUuid"];
+    [dict setObject:self.sellUuid forKey:@"sellUuid"];
+    [dict setObject:self.buyerAddress forKey:@"buyerAddress"];
+    [dict setObject:self.sellerAddress forKey:@"sellerAddress"];
     return dict;
 }
 
@@ -70,14 +71,13 @@
     [self setStatus:@"post"];
     [self postParentChanged];
 
-    NSString *myAddress = self.myAddress;
-    NSString *sellerAddress = self.sell.sellerAddress;
+    //NSString *myAddress = self.myAddress;
     NSString *subject = [NSString stringWithFormat:@"%@ bid", [self.sell.uuid substringToIndex:5]];
-    NSString *message = self.messageDict.asJsonString;
+    NSString *message = self.composeMessageDict.asJsonString;
     
     BMMessage *m = [[BMMessage alloc] init];
-    [m setFromAddress:myAddress];
-    [m setToAddress:sellerAddress];
+    [m setFromAddress:self.buyerAddress];
+    [m setToAddress:self.sellerAddress];
     [m setSubject:subject];
     [m setMessage:message];
     [m send];

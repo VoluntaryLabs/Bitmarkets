@@ -27,12 +27,6 @@
     return self;
 }
 
-- (NSString *)dbName
-{
-    [NSException raise:@"Missing method" format:@"subsclasses should implement this method"];
-    return nil;
-}
-
 - (NSString *)nodeTitle
 {
     return self.name;
@@ -40,10 +34,13 @@
 
 - (JSONDB *)db
 {
-    JSONDB *db = [[JSONDB alloc] init];
-    [db setName:self.dbName];
-    db.location = JSONDB_IN_APP_WRAPPER;
-    return db;
+    if (!_db)
+    {
+        _db = [[JSONDB alloc] init];
+        _db.location = JSONDB_IN_APP_WRAPPER;
+    }
+    
+    return _db;
 }
 
 - (void)read
@@ -55,29 +52,9 @@
 
 - (void)write
 {
-    //
-}
-
-- (void)setCanPost:(BOOL)aBool
-{
-    //BOOL hasAdd = [self.actions containsObject:@"add"];
-    
-    /*
-    if (aBool)
-    {
-        if (!hasAdd)
-        {
-            [self.actions addObject:@"add"];
-        }
-    }
-    else
-    {
-        if (hasAdd)
-        {
-            [self.actions removeObject:@"add"];
-        }
-    }
-    */
+    JSONDB *db = self.db;
+    db.dict = [NSMutableDictionary dictionaryWithDictionary:self.dict];
+    [db write];
 }
 
 + (MKGroup *)withDict:(NSDictionary *)dict
@@ -86,13 +63,6 @@
     [obj setDict:dict];
     return obj;
 }
-
-/*
-- (NSString *)name
-{
-    return self.nodeTitle;
-}
-*/
 
 - (void)setDict:(NSDictionary *)dict
 {
@@ -140,7 +110,11 @@
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setObject:[NSStringFromClass(self.class) sansPrefix:@"MK"] forKey:@"_type"];
-    [dict setObject:self.name forKey:@"name"];
+    if (self.name)
+    {
+        [dict setObject:self.name forKey:@"name"];
+    }
+    
     NSMutableArray *childrenDicts = [NSMutableArray array];
     
     for (MKGroup *child in self.children)

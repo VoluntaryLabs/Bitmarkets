@@ -21,6 +21,14 @@
     return self;
 }
 
+- (JSONDB *)db
+{
+    JSONDB *db = [super db];
+    db.name = @"sells";
+    db.location = JSONDB_IN_APP_SUPPORT_FOLDER;
+    return db;
+}
+
 - (NSString *)nodeTitle
 {
     return @"Sells";
@@ -47,6 +55,7 @@
     MKSell *sell = [[MKSell alloc] init];
     sell.isLocal = YES;
     [self addChild:sell];
+    [self write];
     return sell;
 }
 
@@ -56,16 +65,6 @@
 }
 
 // dict
-
-- (void)setDict:(NSDictionary *)aDict
-{
-    
-}
-
-- (NSDictionary *)dict
-{
-    return nil;
-}
 
 - (void)update
 {

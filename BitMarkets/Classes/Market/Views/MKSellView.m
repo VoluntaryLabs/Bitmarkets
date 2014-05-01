@@ -9,8 +9,7 @@
 #import "MKSellView.h"
 #import <NavKit/NavKit.h>
 #import "MKRootNode.h"
-
-
+#import "MKExchangeRate.h"
 
 @implementation MKSellView
 
@@ -55,7 +54,7 @@
         [self.separator setThemePath:@"sell/separator"];
         [self addSubview:self.separator];
         
-        _description = [[MKTextView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
+        _description = [[MKTextView alloc] initWithFrame:NSMakeRect(0, 0, 500, 100)];
         _description.uneditedTextString = @"Enter description";
         [_description setDelegate:self];
         //self.description.string = @"I've had this TOA amp in the closet for a while waiting to setup in my shop space but I need the space so my loss is your gain. Works fine and is in mostly decent condition with a few dings on the corners. I'm available during the day near 7th and Folsom but I can also meet up in the evening in the Mission.";
@@ -135,17 +134,21 @@
     [_separator setWidth:self.width];
     [_separator placeYBelow:_price margin:20];
     
+    // add code to adjust _description height to fit text?
+    
     [_description setX:leftMargin];
     [_description setWidth:self.width - leftMargin*2];
-    [_description setHeight:100];
+    //[_description setHeight:100];
     [_description placeYBelow:_separator margin:30];
 
+    NSLog(@"_description.height = %i", (int)_description.height);
     
+    CGFloat descriptionMargin = 50;
     CGFloat iconMargin = 5;
     
     [_regionIcon setX:leftMargin];
-    [_regionIcon placeYBelow:_description margin:iconMargin];
-    [_region placeYBelow:_description margin:iconMargin];
+    [_regionIcon placeYBelow:_description margin:descriptionMargin];
+    [_region placeYBelow:_description margin:descriptionMargin];
     [_region placeXRightOf:_regionIcon margin:iconMargin];
     
     [_categoryIcon setX:leftMargin];
@@ -309,6 +312,7 @@
     
     [self updateButton];
     [self syncToNode]; // to show on table cell
+    [self layout];
 }
 
 - (void)updatePriceSuffix
@@ -398,10 +402,17 @@
     
     MKBuy *buy = MKRootNode.sharedMKRootNode.markets.buys.addBuy;
 
-    [buy setSell:self.mkSell];
+    buy.buyerAddress = MKRootNode.sharedMKRootNode.bmClient.identities.firstIdentity.address;
+    buy.sellerAddress = self.mkSell.sellerAddress;
+    buy.sellUuid = self.mkSell.uuid;
+    //[buy setSell:self.mkSell];
+    [MKRootNode.sharedMKRootNode.markets.buys write];
     [buy post];
+    
+    NSLog(@"path = %@", buy.nodePathArray);
     [self.navView selectNodePath:buy.nodePathArray];
     
+
     // compose escrow
     // check for funds in wallet
     // request funds if needed and cancel

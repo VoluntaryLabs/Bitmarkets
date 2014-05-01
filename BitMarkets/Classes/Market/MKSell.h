@@ -7,8 +7,7 @@
 //
 
 #import <BitMessageKit/BitMessageKit.h>
-#import "MKExchangeRate.h"
-
+#import "MKGroup.h"
 /*
  {
      header:
@@ -34,7 +33,7 @@
  }
  */
 
-@interface MKSell : BMNode
+@interface MKSell : MKGroup
 
 @property (strong, nonatomic) NSDate *date;
 @property (assign, nonatomic) BOOL isLocal; // is local persisted sell

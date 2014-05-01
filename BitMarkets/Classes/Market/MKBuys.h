@@ -12,8 +12,6 @@
 
 @interface MKBuys : MKGroup
 
-@property (strong, nonatomic) JSONDB *db;
-
 - (MKBuy *)addBuy;
 
 @end

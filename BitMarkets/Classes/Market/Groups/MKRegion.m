@@ -19,17 +19,20 @@
     return self;
 }
 
+- (JSONDB *)db
+{
+    JSONDB *db = [super db];
+    db.name = @"regions.json";
+    db.location = JSONDB_IN_APP_WRAPPER;
+    return db;
+}
+
 /*
 - (NSArray *)modelActions
 {
     
 }
 */
-
-- (NSString *)dbName
-{
-    return @"regions.json";
-}
 
 - (void)setDict:(NSDictionary *)dict
 {
