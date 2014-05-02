@@ -33,7 +33,7 @@ operty NSMutableArray *inputs;
 
 - (NSString *)nodeSubtitle
 {
-    return self.bnTx.hash;
+    return self.bnTx.txHash;
     //return [NSString stringWithFormat:@"%@", self.txTypeString];
 }
 

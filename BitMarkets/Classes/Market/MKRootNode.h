@@ -11,7 +11,6 @@
 #import <BitmessageKit/BitmessageKit.h>
 
 #import "MKMarkets.h"
-#import "MKWallet.h"
 
 #import "MKSells.h"
 #import "MKBuys.h"
@@ -20,7 +19,7 @@
 
 @property (strong, nonatomic) BMClient  *bmClient;
 @property (strong, nonatomic) MKMarkets *markets;
-@property (strong, nonatomic) MKWallet  *wallet;
+@property (strong, nonatomic) BNWallet  *wallet;
 
 + (MKRootNode *)sharedMKRootNode;
 

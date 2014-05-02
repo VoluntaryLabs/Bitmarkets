@@ -27,7 +27,7 @@
 - (void)open
 {
     _bnWallet = [[BNWallet alloc] init];
-    //_bnWallet.server.logsStderr = YES;
+    _bnWallet.server.logsStderr = YES;
     
     NSString *dataPath = [[[NSFileManager defaultManager] applicationSupportDirectory] stringByAppendingPathComponent:@"wallet"];
     

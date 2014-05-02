@@ -42,7 +42,7 @@ static MKRootNode *sharedMKRootNode = nil;
         [self addChild:_markets.mkChannel];
     }
 
-    _wallet  = [[MKWallet alloc] init];
+    _wallet  = [[BNWallet alloc] init];
     [self addChild:_wallet];
     
     _bmClient = [BMClient sharedBMClient];
