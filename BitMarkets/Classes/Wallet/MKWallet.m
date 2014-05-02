@@ -81,10 +81,10 @@
         [self addChild:_addresses];
         //NSLog(@" wallet addresses %@ ", _bnWallet.addresses);
         
-        for (NSString *address in _bnWallet.addresses)
+        for (BNKey *key in _bnWallet.keys)
         {
             MKWalletAddress *mkAddress = [[MKWalletAddress alloc] init];
-            mkAddress.address = address;
+            mkAddress.address = key.address;
             [_addresses addChild:mkAddress];
         }
     }

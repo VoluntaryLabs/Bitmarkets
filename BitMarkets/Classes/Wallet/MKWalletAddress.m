@@ -25,7 +25,7 @@
 
 - (void)generate
 {
-    self.address = self.wallet.bnWallet.createAddress;
+    self.address = self.wallet.bnWallet.createKey.address;
 }
 
 - (MKWallet *)wallet
