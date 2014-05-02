@@ -144,19 +144,4 @@
     [self performSelector:@selector(update) withObject:nil afterDelay:updateDelay];
 }
 
-/*
-- (void)deposit
-{
-    NSString *address = [_bnWallet createAddress];
-    _imageView.image = [QRCodeGenerator qrImageForString:address imageSize:256.0];
-    
-    [_textField setStringValue:[NSString stringWithFormat:@"Insufficient Value.  Please send %@ to %@", amount, address]];
-}
-
-- (void)withdrawl
-{
-    
-}
-*/
-
 @end

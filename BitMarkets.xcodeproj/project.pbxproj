@@ -39,6 +39,10 @@
 		AA4A0E271909ADF600AB78D0 /* profile_active.png in Resources */ = {isa = PBXBuildFile; fileRef = AA4A0E191909ADF600AB78D0 /* profile_active.png */; };
 		AA4A0E281909ADF600AB78D0 /* right_active.png in Resources */ = {isa = PBXBuildFile; fileRef = AA4A0E1A1909ADF600AB78D0 /* right_active.png */; };
 		AA4A0E2B1909BB6400AB78D0 /* MKRootNode.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4A0E2A1909BB6400AB78D0 /* MKRootNode.m */; };
+		AA56E7841914555200DC3320 /* MKMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AA56E7831914555200DC3320 /* MKMsg.m */; };
+		AA56E7871914556E00DC3320 /* MKPostMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AA56E7861914556E00DC3320 /* MKPostMsg.m */; };
+		AA56E78A1914558000DC3320 /* MKBidMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AA56E7891914558000DC3320 /* MKBidMsg.m */; };
+		AA56E78D191455C900DC3320 /* MKLockEscrow1Msg.m in Sources */ = {isa = PBXBuildFile; fileRef = AA56E78C191455C900DC3320 /* MKLockEscrow1Msg.m */; };
 		AA5DFD9E1909C83000383283 /* add_active.png in Resources */ = {isa = PBXBuildFile; fileRef = AA5DFD8F1909C83000383283 /* add_active.png */; };
 		AA5DFD9F1909C83000383283 /* add_inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = AA5DFD901909C83000383283 /* add_inactive.png */; };
 		AA5DFDA01909C83000383283 /* compose_active.png in Resources */ = {isa = PBXBuildFile; fileRef = AA5DFD911909C83000383283 /* compose_active.png */; };
@@ -242,6 +246,14 @@
 		AA4A0E1A1909ADF600AB78D0 /* right_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right_active.png; sourceTree = "<group>"; };
 		AA4A0E291909BB6400AB78D0 /* MKRootNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MKRootNode.h; path = Market/MKRootNode.h; sourceTree = "<group>"; };
 		AA4A0E2A1909BB6400AB78D0 /* MKRootNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MKRootNode.m; path = Market/MKRootNode.m; sourceTree = "<group>"; };
+		AA56E7821914555200DC3320 /* MKMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKMsg.h; sourceTree = "<group>"; };
+		AA56E7831914555200DC3320 /* MKMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKMsg.m; sourceTree = "<group>"; };
+		AA56E7851914556E00DC3320 /* MKPostMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKPostMsg.h; sourceTree = "<group>"; };
+		AA56E7861914556E00DC3320 /* MKPostMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKPostMsg.m; sourceTree = "<group>"; };
+		AA56E7881914558000DC3320 /* MKBidMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKBidMsg.h; sourceTree = "<group>"; };
+		AA56E7891914558000DC3320 /* MKBidMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKBidMsg.m; sourceTree = "<group>"; };
+		AA56E78B191455C900DC3320 /* MKLockEscrow1Msg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKLockEscrow1Msg.h; sourceTree = "<group>"; };
+		AA56E78C191455C900DC3320 /* MKLockEscrow1Msg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKLockEscrow1Msg.m; sourceTree = "<group>"; };
 		AA5DFD8F1909C83000383283 /* add_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_active.png; sourceTree = "<group>"; };
 		AA5DFD901909C83000383283 /* add_inactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_inactive.png; sourceTree = "<group>"; };
 		AA5DFD911909C83000383283 /* compose_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compose_active.png; sourceTree = "<group>"; };
@@ -612,6 +624,14 @@
 			children = (
 				AAA2E68F19006F0A0098C357 /* MKMessage.h */,
 				AAA2E69019006F0A0098C357 /* MKMessage.m */,
+				AA56E7821914555200DC3320 /* MKMsg.h */,
+				AA56E7831914555200DC3320 /* MKMsg.m */,
+				AA56E7851914556E00DC3320 /* MKPostMsg.h */,
+				AA56E7861914556E00DC3320 /* MKPostMsg.m */,
+				AA56E7881914558000DC3320 /* MKBidMsg.h */,
+				AA56E7891914558000DC3320 /* MKBidMsg.m */,
+				AA56E78B191455C900DC3320 /* MKLockEscrow1Msg.h */,
+				AA56E78C191455C900DC3320 /* MKLockEscrow1Msg.m */,
 			);
 			path = Messages;
 			sourceTree = "<group>";
@@ -677,7 +697,7 @@
 		AA0E584518FDC0880095DEBD /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = BMK;
+				CLASSPREFIX = MK;
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = voluntary.net;
 				TargetAttributes = {
@@ -863,6 +883,7 @@
 				AA753D9419105C4A00D07CB5 /* MKWallet.m in Sources */,
 				AAA2E6AE19006F0A0098C357 /* MKRegion.m in Sources */,
 				AA753D9A19105C9800D07CB5 /* MKWalletAddress.m in Sources */,
+				AA56E7871914556E00DC3320 /* MKPostMsg.m in Sources */,
 				AAA2E6B219006F0A0098C357 /* MKBuys.m in Sources */,
 				AAA2E6B419006F0A0098C357 /* MKMarkets.m in Sources */,
 				AA095AA2191309E3001CF1F1 /* MKPostView.m in Sources */,
@@ -870,6 +891,8 @@
 				AA4A0E2B1909BB6400AB78D0 /* MKRootNode.m in Sources */,
 				AA5DFDAF190A24B300383283 /* MKMarketChannel.m in Sources */,
 				8EBC9AEE190D7F1700FE71FA /* MKExchangeRate.m in Sources */,
+				AA56E78D191455C900DC3320 /* MKLockEscrow1Msg.m in Sources */,
+				AA56E7841914555200DC3320 /* MKMsg.m in Sources */,
 				AA4A0DDB19086A3400AB78D0 /* MKTextView.m in Sources */,
 				AA095A95191309C7001CF1F1 /* MKPost.m in Sources */,
 				AA0E586418FDC0880095DEBD /* MKAppDelegate.m in Sources */,
@@ -878,6 +901,7 @@
 				AAA2E6AD19006F0A0098C357 /* MKGroup.m in Sources */,
 				AA753D9D1910779800D07CB5 /* MKWalletAddressView.m in Sources */,
 				AAA2E6BB19006F0A0098C357 /* MKSellView.m in Sources */,
+				AA56E78A1914558000DC3320 /* MKBidMsg.m in Sources */,
 				AAA2E6B519006F0A0098C357 /* MKSell.m in Sources */,
 				AAA2E6B119006F0A0098C357 /* MKBuy.m in Sources */,
 				AAA2E6B019006F0A0098C357 /* MKMessage.m in Sources */,
