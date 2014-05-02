@@ -860,12 +860,8 @@
 			files = (
 				AA0E585D18FDC0880095DEBD /* main.m in Sources */,
 				AAA2E6AE19006F0A0098C357 /* MKRegion.m in Sources */,
-<<<<<<< HEAD
-				AA753D9A19105C9800D07CB5 /* MKWalletAddress.m in Sources */,
 				AA56E7871914556E00DC3320 /* MKPostMsg.m in Sources */,
-=======
 				DC350ECB191456B400C25A01 /* BNKeysNode+BM.m in Sources */,
->>>>>>> 08725c6c44a83390e23bb1246b3cfbae4e468f46
 				AAA2E6B219006F0A0098C357 /* MKBuys.m in Sources */,
 				AAA2E6B419006F0A0098C357 /* MKMarkets.m in Sources */,
 				AA095AA2191309E3001CF1F1 /* MKPostView.m in Sources */,
