@@ -8,6 +8,7 @@
 
 #import "MKWalletAddresses.h"
 #import "MKWalletAddress.h"
+#import "MKRootNode.h"
 
 
 @implementation MKWalletAddresses
@@ -37,7 +38,14 @@
     return nil;
 }
 
-
+- (void)add
+{
+    MKWalletAddress *address = [super addChild];
+    [address generate];
+    
+    NavAppController *conntroller = [[NSApplication sharedApplication] delegate];
+    [conntroller.navWindow.navView selectNodePath:[address nodePathArray]];
+}
 
 
 @end

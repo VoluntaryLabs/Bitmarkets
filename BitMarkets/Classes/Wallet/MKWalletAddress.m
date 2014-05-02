@@ -20,20 +20,14 @@
 
 - (NSString *)nodeTitle
 {
-    // do this so we only generate it if it isn't set
-    // which it would be if we unpersisted it
-    
-    /*
-    if ([super nodeTitle] == nil)
-    {
-        self.address = self.wallet.bnWallet.createAddress;
-        self.nodeTitle = self.address;
-    }
-    */
-    
     return self.address;
-//    return [[self.address substringToIndex:12] stringByAppendingString:@"..."];
 }
+
+- (void)generate
+{
+    self.address = self.wallet.bnWallet.createAddress;
+}
+
 
 - (MKWallet *)wallet
 {

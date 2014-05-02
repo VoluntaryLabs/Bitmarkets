@@ -12,4 +12,6 @@
 
 @property (strong, nonatomic) NSString *address;
 
+- (void)generate;
+
 @end

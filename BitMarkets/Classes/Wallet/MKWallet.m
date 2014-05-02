@@ -127,7 +127,7 @@
     if (isStarted)
     {
         float balanceValue = self.bnWallet.balance.floatValue;
-        balanceSubtitle = [NSString stringWithFormat:@"%.4f BTC", balanceValue];
+        balanceSubtitle = [NSString stringWithFormat:@"%.4f BTC", balanceValue*0.00000001];
     }
     else
     {
