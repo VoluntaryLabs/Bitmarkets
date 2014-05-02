@@ -13,8 +13,6 @@
 #import "MKRegion.h"
 #import "MKCategory.h"
 
-#import "MKWallet.h"
-
 #import "MKBuys.h"
 #import "MKBuy.h"
 

@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import <NavKit/NavKit.h>
+#import <BitnashKit/BitnashKit.h>
 #import <BitmessageKit/BitmessageKit.h>
 
 #import "MKMarkets.h"
