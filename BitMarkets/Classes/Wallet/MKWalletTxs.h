@@ -1,5 +1,5 @@
 //
-//  MKWalletTx.h
+//  MKWalletTxs.h
 //  BitMarkets
 //
 //  Created by Steve Dekorte on 5/1/14.
@@ -7,11 +7,7 @@
 //
 
 #import <NavKit/NavKit.h>
-#import <BitNashKit/BitNashKit.h>
 
-
-@interface MKWalletTx : NavInfoNode
-
-@property (strong, nonatomic) BNTx *bnTx;
+@interface MKWalletTxs : NavInfoNode
 
 @end

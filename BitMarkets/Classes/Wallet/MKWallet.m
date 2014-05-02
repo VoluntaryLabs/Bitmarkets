@@ -47,30 +47,30 @@
 {
     self.shouldSortChildren = NO;
     
+    /*
     {
         _balance = [[NavInfoNode alloc] init];
-        [self addChild:_balance];
+        //[self addChild:_balance];
         _balance.nodeTitle = @"Balance";
         _balance.nodeSubtitle = @"(unavailable)";
         _balance.nodeSuggestedWidth = 200;
     }
+    */
     
     {
         _transactions = [[NavInfoNode alloc] init];
         [self addChild:_transactions];
         _transactions.nodeTitle = @"Transactions";
-        //_transactions.nodeSubtitle =  @"(unavailable)";
-        //transactions.nodeNote =  @"0";
-        _transactions.nodeSuggestedWidth = 200;
+        _transactions.nodeSuggestedWidth = 510;
         _transactions.shouldUseCountForNodeNote = YES;
         
-        for (id tx in _bnWallet.transactions)
+        for (BNTx *bnTx in _bnWallet.transactions)
         {
-            NSLog(@"tx %@", tx);
+            NSLog(@"tx %@", bnTx);
 
             MKWalletTx *mkTx = [[MKWalletTx alloc] init];
-            //mkAddress.address = address;
-            [_addresses addChild:mkTx];
+            mkTx.bnTx = bnTx;
+            [_transactions addChild:mkTx];
         }
     }
 
@@ -134,8 +134,8 @@
         balanceSubtitle = @"starting...";
     }
 
-    _balance.nodeSubtitle = balanceSubtitle;
-    [_balance postParentChanged];
+    //_balance.nodeSubtitle = balanceSubtitle;
+    //[_balance postParentChanged];
     
     self.nodeSubtitle = balanceSubtitle;
     [self postParentChanged];

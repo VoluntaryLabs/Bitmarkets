@@ -13,6 +13,7 @@
 		AA095A95191309C7001CF1F1 /* MKPost.m in Sources */ = {isa = PBXBuildFile; fileRef = AA095A94191309C7001CF1F1 /* MKPost.m */; };
 		AA095AA2191309E3001CF1F1 /* MKPostView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA095AA1191309E3001CF1F1 /* MKPostView.m */; };
 		AA095AA519131331001CF1F1 /* MKWalletTx.m in Sources */ = {isa = PBXBuildFile; fileRef = AA095AA419131331001CF1F1 /* MKWalletTx.m */; };
+		AA095AA819131EB7001CF1F1 /* MKWalletTxs.m in Sources */ = {isa = PBXBuildFile; fileRef = AA095AA719131EB7001CF1F1 /* MKWalletTxs.m */; };
 		AA0E585118FDC0880095DEBD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA0E585018FDC0880095DEBD /* Cocoa.framework */; };
 		AA0E585B18FDC0880095DEBD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA0E585918FDC0880095DEBD /* InfoPlist.strings */; };
 		AA0E585D18FDC0880095DEBD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0E585C18FDC0880095DEBD /* main.m */; };
@@ -200,6 +201,8 @@
 		AA095AA1191309E3001CF1F1 /* MKPostView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKPostView.m; sourceTree = "<group>"; };
 		AA095AA319131331001CF1F1 /* MKWalletTx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKWalletTx.h; sourceTree = "<group>"; };
 		AA095AA419131331001CF1F1 /* MKWalletTx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKWalletTx.m; sourceTree = "<group>"; };
+		AA095AA619131EB7001CF1F1 /* MKWalletTxs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKWalletTxs.h; sourceTree = "<group>"; };
+		AA095AA719131EB7001CF1F1 /* MKWalletTxs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKWalletTxs.m; sourceTree = "<group>"; };
 		AA0E584D18FDC0880095DEBD /* BitMarkets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitMarkets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA0E585018FDC0880095DEBD /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		AA0E585318FDC0880095DEBD /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -518,6 +521,8 @@
 				AA753D9619105C7600D07CB5 /* MKWalletAddresses.m */,
 				AA753D9819105C9800D07CB5 /* MKWalletAddress.h */,
 				AA753D9919105C9800D07CB5 /* MKWalletAddress.m */,
+				AA095AA619131EB7001CF1F1 /* MKWalletTxs.h */,
+				AA095AA719131EB7001CF1F1 /* MKWalletTxs.m */,
 				AA095AA319131331001CF1F1 /* MKWalletTx.h */,
 				AA095AA419131331001CF1F1 /* MKWalletTx.m */,
 			);
@@ -853,6 +858,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA095AA819131EB7001CF1F1 /* MKWalletTxs.m in Sources */,
 				AA0E585D18FDC0880095DEBD /* main.m in Sources */,
 				AA753D9419105C4A00D07CB5 /* MKWallet.m in Sources */,
 				AAA2E6AE19006F0A0098C357 /* MKRegion.m in Sources */,

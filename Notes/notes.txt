@@ -1,6 +1,6 @@
 
-- implement recursive isDirty and clean methods on NavNode
 
+- attach bmid to post so delete can delete the message
 - check inbox for direct messages (bids, etc)
 - persist Buys and Sells
 

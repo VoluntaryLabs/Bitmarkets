@@ -28,7 +28,6 @@
     self.address = self.wallet.bnWallet.createAddress;
 }
 
-
 - (MKWallet *)wallet
 {
     return MKRootNode.sharedMKRootNode.wallet;
