@@ -63,7 +63,7 @@
 		AA753D9419105C4A00D07CB5 /* MKWallet.m in Sources */ = {isa = PBXBuildFile; fileRef = AA753D9319105C4A00D07CB5 /* MKWallet.m */; };
 		AA753D9719105C7600D07CB5 /* MKWalletAddresses.m in Sources */ = {isa = PBXBuildFile; fileRef = AA753D9619105C7600D07CB5 /* MKWalletAddresses.m */; };
 		AA753D9A19105C9800D07CB5 /* MKWalletAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = AA753D9919105C9800D07CB5 /* MKWalletAddress.m */; };
-		AA753D9D1910779800D07CB5 /* MKWalletAddressView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA753D9C1910779800D07CB5 /* MKWalletAddressView.m */; };
+		AA753D9D1910779800D07CB5 /* BNKeyView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA753D9C1910779800D07CB5 /* BNKeyView.m */; };
 		AA9227081905F94900C3D9D7 /* categories.json in Resources */ = {isa = PBXBuildFile; fileRef = AA9226F61905F94900C3D9D7 /* categories.json */; };
 		AA9227171905F94900C3D9D7 /* regions.json in Resources */ = {isa = PBXBuildFile; fileRef = AA9227071905F94900C3D9D7 /* regions.json */; };
 		AA92271A1905F9C000C3D9D7 /* themes.json in Resources */ = {isa = PBXBuildFile; fileRef = AA9227191905F9C000C3D9D7 /* themes.json */; };
@@ -274,8 +274,8 @@
 		AA753D9619105C7600D07CB5 /* MKWalletAddresses.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKWalletAddresses.m; sourceTree = "<group>"; };
 		AA753D9819105C9800D07CB5 /* MKWalletAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKWalletAddress.h; sourceTree = "<group>"; };
 		AA753D9919105C9800D07CB5 /* MKWalletAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKWalletAddress.m; sourceTree = "<group>"; };
-		AA753D9B1910779800D07CB5 /* MKWalletAddressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKWalletAddressView.h; sourceTree = "<group>"; };
-		AA753D9C1910779800D07CB5 /* MKWalletAddressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKWalletAddressView.m; sourceTree = "<group>"; };
+		AA753D9B1910779800D07CB5 /* BNKeyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNKeyView.h; sourceTree = "<group>"; };
+		AA753D9C1910779800D07CB5 /* BNKeyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNKeyView.m; sourceTree = "<group>"; };
 		AA9226E61905F88200C3D9D7 /* NavNodeKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = NavNodeKit.xcodeproj; path = ../NavNodeKit/NavNodeKit.xcodeproj; sourceTree = "<group>"; };
 		AA9226F61905F94900C3D9D7 /* categories.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = categories.json; sourceTree = "<group>"; };
 		AA9227071905F94900C3D9D7 /* regions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = regions.json; sourceTree = "<group>"; };
@@ -625,8 +625,8 @@
 				AA095AA1191309E3001CF1F1 /* MKPostView.m */,
 				AA4A0DD919086A3400AB78D0 /* MKTextView.h */,
 				AA4A0DDA19086A3400AB78D0 /* MKTextView.m */,
-				AA753D9B1910779800D07CB5 /* MKWalletAddressView.h */,
-				AA753D9C1910779800D07CB5 /* MKWalletAddressView.m */,
+				AA753D9B1910779800D07CB5 /* BNKeyView.h */,
+				AA753D9C1910779800D07CB5 /* BNKeyView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -876,7 +876,7 @@
 				AAA2E6AC19006F0A0098C357 /* MKCategory.m in Sources */,
 				AA753D9719105C7600D07CB5 /* MKWalletAddresses.m in Sources */,
 				AAA2E6AD19006F0A0098C357 /* MKGroup.m in Sources */,
-				AA753D9D1910779800D07CB5 /* MKWalletAddressView.m in Sources */,
+				AA753D9D1910779800D07CB5 /* BNKeyView.m in Sources */,
 				AAA2E6BB19006F0A0098C357 /* MKSellView.m in Sources */,
 				AAA2E6B519006F0A0098C357 /* MKSell.m in Sources */,
 				AAA2E6B119006F0A0098C357 /* MKBuy.m in Sources */,

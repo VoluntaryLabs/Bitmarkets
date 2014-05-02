@@ -9,9 +9,9 @@
 #import <Cocoa/Cocoa.h>
 #import "MKWalletAddress.h"
 
-@interface MKWalletAddressView : NSView
+@interface BNKeyView : NSView
 
-@property (strong, nonatomic) MKWalletAddress *node;
+@property (strong, nonatomic) BNKey *node;
 @property (strong, nonatomic) NavView *navView;
 @property (strong, nonatomic) NSImageView *qrCodeImageView;
 @property (strong, nonatomic) NSTextView *qrCodeTextView;

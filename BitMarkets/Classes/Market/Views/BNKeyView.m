@@ -8,9 +8,9 @@
 
 #import <BitnashKit/BitnashKit.h>
 #import <NavKit/NavKit.h>
-#import "MKWalletAddressView.h"
+#import "BNKeyView.h"
 
-@implementation MKWalletAddressView
+@implementation BNKeyView
 
 - (id)initWithFrame:(NSRect)frame
 {
@@ -38,11 +38,11 @@
     NSRectFill(dirtyRect);
 }
 
-- (void)setNode:(MKWalletAddress *)node
+- (void)setNode:(BNKey *)node
 {
     _node = node;
     
-    NSString *addressString = node.bnKey.address;
+    NSString *addressString = node.address;
     self.qrCodeImageView.image = [QRCodeGenerator qrImageForString:addressString imageSize:_qrWidth];
     self.qrCodeTextView.string = addressString;
     [_qrCodeTextView setThemePath:@"qr/address"];
