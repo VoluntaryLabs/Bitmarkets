@@ -25,13 +25,13 @@ operty NSMutableArray *inputs;
 {
     if (self.bnTx.netValue > 0)
     {
-        return @"deposit";
+        return @"Deposit";
     }
     
-    return @"withdraw";
+    return @"Withdraw";
 }
 
-- (NSString *)nodeTitle
+- (NSString *)nodeSubtitle
 {
     return self.bnTx.hash;
     //return [NSString stringWithFormat:@"%@", self.txTypeString];
@@ -43,9 +43,9 @@ operty NSMutableArray *inputs;
     //return [NSString stringWithFormat:@"%@...", [self.bnTx.hash substringToIndex:8]];
 }
 
-- (NSString *)nodeSubtitle
+- (NSString *)nodeTitle
 {
-    return [NSString stringWithFormat:@"%.4f BTC", (float)(self.bnTx.netValue.doubleValue * 0.00000001)];
+    return [NSString stringWithFormat:@"%@ of %.4f BTC", self.txTypeString, (float)(self.bnTx.netValue.doubleValue * 0.00000001)];
 }
 
 @end

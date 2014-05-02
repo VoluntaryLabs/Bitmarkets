@@ -14,18 +14,34 @@
 - (id)init
 {
     self = [super init];
-    //self.nodeSubtitle = @"balance unknown";
     return self;
 }
 
 - (NSString *)nodeTitle
 {
-    return self.address;
+    return self.bnKey.address;
+}
+
+- (NSString *)nodeSubtitle
+{
+    //NSDate *date = [NSDate dateWithTimeIntervalSince1970:(NSTimeInterval)self.bnKey.creationTime.doubleValue];
+
+    //return [NSString stringWithFormat:@"created %@ (%@)", [date itemDateString], self.bnKey.creationTime];
+
+    /*
+    return [self.bnKey.creationDate
+            descriptionWithCalendarFormat:@"%I:%M:%S %p  %b %d %Y" timeZone:nil
+            locale:[[NSUserDefaults standardUserDefaults] dictionaryRepresentation]];
+    */
+    
+    return [self.bnKey.creationDate
+            descriptionWithCalendarFormat:@"%Y %b %d %l:%M:%S %p" timeZone:nil
+            locale:[[NSUserDefaults standardUserDefaults] dictionaryRepresentation]];
 }
 
 - (void)generate
 {
-    self.address = self.wallet.bnWallet.createKey.address;
+    self.bnKey = self.wallet.bnWallet.createKey;
 }
 
 - (MKWallet *)wallet

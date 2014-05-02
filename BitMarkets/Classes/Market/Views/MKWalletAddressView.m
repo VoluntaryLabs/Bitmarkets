@@ -42,8 +42,9 @@
 {
     _node = node;
     
-    self.qrCodeImageView.image = [QRCodeGenerator qrImageForString:node.address imageSize:_qrWidth];
-    self.qrCodeTextView.string = node.address;
+    NSString *addressString = node.bnKey.address;
+    self.qrCodeImageView.image = [QRCodeGenerator qrImageForString:addressString imageSize:_qrWidth];
+    self.qrCodeTextView.string = addressString;
     [_qrCodeTextView setThemePath:@"qr/address"];
     [_qrCodeTextView setEditable:NO];
     

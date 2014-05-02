@@ -7,10 +7,11 @@
 //
 
 #import <NavKit/NavKit.h>
+#import <BitnashKit/BitnashKit.h>
 
 @interface MKWalletAddress : NavInfoNode
 
-@property (strong, nonatomic) NSString *address;
+@property (strong, nonatomic) BNKey *bnKey;
 
 - (void)generate;
 

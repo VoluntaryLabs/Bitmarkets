@@ -61,7 +61,7 @@
         _transactions = [[NavInfoNode alloc] init];
         [self addChild:_transactions];
         _transactions.nodeTitle = @"Transactions";
-        _transactions.nodeSuggestedWidth = 510;
+        _transactions.nodeSuggestedWidth = 480;
         _transactions.shouldUseCountForNodeNote = YES;
         
         for (BNTx *bnTx in _bnWallet.transactions)
@@ -84,7 +84,7 @@
         for (BNKey *key in _bnWallet.keys)
         {
             MKWalletAddress *mkAddress = [[MKWalletAddress alloc] init];
-            mkAddress.address = key.address;
+            mkAddress.bnKey = key;
             [_addresses addChild:mkAddress];
         }
     }
