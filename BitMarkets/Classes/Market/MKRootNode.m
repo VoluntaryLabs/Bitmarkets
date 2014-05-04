@@ -53,6 +53,7 @@ static MKRootNode *sharedMKRootNode = nil;
                                                attributes:nil
                                                     error:&error];
     [_wallet setPath:dataPath];
+    [_wallet setCheckpointsPath:[[NSBundle bundleForClass:[BNWallet class]] pathForResource:@"checkpoints-testnet" ofType:nil]];
     
     [self addChild:_wallet];
     
