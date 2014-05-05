@@ -13,11 +13,17 @@
 
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) JSONDB *db;
+@property (strong, nonatomic) NSMutableArray *dictPropertyNames;
 //@property (assign, nonatomic) NSInteger count;
 
 + (MKGroup *)rootInstance;
 
 - (void)setDict:(NSDictionary *)dict;
+- (NSDictionary *)dict;
+
+- (void)setPropertiesDict:(NSDictionary *)dict;
+- (NSDictionary *)propertiesDict;
+
 
 - (void)read;
 - (void)write;

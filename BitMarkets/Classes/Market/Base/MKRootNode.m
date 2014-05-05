@@ -42,19 +42,22 @@ static MKRootNode *sharedMKRootNode = nil;
         [self addChild:_markets.mkChannel];
     }
 
-    _wallet  = [[BNWallet alloc] init];
-    _wallet.refreshInterval = 5.0;
-    _wallet.deepRefreshes = YES;
-    _wallet.server.logsStderr = YES;
-    NSString *dataPath = [[[NSFileManager defaultManager] applicationSupportDirectory] stringByAppendingPathComponent:@"wallet"];
-    NSError *error;
-    [[NSFileManager defaultManager] createDirectoryAtPath:dataPath
-                              withIntermediateDirectories:YES
-                                               attributes:nil
-                                                    error:&error];
-    [_wallet setPath:dataPath];
+    if (NO)
+    {
+        _wallet  = [[BNWallet alloc] init];
+        _wallet.refreshInterval = 5.0;
+        _wallet.deepRefreshes = YES;
+        _wallet.server.logsStderr = YES;
+        NSString *dataPath = [[[NSFileManager defaultManager] applicationSupportDirectory] stringByAppendingPathComponent:@"wallet"];
+        NSError *error;
+        [[NSFileManager defaultManager] createDirectoryAtPath:dataPath
+                                  withIntermediateDirectories:YES
+                                                   attributes:nil
+                                                        error:&error];
+        [_wallet setPath:dataPath];
+        [self addChild:_wallet];
+    }
     
-    [self addChild:_wallet];
     
     _bmClient = [BMClient sharedBMClient];
     [[_bmClient identities] createFirstIdentityIfAbsent];

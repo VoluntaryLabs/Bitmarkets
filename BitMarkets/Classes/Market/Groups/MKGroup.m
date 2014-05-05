@@ -22,6 +22,7 @@
 - (id)init
 {
     self = [super init];
+    self.dictPropertyNames = [NSMutableArray array];
     //self.actions = [NSMutableArray arrayWithObjects:@"add", nil];
     //self.count = 0;
     return self;
@@ -64,6 +65,9 @@
     return obj;
 }
 
+// dict
+
+
 - (void)setDict:(NSDictionary *)dict
 {
     self.name = [dict objectForKey:@"name"];
@@ -103,12 +107,17 @@
         [self setChildren:children];
     }
     
+    [self setPropertiesDict:dict];
+    
     //[self sortChildren];
 }
 
 - (NSDictionary *)dict
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    
+    [dict addEntriesFromDictionary:self.propertiesDict];
+    
     [dict setObject:[NSStringFromClass(self.class) sansPrefix:@"MK"] forKey:@"_type"];
     if (self.name)
     {
@@ -129,6 +138,77 @@
     
     return dict;
 }
+
+// properties
+
+
+- (void)setPropertiesDict:(NSDictionary *)dict
+{
+    for (NSString *name in self.dictPropertyNames)
+    {
+        id value = [dict objectForKey:name];
+        [self setPropertyNamed:name to:value];
+    }
+}
+
+- (void)setPropertyNamed:(NSString *)aName to:aValue
+{
+    NSString *setterName = [NSString stringWithFormat:@"set%@:", aName.capitalisedFirstCharacterString];
+    SEL setterSelector = NSSelectorFromString(setterName);
+
+    if ([self respondsToSelector:setterSelector])
+    {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+        [self performSelector:setterSelector withObject:aValue];
+#pragma clang diagnostic pop
+    }
+    else
+    {
+        NSLog(@"no setter %@ found", setterName);
+    }
+    
+}
+
+- getPropertyNamed:(NSString *)aName
+{
+    SEL getterSelector = NSSelectorFromString(aName);
+    
+    if ([self respondsToSelector:getterSelector])
+    {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+        id value = [self performSelector:getterSelector withObject:nil];
+#pragma clang diagnostic pop
+        return value;
+    }
+    else
+    {
+        NSLog(@"no getter %@ found", aName);
+    }
+    
+    return nil;
+}
+
+- (NSDictionary *)propertiesDict
+{
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    
+    for (NSString *name in self.dictPropertyNames)
+    {
+        id value = [self getPropertyNamed:name];
+        
+        
+        if (value)
+        {
+            [dict setObject:value forKey:name];
+        }
+    }
+    
+    return dict;
+}
+
+// ------------------------
 
 - (CGFloat)nodeSuggestedWidth
 {
@@ -215,35 +295,5 @@
     
     return count;
 }
-
-// persistence
-
-/*
-- (JSONDB *)appSupportDb
-{
-    JSONDB *db = [[JSONDB alloc] init];
-    db.isInAppWrapper = YES;
-    db.name = @"Sells";
-    return db;
-}
-
-- (void)read
-{
-    JSONDB *db = self.appSupportDb;
-    [db read];
-    
-    if (db.dict)
-    {
-        [self setDict:db.dict];
-    }
-}
-
-- (void)write
-{
-    JSONDB *db = self.appSupportDb;
-    [db setDict:[NSMutableDictionary dictionaryWithDictionary:self.dict]];
-    [db write];
-}
-*/
 
 @end

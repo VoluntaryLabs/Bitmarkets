@@ -9,7 +9,7 @@
 #import <BitmessageKit/BitmessageKit.h>
 #import "MKSells.h"
 #import "MKSell.h"
-#import "MKMessage.h"
+#import "MKMsg.h"
 
 @implementation MKSells
 
@@ -53,9 +53,7 @@
 - (MKSell *)justAdd
 {
     MKSell *sell = [[MKSell alloc] init];
-    sell.isLocal = YES;
     [self addChild:sell];
-    [self write];
     return sell;
 }
 
@@ -72,7 +70,7 @@
     
     for (BMMessage *bmMessage in inboxMessages)
     {
-        MKMessage *mkMessage = [MKMessage withBMMessage:bmMessage];
+        //MKMessage *mkMessage = [MKMsg withBMMessage:bmMessage];
         
         //[MKMessage instance];
         

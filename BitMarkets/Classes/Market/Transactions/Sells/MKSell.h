@@ -1,15 +1,14 @@
 //
-//  BMDictView.h
+//  MKSell.h
 //  Bitmessage
 //
 //  Created by Steve Dekorte on 3/21/14.
 //  Copyright (c) 2014 Bitmarkets.org. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+#import <BitMessageKit/BitMessageKit.h>
+#import "MKTransaction.h"
 
-@interface BMDictView : NSView
-
-@property (strong, nonatomic) NSMutableDictionary *dict;
+@interface MKSell : MKTransaction
 
 @end

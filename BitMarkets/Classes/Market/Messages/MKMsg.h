@@ -12,7 +12,13 @@
 @interface MKMsg : MKGroup
 
 @property (strong, nonatomic) NSMutableDictionary *dict;
+@property (strong, nonatomic) BMMessage *bmMessage;
+@property (strong, nonatomic) NSString *msgid;
 
 + (MKMsg *)withBMMessage:(BMMessage *)bmMessage;
+
+- (BOOL)isValid;
+
+- (NSString *)classNameSansPrefix;
 
 @end

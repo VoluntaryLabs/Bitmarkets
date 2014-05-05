@@ -118,10 +118,13 @@
     MKSells *sells     = [markets sells];
     MKSell *sell       = [sells justAdd];
     
-    sell.regionPath = self.regionPath;
-    sell.categoryPath = self.categoryPath;
+    MKPost *mkPost = sell.mkPost;
     
-    [self.navView selectNodePath:sell.nodePathArray];
+    NSLog(@"self.regionPath = %@", self.regionPath);
+    mkPost.regionPath   = self.regionPath;
+    mkPost.categoryPath = self.categoryPath;
+    
+    [self.navView selectNodePath:mkPost.nodePathArray];
 
     
     //NSArray *nodes = [NSArray arrayWithObjects:root, markets, sells, sell, nil];

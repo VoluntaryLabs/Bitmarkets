@@ -1,13 +1,48 @@
 //
-//  MKPostView.h
-//  BitMarkets
+//  BMAddressedView.h
+//  Bitmessage
 //
-//  Created by Steve Dekorte on 5/1/14.
-//  Copyright (c) 2014 voluntary.net. All rights reserved.
+//  Created by Steve Dekorte on 2/21/14.
+//  Copyright (c) 2014 Bitmarkets.org. All rights reserved.
 //
 
-#import "MKSellView.h"
+#import <Cocoa/Cocoa.h>
+#import <NavKit/NavKit.h>
+#import "MKSell.h"
+#import "MKTextView.h"
 
-@interface MKPostView : MKSellView
+@interface MKPostView : NSView <NSTextViewDelegate>
+
+@property (assign, nonatomic) NavView *navView;
+@property (assign, nonatomic) NavNode *node;
+
+@property (strong, nonatomic) MKTextView *title;
+//@property (strong, nonatomic) IBOutlet NSTextView *quantity;
+@property (strong, nonatomic) MKTextView *price;
+@property (strong, nonatomic) NavRoundButtonView *postOrBuyButton;
+
+@property (strong, nonatomic) NavColoredView *separator;
+
+@property (strong, nonatomic) MKTextView *description;
+
+@property (strong, nonatomic) NSImageView *regionIcon;
+@property (strong, nonatomic) NSTextView *region;
+
+@property (strong, nonatomic) NSImageView *categoryIcon;
+@property (strong, nonatomic) NSTextView *category;
+
+@property (strong, nonatomic) NSImageView *fromAddressIcon;
+@property (strong, nonatomic) NSTextView *fromAddress;
+
+@property (strong, nonatomic) NSImageView *attachedImage;
+
+@property (assign, nonatomic) BOOL isUpdating;
+
+- (MKSell *)sell;
+
+- (void)prepareToDisplay;
+- (void)selectFirstResponder;
+
+- (void)setEditable:(BOOL)isEditable;
 
 @end

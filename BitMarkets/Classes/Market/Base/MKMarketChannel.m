@@ -8,7 +8,7 @@
 
 #import "MKMarketChannel.h"
 #import <BitMessageKit/BitMessageKit.h>
-#import "MKMessage.h"
+#import "MKMsg.h"
 #import "MKSell.h"
 
 @implementation MKMarketChannel
@@ -54,54 +54,36 @@
 {
     // just make sure this is in the fetch chain from BMClient?
     //[[[BMClient sharedBMClient] channels] fetch];
-    //
-    // 1. run through messages
-    //
-    // 2. turn valid ones to children as MKMessage objects
-    //    (need to add persisted user initiated sells?)
-    //
-    // 3. add asks to appropriate categories (hand to markets?)
-    //
-    // 4. add non-asks under their asks
-    //
 
-    NSArray *messages = self.channel.children;
-    NSMutableArray *messagesToDelete = [NSMutableArray array];
+    NSArray *messages = self.channel.children.copy;
+    NSMutableArray *newChildren = [NSMutableArray array];
     
-    for (BMReceivedMessage *bmMessage in messages)
+    for (BMReceivedMessage *bmMsg in messages)
     {
-        MKMessage *mkMessage = [MKMessage withBMMessage:bmMessage];
+        MKPostMsg *msg = (MKPostMsg *)[MKMsg withBMMessage:bmMsg];
         
-        if (mkMessage)
+        //[bmMsg delete]; continue;
+        
+        if (msg && [msg isKindOfClass:MKPostMsg.class])
         {
-            [self.validMessages addChild:bmMessage];
+            MKPost *mkPost = [msg mkPost];
+            BOOL couldPlace = [mkPost placeInMarketsPath]; // deals with merging?
+            if (couldPlace)
+            {
+                [newChildren addObject:mkPost];
+            }
+            else
+            {
+                [bmMsg delete];
+            }
         }
         else
         {
-            [messagesToDelete addObject:bmMessage];
+            //[bmMsg delete];
             continue;
         }
         
-        MKSell *instance = [mkMessage instance];
-        if ([instance isKindOfClass:MKSell.class])
-        {
-            [self.allAsks addChild:instance];
-        }
-    }
-    
-    for (MKSell *sell in self.allAsks.children)
-    {
-        [sell findStatus];
-        if (![sell placeInMarketsPath])
-        {
-            //[messagesToDelete addChild:sell.bmMessage];
-        }
-    }
-    
-    for (BMMessage *message in messagesToDelete)
-    {
-        NSLog(@"deleteing invalid message %@", message);
-        [message delete];
+        //[self.allAsks mergeWithChildren:newChildren];
     }
 }
 
