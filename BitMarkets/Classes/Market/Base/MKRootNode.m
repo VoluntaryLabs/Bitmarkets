@@ -42,7 +42,7 @@ static MKRootNode *sharedMKRootNode = nil;
         [self addChild:_markets.mkChannel];
     }
 
-    if (NO)
+    if (YES)
     {
         _wallet  = [[BNWallet alloc] init];
         _wallet.refreshInterval = 5.0;
@@ -55,10 +55,12 @@ static MKRootNode *sharedMKRootNode = nil;
                                                    attributes:nil
                                                         error:&error];
         [_wallet setPath:dataPath];
+        [_wallet setCheckpointsPath:[[NSBundle bundleForClass:[BNWallet class]] pathForResource:@"checkpoints-testnet" ofType:nil]];
+        
         [self addChild:_wallet];
     }
-    
-    
+
+
     _bmClient = [BMClient sharedBMClient];
     [[_bmClient identities] createFirstIdentityIfAbsent];
     
