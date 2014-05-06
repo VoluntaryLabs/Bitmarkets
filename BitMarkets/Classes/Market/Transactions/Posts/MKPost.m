@@ -8,6 +8,7 @@
 
 #import "MKPost.h"
 #import "MKPostMsg.h"
+#import "MKBidMsg.h"
 #import "MKSell.h"
 #import "MKRootNode.h"
 
@@ -18,7 +19,7 @@
     self = [super init];
     self.date = [NSDate date];
     
-    self.uuid = [[NSUUID UUID] UUIDString];
+    self.postUuid = [[NSUUID UUID] UUIDString];
     
     self.title = @"";
     self.price = @0;
@@ -34,7 +35,7 @@
     self.nodeSuggestedWidth = 150;
     
     [self.dictPropertyNames addObjectsFromArray:@[
-     @"uuid",
+     @"postUuid",
      @"status",
      @"title",
      @"price",
@@ -44,6 +45,25 @@
      ];
     
     return self;
+}
+
+// equality
+
+- (NSUInteger)hash
+{
+    return self.postUuid.hash;
+}
+
+- (BOOL)isEqual:(id)object
+{
+    if ([object isKindOfClass:self.class])
+    {
+        MKPost *otherPost = object;
+        BOOL isEqual = [self.postUuid isEqualToString:otherPost.postUuid];
+        return isEqual;
+    }
+    
+    return YES;
 }
 
 
@@ -84,10 +104,17 @@
     return nil;
 }
 
-- (void)setFromPostMsg:(MKPostMsg *)postMsg
+- (NSString *)titleOrDefault
 {
+    if (self.title && self.title.length)
+    {
+        return self.title;
+    }
     
+    return @"Untitled Post";
 }
+
+// ----------
 
 - (void)setPropertiesDict:(NSDictionary *)dict
 {
@@ -137,9 +164,21 @@
     }
 }
 
+// -----------------------------
+
+- (void)copy:(MKPost *)aPost
+{
+    [self setPropertiesDict:aPost.propertiesDict];
+}
+
+- (NSView *)nodeView
+{
+    return [super nodeView];
+}
+
 // actions
 
-- (void)post
+- (void)sendPostMsg
 {
     MKPostMsg *postMsg = [[MKPostMsg alloc] init];
     [postMsg sendPost:self];
@@ -148,24 +187,12 @@
     [self postParentChanged];
 }
 
-- (void)copy:(MKPost *)aPost
+- (void)sendBidMsg
 {
-    [self setPropertiesDict:aPost.propertiesDict];
-}
-
-- (NSString *)titleOrDefault
-{
-    if (self.title && self.title.length)
-    {
-        return self.title;
-    }
-    
-    return @"Untitled Post";
-}
-
-- (NSView *)nodeView
-{
-    return [super nodeView];
+    MKBidMsg *bidMsg = [[MKBidMsg alloc] init];
+    [bidMsg setupForPost:self];
+    [bidMsg send];
+    [MKRootNode.sharedMKRootNode.markets handleMsg:bidMsg];
 }
 
 @end

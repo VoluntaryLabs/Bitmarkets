@@ -16,4 +16,6 @@
 @property (strong, nonatomic) MKPost *mkPost;
 @property (strong, nonatomic) MKMessages *messages;
 
+- (BOOL)handleMsg:(MKMsg *)mkMsg;
+
 @end

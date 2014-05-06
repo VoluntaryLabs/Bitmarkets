@@ -17,7 +17,6 @@
 {
     self = [super init];
     self.shouldUseCountForNodeNote = YES;
-    [self performSelector:@selector(update) withObject:nil afterDelay:0.0];
     return self;
 }
 
@@ -62,24 +61,17 @@
     [self justAdd];
 }
 
-// dict
-
-- (void)update
+- (BOOL)handleMsg:(MKMsg *)mkMsg
 {
-    NSArray *inboxMessages = BMClient.sharedBMClient.messages.received.children;
-    
-    for (BMMessage *bmMessage in inboxMessages)
+    for (MKTransaction *child in self.children)
     {
-        //MKMessage *mkMessage = [MKMsg withBMMessage:bmMessage];
-        
-        //[MKMessage instance];
-        
-        // delete  messages which are invalid or have no matching buy/sell
-        //
+        if ([child handleMsg:mkMsg])
+        {
+            return YES;
+        }
     }
     
-    [self performSelector:@selector(update) withObject:nil afterDelay:10.0];
+    return NO;
 }
-
 
 @end

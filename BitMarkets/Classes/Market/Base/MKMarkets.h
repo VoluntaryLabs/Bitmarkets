@@ -31,6 +31,6 @@
 @property (strong, nonatomic) MKSells *sells;
 
 
-//- (void)addMKMessage:(MKMessage *)
+- (BOOL)handleMsg:(MKMsg *)mkMsg;
 
 @end

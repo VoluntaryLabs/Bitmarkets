@@ -75,4 +75,22 @@
     //return [NSString stringWithFormat:@"last message:", msg.nodeTitle];
 }
 
+- (BOOL)handleMsg:(MKMsg *)msg
+{
+    if ([self.mkPost.postUuid isEqualToString:msg.postUuid])
+    {
+        return [self insertMsg:msg];
+    }
+    
+    return NO;
+}
+
+- (BOOL)insertMsg:(MKMsg *)msg
+{
+    [self.messages addChild:msg];
+    NSLog(@"children %i self.messages %p", (int)self.messages.children.count, (__bridge void *)self.messages);
+    return YES;
+}
+
+
 @end

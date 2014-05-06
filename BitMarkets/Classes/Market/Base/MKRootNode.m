@@ -39,10 +39,10 @@ static MKRootNode *sharedMKRootNode = nil;
         [self addChild:_markets.rootRegion];
         [self addChild:_markets.buys];
         [self addChild:_markets.sells];
-        [self addChild:_markets.mkChannel];
+        //[self addChild:_markets.mkChannel];
     }
 
-    if (YES)
+    if (NO)
     {
         _wallet  = [[BNWallet alloc] init];
         _wallet.refreshInterval = 5.0;

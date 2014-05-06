@@ -13,5 +13,5 @@
 @interface MKBuys : MKGroup
 
 - (MKBuy *)addBuy;
-
+- (BOOL)handleMsg:(MKMsg *)mkMsg;
 @end

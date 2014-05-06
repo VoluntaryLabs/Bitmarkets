@@ -51,4 +51,12 @@
     return self;
 }
 
+- (BOOL)handleMsg:(MKMsg *)msg
+{
+    BOOL sellHandled = [self.sells handleMsg:msg];
+    BOOL buyHandled  = [self.buys  handleMsg:msg];
+    return sellHandled || buyHandled;
+}
+
+
 @end

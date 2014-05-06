@@ -397,7 +397,7 @@
         return;
     }
     
-    [self.mkPost post];
+    [self.mkPost sendPostMsg];
     [self updateButton];
     [self setEditable:NO];
 }
@@ -409,34 +409,18 @@
     MKBuy *buy = MKRootNode.sharedMKRootNode.markets.buys.addBuy;
     [buy.mkPost copy:self.mkPost];
     
-    [MKRootNode.sharedMKRootNode.markets.buys write];
-    //[mkPost sendBidMsg];
+    [buy.mkPost sendBidMsg];
     
     NSLog(@"path = %@", buy.nodePathArray);
     [self.navView selectNodePath:buy.nodePathArray];
+
+    [MKRootNode.sharedMKRootNode.markets.buys write];
     
 
     // compose escrow
     // check for funds in wallet
     // request funds if needed and cancel
     // post BuyerEscrow
-    
-    /*
-    
-    MKRootNode *root   = [MKRootNode sharedMKRootNode];
-    MKMarkets *markets = [root markets];
-    MKSells *buys     = [markets buys];
-    MKSell *sell       = [sells justAdd];
-    
-    //NSLog(@"%@", self.groupPath);
-    
-    sell.regionPath = self.regionPath;
-    sell.categoryPath = self.categoryPath;
-    
-    //NSArray *nodes = [NSArray arrayWithObjects:root, markets, sells, sell, nil];
-    NSArray *nodes = [NSArray arrayWithObjects:root, sells, sell, nil];
-    */
-    
     
     //[self.mkSell post];
 }

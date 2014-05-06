@@ -18,7 +18,15 @@
 + (MKMsg *)withBMMessage:(BMMessage *)bmMessage;
 
 - (BOOL)isValid;
+- (NSString *)myAddress;
 
 - (NSString *)classNameSansPrefix;
+
+- (NSString *)subject;
+- (NSString *)postUuid;
+- (NSString *)sellerAddress;
+- (NSString *)buyerAddress;
+
+- (BOOL)send;
 
 @end

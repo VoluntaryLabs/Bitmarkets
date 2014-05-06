@@ -10,6 +10,8 @@
 #import <BitMessageKit/BitMessageKit.h>
 #import "MKMsg.h"
 #import "MKSell.h"
+#import "MKMarkets.h"
+#import "MKRootNode.h"
 
 @implementation MKMarketChannel
 
@@ -85,6 +87,27 @@
         
         //[self.allAsks mergeWithChildren:newChildren];
     }
+    [self fetchDirectMessages];
+    
+    [self performSelector:@selector(fetch) withObject:self afterDelay:5.0];
+}
+
+
+- (void)fetchDirectMessages
+{
+    NSArray *inboxMessages = BMClient.sharedBMClient.messages.received.children;
+    MKMarkets *markets = MKRootNode.sharedMKRootNode.markets;
+    
+    for (BMMessage *bmMessage in inboxMessages)
+    {
+        MKMsg *msg = [MKMsg withBMMessage:bmMessage];
+        BOOL didHandle = [markets handleMsg:msg];
+        
+        if (!didHandle)
+        {
+            //[bmMessage delete];
+        }
+    }    
 }
 
 

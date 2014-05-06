@@ -18,7 +18,7 @@
 
 // msg properties
 
-@property (strong, nonatomic) NSString *uuid;
+@property (strong, nonatomic) NSString *postUuid;
 
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) NSNumber *price;
@@ -31,13 +31,21 @@
 - (BOOL)isEditable;
 - (BOOL)canBuy;
 
-- (void)setFromPostMsg:(MKPostMsg *)postMsg;
-
 - (BOOL)placeInMarketsPath;
-- (void)post;
 
 - (void)copy:(MKPost *)aPost;
-
 - (NSString *)titleOrDefault;
+
+// messages
+
+- (void)sendPostMsg;
+- (void)sendBidMsg;
+
+// equality
+
+- (NSUInteger)hash;
+- (BOOL)isEqual:(id)object;
+
+
 
 @end

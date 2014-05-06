@@ -58,4 +58,10 @@
     return buy;
 }
 
+- (BOOL)handleMsg:(MKMsg *)mkMsg
+{
+
+    return NO;
+}
+
 @end

@@ -7,7 +7,10 @@
 //
 
 #import "MKMsg.h"
+#import "MKPost.h"
 
 @interface MKBidMsg : MKMsg
+
+- (void)setupForPost:(MKPost *)mkPost;
 
 @end

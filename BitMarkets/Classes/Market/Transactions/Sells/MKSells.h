@@ -14,9 +14,6 @@
 
 - (MKSell *)justAdd;
 
-/*
-- (void)load;
-- (void)save;
-*/
+- (BOOL)handleMsg:(MKMsg *)mkMsg;
 
 @end
