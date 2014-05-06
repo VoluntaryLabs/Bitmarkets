@@ -77,6 +77,8 @@
 
 - (BOOL)handleMsg:(MKMsg *)msg
 {
+    //NSLog(@"%@ handleMsg: %@", self.className, msg.postUuid);
+    
     if ([self.mkPost.postUuid isEqualToString:msg.postUuid])
     {
         return [self insertMsg:msg];
@@ -88,7 +90,7 @@
 - (BOOL)insertMsg:(MKMsg *)msg
 {
     [self.messages addChild:msg];
-    NSLog(@"children %i self.messages %p", (int)self.messages.children.count, (__bridge void *)self.messages);
+    //NSLog(@"children %i self.messages %p", (int)self.messages.children.count, (__bridge void *)self.messages);
     return YES;
 }
 

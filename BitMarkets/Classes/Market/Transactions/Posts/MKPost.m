@@ -41,7 +41,8 @@
      @"price",
      @"description",
      @"regionPath",
-     @"categoryPath"]
+     @"categoryPath",
+     @"sellerAddress"]
      ];
     
     return self;
@@ -139,7 +140,7 @@
 {
     NavNode *root = MKRootNode.sharedMKRootNode.markets.rootRegion;
     NSArray *fullPath = self.fullPath;
-    NSLog(@"fullPath = '%@'", fullPath);
+    //NSLog(@"fullPath = '%@'", fullPath);
     
     if (fullPath.count == 0)
     {

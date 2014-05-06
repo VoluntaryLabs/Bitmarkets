@@ -141,7 +141,7 @@
     //[_description setHeight:100];
     [_description placeYBelow:_separator margin:30];
 
-    NSLog(@"_description.height = %i", (int)_description.height);
+    //NSLog(@"_description.height = %i", (int)_description.height);
     
     CGFloat descriptionMargin = 50;
     CGFloat iconMargin = 5;

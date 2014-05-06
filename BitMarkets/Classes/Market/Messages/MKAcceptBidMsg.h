@@ -1,5 +1,5 @@
 //
-//  MKLockEscrow1Msg.h
+//  MKAcceptBidMsg.h
 //  BitMarkets
 //
 //  Created by Steve Dekorte on 5/2/14.
@@ -8,6 +8,6 @@
 
 #import "MKMsg.h"
 
-@interface MKLockEscrow1Msg : MKMsg
+@interface MKAcceptBidMsg : MKMsg
 
 @end

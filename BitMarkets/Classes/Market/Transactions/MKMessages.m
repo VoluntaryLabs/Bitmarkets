@@ -13,7 +13,13 @@
 - (id)init
 {
     self = [super init];
+    //self.nodeSuggestedWidth = 500;
     return self;
+}
+
+- (CGFloat)nodeSuggestedWidth
+{
+    return 360;
 }
 
 - (NSString *)nodeTitle

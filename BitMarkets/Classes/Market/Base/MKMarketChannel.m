@@ -24,15 +24,13 @@
 {
     self = [super init];
     self.passphrase = @"bitmarkets";
-    self.allAsks = [[NavInfoNode alloc] init];
-    self.allAsks.nodeSuggestedWidth = 250;
-    [self.allAsks setNodeTitle:@"Sells"];
-    [self addChild:self.allAsks];
     
+    /*
     self.validMessages = [[NavInfoNode alloc] init];
     [self.validMessages setNodeTitle:@"Messages"];
     self.validMessages.nodeSuggestedWidth = 250;
     [self addChild:self.validMessages];
+    */
     
     return self;
 }
@@ -72,6 +70,7 @@
             BOOL couldPlace = [mkPost placeInMarketsPath]; // deals with merging?
             if (couldPlace)
             {
+                //NSLog(@"placing post '%@'", mkPost.title);
                 [newChildren addObject:mkPost];
             }
             else
@@ -84,18 +83,25 @@
             //[bmMsg delete];
             continue;
         }
-        
-        //[self.allAsks mergeWithChildren:newChildren];
     }
+    
     [self fetchDirectMessages];
     
     [self performSelector:@selector(fetch) withObject:self afterDelay:5.0];
 }
 
-
 - (void)fetchDirectMessages
 {
-    NSArray *inboxMessages = BMClient.sharedBMClient.messages.received.children;
+    NSArray *inboxMessages = BMClient.sharedBMClient.messages.received.children.copy;
+    [self handleBMMessages:inboxMessages];
+    
+    NSArray *sentMessages = BMClient.sharedBMClient.messages.sent.children.copy;
+    [self handleBMMessages:sentMessages];
+}
+
+- (void)handleBMMessages:(NSArray *)bmMessages
+{
+    NSArray *inboxMessages = BMClient.sharedBMClient.messages.received.children.copy;
     MKMarkets *markets = MKRootNode.sharedMKRootNode.markets;
     
     for (BMMessage *bmMessage in inboxMessages)
@@ -105,10 +111,14 @@
         
         if (!didHandle)
         {
-            //[bmMessage delete];
+            NSLog(@"can't place msg '%@' for thread '%@'", msg.className, msg.postUuid);
+            [bmMessage delete];
         }
-    }    
+        else
+        {
+            //NSLog(@"placed msg '%@' for thread '%@'", msg.className, msg.postUuid);
+        }
+    }
 }
-
 
 @end

@@ -11,6 +11,17 @@
 
 @implementation MKBidMsg
 
+- (NSString *)nodeTitle
+{
+    return @"Bid";
+    //return [NSString stringWithFormat:@"Bid from %@", self.sellerAddress];
+}
+
+- (NSString *)nodeSubtitle
+{
+    return [NSString stringWithFormat:@"from %@", self.sellerAddress];
+}
+
 - (void)setupForPost:(MKPost *)mkPost
 {
     [self.dict removeAllObjects];

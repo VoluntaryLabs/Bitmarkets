@@ -41,7 +41,7 @@
     
     NSObject *firstChild = self.children.firstObject;
     
-    if ([firstChild isKindOfClass:MKSell.class])
+    if (![firstChild isKindOfClass:MKCategory.class])
     {
         return YES;
     }

@@ -36,7 +36,7 @@
 		AA56E7841914555200DC3320 /* MKMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AA56E7831914555200DC3320 /* MKMsg.m */; };
 		AA56E7871914556E00DC3320 /* MKPostMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AA56E7861914556E00DC3320 /* MKPostMsg.m */; };
 		AA56E78A1914558000DC3320 /* MKBidMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AA56E7891914558000DC3320 /* MKBidMsg.m */; };
-		AA56E78D191455C900DC3320 /* MKLockEscrow1Msg.m in Sources */ = {isa = PBXBuildFile; fileRef = AA56E78C191455C900DC3320 /* MKLockEscrow1Msg.m */; };
+		AA56E78D191455C900DC3320 /* MKAcceptBidMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AA56E78C191455C900DC3320 /* MKAcceptBidMsg.m */; };
 		AA5DFD9E1909C83000383283 /* add_active.png in Resources */ = {isa = PBXBuildFile; fileRef = AA5DFD8F1909C83000383283 /* add_active.png */; };
 		AA5DFD9F1909C83000383283 /* add_inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = AA5DFD901909C83000383283 /* add_inactive.png */; };
 		AA5DFDA01909C83000383283 /* compose_active.png in Resources */ = {isa = PBXBuildFile; fileRef = AA5DFD911909C83000383283 /* compose_active.png */; };
@@ -81,6 +81,8 @@
 		AAA2E6AD19006F0A0098C357 /* MKGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA2E68919006F0A0098C357 /* MKGroup.m */; };
 		AAA2E6AE19006F0A0098C357 /* MKRegion.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA2E68B19006F0A0098C357 /* MKRegion.m */; };
 		AAA2E6BB19006F0A0098C357 /* MKPostView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA2E6A819006F0A0098C357 /* MKPostView.m */; };
+		AABB8C571919834200F6776A /* MKBidMsgView.m in Sources */ = {isa = PBXBuildFile; fileRef = AABB8C561919834200F6776A /* MKBidMsgView.m */; };
+		AABB8C5A1919836400F6776A /* MKAcceptBidView.m in Sources */ = {isa = PBXBuildFile; fileRef = AABB8C591919836400F6776A /* MKAcceptBidView.m */; };
 		DC350ECB191456B400C25A01 /* BNKeysNode+BM.m in Sources */ = {isa = PBXBuildFile; fileRef = DC350ECA191456B400C25A01 /* BNKeysNode+BM.m */; };
 /* End PBXBuildFile section */
 
@@ -236,8 +238,8 @@
 		AA56E7861914556E00DC3320 /* MKPostMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKPostMsg.m; sourceTree = "<group>"; };
 		AA56E7881914558000DC3320 /* MKBidMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKBidMsg.h; sourceTree = "<group>"; };
 		AA56E7891914558000DC3320 /* MKBidMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKBidMsg.m; sourceTree = "<group>"; };
-		AA56E78B191455C900DC3320 /* MKLockEscrow1Msg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKLockEscrow1Msg.h; sourceTree = "<group>"; };
-		AA56E78C191455C900DC3320 /* MKLockEscrow1Msg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKLockEscrow1Msg.m; sourceTree = "<group>"; };
+		AA56E78B191455C900DC3320 /* MKAcceptBidMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKAcceptBidMsg.h; sourceTree = "<group>"; };
+		AA56E78C191455C900DC3320 /* MKAcceptBidMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKAcceptBidMsg.m; sourceTree = "<group>"; };
 		AA5DFD8F1909C83000383283 /* add_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_active.png; sourceTree = "<group>"; };
 		AA5DFD901909C83000383283 /* add_inactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_inactive.png; sourceTree = "<group>"; };
 		AA5DFD911909C83000383283 /* compose_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compose_active.png; sourceTree = "<group>"; };
@@ -298,6 +300,10 @@
 		AAA2E68B19006F0A0098C357 /* MKRegion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKRegion.m; sourceTree = "<group>"; };
 		AAA2E6A719006F0A0098C357 /* MKPostView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKPostView.h; sourceTree = "<group>"; };
 		AAA2E6A819006F0A0098C357 /* MKPostView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKPostView.m; sourceTree = "<group>"; };
+		AABB8C551919834200F6776A /* MKBidMsgView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKBidMsgView.h; sourceTree = "<group>"; };
+		AABB8C561919834200F6776A /* MKBidMsgView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKBidMsgView.m; sourceTree = "<group>"; };
+		AABB8C581919836400F6776A /* MKAcceptBidView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKAcceptBidView.h; sourceTree = "<group>"; };
+		AABB8C591919836400F6776A /* MKAcceptBidView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKAcceptBidView.m; sourceTree = "<group>"; };
 		DC350EC9191456B400C25A01 /* BNKeysNode+BM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BNKeysNode+BM.h"; sourceTree = "<group>"; };
 		DC350ECA191456B400C25A01 /* BNKeysNode+BM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BNKeysNode+BM.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -652,8 +658,8 @@
 				AA56E7861914556E00DC3320 /* MKPostMsg.m */,
 				AA56E7881914558000DC3320 /* MKBidMsg.h */,
 				AA56E7891914558000DC3320 /* MKBidMsg.m */,
-				AA56E78B191455C900DC3320 /* MKLockEscrow1Msg.h */,
-				AA56E78C191455C900DC3320 /* MKLockEscrow1Msg.m */,
+				AA56E78B191455C900DC3320 /* MKAcceptBidMsg.h */,
+				AA56E78C191455C900DC3320 /* MKAcceptBidMsg.m */,
 			);
 			path = Messages;
 			sourceTree = "<group>";
@@ -663,6 +669,10 @@
 			children = (
 				AAA2E6A719006F0A0098C357 /* MKPostView.h */,
 				AAA2E6A819006F0A0098C357 /* MKPostView.m */,
+				AABB8C551919834200F6776A /* MKBidMsgView.h */,
+				AABB8C561919834200F6776A /* MKBidMsgView.m */,
+				AABB8C581919836400F6776A /* MKAcceptBidView.h */,
+				AABB8C591919836400F6776A /* MKAcceptBidView.m */,
 				AA4A0DD919086A3400AB78D0 /* MKTextView.h */,
 				AA4A0DDA19086A3400AB78D0 /* MKTextView.m */,
 				AA753D9B1910779800D07CB5 /* BNKeyView.h */,
@@ -898,6 +908,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AABB8C5A1919836400F6776A /* MKAcceptBidView.m in Sources */,
 				AA0E585D18FDC0880095DEBD /* main.m in Sources */,
 				AA955E171914775500F6FB0F /* MKMarketChannel.m in Sources */,
 				AA955E5E1914781300F6FB0F /* MKBuys.m in Sources */,
@@ -905,13 +916,14 @@
 				AA56E7871914556E00DC3320 /* MKPostMsg.m in Sources */,
 				AA955E5D1914781300F6FB0F /* MKBuy.m in Sources */,
 				DC350ECB191456B400C25A01 /* BNKeysNode+BM.m in Sources */,
-				AA56E78D191455C900DC3320 /* MKLockEscrow1Msg.m in Sources */,
+				AA56E78D191455C900DC3320 /* MKAcceptBidMsg.m in Sources */,
 				AA77F3F41915A0F10082306F /* MKTransaction.m in Sources */,
 				AA56E7841914555200DC3320 /* MKMsg.m in Sources */,
 				AA4A0DDB19086A3400AB78D0 /* MKTextView.m in Sources */,
 				AA955E5F1914781300F6FB0F /* MKPost.m in Sources */,
 				AA955E601914781300F6FB0F /* MKSell.m in Sources */,
 				AA0E586418FDC0880095DEBD /* MKAppDelegate.m in Sources */,
+				AABB8C571919834200F6776A /* MKBidMsgView.m in Sources */,
 				AA955E191914775500F6FB0F /* MKRootNode.m in Sources */,
 				AA955E611914781300F6FB0F /* MKSells.m in Sources */,
 				AAA2E6AC19006F0A0098C357 /* MKCategory.m in Sources */,
@@ -1044,7 +1056,6 @@
 		AA0E587F18FDC0890095DEBD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1062,7 +1073,6 @@
 		AA0E588018FDC0890095DEBD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
