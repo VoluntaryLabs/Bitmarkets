@@ -92,6 +92,7 @@
 		AABB8C741919B14C00F6776A /* MKSellDelivery.m in Sources */ = {isa = PBXBuildFile; fileRef = AABB8C731919B14C00F6776A /* MKSellDelivery.m */; };
 		AABB8C771919B15A00F6776A /* MKSellReleaseEscrow.m in Sources */ = {isa = PBXBuildFile; fileRef = AABB8C761919B15A00F6776A /* MKSellReleaseEscrow.m */; };
 		AABB8C7A1919C12A00F6776A /* MKSellBid.m in Sources */ = {isa = PBXBuildFile; fileRef = AABB8C791919C12A00F6776A /* MKSellBid.m */; };
+		AABB8C7D1919C56600F6776A /* MKRejectBidMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AABB8C7C1919C56600F6776A /* MKRejectBidMsg.m */; };
 		DC350ECB191456B400C25A01 /* BNKeysNode+BM.m in Sources */ = {isa = PBXBuildFile; fileRef = DC350ECA191456B400C25A01 /* BNKeysNode+BM.m */; };
 /* End PBXBuildFile section */
 
@@ -331,6 +332,8 @@
 		AABB8C761919B15A00F6776A /* MKSellReleaseEscrow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKSellReleaseEscrow.m; sourceTree = "<group>"; };
 		AABB8C781919C12A00F6776A /* MKSellBid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKSellBid.h; sourceTree = "<group>"; };
 		AABB8C791919C12A00F6776A /* MKSellBid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKSellBid.m; sourceTree = "<group>"; };
+		AABB8C7B1919C56600F6776A /* MKRejectBidMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKRejectBidMsg.h; sourceTree = "<group>"; };
+		AABB8C7C1919C56600F6776A /* MKRejectBidMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKRejectBidMsg.m; sourceTree = "<group>"; };
 		DC350EC9191456B400C25A01 /* BNKeysNode+BM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BNKeysNode+BM.h"; sourceTree = "<group>"; };
 		DC350ECA191456B400C25A01 /* BNKeysNode+BM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BNKeysNode+BM.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -689,6 +692,8 @@
 				AA56E7891914558000DC3320 /* MKBidMsg.m */,
 				AA56E78B191455C900DC3320 /* MKAcceptBidMsg.h */,
 				AA56E78C191455C900DC3320 /* MKAcceptBidMsg.m */,
+				AABB8C7B1919C56600F6776A /* MKRejectBidMsg.h */,
+				AABB8C7C1919C56600F6776A /* MKRejectBidMsg.m */,
 			);
 			path = Messages;
 			sourceTree = "<group>";
@@ -975,6 +980,7 @@
 				AA955E5E1914781300F6FB0F /* MKBuys.m in Sources */,
 				AABB8C7A1919C12A00F6776A /* MKSellBid.m in Sources */,
 				AAA2E6AE19006F0A0098C357 /* MKRegion.m in Sources */,
+				AABB8C7D1919C56600F6776A /* MKRejectBidMsg.m in Sources */,
 				AABB8C671919B10600F6776A /* MKBuyDelivery.m in Sources */,
 				AABB8C741919B14C00F6776A /* MKSellDelivery.m in Sources */,
 				AABB8C6E1919B13000F6776A /* MKSellBids.m in Sources */,
