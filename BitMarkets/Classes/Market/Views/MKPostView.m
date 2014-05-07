@@ -411,7 +411,7 @@
     
     [buy.mkPost sendBidMsg];
     
-    NSLog(@"path = %@", buy.nodePathArray);
+    //NSLog(@"path = %@", buy.nodePathArray);
     [self.navView selectNodePath:buy.nodePathArray];
 
     [MKRootNode.sharedMKRootNode.markets.buys write];

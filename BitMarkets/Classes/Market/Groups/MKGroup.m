@@ -124,6 +124,18 @@
         [dict setObject:self.name forKey:@"name"];
     }
     
+    NSArray *childrenDicts = self.childrenDicts;
+    
+    if (childrenDicts && childrenDicts.count)
+    {
+        [dict setObject:childrenDicts forKey:@"children"];
+    }
+    
+    return dict;
+}
+
+- (NSArray *)childrenDicts
+{
     NSMutableArray *childrenDicts = [NSMutableArray array];
     
     for (MKGroup *child in self.children)
@@ -131,12 +143,7 @@
         [childrenDicts addObject:[child dict]];
     }
     
-    if (childrenDicts.count)
-    {
-        [dict setObject:childrenDicts forKey:@"children"];
-    }
-    
-    return dict;
+    return childrenDicts;
 }
 
 // properties

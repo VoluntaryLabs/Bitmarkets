@@ -61,7 +61,7 @@
     [self justAdd];
 }
 
-- (BOOL)handleMsg:(MKMsg *)mkMsg
+- (BOOL)handleMsg:(MKMsg *)mkMsg // put in parent class of Buys and Sells
 {
     for (MKTransaction *child in self.children)
     {

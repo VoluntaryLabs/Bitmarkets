@@ -62,6 +62,14 @@
     return MKRootNode.sharedMKRootNode.markets.mkChannel.channel.address;
 }
 
+- (BOOL)isValid
+{
+    BOOL validUuid   = self.hasValidPostUuid;
+    BOOL validSeller = self.hasValidSellerAddress;
+    return validUuid && validSeller;
+}
+
+
 - (BOOL)send
 {
     BMMessage *m = [[BMMessage alloc] init];

@@ -8,13 +8,18 @@
 
 #import <FoundationCategoriesKit/FoundationCategoriesKit.h>
 #import "MKBidMsg.h"
+#import "MKRootNode.h"
 
 @implementation MKBidMsg
+
+- (NSArray *)modelActions
+{
+    return @[@"accept"];
+}
 
 - (NSString *)nodeTitle
 {
     return @"Bid";
-    //return [NSString stringWithFormat:@"Bid from %@", self.sellerAddress];
 }
 
 - (NSString *)nodeSubtitle
@@ -28,9 +33,9 @@
     [self.dict addEntriesFromDictionary:mkPost.propertiesDict];
     
     [self.dict setObject:self.classNameSansPrefix forKey:@"_type"];
-    [self.dict setObject:mkPost.postUuid forKey:@"postUuid"];
-    [self.dict setObject:mkPost.sellerAddress forKey:@"sellerAddress"];
-    [self.dict setObject:self.myAddress forKey:@"buyerAddress"];
+    [self.dict setObject:mkPost.postUuid          forKey:@"postUuid"];
+    [self.dict setObject:mkPost.sellerAddress     forKey:@"sellerAddress"];
+    [self.dict setObject:self.myAddress           forKey:@"buyerAddress"];
 }
 
 - (BOOL)send
@@ -38,13 +43,20 @@
     NSString *message = self.dict.asJsonString;
     
     BMMessage *m = [[BMMessage alloc] init];
-    [m setFromAddress:[self myAddress]];
-    [m setToAddress:[self.dict objectForKey:@"sellerAddress"]];
+    [m setFromAddress:self.buyerAddress];
+    [m setToAddress:self.sellerAddress];
     [m setSubject:self.subject];
     [m setMessage:message];
     [m send];
     
+    [MKRootNode.sharedMKRootNode.markets handleMsg:self];
+    
     return YES;
+}
+
+- (void)accept
+{
+    
 }
 
 @end

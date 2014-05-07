@@ -48,6 +48,16 @@
     return self;
 }
 
+- (NSString *)nodeNote
+{
+    if (!self.isEditable && !self.canBuy)
+    {
+        return @"✓";
+    }
+    
+    return nil;
+}
+
 // equality
 
 - (NSUInteger)hash

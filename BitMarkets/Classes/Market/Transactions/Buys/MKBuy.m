@@ -15,16 +15,46 @@
 - (id)init
 {
     self = [super init];
+    
+    self.bid = [[MKBuyBid alloc] init];
+    [self addChild:self.bid];
+    
+    self.lockEscrow = [[MKBuyLockEscrow alloc] init];
+    [self addChild:self.lockEscrow];
+    
+    self.delivery = [[MKBuyDelivery alloc] init];
+    [self addChild:self.delivery];
+    
+    self.releaseEscrow = [[MKBuyReleaseEscrow alloc] init];
+    [self addChild:self.releaseEscrow];
+    
     return self;
 }
 
-/*
-- (NSString *)myAddress
+- (void)setDict:(NSDictionary *)dict
 {
-    return MKRootNode.sharedMKRootNode.bmClient.identities.firstIdentity.address;
+    [super setDict:dict];
+    
+    self.bid           = [self.children firstObjectOfClass:MKBuyBid.class];
+    self.lockEscrow    = [self.children firstObjectOfClass:MKBuyLockEscrow.class];
+    self.delivery      = [self.children firstObjectOfClass:MKBuyDelivery.class];
+    self.releaseEscrow = [self.children firstObjectOfClass:MKBuyReleaseEscrow.class];
 }
-*/
 
+// ----------------
+
+- (NSString *)nodeTitle
+{
+    return self.mkPost.titleOrDefault;
+}
+
+- (NSString *)nodeSubtitle
+{
+    return nil;
+}
+
+
+// -------------------
 
 
 @end

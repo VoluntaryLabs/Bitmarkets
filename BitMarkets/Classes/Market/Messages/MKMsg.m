@@ -91,9 +91,23 @@
     return nil;
 }
 
+- (BOOL)hasValidPostUuid
+{
+    return (self.postUuid && self.postUuid.length > 10);
+}
+
+- (BOOL)hasValidSellerAddress
+{
+    return [BMAddress isValidAddress:self.sellerAddress];
+}
+
 - (BOOL)isValid
 {
-    return YES;
+    BOOL validUuid   = self.hasValidPostUuid;
+    BOOL validSeller = self.hasValidSellerAddress;
+    BOOL validBuyer  = self.hasValidSellerAddress;
+    
+    return validUuid && validSeller && validBuyer;
 }
 
 - (NSString *)myAddress
