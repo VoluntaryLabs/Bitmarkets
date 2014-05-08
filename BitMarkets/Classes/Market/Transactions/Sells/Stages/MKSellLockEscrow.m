@@ -12,6 +12,7 @@
 #import "MKSellerLockEscrowMsg.h"
 #import "MKRootNode.h"
 #import <BitnashKit/BitnashKit.h>
+#import "MKConfirmLockEscrowMsg.h"
 
 @implementation MKSellLockEscrow
 
@@ -85,6 +86,11 @@
     return [self.children firstObjectOfClass:MKSellerLockEscrowMsg.class];
 }
 
+- (MKConfirmLockEscrowMsg *)confirmLockMsg
+{
+    return [self.children firstObjectOfClass:MKConfirmLockEscrowMsg.class];
+}
+
 - (BOOL)sendLock
 {
     MKSellerLockEscrowMsg *msg = [[MKSellerLockEscrowMsg alloc] init];
@@ -106,12 +112,16 @@
     {
         [self sendLock];
     }
-    
 }
 
 - (BOOL)isConfirmed
 {
     return NO;
+}
+
+- (void)lookForConfirm
+{
+    
 }
 
 

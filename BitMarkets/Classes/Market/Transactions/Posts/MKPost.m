@@ -115,6 +115,11 @@
     return nil;
 }
 
+- (NSInteger)priceInSatoshi
+{
+    return (NSInteger)(self.price.doubleValue * 100000000);
+}
+
 - (NSString *)titleOrDefault
 {
     if (self.title && self.title.length)

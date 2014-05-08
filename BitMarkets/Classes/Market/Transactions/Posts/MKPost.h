@@ -49,6 +49,6 @@
 - (NSUInteger)hash;
 - (BOOL)isEqual:(id)object;
 
-
+- (NSInteger)priceInSatoshi;
 
 @end
