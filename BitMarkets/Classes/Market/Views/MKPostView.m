@@ -326,19 +326,26 @@
     float btc = [[[self.price textStorage] string] floatValue];
     if (btc)
     {
-        MKExchangeRate *rate = [MKExchangeRate shared];
+        if (NO)
+        {
+            MKExchangeRate *rate = [MKExchangeRate shared];
 
-        NSNumber *usdRate = [rate btcPerSymbol:@"USD"];
-        NSNumber *eurRate = [rate btcPerSymbol:@"EUR"];
-        float usd = btc / [usdRate floatValue];
-        float eur = btc / [eurRate floatValue];
-        /*
-        NSString *usdSymbol = @"$";
-        NSString *eurSymbol = @"€";
-        NSString *btcSymbol = @"฿";
-        */
-        //[self.price setSuffix:[NSString stringWithFormat:@"BTC   $%1.0f   €%1.0f", usd, eur]];
-        [self.price setSuffix:[NSString stringWithFormat:@"BTC  %1.2fUSD  %1.2fEUR", usd, eur]];
+            NSNumber *usdRate = [rate btcPerSymbol:@"USD"];
+            NSNumber *eurRate = [rate btcPerSymbol:@"EUR"];
+            float usd = btc / [usdRate floatValue];
+            float eur = btc / [eurRate floatValue];
+            /*
+            NSString *usdSymbol = @"$";
+            NSString *eurSymbol = @"€";
+            NSString *btcSymbol = @"฿";
+            */
+            //[self.price setSuffix:[NSString stringWithFormat:@"BTC   $%1.0f   €%1.0f", usd, eur]];
+            [self.price setSuffix:[NSString stringWithFormat:@"BTC  %1.2fUSD  %1.2fEUR", usd, eur]];
+        }
+        else
+        {
+            [self.price setSuffix:@"BTC"];
+        }
     }
 }
 
