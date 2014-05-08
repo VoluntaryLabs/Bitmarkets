@@ -14,6 +14,7 @@
 
 #import "MKRootNode.h"
 #import <BitnashKit/BitnashKit.h>
+#import "MKConfirmLockEscrowMsg.h"
 
 @implementation MKBuyLockEscrow
 
