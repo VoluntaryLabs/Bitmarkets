@@ -12,8 +12,8 @@
 #import "MKSellerLockEscrowMsg.h"
 #import "MKBuyerPostLockEscrowMsg.h"
 
-//#import "MKRootNode.h"
-//#import <BitnashKit/BitnashKit.h>
+#import "MKRootNode.h"
+#import <BitnashKit/BitnashKit.h>
 
 @implementation MKBuyLockEscrow
 
@@ -112,6 +112,8 @@
 {
     MKBuyerLockEscrowMsg *msg = [[MKBuyerLockEscrowMsg alloc] init];
     [msg copyFrom:self.buy.bid.bidMsg];
+    
+    BNWallet *wallet = MKRootNode.sharedMKRootNode.wallet;
     
     [msg setPayload:@"[place lock 1 payload here]"];
     [msg sendToSeller];
