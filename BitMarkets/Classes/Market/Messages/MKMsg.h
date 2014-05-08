@@ -17,6 +17,11 @@
 
 + (MKMsg *)withBMMessage:(BMMessage *)bmMessage;
 
+// checking sender
+
+- (BOOL)bmSenderIsBuyer; // only works when first received
+- (BOOL)bmSenderIsSeller; // only works when first received
+
 // --- valid ---
 
 - (BOOL)hasValidPostUuid;

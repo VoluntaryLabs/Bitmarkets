@@ -43,6 +43,16 @@
     return msg;
 }
 
+- (BOOL)bmSenderIsBuyer // only works when first received
+{
+    return [self.bmMessage.fromAddress isEqualToString:self.buyerAddress];
+}
+
+- (BOOL)bmSenderIsSeller // only works when first received
+{
+    return [self.bmMessage.fromAddress isEqualToString:self.sellerAddress];
+}
+
 - (NSString *)classNameSansPrefix
 {
     return [self.className sansPrefix:@"MK"];
@@ -144,6 +154,9 @@
 
 - (BOOL)isValid
 {
+    // subclasses should override and add validation
+    // that checks appropriate bmSenderIsSeller/bmSenderIsBuyer method
+    
     BOOL validUuid   = self.hasValidPostUuid;
     BOOL validSeller = self.hasValidSellerAddress;
     BOOL validBuyer  = self.hasValidSellerAddress;
@@ -155,27 +168,6 @@
 {
     return MKRootNode.sharedMKRootNode.bmClient.identities.firstIdentity.address;
 }
-
-/*
-- (void)setDict:(NSMutableDictionary *)aDict
-{
-    //if ([[aDict objectForKey:@"_type"] isEqualToString:@"Buy"])
-    self.postUuid      = [aDict objectForKey:@"postUuid"];
-    self.sellerAddress = [aDict objectForKey:@"sellerAddress"];
-    self.buyerAddress  = [aDict objectForKey:@"buyerAddress"];
-    [super setDict:aDict];
-}
-
-- (NSMutableDictionary *)dict
-{
-    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setObject:@"Buy" forKey:@"_type"];
-    [dict setObject:self.postUuid      forKey:@"postUuid"];
-    [dict setObject:self.buyerAddress  forKey:@"buyerAddress"];
-    [dict setObject:self.sellerAddress forKey:@"sellerAddress"];
-    return dict;
-}
-*/
 
 - (NSString *)subject
 {

@@ -86,7 +86,7 @@
     return [self.children firstObjectOfClass:MKSellerLockEscrowMsg.class];
 }
 
-- (MKConfirmLockEscrowMsg *)confirmLockMsg
+- (MKConfirmLockEscrowMsg *)confirmMsg
 {
     return [self.children firstObjectOfClass:MKConfirmLockEscrowMsg.class];
 }
@@ -123,7 +123,19 @@
 
 - (void)lookForConfirm
 {
-    
+    if (!self.confirmMsg)
+    {
+        BOOL isConfirmed = NO;
+        
+        // add look for confirm code
+        
+        if (isConfirmed)
+        {
+            MKConfirmLockEscrowMsg *msg = [[MKConfirmLockEscrowMsg alloc] init];
+            [msg copyFrom:self.sell.bids.acceptedBid.bidMsg];
+            [self addChild:msg];
+        }
+    }
 }
 
 

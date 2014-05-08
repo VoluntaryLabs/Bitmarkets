@@ -53,6 +53,25 @@
     return nil;
 }
 
+- (NSString *)myAddress
+{
+    return MKRootNode.sharedMKRootNode.bmClient.identities.firstIdentity.address;
+}
+
 // -------------------
+
+/*
+- (BOOL)handleMsg:(MKMsg *)msg
+{
+    NSArray *myAddresses = BMClient.sharedBMClient.identities.identityAddresses;
+    
+    if ([myAddresses containsObject:msg.buyerAddress])
+    {
+        return [super handleMsg:msg];
+    }
+
+    return NO;
+}
+*/
 
 @end

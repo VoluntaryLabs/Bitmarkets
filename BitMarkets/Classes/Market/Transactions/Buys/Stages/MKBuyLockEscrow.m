@@ -71,6 +71,11 @@
     return [self.children firstObjectOfClass:MKBuyerPostLockEscrowMsg.class];
 }
 
+- (MKConfirmLockEscrowMsg *)confirmMsg
+{
+    return [self.children firstObjectOfClass:MKConfirmLockEscrowMsg.class];
+}
+
 // ---------------------
 
 - (BOOL)handleMsg:(MKMsg *)msg
@@ -146,6 +151,23 @@
 - (void)sortChildren
 {
     [super sortChildrenWithKey:@"date"];
+}
+
+- (void)lookForConfirm
+{
+    if (!self.confirmMsg)
+    {
+        BOOL isConfirmed = NO;
+        
+        // add look for confirm code
+        
+        if (isConfirmed)
+        {
+            MKConfirmLockEscrowMsg *msg = [[MKConfirmLockEscrowMsg alloc] init];
+            [msg copyFrom:self.buy.bid.bidMsg];
+            [self addChild:msg];
+        }
+    }
 }
 
 
