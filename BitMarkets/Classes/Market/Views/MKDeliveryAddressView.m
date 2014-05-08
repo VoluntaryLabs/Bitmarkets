@@ -176,8 +176,8 @@
 
 - (void)updateButton
 {
-    NSDictionary *enabledAttributes = [NavTheme.sharedNavTheme attributesDictForPath:@"sell/button"];
-    NSDictionary *disabledAttributes = [NavTheme.sharedNavTheme attributesDictForPath:@"sell/button-disabled"];
+    //NSDictionary *enabledAttributes = [NavTheme.sharedNavTheme attributesDictForPath:@"sell/button"];
+    //NSDictionary *disabledAttributes = [NavTheme.sharedNavTheme attributesDictForPath:@"sell/button-disabled"];
 
     [_doneButton setHidden:NO];
     [_doneButton setEnabled:YES];

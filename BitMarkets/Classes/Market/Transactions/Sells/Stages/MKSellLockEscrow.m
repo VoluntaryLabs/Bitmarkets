@@ -10,6 +10,8 @@
 #import "MKSell.h"
 #import "MKBuyerLockEscrowMsg.h"
 #import "MKSellerLockEscrowMsg.h"
+#import "MKRootNode.h"
+#import <BitnashKit/BitnashKit.h>
 
 @implementation MKSellLockEscrow
 
@@ -87,6 +89,10 @@
 {
     MKSellerLockEscrowMsg *msg = [[MKSellerLockEscrowMsg alloc] init];
     [msg copyFrom:self.sell.bids.acceptedBid.bidMsg];
+
+    BNWallet *wallet = MKRootNode.sharedMKRootNode.wallet;
+    [msg setPayload:@"..."];
+    
     [msg sendToBuyer];
     [self addChild:msg];
     [self postSelfChanged];
