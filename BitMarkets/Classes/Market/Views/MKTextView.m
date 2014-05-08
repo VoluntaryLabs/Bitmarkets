@@ -10,17 +10,18 @@
 
 @implementation MKTextView
 
-/*
 - (id)initWithFrame:(NSRect)frame
 {
     self = [super initWithFrame:frame];
+    
     if (self)
     {
-        // Initialization code here.
+        _roundRect = [[NavRoundRect alloc] init];
+        [_roundRect setFrame:self.bounds];
     }
+    
     return self;
-}å
-*/
+}
 
 - (void)removeFromSuperview
 {
@@ -193,6 +194,7 @@
             return;
         }
     }
+    
     [super keyDown:theEvent];
 }
 

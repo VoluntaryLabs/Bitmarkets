@@ -10,6 +10,7 @@
 #import "MKSell.h"
 #import "MKAcceptBidMsg.h"
 #import "MKRejectBidMsg.h"
+#import "MKRootNode.h"
 
 @implementation MKSellBid
 
@@ -105,10 +106,16 @@
     return (MKSellBids *)self.nodeParent;
 }
 
+
 - (void)accept
 {
     MKAcceptBidMsg *msg = [[MKAcceptBidMsg alloc] init];
     [msg copyFrom:self.bidMsg];
+
+    BNWallet *wallet = MKRootNode.sharedMKRootNode.wallet;
+    // create payload...
+    [msg setPayload:@"[sellers tx inputs]"];
+    
     [msg send];
     [self addChild:msg];
     

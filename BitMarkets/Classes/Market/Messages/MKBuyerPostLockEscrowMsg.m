@@ -12,7 +12,6 @@
 
 @implementation MKBuyerPostLockEscrowMsg
 
-
 - (NSString *)nodeTitle
 {
     return @"Buyer Posted Escrow to Blockchain";
