@@ -67,14 +67,14 @@
     return [self.children firstObjectOfClass:MKBidMsg.class];
 }
 
-- (MKBidMsg *)acceptMsg
+- (MKAcceptBidMsg *)acceptMsg
 {
     return [self.children firstObjectOfClass:MKAcceptBidMsg.class];
 }
 
-- (MKBidMsg *)rejectMsg
+- (MKRejectBidMsg *)rejectMsg
 {
-    return [self.children firstObjectOfClass:MKAcceptBidMsg.class];
+    return [self.children firstObjectOfClass:MKRejectBidMsg.class];
 }
 
 - (BOOL)wasSent

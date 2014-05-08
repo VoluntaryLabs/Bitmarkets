@@ -111,6 +111,9 @@
 
 - (BOOL)sendLockToSeller
 {
+    NSDictionary *bidPayload = self.buy.bid.acceptMsg.payload;
+    
+    
     MKBuyerLockEscrowMsg *msg = [[MKBuyerLockEscrowMsg alloc] init];
     [msg copyFrom:self.buy.bid.bidMsg];
     
