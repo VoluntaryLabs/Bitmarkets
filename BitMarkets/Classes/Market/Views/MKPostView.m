@@ -408,8 +408,8 @@
     
     MKBuy *buy = MKRootNode.sharedMKRootNode.markets.buys.addBuy;
     [buy.mkPost copy:self.mkPost];
-    
-    [buy.mkPost sendBidMsg];
+    MKBidMsg *bidMsg = [buy.mkPost sendBidMsg];
+    [buy handleMsg:bidMsg];
     
     //NSLog(@"path = %@", buy.nodePathArray);
     [self.navView selectNodePath:buy.nodePathArray];

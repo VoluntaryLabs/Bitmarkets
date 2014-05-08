@@ -12,25 +12,35 @@
 
 @implementation MKBidMsg
 
-- (NSArray *)modelActions
+- (BOOL)isInBuy
 {
-    return @[@"accept"];
+    return [self.nodeParent isKindOfClass:MKBuyBid.class];
 }
 
 - (NSString *)nodeTitle
-{
-    return @"Bid";
+{    
+    if (self.isInBuy)
+    {
+        return @"Bid Sent";
+    }
+    
+    return @"Bid Received";
 }
 
 - (NSString *)nodeSubtitle
 {
-    return [NSString stringWithFormat:@"from %@", self.sellerAddress];
+    if (self.isInBuy)
+    {
+        return self.dateString;
+    }
+    
+    return [NSString stringWithFormat:@"From %@", self.sellerAddress];
 }
 
 - (void)setupForPost:(MKPost *)mkPost
 {
     [self.dict removeAllObjects];
-    [self.dict addEntriesFromDictionary:mkPost.propertiesDict];
+    //[self.dict addEntriesFromDictionary:mkPost.propertiesDict];
     
     [self.dict setObject:self.classNameSansPrefix forKey:@"_type"];
     [self.dict setObject:mkPost.postUuid          forKey:@"postUuid"];
@@ -40,23 +50,8 @@
 
 - (BOOL)send
 {
-    NSString *message = self.dict.asJsonString;
-    
-    BMMessage *m = [[BMMessage alloc] init];
-    [m setFromAddress:self.buyerAddress];
-    [m setToAddress:self.sellerAddress];
-    [m setSubject:self.subject];
-    [m setMessage:message];
-    [m send];
-    
-    [MKRootNode.sharedMKRootNode.markets handleMsg:self];
-    
-    return YES;
+    return [self sendToSeller];
 }
 
-- (void)accept
-{
-    
-}
 
 @end

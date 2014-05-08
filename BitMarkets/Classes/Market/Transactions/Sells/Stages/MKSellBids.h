@@ -7,7 +7,12 @@
 //
 
 #import "MKGroup.h"
+#import "MKSellBid.h"
 
 @interface MKSellBids : MKGroup
+
+- (void)setAcceptedBid:(MKSellBid *)sellBid;
+
+- (MKSellBid *)acceptedBid;
 
 @end

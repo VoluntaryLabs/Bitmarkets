@@ -42,6 +42,16 @@
     return self;
 }
 
+- (NSString *)verifyActionMessage:(NSString *)aString
+{
+    if ([aString isEqualToString:@"delete"])
+    {
+        return @"Are you sure you want to delete this Sell? If the sale is in progress, you may loose your escrow.";
+    }
+    
+    return nil;
+}
+
 // ------------------
 
 - (void)setDict:(NSDictionary *)dict
@@ -82,16 +92,6 @@
 
 // ---------------------------
 
-- (NSString *)nodeTitle
-{
-    return self.mkPost.titleOrDefault;
-}
-
-- (NSString *)nodeSubtitle
-{
-    return nil;
-}
-
 
 // -------------------
 
@@ -112,6 +112,8 @@
     
     return NO;
 }
+
+// -----------------------
 
 
 @end

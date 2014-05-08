@@ -7,8 +7,13 @@
 //
 
 #import "MKGroup.h"
+#import "MKBidMsg.h"
 
 @interface MKBuyBid : MKGroup
+
+- (MKBidMsg *)bidMsg;
+- (MKBidMsg *)acceptMsg;
+- (MKBidMsg *)rejectMsg;
 
 - (BOOL)wasSent;
 - (BOOL)wasAccepted;

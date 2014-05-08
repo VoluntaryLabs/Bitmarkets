@@ -69,7 +69,6 @@
     return validUuid && validSeller;
 }
 
-
 - (BOOL)send
 {
     BMMessage *m = [[BMMessage alloc] init];

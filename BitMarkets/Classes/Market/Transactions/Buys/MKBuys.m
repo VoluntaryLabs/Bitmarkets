@@ -29,6 +29,12 @@
     return db;
 }
 
+- (void)read
+{
+    [super read];
+    [self update];
+}
+
 - (BOOL)canSearch
 {
     return self.children.count > 0;
@@ -69,6 +75,17 @@
     }
     
     return NO;
+}
+
+- (void)update
+{
+    for (id child in self.children)
+    {
+        if ([child respondsToSelector:@selector(update)])
+        {
+            [child update];
+        }
+    }
 }
 
 @end

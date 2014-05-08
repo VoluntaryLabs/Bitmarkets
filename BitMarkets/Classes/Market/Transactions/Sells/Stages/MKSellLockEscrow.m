@@ -7,6 +7,9 @@
 //
 
 #import "MKSellLockEscrow.h"
+#import "MKSell.h"
+#import "MKBuyerLockEscrowMsg.h"
+#import "MKSellerLockEscrowMsg.h"
 
 @implementation MKSellLockEscrow
 
@@ -16,9 +19,95 @@
     return self;
 }
 
+- (CGFloat)nodeSuggestedWidth
+{
+    return 350;
+}
+
 - (NSString *)nodeTitle
 {
     return @"Lock Escrow";
 }
+
+- (NSString *)nodeSubtitle
+{
+    if (self.sellerLockMsg)
+    {
+        return @"awaiting blockchain confirm";
+    }
+    
+    if (self.buyerLockMsg)
+    {
+        return @"got buyer lock";
+    }
+    
+    if (self.sell.bids.acceptedBid)
+    {
+        return @"awaiting buyer lock";
+    }
+    
+    return nil;
+}
+
+- (void)sortChildren
+{
+    [super sortChildrenWithKey:@"date"];
+}
+
+// --------------------
+
+- (MKSell *)sell
+{
+    return (MKSell *)self.nodeParent;
+}
+
+- (BOOL)handleMsg:(MKMsg *)msg
+{
+    if ([msg isKindOfClass:MKBuyerLockEscrowMsg.class])
+    {
+        [self addChild:msg];
+        [self update];
+        return YES;
+    }
+    
+    return NO;
+}
+
+- (MKBuyerLockEscrowMsg *)buyerLockMsg
+{
+    return [self.children firstObjectOfClass:MKBuyerLockEscrowMsg.class];
+}
+
+- (MKSellerLockEscrowMsg *)sellerLockMsg
+{
+    return [self.children firstObjectOfClass:MKSellerLockEscrowMsg.class];
+}
+
+- (BOOL)sendLock
+{
+    MKSellerLockEscrowMsg *msg = [[MKSellerLockEscrowMsg alloc] init];
+    [msg copyFrom:self.sell.bids.acceptedBid.bidMsg];
+    [msg sendToBuyer];
+    [self addChild:msg];
+    [self postSelfChanged];
+    [self postParentChanged];
+    return YES;
+}
+
+- (void)update
+{
+    if (self.buyerLockMsg && !self.sellerLockMsg)
+    {
+        [self sendLock];
+    }
+    
+}
+
+- (BOOL)isConfirmed
+{
+    return NO;
+}
+
+
 
 @end

@@ -7,8 +7,11 @@
 //
 
 #import "MKGroup.h"
+#import "MKPostMsg.h"
+#import "MKBidMsg.h"
 
-@class MKPostMsg;
+//@class MKPostMsg;
+//@class MKBidMsg;
 
 @interface MKPost : MKGroup
 
@@ -38,8 +41,8 @@
 
 // messages
 
-- (void)sendPostMsg;
-- (void)sendBidMsg;
+- (MKPostMsg *)sendPostMsg;
+- (MKBidMsg *)sendBidMsg;
 
 // equality
 

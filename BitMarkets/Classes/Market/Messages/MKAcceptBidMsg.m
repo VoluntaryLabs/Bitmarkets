@@ -10,4 +10,14 @@
 
 @implementation MKAcceptBidMsg
 
+- (NSString *)nodeTitle
+{
+    return @"Bid Accepted";
+}
+
+- (BOOL)send
+{
+    return [self sendToBuyer];
+}
+
 @end

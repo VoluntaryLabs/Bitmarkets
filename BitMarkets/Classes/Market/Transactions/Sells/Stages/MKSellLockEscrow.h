@@ -10,4 +10,6 @@
 
 @interface MKSellLockEscrow : MKGroup
 
+- (BOOL)isConfirmed;
+
 @end

@@ -72,6 +72,8 @@
 		AA955E5F1914781300F6FB0F /* MKPost.m in Sources */ = {isa = PBXBuildFile; fileRef = AA955E571914781300F6FB0F /* MKPost.m */; };
 		AA955E601914781300F6FB0F /* MKSell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA955E5A1914781300F6FB0F /* MKSell.m */; };
 		AA955E611914781300F6FB0F /* MKSells.m in Sources */ = {isa = PBXBuildFile; fileRef = AA955E5C1914781300F6FB0F /* MKSells.m */; };
+		AA9B75DF191B517200F17437 /* MKBuyDeliveryAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9B75DE191B517200F17437 /* MKBuyDeliveryAddress.m */; };
+		AA9B75EC191B51BE00F17437 /* MKDeliveryAddressView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9B75EB191B51BE00F17437 /* MKDeliveryAddressView.m */; };
 		AA9F2B92190E0DCE008444F6 /* BitnashKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AA0F52D019073E8300F7370B /* BitnashKit.framework */; };
 		AA9F2B93190E0DCE008444F6 /* FoundationCategoriesKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AA1FC87A1901E07C00D00431 /* FoundationCategoriesKit.framework */; };
 		AA9F2B94190E0DCE008444F6 /* NavNodeKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AA9226F21905F88200C3D9D7 /* NavNodeKit.framework */; };
@@ -81,8 +83,6 @@
 		AAA2E6AD19006F0A0098C357 /* MKGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA2E68919006F0A0098C357 /* MKGroup.m */; };
 		AAA2E6AE19006F0A0098C357 /* MKRegion.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA2E68B19006F0A0098C357 /* MKRegion.m */; };
 		AAA2E6BB19006F0A0098C357 /* MKPostView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA2E6A819006F0A0098C357 /* MKPostView.m */; };
-		AABB8C571919834200F6776A /* MKBidMsgView.m in Sources */ = {isa = PBXBuildFile; fileRef = AABB8C561919834200F6776A /* MKBidMsgView.m */; };
-		AABB8C5A1919836400F6776A /* MKAcceptBidView.m in Sources */ = {isa = PBXBuildFile; fileRef = AABB8C591919836400F6776A /* MKAcceptBidView.m */; };
 		AABB8C611919B0E400F6776A /* MKBuyBid.m in Sources */ = {isa = PBXBuildFile; fileRef = AABB8C601919B0E400F6776A /* MKBuyBid.m */; };
 		AABB8C641919B0F600F6776A /* MKBuyLockEscrow.m in Sources */ = {isa = PBXBuildFile; fileRef = AABB8C631919B0F600F6776A /* MKBuyLockEscrow.m */; };
 		AABB8C671919B10600F6776A /* MKBuyDelivery.m in Sources */ = {isa = PBXBuildFile; fileRef = AABB8C661919B10600F6776A /* MKBuyDelivery.m */; };
@@ -93,6 +93,10 @@
 		AABB8C771919B15A00F6776A /* MKSellReleaseEscrow.m in Sources */ = {isa = PBXBuildFile; fileRef = AABB8C761919B15A00F6776A /* MKSellReleaseEscrow.m */; };
 		AABB8C7A1919C12A00F6776A /* MKSellBid.m in Sources */ = {isa = PBXBuildFile; fileRef = AABB8C791919C12A00F6776A /* MKSellBid.m */; };
 		AABB8C7D1919C56600F6776A /* MKRejectBidMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AABB8C7C1919C56600F6776A /* MKRejectBidMsg.m */; };
+		AABB8C801919F4D600F6776A /* MKBuyerLockEscrowMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AABB8C7F1919F4D600F6776A /* MKBuyerLockEscrowMsg.m */; };
+		AABB8C89191ACD7E00F6776A /* MKEscrowMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AABB8C88191ACD7E00F6776A /* MKEscrowMsg.m */; };
+		AABB8C8C191AD4DD00F6776A /* MKSellerLockEscrowMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AABB8C8B191AD4DD00F6776A /* MKSellerLockEscrowMsg.m */; };
+		AABB8C8F191AFBE800F6776A /* MKBuyerPostLockEscrowMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AABB8C8E191AFBE800F6776A /* MKBuyerPostLockEscrowMsg.m */; };
 		DC350ECB191456B400C25A01 /* BNKeysNode+BM.m in Sources */ = {isa = PBXBuildFile; fileRef = DC350ECA191456B400C25A01 /* BNKeysNode+BM.m */; };
 /* End PBXBuildFile section */
 
@@ -302,6 +306,10 @@
 		AA955E5A1914781300F6FB0F /* MKSell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKSell.m; sourceTree = "<group>"; };
 		AA955E5B1914781300F6FB0F /* MKSells.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKSells.h; sourceTree = "<group>"; };
 		AA955E5C1914781300F6FB0F /* MKSells.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKSells.m; sourceTree = "<group>"; };
+		AA9B75DD191B517200F17437 /* MKBuyDeliveryAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKBuyDeliveryAddress.h; sourceTree = "<group>"; };
+		AA9B75DE191B517200F17437 /* MKBuyDeliveryAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKBuyDeliveryAddress.m; sourceTree = "<group>"; };
+		AA9B75EA191B51BE00F17437 /* MKDeliveryAddressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKDeliveryAddressView.h; sourceTree = "<group>"; };
+		AA9B75EB191B51BE00F17437 /* MKDeliveryAddressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKDeliveryAddressView.m; sourceTree = "<group>"; };
 		AAA2E68619006F0A0098C357 /* MKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKCategory.h; sourceTree = "<group>"; };
 		AAA2E68719006F0A0098C357 /* MKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKCategory.m; sourceTree = "<group>"; };
 		AAA2E68819006F0A0098C357 /* MKGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKGroup.h; sourceTree = "<group>"; };
@@ -310,10 +318,6 @@
 		AAA2E68B19006F0A0098C357 /* MKRegion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKRegion.m; sourceTree = "<group>"; };
 		AAA2E6A719006F0A0098C357 /* MKPostView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKPostView.h; sourceTree = "<group>"; };
 		AAA2E6A819006F0A0098C357 /* MKPostView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKPostView.m; sourceTree = "<group>"; };
-		AABB8C551919834200F6776A /* MKBidMsgView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKBidMsgView.h; sourceTree = "<group>"; };
-		AABB8C561919834200F6776A /* MKBidMsgView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKBidMsgView.m; sourceTree = "<group>"; };
-		AABB8C581919836400F6776A /* MKAcceptBidView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKAcceptBidView.h; sourceTree = "<group>"; };
-		AABB8C591919836400F6776A /* MKAcceptBidView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKAcceptBidView.m; sourceTree = "<group>"; };
 		AABB8C5F1919B0E400F6776A /* MKBuyBid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKBuyBid.h; sourceTree = "<group>"; };
 		AABB8C601919B0E400F6776A /* MKBuyBid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKBuyBid.m; sourceTree = "<group>"; };
 		AABB8C621919B0F600F6776A /* MKBuyLockEscrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKBuyLockEscrow.h; sourceTree = "<group>"; };
@@ -334,6 +338,14 @@
 		AABB8C791919C12A00F6776A /* MKSellBid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKSellBid.m; sourceTree = "<group>"; };
 		AABB8C7B1919C56600F6776A /* MKRejectBidMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKRejectBidMsg.h; sourceTree = "<group>"; };
 		AABB8C7C1919C56600F6776A /* MKRejectBidMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKRejectBidMsg.m; sourceTree = "<group>"; };
+		AABB8C7E1919F4D600F6776A /* MKBuyerLockEscrowMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKBuyerLockEscrowMsg.h; sourceTree = "<group>"; };
+		AABB8C7F1919F4D600F6776A /* MKBuyerLockEscrowMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKBuyerLockEscrowMsg.m; sourceTree = "<group>"; };
+		AABB8C87191ACD7E00F6776A /* MKEscrowMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKEscrowMsg.h; sourceTree = "<group>"; };
+		AABB8C88191ACD7E00F6776A /* MKEscrowMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKEscrowMsg.m; sourceTree = "<group>"; };
+		AABB8C8A191AD4DD00F6776A /* MKSellerLockEscrowMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKSellerLockEscrowMsg.h; sourceTree = "<group>"; };
+		AABB8C8B191AD4DD00F6776A /* MKSellerLockEscrowMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKSellerLockEscrowMsg.m; sourceTree = "<group>"; };
+		AABB8C8D191AFBE800F6776A /* MKBuyerPostLockEscrowMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKBuyerPostLockEscrowMsg.h; sourceTree = "<group>"; };
+		AABB8C8E191AFBE800F6776A /* MKBuyerPostLockEscrowMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKBuyerPostLockEscrowMsg.m; sourceTree = "<group>"; };
 		DC350EC9191456B400C25A01 /* BNKeysNode+BM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BNKeysNode+BM.h"; sourceTree = "<group>"; };
 		DC350ECA191456B400C25A01 /* BNKeysNode+BM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BNKeysNode+BM.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -694,6 +706,14 @@
 				AA56E78C191455C900DC3320 /* MKAcceptBidMsg.m */,
 				AABB8C7B1919C56600F6776A /* MKRejectBidMsg.h */,
 				AABB8C7C1919C56600F6776A /* MKRejectBidMsg.m */,
+				AABB8C87191ACD7E00F6776A /* MKEscrowMsg.h */,
+				AABB8C88191ACD7E00F6776A /* MKEscrowMsg.m */,
+				AABB8C7E1919F4D600F6776A /* MKBuyerLockEscrowMsg.h */,
+				AABB8C7F1919F4D600F6776A /* MKBuyerLockEscrowMsg.m */,
+				AABB8C8A191AD4DD00F6776A /* MKSellerLockEscrowMsg.h */,
+				AABB8C8B191AD4DD00F6776A /* MKSellerLockEscrowMsg.m */,
+				AABB8C8D191AFBE800F6776A /* MKBuyerPostLockEscrowMsg.h */,
+				AABB8C8E191AFBE800F6776A /* MKBuyerPostLockEscrowMsg.m */,
 			);
 			path = Messages;
 			sourceTree = "<group>";
@@ -701,12 +721,10 @@
 		AAA2E6A019006F0A0098C357 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AA9B75EA191B51BE00F17437 /* MKDeliveryAddressView.h */,
+				AA9B75EB191B51BE00F17437 /* MKDeliveryAddressView.m */,
 				AAA2E6A719006F0A0098C357 /* MKPostView.h */,
 				AAA2E6A819006F0A0098C357 /* MKPostView.m */,
-				AABB8C551919834200F6776A /* MKBidMsgView.h */,
-				AABB8C561919834200F6776A /* MKBidMsgView.m */,
-				AABB8C581919836400F6776A /* MKAcceptBidView.h */,
-				AABB8C591919836400F6776A /* MKAcceptBidView.m */,
 				AA4A0DD919086A3400AB78D0 /* MKTextView.h */,
 				AA4A0DDA19086A3400AB78D0 /* MKTextView.m */,
 				AA753D9B1910779800D07CB5 /* BNKeyView.h */,
@@ -726,6 +744,8 @@
 				AABB8C661919B10600F6776A /* MKBuyDelivery.m */,
 				AABB8C681919B11400F6776A /* MKBuyReleaseEscrow.h */,
 				AABB8C691919B11400F6776A /* MKBuyReleaseEscrow.m */,
+				AA9B75DD191B517200F17437 /* MKBuyDeliveryAddress.h */,
+				AA9B75DE191B517200F17437 /* MKBuyDeliveryAddress.m */,
 			);
 			path = Stages;
 			sourceTree = "<group>";
@@ -974,21 +994,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AABB8C5A1919836400F6776A /* MKAcceptBidView.m in Sources */,
 				AA0E585D18FDC0880095DEBD /* main.m in Sources */,
 				AA955E171914775500F6FB0F /* MKMarketChannel.m in Sources */,
+				AABB8C89191ACD7E00F6776A /* MKEscrowMsg.m in Sources */,
 				AA955E5E1914781300F6FB0F /* MKBuys.m in Sources */,
 				AABB8C7A1919C12A00F6776A /* MKSellBid.m in Sources */,
 				AAA2E6AE19006F0A0098C357 /* MKRegion.m in Sources */,
 				AABB8C7D1919C56600F6776A /* MKRejectBidMsg.m in Sources */,
 				AABB8C671919B10600F6776A /* MKBuyDelivery.m in Sources */,
 				AABB8C741919B14C00F6776A /* MKSellDelivery.m in Sources */,
+				AA9B75DF191B517200F17437 /* MKBuyDeliveryAddress.m in Sources */,
 				AABB8C6E1919B13000F6776A /* MKSellBids.m in Sources */,
 				AA56E7871914556E00DC3320 /* MKPostMsg.m in Sources */,
 				AA955E5D1914781300F6FB0F /* MKBuy.m in Sources */,
 				DC350ECB191456B400C25A01 /* BNKeysNode+BM.m in Sources */,
 				AABB8C611919B0E400F6776A /* MKBuyBid.m in Sources */,
+				AA9B75EC191B51BE00F17437 /* MKDeliveryAddressView.m in Sources */,
 				AA56E78D191455C900DC3320 /* MKAcceptBidMsg.m in Sources */,
+				AABB8C8F191AFBE800F6776A /* MKBuyerPostLockEscrowMsg.m in Sources */,
+				AABB8C801919F4D600F6776A /* MKBuyerLockEscrowMsg.m in Sources */,
 				AA77F3F41915A0F10082306F /* MKTransaction.m in Sources */,
 				AA56E7841914555200DC3320 /* MKMsg.m in Sources */,
 				AA4A0DDB19086A3400AB78D0 /* MKTextView.m in Sources */,
@@ -996,13 +1020,13 @@
 				AA955E601914781300F6FB0F /* MKSell.m in Sources */,
 				AABB8C711919B13F00F6776A /* MKSellLockEscrow.m in Sources */,
 				AA0E586418FDC0880095DEBD /* MKAppDelegate.m in Sources */,
-				AABB8C571919834200F6776A /* MKBidMsgView.m in Sources */,
 				AA955E191914775500F6FB0F /* MKRootNode.m in Sources */,
 				AABB8C771919B15A00F6776A /* MKSellReleaseEscrow.m in Sources */,
 				AA955E611914781300F6FB0F /* MKSells.m in Sources */,
 				AAA2E6AC19006F0A0098C357 /* MKCategory.m in Sources */,
 				AABB8C6A1919B11400F6776A /* MKBuyReleaseEscrow.m in Sources */,
 				AABB8C641919B0F600F6776A /* MKBuyLockEscrow.m in Sources */,
+				AABB8C8C191AD4DD00F6776A /* MKSellerLockEscrowMsg.m in Sources */,
 				AAA2E6AD19006F0A0098C357 /* MKGroup.m in Sources */,
 				AA955E181914775500F6FB0F /* MKMarkets.m in Sources */,
 				AA753D9D1910779800D07CB5 /* BNKeyView.m in Sources */,

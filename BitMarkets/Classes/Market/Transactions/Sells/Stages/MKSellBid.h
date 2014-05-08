@@ -7,7 +7,18 @@
 //
 
 #import "MKGroup.h"
+#import "MKBidMsg.h"
 
 @interface MKSellBid : MKGroup
+
+@property (strong, nonatomic) NSString *status;
+
+- (MKBidMsg *)bidMsg;
+
+- (BOOL)wasAccepted;
+- (BOOL)wasRejected;
+
+
+- (void)reject;
 
 @end

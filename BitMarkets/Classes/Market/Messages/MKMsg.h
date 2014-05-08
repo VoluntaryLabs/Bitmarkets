@@ -17,8 +17,7 @@
 
 + (MKMsg *)withBMMessage:(BMMessage *)bmMessage;
 
-
-// valid
+// --- valid ---
 
 - (BOOL)hasValidPostUuid;
 - (BOOL)hasValidSellerAddress;
@@ -29,10 +28,35 @@
 - (NSString *)classNameSansPrefix;
 
 - (NSString *)subject;
+
+// date
+
+- (void)addDate;
+- (void)setDate:(NSDate *)aDate;
+- (NSDate *)date;
+
+- (NSString *)dateString;
+
+// --- setter / getters ---
+
+- (void)setPostUuid:(NSString *)postUuid;
 - (NSString *)postUuid;
+
+- (void)setSellerAddress:(NSString *)sellerAddress;
 - (NSString *)sellerAddress;
+
+- (void)setBuyerAddress:(NSString *)buyerAddress;
 - (NSString *)buyerAddress;
 
+// copy
+
+- (void)copyFrom:(MKMsg *)msg;
+
+// send
+
 - (BOOL)send;
+
+- (BOOL)sendToBuyer;
+- (BOOL)sendToSeller;
 
 @end

@@ -42,7 +42,7 @@ static MKRootNode *sharedMKRootNode = nil;
         //[self addChild:_markets.mkChannel];
     }
 
-    if (NO)
+    if (YES)
     {
         _wallet  = [[BNWallet alloc] init];
         _wallet.refreshInterval = 5.0;

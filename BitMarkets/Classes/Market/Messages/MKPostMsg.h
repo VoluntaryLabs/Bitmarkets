@@ -7,7 +7,8 @@
 //
 
 #import "MKMsg.h"
-#import "MKPost.h"
+
+@class MKPost;
 
 @interface MKPostMsg : MKMsg
 

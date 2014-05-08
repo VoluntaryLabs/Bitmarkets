@@ -28,6 +28,12 @@
     return db;
 }
 
+- (void)read
+{
+    [super read];
+    [self update];
+}
+
 - (NSString *)nodeTitle
 {
     return @"Sells";
@@ -72,6 +78,17 @@
     }
     
     return NO;
+}
+
+- (void)update
+{
+    for (id child in self.children)
+    {
+        if ([child respondsToSelector:@selector(update)])
+        {
+            [child update];
+        }
+    }
 }
 
 @end

@@ -14,7 +14,16 @@
 {
     self = [super init];
     self.nodeTitle = @"Delivery";
+    
+    MKBuyDeliveryAddress *address = [[MKBuyDeliveryAddress alloc] init];
+    [self addChild:address];
+    
     return self;
+}
+
+- (MKBuyDeliveryAddress *)address
+{
+    return [self.children firstObjectOfClass:MKBuyDeliveryAddress.class];
 }
 
 - (NSString *)nodeTitle

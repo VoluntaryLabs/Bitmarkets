@@ -10,6 +10,7 @@
 #import "MKMsg.h"
 #import "MKBidMsg.h"
 #import "MKAcceptBidMsg.h"
+#import "MKSellBid.h"
 
 @implementation MKSellBids
 
@@ -32,7 +33,7 @@
 
 - (NSString *)nodeNote
 {
-    if (self.children.count > 0)
+    if (self.acceptedBid)
     {
         return @"✓";
     }
@@ -42,23 +43,70 @@
 
 - (NSString *)nodeSubtitle
 {
+    if (self.acceptedBid)
+    {
+        return @"accepted bid";
+    }
+    
     if (self.children.count > 0)
     {
         return @"choose bid";
     }
     
-    return nil;
+    return @"awaiting bids";
 }
 
 - (BOOL)handleMsg:(MKMsg *)msg
 {
     if ([msg isKindOfClass:MKBidMsg.class])
     {
-        [self addChild:msg];
+        MKSellBid *sellBid = [[MKSellBid alloc] init];
+        [sellBid addChild:msg];
+        
+        if ([self acceptedBid])
+        {
+            [sellBid reject];
+        }
+        
+        [self addChild:sellBid];
+        [self postParentChanged];
         return YES;
     }
     
     return NO;
 }
+
+- (void)setAcceptedBid:(MKSellBid *)sellBid
+{
+    for (MKSellBid *bid in self.children)
+    {
+        if (bid == sellBid)
+        {
+            [bid setStatus:@"accepted"];
+        }
+        else
+        {
+            [bid reject];
+        }
+    }
+    
+    [self postSelfChanged];
+    [self postParentChanged];
+}
+
+- (MKSellBid *)acceptedBid
+{
+    for (MKSellBid *bid in self.children)
+    {
+        if ([bid wasAccepted])
+        {
+            return bid;
+        }
+    }
+    
+    return nil;
+}
+
+
 
 @end

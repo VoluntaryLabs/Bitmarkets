@@ -128,9 +128,14 @@
 }
  */
 
-- (void)setString:(NSString *)string
+- (void)setString:(NSString *)aString
 {
-    [super setString:string];
+    if (aString == nil)
+    {
+        aString = @"";
+    }
+    
+    [super setString:aString];
     [self updateSuffixView];
 }
 

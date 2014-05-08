@@ -43,18 +43,16 @@
 
 // ----------------
 
-- (NSString *)nodeTitle
+- (NSString *)verifyActionMessage:(NSString *)aString
 {
-    return self.mkPost.titleOrDefault;
-}
-
-- (NSString *)nodeSubtitle
-{
+    if ([aString isEqualToString:@"delete"])
+    {
+        return @"Are you sure you want to delete this Buy? If the sale is in progress, you may loose your escrow.";
+    }
+    
     return nil;
 }
 
-
 // -------------------
-
 
 @end

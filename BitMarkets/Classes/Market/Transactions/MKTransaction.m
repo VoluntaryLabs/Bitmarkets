@@ -22,6 +22,16 @@
     return self;
 }
 
+- (NSString *)nodeTitle
+{
+    return self.mkPost.titleOrDefault;
+}
+
+- (NSString *)nodeSubtitle
+{
+    return [NSString stringWithFormat:@"%@BTC", self.mkPost.price];
+}
+
 - (void)setDict:(NSDictionary *)dict
 {
     [super setDict:dict];
@@ -55,6 +65,19 @@
     }
     
     return NO;
+}
+
+// -------------------
+
+- (void)update
+{
+    for (id child in self.children)
+    {
+        if ([child respondsToSelector:@selector(update)])
+        {
+            [child update];
+        }
+    }
 }
 
 @end

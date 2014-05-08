@@ -1,6 +1,26 @@
 {
 	"default": 
 	{
+        
+        "address" :
+        {
+            "label" :
+            {
+                "fontName" : "Open Sans Light",
+                "fontSize" : 22,
+                "color" : "#555555",
+                "align" : "left",
+            },
+            
+            "label-unedited" :
+            {
+                "fontName" : "Open Sans Light",
+                "fontSize" : 22,
+                "color" : "#BBBBBB",
+                "align" : "left",
+            },
+        },
+        
         "qr" :
         {
             "address" :

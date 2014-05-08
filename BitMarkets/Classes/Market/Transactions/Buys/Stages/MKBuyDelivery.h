@@ -7,7 +7,10 @@
 //
 
 #import "MKGroup.h"
+#import "MKBuyDeliveryAddress.h"
 
 @interface MKBuyDelivery : MKGroup
+
+- (MKBuyDeliveryAddress *)address;
 
 @end

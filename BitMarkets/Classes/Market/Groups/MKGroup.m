@@ -101,6 +101,7 @@
             
             NavNode *child = [childClass withDict:childDict];
             [children addObject:child];
+            [child setNodeParent:self];
             //NSLog(@"read child %@ %@", NSStringFromClass(child.class), child.nodeTitle);
         }
         

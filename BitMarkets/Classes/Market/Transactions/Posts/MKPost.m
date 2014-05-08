@@ -189,21 +189,23 @@
 
 // actions
 
-- (void)sendPostMsg
+- (MKPostMsg *)sendPostMsg
 {
     MKPostMsg *postMsg = [[MKPostMsg alloc] init];
     [postMsg sendPost:self];
     
     [self setStatus:@"posted"];
     [self postParentChanged];
+    return postMsg;
 }
 
-- (void)sendBidMsg
+- (MKBidMsg *)sendBidMsg
 {
     MKBidMsg *bidMsg = [[MKBidMsg alloc] init];
     [bidMsg setupForPost:self];
     [bidMsg send];
-    [MKRootNode.sharedMKRootNode.markets handleMsg:bidMsg];
+    //[MKRootNode.sharedMKRootNode.markets handleMsg:bidMsg];
+    return bidMsg;
 }
 
 @end

@@ -10,4 +10,8 @@
 
 @interface MKBuyLockEscrow : MKGroup
 
+- (void)update;
+//- (BOOL)sendLock;
+- (BOOL)isConfirmed;
+
 @end

@@ -13,6 +13,7 @@
 #import "MKSellLockEscrow.h"
 #import "MKSellDelivery.h"
 #import "MKSellReleaseEscrow.h"
+#import "MKSellBid.h"
 
 @interface MKSell : MKTransaction
 

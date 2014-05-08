@@ -10,4 +10,6 @@
 
 @interface MKAcceptBidMsg : MKMsg
 
+- (BOOL)send;
+
 @end

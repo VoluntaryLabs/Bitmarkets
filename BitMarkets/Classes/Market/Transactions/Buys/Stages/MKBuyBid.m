@@ -11,12 +11,15 @@
 #import "MKBidMsg.h"
 #import "MKAcceptBidMsg.h"
 #import "MKRejectBidMsg.h"
+#import "MKBuy.h"
+#import "MKBuyLockEscrow.h"
 
 @implementation MKBuyBid
 
 - (id)init
 {
     self = [super init];
+    //[self.dictPropertyNames addObject:@"msg"];
     return self;
 }
 
@@ -39,30 +42,62 @@
 
 - (NSString *)nodeNote
 {
-    if (self.children.count > 0)
+    if (self.wasAccepted)
     {
         return @"✓";
+    }
+    
+    if (self.wasRejected)
+    {
+        return @"✗";
     }
     
     return nil;
 }
 
+- (void)sortChildren
+{
+    [super sortChildrenWithKey:@"date"];
+}
+
+// messages
+
+- (MKBidMsg *)bidMsg
+{
+    return [self.children firstObjectOfClass:MKBidMsg.class];
+}
+
+- (MKBidMsg *)acceptMsg
+{
+    return [self.children firstObjectOfClass:MKAcceptBidMsg.class];
+}
+
+- (MKBidMsg *)rejectMsg
+{
+    return [self.children firstObjectOfClass:MKAcceptBidMsg.class];
+}
+
 - (BOOL)wasSent
 {
-    return [self.children firstObjectOfClass:MKBidMsg.class] != nil;
+    return self.bidMsg != nil;
 }
 
 - (BOOL)wasAccepted
 {
-    return [self.children firstObjectOfClass:MKAcceptBidMsg.class] != nil;
+    return self.acceptMsg != nil;
 }
 
 - (BOOL)wasRejected
 {
-    return [self.children firstObjectOfClass:MKAcceptBidMsg.class] != nil;
+    return self.rejectMsg != nil;
 }
 
 // --- status -------------
+
+- (MKBuy *)buy
+{
+    return (MKBuy *)self.nodeParent;
+}
 
 - (NSString *)status
 {
@@ -103,7 +138,11 @@
     
     if ([msg isKindOfClass:MKAcceptBidMsg.class])
     {
-        [self addChild:msg];
+        if ([self addChild:msg])
+        {
+            [self.buy update];
+        }
+        
         return YES;
     }
     

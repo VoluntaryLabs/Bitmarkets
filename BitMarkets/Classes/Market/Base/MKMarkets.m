@@ -22,7 +22,7 @@
     self.shouldSortChildren = NO;
     
     _rootRegion = (MKRegion *)[MKRegion rootInstance];
-    [self.children addObject:self.rootRegion];
+    [self addChild:self.rootRegion];
     
     if (NO)
     {
@@ -53,9 +53,17 @@
 
 - (BOOL)handleMsg:(MKMsg *)msg
 {
-    BOOL sellHandled = [self.sells handleMsg:msg];
-    BOOL buyHandled  = [self.buys  handleMsg:msg];
-    return sellHandled || buyHandled;
+    if ([self.sells handleMsg:msg])
+    {
+        return YES;
+    }
+    
+    if ([self.buys  handleMsg:msg])
+    {
+        return YES;
+    }
+    
+    return NO;
 }
 
 

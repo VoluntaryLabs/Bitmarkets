@@ -7,6 +7,7 @@
 //
 
 #import "MKMessages.h"
+#import "MKPost.h"
 
 @implementation MKMessages
 

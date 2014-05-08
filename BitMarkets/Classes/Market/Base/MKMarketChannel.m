@@ -95,8 +95,10 @@
     NSArray *inboxMessages = BMClient.sharedBMClient.messages.received.children.copy;
     [self handleBMMessages:inboxMessages];
     
+    /*
     NSArray *sentMessages = BMClient.sharedBMClient.messages.sent.children.copy;
     [self handleBMMessages:sentMessages];
+    */
 }
 
 - (void)handleBMMessages:(NSArray *)bmMessages
