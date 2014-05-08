@@ -47,6 +47,13 @@
 {
     [super setFrame:frameRect];
     [self updateSuffixView];
+    [_roundRect setFrame:self.bounds];
+}
+
+- (void)drawRect:(NSRect)dirtyRect
+{
+    [_roundRect draw];
+    [super drawRect:dirtyRect];
 }
 
 - (void)updateSuffixView
