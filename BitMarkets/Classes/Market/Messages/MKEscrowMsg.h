@@ -12,7 +12,7 @@
 
 - (BOOL)isInBuy;
 
-- (void)setPayload:(NSString *)payload;
-- (NSString *)payload;
+- (void)setPayload:(NSDictionary *)payload;
+- (NSDictionary *)payload;
 
 @end

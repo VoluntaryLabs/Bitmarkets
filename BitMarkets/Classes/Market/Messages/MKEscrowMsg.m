@@ -23,12 +23,12 @@
     return [self.nodeParent isKindOfClass:MKBuyLockEscrow.class];
 }
 
-- (void)setPayload:(NSString *)payload
+- (void)setPayload:(NSDictionary *)payload
 {
     [self.dict setObject:payload forKey:@"payload"];
 }
 
-- (NSString *)payload
+- (NSDictionary *)payload
 {
     return [self.dict objectForKey:@"payload"];
 }
