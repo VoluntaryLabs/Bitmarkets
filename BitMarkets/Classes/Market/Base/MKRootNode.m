@@ -47,7 +47,7 @@ static MKRootNode *sharedMKRootNode = nil;
         _wallet  = [[BNWallet alloc] init];
         _wallet.refreshInterval = 5.0;
         _wallet.deepRefreshes = YES;
-        _wallet.server.logsStderr = YES;
+        //_wallet.server.logsStderr = YES;
         NSString *dataPath = [[[NSFileManager defaultManager] applicationSupportDirectory] stringByAppendingPathComponent:@"wallet"];
         NSError *error;
         [[NSFileManager defaultManager] createDirectoryAtPath:dataPath
