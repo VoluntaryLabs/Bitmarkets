@@ -116,9 +116,6 @@
 
 - (BOOL)sendLockToSeller
 {
-    NSDictionary *bidPayload = self.buy.bid.acceptMsg.payload;
-    BNTx *sellerTx = (BNTx *)[bidPayload asObjectFromJSONObject]; //TODO handle errors
-    
     MKBuyerLockEscrowMsg *msg = [[MKBuyerLockEscrowMsg alloc] init];
     [msg copyFrom:self.buy.bid.bidMsg];
     
@@ -142,10 +139,7 @@
         }
     }
     
-    tx = [tx mergedWithEscrowTx:sellerTx];
-    
-    [tx subtractFee];
-    [tx sign];
+    [tx markInputsAsSpent];
     
     [msg setPayload:[tx asJSONObject]];
     
@@ -160,12 +154,14 @@
 - (BOOL)postLockToBlockchain
 {
     NSDictionary *payload = self.sellerLockMsg.payload;
+    BNTx *tx = (BNTx *)[payload asObjectFromJSONObject];
+    tx.wallet = MKRootNode.sharedMKRootNode.wallet;
     
     MKBuyerPostLockEscrowMsg *msg = [[MKBuyerPostLockEscrowMsg alloc] init];
     [msg copyFrom:self.buy.bid.bidMsg];
     
-    [msg setupFromSellerPayload:self.sellerLockMsg.payload];
-    [msg postToBlockchain];
+    [tx sign]; //TODO verify expected outputs first.
+    [tx broadcast];
     
     [self addChild:msg];
     
@@ -181,11 +177,9 @@
 {
     if (!self.confirmMsg)
     {
-        BOOL isConfirmed = NO;
+        BNTx *tx = (BNTx *)[[[self buyerPostLockMsg] payload] asObjectFromJSONObject];
         
-        // add look for confirm code
-        
-        if (isConfirmed)
+        if ([tx isConfirmed]) //TODO instead check to see if outputs are spent in case tx is mutated
         {
             MKConfirmLockEscrowMsg *msg = [[MKConfirmLockEscrowMsg alloc] init];
             [msg copyFrom:self.buy.bid.bidMsg];
