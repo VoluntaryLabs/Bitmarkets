@@ -13,9 +13,12 @@
    
 5. MKBuyLockEscrow postLockToBlockchain method
    -  buyer sign tx and post
+   - addChild:MKBuyerPostLockEscrowMsg
 
 6. MKBuyLockEscrow lookForConfirm method
    - look for confirm in blockchain
+   - addChild: MKConfirmLockEscrowMsg
 
 6. MKSellLockEscrow lookForConfirm method
-   
+   - look for confirm in blockchain
+   - addChild: MKConfirmLockEscrowMsg
