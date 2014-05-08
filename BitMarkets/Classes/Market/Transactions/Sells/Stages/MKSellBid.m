@@ -119,7 +119,7 @@
     
     MKSell *sell = (MKSell *)self.nodeParent.nodeParent;
     
-    [tx configureForEscrowWithValue:sell.mkPost.price.longLongValue];
+    [tx configureForEscrowWithValue:sell.mkPost.priceInSatoshi.longLongValue];
     
     if (tx.error)
     {

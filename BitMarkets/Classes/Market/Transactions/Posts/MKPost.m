@@ -117,7 +117,7 @@
 
 - (NSNumber *)priceInSatoshi
 {
-    return [NSNumber numberWithLongLong:(long long)(self.price.doubleValue * 100000000))];
+    return [NSNumber numberWithLongLong:(long long)(self.price.doubleValue * 100000000)];
 }
 
 - (NSString *)titleOrDefault
