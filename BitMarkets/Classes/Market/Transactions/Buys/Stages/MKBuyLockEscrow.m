@@ -130,6 +130,8 @@
 
 - (BOOL)postLockToBlockchain
 {
+    NSDictionary *payload = self.sellerLockMsg.payload;
+    
     MKBuyerPostLockEscrowMsg *msg = [[MKBuyerPostLockEscrowMsg alloc] init];
     [msg copyFrom:self.buy.bid.bidMsg];
     
