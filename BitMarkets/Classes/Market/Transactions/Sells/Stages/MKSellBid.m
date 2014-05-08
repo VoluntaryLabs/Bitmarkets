@@ -114,7 +114,29 @@
 
     BNWallet *wallet = MKRootNode.sharedMKRootNode.wallet;
     // create payload...
-    [msg setPayload:@"[sellers tx inputs]"];
+    
+    BNTx *tx = [wallet newTx];
+    
+    MKSell *sell = (MKSell *)self.nodeParent.nodeParent;
+    
+    [tx configureForEscrowWithValue:sell.mkPost.price.longLongValue];
+    
+    if (tx.error)
+    {
+        NSLog(@"tx configureForEscrowWithValue failed: %@", tx.error.description);
+        if (tx.error.insufficientValue)
+        {
+            //TODO: prompt user for deposit
+            
+        }
+        else
+        {
+            [NSException raise:@"tx configureForEscrowWithValue failed" format:nil];
+            //TODO: handle unknown tx configureForEscrowWithValue error
+        }
+    }
+    
+    [msg setPayload:[tx asJSONObject]];
     
     [msg send];
     [self addChild:msg];
