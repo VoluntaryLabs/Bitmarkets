@@ -3,7 +3,7 @@
    - add seller utx inputs
    
 2. MKBuyLockEscrow sendLockToSeller method
-   - add buyer utx inputs to payload
+   - add buyer utx inputs and signs to payload
 
 3. MKSellLockEscrow sendLock method
    - seller sign tx for payload
