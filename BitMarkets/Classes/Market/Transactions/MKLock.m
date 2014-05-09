@@ -8,6 +8,7 @@
 
 #import "MKLock.h"
 #import "MKConfirmLockEscrowMsg.h"
+#import <BitnashKit/BitnashKit.h>
 
 @implementation MKLock
 
@@ -26,7 +27,13 @@
 
 - (BOOL)checkForConfirm
 {
-    // add look for confirm code
+    BNTx *tx = (BNTx *)[self.payloadToConfirm asObjectFromJSONObject];
+    
+    if ([tx isConfirmed]) //TODO instead check to see if outputs are spent in case tx is mutated
+    {
+        return YES;
+    }
+
     return NO;
 }
 

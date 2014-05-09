@@ -93,13 +93,38 @@
 
 - (BOOL)sendLock
 {
-    NSDictionary *payload = self.buyerLockMsg.payload;
+    BNTx *buyerTx = (BNTx *)[self.buyerLockMsg.payload asObjectFromJSONObject]; //TODO handle errors
     
     MKSellerLockEscrowMsg *msg = [[MKSellerLockEscrowMsg alloc] init];
     [msg copyFrom:self.sell.bids.acceptedBid.bidMsg];
 
     BNWallet *wallet = MKRootNode.sharedMKRootNode.wallet;
-    [msg setPayload:@"..."];
+    BNTx *tx = [wallet newTx];
+    
+    [tx configureForEscrowWithValue:self.sell.mkPost.price.longLongValue];
+    
+    if (tx.error)
+    {
+        NSLog(@"tx configureForEscrowWithValue failed: %@", tx.error.description);
+        if (tx.error.insufficientValue)
+        {
+            //TODO: prompt user for deposit
+            
+        }
+        else
+        {
+            [NSException raise:@"tx configureForEscrowWithValue failed" format:nil];
+            //TODO: handle unknown tx configureForEscrowWithValue error
+        }
+    }
+    
+    tx = [tx mergedWithEscrowTx:buyerTx];
+    
+    [tx subtractFee];
+    [tx sign];
+    [tx markInputsAsSpent];
+    
+    [msg setPayload:[tx asJSONObject]];
     
     [msg sendToBuyer];
     [self addChild:msg];
