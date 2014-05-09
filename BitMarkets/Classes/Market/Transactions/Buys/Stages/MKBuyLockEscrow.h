@@ -6,12 +6,13 @@
 //  Copyright (c) 2014 voluntary.net. All rights reserved.
 //
 
-#import "MKGroup.h"
+#import "MKLock.h"
 
-@interface MKBuyLockEscrow : MKGroup
+@interface MKBuyLockEscrow : MKLock
+
+@property (strong, nonatomic) NSTimer *confirmTimer;
 
 - (void)update;
-//- (BOOL)sendLock;
 - (BOOL)isConfirmed;
 
 @end

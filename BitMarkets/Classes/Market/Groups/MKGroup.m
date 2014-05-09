@@ -96,7 +96,7 @@
             }
             else
             {
-                [NSException raise:@"No child class" format:@"missing _type slot in persisted dictionary"];
+                [NSException raise:@"No child class missing _type slot in persisted dictionary" format:nil];
             }
             
             NavNode *child = [childClass withDict:childDict];

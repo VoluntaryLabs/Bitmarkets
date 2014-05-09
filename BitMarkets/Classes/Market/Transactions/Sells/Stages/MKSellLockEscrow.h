@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 voluntary.net. All rights reserved.
 //
 
-#import "MKGroup.h"
+#import "MKLock.h"
 
-@interface MKSellLockEscrow : MKGroup
+@interface MKSellLockEscrow : MKLock
 
 - (BOOL)isConfirmed;
 

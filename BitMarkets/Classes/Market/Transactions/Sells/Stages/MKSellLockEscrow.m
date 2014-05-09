@@ -116,28 +116,21 @@
     }
 }
 
-- (BOOL)isConfirmed
+// confirm methods to extend parent class MKLock
+
+- (MKBidMsg *)bidMsg
 {
-    return NO;
+    return self.sell.bids.acceptedBid.bidMsg;
 }
 
-- (void)lookForConfirm
+- (NSDictionary *)payloadToConfirm
 {
-    if (!self.confirmMsg)
-    {
-        BOOL isConfirmed = NO;
-        
-        // add look for confirm code
-        
-        if (isConfirmed)
-        {
-            MKConfirmLockEscrowMsg *msg = [[MKConfirmLockEscrowMsg alloc] init];
-            [msg copyFrom:self.sell.bids.acceptedBid.bidMsg];
-            [self addChild:msg];
-        }
-    }
+    return self.buyerLockMsg.payload;
 }
 
-
+- (BOOL)shouldLookForConfirm; // subclasses should override
+{
+    return (self.buyerLockMsg && !self.confirmMsg);
+}
 
 @end

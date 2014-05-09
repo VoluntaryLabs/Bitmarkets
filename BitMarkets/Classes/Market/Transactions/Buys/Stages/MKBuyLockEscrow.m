@@ -71,10 +71,6 @@
     return [self.children firstObjectOfClass:MKBuyerPostLockEscrowMsg.class];
 }
 
-- (MKConfirmLockEscrowMsg *)confirmMsg
-{
-    return [self.children firstObjectOfClass:MKConfirmLockEscrowMsg.class];
-}
 
 // ---------------------
 
@@ -177,21 +173,21 @@
     [super sortChildrenWithKey:@"date"];
 }
 
-- (void)lookForConfirm
+// confirm methods to extend parent class MKLock
+
+- (MKBidMsg *)bidMsg
 {
-    if (!self.confirmMsg)
-    {
-        BOOL isConfirmed = NO;
-        
-        // add look for confirm code
-        
-        if (isConfirmed)
-        {
-            MKConfirmLockEscrowMsg *msg = [[MKConfirmLockEscrowMsg alloc] init];
-            [msg copyFrom:self.buy.bid.bidMsg];
-            [self addChild:msg];
-        }
-    }
+    return self.buy.bid.bidMsg;
+}
+
+- (NSDictionary *)payloadToConfirm
+{
+    return self.buyerPostLockMsg.payload;
+}
+
+- (BOOL)shouldLookForConfirm; // subclasses should override
+{
+    return (self.buyerPostLockMsg && !self.confirmMsg);
 }
 
 
