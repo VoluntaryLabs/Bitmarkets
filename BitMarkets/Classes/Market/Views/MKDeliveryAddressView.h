@@ -18,18 +18,15 @@
 
 @property (strong, nonatomic) NSView *group;
 
-//@property (strong, nonatomic) MKTextView *label1;
 @property (strong, nonatomic) MKTextView *line1;
-
-//@property (strong, nonatomic) MKTextView *label2;
 @property (strong, nonatomic) MKTextView *line2;
-
-//@property (strong, nonatomic) MKTextView *label3;
 @property (strong, nonatomic) MKTextView *line3;
-
-//@property (strong, nonatomic) MKTextView *label4;
 @property (strong, nonatomic) MKTextView *line4;
 
+@property (strong, nonatomic) MKTextView *label1;
+@property (strong, nonatomic) MKTextView *label2;
+@property (strong, nonatomic) MKTextView *label3;
+@property (strong, nonatomic) MKTextView *label4;
 
 @property (strong, nonatomic) NavRoundButtonView *doneButton;
 @property (strong, nonatomic) NavColoredView *separator;

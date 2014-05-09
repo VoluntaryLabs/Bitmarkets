@@ -23,15 +23,7 @@
 - (id)init
 {
     self = [super init];
-    self.passphrase = @"bitmarkets";
-    
-    /*
-    self.validMessages = [[NavInfoNode alloc] init];
-    [self.validMessages setNodeTitle:@"Messages"];
-    self.validMessages.nodeSuggestedWidth = 250;
-    [self addChild:self.validMessages];
-    */
-    
+    self.passphrase = @"bitmarkets";    
     return self;
 }
 

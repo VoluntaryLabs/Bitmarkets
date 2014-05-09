@@ -7,7 +7,7 @@
             "label" :
             {
                 "fontName" : "Open Sans Light",
-                "fontSize" : 22,
+                "fontSize" : 18,
                 "color" : "#555555",
                 "align" : "left",
             },
@@ -15,7 +15,23 @@
             "label-unedited" :
             {
                 "fontName" : "Open Sans Light",
-                "fontSize" : 22,
+                "fontSize" : 18,
+                "color" : "#BBBBBB",
+                "align" : "left",
+            },
+            
+            "line" :
+            {
+                "fontName" : "Open Sans Light",
+                "fontSize" : 18,
+                "color" : "#555555",
+                "align" : "left",
+            },
+            
+            "line-unedited" :
+            {
+                "fontName" : "Open Sans Light",
+                "fontSize" : 18,
                 "color" : "#BBBBBB",
                 "align" : "left",
             },

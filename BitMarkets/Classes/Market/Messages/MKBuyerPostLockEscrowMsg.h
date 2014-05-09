@@ -10,10 +10,12 @@
 
 @interface MKBuyerPostLockEscrowMsg : MKEscrowMsg
 
+/*
 - (void)setupFromSellerPayload:(NSString *)aPayload;
 - (BOOL)postToBlockchain;
 
 - (BOOL)isConfirmed;
 - (BOOL)isCancelled;
+*/
 
 @end

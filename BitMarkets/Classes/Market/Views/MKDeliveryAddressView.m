@@ -13,12 +13,23 @@
 
 @implementation MKDeliveryAddressView
 
+- (MKTextView *)newLabel
+{
+    MKTextView *line = [[MKTextView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
+    //line.uneditedTextString = @"";
+    [_group addSubview:line];
+    [line setEditedThemePath:@"address/label"];
+    [line setDelegate:self];
+    line.endsOnReturn = YES;
+    return line;
+}
+
 - (MKTextView *)newLine
 {
     MKTextView *line = [[MKTextView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
-    line.uneditedTextString = @"Name of Addressee";
+    //line.uneditedTextString = @"";
     [_group addSubview:line];
-    [line setEditedThemePath:@"address/label"];
+    [line setEditedThemePath:@"address/line"];
     [line setDelegate:self];
     line.endsOnReturn = YES;
     return line;
@@ -50,6 +61,8 @@
         _line2.nextKeyView = _line3;
         _line3.nextKeyView = _line4;
         _line4.nextKeyView = _line1;
+        
+        _line1.roundRect.isOutlined = YES;
         
         _doneButton = [[NavRoundButtonView alloc] initWithFrame:NSMakeRect(0, 0, 120, 32)];
         //_postOrBuyButton.title = @"Buy Now";

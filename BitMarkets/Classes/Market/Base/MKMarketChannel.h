@@ -18,8 +18,6 @@
 @property (strong, nonatomic) NSString *passphrase;
 @property (strong, nonatomic) BMChannel *channel;
 
-//@property (strong, nonatomic) NavInfoNode *validMessages;
-
 - (void)fetch;
 
 @end

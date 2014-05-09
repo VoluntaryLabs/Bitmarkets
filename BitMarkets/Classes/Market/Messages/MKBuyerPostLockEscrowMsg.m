@@ -17,12 +17,13 @@
     return @"Buyer Posted Escrow to Blockchain";
 }
 
+/*
 - (BNWallet *)wallet
 {
     return MKRootNode.sharedMKRootNode.wallet;
 }
 
-- (void)setupFromSellerPayload:(NSString *)aPayload
+- (void)setupFromSellerPayload:(NSDictionary *)aPayload
 {
     // aPayload contains the seller signed tx
     // we need to sign it and then post it
@@ -55,5 +56,6 @@
     
     return NO;
 }
+*/
 
 @end
