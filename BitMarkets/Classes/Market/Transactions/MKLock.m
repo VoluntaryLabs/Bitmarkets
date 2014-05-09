@@ -71,7 +71,7 @@
     if (self.shouldLookForConfirm && !self.confirmTimer)
     {
         [self.confirmTimer invalidate];
-        self.confirmTimer = [NSTimer scheduledTimerWithTimeInterval:self.refreshInterval
+        self.confirmTimer = [NSTimer scheduledTimerWithTimeInterval:10.0
                                                              target:self
                                                            selector:@selector(lookForConfirm)
                                                            userInfo:nil

@@ -101,6 +101,11 @@
     {
         [self postLockToBlockchain];
     }
+    else
+    {
+        [self startConfirmTimerIfNeeded];
+    }
+
 }
 
 // send lock

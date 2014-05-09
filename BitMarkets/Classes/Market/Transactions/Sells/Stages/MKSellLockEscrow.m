@@ -139,6 +139,10 @@
     {
         [self sendLock];
     }
+    else
+    {
+        [self startConfirmTimerIfNeeded];
+    }
 }
 
 // confirm methods to extend parent class MKLock
