@@ -17,16 +17,42 @@ static MKExchangeRate *shared;
     if (!shared)
     {
         shared = [[self alloc] init];
-        [shared update];
     }
     
     return shared;
 }
 
+- (void)startRepeatingTimer {
+    
+    if(nil != self.repeatingTimer)
+    {
+        // Cancel a preexisting timer.
+        [self.repeatingTimer invalidate];
+    }
+    
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:(60 * 1)
+                                                      target:self
+                                                    selector:@selector(update)
+                                                    userInfo:nil
+                                                     repeats:YES];
+    self.repeatingTimer = timer;
+}
+
 - (void)update
 {
-    [self btcPerSymbol:@"USD"];
-    [self btcPerSymbol:@"EUR"];
+    NSLog(@"Updating BTC Exchange rate");
+
+    NSString *url =
+    [NSString stringWithFormat:@"https://blockchain.info/ticker"];
+    
+    NSURLRequest *request =
+    [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+    
+    self.connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    if (!self.connection) {
+        self.responseData = nil;
+    }
+
 }
 
 - (id) init
@@ -34,13 +60,84 @@ static MKExchangeRate *shared;
     if ( self = [super init] ) {
         self.responseData = [[NSMutableData alloc] init];
         self.rates = [[NSMutableDictionary alloc] init];
-        self.ratesFetchedAt = [[NSMutableDictionary alloc] init];
-        self.cacheTtl = 10 * 60;
+        self.repeatingTimer = nil;
+        [self update];
+        [self startRepeatingTimer];
     }
     return self;
 }
 
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+    [self.responseData setLength:0];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    // Append the new data to receivedData.
+    // receivedData is an instance variable declared elsewhere.
+    [self.responseData appendData:data];
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    // Release the connection and the data object
+    // by setting the properties (declared elsewhere)
+    // to nil.  Note that a real-world app usually
+    // requires the delegate to manage more than one
+    // connection at a time, so these lines would
+    // typically be replaced by code to iterate through
+    // whatever data structures you are using.
+    self.connection = nil;
+    self.responseData = nil;
+    
+    // inform the user
+    NSLog(@"Connection failed! Error - %@ %@",
+          [error localizedDescription],
+          [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+
+    
+    if ([self.responseData length] > 0) {
+        // NSLog(@"Succeeded! Received %d bytes of data",[self.responseData length]);
+        
+        NSError *error;
+        
+        id jsonObject = [NSJSONSerialization
+                         JSONObjectWithData:self.responseData
+                         options:NSJSONReadingMutableContainers
+                         error:&error];
+        
+        if (error)
+        {
+            NSLog(@"JSON Parse Error: %@", [[error userInfo] objectForKey:@"NSDebugDescription"]);
+            [NSException raise:@"JSON Parse Error" format:@""];
+        }
+        else
+        {
+            self.rates = (NSMutableDictionary *)jsonObject;
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"ExchangeRatesFetched" object: self];
+        }
+    }
+    else {
+        // NSLog(@"Faild! Blockchain.info probably timed out.");
+    }
+
+    
+
+    
+    self.connection = nil;
+    self.responseData = nil;
+}
+
 - (void)dealloc {
+    [self.repeatingTimer invalidate];
+    self.repeatingTimer = nil;
+    self.connection = nil;
+    self.responseData = nil;
 
 }
 
@@ -51,47 +148,13 @@ static MKExchangeRate *shared;
 
 - (NSNumber *) btcPerSymbol:(NSString *) symbol
 {
-    NSNumber *rate = [_rates objectForKey: symbol];
-    NSDate * currentDate = [NSDate date];
-    NSDate *rateFetchedAt = [_ratesFetchedAt objectForKey: symbol];
-    if ((nil == rateFetchedAt) ||
-        ([currentDate timeIntervalSinceDate: rateFetchedAt] > _cacheTtl)) {
-        
-        // Update last fetch date
-        
-        [self.ratesFetchedAt setValue:currentDate forKey:symbol];
-
-        // Create the url we will use to ping the blockchain.info API
-        
-        NSString *url =
-        [NSString stringWithFormat:@"https://blockchain.info/tobtc?currency=%@&value=1", symbol];
-        
-        NSURLRequest *request =
-        [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
-        
-        // Declare an empty response NSURLConnectoin needs to fill in the actual response
-        // Send synchronous http request
-        
-        NSURLResponse *response = nil;
-        NSData *data =
-        [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
-        
-        // Convert response NSData into string
-        
-        NSString *rateString =
-        [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        
-        // Convert response to float and store in cache.
-        
+    NSNumber * rate = nil;
+    NSDictionary *currencyData = [self.rates objectForKey:symbol];
+    if (nil != currencyData) {
+        NSString *rateString = [currencyData objectForKey:@"last"];
         rate = [NSNumber numberWithFloat:[rateString floatValue]];
-        [self.rates setValue:rate forKey:symbol];
-        
-        return rate;
     }
-    else {
-        return rate;
-    }
-    
+    return rate;
 }
 
 @end

@@ -10,12 +10,14 @@
 
 @interface MKExchangeRate : NSObject
 
+@property (strong, nonatomic) NSURLConnection *connection;
 @property (strong, nonatomic) NSMutableData *responseData;
 @property (strong, nonatomic) NSMutableDictionary *rates;
-@property (strong, nonatomic) NSMutableDictionary *ratesFetchedAt;
-@property int cacheTtl;
+@property (strong, nonatomic) NSTimer *repeatingTimer;
 
 - (NSNumber *)btcPerSymbol:(NSString *) symbol;
+- (void)startRepeatingTimer;
+- (void)update;
 
 + (MKExchangeRate *)shared;
 

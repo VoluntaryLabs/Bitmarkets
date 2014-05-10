@@ -9,7 +9,7 @@
 #import "MKPostView.h"
 #import <NavKit/NavKit.h>
 #import "MKRootNode.h"
-#import "MKExchangeRate.h"
+
 
 @implementation MKPostView
 
@@ -103,6 +103,16 @@
 
         self.attachedImage = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
         [self addSubview:self.attachedImage];
+        
+        // exchange rate calculator
+        
+        self.exchangeRate = [MKExchangeRate shared];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(updatePriceSuffix)
+                                                     name:@"ExchangeRatesFetched"
+                                                   object:nil];
+
     }
     
     return self;
@@ -160,6 +170,7 @@
     [_fromAddressIcon placeYBelow:_categoryIcon margin:iconMargin];
     [_fromAddress placeYBelow:_categoryIcon margin:iconMargin];
     [_fromAddress placeXRightOf:_fromAddressIcon margin:iconMargin];
+    
 }
 
 - (void)prepareToDisplay
@@ -326,24 +337,16 @@
     float btc = [[[self.price textStorage] string] floatValue];
     if (btc)
     {
-        if (NO)
-        {
-            MKExchangeRate *rate = [MKExchangeRate shared];
+        MKExchangeRate *rate = [MKExchangeRate shared];
 
-            NSNumber *usdRate = [rate btcPerSymbol:@"USD"];
-            NSNumber *eurRate = [rate btcPerSymbol:@"EUR"];
-            float usd = btc / [usdRate floatValue];
-            float eur = btc / [eurRate floatValue];
-            /*
-            NSString *usdSymbol = @"$";
-            NSString *eurSymbol = @"€";
-            NSString *btcSymbol = @"฿";
-            */
-            //[self.price setSuffix:[NSString stringWithFormat:@"BTC   $%1.0f   €%1.0f", usd, eur]];
+        NSNumber *usdRate = [rate btcPerSymbol:@"USD"];
+        NSNumber *eurRate = [rate btcPerSymbol:@"EUR"];
+        if(nil != usdRate && nil != eurRate) {
+            float usd = btc * [usdRate floatValue];
+            float eur = btc * [eurRate floatValue];
             [self.price setSuffix:[NSString stringWithFormat:@"BTC  %1.2fUSD  %1.2fEUR", usd, eur]];
         }
-        else
-        {
+        else {
             [self.price setSuffix:@"BTC"];
         }
     }

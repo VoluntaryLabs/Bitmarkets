@@ -10,6 +10,7 @@
 #import <NavKit/NavKit.h>
 #import "MKSell.h"
 #import "MKTextView.h"
+#import "MKExchangeRate.h"
 
 @interface MKPostView : NSView <NSTextViewDelegate>
 
@@ -37,6 +38,8 @@
 @property (strong, nonatomic) NSImageView *attachedImage;
 
 @property (assign, nonatomic) BOOL isUpdating;
+
+@property (strong, nonatomic) MKExchangeRate * exchangeRate;
 
 - (MKSell *)sell;
 
