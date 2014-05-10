@@ -12,15 +12,19 @@
 
 - (NSString *)nodeTitle
 {
-    NSLog(@"MKBuyerLockEscrowMsg %@ -> %@", NSStringFromClass(self.nodeParent.class),
-          NSStringFromClass(self.nodeParent.nodeParent.class));
-    
     if (self.isInBuy)
     {
         return @"Buyer Lock Sent";
     }
     
     return @"Buyer Lock Received";
+}
+
+- (NSString *)nodeSubtitle
+{
+    //NSString *s = [super nodeSubtitle];
+    //NSLog(@"%p %@", (__bridge void *)self, s);
+    return [super nodeSubtitle];
 }
 
 @end

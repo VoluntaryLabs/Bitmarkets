@@ -72,7 +72,7 @@
         [self update];
         return YES;
     }
-    
+        
     return NO;
 }
 
@@ -93,12 +93,18 @@
 
 - (BOOL)sendLock
 {
+    BNWallet *wallet = MKRootNode.sharedMKRootNode.wallet;
+    
+    if (!wallet.isRunning)
+    {
+        return YES; // this effectively just reports that the msg was valid
+    }
+    
     BNTx *buyerTx = (BNTx *)[self.buyerLockMsg.payload asObjectFromJSONObject]; //TODO handle errors
     
     MKSellerLockEscrowMsg *msg = [[MKSellerLockEscrowMsg alloc] init];
     [msg copyFrom:self.sell.bids.acceptedBid.bidMsg];
 
-    BNWallet *wallet = MKRootNode.sharedMKRootNode.wallet;
     BNTx *tx = [wallet newTx];
     
     [tx configureForEscrowWithValue:self.sell.mkPost.price.longLongValue];
@@ -124,6 +130,12 @@
     [tx sign];
     [tx markInputsAsSpent];
     
+    if ([tx asJSONObject] == nil)
+    {
+        NSLog(@"ERROR: MKSellerLockEscrowMsg payload --------------");
+        return NO;
+    }
+    
     [msg setPayload:[tx asJSONObject]];
     
     [msg sendToBuyer];
@@ -139,7 +151,7 @@
     {
         [self sendLock];
     }
-    else
+    else if (self.buyerLockMsg && self.sellerLockMsg)
     {
         [self startConfirmTimerIfNeeded];
     }

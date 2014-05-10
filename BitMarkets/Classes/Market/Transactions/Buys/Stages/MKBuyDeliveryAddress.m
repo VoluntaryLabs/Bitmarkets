@@ -35,4 +35,12 @@
     return MKDeliveryAddressView.class;
 }
 
+- (JSONDB *)db
+{
+    JSONDB *db = [super db];
+    db.name = @"address";
+    db.location = JSONDB_IN_APP_SUPPORT_FOLDER;
+    return db;
+}
+
 @end

@@ -35,20 +35,31 @@
     [self addChild:self.mkChannel];
 
     self.buys  = [[MKBuys alloc] init];
-    [_buys read];
+    //[_buys read];
     [self addChild:_buys];
 
     self.sells = [[MKSells alloc] init];
-    [_sells read];
+    //[_sells read];
     [self addChild:_sells];
     
     [self.mkChannel performSelector:@selector(fetch) withObject:nil afterDelay:0.0];
     [self.rootRegion updateCounts];
     
-    [MKExchangeRate shared];
-
+    //[MKExchangeRate shared];
 
     return self;
+}
+
+- (void)read
+{
+    [_buys  read];
+    [_sells read];
+}
+
+- (void)write
+{
+    [_buys  write];
+    [_sells write];
 }
 
 - (BOOL)handleMsg:(MKMsg *)msg

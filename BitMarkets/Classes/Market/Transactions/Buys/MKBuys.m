@@ -64,6 +64,12 @@
     return buy;
 }
 
+- (void)removeChild:(id)aChild
+{
+    [super removeChild:aChild];
+    [self write];
+}
+
 - (BOOL)handleMsg:(MKMsg *)mkMsg // put in parent class of Buys and Sells
 {
     for (MKTransaction *child in self.children)

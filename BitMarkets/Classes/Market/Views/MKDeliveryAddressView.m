@@ -62,7 +62,9 @@
         _line3.nextKeyView = _line4;
         _line4.nextKeyView = _line1;
         
+        _line1.height = 30;
         _line1.roundRect.isOutlined = YES;
+        _line1.roundRect.outlineWidth = 3;
         
         _doneButton = [[NavRoundButtonView alloc] initWithFrame:NSMakeRect(0, 0, 120, 32)];
         //_postOrBuyButton.title = @"Buy Now";

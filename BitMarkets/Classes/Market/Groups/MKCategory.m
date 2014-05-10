@@ -21,6 +21,7 @@
 {
     self = [super init];
     //self.shouldSortChildren = YES;
+    //self.sortChildrenKey = @"date";
     return self;
 }
 
@@ -130,6 +131,21 @@
     //NSArray *nodes = [NSArray arrayWithObjects:root, markets, sells, sell, nil];
     //NSArray *nodes = [NSArray arrayWithObjects:root, sells, sell, nil];
     //[self.navView selectNodePath:nodes];
+}
+
+- (BOOL)addChild:(NavNode *)child
+{
+    BOOL result = [super addChild:child];
+    
+    if (result)
+    {
+        //if (self.nodeParent.shouldUseCountForNodeNote)
+        {
+            [self postParentChainChanged]; 
+        }
+    }
+    
+    return result;
 }
 
 @end

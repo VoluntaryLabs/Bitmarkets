@@ -125,7 +125,7 @@
     
     if (date)
     {
-        return [self.date itemDateTimeString];
+        return [date itemDateTimeString];
     }
     
     return @"[Date missing]";

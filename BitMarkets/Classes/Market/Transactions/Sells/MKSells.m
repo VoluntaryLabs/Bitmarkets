@@ -16,6 +16,7 @@
 - (id)init
 {
     self = [super init];
+    self.childClass = MKSell.class;
     self.shouldUseCountForNodeNote = YES;
     return self;
 }
@@ -55,11 +56,17 @@
     return self.children.count > 0;
 }
 
-- (MKSell *)justAdd
+- (MKSell *)justAdd // remove this and use parent implementation?
 {
     MKSell *sell = [[MKSell alloc] init];
     [self addChild:sell];
     return sell;
+}
+
+- (void)removeChild:(id)aChild
+{
+    [super removeChild:aChild];
+    [self write];
 }
 
 - (void)add

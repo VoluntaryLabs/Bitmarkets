@@ -7,6 +7,7 @@
 //
 
 #import "MKRootNode.h"
+#import "MKAppDelegate.h"
 
 @implementation MKRootNode
 
@@ -17,10 +18,15 @@ static MKRootNode *sharedMKRootNode = nil;
     if (sharedMKRootNode == nil)
     {
         sharedMKRootNode = [[self class] alloc];
-        sharedMKRootNode = [sharedMKRootNode init];
+        sharedMKRootNode = [sharedMKRootNode init]; // not safe
     }
     
     return sharedMKRootNode;
+}
+
+- (MKAppDelegate *)appDelegate
+{
+    return [[NSApplication sharedApplication] delegate];
 }
 
 - (id)init
@@ -31,23 +37,68 @@ static MKRootNode *sharedMKRootNode = nil;
     self.nodeTitle = @"BitMarkets";
     self.nodeSuggestedWidth = 150;
     
+    
+    [self.appDelegate setNavTitle:@"launching bitmessage server..."];
+    [self setupBMClient];
+
+    [self.appDelegate setNavTitle:@"launching bitcoin wallet server..."];
+    [self setupWallet];
+    
+    [self setupMarkets];
+    
+    return self;
+}
+
+- (void)setupMarkets
+{
+    [self.appDelegate setNavTitle:@"setting up markets..."];
+
     _markets = [[MKMarkets alloc] init];
+    [_markets read];
     //[self addChild:_markets];
     
     {
-        //_markets.rootRegion.nodeTitle = @"Markets";
         [self addChild:_markets.rootRegion];
         [self addChild:_markets.buys];
         [self addChild:_markets.sells];
-        //[self addChild:_markets.mkChannel];
     }
 
+    if (_wallet)
+    {
+        [self addChild:_wallet];
+    }
+    
+    [self addAbout];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(willShutdown)
+                                                 name:NSApplicationWillTerminateNotification
+                                               object:nil];
+    
+    [self.appDelegate setNavTitle:@""];
+}
+
+- (void)setupBMClient
+{
+    _bmClient = [BMClient sharedBMClient];
+    [[_bmClient identities] createFirstIdentityIfAbsent];
+}
+
+- (void)setupWallet
+{
     if (YES)
     {
         _wallet  = [[BNWallet alloc] init];
+        
+        /*
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(walletChanged:)
+                                                     name:nil
+                                                   object:_wallet];
+        */
         _wallet.refreshInterval = 5.0;
         _wallet.deepRefreshes = YES;
-        //_wallet.server.logsStderr = YES;
+        _wallet.server.logsStderr = YES;
         NSString *dataPath = [[[NSFileManager defaultManager] applicationSupportDirectory] stringByAppendingPathComponent:@"wallet"];
         NSError *error;
         
@@ -57,23 +108,21 @@ static MKRootNode *sharedMKRootNode = nil;
                                                         error:&error];
         [_wallet setPath:dataPath];
         [_wallet setCheckpointsPath:[[NSBundle bundleForClass:[BNWallet class]] pathForResource:@"checkpoints-testnet" ofType:nil]];
+        //[_wallet.server start];
+
         
-        [self addChild:_wallet];
     }
-
-
-    _bmClient = [BMClient sharedBMClient];
-    [[_bmClient identities] createFirstIdentityIfAbsent];
-    
-    [self addAbout];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(willShutdown)
-                                                 name:NSApplicationWillTerminateNotification
-                                               object:nil];
-    
-    return self;
 }
+
+/*
+- (void)walletChanged:(NSNotificationCenter *)aNote
+{
+    if ([_wallet isRunning] && _markets == nil)
+    {
+        [self setupMarkets];
+    }
+}
+*/
 
 - (void)willShutdown
 {
