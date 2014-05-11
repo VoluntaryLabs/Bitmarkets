@@ -60,7 +60,7 @@
     MKBuy *buy = [[MKBuy alloc] init];
     [self addChild:buy];
     [self postParentChanged];
-    //[self write];
+    [self write];
     return buy;
 }
 
@@ -92,6 +92,23 @@
             [child update];
         }
     }
+    
+    [self writeIfNeeded];
+}
+
+- (void)writeIfNeeded
+{
+    if ([self isDirtyRecursive])
+    {
+        [self write];
+        [self setCleanRecursive];
+    }
+}
+
+- (void)notifyChainDirty
+{
+    NSLog(@"%@ notifyChainDirty", NSStringFromClass(self.class));
+    //[self write];
 }
 
 @end

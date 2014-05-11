@@ -16,7 +16,6 @@
 @interface MKPost : MKGroup
 
 @property (strong, nonatomic) NSDate *date;
-
 @property (strong, nonatomic) NSString *status;
 
 // msg properties
@@ -24,7 +23,7 @@
 @property (strong, nonatomic) NSString *postUuid;
 
 @property (strong, nonatomic) NSString *title;
-@property (strong, nonatomic) NSNumber *price;
+@property (strong, nonatomic) NSNumber *priceInSatoshi;
 @property (strong, nonatomic) NSString *description;
 
 @property (strong, nonatomic) NSArray  *regionPath;
@@ -33,6 +32,9 @@
 
 - (BOOL)isEditable;
 - (BOOL)canBuy;
+
+- (void)setPriceInBtc:(NSNumber *)btcNumber;
+- (NSNumber *)priceInBtc;
 
 - (BOOL)placeInMarketsPath;
 

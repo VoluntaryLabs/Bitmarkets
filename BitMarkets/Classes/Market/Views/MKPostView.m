@@ -210,7 +210,7 @@
     [_title textDidChange];
     [_title useUneditedTextStringIfNeeded];
     
-    NSString *priceString = [NSString stringWithFormat:@"%@", self.mkPost.price].strip;
+    NSString *priceString = [NSString stringWithFormat:@"%@", self.mkPost.priceInBtc].strip;
     _price.string = priceString;
     if ([_price.string isEqualToString:@"0"])
     {
@@ -236,17 +236,11 @@
 - (void)syncToNode
 {
     self.mkPost.title = _title.stringSansUneditedString;
-    self.mkPost.price = [NSNumber numberWithDouble:_price.stringSansUneditedString.doubleValue];
+    self.mkPost.priceInBtc = [NSNumber numberWithDouble:_price.stringSansUneditedString.doubleValue];
     self.mkPost.description = _description.stringSansUneditedString;
+    self.mkPost.isDirty = YES;
     [self.mkPost postSelfChanged];
 }
-
-/*
-- (NSNumber *)priceNumber
-{
-    return [NSNumber numberWithDouble:self.price.string.doubleValue];
-}
-*/
 
 - (BOOL)readyToPost
 {
@@ -416,10 +410,11 @@
 {
     NSLog(@"buy");
     
+    // reorg this mess
     MKBuy *buy = MKRootNode.sharedMKRootNode.markets.buys.addBuy;
     [buy.mkPost copy:self.mkPost];
     MKBidMsg *bidMsg = [buy.mkPost sendBidMsg];
-    [buy handleMsg:bidMsg];
+    [buy.bid addChild:bidMsg];
     
     //NSLog(@"path = %@", buy.nodePathArray);
     [self.navView selectNodePath:buy.nodePathArray];

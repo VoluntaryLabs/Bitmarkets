@@ -11,6 +11,7 @@
 #import "MKBidMsg.h"
 #import "MKSell.h"
 #import "MKRootNode.h"
+#import <BitnashKit/BitnashKit.h>
 
 @implementation MKPost
 
@@ -22,7 +23,7 @@
     self.postUuid = [[NSUUID UUID] UUIDString];
     
     self.title = @"";
-    self.price = @0;
+    self.priceInSatoshi = @0;
     self.description = @"";
     
     self.regionPath = @[];
@@ -38,7 +39,7 @@
      @"postUuid",
      @"status",
      @"title",
-     @"price",
+     @"priceInSatoshi",
      @"description",
      @"regionPath",
      @"categoryPath",
@@ -109,15 +110,20 @@
 {
     if (self.canBuy)
     {
-        return [NSString stringWithFormat:@"%@BTC", self.price];
+        return [NSString stringWithFormat:@"%@BTC", self.priceInBtc];
     }
     
     return nil;
 }
 
-- (NSNumber *)priceInSatoshi
+- (void)setPriceInBtc:(NSNumber *)btcNumber
 {
-    return [NSNumber numberWithLongLong:(long long)(self.price.doubleValue * 100000000)];
+    self.priceInSatoshi = [btcNumber btcToSatoshi];
+}
+
+- (NSNumber *)priceInBtc
+{
+    return [self.priceInSatoshi satoshiToBtc];
 }
 
 - (NSString *)titleOrDefault

@@ -66,6 +66,11 @@
     return self;
 }
 
+- (NSArray *)modelActions
+{
+        return @[@"resend"];
+}
+
 // equality
 
 - (NSString *)uniqueName
@@ -227,6 +232,11 @@
 {
     [NSException raise:@"subclasses should override send" format:nil];
     return NO;
+}
+
+- (void)resend
+{
+    [self send];
 }
 
 - (BOOL)sendToBuyer

@@ -13,6 +13,6 @@
 @property (strong, nonatomic) NSTimer *confirmTimer;
 
 - (void)update;
-- (BOOL)isConfirmed;
+//- (BOOL)isConfirmed;
 
 @end

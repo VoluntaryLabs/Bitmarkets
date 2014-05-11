@@ -130,11 +130,13 @@
 
 - (BOOL)handleMsg:(MKMsg *)msg
 {
+    /*
     if ([msg isKindOfClass:MKBidMsg.class])
     {
         [self addChild:msg];
         return YES;
     }
+    */
     
     if ([msg isKindOfClass:MKAcceptBidMsg.class])
     {

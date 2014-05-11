@@ -29,7 +29,7 @@
 
 - (NSString *)nodeSubtitle
 {
-    return [NSString stringWithFormat:@"%@BTC", self.mkPost.price];
+    return [NSString stringWithFormat:@"%@BTC", self.mkPost.priceInBtc];
 }
 
 - (void)setDict:(NSDictionary *)dict

@@ -106,13 +106,10 @@
     //return YES; // temp
     
     BNTx *buyerTx = (BNTx *)[self.buyerLockMsg.payload asObjectFromJSONObject]; //TODO handle errors
-    
-    MKSellerLockEscrowMsg *msg = [[MKSellerLockEscrowMsg alloc] init];
-    [msg copyFrom:self.bidMsg];
-
     BNTx *tx = [wallet newTx];
     
-    [tx configureForEscrowWithValue:self.sell.mkPost.price.longLongValue];
+    long long priceInSatoshi = self.sell.mkPost.priceInSatoshi.longLongValue;
+    [tx configureForEscrowWithValue:priceInSatoshi];
     
     if (tx.error)
     {
@@ -120,13 +117,14 @@
         if (tx.error.insufficientValue)
         {
             //TODO: prompt user for deposit
-            
+            NSLog(@"need to deposit funds");
         }
         else
         {
             [NSException raise:@"tx configureForEscrowWithValue failed" format:nil];
             //TODO: handle unknown tx configureForEscrowWithValue error
         }
+        return YES;
     }
     
     tx = [tx mergedWithEscrowTx:buyerTx];
@@ -141,12 +139,13 @@
         return NO;
     }
     
-    [msg setPayload:[tx asJSONObject]];
     
+    MKSellerLockEscrowMsg *msg = [[MKSellerLockEscrowMsg alloc] init];
+    [msg copyFrom:self.bidMsg];
+    [msg setPayload:[tx asJSONObject]];
     [msg sendToBuyer];
     [self addChild:msg];
-    [self postSelfChanged];
-    [self postParentChanged];
+    [self postParentChainChanged];
     return YES;
 }
 
@@ -154,7 +153,14 @@
 {
     if (self.buyerLockMsg && !self.sellerLockMsg)
     {
-        [self sendLock];
+        @try
+        {
+            [self sendLock];
+        }
+        @catch (NSException *exception)
+        {
+            NSLog(@"sendLock failed with exception: %@", exception);
+        }
     }
 }
 

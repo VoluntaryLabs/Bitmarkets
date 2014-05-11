@@ -60,6 +60,7 @@
 {
     MKSell *sell = [[MKSell alloc] init];
     [self addChild:sell];
+    [self write];
     return sell;
 }
 
@@ -96,6 +97,23 @@
             [child update];
         }
     }
+    
+    [self writeIfNeeded];
+}
+
+- (void)writeIfNeeded
+{
+    if ([self isDirtyRecursive])
+    {
+        [self write];
+        [self setCleanRecursive];
+    }
+}
+
+- (void)notifyChainDirty
+{
+    NSLog(@"%@ notifyChainDirty", NSStringFromClass(self.class));
+    //[self write];
 }
 
 @end
