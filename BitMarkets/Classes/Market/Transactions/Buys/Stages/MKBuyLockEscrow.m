@@ -125,7 +125,9 @@
     BNWallet *wallet = MKRootNode.sharedMKRootNode.wallet;
     BNTx *tx = [wallet newTx];
     
-    [tx configureForEscrowWithValue:2*self.buy.mkPost.price.longLongValue];
+    NSLog(@"2*self.buy.mkPost.price.longLongValue: %lld", 2*self.buy.mkPost.priceInSatoshi.longLongValue);
+    
+    [tx configureForEscrowWithValue:2*self.buy.mkPost.priceInSatoshi.longLongValue];
     
     if (tx.error)
     {

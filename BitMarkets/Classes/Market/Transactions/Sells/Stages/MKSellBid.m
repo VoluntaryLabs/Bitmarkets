@@ -123,6 +123,8 @@
     
     MKSell *sell = (MKSell *)self.nodeParent.nodeParent;
     
+    NSLog(@"sell.mkPost.priceInSatoshi.longLongValue: %lld", sell.mkPost.priceInSatoshi.longLongValue);
+    
     [tx configureForEscrowWithValue:sell.mkPost.priceInSatoshi.longLongValue];
     
     if (tx.error)
