@@ -71,9 +71,4 @@
     return (MKBuy *)self.nodeParent;
 }
 
-- (MKBuyerAddressMsg *)addressMsg
-{
-    return [self.children firstObjectOfClass:MKBuyerAddressMsg.class];
-}
-
 @end
