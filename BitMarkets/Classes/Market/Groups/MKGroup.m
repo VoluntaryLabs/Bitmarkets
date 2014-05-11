@@ -106,6 +106,11 @@
         }
         
         [self setChildren:children];
+        
+        if (self.shouldSortChildren)
+        {
+            [self sortChildren];
+        }
     }
     
     [self setPropertiesDict:dict];

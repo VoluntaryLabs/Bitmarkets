@@ -1,16 +1,25 @@
-2. MKBuyLockEscrow sendLockToSeller method
+
+Lock Escrow
+
+1. MKBuyLockEscrow sendLockToSeller method
    - send buyer's utx inputs
 
-3. MKSellLockEscrow sendLock method
+2. MKSellLockEscrow sendLock method
    - add seller's utx input and signs
 
-4. MKBuyLockEscrow postLockToBlockchain method
+3. MKBuyLockEscrow postLockToBlockchain method
    -  buyer sign tx and post
 
-5. MKBuyLockEscrow lookForConfirm method
+4. MKBuyLockEscrow lookForConfirm method
    - look for confirm in blockchain
    - addChild: MKConfirmLockEscrowMsg
 
-6. MKSellLockEscrow lookForConfirm method
+5. MKSellLockEscrow lookForConfirm method
    - look for confirm in blockchain
    - addChild: MKConfirmLockEscrowMsg
+   
+
+
+Release Escrow
+
+1.

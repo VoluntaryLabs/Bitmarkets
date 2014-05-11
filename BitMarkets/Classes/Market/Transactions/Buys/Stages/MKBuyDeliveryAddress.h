@@ -7,9 +7,15 @@
 //
 
 #import "MKGroup.h"
+#import "MKBuyerAddressMsg.h"
 
 @interface MKBuyDeliveryAddress : MKGroup
 
 @property (strong, nonatomic) NSMutableDictionary *addressDict;
+
+- (BOOL)isInBuy;
+- (BOOL)isFilled;
+- (BOOL)canSend;
+- (void)sendMsg;
 
 @end

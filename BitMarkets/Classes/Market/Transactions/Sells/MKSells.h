@@ -13,7 +13,7 @@
 @interface MKSells : MKGroup
 
 - (MKSell *)justAdd;
-
 - (BOOL)handleMsg:(MKMsg *)mkMsg;
+- (void)update;
 
 @end

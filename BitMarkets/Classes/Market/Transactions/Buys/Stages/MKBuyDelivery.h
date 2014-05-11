@@ -8,9 +8,14 @@
 
 #import "MKGroup.h"
 #import "MKBuyDeliveryAddress.h"
+#import "MKBuyerAddressMsg.h"
+
+@class MKBuy;
 
 @interface MKBuyDelivery : MKGroup
 
 - (MKBuyDeliveryAddress *)address;
+- (MKBuyerAddressMsg *)addressMsg;
+- (MKBuy *)buy;
 
 @end

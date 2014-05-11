@@ -71,11 +71,11 @@
 
 - (void)update
 {
-    for (id child in self.children)
+    for (NavNode *child in self.children)
     {
         if ([child respondsToSelector:@selector(update)])
         {
-            [child update];
+            [(id)child update];
         }
     }
 }

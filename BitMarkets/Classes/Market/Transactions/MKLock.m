@@ -17,6 +17,12 @@
     return [self.children firstObjectOfClass:MKConfirmLockEscrowMsg.class];
 }
 
+
+- (BOOL)isConfirmed
+{
+    return self.confirmMsg != nil;
+}
+
 // confirm
 
 - (NSDictionary *)payloadToConfirm
@@ -43,16 +49,15 @@
     return nil;
 }
 
-- (void)lookForConfirm
+- (void)lookForConfirmIfNeeded
 {
-    if (!self.confirmMsg)
+    if (self.shouldLookForConfirm)
     {
         if (self.checkForConfirm)
         {
             MKConfirmLockEscrowMsg *msg = [[MKConfirmLockEscrowMsg alloc] init];
             [msg copyFrom:self.bidMsg];
             [self addChild:msg];
-            [self stopConfirmTimer];
         }
     }
 }
@@ -64,25 +69,5 @@
     return NO;
 }
 
-// confirm timer
-
-- (void)startConfirmTimerIfNeeded
-{
-    if (self.shouldLookForConfirm && !self.confirmTimer)
-    {
-        [self.confirmTimer invalidate];
-        self.confirmTimer = [NSTimer scheduledTimerWithTimeInterval:10.0
-                                                             target:self
-                                                           selector:@selector(lookForConfirm)
-                                                           userInfo:nil
-                                                            repeats:YES];
-    }
-}
-
-- (void)stopConfirmTimer
-{
-    [self.confirmTimer invalidate];
-    self.confirmTimer = nil;
-}
 
 @end

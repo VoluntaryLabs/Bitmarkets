@@ -87,7 +87,7 @@
         return isEqual;
     }
     
-    return YES;
+    return self.class == ((NSObject *)object).class;
 }
 
 // node

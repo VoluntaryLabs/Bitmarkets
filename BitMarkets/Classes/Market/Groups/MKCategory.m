@@ -20,7 +20,7 @@
 - (id)init
 {
     self = [super init];
-    //self.shouldSortChildren = YES;
+    self.shouldSortChildren = NO;
     //self.sortChildrenKey = @"date";
     return self;
 }

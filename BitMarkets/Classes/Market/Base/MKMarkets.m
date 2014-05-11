@@ -47,6 +47,7 @@
     
     //[MKExchangeRate shared];
 
+    [self setRefreshInterval:10];
     return self;
 }
 
@@ -75,6 +76,12 @@
     }
     
     return NO;
+}
+
+- (void)refresh
+{
+    [self.sells update];
+    [self.buys  update];
 }
 
 

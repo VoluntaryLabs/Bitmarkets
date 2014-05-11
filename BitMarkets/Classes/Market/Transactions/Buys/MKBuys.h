@@ -14,4 +14,6 @@
 
 - (MKBuy *)addBuy;
 - (BOOL)handleMsg:(MKMsg *)mkMsg;
+- (void)update;
+
 @end

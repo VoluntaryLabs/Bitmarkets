@@ -9,6 +9,8 @@
 #import "MKGroup.h"
 #import <BitmessageKit/BitmessageKit.h>
 
+// message names
+
 @interface MKMsg : MKGroup
 
 @property (strong, nonatomic) NSMutableDictionary *dict;

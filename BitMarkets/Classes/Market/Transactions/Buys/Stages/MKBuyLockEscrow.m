@@ -24,9 +24,16 @@
     return self;
 }
 
+// node
+
 - (CGFloat)nodeSuggestedWidth
 {
     return 350;
+}
+
+- (void)sortChildren
+{
+    [super sortChildrenWithKey:@"date"];
 }
 
 - (NSString *)nodeTitle
@@ -86,29 +93,24 @@
     return NO;
 }
 
-- (BOOL)isConfirmed
-{
-    return NO;
-}
+// update
 
 - (void)update
+{
+    [self sendLockToSellerIfNeeded];
+    [self postLockToBlockchainIdNeeded];
+    [self lookForConfirmIfNeeded];
+}
+
+// send lock
+
+- (void)sendLockToSellerIfNeeded
 {
     if (self.buy.bid.wasAccepted && !self.buyerLockMsg)
     {
         [self sendLockToSeller];
     }
-    else if (self.sellerLockMsg && !self.buyerPostLockMsg)
-    {
-        [self postLockToBlockchain];
-    }
-    else
-    {
-        [self startConfirmTimerIfNeeded];
-    }
-
 }
-
-// send lock
 
 - (BOOL)didSendLock
 {
@@ -152,6 +154,14 @@
 
 // post lock
 
+- (void)postLockToBlockchainIdNeeded
+{
+    if (self.sellerLockMsg && !self.buyerPostLockMsg)
+    {
+        [self postLockToBlockchain];
+    }
+}
+
 - (BOOL)postLockToBlockchain
 {
     NSDictionary *payload = self.sellerLockMsg.payload;
@@ -167,11 +177,6 @@
     [self addChild:msg];
     
     return NO;
-}
-
-- (void)sortChildren
-{
-    [super sortChildrenWithKey:@"date"];
 }
 
 // confirm methods to extend parent class MKLock

@@ -20,11 +20,4 @@
     return @"Buyer Lock Received";
 }
 
-- (NSString *)nodeSubtitle
-{
-    //NSString *s = [super nodeSubtitle];
-    //NSLog(@"%p %@", (__bridge void *)self, s);
-    return [super nodeSubtitle];
-}
-
 @end

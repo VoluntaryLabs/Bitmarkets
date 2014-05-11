@@ -76,6 +76,8 @@
     return NO;
 }
 
+//messages
+
 - (MKBuyerLockEscrowMsg *)buyerLockMsg
 {
     return [self.children firstObjectOfClass:MKBuyerLockEscrowMsg.class];
@@ -100,10 +102,13 @@
         return YES; // this effectively just reports that the msg was valid
     }
     
+    //NSLog(@"remove this return");
+    //return YES; // temp
+    
     BNTx *buyerTx = (BNTx *)[self.buyerLockMsg.payload asObjectFromJSONObject]; //TODO handle errors
     
     MKSellerLockEscrowMsg *msg = [[MKSellerLockEscrowMsg alloc] init];
-    [msg copyFrom:self.sell.bids.acceptedBid.bidMsg];
+    [msg copyFrom:self.bidMsg];
 
     BNTx *tx = [wallet newTx];
     
@@ -145,16 +150,18 @@
     return YES;
 }
 
-- (void)update
+- (void)sendLockIfNeeded
 {
     if (self.buyerLockMsg && !self.sellerLockMsg)
     {
         [self sendLock];
     }
-    else if (self.buyerLockMsg && self.sellerLockMsg)
-    {
-        [self startConfirmTimerIfNeeded];
-    }
+}
+
+- (void)update
+{
+    [self sendLockIfNeeded];
+    [self lookForConfirmIfNeeded];
 }
 
 // confirm methods to extend parent class MKLock
@@ -163,6 +170,8 @@
 {
     return self.sell.bids.acceptedBid.bidMsg;
 }
+
+// confirm
 
 - (NSDictionary *)payloadToConfirm
 {
@@ -173,5 +182,11 @@
 {
     return (self.buyerLockMsg && !self.confirmMsg);
 }
+
+- (BOOL)isComplete
+{
+    return self.isConfirmed;
+}
+
 
 @end

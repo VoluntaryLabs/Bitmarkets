@@ -24,17 +24,23 @@
         return @"Bid Sent";
     }
     
-    return @"Bid Received";
+    return [NSString stringWithFormat:@"Bid received from %@", self.sellerAddress];
+    
+    //return @"Bid Received";
 }
 
 - (NSString *)nodeSubtitle
 {
+    return self.dateString;
+    
+    /*
     if (self.isInBuy)
     {
         return self.dateString;
     }
     
     return [NSString stringWithFormat:@"From %@", self.sellerAddress];
+     */
 }
 
 - (void)setupForPost:(MKPost *)mkPost

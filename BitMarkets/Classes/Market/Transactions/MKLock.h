@@ -12,19 +12,14 @@
 
 @interface MKLock : MKGroup
 
-@property (strong, nonatomic) NSTimer *confirmTimer;
-
 - (MKConfirmLockEscrowMsg *)confirmMsg;
+- (BOOL)isConfirmed;
 
 // conifrm
 
+- (void)lookForConfirmIfNeeded;
 - (NSDictionary *)payloadToConfirm; // subclasses should override
-- (BOOL)checkForConfirm; // subclasses should override
 - (BOOL)shouldLookForConfirm; // subclasses should override
 
-// confirm timer
-
-- (void)startConfirmTimerIfNeeded;
-- (void)stopConfirmTimer;
 
 @end

@@ -18,6 +18,10 @@
 {
     self = [super init];
     
+    self.shouldSortChildren = YES;
+    self.sortChildrenKey = @"date";
+    self.sortAccending = YES;
+    
     [self.dictPropertyNames addObject:@"status"];
     
     return self;
@@ -61,7 +65,7 @@
 
 - (CGFloat)nodeSuggestedWidth
 {
-    return 350;
+    return 450;
 }
 
 - (NSString *)nodeTitle

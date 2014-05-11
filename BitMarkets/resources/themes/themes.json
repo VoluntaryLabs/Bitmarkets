@@ -6,33 +6,25 @@
         {
             "label" :
             {
-                "fontName" : "Open Sans Light",
-                "fontSize" : 18,
-                "color" : "#555555",
-                "align" : "left",
-            },
-            
-            "label-unedited" :
-            {
-                "fontName" : "Open Sans Light",
-                "fontSize" : 18,
+                "fontName" : "Open Sans",
+                "fontSize" : 15,
                 "color" : "#BBBBBB",
                 "align" : "left",
             },
             
             "line" :
             {
-                "fontName" : "Open Sans Light",
+                "fontName" : "Open Sans",
                 "fontSize" : 18,
-                "color" : "#555555",
+                "color" : "#333333",
                 "align" : "left",
             },
             
             "line-unedited" :
             {
-                "fontName" : "Open Sans Light",
+                "fontName" : "Open Sans Light Italic",
                 "fontSize" : 18,
-                "color" : "#BBBBBB",
+                "color" : "#DD0000",
                 "align" : "left",
             },
         },
