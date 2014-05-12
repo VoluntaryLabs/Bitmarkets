@@ -80,6 +80,8 @@
 		AAA2E6AD19006F0A0098C357 /* MKGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA2E68919006F0A0098C357 /* MKGroup.m */; };
 		AAA2E6AE19006F0A0098C357 /* MKRegion.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA2E68B19006F0A0098C357 /* MKRegion.m */; };
 		AAA2E6BB19006F0A0098C357 /* MKPostView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA2E6A819006F0A0098C357 /* MKPostView.m */; };
+		AAB280A419203E46005C9D27 /* MKDeliveryAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB280A319203E46005C9D27 /* MKDeliveryAddress.m */; };
+		AAB280B1192043AD005C9D27 /* MKSellDeliveryAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB280B0192043AD005C9D27 /* MKSellDeliveryAddress.m */; };
 		AABB8C611919B0E400F6776A /* MKBuyBid.m in Sources */ = {isa = PBXBuildFile; fileRef = AABB8C601919B0E400F6776A /* MKBuyBid.m */; };
 		AABB8C641919B0F600F6776A /* MKBuyLockEscrow.m in Sources */ = {isa = PBXBuildFile; fileRef = AABB8C631919B0F600F6776A /* MKBuyLockEscrow.m */; };
 		AABB8C671919B10600F6776A /* MKBuyDelivery.m in Sources */ = {isa = PBXBuildFile; fileRef = AABB8C661919B10600F6776A /* MKBuyDelivery.m */; };
@@ -316,6 +318,10 @@
 		AAA2E68B19006F0A0098C357 /* MKRegion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKRegion.m; sourceTree = "<group>"; };
 		AAA2E6A719006F0A0098C357 /* MKPostView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKPostView.h; sourceTree = "<group>"; };
 		AAA2E6A819006F0A0098C357 /* MKPostView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKPostView.m; sourceTree = "<group>"; };
+		AAB280A219203E46005C9D27 /* MKDeliveryAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKDeliveryAddress.h; sourceTree = "<group>"; };
+		AAB280A319203E46005C9D27 /* MKDeliveryAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKDeliveryAddress.m; sourceTree = "<group>"; };
+		AAB280AF192043AD005C9D27 /* MKSellDeliveryAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKSellDeliveryAddress.h; sourceTree = "<group>"; };
+		AAB280B0192043AD005C9D27 /* MKSellDeliveryAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKSellDeliveryAddress.m; sourceTree = "<group>"; };
 		AABB8C5F1919B0E400F6776A /* MKBuyBid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKBuyBid.h; sourceTree = "<group>"; };
 		AABB8C601919B0E400F6776A /* MKBuyBid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKBuyBid.m; sourceTree = "<group>"; };
 		AABB8C621919B0F600F6776A /* MKBuyLockEscrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKBuyLockEscrow.h; sourceTree = "<group>"; };
@@ -627,6 +633,8 @@
 		AA955E4F1914781300F6FB0F /* Transactions */ = {
 			isa = PBXGroup;
 			children = (
+				AAB280A219203E46005C9D27 /* MKDeliveryAddress.h */,
+				AAB280A319203E46005C9D27 /* MKDeliveryAddress.m */,
 				AA77F3F21915A0F10082306F /* MKTransaction.h */,
 				AA77F3F31915A0F10082306F /* MKTransaction.m */,
 				AA77F3D219158B910082306F /* MKMessages.h */,
@@ -752,6 +760,8 @@
 				AABB8C731919B14C00F6776A /* MKSellDelivery.m */,
 				AABB8C751919B15A00F6776A /* MKSellReleaseEscrow.h */,
 				AABB8C761919B15A00F6776A /* MKSellReleaseEscrow.m */,
+				AAB280AF192043AD005C9D27 /* MKSellDeliveryAddress.h */,
+				AAB280B0192043AD005C9D27 /* MKSellDeliveryAddress.m */,
 			);
 			path = Stages;
 			sourceTree = "<group>";
@@ -1121,6 +1131,7 @@
 				AA0E585D18FDC0880095DEBD /* main.m in Sources */,
 				AAF575CE191EFC0D005FE6D9 /* MKBuyerPostLockEscrowMsg.m in Sources */,
 				AA955E171914775500F6FB0F /* MKMarketChannel.m in Sources */,
+				AAB280A419203E46005C9D27 /* MKDeliveryAddress.m in Sources */,
 				AAF575D4191EFC0D005FE6D9 /* MKPostMsg.m in Sources */,
 				AA955E5E1914781300F6FB0F /* MKBuys.m in Sources */,
 				AAF575CA191EFC0D005FE6D9 /* MKMsg.m in Sources */,
@@ -1129,6 +1140,7 @@
 				AABB8C671919B10600F6776A /* MKBuyDelivery.m in Sources */,
 				AABB8C741919B14C00F6776A /* MKSellDelivery.m in Sources */,
 				AAF575D0191EFC0D005FE6D9 /* MKAcceptBidMsg.m in Sources */,
+				AAB280B1192043AD005C9D27 /* MKSellDeliveryAddress.m in Sources */,
 				AA9B75DF191B517200F17437 /* MKBuyDeliveryAddress.m in Sources */,
 				AABB8C6E1919B13000F6776A /* MKSellBids.m in Sources */,
 				AA9B75FD191C4F6E00F17437 /* MKLock.m in Sources */,

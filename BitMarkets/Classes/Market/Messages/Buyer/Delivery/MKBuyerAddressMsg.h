@@ -10,4 +10,7 @@
 
 @interface MKBuyerAddressMsg : MKMsg
 
+- (NSDictionary *)addressDict;
+- (void)setAddressDict:(NSDictionary *)aDict;
+
 @end

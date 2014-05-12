@@ -9,6 +9,7 @@
 #import "MKSellDelivery.h"
 #import "MKBuyerAddressMsg.h"
 #import "MKSell.h"
+#import "MKSellDeliveryAddress.h"
 
 @implementation MKSellDelivery
 
@@ -77,7 +78,14 @@
 {
     if ([msg isKindOfClass:MKBuyerAddressMsg.class])
     {
-        [self addChild:msg];
+        if([self addChild:msg])
+        {
+            MKBuyerAddressMsg *addressMsg = (MKBuyerAddressMsg *)msg;
+            MKSellDeliveryAddress *address = [[MKSellDeliveryAddress alloc] init];
+            address.addressDict = [NSMutableDictionary dictionaryWithDictionary:addressMsg.addressDict];
+            [self addChild:address];
+        }
+
         [self update];
         return YES;
     }

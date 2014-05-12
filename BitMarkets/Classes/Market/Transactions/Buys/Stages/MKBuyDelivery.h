@@ -18,4 +18,6 @@
 - (MKBuyerAddressMsg *)addressMsg;
 - (MKBuy *)buy;
 
+- (void)update;
+
 @end

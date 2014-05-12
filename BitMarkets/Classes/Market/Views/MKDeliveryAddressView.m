@@ -89,7 +89,7 @@
         
         _doneButton = [[NavRoundButtonView alloc] initWithFrame:NSMakeRect(0, 0, 120, 32)];
         //_postOrBuyButton.title = @"Buy Now";
-        _doneButton.title = @"Send this Address to Seller";
+        _doneButton.title = @"Approve this address";
         //[_postOrBuyButton setThemePath:@"sell/button"];
         [_doneButton setTitleAttributes:[NavTheme.sharedNavTheme attributesDictForPath:@"sell/button"]];
         [self addSubview:_doneButton];
@@ -244,11 +244,11 @@
     NSDictionary *enabledAttributes  = [NavTheme.sharedNavTheme attributesDictForPath:@"sell/button"];
     NSDictionary *disabledAttributes = [NavTheme.sharedNavTheme attributesDictForPath:@"sell/button-disabled"];
 
-    if (self.deliveryAddress.isInBuy)
+    if (self.deliveryAddress.isEditable)
     {
         [_doneButton setHidden:NO];
 
-        if (self.deliveryAddress.canSend)
+        if (!self.deliveryAddress.isApproved)
         {
             [_doneButton setTitleAttributes:enabledAttributes];
             [_doneButton setEnabled:YES];
@@ -346,7 +346,7 @@
 - (void)done
 {
     //NSLog(@"done");
-    [self.deliveryAddress sendMsg];
+    [self.deliveryAddress approve];
 }
 
 @end

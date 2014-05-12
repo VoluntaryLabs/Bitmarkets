@@ -17,14 +17,15 @@
 - (id)init
 {
     self = [super init];
+    self.isApproved = [NSNumber numberWithBool:NO];
+    self.isEditable = YES;
     
-    [self.dictPropertyNames addObject:@"addressDict"];
+    [self.dictPropertyNames addObject:@"isApproved"];
     [self read];
 
     if (self.addressDict == nil)
     {
         self.addressDict = [NSMutableDictionary dictionary];
-        
     }
     
     return self;
@@ -37,12 +38,17 @@
 
 - (NSString *)nodeSubtitle
 {
-    if (self.isFilled)
+    if (!self.isFilled)
     {
-        return @"completed";
+        return @"need to complete";
     }
     
-    return @"need to complete";
+    if (!self.isApproved)
+    {
+        return @"need to approve";
+    }
+    
+    return @"approved";
 }
 
 - (NSString *)nodeNote
@@ -68,54 +74,27 @@
     return db;
 }
 
-- (MKBuyDelivery *)delivery
+- (MKBuyDelivery *)buyDelivery
 {
     return (MKBuyDelivery *)self.nodeParent;
 }
-
-- (void)sendMsg
-{
-    MKBuyerAddressMsg *msg = [[MKBuyerAddressMsg alloc] init];
-    [msg copyFrom:self.delivery.buy.bid.bidMsg];
-    [msg.dict setObject:self.addressDict forKey:@"address"];
-    [msg send];
-    [self.delivery addChild:msg];
-    //return msg;
-}
-
-- (BOOL)isFilled
-{
-    for (NSString *key in self.addressDict)
-    {
-        NSString *value = [self.addressDict objectForKey:key];
-        if (!value || [value isEqualToString:@""])
-        {
-            return NO;
-        }
-    }
-    
-    return YES;
-}
-
-
-- (BOOL)isInBuy
-{
-    return [self.nodeParent.className containsString:@"Buy"];
-}
-
 - (BOOL)canSend
 {
-    if (self.isInBuy)
+    MKBuyDelivery *buyDelivery = (MKBuyDelivery *)self.nodeParent;
+    
+    if (buyDelivery.addressMsg)
     {
-        MKBuyDelivery *delivery = (MKBuyDelivery *)self.nodeParent;
         
-        if (delivery.addressMsg)
-        {
-            
-        }
     }
     
-    return self.isFilled && self.isInBuy;
+    return self.isFilled;
+}
+
+- (void)approve
+{
+    [self setIsApproved:[NSNumber numberWithBool:YES]];
+    [self.buyDelivery update];
+    [self postParentChainChanged];
 }
 
 @end

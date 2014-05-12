@@ -7,6 +7,7 @@
 //
 
 #import "MKBuyDelivery.h"
+#import "MKBuy.h"
 
 @implementation MKBuyDelivery
 
@@ -48,9 +49,14 @@
 
 - (NSString *)nodeSubtitle
 {
+    if (!self.address.isApproved)
+    {
+        return @"need to approve";
+    }
+    
     if (self.addressMsg)
     {
-        return @"sent address";
+        return @"approved and sent";
     }
     
     return nil;
@@ -69,6 +75,20 @@
 - (MKBuy *)buy
 {
     return (MKBuy *)self.nodeParent;
+}
+
+- (void)update
+{
+    // send address msg if ready
+    
+    if (self.address.isApproved && !self.addressMsg)
+    {
+        MKBuyerAddressMsg *msg = [[MKBuyerAddressMsg alloc] init];
+        [msg copyFrom:self.buy.bid.bidMsg];
+        [msg setAddressDict:self.address.addressDict];
+        [msg send];
+        [self addChild:msg];
+    }
 }
 
 @end

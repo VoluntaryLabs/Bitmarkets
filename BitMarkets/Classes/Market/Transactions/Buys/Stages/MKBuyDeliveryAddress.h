@@ -6,16 +6,14 @@
 //  Copyright (c) 2014 voluntary.net. All rights reserved.
 //
 
-#import "MKGroup.h"
+#import "MKDeliveryAddress.h"
 #import "MKBuyerAddressMsg.h"
 
-@interface MKBuyDeliveryAddress : MKGroup
+@interface MKBuyDeliveryAddress : MKDeliveryAddress
 
-@property (strong, nonatomic) NSMutableDictionary *addressDict;
+@property (strong, nonatomic) NSNumber *isApproved;
 
-- (BOOL)isInBuy;
-- (BOOL)isFilled;
 - (BOOL)canSend;
-- (void)sendMsg;
+- (void)approve;
 
 @end

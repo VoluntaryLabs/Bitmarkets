@@ -30,4 +30,14 @@
     return [super sendToSeller];
 }
 
+- (NSDictionary *)addressDict
+{
+    return [self.dict objectForKey:@"address"];
+}
+
+- (void)setAddressDict:(NSDictionary *)aDict
+{
+    [self.dict setObject:aDict forKey:@"address"];
+}
+
 @end
