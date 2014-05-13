@@ -12,11 +12,6 @@
 
 @implementation MKBidMsg
 
-- (BOOL)isInBuy
-{
-    return [self.nodeParent isKindOfClass:MKBuyBid.class];
-}
-
 - (NSString *)nodeTitle
 {    
     if (self.isInBuy)

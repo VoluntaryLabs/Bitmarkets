@@ -11,9 +11,11 @@
 
 @interface MKBuyDeliveryAddress : MKDeliveryAddress
 
-@property (strong, nonatomic) NSNumber *isApproved;
+@property (strong, nonatomic) NSNumber *isApprovedBool;
 
 - (BOOL)canSend;
 - (void)approve;
+- (BOOL)isApproved;
+- (void)setIsApproved:(BOOL)aBool;
 
 @end

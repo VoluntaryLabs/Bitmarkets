@@ -153,21 +153,21 @@ static MKRootNode *sharedMKRootNode = nil;
         {
             NavInfoNode *contributor = [[NavInfoNode alloc] init];
             contributor.nodeTitle = @"Steve Dekorte";
-            contributor.nodeSubtitle = @"Lead";
+            contributor.nodeSubtitle = @"Lead Developer";
             [contributors addChild:contributor];
         }
         
         {
             NavInfoNode *contributor = [[NavInfoNode alloc] init];
             contributor.nodeTitle = @"Rich Collins";
-            contributor.nodeSubtitle = @"Bitcoin";
+            contributor.nodeSubtitle = @"Bitcoin Integration";
             [contributors addChild:contributor];
         }
         
         {
             NavInfoNode *contributor = [[NavInfoNode alloc] init];
             contributor.nodeTitle = @"Chris Robinson";
-            contributor.nodeSubtitle = @"Design";
+            contributor.nodeSubtitle = @"Designer";
             [contributors addChild:contributor];
         }
         
@@ -181,7 +181,7 @@ static MKRootNode *sharedMKRootNode = nil;
         {
             NavInfoNode *contributor = [[NavInfoNode alloc] init];
             contributor.nodeTitle = @"Dru Nelson";
-            contributor.nodeSubtitle = @"Unix";
+            contributor.nodeSubtitle = @"Unix Guru";
             [contributors addChild:contributor];
         }
     }

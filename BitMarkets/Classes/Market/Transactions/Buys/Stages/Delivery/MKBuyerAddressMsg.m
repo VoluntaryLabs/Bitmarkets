@@ -10,11 +10,6 @@
 
 @implementation MKBuyerAddressMsg
 
-- (BOOL)isInBuy
-{
-    return [[self.nodeParent className] containsString:@"Buy"];
-}
-
 - (NSString *)nodeTitle
 {
     if (self.isInBuy)

@@ -18,11 +18,6 @@
     return self;
 }
 
-- (BOOL)isInBuy
-{
-    return [self.nodeParent isKindOfClass:MKBuyLockEscrow.class];
-}
-
 - (void)setPayload:(NSDictionary *)payload
 {
     [self.dict setObject:payload forKey:@"payload"];

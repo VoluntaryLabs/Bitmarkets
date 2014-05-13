@@ -10,8 +10,6 @@
 
 @interface MKEscrowMsg : MKMsg
 
-- (BOOL)isInBuy;
-
 - (void)setPayload:(NSDictionary *)payload;
 - (NSDictionary *)payload;
 

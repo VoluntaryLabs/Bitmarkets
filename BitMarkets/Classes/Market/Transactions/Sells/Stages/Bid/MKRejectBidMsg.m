@@ -10,6 +10,12 @@
 
 @implementation MKRejectBidMsg
 
+- (NSString *)nodeTitle
+{
+    //if (self.isInBuy)
+    return @"Bid Rejected";
+}
+
 - (BOOL)send
 {
     return [self sendToBuyer];

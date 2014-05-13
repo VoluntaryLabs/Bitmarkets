@@ -8,12 +8,10 @@
 
 #import <BitMessageKit/BitMessageKit.h>
 #import "MKBuy.h"
-#import "MKGroup.h"
+#import "MKTransactions.h"
 
-@interface MKBuys : MKGroup
+@interface MKBuys : MKTransactions
 
 - (MKBuy *)addBuy;
-- (BOOL)handleMsg:(MKMsg *)mkMsg;
-- (void)update;
 
 @end

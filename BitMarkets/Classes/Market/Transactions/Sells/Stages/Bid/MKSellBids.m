@@ -64,12 +64,14 @@
     if ([msg isKindOfClass:MKBidMsg.class])
     {
         MKSellBid *sellBid = [[MKSellBid alloc] init];
+
         [sellBid addChild:msg];
-        
-        if ([self acceptedBid])
+
+        if ([self acceptedBid] && ![sellBid isEqual:[self acceptedBid]])
         {
             [sellBid reject];
         }
+        
         
         [self addChild:sellBid];
         [self postParentChanged];

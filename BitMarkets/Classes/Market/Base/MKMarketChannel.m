@@ -23,7 +23,7 @@
 - (id)init
 {
     self = [super init];
-    self.passphrase = @"bitmarkets test 3";    
+    self.passphrase = @"bitmarkets test 4";    
     return self;
 }
 
@@ -60,6 +60,7 @@
         {
             MKPost *mkPost = [msg mkPost];
             BOOL couldPlace = [mkPost placeInMarketsPath]; // deals with merging?
+            
             if (couldPlace)
             {
                 //NSLog(@"placing post '%@'", mkPost.title);

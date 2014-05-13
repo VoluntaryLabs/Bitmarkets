@@ -8,6 +8,7 @@
 
 #import "MKMsg.h"
 #import "MKRootNode.h"
+#import "MKBuy.h"
 
 @implementation MKMsg
 
@@ -66,10 +67,12 @@
     return self;
 }
 
+/*
 - (NSArray *)modelActions
 {
-        return @[@"resend"];
+    return @[@"resend"];
 }
+*/
 
 // equality
 
@@ -269,6 +272,11 @@
 
     //[MKRootNode.sharedMKRootNode.markets handleMsg:self];
     return YES;
+}
+
+- (BOOL)isInBuy
+{
+    return [self inParentChainHasClass:MKBuy.class];
 }
 
 

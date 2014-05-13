@@ -21,4 +21,19 @@
     return @"Release Escrow";
 }
 
+- (NSArray *)modelActions
+{
+    return @[@"requestRefund", @"makePayment"];
+}
+
+- (void)requestRefund
+{
+    
+}
+
+- (void)makePayment
+{
+    
+}
+
 @end

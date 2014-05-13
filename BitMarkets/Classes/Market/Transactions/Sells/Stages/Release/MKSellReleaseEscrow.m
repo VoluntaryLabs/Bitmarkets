@@ -8,6 +8,17 @@
 
 #import "MKSellReleaseEscrow.h"
 
+// payment
+
+#import "MKBuyPaymentMsg.h"
+#import "MKSellAcceptPaymentMsg.h"
+
+// refund
+
+#import "MKBuyRequestRefundMsg.h"
+#import "MKSellAcceptRefundRequestMsg.h"
+
+
 @implementation MKSellReleaseEscrow
 
 - (id)init
@@ -19,6 +30,40 @@
 - (NSString *)nodeTitle
 {
     return @"Release Escrow";
+}
+
+- (NSArray *)modelActions
+{
+    return @[];
+}
+
+- (void)sendRefund
+{
+    
+}
+
+// payment messages
+
+- (MKBuyPaymentMsg *)buyPaymentMsg
+{
+    return [self.children firstObjectOfClass:MKBuyPaymentMsg.class];
+}
+
+- (MKSellAcceptPaymentMsg *)sellAcceptPaymentMsg
+{
+    return [self.children firstObjectOfClass:MKSellAcceptPaymentMsg.class];
+}
+
+// refund messages
+
+- (MKBuyRequestRefundMsg *)buyRequestRefundMsg
+{
+    return [self.children firstObjectOfClass:MKBuyRequestRefundMsg.class];
+}
+
+- (MKSellAcceptRefundRequestMsg *)sellAcceptRefundRequestMsg
+{
+    return [self.children firstObjectOfClass:MKSellAcceptRefundRequestMsg.class];
 }
 
 @end

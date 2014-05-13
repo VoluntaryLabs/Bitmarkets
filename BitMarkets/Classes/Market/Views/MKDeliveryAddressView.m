@@ -228,17 +228,6 @@
     [self.deliveryAddress write];
 }
 
-- (BOOL)isReady
-{
-    return self.deliveryAddress.canSend;
-    /*
-        self.line1.isReady &&
-        self.line2.isReady &&
-        self.line3.isReady &&
-        self.line4.isReady;
-    */
-}
-
 - (void)updateButton
 {
     NSDictionary *enabledAttributes  = [NavTheme.sharedNavTheme attributesDictForPath:@"sell/button"];

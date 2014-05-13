@@ -17,10 +17,10 @@
 - (id)init
 {
     self = [super init];
-    self.isApproved = [NSNumber numberWithBool:NO];
+    self.isApproved = NO;
     self.isEditable = YES;
     
-    [self.dictPropertyNames addObject:@"isApproved"];
+    [self.dictPropertyNames addObject:@"isApprovedBool"];
     [self read];
 
     if (self.addressDict == nil)
@@ -78,23 +78,27 @@
 {
     return (MKBuyDelivery *)self.nodeParent;
 }
-- (BOOL)canSend
-{
-    MKBuyDelivery *buyDelivery = (MKBuyDelivery *)self.nodeParent;
-    
-    if (buyDelivery.addressMsg)
-    {
-        
-    }
-    
-    return self.isFilled;
-}
 
 - (void)approve
 {
-    [self setIsApproved:[NSNumber numberWithBool:YES]];
+    [self setIsApproved:YES];
     [self.buyDelivery update];
     [self postParentChainChanged];
+}
+
+- (BOOL)isEditable
+{
+    return !self.isApproved;
+}
+
+- (void)setIsApproved:(BOOL)aBool
+{
+    [self setIsApprovedBool:[NSNumber numberWithBool:aBool]];
+}
+
+- (BOOL)isApproved
+{
+    return self.isApprovedBool.boolValue;
 }
 
 @end

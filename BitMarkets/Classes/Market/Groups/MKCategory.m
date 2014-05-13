@@ -117,7 +117,7 @@
     MKRootNode *root   = [MKRootNode sharedMKRootNode];
     MKMarkets *markets = [root markets];
     MKSells *sells     = [markets sells];
-    MKSell *sell       = [sells justAdd];
+    MKSell *sell       = [sells addSell];
     
     MKPost *mkPost = sell.mkPost;
     
