@@ -26,6 +26,11 @@
     return @[@"requestRefund", @"makePayment"];
 }
 
+- (void)update
+{
+        
+}
+
 - (void)requestRefund
 {
     

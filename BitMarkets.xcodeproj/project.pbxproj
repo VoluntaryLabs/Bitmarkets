@@ -109,7 +109,8 @@
 		AAB2815719220D59005C9D27 /* MKBuyRequestRefundMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB2815619220D59005C9D27 /* MKBuyRequestRefundMsg.m */; };
 		AAB2815A19220D98005C9D27 /* MKSellAcceptRefundRequestMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB2815919220D98005C9D27 /* MKSellAcceptRefundRequestMsg.m */; };
 		AAB2815D19220EF4005C9D27 /* MKConfirmRefundMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB2815C19220EF4005C9D27 /* MKConfirmRefundMsg.m */; };
-		AAB2816019220F04005C9D27 /* MKConfirmPayment.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB2815F19220F04005C9D27 /* MKConfirmPayment.m */; };
+		AAB2816019220F04005C9D27 /* MKConfirmPaymentMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB2815F19220F04005C9D27 /* MKConfirmPaymentMsg.m */; };
+		AAB28163192242AF005C9D27 /* MKRelease.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB28162192242AF005C9D27 /* MKRelease.m */; };
 		DC350ECB191456B400C25A01 /* BNKeysNode+BM.m in Sources */ = {isa = PBXBuildFile; fileRef = DC350ECA191456B400C25A01 /* BNKeysNode+BM.m */; };
 /* End PBXBuildFile section */
 
@@ -383,8 +384,10 @@
 		AAB2815919220D98005C9D27 /* MKSellAcceptRefundRequestMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKSellAcceptRefundRequestMsg.m; sourceTree = "<group>"; };
 		AAB2815B19220EF4005C9D27 /* MKConfirmRefundMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKConfirmRefundMsg.h; sourceTree = "<group>"; };
 		AAB2815C19220EF4005C9D27 /* MKConfirmRefundMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKConfirmRefundMsg.m; sourceTree = "<group>"; };
-		AAB2815E19220F04005C9D27 /* MKConfirmPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKConfirmPayment.h; sourceTree = "<group>"; };
-		AAB2815F19220F04005C9D27 /* MKConfirmPayment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKConfirmPayment.m; sourceTree = "<group>"; };
+		AAB2815E19220F04005C9D27 /* MKConfirmPaymentMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKConfirmPaymentMsg.h; sourceTree = "<group>"; };
+		AAB2815F19220F04005C9D27 /* MKConfirmPaymentMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKConfirmPaymentMsg.m; sourceTree = "<group>"; };
+		AAB28161192242AF005C9D27 /* MKRelease.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKRelease.h; sourceTree = "<group>"; };
+		AAB28162192242AF005C9D27 /* MKRelease.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKRelease.m; sourceTree = "<group>"; };
 		DC350EC9191456B400C25A01 /* BNKeysNode+BM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BNKeysNode+BM.h"; sourceTree = "<group>"; };
 		DC350ECA191456B400C25A01 /* BNKeysNode+BM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BNKeysNode+BM.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -710,6 +713,8 @@
 				AAB2814D192190F0005C9D27 /* MKTransactions.m */,
 				AAB280FE19217586005C9D27 /* MKTransaction.h */,
 				AAB280FF19217586005C9D27 /* MKTransaction.m */,
+				AAB28161192242AF005C9D27 /* MKRelease.h */,
+				AAB28162192242AF005C9D27 /* MKRelease.m */,
 				AAB280DE19217586005C9D27 /* Buys */,
 				AAB2810019217586005C9D27 /* Msg */,
 				AAB2810919217586005C9D27 /* Sells */,
@@ -767,12 +772,12 @@
 		AAB280F019217586005C9D27 /* Lock */ = {
 			isa = PBXGroup;
 			children = (
+				AAB280F519217586005C9D27 /* MKBuyLockEscrow.h */,
+				AAB280F619217586005C9D27 /* MKBuyLockEscrow.m */,
 				AAB280F119217586005C9D27 /* MKBuyerLockEscrowMsg.h */,
 				AAB280F219217586005C9D27 /* MKBuyerLockEscrowMsg.m */,
 				AAB280F319217586005C9D27 /* MKBuyerPostLockEscrowMsg.h */,
 				AAB280F419217586005C9D27 /* MKBuyerPostLockEscrowMsg.m */,
-				AAB280F519217586005C9D27 /* MKBuyLockEscrow.h */,
-				AAB280F619217586005C9D27 /* MKBuyLockEscrow.m */,
 			);
 			path = Lock;
 			sourceTree = "<group>";
@@ -803,8 +808,8 @@
 				AAB2810219217586005C9D27 /* MKConfirmLockEscrowMsg.m */,
 				AAB2815B19220EF4005C9D27 /* MKConfirmRefundMsg.h */,
 				AAB2815C19220EF4005C9D27 /* MKConfirmRefundMsg.m */,
-				AAB2815E19220F04005C9D27 /* MKConfirmPayment.h */,
-				AAB2815F19220F04005C9D27 /* MKConfirmPayment.m */,
+				AAB2815E19220F04005C9D27 /* MKConfirmPaymentMsg.h */,
+				AAB2815F19220F04005C9D27 /* MKConfirmPaymentMsg.m */,
 			);
 			path = Msg;
 			sourceTree = "<group>";
@@ -864,10 +869,10 @@
 		AAB2811F19217586005C9D27 /* Lock */ = {
 			isa = PBXGroup;
 			children = (
-				AAB2812019217586005C9D27 /* MKSellerLockEscrowMsg.h */,
-				AAB2812119217586005C9D27 /* MKSellerLockEscrowMsg.m */,
 				AAB2812219217586005C9D27 /* MKSellLockEscrow.h */,
 				AAB2812319217586005C9D27 /* MKSellLockEscrow.m */,
+				AAB2812019217586005C9D27 /* MKSellerLockEscrowMsg.h */,
+				AAB2812119217586005C9D27 /* MKSellerLockEscrowMsg.m */,
 			);
 			path = Lock;
 			sourceTree = "<group>";
@@ -1125,7 +1130,7 @@
 			files = (
 				AAB2812C19217586005C9D27 /* MKBuy.m in Sources */,
 				AAB2815119220D04005C9D27 /* MKBuyPaymentMsg.m in Sources */,
-				AAB2816019220F04005C9D27 /* MKConfirmPayment.m in Sources */,
+				AAB2816019220F04005C9D27 /* MKConfirmPaymentMsg.m in Sources */,
 				AAB2813D19217586005C9D27 /* MKMsg.m in Sources */,
 				AA0E585D18FDC0880095DEBD /* main.m in Sources */,
 				AAB2814E192190F0005C9D27 /* MKTransactions.m in Sources */,
@@ -1164,6 +1169,7 @@
 				AAA2E6AD19006F0A0098C357 /* MKGroup.m in Sources */,
 				AAB2815A19220D98005C9D27 /* MKSellAcceptRefundRequestMsg.m in Sources */,
 				AA955E181914775500F6FB0F /* MKMarkets.m in Sources */,
+				AAB28163192242AF005C9D27 /* MKRelease.m in Sources */,
 				AAB2813319217586005C9D27 /* MKBuyerLockEscrowMsg.m in Sources */,
 				AAB2814719217586005C9D27 /* MKSellerLockEscrowMsg.m in Sources */,
 				AAB2814819217586005C9D27 /* MKSellLockEscrow.m in Sources */,

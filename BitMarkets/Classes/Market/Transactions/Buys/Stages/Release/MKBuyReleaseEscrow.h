@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 voluntary.net. All rights reserved.
 //
 
-#import "MKGroup.h"
+#import "MKRelease.h"
 
-@interface MKBuyReleaseEscrow : MKGroup
+@interface MKBuyReleaseEscrow : MKRelease
 
 @end

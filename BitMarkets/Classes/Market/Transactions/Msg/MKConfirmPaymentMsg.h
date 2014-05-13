@@ -1,5 +1,5 @@
 //
-//  MKConfirmPayment.h
+//  MKConfirmPaymentMsg.h
 //  BitMarkets
 //
 //  Created by Steve Dekorte on 5/13/14.
@@ -8,6 +8,6 @@
 
 #import "MKMsg.h"
 
-@interface MKConfirmPayment : MKMsg
+@interface MKConfirmPaymentMsg : MKMsg
 
 @end

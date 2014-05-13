@@ -9,6 +9,7 @@
 #import "MKMsg.h"
 #import "MKRootNode.h"
 #import "MKBuy.h"
+#import "MKSell.h"
 
 @implementation MKMsg
 
@@ -254,7 +255,6 @@
     NSLog(@"[m date] = %@", [m date].description);
     [self addDate];
 
-    //[MKRootNode.sharedMKRootNode.markets handleMsg:self];
     return YES;
 }
 
@@ -270,13 +270,17 @@
     NSLog(@"[m date] = %@", [m date].description);
     [self addDate];
 
-    //[MKRootNode.sharedMKRootNode.markets handleMsg:self];
     return YES;
 }
 
 - (BOOL)isInBuy
 {
     return [self inParentChainHasClass:MKBuy.class];
+}
+
+- (BOOL)isInSell
+{
+    return [self inParentChainHasClass:MKSell.class];
 }
 
 

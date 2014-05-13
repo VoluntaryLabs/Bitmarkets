@@ -8,29 +8,18 @@
 
 #import "MKSellLockEscrow.h"
 #import "MKSell.h"
-#import "MKBuyerLockEscrowMsg.h"
-#import "MKSellerLockEscrowMsg.h"
 #import "MKRootNode.h"
 #import <BitnashKit/BitnashKit.h>
-#import "MKConfirmLockEscrowMsg.h"
 
 @implementation MKSellLockEscrow
 
+/*
 - (id)init
 {
     self = [super init];
     return self;
 }
-
-- (CGFloat)nodeSuggestedWidth
-{
-    return 350;
-}
-
-- (NSString *)nodeTitle
-{
-    return @"Lock Escrow";
-}
+*/
 
 - (NSString *)nodeSubtitle
 {
@@ -52,11 +41,6 @@
     return nil;
 }
 
-- (void)sortChildren
-{
-    [super sortChildrenWithKey:@"date"];
-}
-
 // --------------------
 
 - (MKSell *)sell
@@ -74,23 +58,6 @@
     }
         
     return NO;
-}
-
-//messages
-
-- (MKBuyerLockEscrowMsg *)buyerLockMsg
-{
-    return [self.children firstObjectOfClass:MKBuyerLockEscrowMsg.class];
-}
-
-- (MKSellerLockEscrowMsg *)sellerLockMsg
-{
-    return [self.children firstObjectOfClass:MKSellerLockEscrowMsg.class];
-}
-
-- (MKConfirmLockEscrowMsg *)confirmMsg
-{
-    return [self.children firstObjectOfClass:MKConfirmLockEscrowMsg.class];
 }
 
 - (BOOL)sendLock
@@ -186,7 +153,7 @@
 
 - (BOOL)shouldLookForConfirm; // subclasses should override
 {
-    return (self.buyerLockMsg && !self.confirmMsg);
+    return (self.buyerLockMsg && !self.confirmLockMsg);
 }
 
 - (BOOL)isComplete

@@ -7,39 +7,20 @@
 //
 
 #import "MKBuyLockEscrow.h"
-#import "MKBuyerLockEscrowMsg.h"
-#import "MKBuy.h"
-#import "MKSellerLockEscrowMsg.h"
-#import "MKBuyerPostLockEscrowMsg.h"
-
 #import "MKRootNode.h"
 #import <BitnashKit/BitnashKit.h>
-#import "MKConfirmLockEscrowMsg.h"
 
 @implementation MKBuyLockEscrow
 
+/*
 - (id)init
 {
     self = [super init];
     return self;
 }
+*/
 
 // node
-
-- (CGFloat)nodeSuggestedWidth
-{
-    return 350;
-}
-
-- (void)sortChildren
-{
-    [super sortChildrenWithKey:@"date"];
-}
-
-- (NSString *)nodeTitle
-{
-    return @"Lock Escrow";
-}
 
 - (NSString *)nodeSubtitle
 {
@@ -58,26 +39,10 @@
 
 - (MKBuy *)buy
 {
-    return (MKBuy *)self.nodeParent;
+    MKBuy *buy = (MKBuy *)[self firstInParentChainOfClass:MKBuy.class];
+    assert(buy != nil);
+    return buy;
 }
-
-// messages
-
-- (MKBuyerLockEscrowMsg *)buyerLockMsg
-{
-    return [self.children firstObjectOfClass:MKBuyerLockEscrowMsg.class];
-}
-
-- (MKSellerLockEscrowMsg *)sellerLockMsg
-{
-    return [self.children firstObjectOfClass:MKSellerLockEscrowMsg.class];
-}
-
-- (MKBuyerPostLockEscrowMsg *)buyerPostLockMsg
-{
-    return [self.children firstObjectOfClass:MKBuyerPostLockEscrowMsg.class];
-}
-
 
 // ---------------------
 
@@ -158,7 +123,7 @@
 
 - (void)postLockToBlockchainIdNeeded
 {
-    if (self.sellerLockMsg && !self.buyerPostLockMsg)
+    if (self.sellerLockMsg && !self.buyerLockMsg)
     {
         [self postLockToBlockchain];
     }
@@ -170,7 +135,7 @@
     BNTx *tx = (BNTx *)[payload asObjectFromJSONObject];
     tx.wallet = MKRootNode.sharedMKRootNode.wallet;
     
-    MKBuyerPostLockEscrowMsg *msg = [[MKBuyerPostLockEscrowMsg alloc] init];
+    MKBuyerLockEscrowMsg *msg = [[MKBuyerLockEscrowMsg alloc] init];
     [msg copyFrom:self.buy.bid.bidMsg];
     
     [tx sign]; //TODO verify expected outputs first.
@@ -190,12 +155,12 @@
 
 - (NSDictionary *)payloadToConfirm
 {
-    return self.buyerPostLockMsg.payload;
+    return self.buyerLockMsg.payload;
 }
 
 - (BOOL)shouldLookForConfirm; // subclasses should override
 {
-    return (self.buyerPostLockMsg && !self.confirmMsg);
+    return (self.buyerLockMsg && !self.confirmLockMsg);
 }
 
 

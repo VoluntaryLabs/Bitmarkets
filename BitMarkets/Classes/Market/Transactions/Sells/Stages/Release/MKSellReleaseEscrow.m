@@ -7,17 +7,7 @@
 //
 
 #import "MKSellReleaseEscrow.h"
-
-// payment
-
-#import "MKBuyPaymentMsg.h"
-#import "MKSellAcceptPaymentMsg.h"
-
-// refund
-
-#import "MKBuyRequestRefundMsg.h"
-#import "MKSellAcceptRefundRequestMsg.h"
-
+#import "MKSell.h"
 
 @implementation MKSellReleaseEscrow
 
@@ -27,9 +17,14 @@
     return self;
 }
 
-- (NSString *)nodeTitle
+- (NSString *)nodeSubtitle
 {
-    return @"Release Escrow";
+    //if (self.sellerLockMsg)
+    {
+        return @"awaiting blockchain confirm";
+    }
+    
+    return nil;
 }
 
 - (NSArray *)modelActions
@@ -37,33 +32,47 @@
     return @[];
 }
 
-- (void)sendRefund
+// update
+
+- (BOOL)handleMsg:(MKMsg *)msg
 {
+    if ([msg isKindOfClass:MKBuyPaymentMsg.class] ||
+        [msg isKindOfClass:MKBuyRequestRefundMsg.class])
+    {
+        [self addChild:msg];
+        [self update];
+        return YES;
+    }
     
+    return NO;
 }
 
-// payment messages
-
-- (MKBuyPaymentMsg *)buyPaymentMsg
+- (void)update
 {
-    return [self.children firstObjectOfClass:MKBuyPaymentMsg.class];
+    if (self.buyPaymentMsg)
+    {
+        [self acceptPayment];
+    }
+    
+    /*
+    if (self.buyRequestRefundMsg)
+    {
+        // add accept payment action?
+    }
+    */
 }
 
-- (MKSellAcceptPaymentMsg *)sellAcceptPaymentMsg
+// actions
+
+- (void)acceptPayment // automatic
 {
-    return [self.children firstObjectOfClass:MKSellAcceptPaymentMsg.class];
+    [self firstInParentChainOfClass:MKSell.class];
 }
 
-// refund messages
-
-- (MKBuyRequestRefundMsg *)buyRequestRefundMsg
+- (void)acceptRefundRequest
 {
-    return [self.children firstObjectOfClass:MKBuyRequestRefundMsg.class];
+    //MKConfirmLockEscrowMsg *confirm = self.buy.lock.confirm
 }
 
-- (MKSellAcceptRefundRequestMsg *)sellAcceptRefundRequestMsg
-{
-    return [self.children firstObjectOfClass:MKSellAcceptRefundRequestMsg.class];
-}
 
 @end
