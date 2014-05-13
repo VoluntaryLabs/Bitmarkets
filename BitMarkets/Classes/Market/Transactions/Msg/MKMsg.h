@@ -66,4 +66,6 @@
 - (BOOL)sendToBuyer;
 - (BOOL)sendToSeller;
 
+- (BOOL)isInBuy;
+
 @end

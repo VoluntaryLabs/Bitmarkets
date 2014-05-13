@@ -13,7 +13,6 @@
 
 @property (strong, nonatomic) NSNumber *isApprovedBool;
 
-- (BOOL)canSend;
 - (void)approve;
 - (BOOL)isApproved;
 - (void)setIsApproved:(BOOL)aBool;
