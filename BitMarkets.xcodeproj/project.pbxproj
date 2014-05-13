@@ -106,7 +106,7 @@
 		AAB2814E192190F0005C9D27 /* MKTransactions.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB2814D192190F0005C9D27 /* MKTransactions.m */; };
 		AAB2815119220D04005C9D27 /* MKBuyPaymentMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB2815019220D04005C9D27 /* MKBuyPaymentMsg.m */; };
 		AAB2815419220D2F005C9D27 /* MKSellAcceptPaymentMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB2815319220D2F005C9D27 /* MKSellAcceptPaymentMsg.m */; };
-		AAB2815719220D59005C9D27 /* MKBuyRequestRefundMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB2815619220D59005C9D27 /* MKBuyRequestRefundMsg.m */; };
+		AAB2815719220D59005C9D27 /* MKBuyRefundRequestMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB2815619220D59005C9D27 /* MKBuyRefundRequestMsg.m */; };
 		AAB2815A19220D98005C9D27 /* MKSellAcceptRefundRequestMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB2815919220D98005C9D27 /* MKSellAcceptRefundRequestMsg.m */; };
 		AAB2815D19220EF4005C9D27 /* MKConfirmRefundMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB2815C19220EF4005C9D27 /* MKConfirmRefundMsg.m */; };
 		AAB2816019220F04005C9D27 /* MKConfirmPaymentMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB2815F19220F04005C9D27 /* MKConfirmPaymentMsg.m */; };
@@ -378,8 +378,8 @@
 		AAB2815019220D04005C9D27 /* MKBuyPaymentMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKBuyPaymentMsg.m; sourceTree = "<group>"; };
 		AAB2815219220D2F005C9D27 /* MKSellAcceptPaymentMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKSellAcceptPaymentMsg.h; sourceTree = "<group>"; };
 		AAB2815319220D2F005C9D27 /* MKSellAcceptPaymentMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKSellAcceptPaymentMsg.m; sourceTree = "<group>"; };
-		AAB2815519220D59005C9D27 /* MKBuyRequestRefundMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKBuyRequestRefundMsg.h; sourceTree = "<group>"; };
-		AAB2815619220D59005C9D27 /* MKBuyRequestRefundMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKBuyRequestRefundMsg.m; sourceTree = "<group>"; };
+		AAB2815519220D59005C9D27 /* MKBuyRefundRequestMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKBuyRefundRequestMsg.h; sourceTree = "<group>"; };
+		AAB2815619220D59005C9D27 /* MKBuyRefundRequestMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKBuyRefundRequestMsg.m; sourceTree = "<group>"; };
 		AAB2815819220D98005C9D27 /* MKSellAcceptRefundRequestMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKSellAcceptRefundRequestMsg.h; sourceTree = "<group>"; };
 		AAB2815919220D98005C9D27 /* MKSellAcceptRefundRequestMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKSellAcceptRefundRequestMsg.m; sourceTree = "<group>"; };
 		AAB2815B19220EF4005C9D27 /* MKConfirmRefundMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKConfirmRefundMsg.h; sourceTree = "<group>"; };
@@ -789,8 +789,8 @@
 				AAB280F919217586005C9D27 /* MKBuyReleaseEscrow.m */,
 				AAB2814F19220D04005C9D27 /* MKBuyPaymentMsg.h */,
 				AAB2815019220D04005C9D27 /* MKBuyPaymentMsg.m */,
-				AAB2815519220D59005C9D27 /* MKBuyRequestRefundMsg.h */,
-				AAB2815619220D59005C9D27 /* MKBuyRequestRefundMsg.m */,
+				AAB2815519220D59005C9D27 /* MKBuyRefundRequestMsg.h */,
+				AAB2815619220D59005C9D27 /* MKBuyRefundRequestMsg.m */,
 			);
 			path = Release;
 			sourceTree = "<group>";
@@ -1148,7 +1148,7 @@
 				AAB2813519217586005C9D27 /* MKBuyLockEscrow.m in Sources */,
 				AAB2815419220D2F005C9D27 /* MKSellAcceptPaymentMsg.m in Sources */,
 				AAB2814919217586005C9D27 /* MKPost.m in Sources */,
-				AAB2815719220D59005C9D27 /* MKBuyRequestRefundMsg.m in Sources */,
+				AAB2815719220D59005C9D27 /* MKBuyRefundRequestMsg.m in Sources */,
 				AAB2813019217586005C9D27 /* MKBuyDelivery.m in Sources */,
 				AAB2814B19217586005C9D27 /* MKSellReleaseEscrow.m in Sources */,
 				AAB2813E19217586005C9D27 /* MKSell.m in Sources */,

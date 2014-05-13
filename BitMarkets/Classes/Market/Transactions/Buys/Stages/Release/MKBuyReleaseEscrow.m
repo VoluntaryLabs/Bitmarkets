@@ -10,11 +10,13 @@
 
 @implementation MKBuyReleaseEscrow
 
+/*
 - (id)init
 {
     self = [super init];
     return self;
 }
+*/
 
 - (NSString *)nodeTitle
 {
@@ -26,17 +28,39 @@
     return @[@"requestRefund", @"makePayment"];
 }
 
-- (void)update
+- (BOOL)handleMsg:(MKMsg *)msg
 {
-        
+    if ([msg isKindOfClass:MKSellAcceptPaymentMsg.class] ||
+        [msg isKindOfClass:MKSellAcceptRefundRequestMsg.class])
+    {
+        [self addChild:msg];
+        [self update];
+        return YES;
+    }
+    
+    return NO;
 }
 
-- (void)requestRefund
+
+- (void)update
+{
+    if (self.sellAcceptPaymentMsg)
+    {
+        
+    }
+    
+    if (self.sellAcceptRefundRequestMsg)
+    {
+        
+    }
+}
+
+- (void)requestRefund // user initiated
 {
     
 }
 
-- (void)makePayment
+- (void)makePayment // user initiated
 {
     
 }

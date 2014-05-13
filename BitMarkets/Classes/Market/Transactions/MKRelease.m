@@ -50,9 +50,9 @@
 
 // refund messages
 
-- (MKBuyRequestRefundMsg *)buyRequestRefundMsg
+- (MKBuyRefundRequestMsg *)buyRequestRefundMsg
 {
-    return [self.children firstObjectOfClass:MKBuyRequestRefundMsg.class];
+    return [self.children firstObjectOfClass:MKBuyRefundRequestMsg.class];
 }
 
 - (MKSellAcceptRefundRequestMsg *)sellAcceptRefundRequestMsg

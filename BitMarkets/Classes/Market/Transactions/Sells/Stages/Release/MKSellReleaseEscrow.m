@@ -37,7 +37,7 @@
 - (BOOL)handleMsg:(MKMsg *)msg
 {
     if ([msg isKindOfClass:MKBuyPaymentMsg.class] ||
-        [msg isKindOfClass:MKBuyRequestRefundMsg.class])
+        [msg isKindOfClass:MKBuyRefundRequestMsg.class])
     {
         [self addChild:msg];
         [self update];

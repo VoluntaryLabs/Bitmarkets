@@ -18,7 +18,7 @@
 
 // refund
 
-#import "MKBuyRequestRefundMsg.h"
+#import "MKBuyRefundRequestMsg.h"
 #import "MKSellAcceptRefundRequestMsg.h"
 
 // confirm
@@ -38,7 +38,7 @@
 
 // refund messages
 
-- (MKBuyRequestRefundMsg *)buyRequestRefundMsg;
+- (MKBuyRefundRequestMsg *)buyRequestRefundMsg;
 - (MKSellAcceptRefundRequestMsg *)sellAcceptRefundRequestMsg;
 
 // confirm

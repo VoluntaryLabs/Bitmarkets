@@ -20,6 +20,38 @@ Lock Escrow
    
 
 
-Release Escrow
 
-1.
+Release Escrow - buyer pays
+
+1. MKBuyReleaseEscrow sendPayment method
+   - send buyer's utxs inputs in MKBuyPaymentMsg
+   
+2. MKSellReleaseEscrow acceptPayment method (called when MKBuyPaymentMsg received)
+   - add seller's utx input and signs
+   - sends to buyer in MKSellAcceptPaymentMsg
+   
+3. MKBuyReleaseEscrow postPaymentToBlockchain
+   -  buyer sign tx and post
+   
+[confirms work same as lock confirms?]
+
+
+
+
+Release Escrow - buyer requests refund
+
+1. MKBuyReleaseEscrow requestRefund method
+   - send buyer's utxs inputs in MKBuyRequestRefundMsg
+   
+2. MKSellReleaseEscrow acceptRefundRequest method (call via user input)
+   - add seller's utx input and signs
+   - sends to buyer in MKSellAcceptRefundMsg
+   
+3. MKBuyReleaseEscrow postPaymentToBlockchain
+   -  buyer sign tx and post
+
+[confirms work same as lock confirms?]
+
+
+   
+

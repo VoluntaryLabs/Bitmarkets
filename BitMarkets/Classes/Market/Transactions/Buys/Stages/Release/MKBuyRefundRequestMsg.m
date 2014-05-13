@@ -1,13 +1,13 @@
 //
-//  MKBuyRequestRefundMsg.h
+//  MKBuyRefundRequestMsg.m
 //  BitMarkets
 //
 //  Created by Steve Dekorte on 5/13/14.
 //  Copyright (c) 2014 voluntary.net. All rights reserved.
 //
 
-#import "MKEscrowMsg.h"
+#import "MKBuyRefundRequestMsg.h"
 
-@interface MKBuyRequestRefundMsg : MKEscrowMsg
+@implementation MKBuyRefundRequestMsg
 
 @end
