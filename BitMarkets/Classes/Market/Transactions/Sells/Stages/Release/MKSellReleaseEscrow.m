@@ -41,6 +41,7 @@
     {
         [self addChild:msg];
         [self update];
+        [self postParentChainChanged];
         return YES;
     }
     

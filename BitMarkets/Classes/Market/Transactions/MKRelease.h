@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 voluntary.net. All rights reserved.
 //
 
-#import "MKGroup.h"
+#import "MKEscrow.h"
 
 @class MKSell;
 @class MKBuy;
@@ -26,10 +26,10 @@
 #import "MKConfirmRefundMsg.h"
 #import "MKConfirmPaymentMsg.h"
 
-@interface MKRelease : MKGroup
 
-- (MKSell *)sell;
-- (MKBuy *)buy;
+
+@interface MKRelease : MKEscrow
+
 
 // payment
 

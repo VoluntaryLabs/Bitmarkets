@@ -7,6 +7,7 @@
 //
 
 #import "MKBuyReleaseEscrow.h"
+#import "MKBuy.h"
 
 @implementation MKBuyReleaseEscrow
 
@@ -18,15 +19,17 @@
 }
 */
 
-- (NSString *)nodeTitle
+- (NSString *)nodeSubtitle
 {
-    return @"Release Escrow";
+    return nil;
 }
 
 - (NSArray *)modelActions
 {
     return @[@"requestRefund", @"makePayment"];
 }
+
+// update
 
 - (BOOL)handleMsg:(MKMsg *)msg
 {
@@ -35,6 +38,7 @@
     {
         [self addChild:msg];
         [self update];
+        [self postParentChainChanged];
         return YES;
     }
     
@@ -46,21 +50,44 @@
 {
     if (self.sellAcceptPaymentMsg)
     {
-        
+        [self signAndPostAcceptToBlockChain];
     }
     
     if (self.sellAcceptRefundRequestMsg)
     {
-        
+        [self signAndPostRefundToBlockChain];
     }
+    
 }
 
+// initiate release
+
 - (void)requestRefund // user initiated
+{
+    MKBuyRefundRequestMsg *msg = [[MKBuyRefundRequestMsg alloc] init];
+    [msg copyFrom:self.buy.bid.bidMsg];
+    [msg send];
+    
+    [self addChild:msg];
+}
+
+- (void)makePayment // user initiated
+{
+    MKBuyPaymentMsg *msg = [[MKBuyPaymentMsg alloc] init];
+    [msg copyFrom:self.buy.bid.bidMsg];
+    [msg send];
+    
+    [self addChild:msg];
+}
+
+// sign and post
+
+- (void)signAndPostAcceptToBlockChain
 {
     
 }
 
-- (void)makePayment // user initiated
+- (void)signAndPostRefundToBlockChain
 {
     
 }

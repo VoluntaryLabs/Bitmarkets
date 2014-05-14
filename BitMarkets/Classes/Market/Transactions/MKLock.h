@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 voluntary.net. All rights reserved.
 //
 
-#import "MKGroup.h"
+#import "MKEscrow.h"
 
 @class MKSell;
 @class MKBuy;
@@ -19,10 +19,7 @@
 #import "MKConfirmLockEscrowMsg.h"
 
 
-@interface MKLock : MKGroup
-
-- (MKSell *)sell;
-- (MKBuy *)buy;
+@interface MKLock : MKEscrow
 
 // conifrm
 

@@ -13,20 +13,6 @@
 
 @implementation MKLock
 
-- (MKBuy *)buy
-{
-    MKBuy *buy = (MKBuy *)[self firstInParentChainOfClass:MKBuy.class];
-    assert(buy != nil);
-    return buy;
-}
-
-- (MKSell *)sell
-{
-    MKSell *sell = (MKSell *)[self firstInParentChainOfClass:MKSell.class];
-    assert(sell != nil);
-    return sell;
-}
-
 // node
 
 - (CGFloat)nodeSuggestedWidth
