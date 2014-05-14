@@ -330,9 +330,11 @@
     return nil;
 }
 
+/*
 - (void)update
 {
-    
+    NSLog(@"MKMsg update");
 }
+*/
 
 @end

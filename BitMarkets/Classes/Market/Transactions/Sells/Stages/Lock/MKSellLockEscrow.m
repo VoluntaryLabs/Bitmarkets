@@ -60,7 +60,7 @@
     return NO;
 }
 
-- (BOOL)sendLock
+- (BOOL)postLock
 {
     BNWallet *wallet = MKRootNode.sharedMKRootNode.wallet;
     
@@ -72,7 +72,7 @@
     //NSLog(@"remove this return");
     //return YES; // temp
     
-    MKSellerLockEscrowMsg *msg = [[MKSellerLockEscrowMsg alloc] init];
+    MKSellerPostLockMsg *msg = [[MKSellerPostLockMsg alloc] init];
     [msg copyFrom:self.bidMsg];
 
     BNTx *buyerEscrowTx = [self.buyerLockMsg.payload asObjectFromJSONObject]; //TODO check errors.  TODO verify tx before signing.
@@ -87,24 +87,24 @@
     return YES;
 }
 
-- (void)sendLockIfNeeded
+- (void)postLockIfNeeded
 {
     if (self.buyerLockMsg && !self.sellerLockMsg)
     {
         @try
         {
-            [self sendLock];
+            [self postLock];
         }
         @catch (NSException *exception)
         {
-            NSLog(@"sendLock failed with exception: %@", exception);
+            NSLog(@"postLock failed with exception: %@", exception);
         }
     }
 }
 
 - (void)update
 {
-    [self sendLockIfNeeded];
+    [self postLockIfNeeded];
     [self lookForConfirmIfNeeded];
 }
 

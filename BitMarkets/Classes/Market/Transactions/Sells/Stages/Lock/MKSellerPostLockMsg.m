@@ -1,14 +1,14 @@
 //
-//  MKSellerLockEscrowMsg.m
+//  MKSellerPostLockMsg.m
 //  BitMarkets
 //
 //  Created by Steve Dekorte on 5/7/14.
 //  Copyright (c) 2014 voluntary.net. All rights reserved.
 //
 
-#import "MKSellerLockEscrowMsg.h"
+#import "MKSellerPostLockMsg.h"
 
-@implementation MKSellerLockEscrowMsg
+@implementation MKSellerPostLockMsg
 
 - (NSString *)nodeTitle
 {

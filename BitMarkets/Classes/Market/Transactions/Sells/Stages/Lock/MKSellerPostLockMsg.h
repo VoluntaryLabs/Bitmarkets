@@ -1,5 +1,5 @@
 //
-//  MKBuyerPostLockEscrowMsg.h
+//  MKSellerPostLockMsg.h
 //  BitMarkets
 //
 //  Created by Steve Dekorte on 5/7/14.
@@ -8,6 +8,6 @@
 
 #import "MKEscrowMsg.h"
 
-@interface MKBuyerPostLockEscrowMsg : MKEscrowMsg
+@interface MKSellerPostLockMsg : MKEscrowMsg
 
 @end

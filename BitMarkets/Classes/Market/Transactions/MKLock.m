@@ -85,19 +85,14 @@
 
 //messages
 
+- (MKSellerPostLockMsg *)sellerLockMsg
+{
+    return [self.children firstObjectOfClass:MKSellerPostLockMsg.class];
+}
+
 - (MKBuyerLockEscrowMsg *)buyerLockMsg
 {
     return [self.children firstObjectOfClass:MKBuyerLockEscrowMsg.class];
-}
-
-- (MKSellerLockEscrowMsg *)sellerLockMsg
-{
-    return [self.children firstObjectOfClass:MKSellerLockEscrowMsg.class];
-}
-
-- (MKBuyerPostLockEscrowMsg *)buyerPostLockMsg
-{
-    return [self.children firstObjectOfClass:MKBuyerPostLockEscrowMsg.class];
 }
 
 - (MKConfirmLockEscrowMsg *)confirmLockMsg

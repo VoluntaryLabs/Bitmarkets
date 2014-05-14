@@ -48,7 +48,7 @@
 
 - (BOOL)handleMsg:(MKMsg *)msg
 {
-    if ([msg isKindOfClass:MKSellerLockEscrowMsg.class])
+    if ([msg isKindOfClass:MKSellerPostLockMsg.class])
     {
         [self addChild:msg];
         [self update];
@@ -63,7 +63,6 @@
 - (void)update
 {
     [self sendLockToSellerIfNeeded];
-    [self postLockToBlockchainIdNeeded];
     [self lookForConfirmIfNeeded];
 }
 
@@ -147,34 +146,6 @@
     }
 }
 
-// post lock
-
-- (void)postLockToBlockchainIdNeeded
-{
-    if (self.sellerLockMsg && !self.buyerLockMsg)
-    {
-        [self postLockToBlockchain];
-    }
-}
-
-- (BOOL)postLockToBlockchain
-{
-    return NO; //TODO remove this method
-    
-    NSDictionary *payload = self.sellerLockMsg.payload;
-    BNTx *tx = (BNTx *)[payload asObjectFromJSONObject];
-    tx.wallet = MKRootNode.sharedMKRootNode.wallet;
-    
-    MKBuyerPostLockEscrowMsg *msg = [[MKBuyerPostLockEscrowMsg alloc] init];
-    [msg copyFrom:self.buy.bidMsg];
-    
-    [tx sign]; //TODO verify expected outputs first.
-    [tx broadcast];
-    
-    [self addChild:msg];
-    
-    return NO;
-}
 
 // confirm methods to extend parent class MKLock
 

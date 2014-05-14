@@ -15,8 +15,8 @@
 
 #import "MKBidMsg.h"
 #import "MKBuyerLockEscrowMsg.h"
-#import "MKSellerLockEscrowMsg.h"
-#import "MKBuyerPostLockEscrowMsg.h"
+#import "MKSellerPostLockMsg.h"
+#import "MKBuyerLockEscrowMsg.h"
 #import "MKConfirmLockEscrowMsg.h"
 
 
@@ -32,7 +32,7 @@
 //messages
 
 - (MKBuyerLockEscrowMsg *)buyerLockMsg;
-- (MKSellerLockEscrowMsg *)sellerLockMsg;
+- (MKSellerPostLockMsg *)sellerLockMsg;
 - (MKConfirmLockEscrowMsg *)confirmLockMsg;
 
 @end
