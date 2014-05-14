@@ -158,14 +158,14 @@
         self.escrowInputTx = [wallet newTx];
         [self.escrowInputTx configureForOutputWithValue:[NSNumber numberWithLongLong:
                                          [(BNTxOut *)[escrowTx.outputs firstObject] value].longLongValue + [escrowTx fee].longLongValue]];
-        [self.escrowInputTx sign];
         [self.escrowInputTx subtractFee];
+        [self.escrowInputTx sign];
         [self.escrowInputTx broadcast];
         [self accept]; //TODO verify that tx is in mempool first
     }
     else
     {
-        [escrowTx markInputsAsSpent];
+        //[escrowTx markInputsAsSpent]; TODO
         [msg setPayload:[escrowTx asJSONObject]];
         [msg send];
         [self addChild:msg];

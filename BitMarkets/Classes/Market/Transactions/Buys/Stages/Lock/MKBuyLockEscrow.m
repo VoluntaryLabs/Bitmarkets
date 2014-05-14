@@ -124,6 +124,7 @@
         
         [self.escrowInputTx configureForOutputWithValue:[NSNumber numberWithLongLong:
                                          [(BNTxOut *)[escrowTx.outputs firstObject] value].longLongValue + [escrowTx fee].longLongValue]];
+        [self.escrowInputTx subtractFee];
         [self.escrowInputTx sign];
         [self.escrowInputTx broadcast];
         return [self sendLockToSeller]; //TODO verify tx in mempool first
@@ -135,7 +136,7 @@
         escrowTx = [escrowTx mergedWithEscrowTx:sellerEscrowTx];
         [escrowTx subtractFee];
         [escrowTx sign];
-        [escrowTx markInputsAsSpent];
+        //[escrowTx markInputsAsSpent]; TODO
         
         [msg setPayload:[escrowTx asJSONObject]];
         
@@ -158,6 +159,8 @@
 
 - (BOOL)postLockToBlockchain
 {
+    return NO; //TODO remove this method
+    
     NSDictionary *payload = self.sellerLockMsg.payload;
     BNTx *tx = (BNTx *)[payload asObjectFromJSONObject];
     tx.wallet = MKRootNode.sharedMKRootNode.wallet;
