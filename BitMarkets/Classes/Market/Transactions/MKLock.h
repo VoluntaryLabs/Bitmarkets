@@ -6,20 +6,32 @@
 //  Copyright (c) 2014 voluntary.net. All rights reserved.
 //
 
-#import "MKGroup.h"
-#import "MKConfirmLockEscrowMsg.h"
+#import "MKEscrow.h"
+
+@class MKSell;
+@class MKBuy;
+
+// messages
+
 #import "MKBidMsg.h"
+#import "MKBuyerLockEscrowMsg.h"
+#import "MKSellerLockEscrowMsg.h"
+#import "MKConfirmLockEscrowMsg.h"
 
-@interface MKLock : MKGroup
 
-- (MKConfirmLockEscrowMsg *)confirmMsg;
-- (BOOL)isConfirmed;
+@interface MKLock : MKEscrow
 
 // conifrm
 
+- (BOOL)isConfirmed;
 - (void)lookForConfirmIfNeeded;
 - (NSDictionary *)payloadToConfirm; // subclasses should override
 - (BOOL)shouldLookForConfirm; // subclasses should override
 
+//messages
+
+- (MKBuyerLockEscrowMsg *)buyerLockMsg;
+- (MKSellerLockEscrowMsg *)sellerLockMsg;
+- (MKConfirmLockEscrowMsg *)confirmLockMsg;
 
 @end

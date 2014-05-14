@@ -92,9 +92,6 @@
 
 // ---------------------------
 
-
-// -------------------
-
 - (BOOL)handleMsg:(MKMsg *)msg
 {
     //NSLog(@"%@ handleMsg: %@", self.className, msg.postUuid);
@@ -105,7 +102,12 @@
         {
             if ([child respondsToSelector:@selector(handleMsg:)])
             {
-                [child handleMsg:msg];
+                BOOL didHandle = [child handleMsg:msg];
+                
+                if (didHandle)
+                {
+                    return YES;
+                }
             }
         }
     }

@@ -59,8 +59,8 @@ static MKRootNode *sharedMKRootNode = nil;
     
     {
         [self addChild:_markets.rootRegion];
-        [self addChild:_markets.buys];
         [self addChild:_markets.sells];
+        [self addChild:_markets.buys];
     }
 
     if (_wallet)
@@ -97,7 +97,7 @@ static MKRootNode *sharedMKRootNode = nil;
                                                    object:_wallet];
         */
         _wallet.refreshInterval = 5.0;
-        _wallet.deepRefreshes = YES;
+        _wallet.deepRefreshes = NO;
         _wallet.server.logsStderr = YES;
         NSString *dataPath = [[[NSFileManager defaultManager] applicationSupportDirectory] stringByAppendingPathComponent:@"wallet"];
         NSError *error;
@@ -153,21 +153,21 @@ static MKRootNode *sharedMKRootNode = nil;
         {
             NavInfoNode *contributor = [[NavInfoNode alloc] init];
             contributor.nodeTitle = @"Steve Dekorte";
-            contributor.nodeSubtitle = @"Lead";
+            contributor.nodeSubtitle = @"Lead Developer";
             [contributors addChild:contributor];
         }
         
         {
             NavInfoNode *contributor = [[NavInfoNode alloc] init];
             contributor.nodeTitle = @"Rich Collins";
-            contributor.nodeSubtitle = @"Bitcoin";
+            contributor.nodeSubtitle = @"Bitcoin Integration";
             [contributors addChild:contributor];
         }
         
         {
             NavInfoNode *contributor = [[NavInfoNode alloc] init];
             contributor.nodeTitle = @"Chris Robinson";
-            contributor.nodeSubtitle = @"Design";
+            contributor.nodeSubtitle = @"Designer";
             [contributors addChild:contributor];
         }
         
@@ -181,7 +181,7 @@ static MKRootNode *sharedMKRootNode = nil;
         {
             NavInfoNode *contributor = [[NavInfoNode alloc] init];
             contributor.nodeTitle = @"Dru Nelson";
-            contributor.nodeSubtitle = @"Unix";
+            contributor.nodeSubtitle = @"Unix Guru";
             [contributors addChild:contributor];
         }
     }
