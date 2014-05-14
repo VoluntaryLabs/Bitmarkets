@@ -9,6 +9,7 @@
 #import "MKLock.h"
 #import "MKBuy.h"
 #import "MKSell.h"
+#import "MKRootNode.h"
 #import <BitnashKit/BitnashKit.h>
 
 @implementation MKLock
@@ -57,7 +58,13 @@
 
 - (BOOL)checkForConfirm
 {
+    if (!MKRootNode.sharedMKRootNode.wallet.isRunning)
+    {
+        return NO;
+    }
+    
     BNTx *tx = (BNTx *)[self.payloadToConfirm asObjectFromJSONObject];
+    tx.wallet = MKRootNode.sharedMKRootNode.wallet;
     
     if ([tx isConfirmed]) //TODO instead check to see if outputs are spent in case tx is mutated
     {
