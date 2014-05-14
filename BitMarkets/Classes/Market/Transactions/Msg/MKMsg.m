@@ -33,7 +33,7 @@
     MKMsg *msg = [[class alloc] init];
     msg.dict = dict;
     msg.bmMessage = bmMessage;
-    msg.msgid = bmMessage.msgid;
+    //msg.ackData = bmMessage.ackData; // do we need this for received messages?
     
     if (!msg.isValid)
     {
@@ -65,6 +65,7 @@
     self = [super init];
     self.dict = [NSMutableDictionary dictionary];
     [self.dict setObject:self.classNameSansPrefix forKey:@"_type"];
+    [self.dictPropertyNames addObject:@"ackData"];
     return self;
 }
 
@@ -148,6 +149,15 @@
 
 - (NSString *)nodeSubtitle
 {
+    BMSentMessage *sentMessage = self.sentMessage;
+    
+    if (sentMessage && !sentMessage.wasSent)
+    {
+        return sentMessage.getHumanReadbleStatus;
+        //return [NSString stringWithFormat:@"%@ (%@)", self.dateString, sentMessage.getStatus];
+        //return [NSString stringWithFormat:@"%@ (%@)", self.dateString, @"sending"];
+    }
+    
     return self.dateString;
 }
 
@@ -243,6 +253,26 @@
     [self send];
 }
 
+- (NSString *)channelAddress
+{
+    return MKRootNode.sharedMKRootNode.markets.mkChannel.channel.address;
+}
+
+- (BOOL)sendFromSellerToChannel
+{
+    BMMessage *m = [[BMMessage alloc] init];
+    [m setFromAddress:self.sellerAddress];
+    [m setToAddress:self.channelAddress];
+    [m setSubject:self.subject];
+    [m setMessage:self.dict.asJsonString];
+    [m send];
+    
+    self.ackData = m.ackData;
+    [self addDate];
+    
+    return YES;
+}
+
 - (BOOL)sendToBuyer
 {
     BMMessage *m = [[BMMessage alloc] init];
@@ -251,6 +281,9 @@
     [m setSubject:self.subject];
     [m setMessage:self.dict.asJsonString];
     [m send];
+    
+    self.ackData = m.ackData;
+    
 
     NSLog(@"[m date] = %@", [m date].description);
     [self addDate];
@@ -266,7 +299,9 @@
     [m setSubject:self.subject];
     [m setMessage:self.dict.asJsonString];
     [m send];
-    
+
+    self.ackData = m.ackData;
+
     NSLog(@"[m date] = %@", [m date].description);
     [self addDate];
 
@@ -283,5 +318,21 @@
     return [self inParentChainHasClass:MKSell.class];
 }
 
+- (BMSentMessage *)sentMessage
+{
+    if (self.ackData)
+    {
+        BMSentMessage *m = [[BMSentMessage alloc] init];
+        m.ackData = self.ackData;
+        return m;
+    }
+    
+    return nil;
+}
+
+- (void)update
+{
+    
+}
 
 @end

@@ -49,6 +49,7 @@
     return self;
 }
 
+
 - (NSString *)nodeNote
 {
     if (!self.isEditable && !self.canBuy)
@@ -113,7 +114,8 @@
         return [NSString stringWithFormat:@"%@BTC", self.priceInBtc];
     }
     
-    return nil;
+    return self.postMsg.nodeSubtitle;
+    //return nil;
 }
 
 - (void)setPriceInBtc:(NSNumber *)btcNumber
@@ -198,12 +200,18 @@
     return [super nodeView];
 }
 
+- (MKPostMsg *)postMsg
+{
+    return [self.children firstObjectOfClass:MKPostMsg.class];
+}
+
 // actions
 
 - (MKPostMsg *)sendPostMsg
 {
     MKPostMsg *postMsg = [[MKPostMsg alloc] init];
     [postMsg sendPost:self];
+    [self addChild:postMsg];
     
     [self setStatus:@"posted"];
     [self postParentChanged];
@@ -215,7 +223,7 @@
     MKBidMsg *bidMsg = [[MKBidMsg alloc] init];
     [bidMsg setupForPost:self];
     [bidMsg send];
-    //[MKRootNode.sharedMKRootNode.markets handleMsg:bidMsg];
+
     return bidMsg;
 }
 

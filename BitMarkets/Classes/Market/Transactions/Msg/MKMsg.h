@@ -15,7 +15,7 @@
 
 @property (strong, nonatomic) NSMutableDictionary *dict;
 @property (strong, nonatomic) BMMessage *bmMessage;
-@property (strong, nonatomic) NSString *msgid;
+@property (strong, nonatomic) NSString *ackData;
 
 + (MKMsg *)withBMMessage:(BMMessage *)bmMessage;
 
@@ -63,10 +63,14 @@
 
 - (BOOL)send;
 
+- (BOOL)sendFromSellerToChannel;
 - (BOOL)sendToBuyer;
 - (BOOL)sendToSeller;
 
 - (BOOL)isInBuy;
 - (BOOL)isInSell;
+
+- (BMSentMessage *)sentMessage;
+
 
 @end

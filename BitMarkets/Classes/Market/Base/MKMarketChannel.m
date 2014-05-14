@@ -59,6 +59,8 @@
         if (msg && [msg isKindOfClass:MKPostMsg.class])
         {
             MKPost *mkPost = [msg mkPost];
+            [mkPost addChild:msg];
+            
             BOOL couldPlace = [mkPost placeInMarketsPath]; // deals with merging?
             
             if (couldPlace)

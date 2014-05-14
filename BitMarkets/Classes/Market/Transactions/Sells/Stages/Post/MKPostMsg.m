@@ -20,6 +20,12 @@
     return self;
 }
 
+/*
+- (NSString *)nodeNote
+{
+    return self.bmStatus;
+}
+ */
 
 - (NSUInteger)hash
 {
@@ -38,16 +44,7 @@
 
 - (void)sendPost:(MKPost *)mkPost
 {
-    /*
-     NSArray *msgProperties = @[
-        @"postUuid",
-        @"title",
-        @"price",
-        @"description",
-        @"regionPath",
-        @"categoryPath",
-        @"sellerAddress"];
-    */
+    // clean this up
     
     [self.dict removeAllObjects];
     [self.dict setObject:self.classNameSansPrefix forKey:@"_type"];
@@ -55,11 +52,6 @@
     [self.dict removeObjectForKey:@"status"];
 
     [self send];
-}
-
-- (NSString *)channelAddress
-{
-    return MKRootNode.sharedMKRootNode.markets.mkChannel.channel.address;
 }
 
 - (BOOL)isValid
@@ -71,13 +63,7 @@
 
 - (BOOL)send
 {
-    BMMessage *m = [[BMMessage alloc] init];
-    [m setFromAddress:self.sellerAddress];
-    [m setToAddress:self.channelAddress];
-    [m setSubject:self.subject];
-    [m setMessage:self.dict.asJsonString];
-    [m send];
-    return YES;
+    return [self sendFromSellerToChannel];
 }
 
 - (MKPost *)mkPost
