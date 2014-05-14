@@ -84,7 +84,7 @@
     if (self.address.isApproved && !self.addressMsg)
     {
         MKBuyerAddressMsg *msg = [[MKBuyerAddressMsg alloc] init];
-        [msg copyFrom:self.buy.bid.bidMsg];
+        [msg copyFrom:self.buy.bidMsg];
         [msg setAddressDict:self.address.addressDict];
         [msg send];
         [self addChild:msg];

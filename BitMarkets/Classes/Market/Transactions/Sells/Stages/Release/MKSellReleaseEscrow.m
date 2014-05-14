@@ -17,11 +17,62 @@
     return self;
 }
 
+- (NSString *)nodeNote
+{
+    if (self.confirmPaymentMsg || self.confirmRefundMsg)
+    {
+        return @"✓";
+    }
+    
+    /*
+     if (self.wasRejected)
+     {
+     return @"✗";
+     }
+     */
+    
+    return nil;
+}
+
 - (NSString *)nodeSubtitle
 {
-    //if (self.sellerLockMsg)
+    // note: that buyer posts to blockchain
+    
+    if (self.buyRequestRefundMsg)
     {
-        return @"awaiting blockchain confirm";
+        if(self.sellAcceptRefundRequestMsg)
+        {
+            if (self.sellRejectRefundRequestMsg)
+            {
+                return @"rejected refund request";
+            }
+            
+            if (self.confirmRefundMsg)
+            {
+                return @"refunded buyer";
+            }
+            else
+            {
+                return @"awaiting refund confirm";
+            }
+        }
+        
+        return @"buyer requests refund";
+    }
+    
+    if (self.buyPaymentMsg)
+    {
+        if(self.sellAcceptPaymentMsg)
+        {
+            if (self.confirmPaymentMsg)
+            {
+                return @"buyer paid";
+            }
+            
+            return @"awaiting payment confirm";
+        }
+        
+        return @"buyer requests refund";
     }
     
     return nil;
@@ -55,24 +106,100 @@
         [self acceptPayment];
     }
     
-    /*
     if (self.buyRequestRefundMsg)
     {
-        // add accept payment action?
+        // refund action is available and
+        // user must use it to refund
     }
-    */
+    
+    if (self.sellAcceptPaymentMsg && !self.confirmPaymentMsg)
+    {
+        if (!self.sellRejectRefundRequestMsg)
+        {
+            [self lookForPaymentConfirm];
+        }
+    }
+
+    if (self.sellAcceptPaymentMsg && !self.confirmPaymentMsg)
+    {
+        [self lookForRefundConfirm];
+    }
+    
+}
+
+- (void)lookForPaymentConfirm
+{
+    BOOL paymentConfirmed = NO;
+    
+    if (paymentConfirmed)
+    {
+        MKConfirmPaymentMsg *msg = [[MKConfirmPaymentMsg alloc] init];
+        [msg copyFrom:self.sell.acceptedBidMsg];
+        [self addChild:msg];
+        [self postParentChainChanged];
+    }
+}
+
+- (void)lookForRefundConfirm
+{
+    BOOL paymentConfirmed = NO;
+    
+    if (paymentConfirmed)
+    {
+        MKConfirmRefundMsg *msg = [[MKConfirmRefundMsg alloc] init];
+        [msg copyFrom:self.sell.acceptedBidMsg];
+        [self addChild:msg];
+        [self postParentChainChanged];
+    }
 }
 
 // actions
 
 - (void)acceptPayment // automatic
 {
-    [self firstInParentChainOfClass:MKSell.class];
+    MKBuyPaymentMsg *buyPaymentMsg = self.buyPaymentMsg;
+    
+    NSDictionary *payload = nil;
+    
+    if (!payload)
+    {
+        [NSException raise:@"missing payment payload" format:nil];
+    }
+    
+    MKSellAcceptPaymentMsg *msg = [[MKSellAcceptPaymentMsg alloc] init];
+    [msg copyFrom:self.sell.acceptedBidMsg];
+    [msg setPayload:payload];
+    [self addChild:msg];
+    [msg sendToBuyer];
+    [self postParentChainChanged];
 }
 
 - (void)acceptRefundRequest
 {
-    //MKConfirmLockEscrowMsg *confirm = self.buy.lock.confirm
+    MKBuyRefundRequestMsg *buyRequestRefundMsg = self.buyRequestRefundMsg;
+    
+    NSDictionary *payload = nil;
+    
+    if (!payload)
+    {
+        [NSException raise:@"missing refund payload" format:nil];
+    }
+    
+    MKSellRejectRefundRequestMsg *msg = [[MKSellRejectRefundRequestMsg alloc] init];
+    [msg copyFrom:self.sell.acceptedBidMsg];
+    [msg setPayload:payload];
+    [self addChild:msg];
+    [msg sendToBuyer];
+    [self postParentChainChanged];
+}
+
+- (void)rejectRefund
+{
+    MKSellRejectRefundRequestMsg *msg = [[MKSellRejectRefundRequestMsg alloc] init];
+    [msg copyFrom:self.sell.acceptedBidMsg];
+    [self addChild:msg];
+    [msg sendToBuyer];
+    [self postParentChainChanged];
 }
 
 

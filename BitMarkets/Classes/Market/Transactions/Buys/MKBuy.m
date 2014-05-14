@@ -58,6 +58,12 @@
     return MKRootNode.sharedMKRootNode.bmClient.identities.firstIdentity.address;
 }
 
+
+- (MKBidMsg *)bidMsg
+{
+    return self.bid.bidMsg;
+}
+
 // -------------------
 
 /*

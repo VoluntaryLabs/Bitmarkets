@@ -10,10 +10,13 @@
 #import "MKMessages.h"
 #import "MKGroup.h"
 #import "MKPost.h"
+//#import "MKMsg.h"
 
 @interface MKTransaction : MKGroup
 
 @property (strong, nonatomic) MKPost *mkPost;
+
+//- (MKMsg *)msgInstanceOfClass:(Class)aClass;
 
 - (BOOL)handleMsg:(MKMsg *)mkMsg;
 

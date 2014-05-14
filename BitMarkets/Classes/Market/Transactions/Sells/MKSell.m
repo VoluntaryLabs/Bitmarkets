@@ -92,6 +92,11 @@
 
 // ---------------------------
 
+- (MKBidMsg *)acceptedBidMsg
+{
+    return self.bids.acceptedBid.bidMsg;
+}
+
 - (BOOL)handleMsg:(MKMsg *)msg
 {
     //NSLog(@"%@ handleMsg: %@", self.className, msg.postUuid);

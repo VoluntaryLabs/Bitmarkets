@@ -95,6 +95,11 @@
     return [self.children firstObjectOfClass:MKSellerLockEscrowMsg.class];
 }
 
+- (MKBuyerPostLockEscrowMsg *)buyerPostLockMsg
+{
+    return [self.children firstObjectOfClass:MKBuyerPostLockEscrowMsg.class];
+}
+
 - (MKConfirmLockEscrowMsg *)confirmLockMsg
 {
     return [self.children firstObjectOfClass:MKConfirmLockEscrowMsg.class];

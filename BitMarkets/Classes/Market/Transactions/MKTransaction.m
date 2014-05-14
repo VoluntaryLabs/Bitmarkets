@@ -48,6 +48,14 @@
 
 // -------------------------
 
+/*
+- (MKMsg *)msgInstanceOfClass:(Class)aClass
+{
+    
+}
+*/
+ 
+
 - (BOOL)handleMsg:(MKMsg *)msg
 {
     //NSLog(@"%@ handleMsg: %@", self.className, msg.postUuid);

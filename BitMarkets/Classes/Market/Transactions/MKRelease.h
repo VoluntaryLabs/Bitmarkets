@@ -20,6 +20,7 @@
 
 #import "MKBuyRefundRequestMsg.h"
 #import "MKSellAcceptRefundRequestMsg.h"
+#import "MKSellRejectRefundRequestMsg.h"
 
 // confirm
 
@@ -40,6 +41,7 @@
 
 - (MKBuyRefundRequestMsg *)buyRequestRefundMsg;
 - (MKSellAcceptRefundRequestMsg *)sellAcceptRefundRequestMsg;
+- (MKSellRejectRefundRequestMsg *)sellRejectRefundRequestMsg;
 
 // confirm
 

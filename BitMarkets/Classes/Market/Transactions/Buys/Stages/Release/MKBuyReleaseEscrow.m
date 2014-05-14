@@ -21,6 +21,53 @@
 
 - (NSString *)nodeSubtitle
 {
+    if (self.buyRequestRefundMsg)
+    {
+        if(!self.sellAcceptRefundRequestMsg)
+        {
+            return @"awaiting refund response";
+        }
+        
+        if (!self.confirmRefundMsg)
+        {
+            return @"awaiting refund confirm";
+        }
+        
+        return @"refund confirmed";
+    }
+    
+    if (self.buyPaymentMsg)
+    {
+        if(!self.sellAcceptPaymentMsg)
+        {
+            return @"awaiting payment response";
+        }
+        
+        if (!self.confirmPaymentMsg)
+        {
+            return @"awaiting payment confirm";
+        }
+        
+        return @"payment confirmed";
+    }
+    
+    return nil;
+}
+
+- (NSString *)nodeNote
+{
+    if (self.confirmPaymentMsg || self.confirmRefundMsg)
+    {
+        return @"✓";
+    }
+    
+    /*
+    if (self.wasRejected)
+    {
+        return @"✗";
+    }
+    */
+    
     return nil;
 }
 
@@ -34,7 +81,8 @@
 - (BOOL)handleMsg:(MKMsg *)msg
 {
     if ([msg isKindOfClass:MKSellAcceptPaymentMsg.class] ||
-        [msg isKindOfClass:MKSellAcceptRefundRequestMsg.class])
+        [msg isKindOfClass:MKSellAcceptRefundRequestMsg.class] ||
+        [msg isKindOfClass:MKSellRejectRefundRequestMsg.class])
     {
         [self addChild:msg];
         [self update];
@@ -60,22 +108,41 @@
     
 }
 
-// initiate release
+// initiate payemnt
 
-- (void)requestRefund // user initiated
+- (void)makePayment // user initiated
 {
-    MKBuyRefundRequestMsg *msg = [[MKBuyRefundRequestMsg alloc] init];
-    [msg copyFrom:self.buy.bid.bidMsg];
-    [msg send];
+    //self.buy.lockEscrow.pos
+    NSDictionary *payload = nil;
+    
+    if (!payload)
+    {
+        [NSException raise:@"missing payment payload" format:nil];
+    }
+    
+    MKBuyPaymentMsg *msg = [[MKBuyPaymentMsg alloc] init];
+    [msg setPayload:payload];
+    [msg copyFrom:self.buy.bidMsg];
+    [msg sendToSeller];
     
     [self addChild:msg];
 }
 
-- (void)makePayment // user initiated
+// initiate refund
+
+- (void)requestRefund // user initiated
 {
-    MKBuyPaymentMsg *msg = [[MKBuyPaymentMsg alloc] init];
-    [msg copyFrom:self.buy.bid.bidMsg];
-    [msg send];
+    NSDictionary *payload = nil;
+    
+    if (!payload)
+    {
+        [NSException raise:@"missing payment payload" format:nil];
+    }
+    
+    MKBuyRefundRequestMsg *msg = [[MKBuyRefundRequestMsg alloc] init];
+    [msg copyFrom:self.buy.bidMsg];
+    [msg setPayload:payload];
+    [msg sendToSeller];
     
     [self addChild:msg];
 }
