@@ -16,6 +16,7 @@
 #import "MKBidMsg.h"
 #import "MKBuyerLockEscrowMsg.h"
 #import "MKSellerLockEscrowMsg.h"
+#import "MKBuyerPostLockEscrowMsg.h"
 #import "MKConfirmLockEscrowMsg.h"
 
 

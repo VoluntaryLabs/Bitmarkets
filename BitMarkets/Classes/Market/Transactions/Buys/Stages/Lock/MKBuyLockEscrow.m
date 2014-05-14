@@ -85,7 +85,7 @@
 - (BOOL)sendLockToSeller
 {
     MKBuyerLockEscrowMsg *msg = [[MKBuyerLockEscrowMsg alloc] init];
-    [msg copyFrom:self.buy.bid.bidMsg];
+    [msg copyFrom:self.buy.bidMsg];
     
     BNWallet *wallet = MKRootNode.sharedMKRootNode.wallet;
     
@@ -162,8 +162,8 @@
     BNTx *tx = (BNTx *)[payload asObjectFromJSONObject];
     tx.wallet = MKRootNode.sharedMKRootNode.wallet;
     
-    MKBuyerLockEscrowMsg *msg = [[MKBuyerLockEscrowMsg alloc] init];
-    [msg copyFrom:self.buy.bid.bidMsg];
+    MKBuyerPostLockEscrowMsg *msg = [[MKBuyerPostLockEscrowMsg alloc] init];
+    [msg copyFrom:self.buy.bidMsg];
     
     [tx sign]; //TODO verify expected outputs first.
     [tx broadcast];

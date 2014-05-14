@@ -46,6 +46,10 @@
     return [self.children firstObjectOfClass:MKSellAcceptRefundRequestMsg.class];
 }
 
+- (MKSellRejectRefundRequestMsg *)sellRejectRefundRequestMsg
+{
+    return [self.children firstObjectOfClass:MKSellRejectRefundRequestMsg.class];
+}
 
 
 // confirm

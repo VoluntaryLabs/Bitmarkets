@@ -21,5 +21,6 @@
 @property (strong, nonatomic) MKBuyDelivery *delivery;
 @property (strong, nonatomic) MKBuyReleaseEscrow *releaseEscrow;
 
+- (MKBidMsg *)bidMsg;
 
 @end

@@ -23,4 +23,6 @@
 @property (strong, nonatomic) MKSellDelivery *delivery;
 @property (strong, nonatomic) MKSellReleaseEscrow *releaseEscrow;
 
+- (MKBidMsg *)acceptedBidMsg;
+
 @end
