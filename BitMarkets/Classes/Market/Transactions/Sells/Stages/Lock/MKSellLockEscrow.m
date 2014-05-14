@@ -21,6 +21,7 @@
 }
 */
 
+
 - (NSString *)nodeSubtitle
 {
     if (self.sellerLockMsg)
@@ -60,13 +61,13 @@
     return NO;
 }
 
-- (BOOL)postLock
+- (void)postLock
 {
     BNWallet *wallet = MKRootNode.sharedMKRootNode.wallet;
     
     if (!wallet.isRunning)
     {
-        return YES; // this effectively just reports that the msg was valid
+        return; // this effectively just reports that the msg was valid
     }
     
     //NSLog(@"remove this return");
@@ -84,7 +85,6 @@
     [msg sendToBuyer];
     [self addChild:msg];
     [self postParentChainChanged];
-    return YES;
 }
 
 - (void)postLockIfNeeded

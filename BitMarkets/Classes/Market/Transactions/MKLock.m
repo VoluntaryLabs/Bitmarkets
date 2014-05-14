@@ -13,6 +13,16 @@
 
 @implementation MKLock
 
+- (NSString *)nodeNote
+{
+    if (self.isConfirmed)
+    {
+        return @"✓";
+    }
+    
+    return nil;
+}
+
 // node
 
 - (CGFloat)nodeSuggestedWidth

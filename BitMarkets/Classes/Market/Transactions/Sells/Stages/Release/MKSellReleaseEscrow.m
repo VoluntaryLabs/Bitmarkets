@@ -8,6 +8,8 @@
 
 #import "MKSellReleaseEscrow.h"
 #import "MKSell.h"
+#import <BitnashKit/BitnashKit.h>
+#import "MKRootNode.h"
 
 @implementation MKSellReleaseEscrow
 
@@ -19,17 +21,35 @@
 
 - (NSString *)nodeNote
 {
-    if (self.confirmPaymentMsg || self.confirmRefundMsg)
+    if (self.buyPaymentMsg)
     {
-        return @"✓";
+        if (self.confirmPaymentMsg)
+        {
+            return @"payment confirmed";
+        }
+        
+        return @"confirming payment";
     }
     
-    /*
-     if (self.wasRejected)
+     if (self.buyRequestRefundMsg)
      {
-     return @"✗";
+         if (self.confirmRefundMsg)
+         {
+             return @"refund confirmed";
+         }
+         
+         return @"confirming refund";
      }
-     */
+
+    if (self.sell.lockEscrow.isConfirmed)
+    {
+        if (!self.sell.delivery.isComplete)
+        {
+            return nil;
+        }
+        
+        return @"awaiting buyer";
+    }
     
     return nil;
 }
@@ -142,6 +162,13 @@
 
 - (void)lookForRefundConfirm
 {
+    BNWallet *wallet = MKRootNode.sharedMKRootNode.wallet;
+    
+    if (!wallet.isRunning)
+    {
+        return;
+    }
+    
     BOOL paymentConfirmed = NO;
     
     if (paymentConfirmed)
@@ -157,6 +184,13 @@
 
 - (void)acceptPayment // automatic
 {
+    BNWallet *wallet = MKRootNode.sharedMKRootNode.wallet;
+    
+    if (!wallet.isRunning)
+    {
+        return;
+    }
+    
     MKBuyPaymentMsg *buyPaymentMsg = self.buyPaymentMsg;
     
     NSDictionary *payload = nil;
@@ -176,6 +210,13 @@
 
 - (void)acceptRefundRequest
 {
+    BNWallet *wallet = MKRootNode.sharedMKRootNode.wallet;
+    
+    if (!wallet.isRunning)
+    {
+        return;
+    }
+    
     MKBuyRefundRequestMsg *buyRequestRefundMsg = self.buyRequestRefundMsg;
     
     NSDictionary *payload = nil;
@@ -195,6 +236,13 @@
 
 - (void)rejectRefund
 {
+    BNWallet *wallet = MKRootNode.sharedMKRootNode.wallet;
+    
+    if (!wallet.isRunning)
+    {
+        return;
+    }
+    
     MKSellRejectRefundRequestMsg *msg = [[MKSellRejectRefundRequestMsg alloc] init];
     [msg copyFrom:self.sell.acceptedBidMsg];
     [self addChild:msg];

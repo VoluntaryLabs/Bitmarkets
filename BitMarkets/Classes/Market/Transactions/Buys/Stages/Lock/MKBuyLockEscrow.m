@@ -34,6 +34,11 @@
         return @"sent - awaiting reply";
     }
     
+    if (self.confirmLockMsg)
+    {
+        return @"confirmed";
+    }
+    
     return nil;
 }
 
@@ -83,10 +88,16 @@
 
 - (BOOL)sendLockToSeller
 {
+    BNWallet *wallet = MKRootNode.sharedMKRootNode.wallet;
+
+    if (!wallet.isRunning)
+    {
+        return YES;
+    }
+    
     MKBuyerLockEscrowMsg *msg = [[MKBuyerLockEscrowMsg alloc] init];
     [msg copyFrom:self.buy.bidMsg];
     
-    BNWallet *wallet = MKRootNode.sharedMKRootNode.wallet;
     
     BNTx *escrowTx = [wallet newTx];
     

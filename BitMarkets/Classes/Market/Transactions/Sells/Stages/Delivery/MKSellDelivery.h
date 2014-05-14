@@ -10,4 +10,6 @@
 
 @interface MKSellDelivery : MKGroup
 
+- (BOOL)isComplete;
+
 @end
