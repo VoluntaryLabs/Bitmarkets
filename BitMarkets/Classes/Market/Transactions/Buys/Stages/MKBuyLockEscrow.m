@@ -123,35 +123,62 @@
     [msg copyFrom:self.buy.bid.bidMsg];
     
     BNWallet *wallet = MKRootNode.sharedMKRootNode.wallet;
-    BNTx *tx = [wallet newTx];
     
-    NSLog(@"2*self.buy.mkPost.price.longLongValue: %lld", 2*self.buy.mkPost.priceInSatoshi.longLongValue);
+    BNTx *escrowTx = [wallet newTx];
     
-    [tx configureForEscrowWithValue:2*self.buy.mkPost.priceInSatoshi.longLongValue];
-    
-    if (tx.error)
+    if (self.escrowInputTx)
     {
-        NSLog(@"tx configureForEscrowWithValue failed: %@", tx.error.description);
-        if (tx.error.insufficientValue)
+        [escrowTx configureForEscrowWithInputTx:self.escrowInputTx];
+    }
+    else
+    {
+        [escrowTx configureForEscrowWithValue:[NSNumber numberWithLong:2*self.buy.mkPost.priceInSatoshi.longLongValue]];
+    }
+
+    
+    if (escrowTx.error)
+    {
+        NSLog(@"tx configureForOutputWithValue failed: %@", escrowTx.error.description);
+        if (escrowTx.error.insufficientValue)
         {
             //TODO: prompt user for deposit
             
         }
         else
         {
-            [NSException raise:@"tx configureForEscrowWithValue failed" format:nil];
+            [NSException raise:@"tx configureForOutputWithValue failed" format:nil];
             //TODO: handle unknown tx configureForEscrowWithValue error
         }
+        return NO;
     }
     
-    [tx markInputsAsSpent];
-    
-    [msg setPayload:[tx asJSONObject]];
-    
-    [msg sendToSeller];
-    [self addChild:msg];
-    
-    return YES;
+    if ([escrowTx changeValue].longLongValue > 10000)
+    {
+        //create an output that won't lock up more than needed
+        self.escrowInputTx = [wallet newTx];
+        
+        [self.escrowInputTx configureForOutputWithValue:[NSNumber numberWithLongLong:
+                                         [(BNTxOut *)[escrowTx.outputs firstObject] value].longLongValue + [escrowTx fee].longLongValue]];
+        [self.escrowInputTx sign];
+        [self.escrowInputTx broadcast];
+        return [self sendLockToSeller]; //TODO verify tx in mempool first
+    }
+    else
+    {
+        BNTx *sellerEscrowTx = [self.buy.bid.acceptMsg.payload asObjectFromJSONObject]; //TODO handle errors.  TODO verify tx before signing.
+        
+        escrowTx = [escrowTx mergedWithEscrowTx:sellerEscrowTx];
+        [escrowTx subtractFee];
+        [escrowTx sign];
+        [escrowTx markInputsAsSpent];
+        
+        [msg setPayload:[escrowTx asJSONObject]];
+        
+        [msg sendToSeller];
+        [self addChild:msg];
+        
+        return YES;
+    }
 }
 
 // post lock

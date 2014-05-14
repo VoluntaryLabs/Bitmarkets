@@ -116,39 +116,63 @@
     MKAcceptBidMsg *msg = [[MKAcceptBidMsg alloc] init];
     [msg copyFrom:self.bidMsg];
 
-    BNWallet *wallet = MKRootNode.sharedMKRootNode.wallet;
-    // create payload...
-    
-    BNTx *tx = [wallet newTx];
-    
     MKSell *sell = (MKSell *)self.nodeParent.nodeParent;
     
-    NSLog(@"sell.mkPost.priceInSatoshi.longLongValue: %lld", sell.mkPost.priceInSatoshi.longLongValue);
+    BNWallet *wallet = MKRootNode.sharedMKRootNode.wallet;
+
+    BNTx *escrowTx = [wallet newTx];
     
-    [tx configureForEscrowWithValue:sell.mkPost.priceInSatoshi.longLongValue];
-    
-    if (tx.error)
+    if (self.escrowInputTx)
     {
-        NSLog(@"tx configureForEscrowWithValue failed: %@", tx.error.description);
-        if (tx.error.insufficientValue)
+        [escrowTx configureForEscrowWithInputTx:self.escrowInputTx];
+    }
+    else
+    {
+        [escrowTx configureForEscrowWithValue:sell.mkPost.priceInSatoshi];
+    }
+    
+    
+    if (escrowTx.error)
+    {
+        NSLog(@"tx configureForOutputWithValue failed: %@", escrowTx.error.description);
+        if (escrowTx.error.insufficientValue)
         {
             //TODO: prompt user for deposit
             
         }
         else
         {
-            [NSException raise:@"tx configureForEscrowWithValue failed" format:nil];
+            [NSException raise:@"tx configureForOutputWithValue failed" format:nil];
             //TODO: handle unknown tx configureForEscrowWithValue error
         }
+        return;
     }
     
-    [msg setPayload:[tx asJSONObject]];
+    [escrowTx subtractFee];
     
-    [msg send];
-    [self addChild:msg];
+    NSLog(@"CHANGE VALUE: %lld", [escrowTx changeValue].longLongValue);
     
-    [self.sellBids setAcceptedBid:self];
-    [self postSelfChanged];
+    if ([escrowTx changeValue].longLongValue > 10000)
+    {
+        //create an output that won't lock up more than needed
+        self.escrowInputTx = [wallet newTx];
+        [self.escrowInputTx configureForOutputWithValue:[NSNumber numberWithLongLong:
+                                         [(BNTxOut *)[escrowTx.outputs firstObject] value].longLongValue + [escrowTx fee].longLongValue]];
+        [self.escrowInputTx sign];
+        [self.escrowInputTx subtractFee];
+        [self.escrowInputTx broadcast];
+        [self accept]; //TODO verify that tx is in mempool first
+    }
+    else
+    {
+        [escrowTx markInputsAsSpent];
+        [msg setPayload:[escrowTx asJSONObject]];
+        [msg send];
+        [self addChild:msg];
+        
+        [self.sellBids setAcceptedBid:self];
+        [self postSelfChanged];
+    }
 }
 
 - (void)reject

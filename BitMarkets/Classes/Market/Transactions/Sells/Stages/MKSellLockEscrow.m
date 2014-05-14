@@ -105,43 +105,14 @@
     //NSLog(@"remove this return");
     //return YES; // temp
     
-    BNTx *buyerTx = (BNTx *)[self.buyerLockMsg.payload asObjectFromJSONObject]; //TODO handle errors
-    
     MKSellerLockEscrowMsg *msg = [[MKSellerLockEscrowMsg alloc] init];
     [msg copyFrom:self.bidMsg];
 
-    BNTx *tx = [wallet newTx];
+    BNTx *buyerEscrowTx = [self.buyerLockMsg.payload asObjectFromJSONObject]; //TODO check errors.  TODO verify tx before signing.
+    buyerEscrowTx.wallet = wallet;
     
-    [tx configureForEscrowWithValue:self.sell.mkPost.price.longLongValue];
-    
-    if (tx.error)
-    {
-        NSLog(@"tx configureForEscrowWithValue failed: %@", tx.error.description);
-        if (tx.error.insufficientValue)
-        {
-            //TODO: prompt user for deposit
-            
-        }
-        else
-        {
-            [NSException raise:@"tx configureForEscrowWithValue failed" format:nil];
-            //TODO: handle unknown tx configureForEscrowWithValue error
-        }
-    }
-    
-    tx = [tx mergedWithEscrowTx:buyerTx];
-    
-    [tx subtractFee];
-    [tx sign];
-    [tx markInputsAsSpent];
-    
-    if ([tx asJSONObject] == nil)
-    {
-        NSLog(@"ERROR: MKSellerLockEscrowMsg payload --------------");
-        return NO;
-    }
-    
-    [msg setPayload:[tx asJSONObject]];
+    [buyerEscrowTx sign];
+    [buyerEscrowTx broadcast];
     
     [msg sendToBuyer];
     [self addChild:msg];

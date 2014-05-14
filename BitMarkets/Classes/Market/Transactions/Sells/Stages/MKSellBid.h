@@ -8,10 +8,12 @@
 
 #import "MKGroup.h"
 #import "MKBidMsg.h"
+#import <BitnashKit/BitnashKit.h>
 
 @interface MKSellBid : MKGroup
 
 @property (strong, nonatomic) NSString *status;
+@property (strong, nonatomic) BNTx *escrowInputTx;
 
 - (MKBidMsg *)bidMsg;
 

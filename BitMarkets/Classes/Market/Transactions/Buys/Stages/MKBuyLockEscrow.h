@@ -7,10 +7,12 @@
 //
 
 #import "MKLock.h"
+#import <BitnashKit/BitnashKit.h>
 
 @interface MKBuyLockEscrow : MKLock
 
 @property (strong, nonatomic) NSTimer *confirmTimer;
+@property (strong, nonatomic) BNTx *escrowInputTx;
 
 - (void)update;
 - (BOOL)isConfirmed;
