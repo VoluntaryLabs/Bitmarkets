@@ -11,6 +11,7 @@
 #import "MKBidMsg.h"
 #import "MKAcceptBidMsg.h"
 #import "MKSellBid.h"
+#import "MKSell.h"
 
 @implementation MKSellBids
 
@@ -36,6 +37,11 @@
 
 - (NSString *)nodeNote
 {
+    if (self.isActive)
+    {
+        return @"●";
+    }
+    
     if (self.acceptedBid)
     {
         return @"✓";
@@ -112,12 +118,14 @@
     return nil;
 }
 
-- (BOOL)isActive
+- (MKSell *)sell
 {
-    return self.sell.post.isPosted && !self.acceptedBid;
+    return (MKSell *)self.nodeParent;
 }
 
-
-
+- (BOOL)isActive
+{
+    return self.sell.mkPost.isPosted && !self.acceptedBid;
+}
 
 @end
