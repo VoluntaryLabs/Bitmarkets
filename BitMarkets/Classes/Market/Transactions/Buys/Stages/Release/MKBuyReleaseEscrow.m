@@ -8,6 +8,7 @@
 
 #import "MKBuyReleaseEscrow.h"
 #import "MKBuy.h"
+#import "MKRootNode.h"
 
 @implementation MKBuyReleaseEscrow
 
@@ -128,15 +129,22 @@
 - (void)makePayment // user initiated
 {
     //self.buy.lockEscrow.pos
-    NSDictionary *payload = nil;
     
-    if (!payload)
+    BNWallet *wallet = MKRootNode.sharedMKRootNode.wallet;
+    
+    if (!wallet.isRunning)
     {
-        [NSException raise:@"missing payment payload" format:nil];
+        return;
     }
     
+    BNTx *escrowTx = [self.buy.lockEscrow.payloadToConfirm asObjectFromJSONObject]; //TODO handle errors
+    
+    BNTx *releaseTx = [[BNTx alloc] init];
+    releaseTx.wallet = wallet;
+    [releaseTx configureForReleaseWithInputTx:releaseTx];
+    
     MKBuyPaymentMsg *msg = [[MKBuyPaymentMsg alloc] init];
-    [msg setPayload:payload];
+    [msg setPayload:[releaseTx asJSONObject]];
     [msg copyFrom:self.buy.bidMsg];
     [msg sendToSeller];
     
@@ -166,7 +174,9 @@
 
 - (void)signAndPostAcceptToBlockChain
 {
-    
+    BNTx *releaseTx = self.sellAcceptPaymentMsg.payload.asObjectFromJSONObject;
+    [releaseTx sign];
+    [releaseTx broadcast];
 }
 
 - (void)signAndPostRefundToBlockChain
