@@ -157,7 +157,7 @@
 
 - (void)update
 {
-    if (self.buyPaymentMsg)
+    if (self.buyPaymentMsg && !self.sellAcceptPaymentMsg)
     {
         [self acceptPayment];
     }
@@ -230,6 +230,7 @@
     BNTx *escrowTx = [self.sell.lockEscrow.payloadToConfirm asObjectFromJSONObject];
     
     BNTx *releaseTx = [self.buyPaymentMsg.payload asObjectFromJSONObject];
+    releaseTx.wallet = wallet;
     
     [releaseTx addPayToAddressOutputWithValue:[NSNumber numberWithLongLong:2*escrowTx.firstOutput.value.longLongValue/3]];
     
@@ -256,6 +257,7 @@
     BNTx *escrowTx = [self.sell.lockEscrow.payloadToConfirm asObjectFromJSONObject];
     
     BNTx *refundTx = [self.buyRequestRefundMsg.payload asObjectFromJSONObject];
+    refundTx.wallet = wallet;
     
     [refundTx addPayToAddressOutputWithValue:[NSNumber numberWithLongLong:escrowTx.firstOutput.value.longLongValue/3]];
     

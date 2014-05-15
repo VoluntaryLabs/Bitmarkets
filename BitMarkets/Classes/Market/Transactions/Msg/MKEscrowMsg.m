@@ -28,4 +28,9 @@
     return [self.dict objectForKey:@"payload"];
 }
 
+- (NSArray *)modelActions
+{
+    return @[@"delete"];
+}
+
 @end

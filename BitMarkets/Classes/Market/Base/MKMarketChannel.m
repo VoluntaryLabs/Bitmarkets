@@ -113,6 +113,7 @@
         }
         else
         {
+            [bmMessage delete];
             //NSLog(@"placed msg '%@' for thread '%@'", msg.className, msg.postUuid);
         }
     }
