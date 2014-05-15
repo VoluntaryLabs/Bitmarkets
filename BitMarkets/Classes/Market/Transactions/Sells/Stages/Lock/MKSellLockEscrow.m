@@ -21,6 +21,34 @@
 }
 */
 
+- (BOOL)isActive
+{
+    return self.buyerLockMsg && !self.confirmLockMsg;
+}
+
+- (NSString *)nodeNote
+{
+    if (self.isActive)
+    {
+        return @"●";
+    }
+    
+    if (self.confirmLockMsg)
+    {
+        return @"✓";
+    }
+    
+    /*
+     // timeout?
+     
+     if (self.didTimeout)
+     {
+     return @"✗";
+     }
+     */
+    
+    return nil;
+}
 
 - (NSString *)nodeSubtitle
 {
