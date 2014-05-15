@@ -27,6 +27,11 @@
     return self;
 }
 
+- (NSDate *)date
+{
+    return self.bidMsg.date;
+}
+
 // --- equality ---
 
 - (MKBidMsg *)bidMsg
