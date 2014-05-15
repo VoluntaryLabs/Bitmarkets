@@ -112,6 +112,12 @@
     return nil;
 }
 
+- (BOOL)isActive
+{
+    return self.sell.post.isPosted && !self.acceptedBid;
+}
+
+
 
 
 @end

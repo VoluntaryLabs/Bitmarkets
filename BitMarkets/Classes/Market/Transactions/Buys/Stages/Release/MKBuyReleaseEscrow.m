@@ -9,6 +9,8 @@
 #import "MKBuyReleaseEscrow.h"
 #import "MKBuy.h"
 #import "MKRootNode.h"
+#import "MKBuyPostRefundMsg.h"
+#import "MKBuyPostPaymentMsg.h"
 
 @implementation MKBuyReleaseEscrow
 
@@ -171,18 +173,48 @@
     [self addChild:msg];
 }
 
-// sign and post
+// post payment
+
+- (MKBuyPostPaymentMsg *)buyPostPaymentMsg
+{
+    return [self.children firstObjectOfClass:MKBuyPostPaymentMsg.class];
+}
 
 - (void)signAndPostAcceptToBlockChain
 {
-    BNTx *releaseTx = self.sellAcceptPaymentMsg.payload.asObjectFromJSONObject;
-    [releaseTx sign];
-    [releaseTx broadcast];
+    if (!self.buyPostPaymentMsg)
+    {
+        BNTx *releaseTx = self.sellAcceptPaymentMsg.payload.asObjectFromJSONObject;
+        [releaseTx sign];
+        [releaseTx broadcast];
+        
+        MKBuyPostPaymentMsg *msg = [[MKBuyPostPaymentMsg alloc] init];
+        [msg copyFrom:self.buy.bidMsg];
+        [self addChild:msg];
+    }
 }
+
+// post refund
+
+- (MKBuyPostRefundMsg *)buyPostRefundMsg
+{
+    return [self.children firstObjectOfClass:MKBuyPostRefundMsg.class];
+}
+
 
 - (void)signAndPostRefundToBlockChain
 {
-    
+    if (!self.buyPostRefundMsg)
+    {
+        
+        
+        
+        
+        
+        MKBuyPostRefundMsg *msg = [[MKBuyPostRefundMsg alloc] init];
+        [msg copyFrom:self.buy.bidMsg];
+        [self addChild:msg];
+    }
 }
 
 @end
