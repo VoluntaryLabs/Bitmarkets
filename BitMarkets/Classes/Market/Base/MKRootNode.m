@@ -109,7 +109,7 @@ static MKRootNode *sharedMKRootNode = nil;
                                                         error:&error];
         [_wallet setPath:dataPath];
         [_wallet setCheckpointsPath:[[NSBundle bundleForClass:[BNWallet class]] pathForResource:@"checkpoints-testnet" ofType:nil]];
-        //[_wallet.server start];        
+        //[_wallet.server start];
     }
 }
 

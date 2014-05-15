@@ -19,6 +19,7 @@
 }
 */
 
+
 - (NSString *)nodeSubtitle
 {
     if (self.buyRequestRefundMsg)

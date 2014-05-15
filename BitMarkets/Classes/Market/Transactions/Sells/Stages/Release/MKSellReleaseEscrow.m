@@ -19,7 +19,8 @@
     return self;
 }
 
-- (NSString *)nodeNote
+/*
+- (NSString *)nodeSubtitle
 {
     if (self.buyPaymentMsg)
     {
@@ -31,16 +32,16 @@
         return @"confirming payment";
     }
     
-     if (self.buyRequestRefundMsg)
-     {
-         if (self.confirmRefundMsg)
-         {
-             return @"refund confirmed";
-         }
-         
-         return @"confirming refund";
-     }
-
+    if (self.buyRequestRefundMsg)
+    {
+        if (self.confirmRefundMsg)
+        {
+            return @"refund confirmed";
+        }
+        
+        return @"confirming refund";
+    }
+    
     if (self.sell.lockEscrow.isConfirmed)
     {
         if (!self.sell.delivery.isComplete)
@@ -53,6 +54,7 @@
     
     return nil;
 }
+*/
 
 - (NSString *)nodeSubtitle
 {
@@ -97,6 +99,40 @@
     
     return nil;
 }
+
+- (BOOL)isActive
+{
+    return (self.buyPaymentMsg || self.buyRequestRefundMsg) && !self.isComplete;
+}
+
+- (BOOL)isComplete
+{
+    return (self.confirmPaymentMsg || self.confirmRefundMsg);
+}
+
+- (NSString *)nodeNote
+{
+    if (self.isComplete)
+    {
+        return @"✓";
+    }
+    
+    if (self.isActive)
+    {
+        return @"●";
+    }
+    
+    /*
+     if (self.wasRejected)
+     {
+     return @"✗";
+     }
+     */
+    
+    return nil;
+}
+
+// actions
 
 - (NSArray *)modelActions
 {
