@@ -153,7 +153,8 @@
     
     if (sentMessage && !sentMessage.wasSent)
     {
-        return sentMessage.getHumanReadbleStatus;
+        return @"sending...";
+        //return sentMessage.getHumanReadbleStatus;
         //return [NSString stringWithFormat:@"%@ (%@)", self.dateString, sentMessage.getStatus];
         //return [NSString stringWithFormat:@"%@ (%@)", self.dateString, @"sending"];
     }

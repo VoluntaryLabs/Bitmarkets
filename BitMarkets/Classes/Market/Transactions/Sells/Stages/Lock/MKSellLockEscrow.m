@@ -26,7 +26,7 @@
 {
     if (self.sellerLockMsg)
     {
-        return @"awaiting blockchain confirm";
+        return @"awaiting confirm";
     }
     
     if (self.buyerLockMsg)
@@ -37,6 +37,11 @@
     if (self.sell.bids.acceptedBid)
     {
         return @"awaiting buyer lock";
+    }
+    
+    if (self.confirmLockMsg)
+    {
+        return @"confirmed";
     }
     
     return nil;

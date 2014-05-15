@@ -42,6 +42,11 @@
 
 - (NSString *)nodeNote
 {
+    if (self.isActive)
+    {
+        return @"◀";
+    }
+    
     if (self.wasAccepted)
     {
         return @"✓";
@@ -77,6 +82,8 @@
     return [self.children firstObjectOfClass:MKRejectBidMsg.class];
 }
 
+// status
+
 - (BOOL)wasSent
 {
     return self.bidMsg != nil;
@@ -93,6 +100,16 @@
 }
 
 // --- status -------------
+
+- (BOOL)isDone
+{
+    return self.wasAccepted || self.wasRejected;
+}
+
+- (BOOL)isActive
+{
+    return (self.children.count && !self.isDone);
+}
 
 - (MKBuy *)buy
 {
@@ -130,14 +147,6 @@
 
 - (BOOL)handleMsg:(MKMsg *)msg
 {
-    /*
-    if ([msg isKindOfClass:MKBidMsg.class])
-    {
-        [self addChild:msg];
-        return YES;
-    }
-    */
-    
     if ([msg isKindOfClass:MKAcceptBidMsg.class])
     {
         if ([self addChild:msg])
@@ -145,12 +154,14 @@
             [self.buy update];
         }
         
+        [self postParentChainChanged];
         return YES;
     }
     
     if ([msg isKindOfClass:MKRejectBidMsg.class])
     {
         [self addChild:msg];
+        [self postParentChainChanged];
         return YES;
     }
     

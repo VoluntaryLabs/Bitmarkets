@@ -842,10 +842,10 @@
 		AAB2810E19217586005C9D27 /* Stages */ = {
 			isa = PBXGroup;
 			children = (
+				AAB2812419217586005C9D27 /* Post */,
 				AAB2810F19217586005C9D27 /* Bid */,
 				AAB2811819217586005C9D27 /* Delivery */,
 				AAB2811F19217586005C9D27 /* Lock */,
-				AAB2812419217586005C9D27 /* Post */,
 				AAB2812919217586005C9D27 /* Release */,
 			);
 			path = Stages;

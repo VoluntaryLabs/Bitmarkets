@@ -26,7 +26,7 @@
 {
     if (self.sellerLockMsg)
     {
-        return @"awaiting blockchain confirm";
+        return @"awaiting confirm";
     }
     
     if (self.buyerLockMsg)
