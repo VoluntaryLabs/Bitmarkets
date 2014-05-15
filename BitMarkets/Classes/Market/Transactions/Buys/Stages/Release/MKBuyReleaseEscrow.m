@@ -141,7 +141,7 @@
     
     BNTx *releaseTx = [[BNTx alloc] init];
     releaseTx.wallet = wallet;
-    [releaseTx configureForReleaseWithInputTx:releaseTx];
+    [releaseTx configureForReleaseWithInputTx:escrowTx];
     
     MKBuyPaymentMsg *msg = [[MKBuyPaymentMsg alloc] init];
     [msg setPayload:[releaseTx asJSONObject]];
