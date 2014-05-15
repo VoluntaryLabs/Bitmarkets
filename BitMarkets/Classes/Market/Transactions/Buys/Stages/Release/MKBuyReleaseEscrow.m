@@ -145,6 +145,7 @@
     BNTx *releaseTx = [[BNTx alloc] init];
     releaseTx.wallet = wallet;
     [releaseTx configureForReleaseWithInputTx:escrowTx];
+    [releaseTx addPayToAddressOutputWithValue:[NSNumber numberWithLongLong:escrowTx.firstOutput.value.longLongValue/3]];
     
     MKBuyPaymentMsg *msg = [[MKBuyPaymentMsg alloc] init];
     [msg setPayload:[releaseTx asJSONObject]];

@@ -231,7 +231,7 @@
     
     BNTx *releaseTx = [self.buyPaymentMsg.payload asObjectFromJSONObject];
     
-    [releaseTx addPayToAddressOutputWithValue:escrowTx.firstOutput.value];
+    [releaseTx addPayToAddressOutputWithValue:[NSNumber numberWithLongLong:2*escrowTx.firstOutput.value.longLongValue/3]];
     
     [releaseTx subtractFee];
     [releaseTx sign];
