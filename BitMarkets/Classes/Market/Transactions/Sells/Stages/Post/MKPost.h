@@ -43,8 +43,12 @@
 
 // messages
 
+- (MKPostMsg *)postMsg;
+
 - (MKPostMsg *)sendPostMsg;
 - (MKBidMsg *)sendBidMsg;
+
+- (BOOL)isPosted;
 
 // equality
 

@@ -1,13 +1,13 @@
 //
-//  MKBuyPostPayment.h
+//  MKBuyPostPaymentMsg.m
 //  BitMarkets
 //
 //  Created by Steve Dekorte on 5/14/14.
 //  Copyright (c) 2014 voluntary.net. All rights reserved.
 //
 
-#import "MKEscrowMsg.h"
+#import "MKBuyPostPaymentMsg.h"
 
-@interface MKBuyPostPayment : MKEscrowMsg
+@implementation MKBuyPostPaymentMsg
 
 @end

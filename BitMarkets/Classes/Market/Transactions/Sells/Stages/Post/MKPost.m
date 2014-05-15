@@ -224,6 +224,11 @@
     return [self.children firstObjectOfClass:MKPostMsg.class];
 }
 
+- (BOOL)isPosted
+{
+    return self.postMsg != nil;
+}
+
 // actions
 
 - (MKPostMsg *)sendPostMsg
