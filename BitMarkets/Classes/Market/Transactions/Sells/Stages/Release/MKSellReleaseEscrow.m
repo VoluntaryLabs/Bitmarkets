@@ -227,18 +227,18 @@
         return;
     }
     
-    MKBuyPaymentMsg *buyPaymentMsg = self.buyPaymentMsg;
+    BNTx *escrowTx = [self.sell.lockEscrow.payloadToConfirm asObjectFromJSONObject];
     
-    NSDictionary *payload = nil;
+    BNTx *releaseTx = [self.buyPaymentMsg.payload asObjectFromJSONObject];
     
-    if (!payload)
-    {
-        [NSException raise:@"missing payment payload" format:nil];
-    }
+    [releaseTx addPayToAddressOutputWithValue:escrowTx.firstOutput.value];
+    
+    [releaseTx subtractFee];
+    [releaseTx sign];
     
     MKSellAcceptPaymentMsg *msg = [[MKSellAcceptPaymentMsg alloc] init];
     [msg copyFrom:self.sell.acceptedBidMsg];
-    [msg setPayload:payload];
+    [msg setPayload:releaseTx.asJSONObject];
     [self addChild:msg];
     [msg sendToBuyer];
     [self postParentChainChanged];
