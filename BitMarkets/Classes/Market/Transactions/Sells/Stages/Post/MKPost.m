@@ -49,9 +49,28 @@
     return self;
 }
 
+- (BOOL)isInSell
+{
+    return self.nodeParent.class == MKSell.class;
+}
+
+- (BOOL)isActive
+{
+    if (self.isInSell)
+    {
+        return !self.postMsg;
+    }
+    
+    return NO;
+}
 
 - (NSString *)nodeNote
 {
+    if (self.isActive)
+    {
+        return @"●";
+    }
+    
     if (!self.isEditable && !self.canBuy)
     {
         return @"✓";

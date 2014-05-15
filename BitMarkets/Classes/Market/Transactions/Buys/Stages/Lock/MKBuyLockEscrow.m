@@ -22,21 +22,50 @@
 
 // node
 
-- (NSString *)nodeSubtitle
+- (BOOL)isActive
 {
-    if (self.sellerLockMsg)
+    return self.buyerLockMsg && !self.confirmLockMsg;
+}
+
+- (NSString *)nodeNote
+{
+    if (self.isActive)
     {
-        return @"awaiting confirm";
-    }
-    
-    if (self.buyerLockMsg)
-    {
-        return @"sent - awaiting reply";
+        return @"●";
     }
     
     if (self.confirmLockMsg)
     {
-        return @"confirmed";
+        return @"✓";
+    }
+    
+    /*
+     // timeout?
+     
+    if (self.didTimeout)
+    {
+        return @"✗";
+    }
+    */
+    
+    return nil;
+}
+
+- (NSString *)nodeSubtitle
+{
+    if (self.buyerLockMsg)
+    {
+        if (self.sellerLockMsg)
+        {
+            if (self.confirmLockMsg)
+            {
+                return @"confirmed";
+            }
+            
+            return @"awaiting confirm";
+        }
+        
+        return @"sent - awaiting reply";
     }
     
     return nil;

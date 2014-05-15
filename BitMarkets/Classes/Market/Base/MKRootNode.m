@@ -96,6 +96,7 @@ static MKRootNode *sharedMKRootNode = nil;
                                                      name:nil
                                                    object:_wallet];
         */
+        
         _wallet.refreshInterval = 5.0;
         _wallet.deepRefreshes = YES;
         _wallet.server.logs = YES;
@@ -108,9 +109,7 @@ static MKRootNode *sharedMKRootNode = nil;
                                                         error:&error];
         [_wallet setPath:dataPath];
         [_wallet setCheckpointsPath:[[NSBundle bundleForClass:[BNWallet class]] pathForResource:@"checkpoints-testnet" ofType:nil]];
-        //[_wallet.server start];
-
-        
+        //[_wallet.server start];        
     }
 }
 

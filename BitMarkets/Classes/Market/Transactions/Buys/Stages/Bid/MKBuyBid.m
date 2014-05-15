@@ -44,7 +44,7 @@
 {
     if (self.isActive)
     {
-        return @"◀";
+        return @"●";
     }
     
     if (self.wasAccepted)

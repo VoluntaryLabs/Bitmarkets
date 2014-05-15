@@ -54,11 +54,26 @@
     return nil;
 }
 
+- (BOOL)isActive
+{
+    return (self.buyPaymentMsg || self.buyRequestRefundMsg) && !self.isComplete;
+}
+
+- (BOOL)isComplete
+{
+    return (self.confirmPaymentMsg || self.confirmRefundMsg);
+}
+
 - (NSString *)nodeNote
 {
-    if (self.confirmPaymentMsg || self.confirmRefundMsg)
+    if (self.isComplete)
     {
         return @"✓";
+    }
+    
+    if (self.isActive)
+    {
+        return @"●";
     }
     
     /*

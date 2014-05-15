@@ -15,7 +15,6 @@
 @interface MKTransaction : MKGroup
 
 @property (strong, nonatomic) MKPost *mkPost;
-@property (assign, nonatomic) BOOL isActive;
 
 //- (MKMsg *)msgInstanceOfClass:(Class)aClass;
 
