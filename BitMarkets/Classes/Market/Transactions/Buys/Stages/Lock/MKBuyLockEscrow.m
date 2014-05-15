@@ -86,6 +86,7 @@
     {
         [self addChild:msg];
         [self update];
+        [self postParentChainChanged];
         return YES;
     }
     
@@ -181,6 +182,7 @@
         
         [msg sendToSeller];
         [self addChild:msg];
+        [self postParentChainChanged];
         
         return YES;
     }
