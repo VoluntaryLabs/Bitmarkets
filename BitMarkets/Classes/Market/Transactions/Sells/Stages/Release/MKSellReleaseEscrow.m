@@ -253,18 +253,18 @@
         return;
     }
     
-    MKBuyRefundRequestMsg *buyRequestRefundMsg = self.buyRequestRefundMsg;
+    BNTx *escrowTx = [self.sell.lockEscrow.payloadToConfirm asObjectFromJSONObject];
     
-    NSDictionary *payload = nil;
+    BNTx *refundTx = [self.buyRequestRefundMsg.payload asObjectFromJSONObject];
     
-    if (!payload)
-    {
-        [NSException raise:@"missing refund payload" format:nil];
-    }
+    [refundTx addPayToAddressOutputWithValue:[NSNumber numberWithLongLong:escrowTx.firstOutput.value.longLongValue/3]];
     
-    MKSellRejectRefundRequestMsg *msg = [[MKSellRejectRefundRequestMsg alloc] init];
+    [refundTx subtractFee];
+    [refundTx sign];
+    
+    MKSellAcceptRefundRequestMsg *msg = [[MKSellAcceptRefundRequestMsg alloc] init];
     [msg copyFrom:self.sell.acceptedBidMsg];
-    [msg setPayload:payload];
+    [msg setPayload:refundTx.asJSONObject];
     [self addChild:msg];
     [msg sendToBuyer];
     [self postParentChainChanged];

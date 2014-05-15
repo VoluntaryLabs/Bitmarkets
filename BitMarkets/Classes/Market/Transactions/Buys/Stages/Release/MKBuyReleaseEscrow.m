@@ -159,16 +159,23 @@
 
 - (void)requestRefund // user initiated
 {
-    NSDictionary *payload = nil;
+    BNWallet *wallet = MKRootNode.sharedMKRootNode.wallet;
     
-    if (!payload)
+    if (!wallet.isRunning)
     {
-        [NSException raise:@"missing payment payload" format:nil];
+        return;
     }
+    
+    BNTx *escrowTx = [self.buy.lockEscrow.payloadToConfirm asObjectFromJSONObject]; //TODO handle errors
+    
+    BNTx *refundTx = [[BNTx alloc] init];
+    refundTx.wallet = wallet;
+    [refundTx configureForReleaseWithInputTx:escrowTx];
+    [refundTx addPayToAddressOutputWithValue:[NSNumber numberWithLongLong:2*escrowTx.firstOutput.value.longLongValue/3]];
     
     MKBuyRefundRequestMsg *msg = [[MKBuyRefundRequestMsg alloc] init];
     [msg copyFrom:self.buy.bidMsg];
-    [msg setPayload:payload];
+    [msg setPayload:refundTx.asJSONObject];
     [msg sendToSeller];
     
     [self addChild:msg];
@@ -183,9 +190,17 @@
 
 - (void)signAndPostAcceptToBlockChain
 {
+    BNWallet *wallet = [MKRootNode sharedMKRootNode].wallet;
+    
+    if (!wallet.isRunning)
+    {
+        return;
+    }
+    
     if (!self.buyPostPaymentMsg)
     {
         BNTx *releaseTx = self.sellAcceptPaymentMsg.payload.asObjectFromJSONObject;
+        releaseTx.wallet = wallet;
         [releaseTx sign];
         [releaseTx broadcast];
         
@@ -205,12 +220,19 @@
 
 - (void)signAndPostRefundToBlockChain
 {
+    BNWallet *wallet = [MKRootNode sharedMKRootNode].wallet;
+    
+    if (!wallet.isRunning)
+    {
+        return;
+    }
+    
     if (!self.buyPostRefundMsg)
     {
-        
-        
-        
-        
+        BNTx *releaseTx = self.sellAcceptRefundRequestMsg.payload.asObjectFromJSONObject;
+        releaseTx.wallet = wallet;
+        [releaseTx sign];
+        [releaseTx broadcast];
         
         MKBuyPostRefundMsg *msg = [[MKBuyPostRefundMsg alloc] init];
         [msg copyFrom:self.buy.bidMsg];
