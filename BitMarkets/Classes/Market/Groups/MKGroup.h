@@ -8,6 +8,7 @@
 
 #import <BitmessageKit/BitmessageKit.h>
 #import <NavKit/NavKit.h>
+#import <BitnashKit/BitnashKit.h>
 
 @interface MKGroup : NavInfoNode
 
@@ -33,5 +34,7 @@
 
 - (void)updateCounts;
 - (NSInteger)countOfLeafChildren;
+
+- (BNWallet *)runningWallet;
 
 @end

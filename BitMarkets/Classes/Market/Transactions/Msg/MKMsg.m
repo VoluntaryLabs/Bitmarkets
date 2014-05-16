@@ -153,6 +153,7 @@
     
     if (sentMessage && !sentMessage.wasSent)
     {
+        [self checkStatusUntilSent];
         return @"sending...";
         //return sentMessage.getHumanReadbleStatus;
         //return [NSString stringWithFormat:@"%@ (%@)", self.dateString, sentMessage.getStatus];
@@ -160,6 +161,18 @@
     }
     
     return self.dateString;
+}
+
+- (void)checkStatusUntilSent
+{
+    if (self.sentMessage.wasSent)
+    {
+        [self postParentChainChanged];
+    }
+    else
+    {
+        [self performSelector:@selector(checkStatusUntilSent) withObject:nil afterDelay:2.0];
+    }
 }
 
 - (BOOL)hasValidPostUuid

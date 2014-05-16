@@ -46,4 +46,25 @@
     }
 }
 
+// search
+
+- (BOOL)canSearch
+{
+    return NO;
+    //return YES;
+}
+
+- (BOOL)nodeMatchesSearch:(NSString *)aString
+{
+    for (id child in self.children)
+    {
+        if ([child nodeMatchesSearch:aString])
+        {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
 @end

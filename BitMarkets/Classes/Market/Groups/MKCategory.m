@@ -83,11 +83,6 @@
     return 250;
 }
 
-- (BOOL)canSearch
-{
-    return self.isLeafCategory && (self.children.count > 0);
-}
-
 - (NavView *)navView
 {
     MKAppDelegate *app = (MKAppDelegate *)[[NSApplication sharedApplication] delegate];
@@ -146,6 +141,27 @@
     }
     
     return result;
+}
+
+// search
+
+- (BOOL)canSearch
+{
+    return YES;
+    //return self.isLeafCategory && (self.children.count > 0);
+}
+
+- (BOOL)nodeMatchesSearch:(NSString *)aString
+{
+    for (id child in self.children)
+    {
+        if ([child nodeMatchesSearch:aString])
+        {
+            return YES;
+        }
+    }
+    
+    return NO;
 }
 
 @end

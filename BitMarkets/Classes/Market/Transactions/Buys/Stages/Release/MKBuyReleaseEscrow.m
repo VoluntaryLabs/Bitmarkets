@@ -24,6 +24,11 @@
 
 - (NSString *)nodeSubtitle
 {
+    if (!self.runningWallet)
+    {
+        return @"waiting for wallet..";
+    }
+    
     if (self.buyRequestRefundMsg)
     {
         if(!self.sellAcceptRefundRequestMsg)
@@ -132,9 +137,9 @@
 {
     //self.buy.lockEscrow.pos
     
-    BNWallet *wallet = MKRootNode.sharedMKRootNode.wallet;
+    BNWallet *wallet = self.runningWallet;
     
-    if (!wallet.isRunning)
+    if (!wallet)
     {
         return;
     }

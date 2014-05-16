@@ -118,12 +118,18 @@
 
 - (void)accept
 {
+    BNWallet *wallet = self.runningWallet;
+    
+    if (!wallet)
+    {
+        return;
+    }
+    
     MKAcceptBidMsg *msg = [[MKAcceptBidMsg alloc] init];
     [msg copyFrom:self.bidMsg];
 
     MKSell *sell = (MKSell *)self.nodeParent.nodeParent;
     
-    BNWallet *wallet = MKRootNode.sharedMKRootNode.wallet;
 
     BNTx *escrowTx = [wallet newTx];
     

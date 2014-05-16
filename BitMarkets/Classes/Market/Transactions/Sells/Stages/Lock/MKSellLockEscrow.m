@@ -52,6 +52,11 @@
 
 - (NSString *)nodeSubtitle
 {
+    if (!self.runningWallet)
+    {
+        return @"waiting for wallet..";
+    }
+    
     if (self.sellerLockMsg)
     {
         return @"awaiting confirm";
@@ -96,11 +101,11 @@
 
 - (void)postLock
 {
-    BNWallet *wallet = MKRootNode.sharedMKRootNode.wallet;
+    BNWallet *wallet = self.runningWallet;
     
-    if (!wallet.isRunning)
+    if (!wallet)
     {
-        return; // this effectively just reports that the msg was valid
+        return;
     }
     
     //NSLog(@"remove this return");

@@ -16,6 +16,7 @@
 @property (strong, nonatomic) NSMutableDictionary *dict;
 @property (strong, nonatomic) BMMessage *bmMessage;
 @property (strong, nonatomic) NSString *ackData;
+@property (assign, nonatomic) BOOL updatingStatus;
 
 + (MKMsg *)withBMMessage:(BMMessage *)bmMessage;
 

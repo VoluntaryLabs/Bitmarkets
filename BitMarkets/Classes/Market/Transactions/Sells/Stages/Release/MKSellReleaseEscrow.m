@@ -60,6 +60,11 @@
 {
     // note: that buyer posts to blockchain
     
+    if (!self.runningWallet)
+    {
+        return @"waiting for wallet..";
+    }
+    
     if (self.buyRequestRefundMsg)
     {
         if(self.sellAcceptRefundRequestMsg)
@@ -198,9 +203,9 @@
 
 - (void)lookForRefundConfirm
 {
-    BNWallet *wallet = MKRootNode.sharedMKRootNode.wallet;
+    BNWallet *wallet = self.runningWallet;
     
-    if (!wallet.isRunning)
+    if (!wallet)
     {
         return;
     }
@@ -220,9 +225,9 @@
 
 - (void)acceptPayment // automatic
 {
-    BNWallet *wallet = MKRootNode.sharedMKRootNode.wallet;
+    BNWallet *wallet = self.runningWallet;
     
-    if (!wallet.isRunning)
+    if (!wallet)
     {
         return;
     }
@@ -247,9 +252,9 @@
 
 - (void)acceptRefundRequest
 {
-    BNWallet *wallet = MKRootNode.sharedMKRootNode.wallet;
+    BNWallet *wallet = self.runningWallet;
     
-    if (!wallet.isRunning)
+    if (!wallet)
     {
         return;
     }
@@ -274,9 +279,9 @@
 
 - (void)rejectRefund
 {
-    BNWallet *wallet = MKRootNode.sharedMKRootNode.wallet;
+    BNWallet *wallet = self.runningWallet;
     
-    if (!wallet.isRunning)
+    if (!wallet)
     {
         return;
     }

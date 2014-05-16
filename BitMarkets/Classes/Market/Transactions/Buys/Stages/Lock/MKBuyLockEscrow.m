@@ -55,6 +55,11 @@
 {
     if (self.buyerLockMsg)
     {
+        if (!self.runningWallet)
+        {
+            return @"waiting for wallet..";
+        }
+        
         if (self.sellerLockMsg)
         {
             if (self.confirmLockMsg)
@@ -118,9 +123,9 @@
 
 - (BOOL)sendLockToSeller
 {
-    BNWallet *wallet = MKRootNode.sharedMKRootNode.wallet;
+    BNWallet *wallet = self.runningWallet;
 
-    if (!wallet.isRunning)
+    if (!wallet)
     {
         return YES;
     }

@@ -9,6 +9,7 @@
 #import "MKGroup.h"
 #import <BitmessageKit/BitmessageKit.h>
 #import "MKCategory.h"
+#import "MKRootNode.h"
 
 @implementation MKGroup
 
@@ -307,6 +308,18 @@
     }
     
     return count;
+}
+
+- (BNWallet *)runningWallet
+{
+    BNWallet *wallet = MKRootNode.sharedMKRootNode.wallet;
+    
+    if (!wallet.isRunning)
+    {
+        return wallet;
+    }
+    
+    return nil;
 }
 
 @end
