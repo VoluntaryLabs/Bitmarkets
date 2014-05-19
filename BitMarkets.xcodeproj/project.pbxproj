@@ -117,6 +117,7 @@
 		AAB28163192242AF005C9D27 /* MKRelease.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB28162192242AF005C9D27 /* MKRelease.m */; };
 		AAB2816619224FA4005C9D27 /* MKEscrow.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB2816519224FA4005C9D27 /* MKEscrow.m */; };
 		DC350ECB191456B400C25A01 /* BNKeysNode+BM.m in Sources */ = {isa = PBXBuildFile; fileRef = DC350ECA191456B400C25A01 /* BNKeysNode+BM.m */; };
+		DC51980E192950BB004143E7 /* MKBuyerCancelLockEscrowMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = DC51980D192950BB004143E7 /* MKBuyerCancelLockEscrowMsg.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -405,6 +406,8 @@
 		AAB2816519224FA4005C9D27 /* MKEscrow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKEscrow.m; sourceTree = "<group>"; };
 		DC350EC9191456B400C25A01 /* BNKeysNode+BM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BNKeysNode+BM.h"; sourceTree = "<group>"; };
 		DC350ECA191456B400C25A01 /* BNKeysNode+BM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BNKeysNode+BM.m"; sourceTree = "<group>"; };
+		DC51980C192950BB004143E7 /* MKBuyerCancelLockEscrowMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKBuyerCancelLockEscrowMsg.h; sourceTree = "<group>"; };
+		DC51980D192950BB004143E7 /* MKBuyerCancelLockEscrowMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKBuyerCancelLockEscrowMsg.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -795,6 +798,8 @@
 				AAB280F619217586005C9D27 /* MKBuyLockEscrow.m */,
 				AAB280F119217586005C9D27 /* MKBuyerLockEscrowMsg.h */,
 				AAB280F219217586005C9D27 /* MKBuyerLockEscrowMsg.m */,
+				DC51980C192950BB004143E7 /* MKBuyerCancelLockEscrowMsg.h */,
+				DC51980D192950BB004143E7 /* MKBuyerCancelLockEscrowMsg.m */,
 			);
 			path = Lock;
 			sourceTree = "<group>";
@@ -1199,6 +1204,7 @@
 				AAB2815A19220D98005C9D27 /* MKSellAcceptRefundRequestMsg.m in Sources */,
 				AA955E181914775500F6FB0F /* MKMarkets.m in Sources */,
 				AAB28163192242AF005C9D27 /* MKRelease.m in Sources */,
+				DC51980E192950BB004143E7 /* MKBuyerCancelLockEscrowMsg.m in Sources */,
 				AAB2816619224FA4005C9D27 /* MKEscrow.m in Sources */,
 				AAB2813319217586005C9D27 /* MKBuyerLockEscrowMsg.m in Sources */,
 				AAB2814719217586005C9D27 /* MKSellerPostLockMsg.m in Sources */,

@@ -7,6 +7,7 @@
 //
 
 #import "MKBuyLockEscrow.h"
+#import "MKBuyerCancelLockEscrowMsg.h"
 #import "MKRootNode.h"
 #import <BitnashKit/BitnashKit.h>
 
@@ -193,6 +194,30 @@
     }
 }
 
+- (NSArray *)modelActions
+{
+    return @[@"cancelEscrow"];
+}
+
+- (void)cancelEscrow
+{
+    BNWallet *wallet = self.runningWallet;
+    
+    if (!wallet)
+    {
+        [NSException raise:@"Can't cancelEscrow until wallet is running" format:nil];
+    }
+    
+    BNTx *cancellationTx = [[self payloadToConfirm] asObjectFromJSONObject];
+    cancellationTx.wallet = wallet;
+    [cancellationTx sign];
+    [cancellationTx broadcast];
+    
+    MKBuyerCancelLockEscrowMsg *msg = [[MKBuyerCancelLockEscrowMsg alloc] init];
+    msg.payload = [cancellationTx asJSONObject];
+    [self addChild:msg];
+    [self postParentChainChanged];
+}
 
 // confirm methods to extend parent class MKLock
 
