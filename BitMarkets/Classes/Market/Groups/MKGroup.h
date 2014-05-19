@@ -10,6 +10,8 @@
 #import <NavKit/NavKit.h>
 #import <BitnashKit/BitnashKit.h>
 
+//@class MKMsg;
+
 @interface MKGroup : NavInfoNode
 
 @property (strong, nonatomic) NSString *name;
@@ -36,5 +38,7 @@
 - (NSInteger)countOfLeafChildren;
 
 - (BNWallet *)runningWallet;
+
+//- (BOOL)handleMsg:(MKMsg *)mkMsg;
 
 @end

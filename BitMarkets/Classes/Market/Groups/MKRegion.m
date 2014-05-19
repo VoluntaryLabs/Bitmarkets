@@ -50,8 +50,8 @@
 
 - (BOOL)canSearch
 {
-    return NO;
-    //return YES;
+    //return NO;
+    return YES;
 }
 
 - (BOOL)nodeMatchesSearch:(NSString *)aString

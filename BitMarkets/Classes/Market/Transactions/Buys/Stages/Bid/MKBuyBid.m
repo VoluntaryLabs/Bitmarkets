@@ -82,6 +82,7 @@
     return [self.children firstObjectOfClass:MKRejectBidMsg.class];
 }
 
+
 // status
 
 - (BOOL)wasSent

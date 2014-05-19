@@ -77,23 +77,10 @@
  
 
 - (BOOL)handleMsg:(MKMsg *)msg
-{
-    //NSLog(@"%@ handleMsg: %@", self.className, msg.postUuid);
-    
+{    
     if ([self.mkPost.postUuid isEqualToString:msg.postUuid])
     {
-        for (id child in self.children)
-        {
-            if ([child respondsToSelector:@selector(handleMsg:)])
-            {
-                BOOL didHandle = [child handleMsg:msg];
-                
-                if (didHandle)
-                {
-                    return YES;
-                }
-            }
-        }
+        [super handleMsg:msg];
     }
     
     return NO;

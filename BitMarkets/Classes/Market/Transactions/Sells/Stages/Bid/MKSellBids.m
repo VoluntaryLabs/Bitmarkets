@@ -12,6 +12,7 @@
 #import "MKAcceptBidMsg.h"
 #import "MKSellBid.h"
 #import "MKSell.h"
+#import "MKClosePostMsg.h"
 
 @implementation MKSellBids
 
@@ -101,6 +102,8 @@
         }
     }
     
+    [self sendClosePost];
+    
     [self postSelfChanged];
     [self postParentChanged];
 }
@@ -126,6 +129,21 @@
 - (BOOL)isActive
 {
     return self.sell.mkPost.isPosted && !self.acceptedBid;
+}
+
+// close post
+
+- (void)sendClosePost
+{
+    MKClosePostMsg *msg = [[MKClosePostMsg alloc] init];
+    [msg copyFrom:self.sell.acceptedBidMsg];
+    
+    [msg sendFromSellerToChannel];
+}
+
+- (MKClosePostMsg *)closePostMsg
+{
+    return [self.children firstObjectOfClass:MKClosePostMsg.class];
 }
 
 @end

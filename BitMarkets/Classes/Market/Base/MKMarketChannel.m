@@ -12,6 +12,7 @@
 #import "MKSell.h"
 #import "MKMarkets.h"
 #import "MKRootNode.h"
+#import "MKClosePostMsg.h"
 
 @implementation MKMarketChannel
 
@@ -50,34 +51,54 @@
     NSArray *messages = self.channel.children.copy;
     NSMutableArray *newChildren = [NSMutableArray array];
     
+    NSMutableArray *closeMsgs = [NSMutableArray array];
+    
     for (BMReceivedMessage *bmMsg in messages)
     {
-        MKPostMsg *msg = (MKPostMsg *)[MKMsg withBMMessage:bmMsg];
+        MKMsg *msg = [MKMsg withBMMessage:bmMsg];
         
         //[bmMsg delete]; continue;
         
-        if (msg && [msg isKindOfClass:MKPostMsg.class])
+        if (msg)
         {
-            MKPost *mkPost = [msg mkPost];
-            [mkPost addChild:msg];
-            
-            BOOL couldPlace = [mkPost placeInMarketsPath]; // deals with merging?
-            
-            if (couldPlace)
+            if ([msg isKindOfClass:MKPostMsg.class])
             {
-                //NSLog(@"placing post '%@'", mkPost.title);
-                [newChildren addObject:mkPost];
+                MKPostMsg *postMsg = (MKPostMsg *)msg;
+                MKPost *mkPost = [postMsg mkPost];
+                [mkPost addChild:postMsg];
+                
+                BOOL couldPlace = [mkPost placeInMarketsPath]; // deals with merging?
+                
+                if (couldPlace)
+                {
+                    //NSLog(@"placing post '%@'", mkPost.title);
+                    [newChildren addObject:mkPost];
+                }
+                else
+                {
+                    [bmMsg delete];
+                }
             }
-            else
+            else if ([msg isKindOfClass:MKClosePostMsg.class])
             {
-                [bmMsg delete];
+                [closeMsgs addObject:msg];
             }
         }
         else
         {
-            //[bmMsg delete];
-            continue;
+            // it wasn't a valid bitmarkets message, so delete it
+            [bmMsg delete];
         }
+    }
+    
+    // process this after others in case it's before msg
+    // should probably keep around a 2.5 day database of these deletes to be safe
+    
+    for (MKClosePostMsg *closeMsg in closeMsgs)
+    {
+        MKRegion *rootRegion = MKRootNode.sharedMKRootNode.markets.rootRegion;
+        [rootRegion handleMsg:closeMsg];
+        [closeMsg.bmMessage delete];
     }
     
     [self fetchDirectMessages];
@@ -89,11 +110,6 @@
 {
     NSArray *inboxMessages = BMClient.sharedBMClient.messages.received.children.copy;
     [self handleBMMessages:inboxMessages];
-    
-    /*
-    NSArray *sentMessages = BMClient.sharedBMClient.messages.sent.children.copy;
-    [self handleBMMessages:sentMessages];
-    */
 }
 
 - (void)handleBMMessages:(NSArray *)bmMessages

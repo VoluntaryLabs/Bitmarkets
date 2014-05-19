@@ -68,19 +68,6 @@
     return nil;
 }
 
-- (BOOL)handleMsg:(MKMsg *)mkMsg // put in parent class of Buys and Sells
-{
-    for (MKTransaction *child in self.children)
-    {
-        if ([child handleMsg:mkMsg])
-        {
-            return YES;
-        }
-    }
-    
-    return NO;
-}
-
 - (void)update
 {
     for (id child in self.children)

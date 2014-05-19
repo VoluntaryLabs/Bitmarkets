@@ -8,17 +8,14 @@
 
 #import <BitmessageKit/BitMessageKit.h>
 #import "MKMessages.h"
-#import "MKGroup.h"
+#import "MKMsgGroup.h"
 #import "MKPost.h"
-//#import "MKMsg.h"
 
-@interface MKTransaction : MKGroup
+@interface MKTransaction : MKMsgGroup
 
 @property (strong, nonatomic) MKPost *mkPost;
 
 //- (MKMsg *)msgInstanceOfClass:(Class)aClass;
-
-- (BOOL)handleMsg:(MKMsg *)mkMsg;
 
 - (void)update;
 

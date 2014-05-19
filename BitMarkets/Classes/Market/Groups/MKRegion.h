@@ -6,9 +6,8 @@
 //  Copyright (c) 2014 Bitmarkets.org. All rights reserved.
 //
 
-#import "MKGroup.h"
+#import "MKMsgGroup.h"
 
-@interface MKRegion : MKGroup
-
+@interface MKRegion : MKMsgGroup
 
 @end

@@ -12,6 +12,7 @@
 #import "MKSell.h"
 #import "MKRootNode.h"
 #import <BitnashKit/BitnashKit.h>
+#import "MKClosePostMsg.h"
 
 @implementation MKPost
 
@@ -249,6 +250,34 @@
     [bidMsg send];
 
     return bidMsg;
+}
+
+// msgs
+
+- (BOOL)handleMsg:(MKMsg *)msg // put in parent class of Buys and Sells
+{
+    if ([msg isKindOfClass:MKClosePostMsg.class])
+    {
+        NSString *postUuid = [msg.dict objectForKey:@"postUuid"];
+
+        // close is for this message
+        if ([self.postUuid isEqualToString:postUuid])
+        {
+            // sender of close post msg matches seller
+            if ([msg.bmMessage.fromAddress isEqualToString:self.sellerAddress])
+            {
+                [self close];
+            }
+            
+        }
+    }
+    
+    return NO;
+}
+
+- (void)close
+{
+    [self removeFromParent];
 }
 
 @end

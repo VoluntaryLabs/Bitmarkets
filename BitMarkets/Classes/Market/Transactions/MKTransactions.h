@@ -6,13 +6,11 @@
 //  Copyright (c) 2014 voluntary.net. All rights reserved.
 //
 
-#import "MKGroup.h"
+#import "MKMsgGroup.h"
 #import "MKTransaction.h"
-#import "MKMsg.h"
 
-@interface MKTransactions : MKGroup
+@interface MKTransactions : MKMsgGroup
 
-- (BOOL)handleMsg:(MKMsg *)msg;
 - (void)update;
 
 @end
