@@ -11,16 +11,34 @@
 #import "MKRootNode.h"
 #import "MKBuyPostRefundMsg.h"
 #import "MKBuyPostPaymentMsg.h"
+#import "MKMirrorView.h"
 
 @implementation MKBuyReleaseEscrow
 
-/*
 - (id)init
 {
     self = [super init];
+    self.nodeViewClass = MKMirrorView.class;
+    
+    {
+        NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"requestRefund"];
+        [slot setVisibleName:@"Request Refund"];
+    }
+    
+    {
+        NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"makePayment"];
+        [slot setVisibleName:@"Make Payment"];
+    }
+
     return self;
 }
-*/
+
+- (NSArray *)modelActions
+{
+    return @[];
+//    return @[@"requestRefund", @"makePayment"];
+}
+
 
 - (NSString *)nodeSubtitle
 {
@@ -94,11 +112,6 @@
     return nil;
 }
 
-- (NSArray *)modelActions
-{
-    return @[@"requestRefund", @"makePayment"];
-}
-
 // update
 
 - (BOOL)handleMsg:(MKMsg *)msg
@@ -129,6 +142,10 @@
         [self signAndPostRefundToBlockChain];
     }
     
+    BOOL isActive = self.isActive;
+
+    [[self.navMirror actionSlotNamed:@"requestRefund"] setIsActive:isActive];
+    [[self.navMirror actionSlotNamed:@"makePayment"]   setIsActive:isActive];
 }
 
 // initiate payemnt

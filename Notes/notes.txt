@@ -1,5 +1,7 @@
 
 
+- bid accept/reject view
+
 - attach bmid to post so delete can delete the message
 - check inbox for direct messages (bids, etc)
 

@@ -408,26 +408,16 @@
 
 - (void)buy
 {
-    NSLog(@"buy");
+    // reorg this
     
-    // reorg this mess
     MKBuy *buy = MKRootNode.sharedMKRootNode.markets.buys.addBuy;
     [buy.mkPost copy:self.mkPost];
     MKBidMsg *bidMsg = [buy.mkPost sendBidMsg];
     [buy.bid addChild:bidMsg];
     
-    //NSLog(@"path = %@", buy.nodePathArray);
     [self.navView selectNodePath:buy.nodePathArray];
 
     [MKRootNode.sharedMKRootNode.markets.buys write];
-    
-
-    // compose escrow
-    // check for funds in wallet
-    // request funds if needed and cancel
-    // post BuyerEscrow
-    
-    //[self.mkSell post];
 }
 
 @end

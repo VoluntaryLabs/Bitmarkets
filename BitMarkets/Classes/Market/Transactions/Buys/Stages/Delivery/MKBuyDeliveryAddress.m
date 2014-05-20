@@ -12,6 +12,7 @@
 #import "MKBuyDelivery.h"
 #import "MKBuy.h"
 
+
 @implementation MKBuyDeliveryAddress
 
 - (id)init
@@ -20,6 +21,8 @@
     self.isApproved = NO;
     self.isEditable = YES;
     
+    self.nodeViewClass = MKDeliveryAddressView.class;
+
     [self.dictPropertyNames addObject:@"isApprovedBool"];
     [self read];
 
@@ -27,7 +30,7 @@
     {
         self.addressDict = [NSMutableDictionary dictionary];
     }
-    
+        
     return self;
 }
 
@@ -59,11 +62,6 @@
     }
     
     return nil;
-}
-
-- (Class)nodeViewClass
-{
-    return MKDeliveryAddressView.class;
 }
 
 - (JSONDB *)db

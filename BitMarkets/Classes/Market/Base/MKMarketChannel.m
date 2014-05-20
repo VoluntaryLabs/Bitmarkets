@@ -24,7 +24,7 @@
 - (id)init
 {
     self = [super init];
-    self.passphrase = @"bitmarkets demo";    
+    self.passphrase = @"bitmarkets demo 2";    
     return self;
 }
 
@@ -97,8 +97,14 @@
     for (MKClosePostMsg *closeMsg in closeMsgs)
     {
         MKRegion *rootRegion = MKRootNode.sharedMKRootNode.markets.rootRegion;
+        
         [rootRegion handleMsg:closeMsg];
-        [closeMsg.bmMessage delete];
+        
+        NSTimeInterval ttlSeconds = 60*60*24*2.5;
+        if (closeMsg.bmMessage.ageInSeconds > ttlSeconds)
+        {
+            [closeMsg.bmMessage delete];
+        }
     }
     
     [self fetchDirectMessages];

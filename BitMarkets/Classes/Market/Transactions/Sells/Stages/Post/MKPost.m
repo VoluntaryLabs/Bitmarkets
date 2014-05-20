@@ -269,6 +269,7 @@
                 [self close];
             }
             
+            [msg.bmMessage delete];
         }
     }
     
