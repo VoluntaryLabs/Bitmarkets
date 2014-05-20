@@ -35,6 +35,7 @@
     self.shouldSortChildren = NO;
     
     self.nodeSuggestedWidth = 150;
+    self.attachments = [NSArray array];
     
     [self.dictPropertyNames addObjectsFromArray:@[
      @"postUuid",
@@ -44,7 +45,9 @@
      @"description",
      @"regionPath",
      @"categoryPath",
-     @"sellerAddress"]
+     @"sellerAddress",
+     @"attachments"
+     ]
      ];
     
     return self;

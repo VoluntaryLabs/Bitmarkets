@@ -8,6 +8,8 @@
 
 #import "MKPostView.h"
 #import <NavKit/NavKit.h>
+#import <BitmessageKit/BitmessageKit.h>
+//#import <BitmessageKit/NSData-Base64.h>
 #import "MKRootNode.h"
 
 
@@ -101,8 +103,11 @@
 
         // attachment
 
-        self.attachedImage = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
-        [self addSubview:self.attachedImage];
+        //self.attachedImage = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
+        //[self addSubview:self.attachedImage];
+        
+        self.attachmentView = [[MKAttachmentView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
+        [self addSubview:self.attachmentView];
         
         // exchange rate calculator
         
@@ -123,6 +128,7 @@
     [_description setEditable:isEditable];
     [_title setEditable:isEditable];
     [_price setEditable:isEditable];
+    [_attachmentView setEditable:isEditable];
 }
 
 
@@ -171,6 +177,10 @@
     [_fromAddress placeYBelow:_categoryIcon margin:iconMargin];
     [_fromAddress placeXRightOf:_fromAddressIcon margin:iconMargin];
     
+    [_attachmentView setX:_fromAddressIcon.x+2];
+    [_attachmentView setWidth:self.width - _attachmentView.x*2];
+    [_attachmentView setHeight:300];
+    [_attachmentView placeYBelow:_fromAddressIcon margin:20.0];
 }
 
 - (void)prepareToDisplay
@@ -228,6 +238,7 @@
     _region.string      = self.mkPost.regionPath.lastObject;
     _category.string    = self.mkPost.categoryPath.lastObject;
     _fromAddress.string = self.mkPost.sellerAddress;
+    [self setAttachments:self.mkPost.attachments];
     
     [self updateButton];
     [self updatePriceSuffix];
@@ -239,7 +250,41 @@
     self.mkPost.priceInBtc = [NSNumber numberWithDouble:_price.stringSansUneditedString.doubleValue];
     self.mkPost.description = _description.stringSansUneditedString;
     self.mkPost.isDirty = YES;
+    
+    self.mkPost.attachments = self.attachments;
     [self.mkPost postSelfChanged];
+}
+
+- (void)setAttachments:(NSArray *)attachments
+{
+    if (attachments)
+    {
+        NSString *uuString = [attachments firstObject];
+        NSImage *image = nil;
+        
+        if (uuString)
+        {
+            NSData *data = [uuString decodedBase64Data];
+            image = [[NSImage alloc] initWithData:data];
+        }
+        
+        [_attachmentView setImage:image];
+    }
+}
+
+- (NSArray *)attachments
+{
+    NSMutableArray *attachments = [NSMutableArray array];
+    
+    NSData *imageData = [_attachmentView jpegImageData];
+    NSString *uuString = [imageData encodedBase64String];
+    
+    if (uuString)
+    {
+        [attachments addObject:uuString];
+    }
+    
+    return attachments;
 }
 
 - (BOOL)readyToPost
@@ -400,6 +445,8 @@
     {
         return;
     }
+    
+    [self syncToNode];
     
     [self.mkPost sendPostMsg];
     [self updateButton];

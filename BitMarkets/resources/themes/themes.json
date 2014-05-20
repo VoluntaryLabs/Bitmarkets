@@ -84,6 +84,14 @@
                 "color" : "#CCCCCC",
             },
             
+            "draginstructions":
+            {
+                "fontName" : "Open Sans Italic",
+                "fontSize" : 13,
+                "color" : "#999999",
+                "align" : "center",
+           },
+            
             "label" :
             {
                 "fontName" : "Open Sans",

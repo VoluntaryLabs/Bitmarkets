@@ -29,6 +29,7 @@
 @property (strong, nonatomic) NSArray  *regionPath;
 @property (strong, nonatomic) NSArray  *categoryPath;
 @property (strong, nonatomic) NSString *sellerAddress;
+@property (strong, nonatomic) NSArray  *attachments;
 
 - (BOOL)isEditable;
 - (BOOL)canBuy;

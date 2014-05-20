@@ -11,6 +11,7 @@
 #import "MKSell.h"
 #import "MKTextView.h"
 #import "MKExchangeRate.h"
+#import "MKAttachmentView.h"
 
 @interface MKPostView : NSView <NSTextViewDelegate>
 
@@ -35,7 +36,8 @@
 @property (strong, nonatomic) NSImageView *fromAddressIcon;
 @property (strong, nonatomic) NSTextView *fromAddress;
 
-@property (strong, nonatomic) NSImageView *attachedImage;
+//@property (strong, nonatomic) NSImageView *attachedImage;
+@property (strong, nonatomic) MKAttachmentView *attachmentView;
 
 @property (assign, nonatomic) BOOL isUpdating;
 
