@@ -1,0 +1,70 @@
+
+--- rich ---------------------------------------------
+
+- watch outputs instead of tx hash.
+- data encryption
+- new checkpoints file for wallet
+- consider security issues
+- consider edge cases for workflow (eg: what happens if a tx fails to broadcast ... etc)
+
+- wallet withdraw
+- tag deposits in transaction list?
+
+--- steve ---------------------------------------------
+
+- more general attachment format (dict)
+
+- test all sale paths (pay, refund, cancel on both sides)
+
+- prevent delete of buy/sell until escrow unlocked 
+
+- delivery status / package tracking
+
+- wallet withdraw ui
+
+- fix for category / region paths
+- better category set?
+
+- simplify wallet deposit ui
+
+- gen very high pow address for channel
+- gen high pow for user identities
+
+- add service and version fields to msgs
+- add any needed auth checks on msgs
+
+- website
+- short screencast intro/docs
+- update UI to new design spec
+- user docs
+- dev docs
+- donation address
+
+- move address and delivery status to use navMirror
+
+--- adam ---------------------------------------------
+
+
+
+----------------------------------------------------
+
+(seller posts)
+
+- non-local item purchase and delivery
+  (range is nation)
+  - seller item details
+  - buyer address
+
+
+- currency contract
+  - seller currency/amount
+  - buyer wire/ach (seller chooses options)
+
+
+- quantity options on sales?
+- store front for given bm address
+- namecoin store name
+
+- order book interface
+- public end post notification ***
+
