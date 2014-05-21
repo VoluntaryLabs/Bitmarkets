@@ -51,6 +51,58 @@
     return self;
 }
 
+// name
+
+- (void)setName:(NSString *)aString
+{
+    [self.addressDict setObject:aString forKey:@"name"];
+}
+
+- (NSString *)name
+{
+    return [self.addressDict objectForKey:@"name"];
+}
+
+// address1
+
+- (void)setAddress1:(NSString *)aString
+{
+    [self.addressDict setObject:aString forKey:@"address1"];
+}
+
+- (NSString *)address1
+{
+    return [self.addressDict objectForKey:@"address1"];
+}
+
+// address2
+
+- (void)setAddress2:(NSString *)aString
+{
+    [self.addressDict setObject:aString forKey:@"address2"];
+}
+
+- (NSString *)address2
+{
+    return [self.addressDict objectForKey:@"address2"];
+}
+
+// country
+
+- (void)setCountry:(NSString *)aString
+{
+    [self.addressDict setObject:aString forKey:@"country"];
+}
+
+- (NSString *)country
+{
+    return [self.addressDict objectForKey:@"country"];
+}
+
+
+
+// checks
+
 - (BOOL)isFilled
 {
     for (NSString *key in self.addressDict)

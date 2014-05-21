@@ -107,6 +107,12 @@
         if (slotView)
         {
             [_group addSubview:slotView];
+            
+            //_line1.uneditedTextString = @"Name";
+            //_label1.string = @"Name of addressee";
+          
+            //    [_line1 useUneditedTextStringIfNeeded];
+
         }
     }
     
@@ -137,11 +143,6 @@
     NSRectFill(dirtyRect);
 }
 
-- (void)saveChanges
-{
-    
-}
-
 // -- sync ----
 
 - (void)selectFirstResponder
@@ -166,5 +167,63 @@
     return YES;
 }
 
+// --- text -------------------------------------------
+
+- (void)updateActions
+{
+    
+}
+
+- (void)syncToNode
+{
+    
+}
+
+
+- (void)textDidChange:(NSNotification *)aNotification
+{
+    NSTextView *aTextView = [aNotification object];
+    
+    if ([aTextView respondsToSelector:@selector(textDidChange)])
+    {
+        [(NavAdvTextView *)aTextView textDidChange];
+    }
+    
+    [self updateActions];
+    [self syncToNode]; // to show on table cell
+    [self layout];
+}
+
+- (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)aTextView
+{
+    if ([aTextView respondsToSelector:@selector(textDidBeginEditing)])
+    {
+        [(NavAdvTextView *)aTextView textShouldBeginEditing];
+    }
+    
+    return YES;
+}
+
+- (void)textDidBeginEditing:(NSText *)aTextView
+{
+    if ([aTextView respondsToSelector:@selector(textDidBeginEditing)])
+    {
+        [(NavAdvTextView *)aTextView textDidBeginEditing];
+    }
+}
+
+- (void)textDidEndEditing:(NSNotification *)aNotification
+{
+    NSTextView *aTextView = [aNotification object];
+    
+    if ([aTextView respondsToSelector:@selector(textDidEndEditing)])
+    {
+        [(NavAdvTextView *)aTextView textDidEndEditing];
+    }
+    
+    [[aNotification object] endEditing];
+    [self syncToNode];
+    [self updateActions];
+}
 
 @end

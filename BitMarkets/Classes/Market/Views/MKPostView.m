@@ -24,7 +24,7 @@
         [self setAutoresizesSubviews:YES];
         [self setAutoresizingMask:NSViewHeightSizable | NSViewWidthSizable];
 
-        _title = [[MKTextView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
+        _title = [[NavAdvTextView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
         _title.uneditedTextString = @"Enter title";
         [self addSubview:_title];
         [_title setEditedThemePath:@"sell/title"];
@@ -32,7 +32,7 @@
         _title.endsOnReturn = YES;
         //@property (strong) IBOutlet NSTextView *quantity;
         
-        _price = [[MKTextView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
+        _price = [[NavAdvTextView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
         _price.autoresizingMask = NSViewMinYMargin | NSViewMaxXMargin;
         [self addSubview:self.price];
         _price.uneditedTextString = @"Enter price in BTC";
@@ -56,7 +56,7 @@
         [self.separator setThemePath:@"sell/separator"];
         [self addSubview:self.separator];
         
-        _description = [[MKTextView alloc] initWithFrame:NSMakeRect(0, 0, 500, 100)];
+        _description = [[NavAdvTextView alloc] initWithFrame:NSMakeRect(0, 0, 500, 100)];
         _description.uneditedTextString = @"Enter description";
         [_description setDelegate:self];
         //self.description.string = @"I've had this TOA amp in the closet for a while waiting to setup in my shop space but I need the space so my loss is your gain. Works fine and is in mostly decent condition with a few dings on the corners. I'm available during the day near 7th and Folsom but I can also meet up in the evening in the Mission.";
@@ -359,7 +359,7 @@
     
     if ([aTextView respondsToSelector:@selector(textDidChange)])
     {
-        [(MKTextView *)aTextView textDidChange];
+        [(NavAdvTextView *)aTextView textDidChange];
     }
     
     if (aTextView == self.price)
@@ -384,7 +384,8 @@
         if(nil != usdRate && nil != eurRate) {
             float usd = btc * [usdRate floatValue];
             float eur = btc * [eurRate floatValue];
-            [self.price setSuffix:[NSString stringWithFormat:@"BTC  %1.2fUSD  %1.2fEUR", usd, eur]];
+            [self.price setSuffix:[NSString stringWithFormat:@"BTC %1.2fUSD %1.2fEUR", usd, eur]];
+            //[self.price setSuffix:[NSString stringWithFormat:@"BTC    %1.2f USD    %1.2f EUR", usd, eur]];
         }
         else {
             [self.price setSuffix:@"BTC"];
@@ -396,7 +397,7 @@
 {
     if ([aTextView respondsToSelector:@selector(textDidBeginEditing)])
     {
-        [(MKTextView *)aTextView textShouldBeginEditing];
+        [(NavAdvTextView *)aTextView textShouldBeginEditing];
     }
     
     return YES;
@@ -406,7 +407,7 @@
 {
     if ([aTextView respondsToSelector:@selector(textDidBeginEditing)])
     {
-        [(MKTextView *)aTextView textDidBeginEditing];
+        [(NavAdvTextView *)aTextView textDidBeginEditing];
     }
 }
 
@@ -416,7 +417,7 @@
     
     if ([aTextView respondsToSelector:@selector(textDidEndEditing)])
     {
-        [(MKTextView *)aTextView textDidEndEditing];
+        [(NavAdvTextView *)aTextView textDidEndEditing];
     }
     
     [[aNotification object] endEditing];

@@ -8,7 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 #import <NavKit/NavKit.h>
-#import "MKTextView.h"
 
 @interface MKMirrorView : NSView <NSTextViewDelegate>
 

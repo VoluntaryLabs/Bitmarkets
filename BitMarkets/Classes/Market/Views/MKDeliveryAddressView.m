@@ -25,9 +25,9 @@
     return label;
 }
 
-- (MKTextView *)newLine
+- (NavAdvTextView *)newLine
 {
-    MKTextView *line = [[MKTextView alloc] initWithFrame:NSMakeRect(0, 0, 350, 24)];
+    NavAdvTextView *line = [[NavAdvTextView alloc] initWithFrame:NSMakeRect(0, 0, 350, 24)];
     //line.uneditedTextString = @"";
     [_group addSubview:line];
     [line setEditedThemePath:@"address/line"];
@@ -276,7 +276,7 @@
     
     if ([aTextView respondsToSelector:@selector(textDidChange)])
     {
-        [(MKTextView *)aTextView textDidChange];
+        [(NavAdvTextView *)aTextView textDidChange];
     }
     
     [self updateButton];
@@ -288,7 +288,7 @@
 {
     if ([aTextView respondsToSelector:@selector(textDidBeginEditing)])
     {
-        [(MKTextView *)aTextView textShouldBeginEditing];
+        [(NavAdvTextView *)aTextView textShouldBeginEditing];
     }
     
     return YES;
@@ -298,7 +298,7 @@
 {
     if ([aTextView respondsToSelector:@selector(textDidBeginEditing)])
     {
-        [(MKTextView *)aTextView textDidBeginEditing];
+        [(NavAdvTextView *)aTextView textDidBeginEditing];
     }
 }
 
@@ -308,7 +308,7 @@
     
     if ([aTextView respondsToSelector:@selector(textDidEndEditing)])
     {
-        [(MKTextView *)aTextView textDidEndEditing];
+        [(NavAdvTextView *)aTextView textDidEndEditing];
     }
     
     [[aNotification object] endEditing];

@@ -8,7 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 #import <NavKit/NavKit.h>
-#import "MKTextView.h"
 #import "MKBuyDeliveryAddress.h"
 
 @interface MKDeliveryAddressView : NSView <NSTextViewDelegate>
@@ -23,10 +22,10 @@
 @property (strong, nonatomic) NavTextView *label3;
 @property (strong, nonatomic) NavTextView *label4;
 
-@property (strong, nonatomic) MKTextView *line1;
-@property (strong, nonatomic) MKTextView *line2;
-@property (strong, nonatomic) MKTextView *line3;
-@property (strong, nonatomic) MKTextView *line4;
+@property (strong, nonatomic) NavAdvTextView *line1;
+@property (strong, nonatomic) NavAdvTextView *line2;
+@property (strong, nonatomic) NavAdvTextView *line3;
+@property (strong, nonatomic) NavAdvTextView *line4;
 
 @property (strong, nonatomic) NavRoundButtonView *doneButton;
 @property (strong, nonatomic) NavColoredView *separator;

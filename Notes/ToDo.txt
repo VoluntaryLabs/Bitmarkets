@@ -15,7 +15,6 @@
 - more general attachment format (dict)
 
 - test all sale paths (pay, refund, cancel on both sides)
-
 - prevent delete of buy/sell until escrow unlocked 
 
 - delivery status / package tracking
@@ -26,9 +25,6 @@
 - better category set?
 
 - simplify wallet deposit ui
-
-- gen very high pow address for channel
-- gen high pow for user identities
 
 - add service and version fields to msgs
 - add any needed auth checks on msgs
@@ -44,6 +40,8 @@
 
 --- adam ---------------------------------------------
 
+- gen very high pow address for channel
+- gen high pow for user identities
 
 
 ----------------------------------------------------
