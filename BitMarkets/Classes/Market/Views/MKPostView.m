@@ -236,7 +236,8 @@
     [_description useUneditedTextStringIfNeeded];
 
     _region.string      = self.mkPost.regionPath.lastObject;
-    _category.string    = self.mkPost.categoryPath.lastObject;
+    NSString *cPath = [self.mkPost.categoryPath componentsJoinedByString:@"/"];
+    _category.string    = cPath;
     _fromAddress.string = self.mkPost.sellerAddress;
     [self setAttachments:self.mkPost.attachments];
     
@@ -276,7 +277,7 @@
 {
     NSMutableArray *attachments = [NSMutableArray array];
     
-    NSData *imageData = [_attachmentView jpegImageData];
+    NSData *imageData = [_attachmentView.image jpegImageDataUnderKb:200];
     NSString *uuString = [imageData encodedBase64String];
     
     if (uuString)

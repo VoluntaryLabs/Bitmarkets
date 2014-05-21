@@ -25,6 +25,5 @@
 
 - (void)setImage:(NSImage *)image;
 - (NSImage *)image;
-- (NSData *)jpegImageData;
 
 @end

@@ -1,44 +1,30 @@
 
 
-- bid accept/reject view
 
 - attach bmid to post so delete can delete the message
-- check inbox for direct messages (bids, etc)
 
-- add code to adjust _description height to fit text
-- fix vertical centering of node cells (nodeNote and NodeTitle are not aligned right)
+- fix for category / region paths
+- better categories
+- image attachment
+- some sort of service launcher for BM?
 
-Markets
-  Ask/Post (seller to channel) 
-    *SellerAddress+UUID
+(seller posts)
 
-    bids
-
-      Bid (buyer to seller)
-      - get delivery address (save this for next time)
-
-      AskClosed (seller to channel)
-
-      BuyerEscrow (buyer to seller)
-
-      SellerEscrow (seller to buyer)
-      - buyer signs and posts
-      - both parties see escrow in blockchain
-
-      DeliveryDetails (buyer to seller)
-      
-      DeliverySent (seller to buyer)
-      DeliveryReceived (buyer to seller)
-      RefundRequest (buyer to seller) (includes escrow1)
-      RefundRequestAccepted (seller to buyer) (includes escrow2)
-	- buyers signs and submits to network
+- non-local item purchase and delivery
+  (range is nation)
+  - seller item details
+  - buyer address
 
 
-Buys
-  Buy
-    stages
+- currency contract
+  - seller currency/amount
+  - buyer wire/ach (seller chooses options)
 
-Sells
-  Sell
-    stages
+
+- quantity options on sales?
+- store front for given bm address
+- namecoin store name
+
+- order book interface
+- public end post notification ***
 

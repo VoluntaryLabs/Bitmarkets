@@ -32,11 +32,11 @@
         }
         
         {
-            _instructions = [[NavTextView alloc] initWithFrame:NSMakeRect(0, 0, 300, 20)];
+            _instructions = [[NavTextView alloc] initWithFrame:NSMakeRect(0, 0, 500, 20)];
             [self addSubview:_instructions];
             [_instructions setEditable:NO];
             [_instructions setSelectable:NO];
-            _instructions.string = @"Drag in image to attach";
+            _instructions.string = @"Drag in image to attach (image meta data will be removed)";
             [_instructions setThemePath:@"sell/draginstructions"];
         }
         
@@ -108,7 +108,7 @@
     [_closeButton setX:self.width - _closeButton.width - m];
     [_closeButton setY:self.height - _closeButton.height - m];
 
-    [_instructions setWidth:300];
+    [_instructions setWidth:self.width*.8];
     [_instructions centerXInSuperview];
     [_instructions centerYInSuperview];
 }
@@ -161,45 +161,6 @@
 - (void)hitCloseButton:sender
 {
     [self setImage:nil];
-}
-
-- (NSData *)jpegImageData // yeah, move this to an NSImage category
-{
-    NSImage *image = self.image;
-    
-    if (!image)
-    {
-        return nil;
-    }
-    
-    NSImageRep *imageRep;
-    NSData *jpegData;
-    NSDictionary *repProperties;
-    
-    imageRep = [self.image bestRepresentationForRect:NSMakeRect(0, 0, image.size.width, image.size.height)
-                                             context:nil
-                                               hints:nil];
-    
-    if (![imageRep isKindOfClass:[NSBitmapImageRep class]])
-    {
-        /*
-        NSRunAlertPanel( @"Non-bitmap image",
-                        @"Image's representation isn't an NSBitmapImageRep",
-                        @"Cancel", nil, nil );
-        */
-        return nil;
-    }
-    
-    repProperties = [NSDictionary dictionaryWithObjectsAndKeys:
-                     [NSNumber numberWithFloat:0.9], NSImageCompressionFactor,
-                     nil];
-    
-    jpegData = [(NSBitmapImageRep*)imageRep
-                representationUsingType:NSJPEGFileType
-                properties:repProperties];
-    
-    return jpegData;
-    
 }
 
 @end
