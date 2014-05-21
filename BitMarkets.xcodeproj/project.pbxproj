@@ -119,7 +119,6 @@
 		AAB2816019220F04005C9D27 /* MKConfirmPaymentMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB2815F19220F04005C9D27 /* MKConfirmPaymentMsg.m */; };
 		AAB28163192242AF005C9D27 /* MKRelease.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB28162192242AF005C9D27 /* MKRelease.m */; };
 		AAB2816619224FA4005C9D27 /* MKEscrow.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB2816519224FA4005C9D27 /* MKEscrow.m */; };
-		DC350ECB191456B400C25A01 /* BNKeysNode+BM.m in Sources */ = {isa = PBXBuildFile; fileRef = DC350ECA191456B400C25A01 /* BNKeysNode+BM.m */; };
 		DC51980E192950BB004143E7 /* MKBuyerCancelLockEscrowMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = DC51980D192950BB004143E7 /* MKBuyerCancelLockEscrowMsg.m */; };
 /* End PBXBuildFile section */
 
@@ -413,8 +412,6 @@
 		AAB28162192242AF005C9D27 /* MKRelease.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKRelease.m; sourceTree = "<group>"; };
 		AAB2816419224FA4005C9D27 /* MKEscrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKEscrow.h; sourceTree = "<group>"; };
 		AAB2816519224FA4005C9D27 /* MKEscrow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKEscrow.m; sourceTree = "<group>"; };
-		DC350EC9191456B400C25A01 /* BNKeysNode+BM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BNKeysNode+BM.h"; sourceTree = "<group>"; };
-		DC350ECA191456B400C25A01 /* BNKeysNode+BM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BNKeysNode+BM.m"; sourceTree = "<group>"; };
 		DC51980C192950BB004143E7 /* MKBuyerCancelLockEscrowMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKBuyerCancelLockEscrowMsg.h; sourceTree = "<group>"; };
 		DC51980D192950BB004143E7 /* MKBuyerCancelLockEscrowMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKBuyerCancelLockEscrowMsg.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -629,15 +626,6 @@
 			path = Top;
 			sourceTree = "<group>";
 		};
-		AA753D9119105C4A00D07CB5 /* Wallet */ = {
-			isa = PBXGroup;
-			children = (
-				DC350EC9191456B400C25A01 /* BNKeysNode+BM.h */,
-				DC350ECA191456B400C25A01 /* BNKeysNode+BM.m */,
-			);
-			path = Wallet;
-			sourceTree = "<group>";
-		};
 		AA9226E71905F88200C3D9D7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -684,7 +672,6 @@
 		AAA2E67D19006F0A0098C357 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				AA753D9119105C4A00D07CB5 /* Wallet */,
 				AAA2E67E19006F0A0098C357 /* Market */,
 			);
 			path = Classes;
@@ -1189,7 +1176,6 @@
 				AAB2814119217586005C9D27 /* MKRejectBidMsg.m in Sources */,
 				AAB2814A19217586005C9D27 /* MKPostMsg.m in Sources */,
 				AAB2815D19220EF4005C9D27 /* MKConfirmRefundMsg.m in Sources */,
-				DC350ECB191456B400C25A01 /* BNKeysNode+BM.m in Sources */,
 				AA2B1A3119236CB600D712D8 /* MKSellRejectRefundRequestMsg.m in Sources */,
 				AA605AC5192A931F00798BCA /* MKClosePostMsg.m in Sources */,
 				AA9B75EC191B51BE00F17437 /* MKDeliveryAddressView.m in Sources */,
