@@ -20,12 +20,7 @@
     [self.dictPropertyNames addObject:@"addressDict"];
 
     {
-        NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"send"];
-        [slot setVisibleName:@"Send Address to Seller"];
-    }
-    
-    {
-        NavDataSlot *slot = [self.navMirror newDataSlotWithName:@"name"];
+        NavDataSlot *slot = [self.navMirror newDataSlotWithName:@"addressee"];
         [slot setUneditedValue:@"Name"];
         [slot setVisibleName:@"Name"];
     }
@@ -51,23 +46,39 @@
     return self;
 }
 
-// name
+// addressDict
 
-- (void)setName:(NSString *)aString
+- (void)setAddressKey:(NSString *)key to:(NSString *)value
 {
-    [self.addressDict setObject:aString forKey:@"name"];
+    if (value)
+    {
+        [self.addressDict setObject:value forKey:key];
+    }
+    else
+    {
+        [self.addressDict removeObjectForKey:key];
+    }
+    
+    [self write];
 }
 
-- (NSString *)name
+// addressee
+
+- (void)setAddressee:(NSString *)aString
 {
-    return [self.addressDict objectForKey:@"name"];
+    [self setAddressKey:@"addressee" to:aString];
+}
+
+- (NSString *)addressee
+{
+    return [self.addressDict objectForKey:@"addressee"];
 }
 
 // address1
 
 - (void)setAddress1:(NSString *)aString
 {
-    [self.addressDict setObject:aString forKey:@"address1"];
+    [self setAddressKey:@"address1" to:aString];
 }
 
 - (NSString *)address1
@@ -79,7 +90,7 @@
 
 - (void)setAddress2:(NSString *)aString
 {
-    [self.addressDict setObject:aString forKey:@"address2"];
+    [self setAddressKey:@"address2" to:aString];
 }
 
 - (NSString *)address2
@@ -91,15 +102,13 @@
 
 - (void)setCountry:(NSString *)aString
 {
-    [self.addressDict setObject:aString forKey:@"country"];
+    [self setAddressKey:@"country" to:aString];
 }
 
 - (NSString *)country
 {
     return [self.addressDict objectForKey:@"country"];
 }
-
-
 
 // checks
 

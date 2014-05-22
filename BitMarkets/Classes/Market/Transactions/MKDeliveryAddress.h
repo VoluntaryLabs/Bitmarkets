@@ -16,8 +16,8 @@
 
 // name
 
-- (void)setName:(NSString *)aString;
-- (NSString *)name;
+- (void)setAddressee:(NSString *)aString;
+- (NSString *)addressee;
 
 // address1
 

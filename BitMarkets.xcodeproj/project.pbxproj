@@ -12,6 +12,7 @@
 		AA09C7DB192BDC2800317130 /* MKAttachmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA09C7DA192BDC2800317130 /* MKAttachmentView.m */; };
 		AA09C7EC192BEC2B00317130 /* MKDragFileWell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA09C7EB192BEC2B00317130 /* MKDragFileWell.m */; };
 		AA09C804192D41C600317130 /* MKAboutNode.m in Sources */ = {isa = PBXBuildFile; fileRef = AA09C803192D41C600317130 /* MKAboutNode.m */; };
+		AA09C877192D6D2600317130 /* MKDeliveryAddressView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA09C876192D6D2600317130 /* MKDeliveryAddressView.m */; };
 		AA0E585118FDC0880095DEBD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA0E585018FDC0880095DEBD /* Cocoa.framework */; };
 		AA0E585B18FDC0880095DEBD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA0E585918FDC0880095DEBD /* InfoPlist.strings */; };
 		AA0E585D18FDC0880095DEBD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0E585C18FDC0880095DEBD /* main.m */; };
@@ -60,7 +61,6 @@
 		AA5DFE26190DF0CF00383283 /* NavKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA5DFE21190DF0CF00383283 /* NavKit.framework */; };
 		AA605AC2192A8CC700798BCA /* MKMsgGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = AA605AC1192A8CC700798BCA /* MKMsgGroup.m */; };
 		AA605AC5192A931F00798BCA /* MKClosePostMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AA605AC4192A931F00798BCA /* MKClosePostMsg.m */; };
-		AA605AF2192ABD5600798BCA /* MKMirrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA605AF1192ABD5600798BCA /* MKMirrorView.m */; };
 		AA753D9D1910779800D07CB5 /* BNKeyView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA753D9C1910779800D07CB5 /* BNKeyView.m */; };
 		AA9227081905F94900C3D9D7 /* categories.json in Resources */ = {isa = PBXBuildFile; fileRef = AA9226F61905F94900C3D9D7 /* categories.json */; };
 		AA9227171905F94900C3D9D7 /* regions.json in Resources */ = {isa = PBXBuildFile; fileRef = AA9227071905F94900C3D9D7 /* regions.json */; };
@@ -69,7 +69,6 @@
 		AA955E171914775500F6FB0F /* MKMarketChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = AA955E111914775500F6FB0F /* MKMarketChannel.m */; };
 		AA955E181914775500F6FB0F /* MKMarkets.m in Sources */ = {isa = PBXBuildFile; fileRef = AA955E131914775500F6FB0F /* MKMarkets.m */; };
 		AA955E191914775500F6FB0F /* MKRootNode.m in Sources */ = {isa = PBXBuildFile; fileRef = AA955E151914775500F6FB0F /* MKRootNode.m */; };
-		AA9B75EC191B51BE00F17437 /* MKDeliveryAddressView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9B75EB191B51BE00F17437 /* MKDeliveryAddressView.m */; };
 		AA9F2B92190E0DCE008444F6 /* BitnashKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AA0F52D019073E8300F7370B /* BitnashKit.framework */; };
 		AA9F2B93190E0DCE008444F6 /* FoundationCategoriesKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AA1FC87A1901E07C00D00431 /* FoundationCategoriesKit.framework */; };
 		AA9F2B94190E0DCE008444F6 /* NavNodeKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AA9226F21905F88200C3D9D7 /* NavNodeKit.framework */; };
@@ -237,6 +236,8 @@
 		AA09C7EB192BEC2B00317130 /* MKDragFileWell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKDragFileWell.m; sourceTree = "<group>"; };
 		AA09C802192D41C600317130 /* MKAboutNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKAboutNode.h; sourceTree = "<group>"; };
 		AA09C803192D41C600317130 /* MKAboutNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKAboutNode.m; sourceTree = "<group>"; };
+		AA09C875192D6D2600317130 /* MKDeliveryAddressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKDeliveryAddressView.h; sourceTree = "<group>"; };
+		AA09C876192D6D2600317130 /* MKDeliveryAddressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKDeliveryAddressView.m; sourceTree = "<group>"; };
 		AA0E584D18FDC0880095DEBD /* BitMarkets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitMarkets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA0E585018FDC0880095DEBD /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		AA0E585318FDC0880095DEBD /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -306,8 +307,6 @@
 		AA605AC1192A8CC700798BCA /* MKMsgGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKMsgGroup.m; sourceTree = "<group>"; };
 		AA605AC3192A931F00798BCA /* MKClosePostMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKClosePostMsg.h; sourceTree = "<group>"; };
 		AA605AC4192A931F00798BCA /* MKClosePostMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKClosePostMsg.m; sourceTree = "<group>"; };
-		AA605AF0192ABD5600798BCA /* MKMirrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKMirrorView.h; sourceTree = "<group>"; };
-		AA605AF1192ABD5600798BCA /* MKMirrorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKMirrorView.m; sourceTree = "<group>"; };
 		AA753D9B1910779800D07CB5 /* BNKeyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNKeyView.h; sourceTree = "<group>"; };
 		AA753D9C1910779800D07CB5 /* BNKeyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNKeyView.m; sourceTree = "<group>"; };
 		AA9226E61905F88200C3D9D7 /* NavNodeKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = NavNodeKit.xcodeproj; path = ../NavNodeKit/NavNodeKit.xcodeproj; sourceTree = "<group>"; };
@@ -322,8 +321,6 @@
 		AA955E131914775500F6FB0F /* MKMarkets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKMarkets.m; sourceTree = "<group>"; };
 		AA955E141914775500F6FB0F /* MKRootNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKRootNode.h; sourceTree = "<group>"; };
 		AA955E151914775500F6FB0F /* MKRootNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKRootNode.m; sourceTree = "<group>"; };
-		AA9B75EA191B51BE00F17437 /* MKDeliveryAddressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKDeliveryAddressView.h; sourceTree = "<group>"; };
-		AA9B75EB191B51BE00F17437 /* MKDeliveryAddressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKDeliveryAddressView.m; sourceTree = "<group>"; };
 		AAA2E68619006F0A0098C357 /* MKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKCategory.h; sourceTree = "<group>"; };
 		AAA2E68719006F0A0098C357 /* MKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKCategory.m; sourceTree = "<group>"; };
 		AAA2E68819006F0A0098C357 /* MKGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKGroup.h; sourceTree = "<group>"; };
@@ -708,10 +705,8 @@
 		AAA2E6A019006F0A0098C357 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				AA605AF0192ABD5600798BCA /* MKMirrorView.h */,
-				AA605AF1192ABD5600798BCA /* MKMirrorView.m */,
-				AA9B75EA191B51BE00F17437 /* MKDeliveryAddressView.h */,
-				AA9B75EB191B51BE00F17437 /* MKDeliveryAddressView.m */,
+				AA09C875192D6D2600317130 /* MKDeliveryAddressView.h */,
+				AA09C876192D6D2600317130 /* MKDeliveryAddressView.m */,
 				AAA2E6A719006F0A0098C357 /* MKPostView.h */,
 				AAA2E6A819006F0A0098C357 /* MKPostView.m */,
 				AA753D9B1910779800D07CB5 /* BNKeyView.h */,
@@ -1161,7 +1156,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAB2812C19217586005C9D27 /* MKBuy.m in Sources */,
-				AA605AF2192ABD5600798BCA /* MKMirrorView.m in Sources */,
 				AAB2815119220D04005C9D27 /* MKBuyPaymentMsg.m in Sources */,
 				AAB2816019220F04005C9D27 /* MKConfirmPaymentMsg.m in Sources */,
 				AA2B1A2E1923683500D712D8 /* MKBuyPostPaymentMsg.m in Sources */,
@@ -1173,13 +1167,13 @@
 				AA955E171914775500F6FB0F /* MKMarketChannel.m in Sources */,
 				AAA2E6AE19006F0A0098C357 /* MKRegion.m in Sources */,
 				AA09C804192D41C600317130 /* MKAboutNode.m in Sources */,
+				AA09C877192D6D2600317130 /* MKDeliveryAddressView.m in Sources */,
 				AAB2814619217586005C9D27 /* MKSellerSentDeliveryMsg.m in Sources */,
 				AAB2814119217586005C9D27 /* MKRejectBidMsg.m in Sources */,
 				AAB2814A19217586005C9D27 /* MKPostMsg.m in Sources */,
 				AAB2815D19220EF4005C9D27 /* MKConfirmRefundMsg.m in Sources */,
 				AA2B1A3119236CB600D712D8 /* MKSellRejectRefundRequestMsg.m in Sources */,
 				AA605AC5192A931F00798BCA /* MKClosePostMsg.m in Sources */,
-				AA9B75EC191B51BE00F17437 /* MKDeliveryAddressView.m in Sources */,
 				AAB2813519217586005C9D27 /* MKBuyLockEscrow.m in Sources */,
 				AAB2815419220D2F005C9D27 /* MKSellAcceptPaymentMsg.m in Sources */,
 				AA605AC2192A8CC700798BCA /* MKMsgGroup.m in Sources */,

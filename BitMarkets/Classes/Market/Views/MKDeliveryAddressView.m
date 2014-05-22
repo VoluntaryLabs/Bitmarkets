@@ -95,12 +95,6 @@
         [self addSubview:_doneButton];
         [_doneButton setTarget:self];
         [_doneButton setAction:@selector(done)];
-        
-        /*
-        self.separator = [[NavColoredView alloc] initWithFrame:NSMakeRect(0, 0, self.width, 1)];
-        [self.separator setThemePath:@"sell/separator"];
-        [self addSubview:self.separator];
-         */
     }
     
     return self;

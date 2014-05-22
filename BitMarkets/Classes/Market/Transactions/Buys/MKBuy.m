@@ -66,7 +66,6 @@
 
 // -------------------
 
-/*
 - (BOOL)handleMsg:(MKMsg *)msg
 {
     NSArray *myAddresses = BMClient.sharedBMClient.identities.identityAddresses;
@@ -78,6 +77,5 @@
 
     return NO;
 }
-*/
 
 @end

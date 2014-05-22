@@ -28,9 +28,6 @@
 @property (strong, nonatomic) NavAdvTextView *line4;
 
 @property (strong, nonatomic) NavRoundButtonView *doneButton;
-@property (strong, nonatomic) NavColoredView *separator;
-
-@property (assign, nonatomic) BOOL isUpdating;
 
 - (MKBuyDeliveryAddress *)deliveryAddress;
 

@@ -21,7 +21,8 @@
     self.isApproved = NO;
     self.isEditable = YES;
     
-    self.nodeViewClass = MKDeliveryAddressView.class;
+    //self.nodeViewClass = MKDeliveryAddressView.class;
+    self.nodeViewClass = NavMirrorView.class;
 
     [self.dictPropertyNames addObject:@"isApprovedBool"];
     [self read];
@@ -30,8 +31,18 @@
     {
         self.addressDict = [NSMutableDictionary dictionary];
     }
-        
+    
+    [self updateApproveActionSlot];
+    
     return self;
+}
+
+- (void)updateApproveActionSlot
+{
+    NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"approve"];
+    [slot setVisibleName:@"Send Address to Seller"];
+    slot.isActive = !self.isApproved;
+    [slot.slotView syncFromSlot];
 }
 
 - (NSString *)nodeTitle
@@ -82,6 +93,7 @@
     [self setIsApproved:YES];
     [self.buyDelivery update];
     [self postParentChainChanged];
+    [self updateApproveActionSlot];
 }
 
 - (BOOL)isEditable
