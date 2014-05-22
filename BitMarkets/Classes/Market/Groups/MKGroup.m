@@ -314,7 +314,7 @@
 {
     BNWallet *wallet = MKRootNode.sharedMKRootNode.wallet;
     
-    if (!wallet.isRunning)
+    if (wallet.isRunning)
     {
         return wallet;
     }

@@ -10,14 +10,13 @@
 #import "MKBuyerCancelLockEscrowMsg.h"
 #import "MKRootNode.h"
 #import <BitnashKit/BitnashKit.h>
-#import "MKMirrorView.h"
 
 @implementation MKBuyLockEscrow
 
 - (id)init
 {
     self = [super init];
-    self.nodeViewClass = MKMirrorView.class;
+    self.nodeViewClass = NavMirrorView.class;
 
     NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"cancelEscrow"];
     [slot setVisibleName:@"Cancel Escrow"];

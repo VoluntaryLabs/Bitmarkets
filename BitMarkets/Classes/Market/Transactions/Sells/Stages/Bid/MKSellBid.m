@@ -11,7 +11,6 @@
 #import "MKAcceptBidMsg.h"
 #import "MKRejectBidMsg.h"
 #import "MKRootNode.h"
-#import "MKMirrorView.h"
 
 @implementation MKSellBid
 
@@ -23,7 +22,7 @@
     self.sortChildrenKey = @"date";
     self.sortAccending = YES;
     
-    self.nodeViewClass = MKMirrorView.class;
+    self.nodeViewClass = NavMirrorView.class;
     
     [self.dictPropertyNames addObject:@"status"];
     

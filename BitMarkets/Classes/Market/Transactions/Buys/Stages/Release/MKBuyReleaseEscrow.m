@@ -11,14 +11,13 @@
 #import "MKRootNode.h"
 #import "MKBuyPostRefundMsg.h"
 #import "MKBuyPostPaymentMsg.h"
-#import "MKMirrorView.h"
 
 @implementation MKBuyReleaseEscrow
 
 - (id)init
 {
     self = [super init];
-    self.nodeViewClass = MKMirrorView.class;
+    self.nodeViewClass = NavMirrorView.class;
     
     {
         NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"requestRefund"];
