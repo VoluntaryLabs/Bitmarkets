@@ -2,13 +2,10 @@
 --- rich ---------------------------------------------
 
 - watch outputs instead of tx hash.
-- data encryption
-- new checkpoints file for wallet
 - consider security issues
 - consider edge cases for workflow (eg: what happens if a tx fails to broadcast ... etc)
-
-- wallet withdraw
 - tag deposits in transaction list?
+- wallet backups?
 
 --- steve ---------------------------------------------
 
