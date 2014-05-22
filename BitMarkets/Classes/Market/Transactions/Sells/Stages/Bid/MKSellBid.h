@@ -12,7 +12,6 @@
 
 @interface MKSellBid : MKGroup
 
-@property (strong, nonatomic) NSString *status;
 @property (strong, nonatomic) BNTx *escrowInputTx;
 
 - (MKBidMsg *)bidMsg;

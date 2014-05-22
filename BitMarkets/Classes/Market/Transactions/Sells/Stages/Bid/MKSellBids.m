@@ -79,7 +79,6 @@
             [sellBid reject];
         }
         
-        
         [self addChild:sellBid];
         [self postParentChanged];
         return YES;
@@ -92,11 +91,7 @@
 {
     for (MKSellBid *bid in self.children)
     {
-        if (bid == sellBid)
-        {
-            [bid setStatus:@"accepted"];
-        }
-        else
+        if (bid != sellBid)
         {
             [bid reject];
         }

@@ -24,15 +24,19 @@
     
     self.nodeViewClass = NavMirrorView.class;
     
-    [self.dictPropertyNames addObject:@"status"];
-    
-    NavActionSlot *acceptSlot = [self.navMirror newActionSlotWithName:@"accept"];
-    [acceptSlot setIsVisible:YES];
-    [acceptSlot setIsActive:YES];
-    [acceptSlot setVisibleName:@"Accept Bid"];
+    [self updateActions];
 
     
     return self;
+}
+
+- (void)updateActions
+{
+    BOOL enabled = self.runningWallet && !self.wasAccepted && !self.wasRejected;
+    NavActionSlot *acceptSlot = [self.navMirror newActionSlotWithName:@"accept"];
+    [acceptSlot setIsVisible:YES];
+    [acceptSlot setIsActive:enabled];
+    [acceptSlot setVisibleName:@"Accept Bid"];
 }
 
 - (NSDate *)date
@@ -66,6 +70,7 @@
 
 // --- UI ------------------------------
 
+/*
 - (NSArray *)modelActions
 {
     //if (!self.wasAccepted && !self.wasRejected)
@@ -75,6 +80,7 @@
     
     return @[];
 }
+*/
 
 - (CGFloat)nodeSuggestedWidth
 {
@@ -93,14 +99,38 @@
 
 // --- status --------------------
 
+- (NSString *)status
+{
+    if (self.acceptMsg)
+    {
+        return @"accepted";
+    }
+    else if (self.rejectMsg)
+    {
+        return @"rejected";
+    }
+    
+    return @"ready to accept...";
+}
+
+- (MKAcceptBidMsg *)acceptMsg
+{
+    return [self.children firstObjectOfClass:MKAcceptBidMsg.class];
+}
+
+- (MKRejectBidMsg *)rejectMsg
+{
+    return [self.children firstObjectOfClass:MKRejectBidMsg.class];
+}
+
 - (BOOL)wasAccepted
 {
-    return [self.status isEqualToString:@"accepted"];
+    return self.acceptMsg != nil;
 }
 
 - (BOOL)wasRejected
 {
-    return [self.status isEqualToString:@"rejected"];
+    return self.rejectMsg != nil;
 }
 
 - (NSString *)nodeNote
@@ -123,6 +153,10 @@
     return (MKSellBids *)self.nodeParent;
 }
 
+- (MKSell *)sell
+{
+    return [self firstInParentChainOfClass:MKSell.class];
+}
 
 - (void)accept
 {
@@ -133,10 +167,8 @@
         return;
     }
     
-    MKAcceptBidMsg *msg = [[MKAcceptBidMsg alloc] init];
-    [msg copyFrom:self.bidMsg];
 
-    MKSell *sell = (MKSell *)self.nodeParent.nodeParent;
+    MKSell *sell = self.sell; //(MKSell *)self.nodeParent.nodeParent;
     
 
     BNTx *escrowTx = [wallet newTx];
@@ -184,10 +216,15 @@
     }
     else
     {
+        MKAcceptBidMsg *msg = [[MKAcceptBidMsg alloc] init];
+        [msg copyFrom:self.bidMsg];
+        
         //[escrowTx markInputsAsSpent]; TODO
         [msg setPayload:[escrowTx asJSONObject]];
         [msg send];
         [self addChild:msg];
+        [self updateActions];
+        [self.sell write];
         
         [self.sellBids setAcceptedBid:self];
         [self postSelfChanged];
@@ -200,7 +237,9 @@
     [msg copyFrom:self.bidMsg];
     [msg send];
     
-    [self setStatus:@"rejected"];
+    [self addChild:msg];
+    [self updateActions];
+    [self.sell write];
 }
 
 - (BOOL)nodeShouldIndent

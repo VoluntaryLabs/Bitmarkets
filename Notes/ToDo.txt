@@ -1,5 +1,5 @@
 
---- rich ---------------------------------------------
+------ rich ------
 
 - watch outputs instead of tx hash.
 - consider security issues
@@ -7,7 +7,11 @@
 - tag deposits in transaction list?
 - wallet backups?
 
---- steve ---------------------------------------------
+- wallet withdraw ui
+
+------ steve ------
+
+- seller accept bid UI bug (button gets hosed)
 
 - more general attachment format (dict)
 
@@ -16,32 +20,40 @@
 
 - delivery status / package tracking
 
-- wallet withdraw ui
 
 - fix for category / region paths
 - better category set?
 
-- simplify wallet deposit ui
-
 - add service and version fields to msgs
 - add any needed auth checks on msgs
 
-- website
-- short screencast intro/docs
+- are utxs sent with bid, if so do we cancel upon bid rejection?
+- timeouts for bid, lock and await delivery + user warnings
+- timeout for posting? auto-reposting for posts with no bids?
+
+- replace NavNode base class with navMirror method on NSObject 
+   - use association slot for mirror cache 
+
 - update UI to new design spec
+
+------ dean ------
+
+- short screencast intro/docs
+
+------ chris ------
+
+- website
 - user docs
-- dev docs
 - donation address
 
-- move address and delivery status to use navMirror
 
---- adam ---------------------------------------------
+------ adam ------
 
 - gen very high pow address for channel
 - gen high pow for user identities
 
+------------------
 
-----------------------------------------------------
 
 (seller posts)
 
@@ -50,16 +62,12 @@
   - seller item details
   - buyer address
 
-
 - currency contract
   - seller currency/amount
   - buyer wire/ach (seller chooses options)
 
-
 - quantity options on sales?
 - store front for given bm address
-- namecoin store name
 
 - order book interface
-- public end post notification ***
 
