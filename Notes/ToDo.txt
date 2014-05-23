@@ -7,7 +7,6 @@
 - tag deposits in transaction list?
 - wallet backups?
 - wallet withdraw ui
-- the pre escrow tx isn't ordering the outputs correctly.
 - encrypt the deposit address file
 
 ------ steve ------
