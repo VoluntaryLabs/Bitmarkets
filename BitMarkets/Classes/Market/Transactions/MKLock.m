@@ -65,6 +65,7 @@
     
     BNTx *tx = (BNTx *)[self.payloadToConfirm asObjectFromJSONObject];
     tx.wallet = MKRootNode.sharedMKRootNode.wallet;
+    [tx refresh];
     
     if ([tx isConfirmed]) //TODO instead check to see if outputs are spent in case tx is mutated
     {

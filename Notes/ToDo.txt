@@ -8,6 +8,7 @@
 - wallet backups?
 - make sure that deposit key doesn't use un-broadcasted keys
 - wallet withdraw ui
+- the pre escrow tx isn't ordering the outputs correctly.
 
 ------ steve ------
 
