@@ -126,6 +126,13 @@
     for (BMMessage *bmMessage in inboxMessages)
     {
         MKMsg *msg = [MKMsg withBMMessage:bmMessage];
+        
+        if (!msg)
+        {
+            NSLog(@"invalid message");
+            continue;
+        }
+        
         BOOL didHandle = [markets handleMsg:msg];
         
         if (!didHandle)

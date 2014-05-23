@@ -31,7 +31,6 @@
     self.categoryPath = @[];
     self.sellerAddress = BMClient.sharedBMClient.identities.firstIdentity.address; // make this tx specific later
     
-    self.status = @"draft";
     self.shouldSortChildren = NO;
     
     self.nodeSuggestedWidth = 150;
@@ -39,7 +38,6 @@
     
     [self.dictPropertyNames addObjectsFromArray:@[
      @"postUuid",
-     @"status",
      @"title",
      @"priceInSatoshi",
      @"description",
@@ -52,6 +50,7 @@
     
     return self;
 }
+
 
 - (BOOL)isInSell
 {
@@ -105,7 +104,7 @@
 
 - (BOOL)isEditable
 {
-    return [self.status isEqualToString:@"draft"];
+    return self.isInSell && !self.isPosted;
 }
 
 - (BOOL)canBuy
@@ -233,6 +232,11 @@
     return self.postMsg != nil;
 }
 
+- (MKSell *)sell
+{
+    return [self firstInParentChainOfClass:MKSell.class];
+}
+
 // actions
 
 - (MKPostMsg *)sendPostMsg
@@ -241,8 +245,9 @@
     [postMsg sendPost:self];
     [self addChild:postMsg];
     
-    [self setStatus:@"posted"];
     [self postParentChanged];
+    
+    [self.sell write];
     return postMsg;
 }
 
