@@ -13,6 +13,16 @@
 
 @implementation MKMsg
 
++ (NSString *)serviceName
+{
+    return @"bitmarket";
+}
+
++ (NSString *)serviceVersion
+{
+    return @"0.8";
+}
+
 + (MKMsg *)withBMMessage:(BMMessage *)bmMessage
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithJsonString:bmMessage.messageString];
@@ -20,15 +30,31 @@
     NSString *typeName = [dict objectForKey:@"_type"];
     if (!typeName)
     {
+        NSLog(@"invalid message - has no _type");
         return nil;
     }
     
     NSString *className = [@"MK" stringByAppendingString:typeName];
     Class class = NSClassFromString(className);
-    if (!class)
+    if (!class || ![class isSubclassOfClass:MKMsg.class])
     {
+        NSLog(@"invalid message - no msg class");
         return nil;
     }
+    
+    /*
+    if (![[dict objectForKey:@"_serviceName"] isEqualToString:self.class.serviceName])
+    {
+        NSLog(@"invalid message - serviceName doesn't match");
+        return nil;
+    }
+    
+    if (![[dict objectForKey:@"_serviceVersion"] isEqualToString:self.class.serviceVersion])
+    {
+        NSLog(@"invalid message - _serviceVersion doesn't match");
+        return nil;
+    }
+    */
     
     MKMsg *msg = [[class alloc] init];
     msg.dict = dict;
@@ -65,6 +91,8 @@
     self = [super init];
     self.dict = [NSMutableDictionary dictionary];
     [self.dict setObject:self.classNameSansPrefix forKey:@"_type"];
+    [self.dict setObject:self.class.serviceName forKey:@"_serviceName"];
+    [self.dict setObject:self.class.serviceVersion forKey:@"_serviceVersion"];
     [self.dictPropertyNames addObject:@"ackData"];
     return self;
 }
@@ -298,8 +326,6 @@
     
     self.ackData = m.ackData;
     
-
-    NSLog(@"[m date] = %@", [m date].description);
     [self addDate];
 
     return YES;
@@ -316,7 +342,6 @@
 
     self.ackData = m.ackData;
 
-    NSLog(@"[m date] = %@", [m date].description);
     [self addDate];
 
     return YES;
@@ -343,12 +368,5 @@
     
     return nil;
 }
-
-/*
-- (void)update
-{
-    NSLog(@"MKMsg update");
-}
-*/
 
 @end

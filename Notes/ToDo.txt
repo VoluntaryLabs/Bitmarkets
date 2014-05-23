@@ -11,7 +11,9 @@
 
 ------ steve ------
 
-- seller accept bid UI bug (button gets hosed)
+- cleanup write notification system
+
+- prevent double buys
 
 - more general attachment format (dict)
 
@@ -20,16 +22,18 @@
 
 - delivery status / package tracking
 
-
 - fix for category / region paths
 - better category set?
 
 - add service and version fields to msgs
 - add any needed auth checks on msgs
+- check these
 
 - are utxs sent with bid, if so do we cancel upon bid rejection?
 - timeouts for bid, lock and await delivery + user warnings
 - timeout for posting? auto-reposting for posts with no bids?
+
+[later]
 
 - replace NavNode base class with navMirror method on NSObject 
    - use association slot for mirror cache 

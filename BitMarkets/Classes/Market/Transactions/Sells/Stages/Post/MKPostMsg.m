@@ -46,7 +46,7 @@
 {
     // clean this up
     
-    [self.dict removeAllObjects];
+    //[self.dict removeAllObjects];
     [self.dict setObject:self.classNameSansPrefix forKey:@"_type"];
     [self.dict addEntriesFromDictionary:mkPost.propertiesDict];
     [self.dict removeObjectForKey:@"status"];

@@ -16,7 +16,6 @@
 @interface MKPost : MKGroup
 
 @property (strong, nonatomic) NSDate *date;
-@property (strong, nonatomic) NSString *status;
 
 // msg properties
 
