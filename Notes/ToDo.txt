@@ -8,6 +8,7 @@
 - wallet backups?
 - wallet withdraw ui
 - encrypt the deposit address file
+- update status when wallet fails to open (and maybe write log file)
 
 ------ steve ------
 
