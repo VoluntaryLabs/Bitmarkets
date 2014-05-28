@@ -105,6 +105,8 @@ static MKRootNode *sharedMKRootNode = nil;
         [_wallet setPath:dataPath];
         [_wallet setCheckpointsPath:[[NSBundle bundleForClass:[BNWallet class]] pathForResource:@"checkpoints-testnet" ofType:nil]];
         //[_wallet.server start];
+        
+        [BNMetaDataDb shared].path = [[[NSFileManager defaultManager] applicationSupportDirectory] stringByAppendingPathComponent:@"wallet/meta-data"];
     }
 }
 
