@@ -1,0 +1,28 @@
+
+
+region: array
+category: array
+
+title: short string
+description: long string
+quantity: number
+price: number
+attachments: [{}, ...]
+
+
+size:  string 
+color: string
+gender: M/F
+brand: string
+model: string
+year:  number [1900-next year?]
+condition: string
+grade: string
+purity: number %?
+milage: number
+
+
+[post, delete]
+
+
+
