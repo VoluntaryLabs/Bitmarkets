@@ -18,13 +18,11 @@
 - (id)init
 {
     self = [super init];
-    self.isApproved = NO;
     self.isEditable = YES;
     
     //self.nodeViewClass = MKDeliveryAddressView.class;
     self.nodeViewClass = NavMirrorView.class;
 
-    [self.dictPropertyNames addObject:@"isApprovedBool"];
     [self read];
 
     if (self.addressDict == nil)
@@ -32,9 +30,13 @@
         self.addressDict = [NSMutableDictionary dictionary];
     }
     
-    [self updateApproveActionSlot];
-    
     return self;
+}
+
+- (void)setNodeParent:(NavNode *)nodeParent
+{
+    [super setNodeParent:nodeParent];
+    [self updateApproveActionSlot];
 }
 
 - (void)updateApproveActionSlot
@@ -90,10 +92,13 @@
 
 - (void)approve
 {
-    [self setIsApproved:YES];
-    [self.buyDelivery update];
-    [self postParentChainChanged];
-    [self updateApproveActionSlot];
+    if (!self.isApproved)
+    {
+        [self.buyDelivery sendAddress];
+        [self.buyDelivery update];
+        [self postParentChainChanged];
+        [self updateApproveActionSlot];
+    }
 }
 
 - (BOOL)isEditable
@@ -101,14 +106,9 @@
     return !self.isApproved;
 }
 
-- (void)setIsApproved:(BOOL)aBool
-{
-    [self setIsApprovedBool:[NSNumber numberWithBool:aBool]];
-}
-
 - (BOOL)isApproved
 {
-    return self.isApprovedBool.boolValue;
+    return self.buyDelivery.isApproved;
 }
 
 @end

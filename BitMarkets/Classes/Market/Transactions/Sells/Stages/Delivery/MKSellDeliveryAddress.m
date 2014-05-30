@@ -26,7 +26,7 @@
 {
     if (self.isFilled)
     {
-        return @"received";
+        return @"received ";
     }
     
     return @"awaiting from buyer";

@@ -82,7 +82,21 @@ static MKRootNode *sharedMKRootNode = nil;
 - (void)setupBMClient
 {
     _bmClient = [BMClient sharedBMClient];
-    [[_bmClient identities] createFirstIdentityIfAbsent];
+    if (!self.bitmarketsUserIdentity)
+    {
+        [_bmClient.identities createRandomAddressWithLabel:self.bitmarketsIdentityLabel];
+    }
+}
+
+- (NSString *)bitmarketsIdentityLabel
+{
+    return @"bitmarkets user indentity";
+}
+
+- (BMIdentity *)bitmarketsUserIdentity
+{
+    BMIdentity *identity = [_bmClient.identities identityWithLabel:self.bitmarketsIdentityLabel];
+    return identity;
 }
 
 - (void)setupWallet

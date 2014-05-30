@@ -10,4 +10,6 @@
 
 @interface MKBuyReleaseEscrow : MKRelease
 
+- (BOOL)isComplete;
+
 @end

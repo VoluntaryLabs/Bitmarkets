@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 voluntary.net. All rights reserved.
 //
 
-#import "MKMsg.h"
+#import "MKConfirmMsg.h"
 
-@interface MKConfirmRefundMsg : MKMsg
+@interface MKConfirmRefundMsg : MKConfirmMsg
 
 @end

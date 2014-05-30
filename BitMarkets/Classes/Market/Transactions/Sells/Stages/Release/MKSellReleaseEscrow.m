@@ -102,12 +102,13 @@
         return @"buyer requests refund";
     }
     
-    return nil;
+    return @"awaiting buyer...";
 }
 
 - (BOOL)isActive
 {
-    return (self.buyPaymentMsg || self.buyRequestRefundMsg) && !self.isComplete;
+    return self.sell.lockEscrow.isComplete && !self.isComplete;
+    //return (self.buyPaymentMsg || self.buyRequestRefundMsg) && !self.isComplete;
 }
 
 - (BOOL)isComplete

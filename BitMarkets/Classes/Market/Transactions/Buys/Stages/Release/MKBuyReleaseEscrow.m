@@ -81,7 +81,14 @@
 
 - (BOOL)isActive
 {
-    return (self.buyPaymentMsg || self.buyRequestRefundMsg) && !self.isComplete;
+    /*
+    if (!self.runningWallet)
+    {
+        return NO;
+    }
+*/
+    return self.buy.lockEscrow.isConfirmed && !self.isComplete;
+//    return (self.buyPaymentMsg || self.buyRequestRefundMsg) && !self.isComplete;
 }
 
 - (BOOL)isComplete
@@ -141,10 +148,15 @@
         [self signAndPostRefundToBlockChain];
     }
     
-    BOOL isActive = self.isActive;
+    [self updateActions];
+}
 
-    [[self.navMirror actionSlotNamed:@"requestRefund"] setIsActive:isActive];
-    [[self.navMirror actionSlotNamed:@"makePayment"]   setIsActive:isActive];
+- (void)updateActions
+{
+    BOOL isActive = self.isActive && (self.runningWallet != nil);
+
+    [[self.navMirror actionSlotNamed:@"requestRefund"] setIsActive:isActive && !self.buyRequestRefundMsg];
+    [[self.navMirror actionSlotNamed:@"makePayment"]   setIsActive:isActive && !self.buyPaymentMsg];
 }
 
 // initiate payemnt

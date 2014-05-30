@@ -19,5 +19,7 @@
 - (MKBuy *)buy;
 
 - (void)update;
+- (void)sendAddress;
+- (BOOL)isApproved;
 
 @end

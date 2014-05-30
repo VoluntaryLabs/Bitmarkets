@@ -132,13 +132,20 @@
 {
     MKClosePostMsg *msg = [[MKClosePostMsg alloc] init];
     [msg copyFrom:self.sell.acceptedBidMsg];
-    
     [msg sendFromSellerToChannel];
 }
 
 - (MKClosePostMsg *)closePostMsg
 {
     return [self.children firstObjectOfClass:MKClosePostMsg.class];
+}
+
+- (void)update
+{
+    for (MKSellBid *bid in self.children)
+    {
+        [bid update];
+    }
 }
 
 @end

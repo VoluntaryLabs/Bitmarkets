@@ -62,6 +62,7 @@
 		AA605AC2192A8CC700798BCA /* MKMsgGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = AA605AC1192A8CC700798BCA /* MKMsgGroup.m */; };
 		AA605AC5192A931F00798BCA /* MKClosePostMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AA605AC4192A931F00798BCA /* MKClosePostMsg.m */; };
 		AA753D9D1910779800D07CB5 /* BNKeyView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA753D9C1910779800D07CB5 /* BNKeyView.m */; };
+		AA8F0E761939432F00B62302 /* MKConfirmMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8F0E751939432F00B62302 /* MKConfirmMsg.m */; };
 		AA9227081905F94900C3D9D7 /* categories.json in Resources */ = {isa = PBXBuildFile; fileRef = AA9226F61905F94900C3D9D7 /* categories.json */; };
 		AA9227171905F94900C3D9D7 /* regions.json in Resources */ = {isa = PBXBuildFile; fileRef = AA9227071905F94900C3D9D7 /* regions.json */; };
 		AA92271A1905F9C000C3D9D7 /* themes.json in Resources */ = {isa = PBXBuildFile; fileRef = AA9227191905F9C000C3D9D7 /* themes.json */; };
@@ -309,6 +310,8 @@
 		AA605AC4192A931F00798BCA /* MKClosePostMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKClosePostMsg.m; sourceTree = "<group>"; };
 		AA753D9B1910779800D07CB5 /* BNKeyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNKeyView.h; sourceTree = "<group>"; };
 		AA753D9C1910779800D07CB5 /* BNKeyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNKeyView.m; sourceTree = "<group>"; };
+		AA8F0E741939432F00B62302 /* MKConfirmMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKConfirmMsg.h; sourceTree = "<group>"; };
+		AA8F0E751939432F00B62302 /* MKConfirmMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKConfirmMsg.m; sourceTree = "<group>"; };
 		AA9226E61905F88200C3D9D7 /* NavNodeKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = NavNodeKit.xcodeproj; path = ../NavNodeKit/NavNodeKit.xcodeproj; sourceTree = "<group>"; };
 		AA9226F61905F94900C3D9D7 /* categories.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = categories.json; sourceTree = "<group>"; };
 		AA9227071905F94900C3D9D7 /* regions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = regions.json; sourceTree = "<group>"; };
@@ -827,6 +830,8 @@
 				AAB2810419217586005C9D27 /* MKEscrowMsg.m */,
 				AAB2810519217586005C9D27 /* MKMessages.h */,
 				AAB2810619217586005C9D27 /* MKMessages.m */,
+				AA8F0E741939432F00B62302 /* MKConfirmMsg.h */,
+				AA8F0E751939432F00B62302 /* MKConfirmMsg.m */,
 				AAB2810119217586005C9D27 /* MKConfirmLockEscrowMsg.h */,
 				AAB2810219217586005C9D27 /* MKConfirmLockEscrowMsg.m */,
 				AAB2815B19220EF4005C9D27 /* MKConfirmRefundMsg.h */,
@@ -1193,6 +1198,7 @@
 				AAB2814219217586005C9D27 /* MKSellBid.m in Sources */,
 				AA2B1A211923682500D712D8 /* MKBuyPostRefundMsg.m in Sources */,
 				AA955E191914775500F6FB0F /* MKRootNode.m in Sources */,
+				AA8F0E761939432F00B62302 /* MKConfirmMsg.m in Sources */,
 				AAA2E6AC19006F0A0098C357 /* MKCategory.m in Sources */,
 				AAB2813819217586005C9D27 /* MKLock.m in Sources */,
 				AAB2813919217586005C9D27 /* MKTransaction.m in Sources */,

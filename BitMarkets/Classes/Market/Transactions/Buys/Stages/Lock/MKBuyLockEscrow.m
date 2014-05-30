@@ -24,6 +24,37 @@
     return self;
 }
 
+- (void)updateActions
+{
+    NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"cancelEscrow"];
+    [slot setIsActive:self.canCancel];
+}
+
+- (BOOL)isConfirmed
+{
+    return self.confirmLockMsg != nil;
+}
+
+- (BOOL)canCancel
+{
+    if (!self.runningWallet)
+    {
+        return NO;
+    }
+/*
+    if (self.buy.releaseEscrow.isComplete)
+    {
+        return NO;
+    }
+*/
+    if (self.buyerLockMsg && !self.confirmLockMsg)
+    {
+        return YES;
+    }
+    
+    return NO;
+}
+
 // node
 
 - (BOOL)isActive
@@ -108,10 +139,7 @@
 {
     [self sendLockToSellerIfNeeded];
     [self lookForConfirmIfNeeded];
-    
-    BOOL isActive = self.isActive;
-    
-    [[self.navMirror actionSlotNamed:@"cancelEscrow"] setIsActive:isActive];
+    [self updateActions];
 }
 
 // send lock

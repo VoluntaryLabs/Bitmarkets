@@ -15,6 +15,7 @@
 @property (strong, nonatomic) BNTx *escrowInputTx;
 
 - (void)update;
-//- (BOOL)isConfirmed;
+- (BOOL)canCancel;
+- (BOOL)isConfirmed;
 
 @end

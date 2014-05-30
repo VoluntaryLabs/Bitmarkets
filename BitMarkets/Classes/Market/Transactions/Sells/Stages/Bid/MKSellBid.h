@@ -16,6 +16,8 @@
 
 - (MKBidMsg *)bidMsg;
 
+- (void)update;
+
 - (BOOL)wasAccepted;
 - (BOOL)wasRejected;
 

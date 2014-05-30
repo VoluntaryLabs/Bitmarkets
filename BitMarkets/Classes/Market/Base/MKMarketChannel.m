@@ -24,7 +24,7 @@
 - (id)init
 {
     self = [super init];
-    self.passphrase = @"bitmarkets demo 3";    
+    self.passphrase = @"bitmarkets demo 5";    
     return self;
 }
 
@@ -49,7 +49,6 @@
     //[[[BMClient sharedBMClient] channels] fetch];
 
     NSArray *messages = self.channel.children.copy;
-    NSMutableArray *newChildren = [NSMutableArray array];
     
     NSMutableArray *closeMsgs = [NSMutableArray array];
     
@@ -69,12 +68,7 @@
                 
                 BOOL couldPlace = [mkPost placeInMarketsPath]; // deals with merging?
                 
-                if (couldPlace)
-                {
-                    //NSLog(@"placing post '%@'", mkPost.title);
-                    [newChildren addObject:mkPost];
-                }
-                else
+                if (!couldPlace)
                 {
                     [bmMsg delete];
                 }
@@ -82,6 +76,10 @@
             else if ([msg isKindOfClass:MKClosePostMsg.class])
             {
                 [closeMsgs addObject:msg];
+            }
+            else
+            {
+                [bmMsg delete];
             }
         }
         else

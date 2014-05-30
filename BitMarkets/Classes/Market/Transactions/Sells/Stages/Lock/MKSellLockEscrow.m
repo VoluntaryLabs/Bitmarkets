@@ -13,13 +13,49 @@
 
 @implementation MKSellLockEscrow
 
-/*
 - (id)init
 {
     self = [super init];
+ 
+    self.nodeViewClass = NavMirrorView.class;
+    
+    NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"cancelEscrow"];
+    [slot setVisibleName:@"Cancel Escrow"];
     return self;
 }
-*/
+
+- (void)updateActions
+{
+    NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"cancelEscrow"];
+    [slot setIsActive:self.canCancel];
+}
+
+- (BOOL)isConfirmed
+{
+    return self.confirmLockMsg != nil;
+}
+
+- (BOOL)canCancel
+{
+    if (!self.runningWallet)
+    {
+        return NO;
+    }
+    
+    /*
+    if (self.sell.releaseEscrow.isComplete)
+    {
+        return NO;
+    }
+    */
+    
+    if (self.buyerLockMsg && !self.confirmLockMsg)
+    {
+        return YES;
+    }
+    
+    return NO;
+}
 
 - (BOOL)isActive
 {
@@ -57,9 +93,9 @@
         return @"waiting for wallet..";
     }
     
-    if (self.sellerLockMsg)
+    if (self.confirmLockMsg)
     {
-        return @"awaiting confirm";
+        return @"confirmed";
     }
     
     if (self.buyerLockMsg)
@@ -67,14 +103,14 @@
         return @"got buyer lock";
     }
     
+    if (self.sellerLockMsg)
+    {
+        return @"awaiting confirm";
+    }
+    
     if (self.sell.bids.acceptedBid)
     {
         return @"awaiting buyer lock";
-    }
-    
-    if (self.confirmLockMsg)
-    {
-        return @"confirmed";
     }
     
     return nil;
@@ -144,6 +180,7 @@
 {
     [self postLockIfNeeded];
     [self lookForConfirmIfNeeded];
+    [self updateActions];
 }
 
 // confirm methods to extend parent class MKLock

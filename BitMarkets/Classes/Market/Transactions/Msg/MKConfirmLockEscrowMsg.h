@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 voluntary.net. All rights reserved.
 //
 
-#import "MKEscrowMsg.h"
+#import "MKConfirmMsg.h"
 
-@interface MKConfirmLockEscrowMsg : MKEscrowMsg
+@interface MKConfirmLockEscrowMsg : MKConfirmMsg
 
 @end

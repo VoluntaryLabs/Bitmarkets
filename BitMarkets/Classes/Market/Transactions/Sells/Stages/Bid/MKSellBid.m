@@ -25,9 +25,13 @@
     self.nodeViewClass = NavMirrorView.class;
     
     [self updateActions];
-
     
     return self;
+}
+
+- (void)update
+{
+    [self updateActions];
 }
 
 - (void)updateActions
@@ -103,7 +107,7 @@
 {
     if (self.acceptMsg)
     {
-        return @"accepted";
+        return [NSString stringWithFormat:@"accepted %@", self.acceptMsg.dateString];
     }
     else if (self.rejectMsg)
     {

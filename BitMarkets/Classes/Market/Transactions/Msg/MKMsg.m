@@ -94,6 +94,7 @@
     [self.dict setObject:self.class.serviceName forKey:@"_serviceName"];
     [self.dict setObject:self.class.serviceVersion forKey:@"_serviceVersion"];
     [self.dictPropertyNames addObject:@"ackData"];
+    [self addDate];
     return self;
 }
 

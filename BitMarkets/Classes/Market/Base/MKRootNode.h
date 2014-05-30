@@ -23,5 +23,6 @@
 @property (strong, nonatomic) BNWallet  *wallet;
 
 + (MKRootNode *)sharedMKRootNode;
+- (BMIdentity *)bitmarketsUserIdentity;
 
 @end

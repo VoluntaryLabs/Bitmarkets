@@ -80,7 +80,7 @@
 - (void)update
 {
     // send address msg if ready
-    
+    /*
     if (self.address.isApproved && !self.addressMsg)
     {
         MKBuyerAddressMsg *msg = [[MKBuyerAddressMsg alloc] init];
@@ -89,6 +89,26 @@
         [msg send];
         [self addChild:msg];
     }
+    */
 }
+
+- (BOOL)isApproved
+{
+    return self.addressMsg != nil;
+}
+
+- (void)sendAddress
+{
+    if (!self.isApproved)
+    {
+        MKBuyerAddressMsg *msg = [[MKBuyerAddressMsg alloc] init];
+        [msg copyFrom:self.buy.bidMsg];
+        [msg setAddressDict:self.address.addressDict];
+        [msg send];
+        [self addChild:msg];
+        [self postParentChainChanged];
+    }
+}
+
 
 @end
