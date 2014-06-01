@@ -13,4 +13,6 @@
 - (void)setPayload:(NSDictionary *)payload;
 - (NSDictionary *)payload;
 
+- (BOOL)isPayloadConfirmed;
+
 @end

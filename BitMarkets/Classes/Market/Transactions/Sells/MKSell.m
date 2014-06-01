@@ -42,6 +42,11 @@
     return self;
 }
 
+- (CGFloat)nodeSuggestedWidth
+{
+    return 250.0;
+}
+
 - (NSString *)verifyActionMessage:(NSString *)aString
 {
     if ([aString isEqualToString:@"delete"])

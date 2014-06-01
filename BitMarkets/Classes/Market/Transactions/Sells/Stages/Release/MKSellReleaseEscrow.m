@@ -174,53 +174,11 @@
         // user must use it to refund
     }
     
-    if (self.sellAcceptPaymentMsg && !self.confirmPaymentMsg)
-    {
-        if (!self.sellRejectRefundRequestMsg)
-        {
-            [self lookForPaymentConfirm];
-        }
-    }
+    [self lookForConfirmsIfNeeded];
 
-    if (self.sellAcceptPaymentMsg && !self.confirmPaymentMsg)
-    {
-        [self lookForRefundConfirm];
-    }
-    
 }
 
-- (void)lookForPaymentConfirm
-{
-    BOOL paymentConfirmed = NO;
-    
-    if (paymentConfirmed)
-    {
-        MKConfirmPaymentMsg *msg = [[MKConfirmPaymentMsg alloc] init];
-        [msg copyFrom:self.sell.acceptedBidMsg];
-        [self addChild:msg];
-        [self postParentChainChanged];
-    }
-}
 
-- (void)lookForRefundConfirm
-{
-    BNWallet *wallet = self.runningWallet;
-    
-    if (!wallet)
-    {
-        return;
-    }
-    
-    BOOL paymentConfirmed = NO;
-    
-    if (paymentConfirmed)
-    {
-        MKConfirmRefundMsg *msg = [[MKConfirmRefundMsg alloc] init];
-        [msg copyFrom:self.sell.acceptedBidMsg];
-        [self addChild:msg];
-        [self postParentChainChanged];
-    }
-}
 
 // actions
 

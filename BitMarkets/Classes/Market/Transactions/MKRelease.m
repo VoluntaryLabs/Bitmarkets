@@ -64,5 +64,44 @@
     return [self.children firstObjectOfClass:MKConfirmPaymentMsg.class];
 }
 
+// ---------------------
+
+- (void)lookForConfirmsIfNeeded
+{
+    [self lookForPaymentConfirmIfNeeded];
+    [self lookForRefundConfirmIfNeeded];
+}
+
+- (void)lookForPaymentConfirmIfNeeded
+{
+    if (self.sellAcceptPaymentMsg && !self.confirmPaymentMsg)
+    {
+        BOOL paymentConfirmed = self.sellAcceptPaymentMsg.isPayloadConfirmed;
+        
+        if (paymentConfirmed)
+        {
+            MKConfirmPaymentMsg *msg = [[MKConfirmPaymentMsg alloc] init];
+            //[msg copyFrom:self.sellAcceptPaymentMsg];
+            [self addChild:msg];
+            [self postParentChainChanged];
+        }
+    }
+}
+
+- (void)lookForRefundConfirmIfNeeded
+{
+    if (self.sellAcceptRefundRequestMsg && !self.confirmRefundMsg)
+    {
+        BOOL refundConfirmed = self.sellAcceptRefundRequestMsg.isPayloadConfirmed;
+        
+        if (refundConfirmed)
+        {
+            MKConfirmRefundMsg *msg = [[MKConfirmRefundMsg alloc] init];
+            //[msg copyFrom:self.sellAcceptPaymentMsg];
+            [self addChild:msg];
+            [self postParentChainChanged];
+        }
+    }
+}
 
 @end

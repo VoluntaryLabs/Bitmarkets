@@ -31,6 +31,11 @@
     return self;
 }
 
+- (CGFloat)nodeSuggestedWidth
+{
+    return 250.0;
+}
+
 - (void)setDict:(NSDictionary *)dict
 {
     [super setDict:dict];

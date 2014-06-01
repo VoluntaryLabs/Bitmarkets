@@ -32,7 +32,7 @@
 @interface MKRelease : MKEscrow
 
 
-// payment
+// payment messages
 
 - (MKBuyPaymentMsg *)buyPaymentMsg;
 - (MKSellAcceptPaymentMsg *)sellAcceptPaymentMsg;
@@ -43,9 +43,15 @@
 - (MKSellAcceptRefundRequestMsg *)sellAcceptRefundRequestMsg;
 - (MKSellRejectRefundRequestMsg *)sellRejectRefundRequestMsg;
 
-// confirm
+// confirm messages
 
 - (MKConfirmRefundMsg *)confirmRefundMsg;
 - (MKConfirmPaymentMsg *)confirmPaymentMsg;
+
+// confirm checks
+
+- (void)lookForConfirmsIfNeeded;
+- (void)lookForPaymentConfirmIfNeeded;
+- (void)lookForRefundConfirmIfNeeded;
 
 @end

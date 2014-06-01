@@ -17,7 +17,7 @@
 - (id)init
 {
     self = [super init];
-    self.nodeViewClass = NavMirrorView.class;
+    //self.nodeViewClass = NavMirrorView.class;
     
     {
         NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"requestRefund"];
@@ -30,6 +30,11 @@
     }
 
     return self;
+}
+
+- (CGFloat)nodeSuggestedWidth
+{
+    return 300.0;
 }
 
 - (NSArray *)modelActions
@@ -138,15 +143,17 @@
 
 - (void)update
 {
-    if (self.sellAcceptPaymentMsg)
+    if (self.sellAcceptPaymentMsg && !self.buyPostPaymentMsg)
     {
         [self signAndPostAcceptToBlockChain];
     }
     
-    if (self.sellAcceptRefundRequestMsg)
+    if (self.sellAcceptRefundRequestMsg && !self.buyPostRefundMsg)
     {
         [self signAndPostRefundToBlockChain];
     }
+    
+    [self lookForConfirmsIfNeeded];
     
     [self updateActions];
 }
@@ -185,6 +192,7 @@
     [msg sendToSeller];
     
     [self addChild:msg];
+    [self update];
 }
 
 // initiate refund
@@ -211,6 +219,7 @@
     [msg sendToSeller];
     
     [self addChild:msg];
+    [self update];
 }
 
 // post payment

@@ -48,8 +48,6 @@
     return self.confirmLockMsg != nil;
 }
 
-// confirm
-
 - (NSDictionary *)payloadToConfirm
 {
     [NSException raise:@"subclasses should override" format:nil];
@@ -58,16 +56,18 @@
 
 - (BOOL)checkForConfirm
 {
-    if (!MKRootNode.sharedMKRootNode.wallet.isRunning)
+    BNWallet *wallet = self.runningWallet;
+    
+    if (!wallet)
     {
         return NO;
     }
     
     BNTx *tx = (BNTx *)[self.payloadToConfirm asObjectFromJSONObject];
-    tx.wallet = MKRootNode.sharedMKRootNode.wallet;
+    tx.wallet = wallet;
     [tx refresh];
     
-    if ([tx isConfirmed]) //TODO instead check to see if outputs are spent in case tx is mutated
+    if ([tx isConfirmed]) // TODO instead check to see if outputs are spent in case tx is mutated
     {
         return YES;
     }
@@ -101,7 +101,7 @@
     return NO;
 }
 
-//messages
+// messages
 
 - (MKSellerPostLockMsg *)sellerLockMsg
 {
