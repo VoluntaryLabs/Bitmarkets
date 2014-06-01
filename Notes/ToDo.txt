@@ -13,6 +13,9 @@
 
 ------ steve ------
 
+- first channel subscribe doesn't seem to work 
+  - do we need to both add and subscribe to channel?
+
 - cleanup write notification system
 
 - prevent double buys

@@ -16,45 +16,22 @@
 - (id)init
 {
     self = [super init];
+    
+    self.nodeViewClass = NavMirrorView.class;
+    
+    NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"acceptRefundRequest"];
+    [slot setVisibleName:@"Accept Refund Request"];
+    
     return self;
 }
 
-/*
-- (NSString *)nodeSubtitle
+- (void)updateActions
 {
-    if (self.buyPaymentMsg)
-    {
-        if (self.confirmPaymentMsg)
-        {
-            return @"payment confirmed";
-        }
-        
-        return @"confirming payment";
-    }
+    BOOL enabled = self.buyRequestRefundMsg != nil && !self.sellAcceptRefundRequestMsg;
     
-    if (self.buyRequestRefundMsg)
-    {
-        if (self.confirmRefundMsg)
-        {
-            return @"refund confirmed";
-        }
-        
-        return @"confirming refund";
-    }
-    
-    if (self.sell.lockEscrow.isConfirmed)
-    {
-        if (!self.sell.delivery.isComplete)
-        {
-            return nil;
-        }
-        
-        return @"awaiting buyer";
-    }
-    
-    return nil;
+    NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"acceptRefundRequest"];
+    [slot setIsActive:enabled];
 }
-*/
 
 - (NSString *)nodeSubtitle
 {
@@ -154,6 +131,7 @@
     {
         [self addChild:msg];
         [self update];
+        [self updateActions];
         [self postParentChainChanged];
         return YES;
     }
@@ -234,6 +212,7 @@
     [self addChild:msg];
     [msg sendToBuyer];
     [self postParentChainChanged];
+    [self updateActions];
 }
 
 - (void)rejectRefund

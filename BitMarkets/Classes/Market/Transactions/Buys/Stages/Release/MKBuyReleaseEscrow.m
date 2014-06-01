@@ -17,7 +17,7 @@
 - (id)init
 {
     self = [super init];
-    //self.nodeViewClass = NavMirrorView.class;
+    self.nodeViewClass = NavMirrorView.class;
     
     {
         NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"requestRefund"];

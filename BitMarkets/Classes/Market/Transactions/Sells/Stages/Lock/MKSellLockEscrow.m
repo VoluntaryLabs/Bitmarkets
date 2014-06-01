@@ -98,14 +98,14 @@
         return @"confirmed";
     }
     
-    if (self.buyerLockMsg)
-    {
-        return @"got buyer lock";
-    }
-    
     if (self.sellerLockMsg)
     {
         return @"awaiting confirm";
+    }
+    
+    if (self.buyerLockMsg)
+    {
+        return @"got buyer lock";
     }
     
     if (self.sell.bids.acceptedBid)

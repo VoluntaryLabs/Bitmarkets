@@ -24,7 +24,7 @@
 - (id)init
 {
     self = [super init];
-    self.passphrase = @"bitmarkets demo 5";    
+    self.passphrase = @"bitmarkets demo 6";    
     return self;
 }
 

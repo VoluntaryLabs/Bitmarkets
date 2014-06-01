@@ -32,7 +32,7 @@
     return [NSString stringWithFormat:@"Transaction %@", [self.tx objectForKey:@"txid"]];
 }
 
-- (NSString *)nodeNote
+- (NSString *)nodeSubtitle
 {
     return [NSString stringWithFormat:@"Confirmed %@", self.dateString];
 }
