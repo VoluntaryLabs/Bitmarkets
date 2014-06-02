@@ -33,7 +33,7 @@
 
 - (CGFloat)nodeSuggestedWidth
 {
-    return 350.0;
+    return 380.0;
 }
 
 - (NSString *)nodeNote

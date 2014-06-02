@@ -319,8 +319,8 @@
 - (BOOL)sendToBuyer
 {
     BMMessage *m = [[BMMessage alloc] init];
-    [m setFromAddress:self.sellerAddress];
     [m setToAddress:self.buyerAddress];
+    [m setFromAddress:self.sellerAddress];
     [m setSubject:self.subject];
     [m setMessage:self.dict.asJsonString];
     [m send];
@@ -335,8 +335,8 @@
 - (BOOL)sendToSeller
 {
     BMMessage *m = [[BMMessage alloc] init];
-    [m setFromAddress:self.sellerAddress];
-    [m setToAddress:self.buyerAddress];
+    [m setToAddress:self.sellerAddress];
+    [m setFromAddress:self.buyerAddress];
     [m setSubject:self.subject];
     [m setMessage:self.dict.asJsonString];
     [m send];

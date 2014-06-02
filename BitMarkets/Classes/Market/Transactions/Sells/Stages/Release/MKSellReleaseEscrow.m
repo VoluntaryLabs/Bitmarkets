@@ -79,7 +79,12 @@
         return @"buyer requests refund";
     }
     
-    return @"awaiting buyer...";
+    if (self.isActive)
+    {
+        return @"awaiting buyer...";
+    }
+    
+    return nil;
 }
 
 - (BOOL)isActive

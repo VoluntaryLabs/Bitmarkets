@@ -93,7 +93,7 @@
 
 - (NSString *)nodeTitle
 {
-    return @"Bid";
+    return [NSString stringWithFormat:@"Bid from %@", self.bidMsg.buyerAddress];
 }
 
 - (NSString *)nodeSubtitle
