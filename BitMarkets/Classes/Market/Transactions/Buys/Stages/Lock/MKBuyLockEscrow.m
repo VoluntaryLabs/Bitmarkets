@@ -166,9 +166,6 @@
         return YES;
     }
     
-    MKBuyerLockEscrowMsg *msg = [[MKBuyerLockEscrowMsg alloc] init];
-    [msg copyFrom:self.buy.bidMsg];
-    
     
     BNTx *escrowTx = [wallet newTx];
     
@@ -219,6 +216,8 @@
         [escrowTx sign];
         //[escrowTx markInputsAsSpent]; TODO
         
+        MKBuyerLockEscrowMsg *msg = [[MKBuyerLockEscrowMsg alloc] init];
+        [msg copyFrom:self.buy.bidMsg];
         [msg setPayload:[escrowTx asJSONObject]];
         
         [msg sendToSeller];
