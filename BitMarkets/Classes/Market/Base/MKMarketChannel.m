@@ -38,20 +38,28 @@
                                                  name:nil
                                                object:BMClient.sharedBMClient.messages.received];
     
-    self.needsFetch = YES;
+    self.needsToFetchChannelMessages = YES;
+    self.needsToFetchDirectMessages  = YES;
     return self;
 }
 
 - (void)channelChanged:(NSNotification *)note
 {
     //[self fetchChannelMessages];
-    self.needsFetch = YES;
+    if (!self.needsToFetchChannelMessages)
+    {
+        self.needsToFetchChannelMessages = YES;
+        [self performSelector:@selector(fetchChannelMessages) withObject:self afterDelay:0.0];
+    }
 }
 
 - (void)receivedMessagesChanged:(NSNotification *)note
 {
-    self.needsFetch = YES;
-//    [self fetchDirectMessages];
+    if (!self.needsToFetchDirectMessages)
+    {
+        self.needsToFetchDirectMessages = YES;
+        [self performSelector:@selector(fetchDirectMessages) withObject:self afterDelay:0.0];
+    }
 }
 
 
@@ -83,18 +91,14 @@
     //[[[BMClient sharedBMClient] channels] fetch];
     //[BMClient.sharedBMClient refresh];
     
-    if (self.needsFetch)
-    {
-        [self fetchChannelMessages];
-        [self fetchDirectMessages];
-        self.needsFetch = NO;
-    }
-    
-    [self performSelector:@selector(fetch) withObject:self afterDelay:5.0];
+    [self fetchChannelMessages];
+    [self fetchDirectMessages];
 }
 
 - (void)fetchChannelMessages
 {
+    self.needsToFetchChannelMessages = NO;
+    
     NSArray *messages = self.channel.children.copy;
     
     NSMutableArray *closeMsgs = [NSMutableArray array];
@@ -155,6 +159,8 @@
 
 - (void)fetchDirectMessages
 {
+    self.needsToFetchDirectMessages = NO;
+
     NSArray *inboxMessages = BMClient.sharedBMClient.messages.received.children.copy;
     [self handleBMMessages:inboxMessages];
 }

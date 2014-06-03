@@ -17,7 +17,9 @@
 
 @property (strong, nonatomic) NSString *passphrase;
 @property (strong, nonatomic) BMChannel *channel;
-@property (assign, nonatomic) BOOL needsFetch;
+
+@property (assign, nonatomic) BOOL needsToFetchChannelMessages;
+@property (assign, nonatomic) BOOL needsToFetchDirectMessages;
 
 - (void)fetch;
 
