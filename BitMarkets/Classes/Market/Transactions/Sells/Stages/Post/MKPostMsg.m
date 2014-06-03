@@ -70,6 +70,7 @@
 {
     MKPost *mkPost = [[MKPost alloc] init];
     [mkPost setPropertiesDict:self.dict];
+    mkPost.bmMessage = self.bmMessage;
     return mkPost;
 }
 

@@ -277,8 +277,13 @@
             {
                 [self close];
             }
-            
+            else
+            {
+                // this message was an unauthorized attempt to delete a post
+            }
+
             [msg.bmMessage delete];
+            return YES;
         }
     }
     
@@ -287,6 +292,7 @@
 
 - (void)close
 {
+    [self.bmMessage delete];
     [self removeFromParent];
 }
 

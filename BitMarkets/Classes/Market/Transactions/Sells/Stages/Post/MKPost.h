@@ -9,6 +9,7 @@
 #import "MKGroup.h"
 #import "MKPostMsg.h"
 #import "MKBidMsg.h"
+#import <BitmessageKit/BitmessageKit.h>
 
 //@class MKPostMsg;
 //@class MKBidMsg;
@@ -29,6 +30,7 @@
 @property (strong, nonatomic) NSArray  *categoryPath;
 @property (strong, nonatomic) NSString *sellerAddress;
 @property (strong, nonatomic) NSArray  *attachments;
+@property (strong, nonatomic) BMMessage *bmMessage;
 
 - (BOOL)isEditable;
 - (BOOL)canBuy;
