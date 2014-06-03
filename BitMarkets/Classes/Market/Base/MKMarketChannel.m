@@ -24,9 +24,36 @@
 - (id)init
 {
     self = [super init];
-    self.passphrase = @"bitmarkets demo 7";    
+    self.passphrase = @"bitmarkets demo 23";
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(channelChanged:)
+                                                 name:nil
+                                                 //name:@"NavNodeAddedChild"
+                                               object:self.channel];
+      
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receivedMessagesChanged:)
+                                                 //name:@"NavNodeAddedChild"
+                                                 name:nil
+                                               object:BMClient.sharedBMClient.messages.received];
+    
+    self.needsFetch = YES;
     return self;
 }
+
+- (void)channelChanged:(NSNotification *)note
+{
+    //[self fetchChannelMessages];
+    self.needsFetch = YES;
+}
+
+- (void)receivedMessagesChanged:(NSNotification *)note
+{
+    self.needsFetch = YES;
+//    [self fetchDirectMessages];
+}
+
 
 - (CGFloat)nodeSuggestedWidth
 {
@@ -37,7 +64,14 @@
 {
     if (!_channel)
     {
-        _channel = [BMClient.sharedBMClient.channels channelWithPassphraseJoinIfNeeded:self.passphrase];
+        BMChannels *channels = BMClient.sharedBMClient.channels;
+
+        if (![channels channelWithPassphrase:self.passphrase])
+        {
+            [channels leaveAllChannels];
+        }
+        
+        _channel = [channels channelWithPassphraseJoinIfNeeded:self.passphrase];
     }
     
     return _channel;
@@ -47,7 +81,20 @@
 {
     // just make sure this is in the fetch chain from BMClient?
     //[[[BMClient sharedBMClient] channels] fetch];
+    //[BMClient.sharedBMClient refresh];
+    
+    if (self.needsFetch)
+    {
+        [self fetchChannelMessages];
+        [self fetchDirectMessages];
+        self.needsFetch = NO;
+    }
+    
+    [self performSelector:@selector(fetch) withObject:self afterDelay:5.0];
+}
 
+- (void)fetchChannelMessages
+{
     NSArray *messages = self.channel.children.copy;
     
     NSMutableArray *closeMsgs = [NSMutableArray array];
@@ -104,10 +151,6 @@
             [closeMsg.bmMessage delete];
         }
     }
-    
-    [self fetchDirectMessages];
-    
-    [self performSelector:@selector(fetch) withObject:self afterDelay:5.0];
 }
 
 - (void)fetchDirectMessages
@@ -135,8 +178,19 @@
         
         if (!didHandle)
         {
-            NSLog(@"can't place msg '%@' for thread '%@'", msg.className, msg.postUuid);
-            [bmMessage delete];
+            [markets handleMsg:msg];
+            
+            if (![bmMessage.toAddress isEqualToString:self.channel.address])
+            {
+                [bmMessage delete];
+            }
+            else
+            {
+                NSLog(@"channel address %@", _channel.address);
+                
+                NSLog(@"can't place msg '%@' for thread '%@' to %@ from %@",
+                      msg.className, msg.postUuid, bmMessage.toAddress, bmMessage.fromAddress);
+            }
         }
         else
         {

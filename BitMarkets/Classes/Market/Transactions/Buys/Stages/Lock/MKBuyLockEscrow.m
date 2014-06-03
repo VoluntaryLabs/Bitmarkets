@@ -148,7 +148,15 @@
 {
     if (self.buy.bid.wasAccepted && !self.buyerLockMsg)
     {
-        [self sendLockToSeller];
+        @try
+        {
+            [self sendLockToSeller];
+        }
+        @catch (NSException *exception)
+        {
+            NSLog(@"sendLockToSellerIfNeeded exception %@", exception);
+        }
+
     }
 }
 

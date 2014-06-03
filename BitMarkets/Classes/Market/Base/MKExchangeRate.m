@@ -40,7 +40,7 @@ static MKExchangeRate *shared;
 
 - (void)update
 {
-    NSLog(@"Updating BTC Exchange rate");
+    //NSLog(@"Updating BTC Exchange rate");
 
     NSString *url =
     [NSString stringWithFormat:@"https://blockchain.info/ticker"];

@@ -304,10 +304,13 @@
 - (BOOL)sendFromSellerToChannel
 {
     BMMessage *m = [[BMMessage alloc] init];
-    [m setFromAddress:self.sellerAddress];
     [m setToAddress:self.channelAddress];
+    [m setFromAddress:self.sellerAddress];
     [m setSubject:self.subject];
     [m setMessage:self.dict.asJsonString];
+
+    NSLog(@"sending from %@ to channel %@", m.fromAddress, m.toAddress);
+    
     [m send];
     
     self.ackData = m.ackData;

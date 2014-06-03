@@ -201,6 +201,7 @@
         //NSLog(@"placing sell in path '%@'", self.fullPath);
         MKCategory *cat = nodePath.lastObject;
         [cat addChild:self];
+        //[cat postParentChainChanged];
         return YES;
     }
     else

@@ -91,7 +91,7 @@
 
 - (void)changedPost:(NSNotification *)note
 {
-    NSLog(@"changedPost");
+    //NSLog(@"changedPost");
     [self postParentChanged];
 }
 
