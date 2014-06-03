@@ -13,8 +13,9 @@
 
 ------ steve ------
 
-- first channel subscribe doesn't seem to work 
-  - do we need to both add and subscribe to channel?
+- buyer auto cancel bid if rejected 
+
+- add remove post without accepting bid button
 
 - cleanup write notification system
 

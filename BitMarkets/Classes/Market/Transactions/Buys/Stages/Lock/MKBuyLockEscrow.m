@@ -37,6 +37,11 @@
 
 - (BOOL)canCancel
 {
+    if (self.error)
+    {
+        return NO;
+    }
+    
     if (!self.runningWallet)
     {
         return NO;
@@ -64,6 +69,11 @@
 
 - (NSString *)nodeNote
 {
+    if (self.error)
+    {
+        return @"✗";
+    }
+    
     if (self.isActive)
     {
         return @"●";
@@ -88,6 +98,11 @@
 
 - (NSString *)nodeSubtitle
 {
+    if (self.error)
+    {
+        return self.error;
+    }
+    
     if (self.buyerLockMsg)
     {
         if (!self.runningWallet)
@@ -127,6 +142,7 @@
         [self addChild:msg];
         [self update];
         [self postParentChainChanged];
+        [self updateActions];
         return YES;
     }
     
@@ -221,7 +237,17 @@
         
         escrowTx = [escrowTx mergedWithEscrowTx:sellerEscrowTx];
         [escrowTx subtractFee];
-        [escrowTx sign];
+        
+        @try
+        {
+            self.error = nil;
+            [escrowTx sign];
+        }
+        @catch (NSException *exception)
+        {
+            self.error = @"sign error";
+        }
+
         //[escrowTx markInputsAsSpent]; TODO
         
         MKBuyerLockEscrowMsg *msg = [[MKBuyerLockEscrowMsg alloc] init];
