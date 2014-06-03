@@ -101,7 +101,7 @@ static MKRootNode *sharedMKRootNode = nil;
 
 - (void)setupWallet
 {
-    if (NO)
+    if (YES)
     {
         _wallet  = [[BNWallet alloc] init];
         
