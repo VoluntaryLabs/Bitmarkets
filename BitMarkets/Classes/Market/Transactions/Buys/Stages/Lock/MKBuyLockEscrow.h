@@ -13,7 +13,6 @@
 
 @property (strong, nonatomic) NSTimer *confirmTimer;
 @property (strong, nonatomic) BNTx *escrowInputTx;
-@property (strong, nonatomic) NSString *error;
 
 - (void)update;
 - (BOOL)canCancel;

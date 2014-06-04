@@ -238,6 +238,7 @@
         escrowTx = [escrowTx mergedWithEscrowTx:sellerEscrowTx];
         [escrowTx subtractFee];
         
+        wallet.server.logs = YES;
         @try
         {
             self.error = nil;
@@ -245,8 +246,9 @@
         }
         @catch (NSException *exception)
         {
-            self.error = @"sign error";
+            self.error = @"escrow sign error";
         }
+        wallet.server.logs = NO;
 
         //[escrowTx markInputsAsSpent]; TODO
         

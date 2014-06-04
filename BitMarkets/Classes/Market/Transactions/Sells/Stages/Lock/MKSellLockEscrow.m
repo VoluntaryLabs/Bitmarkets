@@ -64,6 +64,11 @@
 
 - (NSString *)nodeNote
 {
+    if (self.error)
+    {
+        return @"✗";
+    }
+    
     if (self.isActive)
     {
         return @"●";
@@ -91,6 +96,11 @@
     if (!self.runningWallet)
     {
         return @"waiting for wallet..";
+    }
+    
+    if (self.error)
+    {
+        return self.error;
     }
     
     if (self.confirmLockMsg)
@@ -153,7 +163,18 @@
     BNTx *buyerEscrowTx = [self.buyerLockMsg.payload asObjectFromJSONObject]; //TODO check errors.  TODO verify tx before signing.
     buyerEscrowTx.wallet = wallet;
     
-    [buyerEscrowTx sign];
+    wallet.server.logs = YES;
+    @try
+    {
+        self.error = nil;
+        [buyerEscrowTx sign];
+    }
+    @catch (NSException *exception)
+    {
+        self.error = @"escrow sign error";
+    }
+    wallet.server.logs = NO;
+
     [buyerEscrowTx broadcast];
 
     [msg sendToBuyer];

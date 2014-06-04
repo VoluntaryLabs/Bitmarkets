@@ -13,6 +13,8 @@
 
 @interface MKEscrow : MKGroup
 
+@property (strong, nonatomic) NSString *error;
+
 - (MKSell *)sell;
 - (MKBuy *)buy;
 
