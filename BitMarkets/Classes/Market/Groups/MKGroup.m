@@ -147,7 +147,13 @@
     
     for (MKGroup *child in self.children)
     {
-        [childrenDicts addObject:[child dict]];
+        NSDictionary *dict = [child dict];
+        if (dict == nil)
+        {
+            NSLog(@"nill child dict");
+            [child dict];
+        }
+        [childrenDicts addObject:dict];
     }
     
     return childrenDicts;
@@ -155,6 +161,10 @@
 
 // properties
 
+- (void)addPropertyName:(NSString *)aName
+{
+    [self.dictPropertyNames addObject:aName];
+}
 
 - (void)setPropertiesDict:(NSDictionary *)dict
 {

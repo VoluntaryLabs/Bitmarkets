@@ -88,7 +88,7 @@
         if (self.checkForConfirm)
         {
             MKConfirmLockEscrowMsg *msg = [[MKConfirmLockEscrowMsg alloc] init];
-            [msg copyFrom:self.bidMsg];
+            [msg copyThreadFrom:self.bidMsg];
             [self addChild:msg];
         }
     }

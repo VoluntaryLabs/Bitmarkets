@@ -104,7 +104,7 @@
 
 - (BOOL)isEditable
 {
-    return self.isInSell && !self.isPosted;
+    return self.isInSell && !self.isComplete;
 }
 
 - (BOOL)canBuy
@@ -162,17 +162,6 @@
 
 // ----------
 
-- (void)setPropertiesDict:(NSDictionary *)dict
-{
-    [super setPropertiesDict:dict];
-    NSLog(@"");
-}
-
-- (NSDictionary *)propertiesDict
-{
-    return [super propertiesDict];
-}
-
 - (NSArray *)fullPath
 {
     NSMutableArray *path = [NSMutableArray array];
@@ -228,9 +217,9 @@
     return [self.children firstObjectOfClass:MKPostMsg.class];
 }
 
-- (BOOL)isPosted
+- (BOOL)isComplete
 {
-    return self.postMsg != nil;
+    return self.postMsg && self.postMsg.wasSent;
 }
 
 - (MKSell *)sell

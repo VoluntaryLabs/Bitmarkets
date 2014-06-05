@@ -46,11 +46,14 @@
 {
     // clean this up
     
-    //[self.dict removeAllObjects];
-    [self.dict setObject:self.classNameSansPrefix forKey:@"_type"];
-    [self.dict addEntriesFromDictionary:mkPost.propertiesDict];
-    [self.dict removeObjectForKey:@"status"];
-
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:mkPost.propertiesDict];
+    
+    self.sellerAddress = self.myAddress;
+    self.buyerAddress = nil;
+    self.postUuid = mkPost.postUuid;
+    
+    [dict removeObjectForKey:@"status"];
+    [self setPayload:dict];
     [self send];
 }
 
@@ -69,9 +72,10 @@
 - (MKPost *)mkPost
 {
     MKPost *mkPost = [[MKPost alloc] init];
-    [mkPost setPropertiesDict:self.dict];
+    [mkPost setPropertiesDict:self.payload];
     mkPost.bmMessage = self.bmMessage;
     return mkPost;
 }
+
 
 @end

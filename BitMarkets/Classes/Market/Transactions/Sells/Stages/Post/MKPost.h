@@ -50,7 +50,7 @@
 - (MKPostMsg *)sendPostMsg;
 - (MKBidMsg *)sendBidMsg;
 
-- (BOOL)isPosted;
+- (BOOL)isComplete;
 
 // equality
 

@@ -19,7 +19,7 @@
 - (id)init
 {
     self = [super init];
-    //[self.dictPropertyNames addObject:@"msg"];
+    //[self addPropertyName:@"msg"];
     return self;
 }
 

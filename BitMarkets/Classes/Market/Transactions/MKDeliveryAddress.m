@@ -17,7 +17,7 @@
 {
     self = [super init];
     self.addressDict = [NSMutableDictionary dictionary];
-    [self.dictPropertyNames addObject:@"addressDict"];
+    [self addPropertyName:@"addressDict"];
 
     {
         NavDataSlot *slot = [self.navMirror newDataSlotWithName:@"addressee"];

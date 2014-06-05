@@ -71,6 +71,29 @@
     return msg;
 }
 
+- (id)init
+{
+    self = [super init];
+    //NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    //[dict setObject:self.classNameSansPrefix forKey:@"_type"];
+    //[dict setObject:self.class.serviceName forKey:@"_serviceName"];
+    //[dict setObject:self.class.serviceVersion forKey:@"_serviceVersion"];
+    //[self setDict:dict];
+    //[self addPropertyName:@"serviceName"];
+    //[self addPropertyName:@"serviceVersion"];
+    [self addPropertyName:@"ackData"];
+    [self addPropertyName:@"payload"];
+    [self addPropertyName:@"postUuid"];
+    [self addPropertyName:@"sellerAddress"];
+    [self addPropertyName:@"buyerAddress"];
+    [self addPropertyName:@"dateNumber"];
+    [self addDate];
+    
+    self.nodeViewClass = NavDescriptionView.class;
+    
+    return self;
+}
+
 - (BOOL)bmSenderIsBuyer // only works when first received
 {
     return [self.bmMessage.fromAddress isEqualToString:self.buyerAddress];
@@ -84,21 +107,6 @@
 - (NSString *)classNameSansPrefix
 {
     return [self.className sansPrefix:@"MK"];
-}
-
-- (id)init
-{
-    self = [super init];
-    self.dict = [NSMutableDictionary dictionary];
-    [self.dict setObject:self.classNameSansPrefix forKey:@"_type"];
-    [self.dict setObject:self.class.serviceName forKey:@"_serviceName"];
-    [self.dict setObject:self.class.serviceVersion forKey:@"_serviceVersion"];
-    [self.dictPropertyNames addObject:@"ackData"];
-    [self addDate];
-    
-    self.nodeViewClass = NavDescriptionView.class;
-
-    return self;
 }
 
 - (id)descriptionJSONObject
@@ -149,14 +157,14 @@
     NSNumber *d = [NSNumber numberWithDouble:[aDate timeIntervalSince1970]];
     NSDate *newDate = [NSDate dateWithTimeIntervalSince1970:(NSTimeInterval)d.doubleValue];
     assert([aDate.description isEqualToString:newDate.description]);
-    
-    [self.dict setObject:d forKey:@"date"];
+
+    self.dateNumber = d;
 }
 
 
 - (NSDate *)date
 {
-    NSNumber *d = [self.dict objectForKey:@"date"];
+    NSNumber *d = self.dateNumber;
     
     if (d)
     {
@@ -184,6 +192,13 @@
     return self.uniqueName;
 }
 
+- (BOOL)wasSent
+{
+    BMSentMessage *sentMessage = self.sentMessage;
+    
+    return (sentMessage && sentMessage.wasSent);
+}
+
 - (NSString *)nodeSubtitle
 {
     BMSentMessage *sentMessage = self.sentMessage;
@@ -194,10 +209,10 @@
         return @"sending...";
         //return sentMessage.getHumanReadbleStatus;
         //return [NSString stringWithFormat:@"%@ (%@)", self.dateString, sentMessage.getStatus];
-        //return [NSString stringWithFormat:@"%@ (%@)", self.dateString, @"sending"];
     }
     
-    return self.dateString;
+    return [NSString stringWithFormat:@"sent %@", self.dateString];
+    //return self.dateString;
 }
 
 - (void)checkStatusUntilSent
@@ -246,45 +261,9 @@
             self.postUuid];
 }
 
-// postUuid
-
-- (void)setPostUuid:(NSString *)postUuid
-{
-    [self.dict setObject:postUuid forKey:@"postUuid"];
-}
-
-- (NSString *)postUuid
-{
-    return [self.dict objectForKey:@"postUuid"];
-}
-
-// seller
-
-- (void)setSellerAddress:(NSString *)sellerAddress
-{
-    [self.dict setObject:sellerAddress forKey:@"sellerAddress"];
-}
-
-- (NSString *)sellerAddress
-{
-    return [self.dict objectForKey:@"sellerAddress"];
-}
-
-// buyer
-
-- (void)setBuyerAddress:(NSString *)buyerAddress
-{
-    [self.dict setObject:buyerAddress forKey:@"buyerAddress"];
-}
-
-- (NSString *)buyerAddress
-{
-    return [self.dict objectForKey:@"buyerAddress"];
-}
-
 // copy
 
-- (void)copyFrom:(MKMsg *)msg
+- (void)copyThreadFrom:(MKMsg *)msg
 {
     self.sellerAddress = msg.sellerAddress;
     self.buyerAddress  = msg.buyerAddress;

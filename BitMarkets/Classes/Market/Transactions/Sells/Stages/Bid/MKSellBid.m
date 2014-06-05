@@ -221,7 +221,7 @@
     else
     {
         MKAcceptBidMsg *msg = [[MKAcceptBidMsg alloc] init];
-        [msg copyFrom:self.bidMsg];
+        [msg copyThreadFrom:self.bidMsg];
         
         //[escrowTx markInputsAsSpent]; TODO
         [msg setPayload:[escrowTx asJSONObject]];
@@ -238,7 +238,7 @@
 - (void)reject
 {
     MKRejectBidMsg *msg = [[MKRejectBidMsg alloc] init];
-    [msg copyFrom:self.bidMsg];
+    [msg copyThreadFrom:self.bidMsg];
     [msg send];
     
     [self addChild:msg];

@@ -10,9 +10,6 @@
 
 @interface MKEscrowMsg : MKMsg
 
-- (void)setPayload:(NSDictionary *)payload;
-- (NSDictionary *)payload;
-
 - (BOOL)isPayloadConfirmed;
 
 @end

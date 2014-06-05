@@ -10,4 +10,6 @@
 
 @interface MKConfirmMsg : MKEscrowMsg
 
+@property (strong, nonatomic) NSDictionary *tx;
+
 @end
