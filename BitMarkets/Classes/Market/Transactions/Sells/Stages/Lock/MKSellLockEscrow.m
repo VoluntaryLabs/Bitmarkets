@@ -163,7 +163,8 @@
     BNTx *buyerEscrowTx = [self.buyerLockMsg.payload asObjectFromJSONObject]; //TODO check errors.  TODO verify tx before signing.
     buyerEscrowTx.wallet = wallet;
     
-    wallet.server.logs = YES;
+    wallet.server.logsNextMessage = YES;
+    
     @try
     {
         self.error = nil;
@@ -173,7 +174,6 @@
     {
         self.error = @"escrow sign error";
     }
-    wallet.server.logs = NO;
 
     [buyerEscrowTx broadcast];
 
