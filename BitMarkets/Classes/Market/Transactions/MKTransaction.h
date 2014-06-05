@@ -14,6 +14,7 @@
 @interface MKTransaction : MKMsgGroup
 
 @property (strong, nonatomic) MKPost *mkPost;
+@property (strong, nonatomic) NSString *error;
 
 //- (MKMsg *)msgInstanceOfClass:(Class)aClass;
 

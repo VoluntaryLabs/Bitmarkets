@@ -1,6 +1,14 @@
 {
 	"default": 
 	{
+        "code" :
+        {
+            "fontName" : "Courier",
+            "fontSize" : 12,
+            "color" : "#888888",
+            "align" : "left",
+            "backgroundColor" : "#000000"
+        },
         
         "address" :
         {

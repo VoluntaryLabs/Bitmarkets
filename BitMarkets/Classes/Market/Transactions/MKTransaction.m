@@ -28,11 +28,21 @@
 
 - (NSString *)nodeSubtitle
 {
+    if (self.error)
+    {
+        return self.error;
+    }
+    
     return [NSString stringWithFormat:@"%@BTC", self.mkPost.priceInBtc];
 }
 
 - (NSString *)nodeNote
 {
+    if (self.error || self.didFail)
+    {
+        return @"✗";
+    }
+    
     if (self.isActive)
     {
         return @"●";
@@ -43,11 +53,6 @@
         return @"✓";
     }
     
-    if (self.didFail)
-    {
-        return @"✗";
-    }
-    
     return nil;
 }
 
@@ -56,7 +61,7 @@
 {
     [super setDict:dict];
     
-    self.mkPost   = [self.children firstObjectOfClass:MKPost.class];
+    self.mkPost = [self.children firstObjectOfClass:MKPost.class];
 }
 
 // -------------------------
@@ -90,11 +95,21 @@
 
 - (void)update
 {
+    self.error = nil;
+    
     for (NavNode *child in self.children)
     {
         if ([child respondsToSelector:@selector(update)])
         {
-            [(id)child update];
+            @try
+            {
+                [(id)child update];
+            }
+            @catch (NSException *exception)
+            {
+                self.error = @"update error";
+            }
+
         }
     }
 }

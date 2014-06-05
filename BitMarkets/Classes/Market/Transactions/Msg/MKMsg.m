@@ -95,7 +95,15 @@
     [self.dict setObject:self.class.serviceVersion forKey:@"_serviceVersion"];
     [self.dictPropertyNames addObject:@"ackData"];
     [self addDate];
+    
+    self.nodeViewClass = NavDescriptionView.class;
+
     return self;
+}
+
+- (id)descriptionJSONObject
+{
+    return self.dict;
 }
 
 /*
