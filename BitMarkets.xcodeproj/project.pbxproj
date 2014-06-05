@@ -62,6 +62,7 @@
 		AA605AC2192A8CC700798BCA /* MKMsgGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = AA605AC1192A8CC700798BCA /* MKMsgGroup.m */; };
 		AA605AC5192A931F00798BCA /* MKClosePostMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AA605AC4192A931F00798BCA /* MKClosePostMsg.m */; };
 		AA753D9D1910779800D07CB5 /* BNKeyView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA753D9C1910779800D07CB5 /* BNKeyView.m */; };
+		AA803EAF194003F50090E619 /* MKTransactionProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA803EAE194003F50090E619 /* MKTransactionProgressView.m */; };
 		AA8F0E761939432F00B62302 /* MKConfirmMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8F0E751939432F00B62302 /* MKConfirmMsg.m */; };
 		AA9227081905F94900C3D9D7 /* categories.json in Resources */ = {isa = PBXBuildFile; fileRef = AA9226F61905F94900C3D9D7 /* categories.json */; };
 		AA9227171905F94900C3D9D7 /* regions.json in Resources */ = {isa = PBXBuildFile; fileRef = AA9227071905F94900C3D9D7 /* regions.json */; };
@@ -310,6 +311,8 @@
 		AA605AC4192A931F00798BCA /* MKClosePostMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKClosePostMsg.m; sourceTree = "<group>"; };
 		AA753D9B1910779800D07CB5 /* BNKeyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNKeyView.h; sourceTree = "<group>"; };
 		AA753D9C1910779800D07CB5 /* BNKeyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNKeyView.m; sourceTree = "<group>"; };
+		AA803EAD194003F50090E619 /* MKTransactionProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKTransactionProgressView.h; sourceTree = "<group>"; };
+		AA803EAE194003F50090E619 /* MKTransactionProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKTransactionProgressView.m; sourceTree = "<group>"; };
 		AA8F0E741939432F00B62302 /* MKConfirmMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKConfirmMsg.h; sourceTree = "<group>"; };
 		AA8F0E751939432F00B62302 /* MKConfirmMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKConfirmMsg.m; sourceTree = "<group>"; };
 		AA9226E61905F88200C3D9D7 /* NavNodeKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = NavNodeKit.xcodeproj; path = ../NavNodeKit/NavNodeKit.xcodeproj; sourceTree = "<group>"; };
@@ -718,6 +721,8 @@
 				AA09C7DA192BDC2800317130 /* MKAttachmentView.m */,
 				AA09C7EA192BEC2B00317130 /* MKDragFileWell.h */,
 				AA09C7EB192BEC2B00317130 /* MKDragFileWell.m */,
+				AA803EAD194003F50090E619 /* MKTransactionProgressView.h */,
+				AA803EAE194003F50090E619 /* MKTransactionProgressView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1165,6 +1170,7 @@
 				AAB2816019220F04005C9D27 /* MKConfirmPaymentMsg.m in Sources */,
 				AA2B1A2E1923683500D712D8 /* MKBuyPostPaymentMsg.m in Sources */,
 				AAB2813D19217586005C9D27 /* MKMsg.m in Sources */,
+				AA803EAF194003F50090E619 /* MKTransactionProgressView.m in Sources */,
 				AA0E585D18FDC0880095DEBD /* main.m in Sources */,
 				AAB2814E192190F0005C9D27 /* MKTransactions.m in Sources */,
 				AAB2814519217586005C9D27 /* MKSellDeliveryAddress.m in Sources */,
