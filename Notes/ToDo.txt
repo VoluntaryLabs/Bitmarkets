@@ -10,6 +10,7 @@
 	- validate amount / address
 - encrypt the deposit address file
 - update status when wallet fails to open (and maybe write log file)
+- deposit address isn't changing
 
 ------ steve ------
 
