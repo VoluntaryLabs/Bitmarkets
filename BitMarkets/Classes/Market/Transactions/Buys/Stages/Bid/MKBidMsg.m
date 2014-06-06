@@ -40,13 +40,11 @@
 
 - (void)setupForPost:(MKPost *)mkPost
 {
-    [self.dict removeAllObjects];
     //[self.dict addEntriesFromDictionary:mkPost.propertiesDict];
     
-    [self.dict setObject:self.classNameSansPrefix forKey:@"_type"];
-    [self.dict setObject:mkPost.postUuid          forKey:@"postUuid"];
-    [self.dict setObject:mkPost.sellerAddress     forKey:@"sellerAddress"];
-    [self.dict setObject:self.myAddress           forKey:@"buyerAddress"];
+    self.postUuid = mkPost.postUuid;
+    self.sellerAddress = mkPost.sellerAddress;
+    self.buyerAddress = self.myAddress;
 }
 
 - (BOOL)send

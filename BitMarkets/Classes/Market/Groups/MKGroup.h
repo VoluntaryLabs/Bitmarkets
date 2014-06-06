@@ -27,6 +27,8 @@
 - (void)setPropertiesDict:(NSDictionary *)dict;
 - (NSDictionary *)propertiesDict;
 
+- (void)addPropertyName:(NSString *)aName;
+
 
 - (void)read;
 - (void)write;

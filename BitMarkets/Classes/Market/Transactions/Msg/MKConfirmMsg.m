@@ -13,18 +13,8 @@
 - (id)init
 {
     self = [super init];
-    [self.dictPropertyNames addObject:@"tx"];
+    [self addPropertyName:@"tx"];
     return self;
-}
-
-- (void)setTx:(NSDictionary *)txDict
-{
-    [self.dict setObject:txDict forKey:@"tx"];
-}
-
-- (NSDictionary *)tx
-{
-    return [self.dict objectForKey:@"tx"];
 }
 
 - (NSString *)nodeTitle

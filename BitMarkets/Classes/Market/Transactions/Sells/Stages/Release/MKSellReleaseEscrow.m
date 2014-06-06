@@ -185,7 +185,7 @@
     [releaseTx sign];
     
     MKSellAcceptPaymentMsg *msg = [[MKSellAcceptPaymentMsg alloc] init];
-    [msg copyFrom:self.sell.acceptedBidMsg];
+    [msg copyThreadFrom:self.sell.acceptedBidMsg];
     [msg setPayload:releaseTx.asJSONObject];
     [self addChild:msg];
     [msg sendToBuyer];
@@ -212,7 +212,7 @@
     [refundTx sign];
     
     MKSellAcceptRefundRequestMsg *msg = [[MKSellAcceptRefundRequestMsg alloc] init];
-    [msg copyFrom:self.sell.acceptedBidMsg];
+    [msg copyThreadFrom:self.sell.acceptedBidMsg];
     [msg setPayload:refundTx.asJSONObject];
     [self addChild:msg];
     [msg sendToBuyer];
@@ -230,7 +230,7 @@
     }
     
     MKSellRejectRefundRequestMsg *msg = [[MKSellRejectRefundRequestMsg alloc] init];
-    [msg copyFrom:self.sell.acceptedBidMsg];
+    [msg copyThreadFrom:self.sell.acceptedBidMsg];
     [self addChild:msg];
     [msg sendToBuyer];
     [self postParentChainChanged];

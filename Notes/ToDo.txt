@@ -16,9 +16,9 @@
 
 ------ steve ------
 
-- node note on sell lock escrow when wallet not running
+- disable post button after posted
 
-- verify buyer auto cancel bid if rejected 
+- remove .backups?
 
 - add remove post without accepting bid button
 
@@ -31,14 +31,14 @@
 
 - delivery status / package tracking
 
-- fix for category / region paths
+*- fix for category / region paths
 - better category set?
 
 - add service and version fields to msgs?
 - add any needed auth checks on msgs
 
 - timeouts for bid, lock and await delivery + user warnings
-- timeout for posting? auto-reposting for posts with no bids?
+- timeout for posting? auto-reposting until delete or bid accepted?
 
 [later]
 

@@ -15,24 +15,15 @@
 - (id)init
 {
     self = [super init];
-    [self.dictPropertyNames addObject:@"payload"];
     return self;
 }
 
-- (void)setPayload:(NSDictionary *)payload
-{
-    [self.dict setObject:payload forKey:@"payload"];
-}
-
-- (NSDictionary *)payload
-{
-    return [self.dict objectForKey:@"payload"];
-}
-
+/*
 - (NSArray *)modelActions
 {
     return @[@"delete"];
 }
+*/
 
 - (BOOL)isPayloadConfirmed
 {

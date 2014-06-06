@@ -188,7 +188,7 @@
     
     MKBuyPaymentMsg *msg = [[MKBuyPaymentMsg alloc] init];
     [msg setPayload:[releaseTx asJSONObject]];
-    [msg copyFrom:self.buy.bidMsg];
+    [msg copyThreadFrom:self.buy.bidMsg];
     [msg sendToSeller];
     
     [self addChild:msg];
@@ -214,7 +214,7 @@
     [refundTx addPayToAddressOutputWithValue:[NSNumber numberWithLongLong:2*escrowTx.firstOutput.value.longLongValue/3]];
     
     MKBuyRefundRequestMsg *msg = [[MKBuyRefundRequestMsg alloc] init];
-    [msg copyFrom:self.buy.bidMsg];
+    [msg copyThreadFrom:self.buy.bidMsg];
     [msg setPayload:refundTx.asJSONObject];
     [msg sendToSeller];
     
@@ -246,7 +246,7 @@
         [releaseTx broadcast];
         
         MKBuyPostPaymentMsg *msg = [[MKBuyPostPaymentMsg alloc] init];
-        [msg copyFrom:self.buy.bidMsg];
+        [msg copyThreadFrom:self.buy.bidMsg];
         [self addChild:msg];
     }
 }
@@ -276,7 +276,7 @@
         [releaseTx broadcast];
         
         MKBuyPostRefundMsg *msg = [[MKBuyPostRefundMsg alloc] init];
-        [msg copyFrom:self.buy.bidMsg];
+        [msg copyThreadFrom:self.buy.bidMsg];
         [self addChild:msg];
     }
 }

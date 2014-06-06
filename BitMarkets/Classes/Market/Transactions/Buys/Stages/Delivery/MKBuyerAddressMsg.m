@@ -27,12 +27,12 @@
 
 - (NSDictionary *)addressDict
 {
-    return [self.dict objectForKey:@"address"];
+    return self.payload;
 }
 
 - (void)setAddressDict:(NSDictionary *)aDict
 {
-    [self.dict setObject:aDict forKey:@"address"];
+    [self setPayload:aDict];
 }
 
 @end

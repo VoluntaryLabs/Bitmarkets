@@ -13,7 +13,13 @@
 
 @interface MKMsg : MKGroup
 
-@property (strong, nonatomic) NSMutableDictionary *dict;
+@property (strong, nonatomic) NSString *postUuid;
+@property (strong, nonatomic) NSString *sellerAddress;
+@property (strong, nonatomic) NSString *buyerAddress;
+@property (strong, nonatomic) NSNumber *dateNumber;
+
+@property (strong, nonatomic) NSDictionary *payload;
+
 @property (strong, nonatomic) BMMessage *bmMessage;
 @property (strong, nonatomic) NSString *ackData;
 @property (assign, nonatomic) BOOL updatingStatus;
@@ -45,6 +51,10 @@
 
 - (NSString *)dateString;
 
+//status
+
+- (BOOL)wasSent;
+
 // --- setter / getters ---
 
 - (void)setPostUuid:(NSString *)postUuid;
@@ -58,7 +68,7 @@
 
 // copy
 
-- (void)copyFrom:(MKMsg *)msg;
+- (void)copyThreadFrom:(MKMsg *)msg;
 
 // send
 

@@ -63,7 +63,12 @@
         return @"choose bid";
     }
     
-    return @"awaiting bids";
+    if (self.sell.mkPost.isComplete)
+    {
+        return @"awaiting bids";
+    }
+    
+    return nil;
 }
 
 - (BOOL)handleMsg:(MKMsg *)msg
@@ -123,7 +128,12 @@
 
 - (BOOL)isActive
 {
-    return self.sell.mkPost.isPosted && !self.acceptedBid;
+    return self.sell.mkPost.isComplete && !self.acceptedBid;
+}
+
+- (BOOL)isComplete
+{
+    return self.acceptedBid != nil;
 }
 
 // close post
@@ -131,7 +141,7 @@
 - (void)sendClosePost
 {
     MKClosePostMsg *msg = [[MKClosePostMsg alloc] init];
-    [msg copyFrom:self.sell.acceptedBidMsg];
+    [msg copyThreadFrom:self.sell.acceptedBidMsg];
     [msg sendFromSellerToChannel];
 }
 

@@ -181,7 +181,7 @@
     //return YES; // temp
     
     MKSellerPostLockMsg *msg = [[MKSellerPostLockMsg alloc] init];
-    [msg copyFrom:self.bidMsg];
+    [msg copyThreadFrom:self.bidMsg];
 
     BNTx *buyerEscrowTx = [self.buyerLockMsg.payload asObjectFromJSONObject]; //TODO check errors.  TODO verify tx before signing.
     buyerEscrowTx.wallet = wallet;

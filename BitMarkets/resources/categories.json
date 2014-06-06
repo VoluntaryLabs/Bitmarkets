@@ -15,16 +15,8 @@
                  { "_type": "Category", "name" : "Business" },
                  { "_type": "Category", "name" : "CDs/DVD/VHS" },
                  { "_type": "Category", "name" : "Cell Phones" },
-                 { "_type": "Category", "name" : "Clothing",
-
-    			"children": [
-                 		{ "_type": "Category", "name" : "Men's",
-    					"children": []
-				},
-                 		{ "_type": "Category", "name" : "Women's"},
-				]
-		 },
-
+                 { "_type": "Category", "name" : "Men's Clothing", },
+                 { "_type": "Category", "name" : "Women's Clothing", },
                  { "_type": "Category", "name" : "Collectibles" },
                  { "_type": "Category", "name" : "Computer" },
                  { "_type": "Category", "name" : "Electronics" },

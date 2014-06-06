@@ -14,5 +14,6 @@
 - (void)setAcceptedBid:(MKSellBid *)sellBid;
 
 - (MKSellBid *)acceptedBid;
+- (BOOL)isComplete;
 
 @end

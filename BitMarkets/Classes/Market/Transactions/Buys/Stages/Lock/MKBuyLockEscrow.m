@@ -252,7 +252,7 @@
         [escrowTx lockInputs];
         
         MKBuyerLockEscrowMsg *msg = [[MKBuyerLockEscrowMsg alloc] init];
-        [msg copyFrom:self.buy.bidMsg];
+        [msg copyThreadFrom:self.buy.bidMsg];
         [msg setPayload:[escrowTx asJSONObject]];
         
         [msg sendToSeller];
