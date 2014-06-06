@@ -249,7 +249,7 @@
             self.error = @"escrow sign error";
         }
 
-        //[escrowTx markInputsAsSpent]; TODO
+        [escrowTx lockInputs];
         
         MKBuyerLockEscrowMsg *msg = [[MKBuyerLockEscrowMsg alloc] init];
         [msg copyFrom:self.buy.bidMsg];
@@ -279,6 +279,7 @@
     
     BNTx *cancellationTx = [[self payloadToConfirm] asObjectFromJSONObject];
     cancellationTx.wallet = wallet;
+    [cancellationTx unlockInputs];
     [cancellationTx sign];
     [cancellationTx broadcast];
     
@@ -286,6 +287,12 @@
     msg.payload = [cancellationTx asJSONObject];
     [self addChild:msg];
     [self postParentChainChanged];
+}
+
+- (void)didConfirm
+{
+    BNTx *escrowTx = [[self payloadToConfirm] asObjectFromJSONObject];
+    [escrowTx unlockInputs]; //TODO this needed or will spending them remove need?
 }
 
 // confirm methods to extend parent class MKLock

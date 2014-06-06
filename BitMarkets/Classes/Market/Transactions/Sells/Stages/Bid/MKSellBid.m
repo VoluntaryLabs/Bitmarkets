@@ -223,7 +223,7 @@
         MKAcceptBidMsg *msg = [[MKAcceptBidMsg alloc] init];
         [msg copyFrom:self.bidMsg];
         
-        //[escrowTx markInputsAsSpent]; TODO
+        [escrowTx lockInputs];
         [msg setPayload:[escrowTx asJSONObject]];
         [msg send];
         [self addChild:msg];

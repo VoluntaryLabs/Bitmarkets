@@ -145,6 +145,29 @@
     return NO;
 }
 
+- (void)cancelEscrow
+{
+    BNWallet *wallet = self.runningWallet;
+    
+    if (!wallet)
+    {
+        [NSException raise:@"Can't cancelEscrow until wallet is running" format:nil];
+    }
+    
+    BNTx *cancellationTx = [[self payloadToConfirm] asObjectFromJSONObject];
+    cancellationTx.wallet = wallet;
+    [cancellationTx unlockInputs];
+    [cancellationTx sign];
+    [cancellationTx broadcast];
+    
+    /*
+    MKBuyerCancelLockEscrowMsg *msg = [[MKBuyerCancelLockEscrowMsg alloc] init]; TODO Is this needed?
+    msg.payload = [cancellationTx asJSONObject];
+    [self addChild:msg];
+    [self postParentChainChanged];
+     */
+}
+
 - (void)postLock
 {
     BNWallet *wallet = self.runningWallet;
@@ -165,6 +188,7 @@
     
     wallet.server.logsNextMessage = YES;
     
+    [buyerEscrowTx unlockInputs]; //TODO Is this needed since we broadcast it?
     @try
     {
         self.error = nil;
@@ -226,6 +250,12 @@
 - (BOOL)isComplete
 {
     return self.isConfirmed;
+}
+
+- (void)didConfirm
+{
+    BNTx *escrowTx = [[self payloadToConfirm] asObjectFromJSONObject];
+    [escrowTx unlockInputs]; //TODO this needed or will spending them remove need?
 }
 
 

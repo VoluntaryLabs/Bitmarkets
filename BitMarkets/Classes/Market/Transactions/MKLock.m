@@ -81,6 +81,11 @@
     return nil;
 }
 
+- (void)didConfirm
+{
+    //override
+}
+
 - (void)lookForConfirmIfNeeded
 {
     if (self.shouldLookForConfirm)
@@ -90,6 +95,7 @@
             MKConfirmLockEscrowMsg *msg = [[MKConfirmLockEscrowMsg alloc] init];
             [msg copyFrom:self.bidMsg];
             [self addChild:msg];
+            [self didConfirm];
         }
     }
 }
