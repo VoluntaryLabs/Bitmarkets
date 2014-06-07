@@ -38,12 +38,8 @@
         {
             NavInfoNode *contributor = [[NavInfoNode alloc] init];
             contributor.nodeTitle = @"Steve Dekorte";
-            contributor.nodeSubtitle = @"Lead Developer";
+            contributor.nodeSubtitle = @"Lead & UI Developer";
             [contributors addChild:contributor];
-            
-            //NavMirror *navMirror = contributor.navMirror;
-            //NavSlot *slot = [navMirror newDataSlotWithName:@"name"];
-            
         }
         
         {
@@ -56,14 +52,14 @@
         {
             NavInfoNode *contributor = [[NavInfoNode alloc] init];
             contributor.nodeTitle = @"Chris Robinson";
-            contributor.nodeSubtitle = @"Designer";
+            contributor.nodeSubtitle = @"UI/UX Designer";
             [contributors addChild:contributor];
         }
         
         {
             NavInfoNode *contributor = [[NavInfoNode alloc] init];
             contributor.nodeTitle = @"Adam Thorsen";
-            contributor.nodeSubtitle = @"Generalist";
+            contributor.nodeSubtitle = @"Tor, Bitmessage integration";
             [contributors addChild:contributor];
         }
         

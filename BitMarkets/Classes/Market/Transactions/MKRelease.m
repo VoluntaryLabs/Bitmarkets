@@ -20,6 +20,21 @@
     return @"Release Escrow";
 }
 
+- (NSString *)shortStatus
+{
+    if (self.confirmRefundMsg)
+    {
+        return @"refunded";
+    }
+    
+    if (self.confirmPaymentMsg)
+    {
+        return @"paid";
+    }
+    
+    return nil;
+}
+
 // payment messages
 
 - (MKBuyPaymentMsg *)buyPaymentMsg

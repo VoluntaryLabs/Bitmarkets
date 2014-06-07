@@ -131,12 +131,12 @@
     
     if (self.wasAccepted)
     {
-        return @"bid accepted";
+        return @"accepted";
     }
     
     if (self.wasRejected)
     {
-        return @"bid rejected";
+        return @"rejected";
     }
     
     // add timeout check

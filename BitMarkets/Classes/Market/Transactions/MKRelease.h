@@ -32,6 +32,8 @@
 @interface MKRelease : MKEscrow
 
 
+- (NSString *)shortStatus;
+
 // payment messages
 
 - (MKBuyPaymentMsg *)buyPaymentMsg;

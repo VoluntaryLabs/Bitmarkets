@@ -42,6 +42,29 @@
     return self;
 }
 
+- (NSString *)nodeNote
+{
+    if (self.releaseEscrow.isComplete)
+    {
+        return @"✓";
+    }
+    
+    return @"●";
+}
+
+- (NSString *)nodeSubtitle
+{
+    NSString *subtitle = [super nodeSubtitle];
+    NSString *status = self.releaseEscrow.shortStatus;
+    
+    if (status)
+    {
+        subtitle = [NSString stringWithFormat:@"%@ %@", subtitle, status];
+    }
+    
+    return subtitle;
+}
+
 - (CGFloat)nodeSuggestedWidth
 {
     return 250.0;
