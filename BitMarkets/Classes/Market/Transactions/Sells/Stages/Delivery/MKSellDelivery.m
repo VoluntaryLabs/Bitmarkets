@@ -36,6 +36,12 @@
 
 - (NSString *)nodeSubtitle
 {
+    if (self.addressMsg)
+    {
+        return @"received";
+    }
+    
+    /*
     if (self.sell.lockEscrow.isComplete)
     {
         if (!self.addressMsg)
@@ -45,16 +51,17 @@
         
         if (self.addressMsg)
         {
-            return @"ready to deliver!";
+            return @"received";
         }
     }
     else
     {
         if (self.addressMsg)
         {
-            return @"received address";
+            return @"received";
         }
     }
+    */
     
     return nil;
 }

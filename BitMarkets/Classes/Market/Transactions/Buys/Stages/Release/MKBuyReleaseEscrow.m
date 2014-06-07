@@ -43,7 +43,6 @@
 //    return @[@"requestRefund", @"makePayment"];
 }
 
-
 - (NSString *)nodeSubtitle
 {
     if (!self.runningWallet)
@@ -161,9 +160,10 @@
 - (void)updateActions
 {
     BOOL isActive = self.isActive && (self.runningWallet != nil);
+    BOOL hasActed = self.buyRequestRefundMsg != nil || self.buyPaymentMsg != nil;
 
-    [[self.navMirror actionSlotNamed:@"requestRefund"] setIsActive:isActive && !self.buyRequestRefundMsg];
-    [[self.navMirror actionSlotNamed:@"makePayment"]   setIsActive:isActive && !self.buyPaymentMsg];
+    [[self.navMirror actionSlotNamed:@"requestRefund"] setIsActive:isActive && !hasActed];
+    [[self.navMirror actionSlotNamed:@"makePayment"]   setIsActive:isActive && !hasActed];
 }
 
 // initiate payemnt
@@ -193,6 +193,7 @@
     
     [self addChild:msg];
     [self update];
+    [self updateActions];
 }
 
 // initiate refund
@@ -220,6 +221,7 @@
     
     [self addChild:msg];
     [self update];
+    [self updateActions];
 }
 
 // post payment

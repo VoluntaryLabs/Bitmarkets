@@ -14,6 +14,13 @@
 @property (strong, nonatomic) NSMutableDictionary *addressDict;
 @property (assign, nonatomic) BOOL isEditable;
 
+
+@property (strong, nonatomic) NSString *addressee;
+@property (strong, nonatomic) NSString *address1;
+@property (strong, nonatomic) NSString *address2;
+@property (strong, nonatomic) NSString *country;
+
+/*
 // name
 
 - (void)setAddressee:(NSString *)aString;
@@ -33,7 +40,7 @@
 
 - (void)setCountry:(NSString *)aString;
 - (NSString *)country;
-
+*/
 // checks
 
 - (BOOL)isFilled;

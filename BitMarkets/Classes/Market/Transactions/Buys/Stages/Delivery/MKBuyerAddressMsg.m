@@ -35,4 +35,9 @@
     [self setPayload:aDict];
 }
 
+- (id)descriptionJSONObject
+{
+    return [super descriptionJSONObject];
+}
+
 @end

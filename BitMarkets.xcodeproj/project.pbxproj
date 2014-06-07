@@ -105,7 +105,6 @@
 		AAB2814319217586005C9D27 /* MKSellBids.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB2811719217586005C9D27 /* MKSellBids.m */; };
 		AAB2814419217586005C9D27 /* MKSellDelivery.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB2811A19217586005C9D27 /* MKSellDelivery.m */; };
 		AAB2814519217586005C9D27 /* MKSellDeliveryAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB2811C19217586005C9D27 /* MKSellDeliveryAddress.m */; };
-		AAB2814619217586005C9D27 /* MKSellerSentDeliveryMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB2811E19217586005C9D27 /* MKSellerSentDeliveryMsg.m */; };
 		AAB2814719217586005C9D27 /* MKSellerPostLockMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB2812119217586005C9D27 /* MKSellerPostLockMsg.m */; };
 		AAB2814819217586005C9D27 /* MKSellLockEscrow.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB2812319217586005C9D27 /* MKSellLockEscrow.m */; };
 		AAB2814919217586005C9D27 /* MKPost.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB2812619217586005C9D27 /* MKPost.m */; };
@@ -385,8 +384,6 @@
 		AAB2811A19217586005C9D27 /* MKSellDelivery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKSellDelivery.m; sourceTree = "<group>"; };
 		AAB2811B19217586005C9D27 /* MKSellDeliveryAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKSellDeliveryAddress.h; sourceTree = "<group>"; };
 		AAB2811C19217586005C9D27 /* MKSellDeliveryAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKSellDeliveryAddress.m; sourceTree = "<group>"; };
-		AAB2811D19217586005C9D27 /* MKSellerSentDeliveryMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKSellerSentDeliveryMsg.h; sourceTree = "<group>"; };
-		AAB2811E19217586005C9D27 /* MKSellerSentDeliveryMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKSellerSentDeliveryMsg.m; sourceTree = "<group>"; };
 		AAB2812019217586005C9D27 /* MKSellerPostLockMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKSellerPostLockMsg.h; sourceTree = "<group>"; };
 		AAB2812119217586005C9D27 /* MKSellerPostLockMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKSellerPostLockMsg.m; sourceTree = "<group>"; };
 		AAB2812219217586005C9D27 /* MKSellLockEscrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKSellLockEscrow.h; sourceTree = "<group>"; };
@@ -893,8 +890,6 @@
 				AAB2811A19217586005C9D27 /* MKSellDelivery.m */,
 				AAB2811B19217586005C9D27 /* MKSellDeliveryAddress.h */,
 				AAB2811C19217586005C9D27 /* MKSellDeliveryAddress.m */,
-				AAB2811D19217586005C9D27 /* MKSellerSentDeliveryMsg.h */,
-				AAB2811E19217586005C9D27 /* MKSellerSentDeliveryMsg.m */,
 			);
 			path = Delivery;
 			sourceTree = "<group>";
@@ -1179,7 +1174,6 @@
 				AAA2E6AE19006F0A0098C357 /* MKRegion.m in Sources */,
 				AA09C804192D41C600317130 /* MKAboutNode.m in Sources */,
 				AA09C877192D6D2600317130 /* MKDeliveryAddressView.m in Sources */,
-				AAB2814619217586005C9D27 /* MKSellerSentDeliveryMsg.m in Sources */,
 				AAB2814119217586005C9D27 /* MKRejectBidMsg.m in Sources */,
 				AAB2814A19217586005C9D27 /* MKPostMsg.m in Sources */,
 				AAB2815D19220EF4005C9D27 /* MKConfirmRefundMsg.m in Sources */,

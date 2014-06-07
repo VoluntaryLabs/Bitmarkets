@@ -83,5 +83,9 @@
 
 - (BMSentMessage *)sentMessage;
 
+// debugging
+
+- (id)descriptionJSONObject;
+
 
 @end

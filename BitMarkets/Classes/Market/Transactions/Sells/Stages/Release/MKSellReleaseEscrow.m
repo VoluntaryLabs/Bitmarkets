@@ -158,7 +158,7 @@
     }
     
     [self lookForConfirmsIfNeeded];
-
+    [self updateActions];
 }
 
 
@@ -189,6 +189,7 @@
     [msg setPayload:releaseTx.asJSONObject];
     [self addChild:msg];
     [msg sendToBuyer];
+    [self postSelfChanged];
     [self postParentChainChanged];
 }
 
@@ -216,6 +217,7 @@
     [msg setPayload:refundTx.asJSONObject];
     [self addChild:msg];
     [msg sendToBuyer];
+    [self postSelfChanged];
     [self postParentChainChanged];
     [self updateActions];
 }
