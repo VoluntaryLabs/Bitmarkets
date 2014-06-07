@@ -17,7 +17,7 @@
 
 ------ steve ------
 
-- disable post button after posted
+- validate post price
 
 - remove .backups?
 

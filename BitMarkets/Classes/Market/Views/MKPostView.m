@@ -450,8 +450,8 @@
     [self syncToNode];
     
     [self.mkPost sendPostMsg];
-    [self updateButton];
     [self setEditable:NO];
+    [self updateButton];
 }
 
 - (void)buy
