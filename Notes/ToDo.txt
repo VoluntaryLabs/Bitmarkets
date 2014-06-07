@@ -13,6 +13,7 @@
 - deposit address isn't changing
 - create a better system for extending BitcoinJ object persistence
 -- catch errors in BNApp.main
+-- Add an isCancelled property to BNTx that is set when inputs are spent by another tx.
 
 ------ steve ------
 
