@@ -154,8 +154,11 @@
         [NSException raise:@"Can't cancelEscrow until wallet is running" format:nil];
     }
     
-    BNTx *cancellationTx = [[self payloadToConfirm] asObjectFromJSONObject];
-    cancellationTx.wallet = wallet;
+    BNTx *escrowTx = [[self payloadToConfirm] asObjectFromJSONObject];
+    escrowTx.wallet = wallet;
+    
+    BNTx *cancellationTx = escrowTx.cancellationTx;
+    
     [cancellationTx unlockInputs];
     [cancellationTx sign];
     [cancellationTx broadcast];
@@ -197,6 +200,7 @@
     @catch (NSException *exception)
     {
         self.error = @"escrow sign error";
+        return;
     }
 
     [buyerEscrowTx broadcast];
