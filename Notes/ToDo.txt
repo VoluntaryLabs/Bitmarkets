@@ -10,10 +10,8 @@
 	- validate amount / address
 - encrypt the deposit address file
 - update status when wallet fails to open (and maybe write log file)
-- deposit address isn't changing
 - create a better system for extending BitcoinJ object persistence
 -- catch errors in BNApp.main
--- Add an isCancelled property to BNTx that is set when inputs are spent by another tx.
 
 ------ steve ------
 
@@ -40,6 +38,7 @@
 
 - timeouts for bid, lock and await delivery + user warnings
 - timeout for posting? auto-reposting until delete or bid accepted?
+- deposit address isn't changing even though the underlying object changes and calls postParentChainChanged
 
 [later]
 
