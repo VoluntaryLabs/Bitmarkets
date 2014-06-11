@@ -29,10 +29,22 @@
 - (NSDictionary *)payloadToConfirm; // subclasses should override
 - (BOOL)shouldLookForConfirm; // subclasses should override
 
-//messages
+// messages
 
 - (MKBuyerLockEscrowMsg *)buyerLockMsg;
 - (MKSellerPostLockMsg *)sellerLockMsg;
 - (MKConfirmLockEscrowMsg *)confirmLockMsg;
+
+// lock cancel
+
+- (BOOL)canCancel;
+
+- (BOOL)isCanceling;
+- (void)checkCancelConfirmIfNeeded;
+
+- (MKCancelMsg *)cancelMsg;
+
+- (BOOL)isCancelConfirmed;
+- (MKCancelConfirmed *)cancelConfirmedMsg;
 
 @end

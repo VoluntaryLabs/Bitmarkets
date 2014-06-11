@@ -62,40 +62,6 @@
 
 // node
 
-- (BOOL)isActive
-{
-    return self.buyerLockMsg && !self.confirmLockMsg;
-}
-
-- (NSString *)nodeNote
-{
-    if (self.error)
-    {
-        return @"✗";
-    }
-    
-    if (self.isActive)
-    {
-        return @"●";
-    }
-    
-    if (self.confirmLockMsg)
-    {
-        return @"✓";
-    }
-    
-    /*
-     // timeout?
-     
-    if (self.didTimeout)
-    {
-        return @"✗";
-    }
-    */
-    
-    return nil;
-}
-
 - (NSString *)nodeSubtitle
 {
     if (self.error)
@@ -103,13 +69,23 @@
         return self.error;
     }
     
+    if (!self.runningWallet)
+    {
+        return @"waiting for wallet..";
+    }
+    
+    if (self.isCanceling && !self.confirmLockMsg)
+    {
+        return @"canceling...";
+    }
+    
+    if (self.isCancelConfirmed)
+    {
+        return @"cancelled";
+    }
+    
     if (self.buyerLockMsg)
     {
-        if (!self.runningWallet)
-        {
-            return @"waiting for wallet..";
-        }
-        
         if (self.sellerLockMsg)
         {
             if (self.confirmLockMsg)
@@ -155,6 +131,7 @@
 {
     [self sendLockToSellerIfNeeded];
     [self lookForConfirmIfNeeded];
+    [self checkCancelConfirmIfNeeded];
     [self updateActions];
 }
 
@@ -292,28 +269,11 @@
     [self postParentChainChanged];
 }
 
-- (void)didConfirm
-{
-    BNTx *escrowTx = [[self payloadToConfirm] asObjectFromJSONObject];
-    [escrowTx unlockInputs]; //TODO this needed or will spending them remove need?
-}
-
 // confirm methods to extend parent class MKLock
 
 - (MKBidMsg *)bidMsg
 {
     return self.buy.bid.bidMsg;
 }
-
-- (NSDictionary *)payloadToConfirm
-{
-    return self.buyerLockMsg.payload;
-}
-
-- (BOOL)shouldLookForConfirm; // subclasses should override
-{
-    return (self.buyerLockMsg && !self.confirmLockMsg);
-}
-
 
 @end

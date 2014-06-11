@@ -7,6 +7,8 @@
 //
 
 #import "MKGroup.h"
+#import "MKCancelMsg.h"
+#import "MKCancelConfirmed.h"
 
 @class MKBuy;
 @class MKSell;
@@ -17,5 +19,6 @@
 
 - (MKSell *)sell;
 - (MKBuy *)buy;
+
 
 @end

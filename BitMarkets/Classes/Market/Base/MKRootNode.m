@@ -111,6 +111,7 @@ static MKRootNode *sharedMKRootNode = nil;
         _wallet.server.logs = YES;
         
         NSString *dataPath = [[[NSFileManager defaultManager] applicationSupportDirectory] stringByAppendingPathComponent:@"wallet"];
+        
         NSError *error;
         
         [[NSFileManager defaultManager] createDirectoryAtPath:dataPath

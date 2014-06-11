@@ -26,6 +26,9 @@
 		AA2B1A211923682500D712D8 /* MKBuyPostRefundMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2B1A201923682500D712D8 /* MKBuyPostRefundMsg.m */; };
 		AA2B1A2E1923683500D712D8 /* MKBuyPostPaymentMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2B1A2D1923683500D712D8 /* MKBuyPostPaymentMsg.m */; };
 		AA2B1A3119236CB600D712D8 /* MKSellRejectRefundRequestMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2B1A3019236CB600D712D8 /* MKSellRejectRefundRequestMsg.m */; };
+		AA4472EF1947C487009A7F0D /* MKStepsView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4472EE1947C487009A7F0D /* MKStepsView.m */; };
+		AA4472FC1947CF36009A7F0D /* MKCancelMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4472FB1947CF36009A7F0D /* MKCancelMsg.m */; };
+		AA4472FF1947D064009A7F0D /* MKCancelConfirmed.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4472FE1947D064009A7F0D /* MKCancelConfirmed.m */; };
 		AA4A0E1C1909ADF600AB78D0 /* bitcoin.png in Resources */ = {isa = PBXBuildFile; fileRef = AA4A0E0E1909ADF600AB78D0 /* bitcoin.png */; };
 		AA4A0E1D1909ADF600AB78D0 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = AA4A0E0F1909ADF600AB78D0 /* camera.png */; };
 		AA4A0E1E1909ADF600AB78D0 /* clothing.png in Resources */ = {isa = PBXBuildFile; fileRef = AA4A0E101909ADF600AB78D0 /* clothing.png */; };
@@ -267,6 +270,12 @@
 		AA2B1A2D1923683500D712D8 /* MKBuyPostPaymentMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKBuyPostPaymentMsg.m; sourceTree = "<group>"; };
 		AA2B1A2F19236CB600D712D8 /* MKSellRejectRefundRequestMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKSellRejectRefundRequestMsg.h; sourceTree = "<group>"; };
 		AA2B1A3019236CB600D712D8 /* MKSellRejectRefundRequestMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKSellRejectRefundRequestMsg.m; sourceTree = "<group>"; };
+		AA4472ED1947C487009A7F0D /* MKStepsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKStepsView.h; sourceTree = "<group>"; };
+		AA4472EE1947C487009A7F0D /* MKStepsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKStepsView.m; sourceTree = "<group>"; };
+		AA4472FA1947CF36009A7F0D /* MKCancelMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKCancelMsg.h; sourceTree = "<group>"; };
+		AA4472FB1947CF36009A7F0D /* MKCancelMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKCancelMsg.m; sourceTree = "<group>"; };
+		AA4472FD1947D064009A7F0D /* MKCancelConfirmed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKCancelConfirmed.h; sourceTree = "<group>"; };
+		AA4472FE1947D064009A7F0D /* MKCancelConfirmed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKCancelConfirmed.m; sourceTree = "<group>"; };
 		AA4A0E0E1909ADF600AB78D0 /* bitcoin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bitcoin.png; sourceTree = "<group>"; };
 		AA4A0E0F1909ADF600AB78D0 /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
 		AA4A0E101909ADF600AB78D0 /* clothing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clothing.png; sourceTree = "<group>"; };
@@ -720,6 +729,8 @@
 				AA09C7EB192BEC2B00317130 /* MKDragFileWell.m */,
 				AA803EAD194003F50090E619 /* MKTransactionProgressView.h */,
 				AA803EAE194003F50090E619 /* MKTransactionProgressView.m */,
+				AA4472ED1947C487009A7F0D /* MKStepsView.h */,
+				AA4472EE1947C487009A7F0D /* MKStepsView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -840,6 +851,10 @@
 				AAB2815C19220EF4005C9D27 /* MKConfirmRefundMsg.m */,
 				AAB2815E19220F04005C9D27 /* MKConfirmPaymentMsg.h */,
 				AAB2815F19220F04005C9D27 /* MKConfirmPaymentMsg.m */,
+				AA4472FA1947CF36009A7F0D /* MKCancelMsg.h */,
+				AA4472FB1947CF36009A7F0D /* MKCancelMsg.m */,
+				AA4472FD1947D064009A7F0D /* MKCancelConfirmed.h */,
+				AA4472FE1947D064009A7F0D /* MKCancelConfirmed.m */,
 			);
 			path = Msg;
 			sourceTree = "<group>";
@@ -1200,12 +1215,15 @@
 				AA955E191914775500F6FB0F /* MKRootNode.m in Sources */,
 				AA8F0E761939432F00B62302 /* MKConfirmMsg.m in Sources */,
 				AAA2E6AC19006F0A0098C357 /* MKCategory.m in Sources */,
+				AA4472FF1947D064009A7F0D /* MKCancelConfirmed.m in Sources */,
 				AAB2813819217586005C9D27 /* MKLock.m in Sources */,
 				AAB2813919217586005C9D27 /* MKTransaction.m in Sources */,
 				AAB2813F19217586005C9D27 /* MKSells.m in Sources */,
 				AAB2812E19217586005C9D27 /* MKBidMsg.m in Sources */,
 				AAA2E6AD19006F0A0098C357 /* MKGroup.m in Sources */,
+				AA4472FC1947CF36009A7F0D /* MKCancelMsg.m in Sources */,
 				AAB2815A19220D98005C9D27 /* MKSellAcceptRefundRequestMsg.m in Sources */,
+				AA4472EF1947C487009A7F0D /* MKStepsView.m in Sources */,
 				AA955E181914775500F6FB0F /* MKMarkets.m in Sources */,
 				AAB28163192242AF005C9D27 /* MKRelease.m in Sources */,
 				DC51980E192950BB004143E7 /* MKBuyerCancelLockEscrowMsg.m in Sources */,

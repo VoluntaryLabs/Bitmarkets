@@ -49,6 +49,11 @@
         return @"✓";
     }
     
+    if (self.lockEscrow.isCancelConfirmed)
+    {
+        return @"✗";
+    }
+    
     return @"●";
 }
 

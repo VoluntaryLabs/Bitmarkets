@@ -35,61 +35,6 @@
     return self.confirmLockMsg != nil;
 }
 
-- (BOOL)canCancel
-{
-    if (!self.runningWallet)
-    {
-        return NO;
-    }
-    
-    /*
-    if (self.sell.releaseEscrow.isComplete)
-    {
-        return NO;
-    }
-    */
-    
-    if (self.buyerLockMsg && !self.confirmLockMsg)
-    {
-        return YES;
-    }
-    
-    return NO;
-}
-
-- (BOOL)isActive
-{
-    return self.buyerLockMsg && !self.confirmLockMsg;
-}
-
-- (NSString *)nodeNote
-{
-    if (self.error)
-    {
-        return @"✗";
-    }
-    
-    if (self.isActive)
-    {
-        return @"●";
-    }
-    
-    if (self.confirmLockMsg)
-    {
-        return @"✓";
-    }
-    
-    /*
-     // timeout?
-     
-     if (self.didTimeout)
-     {
-     return @"✗";
-     }
-     */
-    
-    return nil;
-}
 
 - (NSString *)nodeSubtitle
 {
@@ -106,6 +51,16 @@
     if (self.confirmLockMsg)
     {
         return @"confirmed";
+    }
+    
+    if (self.isCanceling)
+    {
+        return @"canceling...";
+    }
+    
+    if (self.isCancelConfirmed)
+    {
+        return @"cancelled";
     }
     
     if (self.sellerLockMsg)
@@ -162,13 +117,6 @@
     [cancellationTx unlockInputs];
     [cancellationTx sign];
     [cancellationTx broadcast];
-    
-    /*
-    MKBuyerCancelLockEscrowMsg *msg = [[MKBuyerCancelLockEscrowMsg alloc] init]; TODO Is this needed?
-    msg.payload = [cancellationTx asJSONObject];
-    [self addChild:msg];
-    [self postParentChainChanged];
-     */
 }
 
 - (void)postLock
@@ -229,6 +177,7 @@
 {
     [self postLockIfNeeded];
     [self lookForConfirmIfNeeded];
+    [self checkCancelConfirmIfNeeded];
     [self updateActions];
 }
 
@@ -239,28 +188,9 @@
     return self.sell.bids.acceptedBid.bidMsg;
 }
 
-// confirm
-
-- (NSDictionary *)payloadToConfirm
-{
-    return self.buyerLockMsg.payload;
-}
-
-- (BOOL)shouldLookForConfirm; // subclasses should override
-{
-    return (self.buyerLockMsg && !self.confirmLockMsg);
-}
-
 - (BOOL)isComplete
 {
     return self.isConfirmed;
 }
-
-- (void)didConfirm
-{
-    BNTx *escrowTx = [[self payloadToConfirm] asObjectFromJSONObject];
-    [escrowTx unlockInputs]; //TODO this needed or will spending them remove need?
-}
-
 
 @end

@@ -36,6 +36,8 @@
     return [NSString stringWithFormat:@"%@BTC", self.mkPost.priceInBtc];
 }
 
+
+
 - (NSString *)nodeNote
 {
     if (self.error || self.didFail)
