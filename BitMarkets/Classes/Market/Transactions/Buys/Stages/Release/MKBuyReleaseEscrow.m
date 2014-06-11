@@ -180,6 +180,12 @@
     }
     
     BNTx *escrowTx = [self.buy.lockEscrow.payloadToConfirm asObjectFromJSONObject]; //TODO handle errors
+    escrowTx.wallet = wallet;
+    [escrowTx fetch]; //update subsuming tx
+    if (escrowTx.subsumingTx)
+    {
+        escrowTx = escrowTx.subsumingTx;
+    }
     
     BNTx *releaseTx = [[BNTx alloc] init];
     releaseTx.wallet = wallet;
