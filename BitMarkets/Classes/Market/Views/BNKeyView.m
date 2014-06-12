@@ -15,6 +15,7 @@
 - (id)initWithFrame:(NSRect)frame
 {
     self = [super initWithFrame:frame];
+    
     if (self)
     {
         [self setAutoresizesSubviews:YES];
@@ -27,8 +28,24 @@
         self.qrCodeTextView = [[NSTextView alloc] initWithFrame:NSMakeRect(0, 0, _qrWidth, 20)];
         [self addSubview:self.qrCodeTextView];
         
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(syncToNode) name:nil object:self.node];
     }
+    
     return self;
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)syncToNode
+{
+    self.qrCodeImageView.image = [QRCodeGenerator qrImageForString:_node.address imageSize:_qrWidth];
+    self.qrCodeTextView.string = _node.address;
+    [_qrCodeTextView setThemePath:@"qr/address"];
+    [_qrCodeTextView setEditable:NO];
+    [_qrCodeTextView setNeedsDisplay:YES];
 }
 
 - (void)drawRect:(NSRect)dirtyRect
@@ -40,13 +57,13 @@
 
 - (void)setNode:(BNKey *)node
 {
-    _node = node;
-    
-    NSString *addressString = node.address;
-    self.qrCodeImageView.image = [QRCodeGenerator qrImageForString:addressString imageSize:_qrWidth];
-    self.qrCodeTextView.string = addressString;
-    [_qrCodeTextView setThemePath:@"qr/address"];
-    [_qrCodeTextView setEditable:NO];
+    if (_node != node)
+    {
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:nil object:_node];
+        _node = node;
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(syncToNode) name:nil object:_node];
+        [self syncToNode];
+    }
     
     [self layout];
 }
