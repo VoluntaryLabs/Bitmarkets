@@ -12,8 +12,13 @@
 - update status when wallet fails to open (and maybe write log file)
 - create a better system for extending BitcoinJ object persistence
 -- catch errors in BNApp.main
+- Terser wallet status messages
 
 ------ steve ------
+
+- UI doesn't change when you click [Cancel Escrow]
+
+- The "Post" button remains active after posting
 
 - validate post price
 
