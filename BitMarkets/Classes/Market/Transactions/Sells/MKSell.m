@@ -42,6 +42,11 @@
     return self;
 }
 
+- (BOOL)isCanceled
+{
+    return self.lockEscrow.isCancelConfirmed;
+}
+
 - (NSString *)nodeNote
 {
     if (self.releaseEscrow.isComplete)
@@ -49,7 +54,7 @@
         return @"✓";
     }
     
-    if (self.lockEscrow.isCancelConfirmed)
+    if (self.isCanceled)
     {
         return @"✗";
     }
@@ -61,6 +66,11 @@
 {
     NSString *subtitle = [super nodeSubtitle];
     NSString *status = self.releaseEscrow.shortStatus;
+    
+    if (self.isCanceled)
+    {
+        status = @"canceled";
+    }
     
     if (status)
     {

@@ -22,5 +22,6 @@
 @property (strong, nonatomic) MKBuyReleaseEscrow *releaseEscrow;
 
 - (MKBidMsg *)bidMsg;
+- (BOOL)isCanceled;
 
 @end

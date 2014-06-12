@@ -108,7 +108,7 @@ static MKRootNode *sharedMKRootNode = nil;
         _wallet.refreshInterval = 5.0;
         _wallet.deepRefreshes = YES;
         _wallet.server.logs = NO;
-        _wallet.server.logs = YES;
+        //_wallet.server.logs = YES;
         
         NSString *dataPath = [[[NSFileManager defaultManager] applicationSupportDirectory] stringByAppendingPathComponent:@"wallet"];
         

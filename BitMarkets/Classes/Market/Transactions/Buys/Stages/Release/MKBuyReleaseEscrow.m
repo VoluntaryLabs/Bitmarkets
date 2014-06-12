@@ -45,11 +45,6 @@
 
 - (NSString *)nodeSubtitle
 {
-    if (!self.runningWallet)
-    {
-        return @"waiting for wallet..";
-    }
-    
     if (self.buyRequestRefundMsg)
     {
         if(!self.sellAcceptRefundRequestMsg)
@@ -78,6 +73,16 @@
         }
         
         return @"payment confirmed";
+    }
+    
+    if (self.buy.isCanceled)
+    {
+        return nil;
+    }
+    
+    if (!self.runningWallet)
+    {
+        return @"waiting for wallet..";
     }
     
     return nil;
