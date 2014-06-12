@@ -105,6 +105,10 @@
 
 - (NSString *)status
 {
+    if (self.error)
+    {
+        return self.error;
+    }
     if (self.acceptMsg)
     {
         return [NSString stringWithFormat:@"accepted %@", self.acceptMsg.dateString];
@@ -187,13 +191,13 @@
     }
     
     
+    self.error = nil;
     if (escrowTx.error)
     {
         NSLog(@"tx configureForOutputWithValue failed: %@", escrowTx.error.description);
         if (escrowTx.error.insufficientValue)
         {
-            //TODO: prompt user for deposit
-            
+            self.error = [NSString stringWithFormat:@"%@BTC Required", escrowTx.error.insufficientValue.satoshiToBtc];
         }
         else
         {

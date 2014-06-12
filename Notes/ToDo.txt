@@ -13,6 +13,7 @@
 - create a better system for extending BitcoinJ object persistence
 -- catch errors in BNApp.main
 - Terser wallet status messages
+- Fix Withdrawal UI
 
 ------ steve ------
 
