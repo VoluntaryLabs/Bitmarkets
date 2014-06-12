@@ -69,10 +69,6 @@
         return self.error;
     }
     
-    if (!self.runningWallet)
-    {
-        return @"waiting for wallet..";
-    }
     
     if (self.isCanceling && !self.confirmLockMsg)
     {
@@ -97,6 +93,11 @@
         }
         
         return @"sent - awaiting reply";
+    }
+    
+    if (!self.runningWallet)
+    {
+        return @"waiting for wallet..";
     }
     
     return nil;

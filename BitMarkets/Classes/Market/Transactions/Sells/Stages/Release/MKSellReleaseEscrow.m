@@ -37,11 +37,6 @@
 {
     // note: that buyer posts to blockchain
     
-    if (!self.runningWallet)
-    {
-        return @"waiting for wallet..";
-    }
-    
     if (self.buyRequestRefundMsg)
     {
         if(self.sellAcceptRefundRequestMsg)
@@ -82,6 +77,16 @@
     if (self.isActive)
     {
         return @"awaiting buyer...";
+    }
+    
+    if (self.sell.isCanceled)
+    {
+        return nil;
+    }
+    
+    if (!self.runningWallet)
+    {
+        return @"waiting for wallet..";
     }
     
     return nil;

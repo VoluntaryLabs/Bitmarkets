@@ -38,9 +38,14 @@
 
 - (NSString *)nodeSubtitle
 {
-    if (!self.runningWallet)
+    if (self.isCanceling)
     {
-        return @"waiting for wallet..";
+        return @"canceling...";
+    }
+    
+    if (self.isCancelConfirmed)
+    {
+        return @"cancelled";
     }
     
     if (self.error)
@@ -51,16 +56,6 @@
     if (self.confirmLockMsg)
     {
         return @"confirmed";
-    }
-    
-    if (self.isCanceling)
-    {
-        return @"canceling...";
-    }
-    
-    if (self.isCancelConfirmed)
-    {
-        return @"cancelled";
     }
     
     if (self.sellerLockMsg)
@@ -77,6 +72,12 @@
     {
         return @"awaiting buyer lock";
     }
+    
+    if (!self.runningWallet)
+    {
+        return @"waiting for wallet..";
+    }
+
     
     return nil;
 }

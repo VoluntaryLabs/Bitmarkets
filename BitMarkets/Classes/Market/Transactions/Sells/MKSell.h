@@ -25,4 +25,6 @@
 
 - (MKBidMsg *)acceptedBidMsg;
 
+- (BOOL)isCanceled;
+
 @end
