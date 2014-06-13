@@ -1,6 +1,19 @@
 {
 	"default": 
 	{
+        "steps":
+        {
+            "step":
+            {
+                "fontName" : "Open Sans",
+                "fontSize" : 14,
+                "color" : "#888888",
+                "align" : "left",
+                "backgroundColor" : "#FFFFFF"
+                
+            },
+        },
+        
         "code" :
         {
             "fontName" : "Courier",

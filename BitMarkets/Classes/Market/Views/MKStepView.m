@@ -43,7 +43,7 @@
             font, NSFontAttributeName,
             nil];
     */
-    return nil;
+    return [[NavTheme sharedNavTheme] attributesDictForPath:@"steps/step"];
 }
 
 
