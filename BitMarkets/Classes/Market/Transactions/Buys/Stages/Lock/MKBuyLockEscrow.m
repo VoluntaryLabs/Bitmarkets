@@ -181,6 +181,7 @@
     }
 
     
+    self.error = nil;
     if (escrowTx.error)
     {
         NSLog(@"tx configureForOutputWithValue failed: %@", escrowTx.error.description);
@@ -192,8 +193,13 @@
             
         if (escrowTx.error.insufficientValue)
         {
+<<<<<<< HEAD
             //TODO: prompt user for deposit
             self.error = @"insufficient funds";
+=======
+            self.error = [NSString stringWithFormat:@"%@BTC Required", escrowTx.error.insufficientValue.satoshiToBtc];
+            return NO;
+>>>>>>> 49ef064d7d9f1dcf332493e00da7816356f00053
         }
         else
         {

@@ -12,14 +12,22 @@
 - update status when wallet fails to open (and maybe write log file)
 - create a better system for extending BitcoinJ object persistence
 -- catch errors in BNApp.main
+- Terser wallet status messages
+- Fix Withdrawal UI
 
 ------ steve ------
 
+<<<<<<< HEAD
 if (escrowTx.error.insufficientValue)
         {
             //TODO: prompt user for deposit
             
         }
+=======
+- UI doesn't change when you click [Cancel Escrow]
+
+- The "Post" button remains active after posting
+>>>>>>> 49ef064d7d9f1dcf332493e00da7816356f00053
 
 - validate post price
 
