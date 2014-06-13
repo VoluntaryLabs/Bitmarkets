@@ -19,6 +19,8 @@
     
     if (self)
     {
+        self.backgroundColor = [NSColor redColor];
+        
         [self setAutoresizesSubviews:YES];
         [self setAutoresizingMask:NSViewHeightSizable | NSViewWidthSizable];
         
@@ -33,9 +35,7 @@
         [self addSubview:_statusView];
         [_statusView setThemePath:@"sell/price"];
         
-  
         _bottomView = [[NSView alloc] initWithFrame:NSMakeRect(0, 0, self.width, 100)];
-        
     }
     
     return self;
@@ -79,7 +79,7 @@
 
 - (void)syncFromNode
 {
-
+    [self.stepsView setNode:self.node];
 }
 
 - (void)syncToNode

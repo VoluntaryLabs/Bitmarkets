@@ -28,6 +28,8 @@
     self.releaseEscrow = [[MKBuyReleaseEscrow alloc] init];
     [self addChild:self.releaseEscrow];
     
+    //self.nodeViewClass = MKTransactionProgressView.class;
+    
     return self;
 }
 

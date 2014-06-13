@@ -13,6 +13,7 @@
 #import "MKBuyLockEscrow.h"
 #import "MKBuyDelivery.h"
 #import "MKBuyReleaseEscrow.h"
+#import "MKTransactionProgressView.h"
 
 @interface MKBuy : MKTransaction
 

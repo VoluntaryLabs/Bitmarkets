@@ -29,6 +29,7 @@
 		AA4472EF1947C487009A7F0D /* MKStepsView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4472EE1947C487009A7F0D /* MKStepsView.m */; };
 		AA4472FC1947CF36009A7F0D /* MKCancelMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4472FB1947CF36009A7F0D /* MKCancelMsg.m */; };
 		AA4472FF1947D064009A7F0D /* MKCancelConfirmed.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4472FE1947D064009A7F0D /* MKCancelConfirmed.m */; };
+		AA447302194A804F009A7F0D /* MKStepView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA447301194A804F009A7F0D /* MKStepView.m */; };
 		AA4A0E1C1909ADF600AB78D0 /* bitcoin.png in Resources */ = {isa = PBXBuildFile; fileRef = AA4A0E0E1909ADF600AB78D0 /* bitcoin.png */; };
 		AA4A0E1D1909ADF600AB78D0 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = AA4A0E0F1909ADF600AB78D0 /* camera.png */; };
 		AA4A0E1E1909ADF600AB78D0 /* clothing.png in Resources */ = {isa = PBXBuildFile; fileRef = AA4A0E101909ADF600AB78D0 /* clothing.png */; };
@@ -276,6 +277,8 @@
 		AA4472FB1947CF36009A7F0D /* MKCancelMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKCancelMsg.m; sourceTree = "<group>"; };
 		AA4472FD1947D064009A7F0D /* MKCancelConfirmed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKCancelConfirmed.h; sourceTree = "<group>"; };
 		AA4472FE1947D064009A7F0D /* MKCancelConfirmed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKCancelConfirmed.m; sourceTree = "<group>"; };
+		AA447300194A804F009A7F0D /* MKStepView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKStepView.h; sourceTree = "<group>"; };
+		AA447301194A804F009A7F0D /* MKStepView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKStepView.m; sourceTree = "<group>"; };
 		AA4A0E0E1909ADF600AB78D0 /* bitcoin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bitcoin.png; sourceTree = "<group>"; };
 		AA4A0E0F1909ADF600AB78D0 /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
 		AA4A0E101909ADF600AB78D0 /* clothing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clothing.png; sourceTree = "<group>"; };
@@ -731,6 +734,8 @@
 				AA803EAE194003F50090E619 /* MKTransactionProgressView.m */,
 				AA4472ED1947C487009A7F0D /* MKStepsView.h */,
 				AA4472EE1947C487009A7F0D /* MKStepsView.m */,
+				AA447300194A804F009A7F0D /* MKStepView.h */,
+				AA447301194A804F009A7F0D /* MKStepView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1199,6 +1204,7 @@
 				AA605AC2192A8CC700798BCA /* MKMsgGroup.m in Sources */,
 				AAB2814919217586005C9D27 /* MKPost.m in Sources */,
 				AAB2815719220D59005C9D27 /* MKBuyRefundRequestMsg.m in Sources */,
+				AA447302194A804F009A7F0D /* MKStepView.m in Sources */,
 				AAB2813019217586005C9D27 /* MKBuyDelivery.m in Sources */,
 				AAB2814B19217586005C9D27 /* MKSellReleaseEscrow.m in Sources */,
 				AAB2813E19217586005C9D27 /* MKSell.m in Sources */,

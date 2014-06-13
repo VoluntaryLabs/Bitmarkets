@@ -184,10 +184,16 @@
     if (escrowTx.error)
     {
         NSLog(@"tx configureForOutputWithValue failed: %@", escrowTx.error.description);
+        
+        if ([self.error isEqualToString:@"insufficient funds"])
+        {
+            self.error = nil;
+        }
+            
         if (escrowTx.error.insufficientValue)
         {
             //TODO: prompt user for deposit
-            
+            self.error = @"insufficient funds";
         }
         else
         {
