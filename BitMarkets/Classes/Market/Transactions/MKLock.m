@@ -99,12 +99,6 @@
     return nil;
 }
 
-- (void)didConfirm
-{
-    BNTx *escrowTx = [[self payloadToConfirm] asObjectFromJSONObject];
-    [escrowTx unlockInputs]; //TODO this needed or will spending them remove need?
-}
-
 - (void)lookForConfirmIfNeeded
 {
     if (self.shouldLookForConfirm)
@@ -114,7 +108,6 @@
             MKConfirmLockEscrowMsg *msg = [[MKConfirmLockEscrowMsg alloc] init];
             //[msg copyThreadFrom:self.bidMsg];
             [self addChild:msg];
-            [self didConfirm];
         }
     }
 }
