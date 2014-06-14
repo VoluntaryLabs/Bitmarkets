@@ -131,10 +131,20 @@
     [_attachmentView setEditable:isEditable];
 }
 
+- (BOOL)isOpaque
+{
+    return NO;
+}
+
++ (CGFloat)leftMargin
+{
+    return 30.0;
+}
+
 
 - (void)layout
 {
-    CGFloat leftMargin = 30;
+    CGFloat leftMargin = self.class.leftMargin;
     
     [_title setX:leftMargin];
     [_title placeInTopOfSuperviewWithMargin:leftMargin];
@@ -148,7 +158,8 @@
     
     [_separator setX:0];
     [_separator setWidth:self.width];
-    [_separator placeYBelow:_price margin:20];
+    //[_separator placeYBelow:_price margin:20];
+    [_separator setY:self.height-60*2];
     
     // add code to adjust _description height to fit text?
     

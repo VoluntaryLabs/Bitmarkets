@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 voluntary.net. All rights reserved.
 //
 
-#import "MKGroup.h"
+#import "MKStage.h"
 #import "MKPostMsg.h"
 #import "MKBidMsg.h"
 #import <BitmessageKit/BitmessageKit.h>
@@ -14,7 +14,7 @@
 //@class MKPostMsg;
 //@class MKBidMsg;
 
-@interface MKPost : MKGroup
+@interface MKPost : MKStage
 
 @property (strong, nonatomic) NSDate *date;
 

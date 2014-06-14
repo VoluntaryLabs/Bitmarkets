@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 voluntary.net. All rights reserved.
 //
 
-#import "MKGroup.h"
+#import "MKStage.h"
 #import "MKBuyDeliveryAddress.h"
 #import "MKBuyerAddressMsg.h"
 
 @class MKBuy;
 
-@interface MKBuyDelivery : MKGroup
+@interface MKBuyDelivery : MKStage
 
 - (MKBuyDeliveryAddress *)address;
 - (MKBuyerAddressMsg *)addressMsg;

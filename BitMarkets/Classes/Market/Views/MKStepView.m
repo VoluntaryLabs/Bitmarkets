@@ -7,6 +7,7 @@
 //
 
 #import "MKStepView.h"
+#import "MKPostView.h"
 
 @implementation MKStepView
 
@@ -16,7 +17,7 @@
     
     if (self)
     {
-        // Initialization code here.
+        self.backgroundColor = [NSColor whiteColor];
     }
     
     return self;
@@ -30,37 +31,68 @@
 
 - (void)syncToNode
 {
-    
+    self.backgroundColor = [self.nodeTitleAttributes objectForKey:NSBackgroundColorAttributeName];
 }
 
-- (NSDictionary *)titleAttributes
+- (NSDictionary *)nodeTitleAttributes
 {
-    /*
-    CGFloat fontSize = 14.0;
-    NSFont *font = [NSFont fontWithName:[self fontName] size:fontSize];
-    return [NSDictionary dictionaryWithObjectsAndKeys:
-            [self textColor], NSForegroundColorAttributeName,
-            font, NSFontAttributeName,
-            nil];
-    */
     return [[NavTheme sharedNavTheme] attributesDictForPath:@"steps/step"];
 }
 
-
 - (void)drawRect:(NSRect)dirtyRect
 {
-    NSString *title = self.node.nodeTitle;
+    CGFloat yOffset = 5;
     
     [super drawRect:dirtyRect];
-    
-    NSDictionary *att = [self titleAttributes];
+
+    NSDictionary *att = [self nodeTitleAttributes];
     CGFloat fontSize = [(NSFont *)[att objectForKey:NSFontAttributeName] pointSize];
+
+    // draw title
+    {
+        NSString *title = self.node.nodeTitle;
+        //CGFloat titleWidth = [[[NSAttributedString alloc] initWithString:title attributes:att] size].width;
+        
+        //[title drawAtPoint:NSMakePoint(self.bounds.origin.x + self.bounds.size.width/2.0 - titleWidth/2.0,
+//        [title drawAtPoint:NSMakePoint(self.bounds.origin.x + self.bounds.size.width/4.0,
+        CGFloat margin = MKPostView.leftMargin;
+        [title drawAtPoint:NSMakePoint(self.bounds.origin.x + margin + 5,
+                                       self.bounds.origin.y + self.bounds.size.height/2.0 - fontSize/2.0 - yOffset)
+            withAttributes:att];
+    }
     
-    CGFloat titleWidth = [[[NSAttributedString alloc] initWithString:title attributes:att] size].width;
+    // draw status
+    NSString *nodeNote = self.node.nodeNote;
+    if (nodeNote)
+    {
+        [nodeNote drawAtPoint:NSMakePoint(self.bounds.size.width - self.width*.2,
+                                       self.bounds.origin.y + self.bounds.size.height/2.0 - fontSize/2.0 - yOffset)
+            withAttributes:att];
+    }
     
-    [title drawAtPoint:NSMakePoint(self.bounds.origin.x + self.bounds.size.width/2.0 - titleWidth/2.0,
-                                   self.bounds.origin.y + self.bounds.size.height/2.0 - fontSize/2.0 - 5)
-        withAttributes:att];
+    if (self.superview.subviews.lastObject != self)
+    {
+        [self drawArrowLine];
+    }
+}
+
+
+- (void)drawArrowLine
+{
+    [[NSColor colorWithCalibratedWhite:.9 alpha:1.0] set];
+    
+    [NSBezierPath setDefaultLineCapStyle:NSButtLineCapStyle];
+    
+    CGFloat right = 10.0;
+    CGFloat w = self.width;
+    CGFloat h = self.height;
+    
+    NSBezierPath *aPath = [NSBezierPath bezierPath];
+    [aPath moveToPoint:NSMakePoint(w - right, 0)];
+    [aPath lineToPoint:NSMakePoint(w, h/2)];
+    [aPath lineToPoint:NSMakePoint(w- right, h)];
+    [aPath setLineCapStyle:NSSquareLineCapStyle];
+    [aPath stroke];
 }
 
 @end

@@ -9,8 +9,8 @@
 #import <Cocoa/Cocoa.h>
 #import <NavKit/NavKit.h>
 
-@interface MKStepView : NSView
+@interface MKStepView : NavColoredView
 
-@property (assign, nonatomic) NavNode *node; // transaction
+@property (assign, nonatomic) NavNode *node; 
 
 @end

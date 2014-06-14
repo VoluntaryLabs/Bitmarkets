@@ -30,6 +30,8 @@
 		AA4472FC1947CF36009A7F0D /* MKCancelMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4472FB1947CF36009A7F0D /* MKCancelMsg.m */; };
 		AA4472FF1947D064009A7F0D /* MKCancelConfirmed.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4472FE1947D064009A7F0D /* MKCancelConfirmed.m */; };
 		AA447302194A804F009A7F0D /* MKStepView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA447301194A804F009A7F0D /* MKStepView.m */; };
+		AA447305194A8DB8009A7F0D /* MKStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA447304194A8DB8009A7F0D /* MKStatusView.m */; };
+		AA447308194BCD91009A7F0D /* MKStage.m in Sources */ = {isa = PBXBuildFile; fileRef = AA447307194BCD91009A7F0D /* MKStage.m */; };
 		AA4A0E1C1909ADF600AB78D0 /* bitcoin.png in Resources */ = {isa = PBXBuildFile; fileRef = AA4A0E0E1909ADF600AB78D0 /* bitcoin.png */; };
 		AA4A0E1D1909ADF600AB78D0 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = AA4A0E0F1909ADF600AB78D0 /* camera.png */; };
 		AA4A0E1E1909ADF600AB78D0 /* clothing.png in Resources */ = {isa = PBXBuildFile; fileRef = AA4A0E101909ADF600AB78D0 /* clothing.png */; };
@@ -279,6 +281,10 @@
 		AA4472FE1947D064009A7F0D /* MKCancelConfirmed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKCancelConfirmed.m; sourceTree = "<group>"; };
 		AA447300194A804F009A7F0D /* MKStepView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKStepView.h; sourceTree = "<group>"; };
 		AA447301194A804F009A7F0D /* MKStepView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKStepView.m; sourceTree = "<group>"; };
+		AA447303194A8DB8009A7F0D /* MKStatusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKStatusView.h; sourceTree = "<group>"; };
+		AA447304194A8DB8009A7F0D /* MKStatusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKStatusView.m; sourceTree = "<group>"; };
+		AA447306194BCD91009A7F0D /* MKStage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKStage.h; sourceTree = "<group>"; };
+		AA447307194BCD91009A7F0D /* MKStage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKStage.m; sourceTree = "<group>"; };
 		AA4A0E0E1909ADF600AB78D0 /* bitcoin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bitcoin.png; sourceTree = "<group>"; };
 		AA4A0E0F1909ADF600AB78D0 /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
 		AA4A0E101909ADF600AB78D0 /* clothing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clothing.png; sourceTree = "<group>"; };
@@ -736,6 +742,8 @@
 				AA4472EE1947C487009A7F0D /* MKStepsView.m */,
 				AA447300194A804F009A7F0D /* MKStepView.h */,
 				AA447301194A804F009A7F0D /* MKStepView.m */,
+				AA447303194A8DB8009A7F0D /* MKStatusView.h */,
+				AA447304194A8DB8009A7F0D /* MKStatusView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -755,6 +763,8 @@
 				AAB280FD19217586005C9D27 /* MKLock.m */,
 				AAB28161192242AF005C9D27 /* MKRelease.h */,
 				AAB28162192242AF005C9D27 /* MKRelease.m */,
+				AA447306194BCD91009A7F0D /* MKStage.h */,
+				AA447307194BCD91009A7F0D /* MKStage.m */,
 				AAB280DE19217586005C9D27 /* Buys */,
 				AAB2810019217586005C9D27 /* Msg */,
 				AAB2810919217586005C9D27 /* Sells */,
@@ -1232,8 +1242,10 @@
 				AA4472EF1947C487009A7F0D /* MKStepsView.m in Sources */,
 				AA955E181914775500F6FB0F /* MKMarkets.m in Sources */,
 				AAB28163192242AF005C9D27 /* MKRelease.m in Sources */,
+				AA447305194A8DB8009A7F0D /* MKStatusView.m in Sources */,
 				DC51980E192950BB004143E7 /* MKBuyerCancelLockEscrowMsg.m in Sources */,
 				AAB2816619224FA4005C9D27 /* MKEscrow.m in Sources */,
+				AA447308194BCD91009A7F0D /* MKStage.m in Sources */,
 				AAB2813319217586005C9D27 /* MKBuyerLockEscrowMsg.m in Sources */,
 				AAB2814719217586005C9D27 /* MKSellerPostLockMsg.m in Sources */,
 				AAB2814819217586005C9D27 /* MKSellLockEscrow.m in Sources */,

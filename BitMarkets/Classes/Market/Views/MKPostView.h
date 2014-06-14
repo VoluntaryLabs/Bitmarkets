@@ -42,6 +42,8 @@
 
 @property (strong, nonatomic) MKExchangeRate * exchangeRate;
 
++ (CGFloat)leftMargin;
+
 - (MKSell *)sell;
 
 - (void)prepareToDisplay;

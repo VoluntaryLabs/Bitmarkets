@@ -6,14 +6,14 @@
 //  Copyright (c) 2014 voluntary.net. All rights reserved.
 //
 
-#import "MKGroup.h"
+#import "MKStage.h"
 #import "MKCancelMsg.h"
 #import "MKCancelConfirmed.h"
 
 @class MKBuy;
 @class MKSell;
 
-@interface MKEscrow : MKGroup
+@interface MKEscrow : MKStage
 
 @property (strong, nonatomic) NSString *error;
 

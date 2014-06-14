@@ -15,7 +15,7 @@
 - (id)init
 {
     self = [super init];
-    
+ 
     self.bid = [[MKBuyBid alloc] init];
     [self addChild:self.bid];
     
@@ -28,16 +28,22 @@
     self.releaseEscrow = [[MKBuyReleaseEscrow alloc] init];
     [self addChild:self.releaseEscrow];
     
-    //self.nodeViewClass = MKTransactionProgressView.class;
+    self.nodeViewClass = MKTransactionProgressView.class;
     
     return self;
+}
+
+- (NSArray *)visibleStages
+{
+    NSMutableArray *visibleStages = [NSMutableArray arrayWithArray:self.children];
+    [visibleStages removeFirstObject];
+    return visibleStages;
 }
 
 - (BOOL)isCanceled
 {
     return self.lockEscrow.isCancelConfirmed;
 }
-
 
 - (NSString *)nodeNote
 {

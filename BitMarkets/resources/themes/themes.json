@@ -12,6 +12,27 @@
                 "backgroundColor" : "#FFFFFF"
                 
             },
+            
+            "status":
+            {
+                "title":
+                {
+                    "fontName" : "Open Sans",
+                    "fontSize" : 22,
+                    "color" : "#000000",
+                    "align" : "left",
+                    "backgroundColor" : "#FFFFFF"
+                },
+                
+                "subtitle":
+                {
+                    "fontName" : "Open Sans",
+                    "fontSize" : 16,
+                    "color" : "#CCCCCC",
+                    "align" : "left",
+                    "backgroundColor" : "#FFFFFF"
+                },
+            },
         },
         
         "code" :

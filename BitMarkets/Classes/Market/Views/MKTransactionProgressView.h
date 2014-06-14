@@ -10,6 +10,7 @@
 #import <NavKit/NavKit.h>
 #import "MKStepsView.h"
 #import "MKTransaction.h"
+#import "MKStatusView.h"
 
 @interface MKTransactionProgressView : NavColoredView
 
@@ -17,7 +18,8 @@
 @property (assign, nonatomic) NavNode *node; // transaction
 
 @property (strong, nonatomic) MKStepsView *stepsView;
-@property (strong, nonatomic) NSView *statusView;
-@property (strong, nonatomic) NSView *bottomView; // overlays grey
+@property (strong, nonatomic) MKStatusView *statusView;
+@property (strong, nonatomic) NSView *bottomView;
+@property (strong, nonatomic) NavColoredView *maskView; // overlays grey
 
 @end

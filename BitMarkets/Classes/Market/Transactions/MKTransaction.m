@@ -21,6 +21,48 @@
     return self;
 }
 
+- (NSArray *)visibleStages
+{
+    return self.children;
+}
+
+- (NavNode *)currentNode
+{
+    for (MKStage *stage in self.children)
+    {
+        if (stage.isActive)
+        {
+            return stage;
+        }
+    }
+    
+    return nil;
+}
+
+- (NSString *)statusTitle
+{
+    NavNode *node = self.currentNode;
+    
+    if (node)
+    {
+        return node.nodeTitle;
+    }
+    
+    return @"-";
+}
+
+- (NSString *)statusSubtitle
+{
+    NavNode *node = self.currentNode;
+    
+    if (node)
+    {
+        return node.nodeSubtitle;
+    }
+    
+    return @"-";
+}
+
 - (NSString *)nodeTitle
 {
     return self.mkPost.titleOrDefault;

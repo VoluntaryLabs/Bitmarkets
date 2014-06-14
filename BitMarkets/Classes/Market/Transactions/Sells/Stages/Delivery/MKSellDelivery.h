@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 voluntary.net. All rights reserved.
 //
 
-#import "MKGroup.h"
+#import "MKStage.h"
 
-@interface MKSellDelivery : MKGroup
+@interface MKSellDelivery : MKStage
 
 - (BOOL)isComplete;
 

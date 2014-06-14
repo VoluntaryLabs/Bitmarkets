@@ -16,6 +16,11 @@
 @property (strong, nonatomic) MKPost *mkPost;
 @property (strong, nonatomic) NSString *error;
 
+- (NSArray *)visibleStages;
+
+- (NSString *)statusTitle;
+- (NSString *)statusSubtitle;
+
 - (void)update;
 
 @end

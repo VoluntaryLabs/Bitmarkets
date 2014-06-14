@@ -6,12 +6,12 @@
 //  Copyright (c) 2014 voluntary.net. All rights reserved.
 //
 
-#import "MKGroup.h"
+#import "MKStage.h"
 #import "MKBidMsg.h"
 #import "MKAcceptBidMsg.h"
 #import "MKRejectBidMsg.h"
 
-@interface MKBuyBid : MKGroup
+@interface MKBuyBid : MKStage
 
 - (MKBidMsg *)bidMsg;
 - (MKAcceptBidMsg *)acceptMsg;
