@@ -14,6 +14,7 @@
 -- catch errors in BNApp.main
 - Terser wallet status messages
 - Fix Withdrawal UI
+- Detect failed broadcasts
 
 ------ steve ------
 

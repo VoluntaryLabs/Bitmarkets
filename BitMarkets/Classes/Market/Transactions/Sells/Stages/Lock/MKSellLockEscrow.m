@@ -140,7 +140,6 @@
     
     wallet.server.logsNextMessage = YES;
     
-    [buyerEscrowTx unlockInputs]; //TODO Is this needed since we broadcast it?
     @try
     {
         self.error = nil;
