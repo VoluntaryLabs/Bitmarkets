@@ -22,7 +22,7 @@
 - (BOOL)wasAccepted;
 - (BOOL)wasRejected;
 
-
+- (void)accept;
 - (void)reject;
 
 @end

@@ -11,6 +11,9 @@
 
 @interface MKStatusView : NavColoredView
 
+//@property (strong, nonatomic) NSView *buttonsView;
+@property (strong, nonatomic) NavColoredView *buttonsView;
+
 @property (assign, nonatomic) NavNode *node;
 @property (strong, nonatomic) NavTextView *statusTextView;
 @property (strong, nonatomic) NavTextView *subtitleTextView;

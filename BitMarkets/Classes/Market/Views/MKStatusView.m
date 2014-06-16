@@ -19,25 +19,45 @@
     if (self)
     {
         _statusTextView   = [[NavTextView alloc] initWithFrame:NSMakeRect(0, 0, 100, 30)];
+        [_statusTextView setSelectable:NO];
         [_statusTextView setThemePath:@"steps/status/title"];
         [self addSubview:_statusTextView];
         
         _subtitleTextView = [[NavTextView alloc] initWithFrame:NSMakeRect(0, 0, 100, 30)];
+        [_subtitleTextView setSelectable:NO];
         [_subtitleTextView setThemePath:@"steps/status/subtitle"];
         [self addSubview:_subtitleTextView];
+        
+        _buttonsView = [[NavColoredView alloc] initWithFrame:NSMakeRect(0, 0, 100, 30)];
+        //_buttonsView.backgroundColor = [NSColor colorWithCalibratedWhite:.9 alpha:1.0];
+        _buttonsView.backgroundColor = [NSColor whiteColor];
+        [_buttonsView setAutoresizesSubviews:NO];
+        
+        //_buttonsView.backgroundColor = [NSColor clearColor];
+        [self addSubview:_buttonsView];
     }
     
     return self;
 }
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)setNode:(NavNode *)node
 {
-    _node = node;
-    
-    _statusTextView.string = self.transaction.statusTitle;
-    
-    _subtitleTextView.string = self.transaction.statusSubtitle;
-    
+    if (_node != node)
+    {
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:nil object:_node];
+        _node = node;
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(nodeChanged:) name:nil object:_node];
+        [self syncToNode];
+    }
+}
+
+- (void)nodeChanged:(NSNotification *)aNote
+{
     [self syncToNode];
 }
 
@@ -48,8 +68,44 @@
 
 - (void)syncToNode
 {
+    _statusTextView.string   = self.transaction.statusTitle;
+    _subtitleTextView.string = self.transaction.statusSubtitle ? self.transaction.statusSubtitle : @"";
+    
     self.backgroundColor = [self.nodeTitleAttributes objectForKey:NSBackgroundColorAttributeName];
+    [self setupButtons];
     [self layout];
+}
+
+- (void)setupButtons
+{
+    [_buttonsView removeAllSubviews];
+    
+    for (NavActionSlot *actionSlot in self.transaction.currentNode.navMirror.actionSlots)
+    {
+        [_buttonsView addSubview:actionSlot.slotView];
+    }
+    
+    //NavRoundButtonView *button = _buttonsView.subviews.firstObject;
+    
+    //NSLog(@"button.x = %i", (int)button.x);
+    [_buttonsView setAllSubviewToWidth:150];
+    //[_buttonsView setAllSubviewToHeight:34];
+    
+    //NSLog(@"button.x = %i", (int)button.x);
+    [_buttonsView stackSubviewsLeftToRightWithMargin:10];
+    //NSLog(@"button.x = %i", (int)button.x);
+    
+    [_buttonsView setWidth:_buttonsView.maxXOfSubviews];
+    //NSLog(@"_buttonsView.width = %i", (int)_buttonsView.width);
+    //NSLog(@"button.x = %i", (int)button.x);
+    
+    [_buttonsView stackSubviewsLeftToRightWithMargin:10];
+    
+    //[_buttonsView setHeight:self.maxYOfSubviews];
+    [_buttonsView setHeight:32];
+    
+    [self layout];
+    //NSLog(@"button.x = %i", (int)button.x);
 }
 
 - (void)layout
@@ -62,6 +118,9 @@
     [_subtitleTextView setX:_statusTextView.x];
     [_subtitleTextView setWidth:_statusTextView.width];
     [_subtitleTextView placeYBelow:_statusTextView margin:0.0];
+    
+    [_buttonsView setX:self.width - _buttonsView.width - 30];
+    [_buttonsView centerYInSuperview];
 }
 
 - (NSDictionary *)nodeTitleAttributes
@@ -90,6 +149,5 @@
     [aPath setLineCapStyle:NSSquareLineCapStyle];
     [aPath stroke];
 }
-
 
 @end

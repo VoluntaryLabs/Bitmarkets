@@ -35,10 +35,9 @@
 
     self.releaseEscrow = [[MKSellReleaseEscrow alloc] init];
     [self addChild:self.releaseEscrow];
-    
-    //[self.dictPropertyNames addObjectsFromArray:
-     //       @[@"mkPost", @"bids", @"lockEscrow", @"delivery", @"releaseEscrow"]];
-    
+
+    self.nodeViewClass = MKTransactionProgressView.class;
+
     return self;
 }
 

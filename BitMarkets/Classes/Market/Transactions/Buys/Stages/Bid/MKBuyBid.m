@@ -19,7 +19,14 @@
 - (id)init
 {
     self = [super init];
-    //[self addPropertyName:@"msg"];
+
+    /*
+    {
+        NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"cancelBid"];
+        [slot setVisibleName:@"Cancel Bid"];
+    }
+    */
+    
     return self;
 }
 
@@ -171,5 +178,9 @@
 
 // actions
 
+- (void)cancelBid
+{
+    
+}
 
 @end

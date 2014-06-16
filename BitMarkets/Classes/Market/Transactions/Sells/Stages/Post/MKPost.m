@@ -126,7 +126,7 @@
         return self.titleOrDefault;
     }
     
-    return @"Post";
+    return @"Listing";
 }
 
 - (NSString *)nodeSubtitle

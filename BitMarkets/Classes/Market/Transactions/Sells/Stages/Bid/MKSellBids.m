@@ -23,6 +23,12 @@
     self.shouldSortChildren = YES;
     self.sortChildrenKey = @"date";
     self.sortAccending = NO;
+    
+    {
+        NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"acceptFirstBid"];
+        [slot setVisibleName:@"Accept First Bid"];
+    }
+    
     return self;
 }
 
@@ -58,8 +64,18 @@
         return @"accepted bid";
     }
     
+    if (!self.runningWallet)
+    {
+        return @"waiting for wallet to sync...";
+    }
+    
     if (self.children.count > 0)
     {
+        if (!self.hasAmountNeeded)
+        {
+            return [NSString stringWithFormat:@"Insufficent funds for security deposit to accept bid, need to deposit %@BTC", self.amountNeeded.satoshiToBtc];
+        }
+        
         return @"choose bid";
     }
     
@@ -156,6 +172,59 @@
     {
         [bid update];
     }
+    
+    [self updateActions];
+}
+
+- (void)updateActions
+{
+    NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"acceptFirstBid"];
+    
+    BOOL active = (self.firstBid != nil) &&
+        (self.acceptedBid == nil) &&
+        (self.runningWallet != nil) &&
+        self.hasAmountNeeded;
+    
+    [slot setIsActive:active];
+}
+
+- (MKSellBid *)firstBid
+{
+    MKSellBid *bid = self.children.firstObject;
+    return bid;
+}
+
+- (BOOL)hasAmountNeeded
+{
+    return [self.runningWallet.balance isGreaterThanOrEqualTo:self.amountNeeded];
+}
+
+- (NSNumber *)amountNeeded
+{
+    return [NSNumber numberWithLongLong:self.sell.mkPost.priceInSatoshi.longLongValue * 2];
+}
+
+- (void)acceptFirstBid
+{
+    MKSellBid *bid = self.firstBid;
+    
+    if (bid)
+    {
+        if (!self.hasAmountNeeded)
+        {
+            [self showInsufficientFundsPanel];
+            return;
+        }
+        
+        [bid accept];
+    }
+    
+    [self update];
+}
+
+- (void)showInsufficientFundsPanel
+{
+    
 }
 
 @end

@@ -105,7 +105,7 @@
     [postView setHeight:1000];
     
     [_bottomView addSubview:postView];
-    //postView.alphaValue = .3;
+    postView.alphaValue = .5;
     
     [_bottomView addSubview:_maskView];
     _maskView.alphaValue = .05;

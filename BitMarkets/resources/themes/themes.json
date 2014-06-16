@@ -32,6 +32,22 @@
                     "align" : "left",
                     "backgroundColor" : "#FFFFFF"
                 },
+                
+                "button" :
+                {
+                    "fontName" : "Open Sans",
+                    "fontSize" : 14,
+                    "color" : "#FFFFFF",
+                    "backgroundColor" : "#000000",
+                },
+                
+                "button-disabled" :
+                {
+                    "fontName" : "Open Sans",
+                    "fontSize" : 14,
+                    "color" : "#FFFFFF",
+                    "backgroundColor" : "#DDDDDD",
+                },
             },
         },
         

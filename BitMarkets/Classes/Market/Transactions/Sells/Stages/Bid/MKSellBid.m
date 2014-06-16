@@ -195,6 +195,7 @@
     if (escrowTx.error)
     {
         NSLog(@"tx configureForOutputWithValue failed: %@", escrowTx.error.description);
+        
         if (escrowTx.error.insufficientValue)
         {
             self.error = [NSString stringWithFormat:@"%@BTC Required", escrowTx.error.insufficientValue.satoshiToBtc];
@@ -204,6 +205,7 @@
             [NSException raise:@"tx configureForOutputWithValue failed" format:nil];
             //TODO: handle unknown tx configureForEscrowWithValue error
         }
+        
         return;
     }
     

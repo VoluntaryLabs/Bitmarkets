@@ -17,6 +17,7 @@
 @property (strong, nonatomic) NSString *error;
 
 - (NSArray *)visibleStages;
+- (NavNode *)currentNode;
 
 - (NSString *)statusTitle;
 - (NSString *)statusSubtitle;
