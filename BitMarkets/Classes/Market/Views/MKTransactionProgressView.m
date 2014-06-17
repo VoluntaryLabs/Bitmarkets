@@ -9,6 +9,7 @@
 #import "MKTransactionProgressView.h"
 #import "MKStepsView.h"
 #import <NavKit/NavKit.h>
+#import "MKPanelManager.h"
 
 
 @implementation MKTransactionProgressView
@@ -44,10 +45,21 @@
         _maskView = [[NavColoredView alloc] initWithFrame:NSMakeRect(0, 0, self.width, 100)];
         //_maskView.backgroundColor = [NSColor redColor];
         _maskView.backgroundColor = [NSColor colorWithCalibratedWhite:0.5 alpha:1.0];
+        _maskView.alphaValue = .05;
        // [_maskView setOp:NO];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(walletChanged:)
+                                                     name:@"WalletChanged"
+                                                   object:nil];
     }
     
     return self;
+}
+
+- (void)walletChanged:(NSNotification *)aNote
+{
+    [self syncToNode];
 }
 
 - (void)layout
@@ -74,6 +86,13 @@
     [self layout];
 }
 
+- (void)drawRect:(NSRect)dirtyRect
+{
+    [[MKPanelManager sharedPanelManager] setPanelReceiver:self];
+    
+    [super drawRect:dirtyRect];
+}
+
 - (MKTransaction *)transaction
 {
     return (MKTransaction *)self.node;
@@ -92,16 +111,22 @@
     [_statusView syncFromNode];
     
     [_bottomView removeAllSubviews];
-    NSView *postView = self.transaction.mkPost.nodeView;
+    MKPostView *postView = (MKPostView *)self.transaction.mkPost.nodeView;
     [_bottomView setBounds:postView.bounds];
     [_bottomView setHeight:1000];
     [postView setHeight:1000];
     
     [_bottomView addSubview:postView];
-    postView.alphaValue = .5;
     
-    [_bottomView addSubview:_maskView];
-    _maskView.alphaValue = .05;
+    if (postView.editable)
+    {
+        postView.alphaValue = 1;
+    }
+    else
+    {
+        postView.alphaValue = .5;
+        [_bottomView addSubview:_maskView];
+    }
     
     [self layout];
 }

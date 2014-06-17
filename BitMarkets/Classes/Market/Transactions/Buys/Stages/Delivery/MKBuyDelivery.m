@@ -8,6 +8,7 @@
 
 #import "MKBuyDelivery.h"
 #import "MKBuy.h"
+#import "MKPanelManager.h"
 
 @implementation MKBuyDelivery
 
@@ -18,6 +19,9 @@
     
     MKBuyDeliveryAddress *address = [[MKBuyDeliveryAddress alloc] init];
     [self addChild:address];
+    
+    NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"enterAddress"];
+    [slot setVisibleName:@"Enter Address"];
     
     return self;
 }
@@ -84,17 +88,13 @@
 
 - (void)update
 {
-    // send address msg if ready
-    /*
-    if (self.address.isApproved && !self.addressMsg)
-    {
-        MKBuyerAddressMsg *msg = [[MKBuyerAddressMsg alloc] init];
-        [msg copyFrom:self.buy.bidMsg];
-        [msg setAddressDict:self.address.addressDict];
-        [msg send];
-        [self addChild:msg];
-    }
-    */
+    [self updateActions];
+}
+
+- (void)updateActions
+{
+    NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"enterAddress"];
+    [slot setIsActive:!self.isComplete];
 }
 
 - (BOOL)isApproved
@@ -120,5 +120,15 @@
     return self.isApproved;
 }
 
+- (void)enterAddress
+{
+    MKPanelView *panel = [[MKPanelManager sharedPanelManager] openNewPanel];
+    
+    //NSView *addressView = self.address.nodeView;
+    
+    [panel setInnerView:self.address.nodeView];
+    [self.nodeView addSubview:panel];
+    [panel layout];
+}
 
 @end

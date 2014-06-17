@@ -47,7 +47,7 @@
 
 - (void)syncFromNode
 {
-    _statusTextView.string   = self.transaction.statusTitle;
+    _statusTextView.string   = @"Status"; // self.transaction.statusTitle;
     _subtitleTextView.string = self.transaction.statusSubtitle ? self.transaction.statusSubtitle : @"";
     
     self.backgroundColor = [self.nodeTitleAttributes objectForKey:NSBackgroundColorAttributeName];

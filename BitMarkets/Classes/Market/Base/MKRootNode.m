@@ -121,7 +121,17 @@ static MKRootNode *sharedMKRootNode = nil;
         //[_wallet.server start];
         
         [BNMetaDataDb shared].path = [[[NSFileManager defaultManager] applicationSupportDirectory] stringByAppendingPathComponent:@"wallet/meta-data"];
+        
+        [self postWalletNotification];
     }
+}
+
+- (void)postWalletNotification
+{
+    // just doing this until wallet supports notifications
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"WalletChanged" object:nil];
+    [self performSelector:@selector(postWalletNotification) withObject:nil afterDelay:10.0];
 }
 
 - (void)willShutdown

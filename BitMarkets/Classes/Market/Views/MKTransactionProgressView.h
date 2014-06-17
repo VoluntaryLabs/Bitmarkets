@@ -12,6 +12,7 @@
 #import "MKStepsView.h"
 #import "MKTransaction.h"
 #import "MKStatusView.h"
+#import "MKPostView.h"
 
 @interface MKTransactionProgressView : MKNodeView
 

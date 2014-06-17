@@ -7,7 +7,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <NavKit/NavKit.h>
 
 @interface MKPanelView : NSView
+
+@property (strong, nonatomic) NSView *innerView;
 
 @end
