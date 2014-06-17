@@ -16,5 +16,6 @@
 
 - (void)update;
 - (BOOL)isConfirmed;
+- (BOOL)isComplete;
 
 @end

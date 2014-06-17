@@ -7,14 +7,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <NavKit/NavKit.h>
+#import "MKNodeView.h"
 
-@interface MKStatusView : NavColoredView
+@interface MKStatusView : MKNodeView
 
-//@property (strong, nonatomic) NSView *buttonsView;
 @property (strong, nonatomic) NavColoredView *buttonsView;
-
-@property (assign, nonatomic) NavNode *node;
 @property (strong, nonatomic) NavTextView *statusTextView;
 @property (strong, nonatomic) NavTextView *subtitleTextView;
 

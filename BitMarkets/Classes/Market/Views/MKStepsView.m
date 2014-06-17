@@ -26,14 +26,17 @@
 
 - (MKTransaction *)transaction
 {
-    return (MKTransaction *)_node;
+    return (MKTransaction *)self.node;
 }
-
 
 - (void)setNode:(NavNode *)node
 {
-    _node = node;
-    
+    [super setNode:node];
+    [self setupViews];
+}
+
+- (void)setupViews
+{
     [self removeAllSubviews];
     
     for (NavNode *subnode in self.transaction.visibleStages)
@@ -43,13 +46,6 @@
         [self addSubview:stepView];
     }
     
-    [self layout];
-    //[self syncFromNode];
-}
-
-- (void)setFrame:(NSRect)frameRect
-{
-    [super setFrame:frameRect];
     [self layout];
 }
 

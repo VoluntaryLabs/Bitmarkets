@@ -23,12 +23,6 @@
     return self;
 }
 
-- (void)setNode:(NavNode *)node
-{
-    _node = node;
-    [self syncToNode];
-}
-
 - (void)syncToNode
 {
     self.backgroundColor = [self.nodeTitleAttributes objectForKey:NSBackgroundColorAttributeName];
@@ -75,7 +69,6 @@
         [self drawArrowLine];
     }
 }
-
 
 - (void)drawArrowLine
 {

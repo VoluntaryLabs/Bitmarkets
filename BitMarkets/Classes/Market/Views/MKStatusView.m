@@ -40,33 +40,12 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (void)setNode:(NavNode *)node
-{
-    if (_node != node)
-    {
-        [[NSNotificationCenter defaultCenter] removeObserver:self name:nil object:_node];
-        _node = node;
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(nodeChanged:) name:nil object:_node];
-        [self syncToNode];
-    }
-}
-
-- (void)nodeChanged:(NSNotification *)aNote
-{
-    [self syncToNode];
-}
-
 - (MKTransaction *)transaction
 {
     return (MKTransaction *)self.node;
 }
 
-- (void)syncToNode
+- (void)syncFromNode
 {
     _statusTextView.string   = self.transaction.statusTitle;
     _subtitleTextView.string = self.transaction.statusSubtitle ? self.transaction.statusSubtitle : @"";

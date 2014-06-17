@@ -94,6 +94,11 @@
 
 - (BOOL)isActive
 {
+    if (!self.sell.delivery.isComplete)
+    {
+        return NO;
+    }
+    
     return self.sell.lockEscrow.isComplete && !self.isComplete;
     //return (self.buyPaymentMsg || self.buyRequestRefundMsg) && !self.isComplete;
 }

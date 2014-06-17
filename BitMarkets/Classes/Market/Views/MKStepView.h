@@ -7,10 +7,8 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <NavKit/NavKit.h>
+#import "MKNodeView.h"
 
-@interface MKStepView : NavColoredView
-
-@property (assign, nonatomic) NavNode *node; 
+@interface MKStepView : MKNodeView
 
 @end

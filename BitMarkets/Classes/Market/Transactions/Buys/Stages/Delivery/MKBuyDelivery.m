@@ -69,6 +69,11 @@
         return @"✓";
     }
     
+    if (self.buy.lockEscrow.isComplete)
+    {
+        return @"●";
+    }
+    
     return nil;
 }
 
@@ -109,5 +114,11 @@
         [self postParentChainChanged];
     }
 }
+
+- (BOOL)isComplete
+{
+    return self.isApproved;
+}
+
 
 @end

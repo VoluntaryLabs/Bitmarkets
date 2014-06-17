@@ -41,6 +41,8 @@
         return @"received";
     }
     
+    return @"awaiting delivery address from buyer";
+
     /*
     if (self.sell.lockEscrow.isComplete)
     {
@@ -61,9 +63,9 @@
             return @"received";
         }
     }
-    */
     
     return nil;
+    */
 }
 
 - (NSString *)nodeNote
@@ -71,6 +73,11 @@
     if (self.isComplete)
     {
         return @"✓";
+    }
+
+    if (self.sell.lockEscrow.isComplete)
+    {
+        return @"●";
     }
     
     return nil;

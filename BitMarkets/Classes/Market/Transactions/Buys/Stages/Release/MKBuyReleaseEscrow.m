@@ -90,6 +90,11 @@
 
 - (BOOL)isActive
 {
+    if (!self.buy.delivery.isComplete)
+    {
+        return NO;
+    }
+    
     /*
     if (!self.runningWallet)
     {

@@ -22,4 +22,6 @@
 - (void)sendAddress;
 - (BOOL)isApproved;
 
+- (BOOL)isComplete;
+
 @end

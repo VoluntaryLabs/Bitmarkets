@@ -35,6 +35,11 @@
     return self.confirmLockMsg != nil;
 }
 
+- (BOOL)isComplete
+{
+    return self.isConfirmed;
+}
+
 - (BOOL)canCancel
 {
     if (self.error)

@@ -74,29 +74,22 @@
     [self layout];
 }
 
-- (void)setFrame:(NSRect)frameRect
-{
-    [super setFrame:frameRect];
-    [self layout];
-}
-
-- (void)setNode:(NavNode *)node
-{
-    _node = node;
-    
-    [self syncFromNode];
-}
-
 - (MKTransaction *)transaction
 {
     return (MKTransaction *)self.node;
 }
 
+- (void)setNode:(NavNode *)node
+{
+    [_stepsView  setNode:node];
+    [_statusView setNode:node];
+    [super setNode:node];
+}
+
 - (void)syncFromNode
 {
-    [_stepsView  setNode:self.node];
-    [_statusView setNode:self.node];
-    
+    [_stepsView  syncFromNode];
+    [_statusView syncFromNode];
     
     [_bottomView removeAllSubviews];
     NSView *postView = self.transaction.mkPost.nodeView;
@@ -115,8 +108,7 @@
 
 - (void)syncToNode
 {
-
-    [self.transaction postSelfChanged];
+    //[self.transaction postSelfChanged];
 }
 
 @end

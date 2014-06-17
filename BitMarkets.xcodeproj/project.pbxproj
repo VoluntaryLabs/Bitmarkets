@@ -126,6 +126,7 @@
 		AAB28163192242AF005C9D27 /* MKRelease.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB28162192242AF005C9D27 /* MKRelease.m */; };
 		AAB2816619224FA4005C9D27 /* MKEscrow.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB2816519224FA4005C9D27 /* MKEscrow.m */; };
 		AAD784F8194F9E53004FE0F6 /* MKPanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD784F7194F9E53004FE0F6 /* MKPanelView.m */; };
+		AAD78505194FBF3E004FE0F6 /* MKNodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD78504194FBF3E004FE0F6 /* MKNodeView.m */; };
 		DC51980E192950BB004143E7 /* MKBuyerCancelLockEscrowMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = DC51980D192950BB004143E7 /* MKBuyerCancelLockEscrowMsg.m */; };
 /* End PBXBuildFile section */
 
@@ -433,6 +434,8 @@
 		AAB2816519224FA4005C9D27 /* MKEscrow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKEscrow.m; sourceTree = "<group>"; };
 		AAD784F6194F9E53004FE0F6 /* MKPanelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKPanelView.h; sourceTree = "<group>"; };
 		AAD784F7194F9E53004FE0F6 /* MKPanelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKPanelView.m; sourceTree = "<group>"; };
+		AAD78503194FBF3E004FE0F6 /* MKNodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKNodeView.h; sourceTree = "<group>"; };
+		AAD78504194FBF3E004FE0F6 /* MKNodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKNodeView.m; sourceTree = "<group>"; };
 		DC51980C192950BB004143E7 /* MKBuyerCancelLockEscrowMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKBuyerCancelLockEscrowMsg.h; sourceTree = "<group>"; };
 		DC51980D192950BB004143E7 /* MKBuyerCancelLockEscrowMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKBuyerCancelLockEscrowMsg.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -729,6 +732,8 @@
 		AAA2E6A019006F0A0098C357 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AAD78503194FBF3E004FE0F6 /* MKNodeView.h */,
+				AAD78504194FBF3E004FE0F6 /* MKNodeView.m */,
 				AA09C875192D6D2600317130 /* MKDeliveryAddressView.h */,
 				AA09C876192D6D2600317130 /* MKDeliveryAddressView.m */,
 				AAA2E6A719006F0A0098C357 /* MKPostView.h */,
@@ -1245,6 +1250,7 @@
 				AA4472FC1947CF36009A7F0D /* MKCancelMsg.m in Sources */,
 				AAB2815A19220D98005C9D27 /* MKSellAcceptRefundRequestMsg.m in Sources */,
 				AA4472EF1947C487009A7F0D /* MKStepsView.m in Sources */,
+				AAD78505194FBF3E004FE0F6 /* MKNodeView.m in Sources */,
 				AA955E181914775500F6FB0F /* MKMarkets.m in Sources */,
 				AAB28163192242AF005C9D27 /* MKRelease.m in Sources */,
 				AA447305194A8DB8009A7F0D /* MKStatusView.m in Sources */,

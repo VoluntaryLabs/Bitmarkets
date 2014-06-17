@@ -8,14 +8,14 @@
 
 #import <Cocoa/Cocoa.h>
 #import <NavKit/NavKit.h>
+#import "MKNodeView.h"
 #import "MKStepsView.h"
 #import "MKTransaction.h"
 #import "MKStatusView.h"
 
-@interface MKTransactionProgressView : NavColoredView
+@interface MKTransactionProgressView : MKNodeView
 
 @property (assign, nonatomic) NavView *navView;
-@property (assign, nonatomic) NavNode *node; // transaction
 
 @property (strong, nonatomic) MKStepsView *stepsView;
 @property (strong, nonatomic) MKStatusView *statusView;
