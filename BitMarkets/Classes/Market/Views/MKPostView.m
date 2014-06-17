@@ -125,6 +125,8 @@
 
 - (void)setEditable:(BOOL)isEditable
 {
+    _editable = isEditable;
+    
     [_description setEditable:isEditable];
     [_title setEditable:isEditable];
     [_price setEditable:isEditable];
@@ -140,7 +142,6 @@
 {
     return 30.0;
 }
-
 
 - (void)layout
 {
@@ -246,7 +247,7 @@
     [_description textDidChange];
     [_description useUneditedTextStringIfNeeded];
 
-    _region.string      = self.mkPost.regionPath.lastObject;
+    _region.string      = self.mkPost.regionPath.lastObject ? self.mkPost.regionPath.lastObject : @"MISSING REGION ERROR";
     NSString *cPath = [self.mkPost.categoryPath componentsJoinedByString:@"/"];
     _category.string    = cPath;
     _fromAddress.string = self.mkPost.sellerAddress;

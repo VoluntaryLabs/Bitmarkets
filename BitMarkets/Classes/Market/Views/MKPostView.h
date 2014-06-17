@@ -39,6 +39,7 @@
 @property (strong, nonatomic) MKAttachmentView *attachmentView;
 
 @property (assign, nonatomic) BOOL isUpdating;
+@property (assign, nonatomic) BOOL editable;
 
 @property (strong, nonatomic) MKExchangeRate * exchangeRate;
 
