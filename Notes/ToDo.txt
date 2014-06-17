@@ -15,6 +15,9 @@
 - Terser wallet status messages
 - Fix Withdrawal UI
 - Detect failed broadcasts
+- Catch exceptions on wallet startup:
+	com.google.bitcoin.kits.WalletAppKit.startUp(WalletAppKit.java:236)
+- Add support for recovering a wallet from its keys when wallet gets corrupted.
 
 ------ steve ------
 

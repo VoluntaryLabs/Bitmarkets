@@ -230,7 +230,6 @@
         escrowTx = [escrowTx mergedWithEscrowTx:sellerEscrowTx];
         [escrowTx subtractFee];
         
-        wallet.server.logsNextMessage = YES;
         @try
         {
             self.error = nil;
