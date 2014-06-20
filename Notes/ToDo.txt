@@ -18,7 +18,9 @@
 
 ------ steve ------
 
-- statusview isn't getting dealloced when transaction view removed
+- allow seller to see address of buyer
+
+- status view isn't getting dealloced when transaction view removed
 
 if (escrowTx.error.insufficientValue)
 //TODO: prompt user for deposit
