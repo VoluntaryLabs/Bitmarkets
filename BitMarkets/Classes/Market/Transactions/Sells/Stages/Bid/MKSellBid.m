@@ -190,9 +190,10 @@
 
 - (void)setEscrowInputTx:(BNTx *)escrowInputTx
 {
-    MKBuyerLockEscrowMsg *escrowInputTxMsg = [[MKBuyerLockEscrowMsg alloc] init];
+    MKLockEscrowInputMsg *escrowInputTxMsg = [[MKLockEscrowInputMsg alloc] init];
+    [escrowInputTxMsg copyThreadFrom:self.bidMsg];
     escrowInputTxMsg.payload = escrowInputTx.asJSONObject;
-    [self addChild:escrowInputTx];
+    [self addChild:escrowInputTxMsg];
 }
 
 
@@ -211,15 +212,17 @@
 
     BNTx *escrowTx = [wallet newTx];
     
-    if (self.escrowInputTx)
+    BNTx *escrowInputTx = self.escrowInputTx;
+    if (escrowInputTx)
     {
-        if (self.escrowInputTx.isConfirmed)
+        [escrowInputTx fetch];
+        if (escrowInputTx.isConfirmed)
         {
-            [escrowTx configureForEscrowWithInputTx:self.escrowInputTx];
+            [escrowTx configureForEscrowWithInputTx:escrowInputTx];
         }
         else
         {
-            return;
+            [self performSelector:@selector(accept) withObject:nil afterDelay:15];
         }
     }
     else
@@ -250,13 +253,15 @@
     if ([escrowTx changeValue].longLongValue > 10000)
     {
         //create an output that won't lock up more than needed
-        self.escrowInputTx = [wallet newTx];
-        [self.escrowInputTx configureForOutputWithValue:[NSNumber numberWithLongLong:
+        escrowInputTx = [wallet newTx];
+        [escrowInputTx configureForOutputWithValue:[NSNumber numberWithLongLong:
                                          [(BNTxOut *)[escrowTx.outputs firstObject] value].longLongValue + [escrowTx fee].longLongValue]];
-        [self.escrowInputTx subtractFee];
-        [self.escrowInputTx sign];
-        [self.escrowInputTx broadcast];
-        [self accept]; //TODO verify that tx is in mempool first
+        [escrowInputTx subtractFee];
+        [escrowInputTx sign];
+        [escrowInputTx broadcast]; //TODO make sure that peers accepted it
+        [self setEscrowInputTx:escrowInputTx];
+        [self performSelector:@selector(accept) withObject:nil afterDelay:15];
+        return;
     }
     else
     {

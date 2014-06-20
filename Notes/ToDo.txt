@@ -3,17 +3,14 @@
 
 - consider security issues
 - consider edge cases for workflow (eg: what happens if a tx fails to broadcast ... etc)
-- tag deposits in transaction list?
 - wallet backups?
 - Fix Withdrawal UI
 - wallet withdraw ui
 	- validate amount / address
-- encrypt the deposit address file
 - create a better system for extending BitcoinJ object persistence
 - Detect failed broadcasts
 - Add support for recovering a wallet from its keys when wallet gets corrupted.
 - Deterministic Hierarchical Wallets
-- Make sure that inputs are confirmed before spending
 - More robust peer connection (use DNS and list of ips?)
 
 ------ steve ------
