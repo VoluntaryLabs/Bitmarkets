@@ -186,9 +186,10 @@
 
 - (void)setEscrowInputTx:(BNTx *)escrowInputTx
 {
-    MKBuyerLockEscrowMsg *escrowInputTxMsg = [[MKBuyerLockEscrowMsg alloc] init];
+    MKLockEscrowInputMsg *escrowInputTxMsg = [[MKLockEscrowInputMsg alloc] init];
+    [escrowInputTxMsg copyThreadFrom:self.buy.bidMsg];
     escrowInputTxMsg.payload = escrowInputTx.asJSONObject;
-    [self addChild:escrowInputTx];
+    [self addChild:escrowInputTxMsg];
 }
 
 - (BOOL)sendLockToSeller
@@ -202,15 +203,17 @@
     
     BNTx *escrowTx = [wallet newTx];
     
-    if (self.escrowInputTx)
+    BNTx *escrowInputTx = self.escrowInputTx;
+    if (escrowInputTx)
     {
-        if (self.escrowInputTx.isConfirmed)
+        [escrowInputTx fetch];
+        if (escrowInputTx.isConfirmed)
         {
-            [escrowTx configureForEscrowWithInputTx:self.escrowInputTx];
+            [escrowTx configureForEscrowWithInputTx:escrowInputTx];
         }
         else
         {
-            return NO;
+            [self performSelector:@selector(accept) withObject:nil afterDelay:15];
         }
     }
     else
@@ -246,14 +249,15 @@
     if ([escrowTx changeValue].longLongValue > 10000)
     {
         //create an output that won't lock up more than needed
-        self.escrowInputTx = [wallet newTx];
+        escrowInputTx = [wallet newTx];
         
-        [self.escrowInputTx configureForOutputWithValue:[NSNumber numberWithLongLong:
+        [escrowInputTx configureForOutputWithValue:[NSNumber numberWithLongLong:
                                          [(BNTxOut *)[escrowTx.outputs firstObject] value].longLongValue + [escrowTx fee].longLongValue]];
-        [self.escrowInputTx subtractFee];
-        [self.escrowInputTx sign];
-        [self.escrowInputTx broadcast];
-        return [self sendLockToSeller]; //TODO verify tx in mempool first
+        [escrowInputTx subtractFee];
+        [escrowInputTx sign];
+        [escrowInputTx broadcast];
+        [self setEscrowInputTx:escrowInputTx];
+        return NO;
     }
     else
     {
