@@ -101,7 +101,6 @@
     return YES;
 }
 
-
 - (BOOL)isEditable
 {
     return self.isInSell && !self.isComplete;
@@ -126,20 +125,28 @@
         return self.titleOrDefault;
     }
     
-    return @"Listing";
+    return @"Listed";
 }
 
 - (NSString *)nodeSubtitle
 {
+    
     if (self.canBuy)
     {
         return [NSString stringWithFormat:@"%@BTC", self.priceInBtc];
     }
     
-    return @"Complete your listing below";
+    if (self.postMsg)
+    {
+        if (self.postMsg.wasSent)
+        {
+            return @"listing message sent";
+        }
+        
+        return @"sending listing message";
+    }
     
-    //return self.postMsg.nodeSubtitle;
-    //return nil;
+    return @"Complete your listing below";
 }
 
 - (void)setPriceInBtc:(NSNumber *)btcNumber

@@ -40,6 +40,12 @@
     return self;
 }
 
+- (void)setNode:(NavNode *)node
+{
+    NSLog(@"%@ setNode:%@", self.className, node.className);
+    [super setNode:node];
+}
+
 - (MKTransaction *)transaction
 {
     return (MKTransaction *)self.node;

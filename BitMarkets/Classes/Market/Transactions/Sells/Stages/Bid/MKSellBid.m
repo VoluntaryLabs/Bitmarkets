@@ -19,9 +19,9 @@
 {
     self = [super init];
     
-    self.shouldSortChildren = YES;
-    self.sortChildrenKey = @"date";
-    self.sortAccending = YES;
+    self.shouldSortChildren = NO;
+    //self.sortChildrenKey = @"date";
+    //self.sortAccending = YES;
     
     self.nodeViewClass = NavMirrorView.class;
     

@@ -128,6 +128,13 @@
                 "color" : "#CCCCCC",
             },
             
+            "price-invalid" :
+            {
+                "fontName" : "Open Sans Italic",
+                "fontSize" : 16,
+                "color" : "#CC0000",
+            },
+            
             "description" :
             {
                 "fontName" : "Open Sans",

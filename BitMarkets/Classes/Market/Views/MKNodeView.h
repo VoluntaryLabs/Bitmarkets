@@ -11,7 +11,7 @@
 
 @interface MKNodeView : NavColoredView
 
-@property (assign, nonatomic) NavNode *node;
+@property (strong, nonatomic) NavNode *node;
 
 - (void)layout; // subclasses should override
 - (void)syncFromNode; // subclasses should override
