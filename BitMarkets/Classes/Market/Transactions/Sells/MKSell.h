@@ -14,6 +14,7 @@
 #import "MKSellDelivery.h"
 #import "MKSellReleaseEscrow.h"
 #import "MKSellBid.h"
+#import "MKSellComplete.h"
 
 @interface MKSell : MKTransaction
 
@@ -22,6 +23,7 @@
 @property (strong, nonatomic) MKSellLockEscrow *lockEscrow;
 @property (strong, nonatomic) MKSellDelivery *delivery;
 @property (strong, nonatomic) MKSellReleaseEscrow *releaseEscrow;
+@property (strong, nonatomic) MKSellComplete *complete;
 
 - (MKBidMsg *)acceptedBidMsg;
 

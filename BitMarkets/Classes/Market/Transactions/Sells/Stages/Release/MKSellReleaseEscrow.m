@@ -20,7 +20,7 @@
     self.nodeViewClass = NavMirrorView.class;
     
     NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"acceptRefundRequest"];
-    [slot setVisibleName:@"Accept Refund Request"];
+    [slot setVisibleName:@"Send Refund"];
     
     return self;
 }
@@ -31,6 +31,7 @@
     
     NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"acceptRefundRequest"];
     [slot setIsActive:enabled];
+    [slot setIsVisible:enabled];
 }
 
 - (NSString *)nodeSubtitle
@@ -52,7 +53,7 @@
             }
             else
             {
-                return @"awaiting refund confirm";
+                return @"refund sent, awaiting confirm";
             }
         }
         
@@ -76,7 +77,7 @@
     
     if (self.isActive)
     {
-        return @"awaiting buyer...";
+        return @"waiting for buyer to make payment or request refund";
     }
     
     if (self.sell.isCanceled)
@@ -86,7 +87,7 @@
     
     if (!self.runningWallet)
     {
-        return @"waiting for wallet..";
+        return @"waiting for wallet...";
     }
     
     return nil;

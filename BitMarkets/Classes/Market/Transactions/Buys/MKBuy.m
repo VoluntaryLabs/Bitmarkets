@@ -28,9 +28,27 @@
     self.releaseEscrow = [[MKBuyReleaseEscrow alloc] init];
     [self addChild:self.releaseEscrow];
     
+    self.complete = [[MKBuyComplete alloc] init];
+    [self addChild:self.complete];
+    
     self.nodeViewClass = MKTransactionProgressView.class;
     
     return self;
+}
+
+/*
+- (void)update
+{
+    [super update];
+    [self postParentChainChanged];
+}
+*/
+
+- (MKStage *)currentStage
+{
+    MKStage *stage = [super currentStage];
+    NSLog(@"%@ currentStage %@", self.className, stage.className);
+    return stage;
 }
 
 - (NSArray *)visibleStages

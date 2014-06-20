@@ -107,8 +107,8 @@ static MKRootNode *sharedMKRootNode = nil;
         
         _wallet.refreshInterval = 5.0;
         _wallet.deepRefreshes = YES;
-        _wallet.server.logs = NO;
-        //_wallet.server.logs = YES;
+        //_wallet.server.logs = NO;
+        _wallet.server.logs = YES;
         
         NSString *dataPath = [[[NSFileManager defaultManager] applicationSupportDirectory] stringByAppendingPathComponent:@"wallet"];
         
@@ -118,22 +118,23 @@ static MKRootNode *sharedMKRootNode = nil;
                                   withIntermediateDirectories:YES
                                                    attributes:nil
                                                         error:&error];
+        
         [_wallet setPath:dataPath];
         [_wallet setCheckpointsPath:[[NSBundle bundleForClass:[BNWallet class]] pathForResource:@"checkpoints-testnet" ofType:nil]];
         //[_wallet.server start];
         
         [BNMetaDataDb shared].path = [[[NSFileManager defaultManager] applicationSupportDirectory] stringByAppendingPathComponent:@"wallet/meta-data"];
         
-        [self postWalletNotification];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(walletChanged:)
+                                                     name:nil
+                                                   object:_wallet];
     }
 }
 
-- (void)postWalletNotification
+- (void)walletChanged:(NSNotification *)aNote
 {
-    // just doing this until wallet supports notifications
-    
     [[NSNotificationCenter defaultCenter] postNotificationName:@"WalletChanged" object:nil];
-    [self performSelector:@selector(postWalletNotification) withObject:nil afterDelay:10.0];
 }
 
 - (void)willShutdown

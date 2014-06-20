@@ -49,12 +49,12 @@
     {
         if(!self.sellAcceptRefundRequestMsg)
         {
-            return @"awaiting refund response";
+            return @"refund requested, awaiting seller acceptance";
         }
         
         if (!self.confirmRefundMsg)
         {
-            return @"awaiting refund confirm";
+            return @"awaiting refund confirmation";
         }
         
         return @"refund confirmed";
@@ -64,12 +64,12 @@
     {
         if(!self.sellAcceptPaymentMsg)
         {
-            return @"awaiting payment response";
+            return @"payment sent, awaiting seller acceptance";
         }
         
         if (!self.confirmPaymentMsg)
         {
-            return @"awaiting payment confirm";
+            return @"awaiting payment confirmation";
         }
         
         return @"payment confirmed";
@@ -82,7 +82,12 @@
     
     if (!self.runningWallet)
     {
-        return @"waiting for wallet..";
+        return @"waiting for wallet...";
+    }
+    
+    if (self.isActive)
+    {
+        return @"ready to make payment or request refund";
     }
     
     return nil;
@@ -170,10 +175,15 @@
 - (void)updateActions
 {
     BOOL isActive = self.isActive && (self.runningWallet != nil);
-    BOOL hasActed = self.buyRequestRefundMsg != nil || self.buyPaymentMsg != nil;
-
-    [[self.navMirror actionSlotNamed:@"requestRefund"] setIsActive:isActive && !hasActed];
-    [[self.navMirror actionSlotNamed:@"makePayment"]   setIsActive:isActive && !hasActed];
+    //BOOL hasActed = self.buyRequestRefundMsg != nil || self.buyPaymentMsg != nil;
+    BOOL canRequestRefund = self.buyRequestRefundMsg == nil && isActive;
+    BOOL canMakePayment = self.buyPaymentMsg == nil && isActive;
+    
+    [[self.navMirror actionSlotNamed:@"requestRefund"] setIsActive:canRequestRefund];
+    //[[self.navMirror actionSlotNamed:@"requestRefund"] setIsVisible:canRequestRefund];
+    
+    [[self.navMirror actionSlotNamed:@"makePayment"] setIsActive:canMakePayment];
+    //[[self.navMirror actionSlotNamed:@"makePayment"] setIsVisible:canMakePayment];
 }
 
 // initiate payemnt
@@ -243,6 +253,7 @@
     
     [self addChild:msg];
     [self update];
+    [self postParentChainChanged];
     [self updateActions];
 }
 

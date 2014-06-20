@@ -27,7 +27,7 @@
                 "subtitle":
                 {
                     "fontName" : "Open Sans",
-                    "fontSize" : 16,
+                    "fontSize" : 22,
                     "color" : "#CCCCCC",
                     "align" : "left",
                     "backgroundColor" : "#FFFFFF"

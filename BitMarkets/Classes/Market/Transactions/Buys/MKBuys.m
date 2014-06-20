@@ -31,5 +31,4 @@
     return buy;
 }
 
-
 @end

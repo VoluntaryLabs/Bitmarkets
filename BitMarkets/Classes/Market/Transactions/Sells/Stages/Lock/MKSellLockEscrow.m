@@ -75,7 +75,7 @@
     
     if (!self.runningWallet)
     {
-        return @"waiting for wallet..";
+        return @"waiting for wallet...";
     }
 
     

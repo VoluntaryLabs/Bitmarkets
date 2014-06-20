@@ -90,6 +90,8 @@
 {
     [[MKPanelManager sharedPanelManager] setPanelReceiver:self];
     
+    [self syncToNode]; // temporary
+    
     [super drawRect:dirtyRect];
 }
 
@@ -111,10 +113,15 @@
     [_statusView syncFromNode];
     
     [_bottomView removeAllSubviews];
+    
     MKPostView *postView = (MKPostView *)self.transaction.mkPost.nodeView;
-    [_bottomView setBounds:postView.bounds];
+    //[_bottomView setBounds:postView.bounds];
+    
+    [_bottomView  setWidth:self.width];
     [_bottomView setHeight:1000];
-    [postView setHeight:1000];
+    
+    [postView  setWidth:_bottomView.width];
+    [postView setHeight:_bottomView.height];
     
     [_bottomView addSubview:postView];
     

@@ -15,7 +15,6 @@
 - (id)init
 {
     self = [super init];
-    self.nodeTitle = @"Delivery";
     
     MKBuyDeliveryAddress *address = [[MKBuyDeliveryAddress alloc] init];
     [self addChild:address];
@@ -47,7 +46,7 @@
 
 - (NSString *)nodeTitle
 {
-    return @"Delivery";
+    return @"Address";
 }
 
 
@@ -95,6 +94,11 @@
 {
     NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"enterAddress"];
     [slot setIsActive:!self.isComplete];
+}
+
+- (BOOL)isActive
+{
+    return self.buy.lockEscrow.isComplete && !self.isComplete;
 }
 
 - (BOOL)isApproved

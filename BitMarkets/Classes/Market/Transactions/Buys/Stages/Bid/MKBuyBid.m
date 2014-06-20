@@ -133,17 +133,17 @@
     
     if (self.children.count == 1)
     {
-        return @"sent - awaiting reply";
+        return @"bid sent, awaiting reply";
     }
     
     if (self.wasAccepted)
     {
-        return @"accepted";
+        return @"bid accepted";
     }
     
     if (self.wasRejected)
     {
-        return @"rejected";
+        return @"bid rejected";
     }
     
     // add timeout check

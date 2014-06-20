@@ -26,9 +26,11 @@
     return self.children;
 }
 
-- (NavNode *)currentNode
+- (MKStage *)currentStage
 {
-    for (MKStage *stage in self.children)
+    MKStage *stage = nil;
+    
+    for (stage in self.children)
     {
         if (stage.isActive)
         {
@@ -36,12 +38,12 @@
         }
     }
     
-    return nil;
+    return stage;
 }
 
 - (NSString *)statusTitle
 {
-    NavNode *node = self.currentNode;
+    NavNode *node = self.currentStage;
     
     if (node)
     {
@@ -53,7 +55,7 @@
 
 - (NSString *)statusSubtitle
 {
-    NavNode *node = self.currentNode;
+    NavNode *node = self.currentStage;
     
     if (node)
     {

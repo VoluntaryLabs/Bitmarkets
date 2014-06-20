@@ -35,6 +35,18 @@
     return nil;
 }
 
+// checks
+
+- (BOOL)wasPaid
+{
+    return self.confirmPaymentMsg != nil;
+}
+
+- (BOOL)wasRefunded
+{
+    return self.confirmRefundMsg != nil;
+}
+
 // payment messages
 
 - (MKBuyPaymentMsg *)buyPaymentMsg

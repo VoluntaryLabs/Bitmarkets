@@ -36,9 +36,19 @@
     self.releaseEscrow = [[MKSellReleaseEscrow alloc] init];
     [self addChild:self.releaseEscrow];
 
+    self.complete = [[MKSellComplete alloc] init];
+    [self addChild:self.complete];
+    
     self.nodeViewClass = MKTransactionProgressView.class;
 
     return self;
+}
+
+- (MKStage *)currentStage
+{
+    MKStage *stage = [super currentStage];
+    NSLog(@"%@ currentStage %@", self.className, stage.className);
+    return stage;
 }
 
 - (BOOL)isCanceled

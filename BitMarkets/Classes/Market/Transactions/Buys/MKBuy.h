@@ -14,6 +14,7 @@
 #import "MKBuyDelivery.h"
 #import "MKBuyReleaseEscrow.h"
 #import "MKTransactionProgressView.h"
+#import "MKBuyComplete.h"
 
 @interface MKBuy : MKTransaction
 
@@ -21,6 +22,7 @@
 @property (strong, nonatomic) MKBuyLockEscrow *lockEscrow;
 @property (strong, nonatomic) MKBuyDelivery *delivery;
 @property (strong, nonatomic) MKBuyReleaseEscrow *releaseEscrow;
+@property (strong, nonatomic) MKBuyComplete *complete;
 
 - (MKBidMsg *)bidMsg;
 - (BOOL)isCanceled;

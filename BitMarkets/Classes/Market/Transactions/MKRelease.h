@@ -34,6 +34,11 @@
 
 - (NSString *)shortStatus;
 
+// checks
+
+- (BOOL)wasPaid;
+- (BOOL)wasRefunded;
+
 // payment messages
 
 - (MKBuyPaymentMsg *)buyPaymentMsg;

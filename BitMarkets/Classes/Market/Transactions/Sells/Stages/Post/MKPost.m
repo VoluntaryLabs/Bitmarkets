@@ -136,7 +136,7 @@
         return [NSString stringWithFormat:@"%@BTC", self.priceInBtc];
     }
     
-    return @"Complete your listing below.";
+    return @"Complete your listing below";
     
     //return self.postMsg.nodeSubtitle;
     //return nil;

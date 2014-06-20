@@ -26,12 +26,17 @@
 
 - (NSString *)nodeTitle
 {
-    return @"Delivery";
+    return @"Dispatch";
 }
 
 - (BOOL)isComplete
 {
     return self.addressMsg != nil;
+}
+
+- (BOOL)isActive
+{
+    return self.sell.lockEscrow.isComplete && !self.isComplete;
 }
 
 - (NSString *)nodeSubtitle

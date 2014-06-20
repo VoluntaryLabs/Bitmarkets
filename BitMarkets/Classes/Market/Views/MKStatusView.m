@@ -59,15 +59,18 @@
 {
     [_buttonsView removeAllSubviews];
     
-    for (NavActionSlot *actionSlot in self.transaction.currentNode.navMirror.actionSlots)
+    for (NavActionSlot *actionSlot in self.transaction.currentStage.navMirror.actionSlots)
     {
-        [_buttonsView addSubview:actionSlot.slotView];
+        if (actionSlot.isVisible)
+        {
+            [_buttonsView addSubview:actionSlot.slotView];
+        }
     }
     
     //NavRoundButtonView *button = _buttonsView.subviews.firstObject;
     
     //NSLog(@"button.x = %i", (int)button.x);
-    [_buttonsView setAllSubviewToWidth:150];
+    [_buttonsView setAllSubviewToWidth:170];
     //[_buttonsView setAllSubviewToHeight:34];
     
     //NSLog(@"button.x = %i", (int)button.x);
