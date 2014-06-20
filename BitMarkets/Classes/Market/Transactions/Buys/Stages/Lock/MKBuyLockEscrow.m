@@ -8,6 +8,7 @@
 
 #import "MKBuyLockEscrow.h"
 #import "MKBuyerCancelLockEscrowMsg.h"
+#import "MKLockEscrowInputMsg.h"
 #import "MKRootNode.h"
 #import <BitnashKit/BitnashKit.h>
 
@@ -164,6 +165,32 @@
     return self.buyerLockMsg != nil;
 }
 
+- (MKBuyerLockEscrowMsg *)escrowInputTxMsg
+{
+    return [self.children firstObjectOfClass:MKLockEscrowInputMsg.class];
+}
+
+- (BNTx *)escrowInputTx
+{
+    BNTx *escrowInputTx = self.escrowInputTxMsg.payload.asObjectFromJSONObject;
+    if (escrowInputTx)
+    {
+        escrowInputTx.wallet = self.runningWallet;
+        return escrowInputTx;
+    }
+    else
+    {
+        return nil;
+    };
+}
+
+- (void)setEscrowInputTx:(BNTx *)escrowInputTx
+{
+    MKBuyerLockEscrowMsg *escrowInputTxMsg = [[MKBuyerLockEscrowMsg alloc] init];
+    escrowInputTxMsg.payload = escrowInputTx.asJSONObject;
+    [self addChild:escrowInputTx];
+}
+
 - (BOOL)sendLockToSeller
 {
     BNWallet *wallet = self.runningWallet;
@@ -173,19 +200,24 @@
         return YES;
     }
     
-    
     BNTx *escrowTx = [wallet newTx];
     
     if (self.escrowInputTx)
     {
-        [escrowTx configureForEscrowWithInputTx:self.escrowInputTx];
+        if (self.escrowInputTx.isConfirmed)
+        {
+            [escrowTx configureForEscrowWithInputTx:self.escrowInputTx];
+        }
+        else
+        {
+            return NO;
+        }
     }
     else
     {
         [escrowTx configureForEscrowWithValue:[NSNumber numberWithLong:2*self.buy.mkPost.priceInSatoshi.longLongValue]];
     }
 
-    
     self.error = nil;
     if (escrowTx.error)
     {
@@ -230,7 +262,6 @@
         escrowTx = [escrowTx mergedWithEscrowTx:sellerEscrowTx];
         [escrowTx subtractFee];
         
-        wallet.server.logsNextMessage = YES;
         @try
         {
             self.error = nil;

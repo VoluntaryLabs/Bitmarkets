@@ -11,6 +11,7 @@
 #import "MKAcceptBidMsg.h"
 #import "MKRejectBidMsg.h"
 #import "MKRootNode.h"
+#import "MKLockEscrowInputMsg.h"
 
 @implementation MKSellBid
 
@@ -166,6 +167,33 @@
     return [self firstInParentChainOfClass:MKSell.class];
 }
 
+- (MKBuyerLockEscrowMsg *)escrowInputTxMsg
+{
+    return [self.children firstObjectOfClass:MKLockEscrowInputMsg.class];
+}
+
+- (BNTx *)escrowInputTx
+{
+    BNTx *escrowInputTx = self.escrowInputTxMsg.payload.asObjectFromJSONObject;
+    if (escrowInputTx)
+    {
+        escrowInputTx.wallet = self.runningWallet;
+        return escrowInputTx;
+    }
+    else
+    {
+        return nil;
+    };
+}
+
+- (void)setEscrowInputTx:(BNTx *)escrowInputTx
+{
+    MKBuyerLockEscrowMsg *escrowInputTxMsg = [[MKBuyerLockEscrowMsg alloc] init];
+    escrowInputTxMsg.payload = escrowInputTx.asJSONObject;
+    [self addChild:escrowInputTx];
+}
+
+
 - (void)accept
 {
     BNWallet *wallet = self.runningWallet;
@@ -183,13 +211,19 @@
     
     if (self.escrowInputTx)
     {
-        [escrowTx configureForEscrowWithInputTx:self.escrowInputTx];
+        if (self.escrowInputTx.isConfirmed)
+        {
+            [escrowTx configureForEscrowWithInputTx:self.escrowInputTx];
+        }
+        else
+        {
+            return;
+        }
     }
     else
     {
         [escrowTx configureForEscrowWithValue:sell.mkPost.priceInSatoshi];
     }
-    
     
     self.error = nil;
     if (escrowTx.error)
@@ -210,8 +244,6 @@
     }
     
     [escrowTx subtractFee];
-    
-    NSLog(@"CHANGE VALUE: %lld", [escrowTx changeValue].longLongValue);
     
     if ([escrowTx changeValue].longLongValue > 10000)
     {

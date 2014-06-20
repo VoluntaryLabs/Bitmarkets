@@ -130,6 +130,7 @@
 		AAD7850C195104E7004FE0F6 /* MKBuyComplete.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD7850B195104E7004FE0F6 /* MKBuyComplete.m */; };
 		AAD785141951056B004FE0F6 /* MKSellComplete.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD785131951056B004FE0F6 /* MKSellComplete.m */; };
 		DC51980E192950BB004143E7 /* MKBuyerCancelLockEscrowMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = DC51980D192950BB004143E7 /* MKBuyerCancelLockEscrowMsg.m */; };
+		DCF999621953692C008288FD /* MKLockEscrowInputMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF999611953692C008288FD /* MKLockEscrowInputMsg.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -444,6 +445,8 @@
 		AAD785131951056B004FE0F6 /* MKSellComplete.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKSellComplete.m; sourceTree = "<group>"; };
 		DC51980C192950BB004143E7 /* MKBuyerCancelLockEscrowMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKBuyerCancelLockEscrowMsg.h; sourceTree = "<group>"; };
 		DC51980D192950BB004143E7 /* MKBuyerCancelLockEscrowMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKBuyerCancelLockEscrowMsg.m; sourceTree = "<group>"; };
+		DCF999601953692C008288FD /* MKLockEscrowInputMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKLockEscrowInputMsg.h; sourceTree = "<group>"; };
+		DCF999611953692C008288FD /* MKLockEscrowInputMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKLockEscrowInputMsg.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -887,6 +890,8 @@
 				AA4472FB1947CF36009A7F0D /* MKCancelMsg.m */,
 				AA4472FD1947D064009A7F0D /* MKCancelConfirmed.h */,
 				AA4472FE1947D064009A7F0D /* MKCancelConfirmed.m */,
+				DCF999601953692C008288FD /* MKLockEscrowInputMsg.h */,
+				DCF999611953692C008288FD /* MKLockEscrowInputMsg.m */,
 			);
 			path = Msg;
 			sourceTree = "<group>";
@@ -1259,6 +1264,7 @@
 				AAB2813A19217586005C9D27 /* MKConfirmLockEscrowMsg.m in Sources */,
 				AA0E586418FDC0880095DEBD /* MKAppDelegate.m in Sources */,
 				AAB2813619217586005C9D27 /* MKBuyReleaseEscrow.m in Sources */,
+				DCF999621953692C008288FD /* MKLockEscrowInputMsg.m in Sources */,
 				AAB2814419217586005C9D27 /* MKSellDelivery.m in Sources */,
 				AA09C7EC192BEC2B00317130 /* MKDragFileWell.m in Sources */,
 				AAB2812F19217586005C9D27 /* MKBuyBid.m in Sources */,

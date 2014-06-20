@@ -12,7 +12,6 @@
 
 @interface MKSellBid : MKGroup
 
-@property (strong, nonatomic) BNTx *escrowInputTx;
 @property (strong, nonatomic) NSString *error;
 
 - (MKBidMsg *)bidMsg;
