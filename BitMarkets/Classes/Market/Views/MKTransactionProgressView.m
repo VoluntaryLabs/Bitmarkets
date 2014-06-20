@@ -134,6 +134,7 @@
         
         _postView = [[MKPostView alloc] initWithFrame:self.frame];
         [_postView setNode:self.transaction.mkPost];
+        [_postView setEditable:!self.transaction.mkPost.postMsg];
         
         /*
         [_bottomView  setWidth:self.width];
