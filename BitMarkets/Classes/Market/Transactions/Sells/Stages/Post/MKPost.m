@@ -131,9 +131,20 @@
 
 - (NSString *)nodeSubtitle
 {
+    
     if (self.canBuy)
     {
         return [NSString stringWithFormat:@"%@BTC", self.priceInBtc];
+    }
+    
+    if (self.postMsg)
+    {
+        if (self.postMsg.wasSent)
+        {
+            return @"listing message sent";
+        }
+        
+        return @"sending listing message";
     }
     
     return @"Complete your listing below";
