@@ -21,6 +21,7 @@
 @property (strong, nonatomic) MKStepsView *stepsView;
 @property (strong, nonatomic) MKStatusView *statusView;
 @property (strong, nonatomic) NSView *bottomView;
+@property (strong, nonatomic) MKPostView *postView; 
 @property (strong, nonatomic) NavColoredView *maskView; // overlays grey
 
 @end

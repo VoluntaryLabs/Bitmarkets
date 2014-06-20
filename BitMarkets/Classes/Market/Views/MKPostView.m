@@ -384,22 +384,41 @@
     [self layout];
 }
 
+/*
+- (void)validatePrice
+{
+    
+}
+*/
+
 - (void)updatePriceSuffix
 {
-    float btc = [[[self.price textStorage] string] floatValue];
-    if (btc)
+    float btc = 0;
+    
+    //if (self.price.textStorage.string.length)
+    {
+        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+        [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+        NSNumber *formattedNumber = [formatter numberFromString:_price.string];
+        btc = [formattedNumber floatValue];
+    }
+    
+    
     {
         MKExchangeRate *rate = [MKExchangeRate shared];
 
         NSNumber *usdRate = [rate btcPerSymbol:@"USD"];
         NSNumber *eurRate = [rate btcPerSymbol:@"EUR"];
-        if(nil != usdRate && nil != eurRate) {
+        
+        if(nil != usdRate && nil != eurRate)
+        {
             float usd = btc * [usdRate floatValue];
             float eur = btc * [eurRate floatValue];
-            [self.price setSuffix:[NSString stringWithFormat:@"BTC %1.2fUSD %1.2fEUR", usd, eur]];
+            [self.price setSuffix:[NSString stringWithFormat:@"BTC %1.1fUSD %1.1fEUR", usd, eur]];
             //[self.price setSuffix:[NSString stringWithFormat:@"BTC    %1.2f USD    %1.2f EUR", usd, eur]];
         }
-        else {
+        else
+        {
             [self.price setSuffix:@"BTC"];
         }
     }
@@ -411,6 +430,7 @@
     {
         [(NavAdvTextView *)aTextView textShouldBeginEditing];
     }
+
     
     return YES;
 }
@@ -422,6 +442,39 @@
         [(NavAdvTextView *)aTextView textDidBeginEditing];
     }
 }
+
+- (NSNumberFormatter *)priceFormatter
+{
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    [formatter setPartialStringValidationEnabled:YES];
+    return formatter;
+}
+
+- (BOOL)textView:(NSTextView *)aTextView
+    shouldChangeTextInRange:(NSRange)affectedCharRange
+    replacementString:(NSString *)replacementString
+{
+    NSString *newString = [_price.string stringByReplacingCharactersInRange:affectedCharRange
+                                                                 withString:replacementString];
+    NSNumber *formattedNumber = [self.priceFormatter numberFromString:newString];
+    BOOL isValid = formattedNumber != nil || newString.length == 0;
+    
+    return isValid;
+}
+
+
+/*
+- (void)controlTextDidChange:(NSNotification *)aNotification
+{
+    NSTextView *aTextView = [aNotification object];
+    
+    if (aTextView == _price)
+    {
+        [_price setIsValid:self.formattedPrice != nil];
+    }
+}
+*/
 
 - (void)textDidEndEditing:(NSNotification *)aNotification
 {

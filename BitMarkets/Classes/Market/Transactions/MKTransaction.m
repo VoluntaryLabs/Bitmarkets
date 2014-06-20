@@ -158,6 +158,8 @@
 
         }
     }
+    
+    [self postSelfChanged];
 }
 
 - (BOOL)isActive

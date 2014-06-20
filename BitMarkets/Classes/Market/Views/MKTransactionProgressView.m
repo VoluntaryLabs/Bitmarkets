@@ -90,7 +90,7 @@
 {
     [[MKPanelManager sharedPanelManager] setPanelReceiver:self];
     
-    [self syncToNode]; // temporary
+    //[self syncToNode]; // temporary
     
     [super drawRect:dirtyRect];
 }
@@ -112,26 +112,27 @@
     [_stepsView  syncFromNode];
     [_statusView syncFromNode];
     
-    [_bottomView removeAllSubviews];
-    
-    MKPostView *postView = (MKPostView *)self.transaction.mkPost.nodeView;
-    //[_bottomView setBounds:postView.bounds];
-    
-    [_bottomView  setWidth:self.width];
-    [_bottomView setHeight:1000];
-    
-    [postView  setWidth:_bottomView.width];
-    [postView setHeight:_bottomView.height];
-    
-    [_bottomView addSubview:postView];
-    
-    if (postView.editable)
+    if (!_postView)
     {
-        postView.alphaValue = 1;
+        _postView = (MKPostView *)self.transaction.mkPost.nodeView;
+        
+        [_bottomView  setWidth:self.width];
+        [_bottomView setHeight:1000];
+        
+        [_postView  setWidth:_bottomView.width];
+        [_postView setHeight:_bottomView.height];
+        
+        [_bottomView addSubview:_postView];
+    }
+    
+    if (_postView.editable)
+    {
+        _postView.alphaValue = 1;
+        [_maskView removeFromSuperview];
     }
     else
     {
-        postView.alphaValue = .5;
+        _postView.alphaValue = .5;
         [_bottomView addSubview:_maskView];
     }
     
