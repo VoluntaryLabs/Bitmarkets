@@ -455,15 +455,23 @@
     shouldChangeTextInRange:(NSRange)affectedCharRange
     replacementString:(NSString *)replacementString
 {
-    NSString *newString = [_price.string stringByReplacingCharactersInRange:affectedCharRange
-                                                                 withString:replacementString];
-    NSNumber *formattedNumber = [self.priceFormatter numberFromString:newString];
-    BOOL isValid = formattedNumber != nil || newString.length == 0;
+    if (aTextView == _price)
+    {
+        NSString *newString = [_price.string stringByReplacingCharactersInRange:affectedCharRange
+                                                                     withString:replacementString];
+        NSNumber *formattedNumber = [self.priceFormatter numberFromString:newString];
+        BOOL isValid = formattedNumber != nil || newString.length == 0;
+        
+        return isValid;
+    }
     
-    return isValid;
+    return YES;
 }
 
-
+- (void)removeFromSuperview
+{
+    [super removeFromSuperview];
+}
 /*
 - (void)controlTextDidChange:(NSNotification *)aNotification
 {

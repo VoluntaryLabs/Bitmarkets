@@ -22,7 +22,7 @@
     {
         self.backgroundColor = [NSColor whiteColor];
         
-        //[self setAutoresizesSubviews:YES];
+        [self setAutoresizesSubviews:NO];
         [self setAutoresizingMask:NSViewHeightSizable | NSViewWidthSizable];
         
         
@@ -38,15 +38,15 @@
         [_statusView setThemePath:@"sell/price"];
         
         
-        _bottomView = [[NSView alloc] initWithFrame:NSMakeRect(0, 0, self.width, 100)];
+        _bottomView = [[NavColoredView alloc] initWithFrame:NSMakeRect(0, 0, self.width, 100)];
+        [_bottomView setAutoresizesSubviews:NO];
+        _bottomView.backgroundColor = [NSColor whiteColor];
         [self addSubview:_bottomView];
         
         
         _maskView = [[NavColoredView alloc] initWithFrame:NSMakeRect(0, 0, self.width, 100)];
-        //_maskView.backgroundColor = [NSColor redColor];
         _maskView.backgroundColor = [NSColor colorWithCalibratedWhite:0.5 alpha:1.0];
         _maskView.alphaValue = .05;
-       // [_maskView setOp:NO];
         
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(walletChanged:)
@@ -66,18 +66,30 @@
 {    
     [_stepsView placeInTopOfSuperviewWithMargin:0];
     [_stepsView setWidth:self.width];
-    
+    [_stepsView layout];
+
     [_statusView placeYBelow:_stepsView margin:0.0];
     [_statusView setWidth:self.width];
+    [_statusView layout];
     
+    CGFloat h = 1000;
+    CGFloat w = self.width;
+    //
+    
+    [ _bottomView setX:0];
+    [_bottomView  setWidth:self.width];
+    
+    [_bottomView setHeight:h];
     [_bottomView placeYBelow:_statusView margin:0.0];
-    [_bottomView setWidth:self.width];
+
+    [_postView setX:0];
+    [_postView setY:0];
+    [_postView  setWidth:w];
+    [_postView setHeight:h];
     
-    [_maskView setWidth:_bottomView.width];
-    [_maskView setHeight:_bottomView.height];
-    
-    [self.stepsView layout];
-    [self.statusView layout];
+    [_maskView setWidth:w];
+    [_maskView setHeight:h];
+    [_postView layout];
 }
 
 - (void)prepareToDisplay
@@ -112,18 +124,34 @@
     [_stepsView  syncFromNode];
     [_statusView syncFromNode];
     
+    // looks like a NavColumn is adding this nodeView - why?
+    // here's a temp hack around it
+    [self.transaction.mkPost.nodeView removeFromSuperview];
+
     if (!_postView)
     {
-        _postView = (MKPostView *)self.transaction.mkPost.nodeView;
+        //_postView = (MKPostView *)self.transaction.mkPost.nodeView;
         
+        _postView = [[MKPostView alloc] initWithFrame:self.frame];
+        [_postView setNode:self.transaction.mkPost];
+        
+        /*
         [_bottomView  setWidth:self.width];
         [_bottomView setHeight:1000];
         
         [_postView  setWidth:_bottomView.width];
         [_postView setHeight:_bottomView.height];
-        
+        */
         [_bottomView addSubview:_postView];
     }
+    
+    /*
+    [_bottomView  setWidth:self.width];
+    [_bottomView setHeight:1000];
+    
+    [_postView  setWidth:_bottomView.width];
+    [_postView setHeight:_bottomView.height];
+    */
     
     if (_postView.editable)
     {

@@ -101,7 +101,6 @@
     return YES;
 }
 
-
 - (BOOL)isEditable
 {
     return self.isInSell && !self.isComplete;
@@ -148,9 +147,6 @@
     }
     
     return @"Complete your listing below";
-    
-    //return self.postMsg.nodeSubtitle;
-    //return nil;
 }
 
 - (void)setPriceInBtc:(NSNumber *)btcNumber

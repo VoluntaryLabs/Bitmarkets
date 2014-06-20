@@ -18,17 +18,14 @@
 
 ------ steve ------
 
-<<<<<<< HEAD
+- statusview isn't getting dealloced when transaction view removed
+
 if (escrowTx.error.insufficientValue)
-        {
-            //TODO: prompt user for deposit
-            
-        }
-=======
+//TODO: prompt user for deposit
+
 - UI doesn't change when you click [Cancel Escrow]
 
 - The "Post" button remains active after posting
->>>>>>> 49ef064d7d9f1dcf332493e00da7816356f00053
 
 - validate post price
 
