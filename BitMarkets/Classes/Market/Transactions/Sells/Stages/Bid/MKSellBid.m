@@ -37,11 +37,13 @@
 
 - (void)updateActions
 {
-    BOOL enabled = self.runningWallet && !self.wasAccepted && !self.wasRejected;
-    NavActionSlot *acceptSlot = [self.navMirror newActionSlotWithName:@"accept"];
-    [acceptSlot setIsVisible:YES];
-    [acceptSlot setIsActive:enabled];
-    [acceptSlot setVisibleName:@"Accept Bid"];
+    {
+        BOOL enabled = self.runningWallet && !self.wasAccepted && !self.wasRejected;
+        NavActionSlot *acceptSlot = [self.navMirror newActionSlotWithName:@"accept"];
+        [acceptSlot setVisibleName:@"Accept Bid"];
+        [acceptSlot setIsVisible:YES];
+        [acceptSlot setIsActive:enabled];
+    }
 }
 
 - (NSDate *)date

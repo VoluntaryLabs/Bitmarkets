@@ -178,14 +178,23 @@
 
 - (void)updateActions
 {
-    NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"acceptFirstBid"];
-    
-    BOOL active = (self.firstBid != nil) &&
-        (self.acceptedBid == nil) &&
-        (self.runningWallet != nil) &&
-        self.hasAmountNeeded;
-    
-    [slot setIsActive:active];
+    {
+        NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"acceptFirstBid"];
+        
+        BOOL active = (self.firstBid != nil) &&
+            (self.acceptedBid == nil) &&
+            (self.runningWallet != nil) &&
+            self.hasAmountNeeded;
+        
+        [slot setIsActive:active];
+    }
+
+    {
+        NavActionSlot *removeSlot = [self.navMirror newActionSlotWithName:@"removePost"];
+        [removeSlot setVisibleName:@"Remove Listing"];
+        [removeSlot setIsVisible:YES];
+        [removeSlot setIsActive:!self.acceptedBid];
+    }
 }
 
 - (MKSellBid *)firstBid
@@ -223,6 +232,11 @@
 }
 
 - (void)showInsufficientFundsPanel
+{
+    
+}
+
+- (void)removePost
 {
     
 }
