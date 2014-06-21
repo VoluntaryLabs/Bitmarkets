@@ -35,6 +35,11 @@
     return self.confirmLockMsg != nil;
 }
 
+- (BOOL)isActive
+{
+    return self.sell.bids.acceptedBid && !self.isComplete;
+}
+
 
 - (NSString *)nodeSubtitle
 {

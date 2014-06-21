@@ -117,22 +117,15 @@
             "price" :
             {
                 "fontName" : "Open Sans",
-                "fontSize" : 16,
+                "fontSize" : 22,
                 "color" : "#CCCCCC",
             },
             
             "price-unedited" :
             {
                 "fontName" : "Open Sans Italic",
-                "fontSize" : 16,
+                "fontSize" : 22,
                 "color" : "#CCCCCC",
-            },
-            
-            "price-invalid" :
-            {
-                "fontName" : "Open Sans Italic",
-                "fontSize" : 16,
-                "color" : "#CC0000",
             },
             
             "description" :
