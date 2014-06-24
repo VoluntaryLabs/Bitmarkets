@@ -124,7 +124,7 @@
     return self.isApproved;
 }
 
-- (void)enterAddress
+- (void)enterAddress // this shouldn't be at the model level
 {
     MKPanelView *panel = [[MKPanelManager sharedPanelManager] openNewPanel];
     

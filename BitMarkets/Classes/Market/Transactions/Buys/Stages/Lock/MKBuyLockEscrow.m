@@ -78,12 +78,12 @@
     
     if (self.isCanceling && !self.confirmLockMsg)
     {
-        return @"canceling...";
+        return @"canceling bid...";
     }
     
     if (self.isCancelConfirmed)
     {
-        return @"cancelled";
+        return @"bid cancelled";
     }
     
     if (self.buyerLockMsg)
@@ -92,13 +92,13 @@
         {
             if (self.confirmLockMsg)
             {
-                return @"confirmed";
+                return @"bid accepted and escrow confirmed";
             }
             
-            return @"awaiting confirm";
+            return @"bid accepted and escrow sent, awaiting confirmation";
         }
         
-        return @"sent - awaiting reply";
+        return @"bid sent - awaiting reply from seller";
     }
     
     if (!self.runningWallet)

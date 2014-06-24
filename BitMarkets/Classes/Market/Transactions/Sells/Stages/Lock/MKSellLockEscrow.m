@@ -45,12 +45,12 @@
 {
     if (self.isCanceling)
     {
-        return @"canceling...";
+        return @"canceling escrow...";
     }
     
     if (self.isCancelConfirmed)
     {
-        return @"cancelled";
+        return @"escrow cancelled";
     }
     
     if (self.error)
@@ -60,22 +60,22 @@
     
     if (self.confirmLockMsg)
     {
-        return @"confirmed";
+        return @"escrow confirmed";
     }
     
     if (self.sellerLockMsg)
     {
-        return @"awaiting confirm";
+        return @"received buyer escrow, awaiting confirmation";
     }
     
     if (self.buyerLockMsg)
     {
-        return @"got buyer lock";
+        return @"received buyer escrow, signing and sending to bitcoin network";
     }
     
     if (self.sell.bids.acceptedBid)
     {
-        return @"awaiting buyer lock";
+        return @"awaiting buyer escrow";
     }
     
     if (!self.runningWallet)

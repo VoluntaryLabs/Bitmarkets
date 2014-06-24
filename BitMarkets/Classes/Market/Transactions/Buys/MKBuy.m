@@ -47,7 +47,7 @@
 - (MKStage *)currentStage
 {
     MKStage *stage = [super currentStage];
-    NSLog(@"%@ currentStage %@", self.className, stage.className);
+    //NSLog(@"%@ currentStage %@", self.className, stage.className);
     return stage;
 }
 

@@ -10,6 +10,7 @@
 #import "MKStepsView.h"
 #import <NavKit/NavKit.h>
 #import "MKPanelManager.h"
+#import "MKBuys.h"
 
 
 @implementation MKTransactionProgressView
@@ -126,15 +127,17 @@
     
     // looks like a NavColumn is adding this nodeView - why?
     // here's a temp hack around it
-    [self.transaction.mkPost.nodeView removeFromSuperview];
+    MKPost *mkPost = self.transaction.mkPost;
+    [mkPost.nodeView removeFromSuperview];
 
     if (!_postView)
     {
         //_postView = (MKPostView *)self.transaction.mkPost.nodeView;
         
         _postView = [[MKPostView alloc] initWithFrame:self.frame];
-        [_postView setNode:self.transaction.mkPost];
-        [_postView setEditable:!self.transaction.mkPost.postMsg];
+        [_postView setNode:mkPost];
+        BOOL isBuy = [self.node.nodeParent isKindOfClass:MKBuys.class];
+        [_postView setEditable:!isBuy && !mkPost.postMsg];
         
         /*
         [_bottomView  setWidth:self.width];

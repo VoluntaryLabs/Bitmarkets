@@ -7,9 +7,12 @@
 //
 
 #import "MKStage.h"
+#import "MKSellPostedMsg.h"
 
 @interface MKSellDelivery : MKStage
 
 - (BOOL)isComplete;
+
+- (MKSellPostedMsg *)postedMsg;
 
 @end

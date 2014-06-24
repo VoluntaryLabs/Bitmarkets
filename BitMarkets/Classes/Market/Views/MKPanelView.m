@@ -56,9 +56,21 @@
         [dropShadow setShadowOffset:NSMakeSize(0, 0)];
         [dropShadow setShadowBlurRadius:3.0];
         
-        [_innerView setWantsLayer: YES];
+        [_innerView setWantsLayer:YES];
         [_innerView setShadow:dropShadow];
+        
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(sentNavAction:)
+                                                     name:@"SentNavAction"
+                                                   object:innerView.node];
+        
     }
+}
+
+- (void)sentNavAction:(NSNotification *)aNote
+{
+    [self close];
 }
 
 - (void)layout
@@ -91,5 +103,15 @@
     NSRectFillUsingOperation(dirtyRect, NSCompositeSourceOver);
 }
 */
+
+- (void)mouseDown:(NSEvent *)theEvent
+{
+    [self close];
+}
+
+- (void)close
+{
+    [self removeFromSuperview];
+}
 
 @end

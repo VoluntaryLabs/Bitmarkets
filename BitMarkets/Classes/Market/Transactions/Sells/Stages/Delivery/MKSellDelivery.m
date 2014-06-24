@@ -10,13 +10,33 @@
 #import "MKBuyerAddressMsg.h"
 #import "MKSell.h"
 #import "MKSellDeliveryAddress.h"
+#import "MKPanelManager.h"
 
 @implementation MKSellDelivery
 
 - (id)init
 {
     self = [super init];
+    [self updateActions];
     return self;
+}
+
+- (void)updateActions
+{
+    {
+        NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"markAsPosted"];
+        [slot setVisibleName:@"Item Posted"];
+        [slot setIsActive:!self.hasPosted];
+        [slot setIsVisible:YES];
+    }
+    
+    {
+        NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"viewAddress"];
+        [slot setVisibleName:@"View Address"];
+        [slot setIsActive:self.hasAddress];
+        [slot setIsVisible:YES];
+    }
+
 }
 
 - (MKSell *)sell
@@ -31,7 +51,7 @@
 
 - (BOOL)isComplete
 {
-    return self.addressMsg != nil;
+    return self.didReceiveAddresss && self.hasPosted;
 }
 
 - (BOOL)isActive
@@ -41,36 +61,17 @@
 
 - (NSString *)nodeSubtitle
 {
-    if (self.addressMsg)
+    if (self.didReceiveAddresss)
     {
-        return @"received";
+        if (self.hasPosted)
+        {
+            return @"complete";
+        }
+        
+        return @"Buyer escrow set up. Deliver item to buyer.";
     }
     
     return @"awaiting delivery address from buyer";
-
-    /*
-    if (self.sell.lockEscrow.isComplete)
-    {
-        if (!self.addressMsg)
-        {
-            return @"awaiting delivery address";
-        }
-        
-        if (self.addressMsg)
-        {
-            return @"received";
-        }
-    }
-    else
-    {
-        if (self.addressMsg)
-        {
-            return @"received";
-        }
-    }
-    
-    return nil;
-    */
 }
 
 - (NSString *)nodeNote
@@ -86,11 +87,6 @@
     }
     
     return nil;
-}
-
-- (MKBuyerAddressMsg *)addressMsg
-{
-    return [self.children firstObjectOfClass:MKBuyerAddressMsg.class];
 }
 
 - (BOOL)handleMsg:(MKMsg *)msg
@@ -116,5 +112,52 @@
 {
     
 }
+
+// address
+
+- (BOOL)didReceiveAddresss
+{
+    return self.address != nil;
+}
+
+- (BOOL)hasAddress
+{
+    return self.address != nil;
+}
+
+- (MKSellDeliveryAddress *)address
+{
+    return [self.children firstObjectOfClass:MKSellDeliveryAddress.class];
+}
+
+// posting
+
+- (void)markAsPosted
+{
+    if (!self.hasPosted)
+    {
+        [self addChild:[[MKSellPostedMsg alloc] init]];
+    }
+}
+
+- (BOOL)hasPosted
+{
+    return self.postedMsg != nil;
+}
+
+- (MKSellPostedMsg *)postedMsg
+{
+    return [self.children firstObjectOfClass:MKSellPostedMsg.class];
+}
+
+- (void)viewAddress // this shouldn't be at the model level
+{
+    MKPanelView *panel = [[MKPanelManager sharedPanelManager] openNewPanel];
+    
+    [panel setInnerView:self.address.nodeView];
+    [self.nodeView addSubview:panel];
+    [panel layout];
+}
+
 
 @end

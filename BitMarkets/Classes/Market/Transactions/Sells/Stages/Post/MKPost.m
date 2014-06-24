@@ -61,7 +61,15 @@
 {
     if (self.isInSell)
     {
-        return !self.postMsg;
+        if(self.postMsg)
+        {
+            if (self.postMsg.wasSent)
+            {
+                return NO;
+            }
+        }
+        
+        return YES;
     }
     
     return NO;
@@ -130,7 +138,6 @@
 
 - (NSString *)nodeSubtitle
 {
-    
     if (self.canBuy)
     {
         return [NSString stringWithFormat:@"%@BTC", self.priceInBtc];
