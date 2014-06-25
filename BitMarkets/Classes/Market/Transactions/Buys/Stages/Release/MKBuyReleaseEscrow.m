@@ -69,7 +69,7 @@
         
         if (!self.confirmPaymentMsg)
         {
-            return @"Awaiting payment confirmation.";
+            return @"Payment sent and accepted, awaiting payment confirmation.";
         }
         
         return @"Payment confirmed.";
@@ -220,6 +220,7 @@
     [self addChild:msg];
     [self update];
     [self updateActions];
+    [self postParentChainChanged];
 }
 
 // initiate refund

@@ -14,6 +14,7 @@
 {
     self = [super init];
     self.isEditable = NO;
+    self.nodeViewClass = NavMirrorView.class;
     return self;
 }
 

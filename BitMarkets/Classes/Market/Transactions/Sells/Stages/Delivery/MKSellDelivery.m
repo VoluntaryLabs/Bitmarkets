@@ -51,7 +51,7 @@
 
 - (BOOL)isComplete
 {
-    return self.didReceiveAddresss && self.hasPosted;
+    return self.hasAddress && self.hasPosted;
 }
 
 - (BOOL)isActive
@@ -61,7 +61,7 @@
 
 - (NSString *)nodeSubtitle
 {
-    if (self.didReceiveAddresss)
+    if (self.hasAddress)
     {
         if (self.hasPosted)
         {
@@ -71,7 +71,7 @@
         return @"Buyer escrow set up. Deliver item to buyer.";
     }
     
-    return @"Awaiting delivery address from buyer";
+    return @"Awaiting delivery address from buyer.";
 }
 
 - (NSString *)nodeNote
@@ -110,15 +110,11 @@
 
 - (void)update
 {
-    
+    [self updateActions];
 }
 
 // address
 
-- (BOOL)didReceiveAddresss
-{
-    return self.address != nil;
-}
 
 - (BOOL)hasAddress
 {
@@ -138,6 +134,8 @@
     {
         [self addChild:[[MKSellPostedMsg alloc] init]];
     }
+    
+    [self postParentChainChanged];
 }
 
 - (BOOL)hasPosted
@@ -152,7 +150,8 @@
 
 - (void)viewAddress // this shouldn't be at the model level
 {
-    MKPanelView *panel = [[MKPanelManager sharedPanelManager] openNewPanel];
+    MKPanelManager *panelManager = [MKPanelManager sharedPanelManager];
+    MKPanelView *panel = [panelManager openNewPanel];
     
     [panel setInnerView:self.address.nodeView];
     [self.nodeView addSubview:panel];

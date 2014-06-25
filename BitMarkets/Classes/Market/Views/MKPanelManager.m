@@ -55,7 +55,9 @@ static MKPanelManager *sharedPanelManager = nil;
     }
     else
     {
-        [NSException raise:@"no panel receiver" format:nil];
+        NSString *error = @"no panel receiver";
+        NSLog(@"%@ %@", self.className, error);
+        [NSException raise:error format:nil];
     }
     
     return nil;

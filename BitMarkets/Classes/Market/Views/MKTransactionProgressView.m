@@ -103,6 +103,8 @@
 {
     [[MKPanelManager sharedPanelManager] setPanelReceiver:self];
     
+    NSView *lastView = (NSView *)self.subviews.lastObject;
+    NSLog(@"%@ %@ %@", self.className, self.node.className, lastView.className);
     //[self syncToNode]; // temporary
     
     [super drawRect:dirtyRect];
