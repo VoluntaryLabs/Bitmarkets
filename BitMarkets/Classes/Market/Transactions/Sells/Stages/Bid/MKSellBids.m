@@ -61,12 +61,12 @@
 {
     if (self.acceptedBid)
     {
-        return @"accepted bid";
+        return @"Accepted bid.";
     }
     
     if (!self.runningWallet)
     {
-        return @"waiting for wallet to sync...";
+        return @"Waiting for wallet to sync...";
     }
     
     if (self.children.count > 0)
@@ -76,12 +76,12 @@
             return [NSString stringWithFormat:@"Insufficent funds for security deposit to accept bid, need to deposit %@BTC", self.amountNeeded.satoshiToBtc];
         }
         
-        return @"choose bid";
+        return @"Choose bid.";
     }
     
     if (self.sell.mkPost.isComplete)
     {
-        return @"awaiting bids";
+        return @"Awaiting bids.";
     }
     
     return nil;

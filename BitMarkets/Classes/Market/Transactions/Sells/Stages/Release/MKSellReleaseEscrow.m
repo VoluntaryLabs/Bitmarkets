@@ -44,20 +44,20 @@
         {
             if (self.sellRejectRefundRequestMsg)
             {
-                return @"rejected refund request";
+                return @"Rejected refund request.";
             }
             
             if (self.confirmRefundMsg)
             {
-                return @"refunded buyer";
+                return @"Refunded buyer.";
             }
             else
             {
-                return @"refund sent, awaiting confirm";
+                return @"Refund sent, awaiting confirm.";
             }
         }
         
-        return @"buyer requests refund";
+        return @"Buyer requests refund.";
     }
     
     if (self.buyPaymentMsg)
@@ -66,18 +66,18 @@
         {
             if (self.confirmPaymentMsg)
             {
-                return @"buyer paid";
+                return @"Buyer paid.";
             }
             
-            return @"awaiting payment confirm";
+            return @"Awaiting payment confirm.";
         }
         
-        return @"buyer requests refund";
+        return @"Buyer requests refund.";
     }
     
     if (self.isActive)
     {
-        return @"waiting for buyer to make payment or request refund";
+        return @"Waiting for buyer to make payment or request refund.";
     }
     
     if (self.sell.isCanceled)
@@ -87,7 +87,7 @@
     
     if (!self.runningWallet)
     {
-        return @"waiting for wallet...";
+        return @"Waiting for wallet...";
     }
     
     return nil;

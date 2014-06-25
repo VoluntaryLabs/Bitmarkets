@@ -49,30 +49,30 @@
     {
         if(!self.sellAcceptRefundRequestMsg)
         {
-            return @"refund requested, awaiting seller acceptance";
+            return @"Refund requested, awaiting seller acceptance.";
         }
         
         if (!self.confirmRefundMsg)
         {
-            return @"awaiting refund confirmation";
+            return @"Awaiting refund confirmation.";
         }
         
-        return @"refund confirmed";
+        return @"Refund confirmed.";
     }
     
     if (self.buyPaymentMsg)
     {
         if(!self.sellAcceptPaymentMsg)
         {
-            return @"payment sent, awaiting seller acceptance";
+            return @"Payment sent, awaiting seller acceptance.";
         }
         
         if (!self.confirmPaymentMsg)
         {
-            return @"awaiting payment confirmation";
+            return @"Awaiting payment confirmation.";
         }
         
-        return @"payment confirmed";
+        return @"Payment confirmed.";
     }
     
     if (self.buy.isCanceled)
@@ -82,12 +82,12 @@
     
     if (!self.runningWallet)
     {
-        return @"waiting for wallet...";
+        return @"Waiting for wallet...";
     }
     
     if (self.isActive)
     {
-        return @"ready to make payment or request refund";
+        return @"Ready to make payment (after item received) or request refund.";
     }
     
     return nil;

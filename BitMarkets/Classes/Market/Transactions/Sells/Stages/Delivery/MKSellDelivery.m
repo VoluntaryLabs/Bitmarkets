@@ -26,7 +26,7 @@
     {
         NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"markAsPosted"];
         [slot setVisibleName:@"Item Posted"];
-        [slot setIsActive:!self.hasPosted];
+        [slot setIsActive:self.hasAddress && !self.hasPosted];
         [slot setIsVisible:YES];
     }
     
@@ -65,13 +65,13 @@
     {
         if (self.hasPosted)
         {
-            return @"complete";
+            return @"Complete";
         }
         
         return @"Buyer escrow set up. Deliver item to buyer.";
     }
     
-    return @"awaiting delivery address from buyer";
+    return @"Awaiting delivery address from buyer";
 }
 
 - (NSString *)nodeNote
