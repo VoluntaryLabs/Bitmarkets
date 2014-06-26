@@ -74,10 +74,8 @@
 
 - (void)drawBackground
 {
-    if (self.stage.isComplete)
-    {
-        [self drawFillArrow];
-    }
+    [self drawLeftFill];
+    [self drawRightFill];
     
     if (self.hasArrow)
     {
@@ -94,8 +92,6 @@
 {
     [[NSColor colorWithCalibratedWhite:.8 alpha:1.0] set];
     
-    [NSBezierPath setDefaultLineCapStyle:NSButtLineCapStyle];
-    
     CGFloat right = 10.0;
     CGFloat w = self.width;
     CGFloat h = self.height;
@@ -109,55 +105,96 @@
     [aPath stroke];
 }
 
-- (BOOL)shouldFillRightSide
+- (NSColor *)activeFillColor
 {
-    MKStage *nextStage = self.stage.nextStage;
-    
-    if (nextStage && nextStage.isComplete)
-    {
-        return YES;
-    }
-    
-    return NO;
+    return [NSColor colorWithCalibratedWhite:.97 alpha:1.0];
 }
 
-- (void)drawFillArrow
+- (NSColor *)completeFillColor
 {
-    if (self.stage.isActive && !self.stage.isComplete)
+    return [NSColor colorWithCalibratedWhite:.9 alpha:1.0];
+}
+
+- (CGFloat)rightArrowOffset
+{
+    return 10.0;
+}
+
+- (NSColor *)leftColor
+{
+    MKStage *stage = self.stage;
+    
+    if (stage.isActive)
     {
-        [[NSColor colorWithCalibratedWhite:.9 alpha:1.0] set];
-    }
-    else
-    {
-        [[NSColor colorWithCalibratedWhite:.97 alpha:1.0] set];
+        return self.activeFillColor;
     }
     
-    [NSBezierPath setDefaultLineCapStyle:NSButtLineCapStyle];
+    if (stage.isComplete)
+    {
+        return self.completeFillColor;
+    }
+
+    return [NSColor clearColor];
+}
+
+- (void)drawLeftFill
+{
+    [self.leftColor set];
     
-    CGFloat right = 10.0;
+    CGFloat r = self.rightArrowOffset;
     CGFloat w = self.width;
     CGFloat h = self.height;
     
     NSBezierPath *aPath = [NSBezierPath bezierPath];
-    
+    [aPath setLineCapStyle:NSSquareLineCapStyle];
     [aPath moveToPoint:NSMakePoint(0, 0)];
-    
-    if (self.hasArrow && !self.shouldFillRightSide)
-    {
-        [aPath lineToPoint:NSMakePoint(w - right, 0)];
-        [aPath lineToPoint:NSMakePoint(w, h/2)];
-        [aPath lineToPoint:NSMakePoint(w- right, h)];
-    }
-    else
-    {
-        [aPath lineToPoint:NSMakePoint(w, 0)];
-        [aPath lineToPoint:NSMakePoint(w, h)];
-    }
-    
+    [aPath lineToPoint:NSMakePoint(w - r, 0)];
+    [aPath lineToPoint:NSMakePoint(w, h/2)];
+    [aPath lineToPoint:NSMakePoint(w - r, h)];
     [aPath lineToPoint:NSMakePoint(0, h)];
     [aPath lineToPoint:NSMakePoint(0, 0)];
+    [aPath closePath];
+    [aPath fill];
+}
+
+- (NSColor *)rightColor
+{
+    MKStage *stage = self.stage.nextStage;
     
+    if (!stage)
+    {
+        return self.leftColor;
+    }
+    
+    if (stage.isActive)
+    {
+        return self.activeFillColor;
+    }
+    
+    if (stage.isComplete)
+    {
+        return self.completeFillColor;
+    }
+    
+    return [NSColor clearColor];
+}
+
+- (void)drawRightFill
+{
+    [self.rightColor set];
+    
+    CGFloat r = self.rightArrowOffset;
+    CGFloat w = self.width;
+    CGFloat h = self.height;
+    
+    NSBezierPath *aPath = [NSBezierPath bezierPath];
     [aPath setLineCapStyle:NSSquareLineCapStyle];
+    [aPath moveToPoint:NSMakePoint(w, 0)];
+    [aPath lineToPoint:NSMakePoint(w - r, 0)];
+    [aPath lineToPoint:NSMakePoint(w, h/2)];
+    [aPath lineToPoint:NSMakePoint(w - r, h)];
+    [aPath lineToPoint:NSMakePoint(w, h)];
+    [aPath lineToPoint:NSMakePoint(w, 0)];
     [aPath closePath];
     [aPath fill];
 }
