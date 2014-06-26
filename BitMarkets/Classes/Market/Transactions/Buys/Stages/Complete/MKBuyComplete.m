@@ -62,6 +62,11 @@
     return nil;
 }
 
+- (BOOL)isActive
+{
+    return NO;
+}
+
 - (BOOL)isComplete
 {
     return self.buy.releaseEscrow.isComplete;

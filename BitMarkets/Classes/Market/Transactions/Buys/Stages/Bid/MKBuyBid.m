@@ -109,14 +109,14 @@
 
 // --- status -------------
 
-- (BOOL)isDone
+- (BOOL)isComplete
 {
     return self.wasAccepted || self.wasRejected;
 }
 
 - (BOOL)isActive
 {
-    return (self.children.count && !self.isDone);
+    return (self.children.count && !self.isComplete);
 }
 
 - (MKBuy *)buy

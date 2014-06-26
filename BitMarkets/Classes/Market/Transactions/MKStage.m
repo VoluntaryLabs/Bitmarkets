@@ -7,12 +7,36 @@
 //
 
 #import "MKStage.h"
+#import "MKTransaction.h"
+#import <FoundationCategoriesKit/FoundationCategoriesKit.h>
 
 @implementation MKStage
 
 - (BOOL)isActive
 {
+    [NSException raise:@"subclasses must override" format:nil];
     return YES;
+}
+
+- (BOOL)isComplete
+{
+    [NSException raise:@"subclasses must override" format:nil];
+    return NO;
+}
+
+- (MKTransaction *)transaction
+{
+    return (MKTransaction *)self.nodeParent;
+}
+
+- (MKStage *)nextStage
+{
+    return [self.transaction.stages objectAfter:self];
+}
+
+- (MKStage *)previousStage
+{
+    return [self.transaction.stages objectBefore:self];
 }
 
 @end

@@ -113,7 +113,7 @@
 
 - (NSDictionary *)nodeTitleAttributes
 {
-    return [[NavTheme sharedNavTheme] attributesDictForPath:@"steps/step"];
+    return [[NavTheme sharedNavTheme] attributesDictForPath:@"steps/status/title"];
 }
 
 

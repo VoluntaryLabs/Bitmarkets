@@ -17,6 +17,8 @@
 
 - allow seller to see address of buyer
 
+- wallet UI
+
 - status view isn't getting dealloced when transaction view removed
 
 if (escrowTx.error.insufficientValue)
@@ -25,6 +27,8 @@ if (escrowTx.error.insufficientValue)
 - UI doesn't change when you click [Cancel Escrow]
 
 - The "Post" button remains active after posting
+
+- sharable todo - app url
 
 - validate post price
 

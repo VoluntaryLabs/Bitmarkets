@@ -8,8 +8,16 @@
 
 #import "MKGroup.h"
 
+@class MKTransaction;
+
 @interface MKStage : MKGroup
 
 - (BOOL)isActive;
+- (BOOL)isComplete;
+
+- (MKTransaction *)transaction;
+
+- (MKStage *)nextStage;
+- (MKStage *)previousStage;
 
 @end

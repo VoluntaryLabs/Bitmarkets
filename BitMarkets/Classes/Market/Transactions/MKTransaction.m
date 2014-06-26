@@ -41,6 +41,11 @@
     return stage;
 }
 
+- (NSArray *)stages
+{
+    return self.children;
+}
+
 - (NSString *)statusTitle
 {
     NavNode *node = self.currentStage;

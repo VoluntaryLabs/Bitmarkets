@@ -18,6 +18,8 @@
 
 - (NSArray *)visibleStages;
 - (MKStage *)currentStage;
+- (NSArray *)stages;
+
 
 - (NSString *)statusTitle;
 - (NSString *)statusSubtitle;

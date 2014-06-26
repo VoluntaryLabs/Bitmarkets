@@ -28,6 +28,11 @@
     return @"Complete";
 }
 
+- (BOOL)isActive
+{
+    return NO;
+}
+
 - (BOOL)isComplete
 {
     return self.sell.releaseEscrow.isComplete;
