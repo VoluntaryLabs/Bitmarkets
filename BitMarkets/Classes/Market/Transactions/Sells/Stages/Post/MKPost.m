@@ -262,7 +262,6 @@
     MKBidMsg *bidMsg = [[MKBidMsg alloc] init];
     [bidMsg setupForPost:self];
     [bidMsg send];
-
     return bidMsg;
 }
 

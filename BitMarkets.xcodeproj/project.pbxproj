@@ -44,6 +44,7 @@
 		AA4A0E261909ADF600AB78D0 /* location_active.png in Resources */ = {isa = PBXBuildFile; fileRef = AA4A0E181909ADF600AB78D0 /* location_active.png */; };
 		AA4A0E271909ADF600AB78D0 /* profile_active.png in Resources */ = {isa = PBXBuildFile; fileRef = AA4A0E191909ADF600AB78D0 /* profile_active.png */; };
 		AA4A0E281909ADF600AB78D0 /* right_active.png in Resources */ = {isa = PBXBuildFile; fileRef = AA4A0E1A1909ADF600AB78D0 /* right_active.png */; };
+		AA4FAD4D195CE7E0009AC0F9 /* MKWalletView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4FAD4C195CE7E0009AC0F9 /* MKWalletView.m */; };
 		AA5DFD9E1909C83000383283 /* add_active.png in Resources */ = {isa = PBXBuildFile; fileRef = AA5DFD8F1909C83000383283 /* add_active.png */; };
 		AA5DFD9F1909C83000383283 /* add_inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = AA5DFD901909C83000383283 /* add_inactive.png */; };
 		AA5DFDA01909C83000383283 /* compose_active.png in Resources */ = {isa = PBXBuildFile; fileRef = AA5DFD911909C83000383283 /* compose_active.png */; };
@@ -302,6 +303,8 @@
 		AA4A0E181909ADF600AB78D0 /* location_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location_active.png; sourceTree = "<group>"; };
 		AA4A0E191909ADF600AB78D0 /* profile_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile_active.png; sourceTree = "<group>"; };
 		AA4A0E1A1909ADF600AB78D0 /* right_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right_active.png; sourceTree = "<group>"; };
+		AA4FAD4B195CE7E0009AC0F9 /* MKWalletView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKWalletView.h; sourceTree = "<group>"; };
+		AA4FAD4C195CE7E0009AC0F9 /* MKWalletView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKWalletView.m; sourceTree = "<group>"; };
 		AA5DFD8F1909C83000383283 /* add_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_active.png; sourceTree = "<group>"; };
 		AA5DFD901909C83000383283 /* add_inactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_inactive.png; sourceTree = "<group>"; };
 		AA5DFD911909C83000383283 /* compose_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compose_active.png; sourceTree = "<group>"; };
@@ -766,6 +769,8 @@
 				AAD784F7194F9E53004FE0F6 /* MKPanelView.m */,
 				AAD785061950DAE2004FE0F6 /* MKPanelManager.h */,
 				AAD785071950DAE2004FE0F6 /* MKPanelManager.m */,
+				AA4FAD4B195CE7E0009AC0F9 /* MKWalletView.h */,
+				AA4FAD4C195CE7E0009AC0F9 /* MKWalletView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1303,6 +1308,7 @@
 				AAB2813119217586005C9D27 /* MKBuyDeliveryAddress.m in Sources */,
 				AA753D9D1910779800D07CB5 /* BNKeyView.m in Sources */,
 				AAB2813219217586005C9D27 /* MKBuyerAddressMsg.m in Sources */,
+				AA4FAD4D195CE7E0009AC0F9 /* MKWalletView.m in Sources */,
 				AAB2814019217586005C9D27 /* MKAcceptBidMsg.m in Sources */,
 				AAD784F8194F9E53004FE0F6 /* MKPanelView.m in Sources */,
 				AAB2813C19217586005C9D27 /* MKMessages.m in Sources */,
