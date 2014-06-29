@@ -223,6 +223,7 @@
         else
         {
             [self performSelector:@selector(accept) withObject:nil afterDelay:15];
+            return;
         }
     }
     else
