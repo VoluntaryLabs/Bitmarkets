@@ -14,5 +14,9 @@
 @property (strong, nonatomic) NavColoredView *buttonsView;
 @property (strong, nonatomic) NavTextView *statusTextView;
 @property (strong, nonatomic) NavTextView *subtitleTextView;
+@property (strong, nonatomic) NSString *title;
+
+- (NSDictionary *)nodeTitleAttributes;
+- (void)setupButtons;
 
 @end

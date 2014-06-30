@@ -56,6 +56,11 @@
     return self.lockEscrow.isCancelConfirmed;
 }
 
+- (MKSells *)sells
+{
+    return (MKSells *)self.nodeParent;
+}
+
 - (NSString *)nodeNote
 {
     if (self.releaseEscrow.isComplete)

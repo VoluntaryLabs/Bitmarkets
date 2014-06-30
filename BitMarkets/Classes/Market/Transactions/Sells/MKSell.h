@@ -16,6 +16,8 @@
 #import "MKSellBid.h"
 #import "MKSellComplete.h"
 
+@class MKSells;
+
 @interface MKSell : MKTransaction
 
 @property (strong, nonatomic) MKPost *mkPost;
@@ -28,5 +30,7 @@
 - (MKBidMsg *)acceptedBidMsg;
 
 - (BOOL)isCanceled;
+
+- (MKSells *)sells;
 
 @end

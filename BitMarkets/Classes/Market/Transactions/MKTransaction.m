@@ -58,7 +58,7 @@
     return @"-";
 }
 
-- (NSString *)statusSubtitle
+- (NSString *)nodeSubtitleDetailed
 {
     NavNode *node = self.currentStage;
     
@@ -84,8 +84,6 @@
     
     return [NSString stringWithFormat:@"%@BTC", self.mkPost.priceInBtc];
 }
-
-
 
 - (NSString *)nodeNote
 {

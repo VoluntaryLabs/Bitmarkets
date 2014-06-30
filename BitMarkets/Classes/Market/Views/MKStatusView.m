@@ -18,6 +18,8 @@
     
     if (self)
     {
+        _title = @"Status";
+        
         _statusTextView   = [[NavTextView alloc] initWithFrame:NSMakeRect(0, 0, 100, 30)];
         [_statusTextView setSelectable:NO];
         [_statusTextView setThemePath:@"steps/status/title"];
@@ -40,21 +42,10 @@
     return self;
 }
 
-- (void)setNode:(NavNode *)node
-{
-    NSLog(@"%@ setNode:%@", self.className, node.className);
-    [super setNode:node];
-}
-
-- (MKTransaction *)transaction
-{
-    return (MKTransaction *)self.node;
-}
-
 - (void)syncFromNode
 {
-    _statusTextView.string   = @"Status"; // self.transaction.statusTitle;
-    _subtitleTextView.string = self.transaction.statusSubtitle ? self.transaction.statusSubtitle : @"";
+    _statusTextView.string   = _title;
+    _subtitleTextView.string = self.node.nodeSubtitle ? self.node.nodeSubtitle : @"";
     
     self.backgroundColor = [self.nodeTitleAttributes objectForKey:NSBackgroundColorAttributeName];
     [self setupButtons];
@@ -65,7 +56,7 @@
 {
     [_buttonsView removeAllSubviews];
     
-    for (NavActionSlot *actionSlot in self.transaction.currentStage.navMirror.actionSlots)
+    for (NavActionSlot *actionSlot in self.node.navMirror.actionSlots)
     {
         if (actionSlot.isVisible)
         {

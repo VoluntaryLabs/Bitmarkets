@@ -13,6 +13,7 @@
 #import "MKSellBid.h"
 #import "MKSell.h"
 #import "MKClosePostMsg.h"
+#import "MKSells.h"
 
 @implementation MKSellBids
 
@@ -180,6 +181,7 @@
 {
     {
         NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"acceptFirstBid"];
+        [slot setVisibleName:@"Accept First Bid"];
         
         BOOL active = (self.firstBid != nil) &&
             (self.acceptedBid == nil) &&
@@ -192,6 +194,7 @@
     {
         NavActionSlot *removeSlot = [self.navMirror newActionSlotWithName:@"removePost"];
         [removeSlot setVisibleName:@"Remove Listing"];
+        [removeSlot setVerifyMessage:@"Are you sure you want to delete this listing?"];
         [removeSlot setIsVisible:YES];
         [removeSlot setIsActive:!self.acceptedBid];
     }
@@ -239,6 +242,8 @@
 - (void)removePost
 {
     
+    [self sendClosePost];
+    [self.sell.sells removeChild:self.sell];
 }
 
 @end

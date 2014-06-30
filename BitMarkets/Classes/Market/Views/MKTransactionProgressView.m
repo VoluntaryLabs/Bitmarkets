@@ -93,12 +93,6 @@
     [_postView layout];
 }
 
-- (void)prepareToDisplay
-{
-    [self layout];
-    [self layout];
-}
-
 - (void)drawRect:(NSRect)dirtyRect
 {
     [[MKPanelManager sharedPanelManager] setPanelReceiver:self];
@@ -125,6 +119,7 @@
 - (void)syncFromNode
 {
     [_stepsView  syncFromNode];
+    [_statusView setNode:self.transaction.currentStage];
     [_statusView syncFromNode];
     
     // looks like a NavColumn is adding this nodeView - why?

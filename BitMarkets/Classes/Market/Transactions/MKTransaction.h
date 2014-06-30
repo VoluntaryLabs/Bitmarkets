@@ -22,7 +22,7 @@
 
 
 - (NSString *)statusTitle;
-- (NSString *)statusSubtitle;
+- (NSString *)nodeSubtitleDetailed;
 
 - (void)update;
 

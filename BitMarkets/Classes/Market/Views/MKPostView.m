@@ -195,12 +195,6 @@
     [_attachmentView placeYBelow:_fromAddressIcon margin:20.0];
 }
 
-- (void)prepareToDisplay
-{
-    [self layout];
-    [self layout];
-}
-
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];

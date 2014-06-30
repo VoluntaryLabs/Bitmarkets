@@ -47,7 +47,6 @@
 
 - (MKSell *)sell;
 
-- (void)prepareToDisplay;
 - (void)selectFirstResponder;
 
 - (void)setEditable:(BOOL)isEditable;

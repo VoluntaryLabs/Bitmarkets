@@ -1,25 +1,29 @@
 //
-//  MKWalletView.m
+//  MKRowView.m
 //  BitMarkets
 //
-//  Created by Steve Dekorte on 6/26/14.
+//  Created by Steve Dekorte on 6/28/14.
 //  Copyright (c) 2014 voluntary.net. All rights reserved.
 //
 
-#import "MKWalletView.h"
+#import "MKRowView.h"
 
-@implementation MKWalletView
+@implementation MKRowView
 
 - (id)initWithFrame:(NSRect)frame
 {
     self = [super initWithFrame:frame];
-    
-    if (self)
-    {
+    if (self) {
         // Initialization code here.
     }
-    
     return self;
+}
+
+- (void)drawRect:(NSRect)dirtyRect
+{
+    [super drawRect:dirtyRect];
+    
+    // Drawing code here.
 }
 
 @end
