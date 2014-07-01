@@ -158,7 +158,9 @@
 - (void)sendClosePost
 {
     MKClosePostMsg *msg = [[MKClosePostMsg alloc] init];
-    [msg copyThreadFrom:self.sell.acceptedBidMsg];
+    [msg copyThreadFrom:self.sell.mkPost.postMsg];
+    NSLog(@"MKClosePostMsg postUuid %@", msg.postUuid);
+
     [msg sendFromSellerToChannel];
 }
 
@@ -241,7 +243,6 @@
 
 - (void)removePost
 {
-    
     [self sendClosePost];
     [self.sell.sells removeChild:self.sell];
 }
