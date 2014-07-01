@@ -12,6 +12,7 @@
 		AA09C7DB192BDC2800317130 /* MKAttachmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA09C7DA192BDC2800317130 /* MKAttachmentView.m */; };
 		AA09C7EC192BEC2B00317130 /* MKDragFileWell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA09C7EB192BEC2B00317130 /* MKDragFileWell.m */; };
 		AA09C804192D41C600317130 /* MKAboutNode.m in Sources */ = {isa = PBXBuildFile; fileRef = AA09C803192D41C600317130 /* MKAboutNode.m */; };
+		AA0A76D419636C8200E044DB /* MKTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0A76D319636C8200E044DB /* MKTextFieldCell.m */; };
 		AA0E585118FDC0880095DEBD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA0E585018FDC0880095DEBD /* Cocoa.framework */; };
 		AA0E585B18FDC0880095DEBD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA0E585918FDC0880095DEBD /* InfoPlist.strings */; };
 		AA0E585D18FDC0880095DEBD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0E585C18FDC0880095DEBD /* main.m */; };
@@ -44,9 +45,6 @@
 		AA4A0E261909ADF600AB78D0 /* location_active.png in Resources */ = {isa = PBXBuildFile; fileRef = AA4A0E181909ADF600AB78D0 /* location_active.png */; };
 		AA4A0E271909ADF600AB78D0 /* profile_active.png in Resources */ = {isa = PBXBuildFile; fileRef = AA4A0E191909ADF600AB78D0 /* profile_active.png */; };
 		AA4A0E281909ADF600AB78D0 /* right_active.png in Resources */ = {isa = PBXBuildFile; fileRef = AA4A0E1A1909ADF600AB78D0 /* right_active.png */; };
-		AA4FAD4D195CE7E0009AC0F9 /* BNWalletView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4FAD4C195CE7E0009AC0F9 /* BNWalletView.m */; };
-		AA4FAD5D195F9C9A009AC0F9 /* MKTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4FAD5C195F9C9A009AC0F9 /* MKTableView.m */; };
-		AA4FAD60195F9CDF009AC0F9 /* MKRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4FAD5F195F9CDF009AC0F9 /* MKRowView.m */; };
 		AA5DFD9E1909C83000383283 /* add_active.png in Resources */ = {isa = PBXBuildFile; fileRef = AA5DFD8F1909C83000383283 /* add_active.png */; };
 		AA5DFD9F1909C83000383283 /* add_inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = AA5DFD901909C83000383283 /* add_inactive.png */; };
 		AA5DFDA01909C83000383283 /* compose_active.png in Resources */ = {isa = PBXBuildFile; fileRef = AA5DFD911909C83000383283 /* compose_active.png */; };
@@ -252,6 +250,8 @@
 		AA09C7EB192BEC2B00317130 /* MKDragFileWell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKDragFileWell.m; sourceTree = "<group>"; };
 		AA09C802192D41C600317130 /* MKAboutNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKAboutNode.h; sourceTree = "<group>"; };
 		AA09C803192D41C600317130 /* MKAboutNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKAboutNode.m; sourceTree = "<group>"; };
+		AA0A76D219636C8200E044DB /* MKTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKTextFieldCell.h; sourceTree = "<group>"; };
+		AA0A76D319636C8200E044DB /* MKTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKTextFieldCell.m; sourceTree = "<group>"; };
 		AA0E584D18FDC0880095DEBD /* BitMarkets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitMarkets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA0E585018FDC0880095DEBD /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		AA0E585318FDC0880095DEBD /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -305,12 +305,6 @@
 		AA4A0E181909ADF600AB78D0 /* location_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location_active.png; sourceTree = "<group>"; };
 		AA4A0E191909ADF600AB78D0 /* profile_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile_active.png; sourceTree = "<group>"; };
 		AA4A0E1A1909ADF600AB78D0 /* right_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right_active.png; sourceTree = "<group>"; };
-		AA4FAD4B195CE7E0009AC0F9 /* BNWalletView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNWalletView.h; sourceTree = "<group>"; };
-		AA4FAD4C195CE7E0009AC0F9 /* BNWalletView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNWalletView.m; sourceTree = "<group>"; };
-		AA4FAD5B195F9C9A009AC0F9 /* MKTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKTableView.h; sourceTree = "<group>"; };
-		AA4FAD5C195F9C9A009AC0F9 /* MKTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKTableView.m; sourceTree = "<group>"; };
-		AA4FAD5E195F9CDF009AC0F9 /* MKRowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKRowView.h; sourceTree = "<group>"; };
-		AA4FAD5F195F9CDF009AC0F9 /* MKRowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKRowView.m; sourceTree = "<group>"; };
 		AA5DFD8F1909C83000383283 /* add_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_active.png; sourceTree = "<group>"; };
 		AA5DFD901909C83000383283 /* add_inactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_inactive.png; sourceTree = "<group>"; };
 		AA5DFD911909C83000383283 /* compose_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compose_active.png; sourceTree = "<group>"; };
@@ -753,6 +747,8 @@
 		AAA2E6A019006F0A0098C357 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AA0A76D219636C8200E044DB /* MKTextFieldCell.h */,
+				AA0A76D319636C8200E044DB /* MKTextFieldCell.m */,
 				AAD78503194FBF3E004FE0F6 /* MKNodeView.h */,
 				AAD78504194FBF3E004FE0F6 /* MKNodeView.m */,
 				AAA2E6A719006F0A0098C357 /* MKPostView.h */,
@@ -775,12 +771,6 @@
 				AAD784F7194F9E53004FE0F6 /* MKPanelView.m */,
 				AAD785061950DAE2004FE0F6 /* MKPanelManager.h */,
 				AAD785071950DAE2004FE0F6 /* MKPanelManager.m */,
-				AA4FAD4B195CE7E0009AC0F9 /* BNWalletView.h */,
-				AA4FAD4C195CE7E0009AC0F9 /* BNWalletView.m */,
-				AA4FAD5B195F9C9A009AC0F9 /* MKTableView.h */,
-				AA4FAD5C195F9C9A009AC0F9 /* MKTableView.m */,
-				AA4FAD5E195F9CDF009AC0F9 /* MKRowView.h */,
-				AA4FAD5F195F9CDF009AC0F9 /* MKRowView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1275,7 +1265,6 @@
 				AA605AC2192A8CC700798BCA /* MKMsgGroup.m in Sources */,
 				AAB2814919217586005C9D27 /* MKPost.m in Sources */,
 				AAB2815719220D59005C9D27 /* MKBuyRefundRequestMsg.m in Sources */,
-				AA4FAD5D195F9C9A009AC0F9 /* MKTableView.m in Sources */,
 				AA447302194A804F009A7F0D /* MKStepView.m in Sources */,
 				AAB2813019217586005C9D27 /* MKBuyDelivery.m in Sources */,
 				AAB2814B19217586005C9D27 /* MKSellReleaseEscrow.m in Sources */,
@@ -1308,11 +1297,11 @@
 				AA955E181914775500F6FB0F /* MKMarkets.m in Sources */,
 				AAB28163192242AF005C9D27 /* MKRelease.m in Sources */,
 				AA447305194A8DB8009A7F0D /* MKStatusView.m in Sources */,
-				AA4FAD60195F9CDF009AC0F9 /* MKRowView.m in Sources */,
 				AA98D877195907430010697C /* MKSellPostedMsg.m in Sources */,
 				DC51980E192950BB004143E7 /* MKBuyerCancelLockEscrowMsg.m in Sources */,
 				AAD7850C195104E7004FE0F6 /* MKBuyComplete.m in Sources */,
 				AAB2816619224FA4005C9D27 /* MKEscrow.m in Sources */,
+				AA0A76D419636C8200E044DB /* MKTextFieldCell.m in Sources */,
 				AA447308194BCD91009A7F0D /* MKStage.m in Sources */,
 				AAB2813319217586005C9D27 /* MKBuyerLockEscrowMsg.m in Sources */,
 				AAB2814719217586005C9D27 /* MKSellerPostLockMsg.m in Sources */,
@@ -1320,7 +1309,6 @@
 				AAB2813119217586005C9D27 /* MKBuyDeliveryAddress.m in Sources */,
 				AA753D9D1910779800D07CB5 /* BNKeyView.m in Sources */,
 				AAB2813219217586005C9D27 /* MKBuyerAddressMsg.m in Sources */,
-				AA4FAD4D195CE7E0009AC0F9 /* BNWalletView.m in Sources */,
 				AAB2814019217586005C9D27 /* MKAcceptBidMsg.m in Sources */,
 				AAD784F8194F9E53004FE0F6 /* MKPanelView.m in Sources */,
 				AAB2813C19217586005C9D27 /* MKMessages.m in Sources */,

@@ -64,7 +64,7 @@
 }
 
 - (void)layout
-{    
+{
     [_stepsView placeInTopOfSuperviewWithMargin:0];
     [_stepsView setWidth:self.width];
     [_stepsView layout];

@@ -8,13 +8,13 @@
 
 #import "MKNodeView.h"
 #import "MKStatusView.h"
-#import "MKTableView.h"
 
-@interface BNWalletView : MKNodeView
+@interface BNWalletView : MKNodeView <NSTableViewDataSource, NSTableViewDelegate>
 
 @property (assign, nonatomic) NavView *navView;
 
 @property (strong, nonatomic) MKStatusView *statusView;
-@property (strong, nonatomic) MKTableView *tableView;
+@property (strong, nonatomic) NSScrollView *scrollView;
+@property (strong, nonatomic) NSTableView *tableView;
 
 @end
