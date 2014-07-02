@@ -391,9 +391,7 @@
     
     //if (self.price.textStorage.string.length)
     {
-        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-        [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
-        NSNumber *formattedNumber = [formatter numberFromString:_price.string];
+        NSNumber *formattedNumber = [self.priceFormatter numberFromString:_price.string];
         btc = [formattedNumber floatValue];
     }
     
@@ -453,8 +451,19 @@
     {
         NSString *newString = [_price.string stringByReplacingCharactersInRange:affectedCharRange
                                                                      withString:replacementString];
+
+        if ([newString isEqualToString:@"."])
+        {
+            newString = @"0.";
+        }
+        
         NSNumber *formattedNumber = [self.priceFormatter numberFromString:newString];
         BOOL isValid = formattedNumber != nil || newString.length == 0;
+        
+        if (!isValid)
+        {
+            NSBeep();
+        }
         
         return isValid;
     }

@@ -149,7 +149,7 @@
         
         [rootRegion handleMsg:closeMsg];
         
-        NSLog(@"closeMsg.postUuid %@", closeMsg.postUuid);
+        //NSLog(@"closeMsg.postUuid %@", closeMsg.postUuid);
         
         NSTimeInterval ttlSeconds = 60*60*24*2.5;
         if (closeMsg.bmMessage.ageInSeconds > ttlSeconds)

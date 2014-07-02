@@ -159,7 +159,7 @@
 {
     MKClosePostMsg *msg = [[MKClosePostMsg alloc] init];
     [msg copyThreadFrom:self.sell.mkPost.postMsg];
-    NSLog(@"MKClosePostMsg postUuid %@", msg.postUuid);
+    //NSLog(@"MKClosePostMsg postUuid %@", msg.postUuid);
 
     [msg sendFromSellerToChannel];
 }
