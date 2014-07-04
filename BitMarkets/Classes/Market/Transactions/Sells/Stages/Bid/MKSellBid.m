@@ -35,22 +35,15 @@
     return [self.children firstObjectOfClass:MKLockEscrowSetupMsg.class];
 }
 
-- (MKAcceptBidMsg *)acceptBidMsg
-{
-    return [self.children firstObjectOfClass:MKAcceptBidMsg.class];
-}
-
-- (MKRejectBidMsg *)rejectBidMsg
-{
-    return [self.children firstObjectOfClass:MKRejectBidMsg.class];
-}
-
 - (void)update
 {
     [self updateActions];
-    if (!self.acceptBidMsg && !self.rejectBidMsg)
+    if (!self.rejectMsg)
     {
-        [self.escrowSetupMsg update];
+        if (!self.acceptMsg || !self.acceptMsg.sentMessage)
+        {
+            [self.escrowSetupMsg update];
+        }
     }
 }
 
@@ -190,17 +183,21 @@
 
 - (void)accept
 {
+    MKAcceptBidMsg *msg = [[MKAcceptBidMsg alloc] init];
+    [msg copyThreadFrom:self.bidMsg];
+    [self addChild:msg];
+    
     MKLockEscrowSetupMsg *escrowSetupMsg = [[MKLockEscrowSetupMsg alloc] init];
     [escrowSetupMsg copyThreadFrom:self.bidMsg];
     escrowSetupMsg.delegate = self;
     [self addChild:escrowSetupMsg];
     [escrowSetupMsg update];
     
-    [self updateActions];
     [self.sell write];
     
     [self.sellBids setAcceptedBid:self];
     [self postSelfChanged];
+    
 }
 
 - (NSNumber *)lockEscrowPriceInSatoshi
@@ -210,12 +207,9 @@
 
 - (void)useEscrowTx:(BNTx *)escrowTx
 {
-    MKAcceptBidMsg *msg = [[MKAcceptBidMsg alloc] init];
-    [msg copyThreadFrom:self.bidMsg];
-    
+    MKAcceptBidMsg *msg = self.acceptMsg;
     [msg setPayload:[escrowTx asJSONObject]];
     [msg send];
-    [self addChild:msg];
 }
 
 - (void)reject
