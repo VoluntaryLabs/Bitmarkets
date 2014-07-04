@@ -8,7 +8,7 @@
 
 #import "MKBuyLockEscrow.h"
 #import "MKBuyerCancelLockEscrowMsg.h"
-#import "MKLockEscrowInputMsg.h"
+#import "MKLockEscrowSetupMsg.h"
 #import "MKRootNode.h"
 #import <BitnashKit/BitnashKit.h>
 
@@ -138,15 +138,29 @@
 {
     [self sendLockToSellerIfNeeded];
     [self lookForConfirmIfNeeded];
+    [self updateEscrowSetupIfNeeded];
     [self checkCancelConfirmIfNeeded];
     [self updateActions];
 }
 
 // send lock
 
+- (MKLockEscrowSetupMsg *)escrowSetupMsg
+{
+    return [self.children firstObjectOfClass:MKLockEscrowSetupMsg.class];
+}
+
+- (void)updateEscrowSetupIfNeeded
+{
+    if (self.escrowSetupMsg && !self.buyerLockMsg)
+    {
+        [self.escrowSetupMsg update];
+    }
+}
+
 - (void)sendLockToSellerIfNeeded
 {
-    if (self.buy.bid.wasAccepted && !self.buyerLockMsg)
+    if (self.buy.bid.wasAccepted && !self.escrowSetupMsg)
     {
         @try
         {
@@ -165,130 +179,44 @@
     return self.buyerLockMsg != nil;
 }
 
-- (MKBuyerLockEscrowMsg *)escrowInputTxMsg
+- (NSNumber *)lockEscrowPriceInSatoshi
 {
-    return [self.children firstObjectOfClass:MKLockEscrowInputMsg.class];
+    return [NSNumber numberWithLong:2*self.buy.mkPost.priceInSatoshi.longLongValue];
 }
 
-- (BNTx *)escrowInputTx
+- (void)useEscrowTx:(BNTx *)escrowTx
 {
-    BNTx *escrowInputTx = self.escrowInputTxMsg.payload.asObjectFromJSONObject;
-    if (escrowInputTx)
+    BNTx *sellerEscrowTx = [self.buy.bid.acceptMsg.payload asObjectFromJSONObject]; //TODO handle errors.  TODO verify tx before signing.
+    
+    escrowTx = [escrowTx mergedWithEscrowTx:sellerEscrowTx];
+    [escrowTx subtractFee];
+    
+    @try
     {
-        escrowInputTx.wallet = self.runningWallet;
-        return escrowInputTx;
+        self.error = nil;
+        [escrowTx sign];
     }
-    else
+    @catch (NSException *exception)
     {
-        return nil;
-    };
+        self.error = @"escrow sign error";
+    }
+    
+    MKBuyerLockEscrowMsg *msg = [[MKBuyerLockEscrowMsg alloc] init];
+    [msg copyThreadFrom:self.buy.bidMsg];
+    [msg setPayload:[escrowTx asJSONObject]];
+    
+    [msg sendToSeller];
+    [self addChild:msg];
+    [self postParentChainChanged];
 }
 
-- (void)setEscrowInputTx:(BNTx *)escrowInputTx
+- (void)sendLockToSeller
 {
-    MKLockEscrowInputMsg *escrowInputTxMsg = [[MKLockEscrowInputMsg alloc] init];
-    [escrowInputTxMsg copyThreadFrom:self.buy.bidMsg];
-    escrowInputTxMsg.payload = escrowInputTx.asJSONObject;
-    [self addChild:escrowInputTxMsg];
-}
-
-- (BOOL)sendLockToSeller
-{
-    BNWallet *wallet = self.runningWallet;
-
-    if (!wallet)
-    {
-        return YES;
-    }
-    
-    BNTx *escrowTx = [wallet newTx];
-    
-    BNTx *escrowInputTx = self.escrowInputTx;
-    if (escrowInputTx)
-    {
-        [escrowInputTx fetch];
-        if (escrowInputTx.isConfirmed)
-        {
-            [escrowTx configureForEscrowWithInputTx:escrowInputTx];
-        }
-        else
-        {
-            return NO;
-        }
-    }
-    else
-    {
-        [escrowTx configureForEscrowWithValue:[NSNumber numberWithLong:2*self.buy.mkPost.priceInSatoshi.longLongValue]];
-    }
-
-    self.error = nil;
-    if (escrowTx.error)
-    {
-        NSLog(@"tx configureForOutputWithValue failed: %@", escrowTx.error.description);
-        
-        if ([self.error isEqualToString:@"insufficient funds"])
-        {
-            self.error = nil;
-        }
-            
-        if (escrowTx.error.insufficientValue)
-        {
-            //TODO: prompt user for deposit
-            //self.error = @"insufficient funds";
-            self.error = [NSString stringWithFormat:@"%@BTC Required", escrowTx.error.insufficientValue.satoshiToBtc];
-            return NO;
-        }
-        else
-        {
-            [NSException raise:@"tx configureForOutputWithValue failed" format:nil];
-            //TODO: handle unknown tx configureForEscrowWithValue error
-        }
-        return NO;
-    }
-    
-    if ([escrowTx changeValue].longLongValue > 10000)
-    {
-        //create an output that won't lock up more than needed
-        escrowInputTx = [wallet newTx];
-        
-        [escrowInputTx configureForOutputWithValue:[NSNumber numberWithLongLong:
-                                         [(BNTxOut *)[escrowTx.outputs firstObject] value].longLongValue + [escrowTx fee].longLongValue]];
-        [escrowInputTx subtractFee];
-        [escrowInputTx sign];
-        [escrowInputTx broadcast];
-        [self setEscrowInputTx:escrowInputTx];
-        return NO;
-    }
-    else
-    {
-        BNTx *sellerEscrowTx = [self.buy.bid.acceptMsg.payload asObjectFromJSONObject]; //TODO handle errors.  TODO verify tx before signing.
-        
-        escrowTx = [escrowTx mergedWithEscrowTx:sellerEscrowTx];
-        [escrowTx subtractFee];
-        
-        @try
-        {
-            self.error = nil;
-            [escrowTx sign];
-        }
-        @catch (NSException *exception)
-        {
-            self.error = @"escrow sign error";
-            return NO;
-        }
-
-        [escrowTx lockInputs];
-        
-        MKBuyerLockEscrowMsg *msg = [[MKBuyerLockEscrowMsg alloc] init];
-        [msg copyThreadFrom:self.buy.bidMsg];
-        [msg setPayload:[escrowTx asJSONObject]];
-        
-        [msg sendToSeller];
-        [self addChild:msg];
-        [self postParentChainChanged];
-        
-        return YES;
-    }
+    MKLockEscrowSetupMsg *escrowSetupMsg = [[MKLockEscrowSetupMsg alloc] init];
+    [escrowSetupMsg copyThreadFrom:self.bidMsg];
+    escrowSetupMsg.delegate = self;
+    [self addChild:escrowSetupMsg];
+    [escrowSetupMsg update];
 }
 
 - (NSArray *)modelActions

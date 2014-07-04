@@ -11,7 +11,7 @@
 #import "MKAcceptBidMsg.h"
 #import "MKRejectBidMsg.h"
 #import "MKRootNode.h"
-#import "MKLockEscrowInputMsg.h"
+#import "MKLockEscrowSetupMsg.h"
 
 @implementation MKSellBid
 
@@ -30,9 +30,28 @@
     return self;
 }
 
+- (MKLockEscrowSetupMsg *)escrowSetupMsg
+{
+    return [self.children firstObjectOfClass:MKLockEscrowSetupMsg.class];
+}
+
+- (MKAcceptBidMsg *)acceptBidMsg
+{
+    return [self.children firstObjectOfClass:MKAcceptBidMsg.class];
+}
+
+- (MKRejectBidMsg *)rejectBidMsg
+{
+    return [self.children firstObjectOfClass:MKRejectBidMsg.class];
+}
+
 - (void)update
 {
     [self updateActions];
+    if (!self.acceptBidMsg && !self.rejectBidMsg)
+    {
+        [self.escrowSetupMsg update];
+    }
 }
 
 - (void)updateActions
@@ -169,116 +188,34 @@
     return [self firstInParentChainOfClass:MKSell.class];
 }
 
-- (MKBuyerLockEscrowMsg *)escrowInputTxMsg
-{
-    return [self.children firstObjectOfClass:MKLockEscrowInputMsg.class];
-}
-
-- (BNTx *)escrowInputTx
-{
-    BNTx *escrowInputTx = self.escrowInputTxMsg.payload.asObjectFromJSONObject;
-    if (escrowInputTx)
-    {
-        escrowInputTx.wallet = self.runningWallet;
-        return escrowInputTx;
-    }
-    else
-    {
-        return nil;
-    };
-}
-
-- (void)setEscrowInputTx:(BNTx *)escrowInputTx
-{
-    MKLockEscrowInputMsg *escrowInputTxMsg = [[MKLockEscrowInputMsg alloc] init];
-    [escrowInputTxMsg copyThreadFrom:self.bidMsg];
-    escrowInputTxMsg.payload = escrowInputTx.asJSONObject;
-    [self addChild:escrowInputTxMsg];
-}
-
-
 - (void)accept
 {
-    BNWallet *wallet = self.runningWallet;
+    MKLockEscrowSetupMsg *escrowSetupMsg = [[MKLockEscrowSetupMsg alloc] init];
+    [escrowSetupMsg copyThreadFrom:self.bidMsg];
+    escrowSetupMsg.delegate = self;
+    [self addChild:escrowSetupMsg];
+    [escrowSetupMsg update];
     
-    if (!wallet)
-    {
-        return;
-    }
+    [self updateActions];
+    [self.sell write];
     
+    [self.sellBids setAcceptedBid:self];
+    [self postSelfChanged];
+}
 
-    MKSell *sell = self.sell; //(MKSell *)self.nodeParent.nodeParent;
-    
+- (NSNumber *)lockEscrowPriceInSatoshi
+{
+    return self.sell.mkPost.priceInSatoshi;
+}
 
-    BNTx *escrowTx = [wallet newTx];
+- (void)useEscrowTx:(BNTx *)escrowTx
+{
+    MKAcceptBidMsg *msg = [[MKAcceptBidMsg alloc] init];
+    [msg copyThreadFrom:self.bidMsg];
     
-    BNTx *escrowInputTx = self.escrowInputTx;
-    if (escrowInputTx)
-    {
-        [escrowInputTx fetch];
-        if (escrowInputTx.isConfirmed)
-        {
-            [escrowTx configureForEscrowWithInputTx:escrowInputTx];
-        }
-        else
-        {
-            [self performSelector:@selector(accept) withObject:nil afterDelay:15];
-            return;
-        }
-    }
-    else
-    {
-        [escrowTx configureForEscrowWithValue:sell.mkPost.priceInSatoshi];
-    }
-    
-    self.error = nil;
-    if (escrowTx.error)
-    {
-        NSLog(@"tx configureForOutputWithValue failed: %@", escrowTx.error.description);
-        
-        if (escrowTx.error.insufficientValue)
-        {
-            self.error = [NSString stringWithFormat:@"%@BTC Required", escrowTx.error.insufficientValue.satoshiToBtc];
-        }
-        else
-        {
-            [NSException raise:@"tx configureForOutputWithValue failed" format:nil];
-            //TODO: handle unknown tx configureForEscrowWithValue error
-        }
-        
-        return;
-    }
-    
-    [escrowTx subtractFee];
-    
-    if ([escrowTx changeValue].longLongValue > 10000)
-    {
-        //create an output that won't lock up more than needed
-        escrowInputTx = [wallet newTx];
-        [escrowInputTx configureForOutputWithValue:[NSNumber numberWithLongLong:
-                                         [(BNTxOut *)[escrowTx.outputs firstObject] value].longLongValue + [escrowTx fee].longLongValue]];
-        [escrowInputTx subtractFee];
-        [escrowInputTx sign];
-        [escrowInputTx broadcast]; //TODO make sure that peers accepted it
-        [self setEscrowInputTx:escrowInputTx];
-        [self performSelector:@selector(accept) withObject:nil afterDelay:15];
-        return;
-    }
-    else
-    {
-        MKAcceptBidMsg *msg = [[MKAcceptBidMsg alloc] init];
-        [msg copyThreadFrom:self.bidMsg];
-        
-        [escrowTx lockInputs];
-        [msg setPayload:[escrowTx asJSONObject]];
-        [msg send];
-        [self addChild:msg];
-        [self updateActions];
-        [self.sell write];
-        
-        [self.sellBids setAcceptedBid:self];
-        [self postSelfChanged];
-    }
+    [msg setPayload:[escrowTx asJSONObject]];
+    [msg send];
+    [self addChild:msg];
 }
 
 - (void)reject
