@@ -32,7 +32,9 @@
 
 - (MKLockEscrowSetupMsg *)escrowSetupMsg
 {
-    return [self.children firstObjectOfClass:MKLockEscrowSetupMsg.class];
+    MKLockEscrowSetupMsg *escrowSetupMsg = [self.children firstObjectOfClass:MKLockEscrowSetupMsg.class];
+    escrowSetupMsg.delegate = self;
+    return escrowSetupMsg;
 }
 
 - (void)update
@@ -40,7 +42,7 @@
     [self updateActions];
     if (!self.rejectMsg)
     {
-        if (!self.acceptMsg || !self.acceptMsg.sentMessage)
+        if (!self.acceptMsg || !self.acceptMsg.wasSent)
         {
             [self.escrowSetupMsg update];
         }
