@@ -31,7 +31,7 @@
     {
         NavInfoNode *contributors = [[NavInfoNode alloc] init];
         [about addChild:contributors];
-        contributors.nodeTitle = @"Contributors";
+        contributors.nodeTitle = @"Credits";
         contributors.nodeSuggestedWidth = 200;
         contributors.shouldSortChildren = NO;
         
@@ -69,12 +69,11 @@
             contributor.nodeSubtitle = @"Unix Guru";
             [contributors addChild:contributor];
         }
-    }
-    
-    {
+ 
+        
         NavInfoNode *others = [[NavInfoNode alloc] init];
-        [about addChild:others];
-        others.nodeTitle = @"3rd Party Packages";
+        [contributors addChild:others];
+        others.nodeTitle = @"3rd Party";
         others.nodeSuggestedWidth = 200;
         others.shouldSortChildren = NO;
         
