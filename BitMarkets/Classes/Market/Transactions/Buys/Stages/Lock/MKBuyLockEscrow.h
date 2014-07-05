@@ -7,9 +7,10 @@
 //
 
 #import "MKLock.h"
+#import "MKLockEscrowSetupMsgDelegate.h"
 #import <BitnashKit/BitnashKit.h>
 
-@interface MKBuyLockEscrow : MKLock
+@interface MKBuyLockEscrow : MKLock <MKLockEscrowSetupMsgDelegate>
 
 @property (strong, nonatomic) NSTimer *confirmTimer;
 

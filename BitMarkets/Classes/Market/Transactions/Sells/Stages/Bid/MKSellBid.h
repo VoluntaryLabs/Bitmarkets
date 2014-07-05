@@ -8,9 +8,10 @@
 
 #import "MKGroup.h"
 #import "MKBidMsg.h"
+#import "MKLockEscrowSetupMsgDelegate.h"
 #import <BitnashKit/BitnashKit.h>
 
-@interface MKSellBid : MKGroup
+@interface MKSellBid : MKGroup <MKLockEscrowSetupMsgDelegate>
 
 @property (strong, nonatomic) NSString *error;
 
