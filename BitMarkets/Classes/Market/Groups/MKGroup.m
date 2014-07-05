@@ -90,6 +90,11 @@
                 className = [childType withPrefix:@"MK"];
                 childClass = NSClassFromString(className);
             }
+            else
+            {
+                [NSException raise:@"Missing _type slot in persisted dictionary" format:nil];
+
+            }
 
             if (childClass)
             {
@@ -97,7 +102,7 @@
             }
             else
             {
-                [NSException raise:@"No child class missing _type slot in persisted dictionary" format:nil];
+                [NSException raise:@"Error unserializing dictionary" format:@"Can't find _type class '%@'", className];
             }
             
             NavNode *child = [childClass withDict:childDict];
