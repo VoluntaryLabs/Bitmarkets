@@ -72,6 +72,35 @@
     }
     
     {
+        NavInfoNode *others = [[NavInfoNode alloc] init];
+        [about addChild:others];
+        others.nodeTitle = @"3rd Party Packages";
+        others.nodeSuggestedWidth = 200;
+        others.shouldSortChildren = NO;
+        
+        {
+            NavInfoNode *package = [[NavInfoNode alloc] init];
+            package.nodeTitle = @"Bitmessage";
+            package.nodeSubtitle = @"bitmessage.org";
+            [others addChild:package];
+        }
+        
+        {
+            NavInfoNode *package = [[NavInfoNode alloc] init];
+            package.nodeTitle = @"Tor";
+            package.nodeSubtitle = @"torproject.org";
+            [others addChild:package];
+        }
+        
+        {
+            NavInfoNode *package = [[NavInfoNode alloc] init];
+            package.nodeTitle = @"BitcoinJ";
+            package.nodeSubtitle = @"github.com/bitcoinj";
+            [others addChild:package];
+        }
+    }
+    
+    {
         NavInfoNode *howto = [[NavInfoNode alloc] init];
         [about addChild:howto];
         howto.nodeTitle = @"How to";
