@@ -79,8 +79,29 @@
         
         {
             NavInfoNode *package = [[NavInfoNode alloc] init];
+            package.nodeTitle = @"BitcoinJ";
+            package.nodeSubtitle = @"github.com/bitcoinj";
+            [others addChild:package];
+        }
+        
+        {
+            NavInfoNode *package = [[NavInfoNode alloc] init];
             package.nodeTitle = @"Bitmessage";
             package.nodeSubtitle = @"bitmessage.org";
+            [others addChild:package];
+        }
+ 
+        {
+            NavInfoNode *package = [[NavInfoNode alloc] init];
+            package.nodeTitle = @"Open Sans";
+            package.nodeSubtitle = @"Steve Matteson, Google fonts";
+            [others addChild:package];
+        }
+        
+        {
+            NavInfoNode *package = [[NavInfoNode alloc] init];
+            package.nodeTitle = @"Python";
+            package.nodeSubtitle = @"python.org";
             [others addChild:package];
         }
         
@@ -91,12 +112,21 @@
             [others addChild:package];
         }
         
+
         {
             NavInfoNode *package = [[NavInfoNode alloc] init];
-            package.nodeTitle = @"BitcoinJ";
-            package.nodeSubtitle = @"github.com/bitcoinj";
+            package.nodeTitle = @"XmlPRC";
+            package.nodeSubtitle = @"Eric Czarny";
             [others addChild:package];
         }
+        
+        {
+            NavInfoNode *package = [[NavInfoNode alloc] init];
+            package.nodeTitle = @"ZipKit";
+            package.nodeSubtitle = @"Karl Moskowski";
+            [others addChild:package];
+        }
+        
     }
     
     {
