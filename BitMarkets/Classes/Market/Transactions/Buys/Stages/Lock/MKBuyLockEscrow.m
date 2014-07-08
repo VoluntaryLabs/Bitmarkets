@@ -122,10 +122,12 @@
 {
     if ([msg isKindOfClass:MKSellerPostLockMsg.class])
     {
-        [self addChild:msg];
-        [self update];
-        [self postParentChainChanged];
-        [self updateActions];
+        if([self addChild:msg])
+        {
+            [self update];
+            [self postParentChainChanged];
+            [self updateActions];
+        }
         return YES;
     }
     

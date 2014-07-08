@@ -75,7 +75,7 @@
     
     if (self.sell.bids.acceptedBid)
     {
-        return @"Awaiting buyer escrow.";
+        return @"Accepted bid. Awaiting buyer escrow.";
     }
     
     if (!self.runningWallet)

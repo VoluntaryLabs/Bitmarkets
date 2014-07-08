@@ -57,7 +57,7 @@
             return @"Awaiting refund confirmation.";
         }
         
-        return @"Refund confirmed.";
+        return @"Refund confirmed. Transaction complete.";
     }
     
     if (self.buyPaymentMsg)
@@ -72,7 +72,7 @@
             return @"Payment sent and accepted, awaiting payment confirmation.";
         }
         
-        return @"Payment confirmed.";
+        return @"Payment confirmed. Transaction complete.";
     }
     
     if (self.buy.isCanceled)

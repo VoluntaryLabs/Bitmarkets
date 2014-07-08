@@ -66,13 +66,13 @@
         {
             if (self.confirmPaymentMsg)
             {
-                return @"Buyer payment confirmed.";
+                return @"Buyer payment confirmed. Transaction complete.";
             }
             
-            return @"Buyer sent payment. Awaiting confirmation.";
+            return @"Buyer payment signed. Awaiting confirmation.";
         }
         
-        return @"Buyer requests refund.";
+        return @"Buyer initiated payment.";
     }
     
     if (self.isActive)

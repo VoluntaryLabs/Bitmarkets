@@ -52,7 +52,7 @@
     }
     */
     
-    return self.sell.nodeSubtitle;
+    return self.sell.releaseEscrow.nodeSubtitle;
 }
 
 - (NSString *)nodeNote
