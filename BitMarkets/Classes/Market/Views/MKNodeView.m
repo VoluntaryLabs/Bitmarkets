@@ -44,8 +44,14 @@
     {
         [[NSNotificationCenter defaultCenter] removeObserver:self name:nil object:_node];
         _node = node;
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(nodeChanged:) name:nil object:_node];
-        [self syncFromNode];
+        if (_node)
+        {
+            [[NSNotificationCenter defaultCenter] addObserver:self
+                                                     selector:@selector(nodeChanged:)
+                                                         name:nil
+                                                       object:_node];
+            [self syncFromNode];
+        }
     }
 }
 

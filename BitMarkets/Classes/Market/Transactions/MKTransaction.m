@@ -38,7 +38,7 @@
         }
     }
     
-    return stage;
+    return self.children.lastObject;
 }
 
 - (NSArray *)stages
