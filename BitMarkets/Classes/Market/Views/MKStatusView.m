@@ -22,11 +22,13 @@
         
         _statusTextView   = [[NavTextView alloc] initWithFrame:NSMakeRect(0, 0, 100, 30)];
         [_statusTextView setSelectable:NO];
+        [_statusTextView setEditable:NO];
         [_statusTextView setThemePath:@"steps/status/title"];
         [self addSubview:_statusTextView];
         
         _subtitleTextView = [[NavTextView alloc] initWithFrame:NSMakeRect(0, 0, 100, 30)];
         [_subtitleTextView setSelectable:NO];
+        [_statusTextView setEditable:NO];
         [_subtitleTextView setThemePath:@"steps/status/subtitle"];
         [self addSubview:_subtitleTextView];
         

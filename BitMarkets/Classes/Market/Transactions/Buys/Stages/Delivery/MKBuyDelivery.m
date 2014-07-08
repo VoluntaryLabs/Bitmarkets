@@ -54,12 +54,12 @@
 {
     if (!self.address.isApproved)
     {
-        return @"need to approve";
+        return @"Seller accepted bid. Enter your delivery address.";
     }
     
     if (self.addressMsg)
     {
-        return @"approved and sent";
+        return @"Delivery address sent.";
     }
     
     return nil;

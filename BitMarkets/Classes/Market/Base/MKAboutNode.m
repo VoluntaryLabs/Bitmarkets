@@ -111,7 +111,6 @@
             package.nodeSubtitle = @"torproject.org";
             [others addChild:package];
         }
-        
 
         {
             NavInfoNode *package = [[NavInfoNode alloc] init];
