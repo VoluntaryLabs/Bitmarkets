@@ -10,41 +10,49 @@
 
 @class MKSell;
 @class MKBuy;
-
+@class MKBuyLockEscrowMsg;
+@class MKSellLockEscrowMsg;
 // messages
 
 #import "MKBidMsg.h"
-#import "MKBuyerLockEscrowMsg.h"
-#import "MKSellerPostLockMsg.h"
-#import "MKBuyerLockEscrowMsg.h"
+#import "MKSetupLockMsg.h"
 #import "MKConfirmLockEscrowMsg.h"
+#import "MKCancelMsg.h"
+#import "MKSellLockEscrowMsg.h"
 
 
 @interface MKLock : MKEscrow
 
-// conifrm
-
 - (BOOL)isConfirmed;
-- (void)lookForConfirmIfNeeded;
-- (NSDictionary *)payloadToConfirm; // subclasses should override
-- (BOOL)shouldLookForConfirm; // subclasses should override
 
 // messages
 
-- (MKBuyerLockEscrowMsg *)buyerLockMsg;
-- (MKSellerPostLockMsg *)sellerLockMsg;
-- (MKConfirmLockEscrowMsg *)confirmLockMsg;
+
+// messages
+
+- (MKBidMsg *)bidMsg;
+- (MKSetupLockMsg *)setupLockMsg;
+- (MKBuyLockEscrowMsg *)buyLockEscrowMsg;
+- (MKSellLockEscrowMsg *)sellLockEscrowMsg;
+- (MKLockMsg *)lockEscrowMsgToConfirm;
+- (MKConfirmLockEscrowMsg *)confirmLockEscrowMsg;
+- (MKCancelMsg *)cancelMsg;
+- (void)postLock:(MKLockMsg *)msg;
+- (void)sendMsg:(MKMsg *)msg; //subclasses should override
+
+
+//state machine
+- (void)update;
 
 // lock cancel
 
 - (BOOL)canCancel;
 
-- (BOOL)isCanceling;
-- (void)checkCancelConfirmIfNeeded;
-
-- (MKCancelMsg *)cancelMsg;
+- (BOOL)isCancelling;
 
 - (BOOL)isCancelConfirmed;
 - (MKCancelConfirmed *)cancelConfirmedMsg;
+
+- (NSNumber *)lockEscrowPriceInSatoshi;
 
 @end

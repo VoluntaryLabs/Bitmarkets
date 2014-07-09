@@ -10,6 +10,4 @@
 
 @interface MKSellLockEscrow : MKLock
 
-- (BOOL)isComplete;
-
 @end

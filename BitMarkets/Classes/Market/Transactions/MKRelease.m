@@ -103,9 +103,7 @@
 {
     if (self.sellAcceptPaymentMsg && !self.confirmPaymentMsg)
     {
-        BOOL paymentConfirmed = self.sellAcceptPaymentMsg.isPayloadConfirmed;
-        
-        if (paymentConfirmed)
+        if (self.sellAcceptPaymentMsg.isTxConfirmed)
         {
             MKConfirmPaymentMsg *msg = [[MKConfirmPaymentMsg alloc] init];
             //[msg copyFrom:self.sellAcceptPaymentMsg];
@@ -119,9 +117,7 @@
 {
     if (self.sellAcceptRefundRequestMsg && !self.confirmRefundMsg)
     {
-        BOOL refundConfirmed = self.sellAcceptRefundRequestMsg.isPayloadConfirmed;
-        
-        if (refundConfirmed)
+        if (self.sellAcceptRefundRequestMsg.isTxConfirmed)
         {
             MKConfirmRefundMsg *msg = [[MKConfirmRefundMsg alloc] init];
             //[msg copyFrom:self.sellAcceptPaymentMsg];

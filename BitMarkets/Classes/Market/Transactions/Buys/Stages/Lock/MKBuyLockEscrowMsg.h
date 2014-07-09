@@ -1,14 +1,14 @@
 //
-//  MKCancelMsg.h
+//  MKBuyLockEscrowMSg.h
 //  BitMarkets
 //
-//  Created by Steve Dekorte on 6/10/14.
+//  Created by Rich Collins on 7/8/14.
 //  Copyright (c) 2014 voluntary.net. All rights reserved.
 //
 
 #import "MKLockMsg.h"
 
-@interface MKCancelMsg : MKLockMsg
+@interface MKBuyLockEscrowMsg : MKLockMsg
 
 - (void)broadcast;
 

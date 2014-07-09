@@ -199,7 +199,7 @@
         return;
     }
     
-    BNTx *escrowTx = [self.buy.lockEscrow.payloadToConfirm asObjectFromJSONObject]; //TODO handle errors
+    BNTx *escrowTx = self.buy.lockEscrow.lockEscrowMsgToConfirm.tx;
     escrowTx.wallet = wallet;
     [escrowTx fetch]; //update subsuming tx
     if (escrowTx.subsumingTx)
@@ -234,7 +234,7 @@
         return;
     }
     
-    BNTx *escrowTx = [self.buy.lockEscrow.payloadToConfirm asObjectFromJSONObject]; //TODO handle errors
+    BNTx *escrowTx = self.buy.lockEscrow.lockEscrowMsgToConfirm.tx;
     escrowTx.wallet = wallet;
     [escrowTx fetch]; //update subsuming tx
     if (escrowTx.subsumingTx)
