@@ -135,9 +135,9 @@
             
             "title-unedited" :
             {
-                "fontName" : "Open Sans Italic",
+                "fontName" : "Open Sans Light Italic",
                 "fontSize" : 22,
-                "color" : "#CCCCCC",
+                "color" : "#DD0000",
             },
             
             "price" :
@@ -149,9 +149,9 @@
             
             "price-unedited" :
             {
-                "fontName" : "Open Sans Italic",
+                "fontName" : "Open Sans Light Italic",
                 "fontSize" : 22,
-                "color" : "#CCCCCC",
+                "color" : "#DD0000",
             },
             
             "description" :
@@ -163,9 +163,9 @@
             
             "description-unedited" :
             {
-                "fontName" : "Open Sans Italic",
+                "fontName" : "Open Sans Light Italic",
                 "fontSize" : 13,
-                "color" : "#CCCCCC",
+                "color" : "#DD0000",
             },
             
             "draginstructions":

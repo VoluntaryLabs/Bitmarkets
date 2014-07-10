@@ -186,6 +186,11 @@
     [NSException raise:@"Subclasses should override" format:nil];
 }
 
+- (BOOL)isConfirming
+{
+    return self.lockEscrowMsgToConfirm.tx.wasBroadcast;
+}
+
 
 - (void)confirmLockIfNeeded
 {
@@ -224,22 +229,17 @@
 
 - (BOOL)canCancel
 {
-    if (!self.runningWallet)
+    if (!self.runningWallet ||
+        self.isCancelling ||
+        self.isCancelConfirmed ||
+        self.isConfirming ||
+        self.isComplete
+    )
     {
         return NO;
     }
     
-    if (self.isCancelling || self.isCancelConfirmed)
-    {
-        return NO;
-    }
-    
-    if (self.lockEscrowMsgToConfirm && !self.confirmLockEscrowMsg)
-    {
-        return YES;
-    }
-    
-    return NO;
+    return YES;
 }
 
 - (BOOL)isCancelling
@@ -254,7 +254,11 @@
 
 - (BOOL)isCancelConfirmed
 {
-    return self.cancelConfirmedMsg != nil;
+    BOOL lockIsCancelled = self.lockEscrowMsgToConfirm.tx && self.lockEscrowMsgToConfirm.tx.isCancelled;
+    BOOL cancelConfirmedMsgExists = self.cancelConfirmedMsg != nil;
+    BOOL cancelMsgTxIsNil = (self.cancelMsg && (self.cancelMsg.tx == nil));
+    
+    return lockIsCancelled || cancelConfirmedMsgExists || cancelMsgTxIsNil;
 }
 
 - (MKCancelConfirmed *)cancelConfirmedMsg
