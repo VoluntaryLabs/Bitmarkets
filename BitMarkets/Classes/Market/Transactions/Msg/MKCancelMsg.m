@@ -13,15 +13,26 @@
 
 - (void)configureTx
 {
-    self.tx = self.lockNode.lockEscrowMsgToConfirm.tx.cancellationTx;
-    [self.tx unlockInputs];
-    [self.tx sign];
+    if (self.lockNode.lockEscrowMsgToConfirm)
+    {
+        self.tx = self.lockNode.lockEscrowMsgToConfirm.tx.cancellationTx;
+        [self.tx unlockInputs];
+        [self.tx sign];
+    }
+    else
+    {
+        self.tx = nil;
+    }
+    
 }
 
 - (void)broadcast
 {
-    self.payload = self.tx.asJSONObject;
-    [self.tx broadcast];
+    if (self.tx)
+    {
+        self.payload = self.tx.asJSONObject;
+        [self.tx broadcast];
+    }
 }
 
 @end

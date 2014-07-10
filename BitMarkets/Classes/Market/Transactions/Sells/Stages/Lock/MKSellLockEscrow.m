@@ -25,12 +25,12 @@
     
     if (!self.runningWallet)
     {
-        return @"Waiting for wallet...";
+        return @"Waiting for wallet ...";
     }
     
     if (self.isCancelling)
     {
-        return @"Cancelling escrow...";
+        return @"Cancelling escrow ...";
     }
     
     if (self.isCancelConfirmed)
@@ -48,9 +48,9 @@
         return @"Buyer escrow received.  Awaiting confirmation.";
     }
     
-    if (self.sellLockEscrowMsg || self.sell.bids.acceptedBid)
+    if (self.sellLockEscrowMsg || self.setupLockMsg)
     {
-        return @"Accepted bid. Awaiting buyer escrow.";
+        return @"Awaiting buyer escrow ...";
     }
     
     return nil;
