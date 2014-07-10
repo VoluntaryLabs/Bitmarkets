@@ -1,6 +1,19 @@
 {
 	"default": 
 	{
+        "wallet":
+        {
+            
+            "info":
+            {
+                "fontName" : "Open Sans",
+                "fontSize" : 16,
+                "color" : "#cccccc",
+                "align" : "center",
+            },
+            
+        },
+        
         "table":
         {
             "header":

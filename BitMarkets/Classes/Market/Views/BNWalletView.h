@@ -16,5 +16,6 @@
 @property (strong, nonatomic) MKStatusView *statusView;
 @property (strong, nonatomic) NSScrollView *scrollView;
 @property (strong, nonatomic) NSTableView *tableView;
+@property (strong, nonatomic) NSTextView *standinText;
 
 @end
