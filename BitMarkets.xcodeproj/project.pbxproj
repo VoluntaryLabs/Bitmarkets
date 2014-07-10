@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8EBC9B02190DBBF200FE71FA /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 8EBC9B01190DBBF200FE71FA /* fonts */; };
 		8EBC9B08190DBC3000FE71FA /* fonts in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8EBC9B01190DBBF200FE71FA /* fonts */; };
+		AA089C15196F156D00411A4F /* BNWalletView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA089C14196F156D00411A4F /* BNWalletView.m */; };
 		AA09C7DB192BDC2800317130 /* MKAttachmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA09C7DA192BDC2800317130 /* MKAttachmentView.m */; };
 		AA09C7EC192BEC2B00317130 /* MKDragFileWell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA09C7EB192BEC2B00317130 /* MKDragFileWell.m */; };
 		AA09C804192D41C600317130 /* MKAboutNode.m in Sources */ = {isa = PBXBuildFile; fileRef = AA09C803192D41C600317130 /* MKAboutNode.m */; };
@@ -244,6 +245,8 @@
 
 /* Begin PBXFileReference section */
 		8EBC9B01190DBBF200FE71FA /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fonts; path = Vendor/fonts; sourceTree = SOURCE_ROOT; };
+		AA089C13196F156D00411A4F /* BNWalletView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNWalletView.h; sourceTree = "<group>"; };
+		AA089C14196F156D00411A4F /* BNWalletView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNWalletView.m; sourceTree = "<group>"; };
 		AA09C7D9192BDC2800317130 /* MKAttachmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKAttachmentView.h; sourceTree = "<group>"; };
 		AA09C7DA192BDC2800317130 /* MKAttachmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKAttachmentView.m; sourceTree = "<group>"; };
 		AA09C7EA192BEC2B00317130 /* MKDragFileWell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKDragFileWell.h; sourceTree = "<group>"; };
@@ -747,6 +750,8 @@
 		AAA2E6A019006F0A0098C357 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AA089C13196F156D00411A4F /* BNWalletView.h */,
+				AA089C14196F156D00411A4F /* BNWalletView.m */,
 				AA0A76D219636C8200E044DB /* MKTextFieldCell.h */,
 				AA0A76D319636C8200E044DB /* MKTextFieldCell.m */,
 				AAD78503194FBF3E004FE0F6 /* MKNodeView.h */,
@@ -1278,6 +1283,7 @@
 				AAB2814419217586005C9D27 /* MKSellDelivery.m in Sources */,
 				AA09C7EC192BEC2B00317130 /* MKDragFileWell.m in Sources */,
 				AAB2812F19217586005C9D27 /* MKBuyBid.m in Sources */,
+				AA089C15196F156D00411A4F /* BNWalletView.m in Sources */,
 				AAD785141951056B004FE0F6 /* MKSellComplete.m in Sources */,
 				AAB2814219217586005C9D27 /* MKSellBid.m in Sources */,
 				AA2B1A211923682500D712D8 /* MKBuyPostRefundMsg.m in Sources */,
