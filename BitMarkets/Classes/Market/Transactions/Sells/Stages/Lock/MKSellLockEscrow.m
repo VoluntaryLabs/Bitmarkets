@@ -7,45 +7,30 @@
 //
 
 #import "MKSellLockEscrow.h"
+#import "MKBuyLockEscrowMsg.h"
 #import "MKSell.h"
 #import "MKRootNode.h"
 #import <BitnashKit/BitnashKit.h>
 
 @implementation MKSellLockEscrow
 
-- (id)init
-{
-    self = [super init];
- 
-    self.nodeViewClass = NavMirrorView.class;
-    
-    NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"cancelEscrow"];
-    [slot setVisibleName:@"Cancel Escrow"];
-    return self;
-}
-
-- (void)updateActions
-{
-    NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"cancelEscrow"];
-    [slot setIsActive:self.canCancel];
-}
-
-- (BOOL)isConfirmed
-{
-    return self.confirmLockMsg != nil;
-}
-
-- (BOOL)isActive
-{
-    return self.sell.bids.acceptedBid && !self.isComplete;
-}
-
+//node
 
 - (NSString *)nodeSubtitle
 {
-    if (self.isCanceling)
+    if (self.error)
     {
-        return @"Canceling escrow...";
+        return self.error;
+    }
+    
+    if (!self.runningWallet)
+    {
+        return @"Waiting for wallet...";
+    }
+    
+    if (self.isCancelling)
+    {
+        return @"Cancelling escrow...";
     }
     
     if (self.isCancelConfirmed)
@@ -53,147 +38,71 @@
         return @"Escrow cancelled.";
     }
     
-    if (self.error)
-    {
-        return self.error;
-    }
-    
-    if (self.confirmLockMsg)
+    if (self.confirmLockEscrowMsg)
     {
         return @"Escrow confirmed.";
     }
     
-    if (self.sellerLockMsg)
+    if (self.buyLockEscrowMsg)
     {
-        return @"Received buyer escrow. Awaiting confirmation.";
+        return @"Buyer escrow received.  Awaiting confirmation.";
     }
     
-    if (self.buyerLockMsg)
-    {
-        return @"Received buyer escrow. Signing and sending to bitcoin network.";
-    }
-    
-    if (self.sell.bids.acceptedBid)
+    if (self.sellLockEscrowMsg || self.sell.bids.acceptedBid)
     {
         return @"Accepted bid. Awaiting buyer escrow.";
     }
     
-    if (!self.runningWallet)
-    {
-        return @"Waiting for wallet...";
-    }
-
-    
     return nil;
 }
 
-// --------------------
+//MKLockEscrowMsg delegation
+
+- (NSNumber *)lockEscrowPriceInSatoshi
+{
+    return [NSNumber numberWithLongLong:self.sell.mkPost.priceInSatoshi.longLongValue];
+}
+
+//messages
+
+- (void)sendMsg:(MKMsg *)msg
+{
+    [msg sendToBuyer];
+}
+
+- (BOOL)handleMsg:(MKMsg *)msg
+{
+    if ([msg isKindOfClass:[MKBuyLockEscrowMsg class]])
+    {
+        [self addChild:msg];
+        [self update];
+        return YES;
+    }
+    
+    return NO;
+}
 
 - (MKSell *)sell
 {
     return (MKSell *)self.nodeParent;
 }
 
-- (BOOL)handleMsg:(MKMsg *)msg
-{
-    if ([msg isKindOfClass:MKBuyerLockEscrowMsg.class])
-    {
-        [self addChild:msg];
-        [self update];
-        return YES;
-    }
-        
-    return NO;
-}
-
-- (void)cancelEscrow
-{
-    BNWallet *wallet = self.runningWallet;
-    
-    if (!wallet)
-    {
-        [NSException raise:@"Can't cancelEscrow until wallet is running" format:nil];
-    }
-    
-    BNTx *escrowTx = [[self payloadToConfirm] asObjectFromJSONObject];
-    escrowTx.wallet = wallet;
-    
-    BNTx *cancellationTx = escrowTx.cancellationTx;
-    
-    [cancellationTx unlockInputs];
-    [cancellationTx sign];
-    [cancellationTx broadcast];
-}
-
-- (void)postLock
-{
-    BNWallet *wallet = self.runningWallet;
-    
-    if (!wallet)
-    {
-        return;
-    }
-    
-    //NSLog(@"remove this return");
-    //return YES; // temp
-    
-    MKSellerPostLockMsg *msg = [[MKSellerPostLockMsg alloc] init];
-    [msg copyThreadFrom:self.bidMsg];
-
-    BNTx *buyerEscrowTx = [self.buyerLockMsg.payload asObjectFromJSONObject]; //TODO check errors.  TODO verify tx before signing.
-    buyerEscrowTx.wallet = wallet;
-    
-    @try
-    {
-        self.error = nil;
-        [buyerEscrowTx sign];
-    }
-    @catch (NSException *exception)
-    {
-        self.error = @"escrow sign error";
-        return;
-    }
-
-    [buyerEscrowTx broadcast];
-
-    [msg sendToBuyer];
-    [self addChild:msg];
-    [self postParentChainChanged];
-}
-
-- (void)postLockIfNeeded
-{
-    if (self.buyerLockMsg && !self.sellerLockMsg)
-    {
-        @try
-        {
-            [self postLock];
-        }
-        @catch (NSException *exception)
-        {
-            NSLog(@"postLock failed with exception: %@", exception);
-        }
-    }
-}
-
-- (void)update
-{
-    [self postLockIfNeeded];
-    [self lookForConfirmIfNeeded];
-    [self checkCancelConfirmIfNeeded];
-    [self updateActions];
-}
-
-// confirm methods to extend parent class MKLock
-
 - (MKBidMsg *)bidMsg
 {
     return self.sell.bids.acceptedBid.bidMsg;
 }
 
-- (BOOL)isComplete
+- (void)postLockIfNeeded
 {
-    return self.isConfirmed;
+    if (self.setupLockMsg && !self.sellLockEscrowMsg && self.setupLockMsg.isTxConfirmed)
+    {
+        [self postLock:[[MKSellLockEscrowMsg alloc] init]];
+    }
+}
+
+- (void)broadcastLockIfNeeded
+{
+    [self.buyLockEscrowMsg.tx broadcast];
 }
 
 @end

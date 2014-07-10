@@ -11,7 +11,6 @@
 #import "MKAcceptBidMsg.h"
 #import "MKRejectBidMsg.h"
 #import "MKRootNode.h"
-#import "MKLockEscrowSetupMsg.h"
 
 @implementation MKSellBid
 
@@ -30,23 +29,9 @@
     return self;
 }
 
-- (MKLockEscrowSetupMsg *)escrowSetupMsg
-{
-    MKLockEscrowSetupMsg *escrowSetupMsg = [self.children firstObjectOfClass:MKLockEscrowSetupMsg.class];
-    escrowSetupMsg.delegate = self;
-    return escrowSetupMsg;
-}
-
 - (void)update
 {
     [self updateActions];
-    if (!self.rejectMsg)
-    {
-        if (!self.acceptMsg || !self.acceptMsg.wasSent)
-        {
-            [self.escrowSetupMsg update];
-        }
-    }
 }
 
 - (void)updateActions
@@ -185,33 +170,16 @@
 
 - (void)accept
 {
+    [self.sellBids setAcceptedBid:self];
+    
     MKAcceptBidMsg *msg = [[MKAcceptBidMsg alloc] init];
     [msg copyThreadFrom:self.bidMsg];
+    [msg send];
+    
     [self addChild:msg];
-    
-    MKLockEscrowSetupMsg *escrowSetupMsg = [[MKLockEscrowSetupMsg alloc] init];
-    [escrowSetupMsg copyThreadFrom:self.bidMsg];
-    escrowSetupMsg.delegate = self;
-    [self addChild:escrowSetupMsg];
-    [escrowSetupMsg update];
-    
+    [self updateActions];
     [self.sell write];
     
-    [self.sellBids setAcceptedBid:self];
-    [self postSelfChanged];
-    
-}
-
-- (NSNumber *)lockEscrowPriceInSatoshi
-{
-    return self.sell.mkPost.priceInSatoshi;
-}
-
-- (void)useEscrowTx:(BNTx *)escrowTx
-{
-    MKAcceptBidMsg *msg = self.acceptMsg;
-    [msg setPayload:[escrowTx asJSONObject]];
-    [msg send];
 }
 
 - (void)reject

@@ -185,9 +185,9 @@
         return;
     }
     
-    BNTx *escrowTx = [self.sell.lockEscrow.payloadToConfirm asObjectFromJSONObject];
+    BNTx *escrowTx = self.sell.lockEscrow.lockEscrowMsgToConfirm.tx;
     
-    BNTx *releaseTx = [self.buyPaymentMsg.payload asObjectFromJSONObject];
+    BNTx *releaseTx = self.buyPaymentMsg.tx;
     releaseTx.wallet = wallet;
     
     [releaseTx addPayToAddressOutputWithValue:[NSNumber numberWithLongLong:2*escrowTx.firstOutput.value.longLongValue/3]];
@@ -213,7 +213,7 @@
         return;
     }
     
-    BNTx *escrowTx = [self.sell.lockEscrow.payloadToConfirm asObjectFromJSONObject];
+    BNTx *escrowTx = self.sell.lockEscrow.lockEscrowMsgToConfirm.tx;
     
     BNTx *refundTx = [self.buyRequestRefundMsg.payload asObjectFromJSONObject];
     refundTx.wallet = wallet;

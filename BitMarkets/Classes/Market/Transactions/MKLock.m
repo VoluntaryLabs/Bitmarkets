@@ -10,9 +10,22 @@
 #import "MKBuy.h"
 #import "MKSell.h"
 #import "MKRootNode.h"
+#import "MKBuyLockEscrowMsg.h"
+#import "MKSellLockEscrowMsg.h"
 #import <BitnashKit/BitnashKit.h>
 
 @implementation MKLock
+
+- (id)init
+{
+    self = [super init];
+    
+    self.nodeViewClass = NavMirrorView.class;
+    
+    NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"cancelEscrow"];
+    [slot setVisibleName:@"Cancel Escrow"];
+    return self;
+}
 
 - (NSString *)nodeNote
 {
@@ -21,14 +34,14 @@
         return @"✗";
     }
     
+    if (self.isConfirmed)
+    {
+        return @"✓";
+    }
+    
     if (self.isActive)
     {
         return @"●";
-    }
-    
-    if (self.confirmLockMsg)
-    {
-        return @"✓";
     }
     
     return nil;
@@ -36,7 +49,7 @@
 
 - (BOOL)isActive
 {
-    return self.buyerLockMsg && !self.confirmLockMsg;
+    return !self.isComplete && (self.setupLockMsg != nil);
 }
 
 // node
@@ -56,85 +69,158 @@
     return @"Lock Escrow";
 }
 
-// confirm
-
-- (BOOL)isConfirmed
+- (NSArray *)modelActions
 {
-    return self.confirmLockMsg != nil;
+    return @[@"cancelEscrow"];
 }
 
-
-- (NSDictionary *)payloadToConfirm
+- (void)updateActions
 {
-    return self.buyerLockMsg.payload;
+    NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"cancelEscrow"];
+    [slot setIsActive:self.canCancel];
 }
 
-- (BNTx *)tx
-{
-    BNWallet *wallet = self.runningWallet;
-    if (!wallet)
-    {
-        return nil;
-    }
-    
-    BNTx *tx = (BNTx *)[self.payloadToConfirm asObjectFromJSONObject];
-    tx.wallet = wallet;
-    [tx refresh];
-    return tx;
-}
+//MKStage
 
-- (BOOL)checkForConfirm
+- (BOOL)isComplete
 {
-    if ([self.tx isConfirmed]) // TODO instead check to see if outputs are spent in case tx is mutated
-    {
-        return YES;
-    }
-
-    return NO;
-}
-
-- (MKBidMsg *)bidMsg
-{
-    [NSException raise:@"subclasses should override" format:nil];
-    return nil;
-}
-
-- (void)lookForConfirmIfNeeded
-{
-    if (self.shouldLookForConfirm)
-    {
-        if (self.checkForConfirm)
-        {
-            MKConfirmLockEscrowMsg *msg = [[MKConfirmLockEscrowMsg alloc] init];
-            //[msg copyThreadFrom:self.bidMsg];
-            [self addChild:msg];
-        }
-    }
-}
-
-- (BOOL)shouldLookForConfirm // subclasses should override
-{
-    return (self.buyerLockMsg && !self.confirmLockMsg);
+    return self.isConfirmed;
 }
 
 // messages
 
-- (MKSellerPostLockMsg *)sellerLockMsg
+- (void)sendMsg:(MKMsg *)msg
 {
-    return [self.children firstObjectOfClass:MKSellerPostLockMsg.class];
+    [NSException raise:@"Subclasses should override" format:nil];
 }
 
-- (MKBuyerLockEscrowMsg *)buyerLockMsg
+- (MKBidMsg *)bidMsg
 {
-    return [self.children firstObjectOfClass:MKBuyerLockEscrowMsg.class];
+    [NSException raise:@"Subclasses should override" format:nil];
+    return nil;
 }
 
-- (MKConfirmLockEscrowMsg *)confirmLockMsg
+//MKLockEscrow delegation
+
+- (NSNumber *)lockEscrowPriceInSatoshi //implement in subclass
 {
-    return [self.children firstObjectOfClass:MKConfirmLockEscrowMsg.class];
+    return nil;
 }
+
+//state machine
+
+//both: setup
+//seller: configure & send
+//buyer: merge, sign & send
+//seller: sign & broadcast
+//both: confirm
+- (void)update
+{
+    if (self.runningWallet)
+    {
+        [self setupLockIfNeeded];
+        [self postLockIfNeeded];
+        [self broadcastLockIfNeeded];
+        [self confirmLockIfNeeded];
+        [self confirmCancellationIfNeeded];
+        [self updateActions];
+    }
+}
+
+//setup lock
+
+- (MKSetupLockMsg *)setupLockMsg
+{
+    return [self firstChildWithKindOfClass:[MKSetupLockMsg class]];
+}
+
+- (void)setupLockIfNeeded
+{
+    if (self.bidMsg && !self.setupLockMsg)
+    {
+        MKSetupLockMsg *setupLockMsg = [[MKSetupLockMsg alloc] init];
+        [self addChild:setupLockMsg];
+        [setupLockMsg configureAndBroadcastTx];
+    }
+}
+
+//lock
+
+- (MKBuyLockEscrowMsg *)buyLockEscrowMsg
+{
+    return [self firstChildWithKindOfClass:[MKBuyLockEscrowMsg class]];
+}
+
+- (MKSellLockEscrowMsg *)sellLockEscrowMsg
+{
+    return [self firstChildWithKindOfClass:[MKSellLockEscrowMsg class]];
+}
+
+- (MKLockMsg *)lockEscrowMsgToConfirm
+{
+    return self.buyLockEscrowMsg;
+}
+
+- (MKConfirmLockEscrowMsg *)confirmLockEscrowMsg
+{
+    return [self.children firstObjectOfClass:[MKConfirmLockEscrowMsg class]];
+}
+
+- (void)postLockIfNeeded
+{
+    [NSException raise:@"Subclasses should override" format:nil];
+}
+
+- (void)postLock:(MKLockMsg *)msg
+{
+    [self addChild:msg]; //so nodeParent is set.
+    [msg configureTx];
+    [msg copyThreadFrom:self.bidMsg];
+    msg.payload = msg.tx.asJSONObject;
+    [self sendMsg:msg];
+}
+
+
+- (void)broadcastLockIfNeeded
+{
+    [NSException raise:@"Subclasses should override" format:nil];
+}
+
+
+- (void)confirmLockIfNeeded
+{
+    if (self.lockEscrowMsgToConfirm &&
+        !self.cancelMsg &&
+        self.lockEscrowMsgToConfirm.isTxConfirmed)
+    {
+        MKConfirmLockEscrowMsg *msg = [[MKConfirmLockEscrowMsg alloc] init];
+        [self addChild:msg];
+    }
+}
+
+- (BOOL)isConfirmed
+{
+    return self.lockEscrowMsgToConfirm.isTxConfirmed;
+}
+
+//cancel
 
 // lock cancel
+
+- (void)cancelEscrow
+{
+    BNWallet *wallet = self.runningWallet;
+    
+    if (!wallet)
+    {
+        [NSException raise:@"Can't cancelEscrow until wallet is running" format:nil];
+    }
+    
+    MKCancelMsg *msg = [[MKCancelMsg alloc] init];
+    [self addChild:msg];
+    [msg configureTx];
+    [msg broadcast];
+}
 
 - (BOOL)canCancel
 {
@@ -143,12 +229,12 @@
         return NO;
     }
     
-    if (self.isCanceling || self.isCancelConfirmed)
+    if (self.isCancelling || self.isCancelConfirmed)
     {
         return NO;
     }
     
-    if (self.sellerLockMsg && !self.confirmLockMsg)
+    if (self.lockEscrowMsgToConfirm && !self.confirmLockEscrowMsg)
     {
         return YES;
     }
@@ -156,7 +242,7 @@
     return NO;
 }
 
-- (BOOL)isCanceling
+- (BOOL)isCancelling
 {
     return self.cancelMsg != nil && !self.isCancelConfirmed;
 }
@@ -166,21 +252,6 @@
     return [self.children firstObjectOfClass:MKCancelMsg.class];
 }
 
-// cancel confirmed
-
-- (void)checkCancelConfirmIfNeeded
-{
-    if (!self.cancelConfirmedMsg && !self.isConfirmed)
-    {
-        if([self.tx isCancelled])
-        {
-            MKCancelConfirmed *msg = [[MKCancelConfirmed alloc] init];
-            [self addChild:msg];
-            [self postParentChainChanged];
-        }
-    }
-}
-
 - (BOOL)isCancelConfirmed
 {
     return self.cancelConfirmedMsg != nil;
@@ -188,7 +259,17 @@
 
 - (MKCancelConfirmed *)cancelConfirmedMsg
 {
-    return [self.children firstObjectOfClass:MKCancelConfirmed.class];
+    return [self.children firstObjectOfClass:[MKCancelConfirmed class]];
+}
+
+- (void)confirmCancellationIfNeeded
+{
+    if (self.cancelMsg && !self.cancelConfirmedMsg && self.cancelMsg.isTxConfirmed)
+    {
+        MKCancelConfirmed *msg = [[MKCancelConfirmed alloc] init];
+        [self addChild:msg];
+        [self postParentChainChanged];
+    }
 }
 
 @end

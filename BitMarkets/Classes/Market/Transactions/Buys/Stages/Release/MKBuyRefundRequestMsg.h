@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 voluntary.net. All rights reserved.
 //
 
-#import "MKEscrowMsg.h"
+#import "MKTxMsg.h"
 
-@interface MKBuyRefundRequestMsg : MKEscrowMsg
+@interface MKBuyRefundRequestMsg : MKTxMsg
 
 @end

@@ -7,7 +7,21 @@
 //
 
 #import "MKCancelMsg.h"
+#import "MKLock.h"
 
 @implementation MKCancelMsg
+
+- (void)configureTx
+{
+    self.tx = self.lockNode.lockEscrowMsgToConfirm.tx.cancellationTx;
+    [self.tx unlockInputs];
+    [self.tx sign];
+}
+
+- (void)broadcast
+{
+    self.payload = self.tx.asJSONObject;
+    [self.tx broadcast];
+}
 
 @end
