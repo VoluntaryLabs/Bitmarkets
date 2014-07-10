@@ -76,6 +76,13 @@
 
 - (void)layout
 {
+    CGFloat minx = self.superview.width/2;
+    CGFloat miny = self.superview.height/2;
+    CGFloat min = minx < miny ? minx : miny;
+    
+    [self.qrCodeImageView setHeight:min];
+    [self.qrCodeImageView setWidth:min];
+    
     [self.qrCodeImageView centerXInSuperview];
     [self.qrCodeImageView centerYInSuperview];
     [self.qrCodeTextView placeYBelow:self.qrCodeImageView margin:20];

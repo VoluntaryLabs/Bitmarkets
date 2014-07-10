@@ -36,20 +36,26 @@
 
 - (NSString *)tableConfirmsString
 {
-    return [NSString stringWithFormat:@"%@ confirms    ", self.confirmations];
+    return [NSString stringWithFormat:@"%@", self.confirmations];
 }
 
+- (NSString *)tableAmount
+{
+    return [NSString stringWithFormat:@"%@ BTC", self.netValue.satoshiToBtc];
+}
+
+- (NSString *)tableHashString
+{
+    return [NSString stringWithFormat:@"%@", self.txHash];
+}
+
+/*
 - (NSString *)tableDescriptionString
 {
     return [NSString stringWithFormat:@"%@ of %@ BTC with %@ confirmations",
             self.txTypeString, self.netValue.satoshiToBtc, self.confirmations];
 }
-
-- (NSString *)tableHashString
-{
-    return [NSString stringWithFormat:@"    %@",
-            self.txHash];
-}
+*/
 
 @end
 
@@ -61,7 +67,7 @@
     
     if (self)
     {
-        [self setAutoresizesSubviews:NO];
+        [self setAutoresizesSubviews:YES];
         [self setAutoresizingMask:NSViewHeightSizable | NSViewWidthSizable];
         
         _statusView = [[MKStatusView alloc] initWithFrame:NSMakeRect(0, 0, self.width, 60*2)];
@@ -75,16 +81,17 @@
         
         _tableView = [[NSTableView alloc] initWithFrame:NSMakeRect(0, 0, self.width, 60*2)];
         _tableView.autoresizingMask = NSViewMinYMargin | NSViewMaxXMargin;
-        _tableView.backgroundColor = [NSColor colorWithCalibratedWhite:.95 alpha:1.0];
+        //_tableView.backgroundColor = [NSColor colorWithCalibratedWhite:0.9 alpha:1.0];
         [_tableView setDelegate:self];
         [_tableView setDataSource:self];
         [_scrollView setDocumentView:_tableView];
-        
+        [_scrollView setHasVerticalScroller:YES];
+        //[_scrollView setBackgroundColor:[NSColor whiteColor]];
         
         [_tableView setIntercellSpacing:NSMakeSize(0, 0)];
         [_tableView setAutoresizesSubviews:YES];
         [_tableView setAutoresizingMask:NSViewHeightSizable];
-        _tableView.rowHeight = 30;
+        _tableView.rowHeight = 44; //33;
         [_tableView setAllowsColumnResizing:NO];
         //_tableView.cellClass = NSTextCell.class;
     }
@@ -106,7 +113,10 @@
     [column setEditable:NO];
 
     [column setDataCell:[[MKTextFieldCell alloc] init]];
-    [column setHeaderCell:[[NSTableHeaderCell alloc] init]];
+    NSTableHeaderCell *header = [[NSTableHeaderCell alloc] init];
+    [header setStringValue:name];
+    [header setTextColor:[NSColor blackColor]];
+    [column setHeaderCell:header];
     
     [_tableView addTableColumn:column];
     
@@ -116,11 +126,29 @@
 
 - (void)setupTableColumns
 {
-    NSTableColumn *column = [self newColumnWithIdentifier:@"txHash"];
-    [column setWidthPercentage:@60];
+    {
+        NSTableColumn *column = [self newColumnWithIdentifier:@"confirmations"];
+        [column.headerCell setStringValue:@"Confirms"];
+        [column setWidthPercentage:@10];
+    }
+
+    {
+        NSTableColumn *column = [self newColumnWithIdentifier:@"tableHashString"];
+        [column.headerCell setStringValue:@"Address"];
+        [column setWidthPercentage:@50];
+    }
     
-    column = [self newColumnWithIdentifier:@"tableDescriptionString"];
-    [column setWidthPercentage:@40];
+    {
+        NSTableColumn *column = [self newColumnWithIdentifier:@"txTypeString"];
+        [column.headerCell setStringValue:@"Description"];
+        [column setWidthPercentage:@20];
+    }
+    
+    {
+        NSTableColumn *column = [self newColumnWithIdentifier:@"tableAmount"];
+        [column.headerCell setStringValue:@"Amount"];
+        [column setWidthPercentage:@20];
+    }
     
     //column = [self newColumnWithIdentifier:@"tableConfirmsString"];
     //[column setWidthPercentage:@10];
@@ -159,6 +187,13 @@
 
 - (void)layout
 {
+    /*
+    for (id view in self.subviews)
+    {
+        [view layout];
+    }
+    */
+    
     [_statusView setX:0];
     [_statusView setY:self.height - _statusView.height];
     [_statusView setWidth:self.width];
@@ -173,7 +208,9 @@
     [_scrollView setWidth:self.width - margin*2];
     
     [_tableView setWidth:_scrollView.width];
-    [_tableView setHeight:_tableView.rowHeight*(self.transactions.count + 1)];
+    
+    CGFloat th = _tableView.rowHeight * (self.headerAndRows.count + 1);
+    [_tableView setHeight:th];
    
     [self layoutColumns];
 }
@@ -203,16 +240,44 @@
     return self.wallet.transactionsNode.children;
 }
 
+- (NSArray *)headerNames
+{
+    NSMutableArray *names = [NSMutableArray array];
+    
+    for (NSTableColumn *column in self.tableView.tableColumns)
+    {
+        NSCell *headerCell = column.headerCell;
+        [names addObject:headerCell.stringValue];
+    }
+    
+    return names;
+}
+
+- (NSArray *)headerAndRows
+{
+    return [@[self.headerNames] arrayByAddingObjectsFromArray:self.transactions];
+}
+
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView
 {
-    return self.transactions.count;
+    return self.headerAndRows.count;
 }
 
 - (id)tableView:(NSTableView *)aTableView
         objectValueForTableColumn:(NSTableColumn *)aTableColumn
                             row:(NSInteger)rowIndex
 {
-    BNTx *tx = [self.transactions objectAtIndex:rowIndex];
+    id obj = [self.headerAndRows objectAtIndex:rowIndex];
+    
+    if (rowIndex == 0)
+    {
+        NSInteger columnIndex = [aTableView.tableColumns indexOfObject:aTableColumn];
+        NSArray *headerNames = obj;
+        return [headerNames objectAtIndex:columnIndex];
+    }
+    
+    BNTx *tx = obj;
+    
     NSString *columnName = aTableColumn.identifier;
     id result = [tx performSelector:NSSelectorFromString(columnName) withObject:nil];
     return result;
@@ -223,7 +288,7 @@
    forTableColumn:(NSTableColumn *)aTableColumn
               row:(NSInteger)rowIndex
 {
-    NSTextFieldCell *cell = aCell;
+    MKTextFieldCell *cell = aCell;
     [cell setSelectable:YES];
     /*
      cell.backgroundColor = [NSColor whiteColor];
@@ -241,11 +306,52 @@
         //cell.alignment = NSRightTextAlignment;
         [cell setThemePath:@"table/cell-right"];
     }
+    
+    if (rowIndex == 0)
+    {
+        [cell setThemePath:@"table/header"];
+    }
+    
+    if (aTableColumn == aTableView.tableColumns.lastObject)
+    {
+        [cell setAlignment:NSRightTextAlignment];
+    }
+    
+    //[cell setBackgroundColor:[NSColor whiteColor]];
+    //[cell setDrawsBackground:YES];
+    
+    BOOL isLastRow = (rowIndex == self.headerAndRows.count - 1);
+    [cell setBottomLineWidth:isLastRow ? 0 : .5];
+    cell.lineColor = [NSColor colorWithCalibratedWhite:.9 alpha:1.0];
+    
 }
 
 - (BOOL)tableView:(NSTableView *)aTableView shouldSelectRow:(NSInteger)rowIndex
 {
     return NO;
 }
+
+
+// actions
+
+- (void)openPanelForView:(NSView *)aView
+{
+    MKPanelView *panel = [[MKPanelManager sharedPanelManager] openNewPanel];
+    [panel setInnerView:aView];
+    [self addSubview:panel];
+    [panel layout];
+}
+
+- (void)openDepositView
+{
+    [self openPanelForView:self.wallet.depositKey.nodeView];
+}
+
+- (void)openWithdrawlView
+{
+    [self openPanelForView:self.wallet.withdralNode.nodeView];
+}
+
+
 
 @end

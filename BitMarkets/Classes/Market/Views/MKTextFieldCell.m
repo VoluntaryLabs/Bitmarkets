@@ -18,6 +18,7 @@
     {
         self.marginLeft = 10.0;
         self.marginRight = 10.0;
+        self.lineColor = [NSColor colorWithCalibratedWhite:.8 alpha:1.0];
     }
     
     return self;
@@ -30,8 +31,39 @@
                                   rect.origin.y + _marginBottom,
                                   rect.size.width - self.marginLeft - self.marginRight,
                                   rect.size.height - self.marginBottom - self.marginTop);
+
+    // vertically center
+    NSSize titleSize = [[self attributedStringValue] size];
+    rectInset.origin.y += (rectInset.size.height - titleSize.height)/2.0 - 0.5;
     
     return [super drawingRectForBounds:rectInset];
 }
+
+
+- (void)drawInteriorWithFrame:(NSRect)cellFrame inView:(NSView *)controlView
+{
+    [super drawInteriorWithFrame:cellFrame inView:controlView];
+    
+    if (self.bottomLineWidth)
+    {
+        CGFloat x = cellFrame.origin.x;
+        CGFloat y = cellFrame.origin.y;
+        CGFloat h = cellFrame.size.height;
+        CGFloat w = cellFrame.size.width;
+        
+        [self.lineColor set];
+        
+        [NSBezierPath setDefaultLineCapStyle:NSButtLineCapStyle];
+        
+        NSBezierPath *aPath = [NSBezierPath bezierPath];
+        [aPath setLineWidth:self.bottomLineWidth];
+        [aPath moveToPoint:NSMakePoint(x, y+h)];
+        [aPath lineToPoint:NSMakePoint(x+w, y+h)];
+        [aPath setLineCapStyle:NSSquareLineCapStyle];
+        [aPath stroke];
+    }
+}
+
+
 
 @end

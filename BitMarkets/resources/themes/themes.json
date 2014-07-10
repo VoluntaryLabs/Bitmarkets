@@ -5,7 +5,7 @@
         {
             "header":
             {
-                "fontName" : "Open Sans Bold",
+                "fontName" : "Open Sans",
                 "fontSize" : 14,
                 "color" : "#555555",
                 "align" : "left",
@@ -13,7 +13,7 @@
             
             "cell":
             {
-                "fontName" : "Open Sans",
+                "fontName" : "Open Sans Light",
                 "fontSize" : 14,
                 "color" : "#888888",
                 "align" : "left",
@@ -21,7 +21,7 @@
             
             "cell-right":
             {
-                "fontName" : "Open Sans",
+                "fontName" : "Open Sans Light",
                 "fontSize" : 14,
                 "color" : "#888888",
                 "align" : "right",
@@ -99,7 +99,7 @@
             "line" :
             {
                 "fontName" : "Open Sans",
-                "fontSize" : 16,
+                "fontSize" : 14,
                 "color" : "#333333",
                 "align" : "left",
             },
@@ -107,7 +107,7 @@
             "line-unedited" :
             {
                 "fontName" : "Open Sans Light Italic",
-                "fontSize" : 16,
+                "fontSize" : 14,
                 "color" : "#DD0000",
                 "align" : "left",
             },
@@ -117,9 +117,9 @@
         {
             "address" :
             {
-                "fontName" : "Open Sans Bold",
-                "fontSize" : 22,
-                "color" : "#BBBBBB",
+                "fontName" : "Open Sans",
+                "fontSize" : 14,
+                "color" : "#000",
                 "align" : "center",
            },
         },

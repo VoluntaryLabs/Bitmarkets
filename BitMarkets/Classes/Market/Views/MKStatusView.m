@@ -66,10 +66,13 @@
         }
     }
     
+    CGFloat h = 35;
+    
     //NavRoundButtonView *button = _buttonsView.subviews.firstObject;
     
     //NSLog(@"button.x = %i", (int)button.x);
     [_buttonsView setAllSubviewToWidth:170];
+    [_buttonsView setAllSubviewToHeight:h];
     //[_buttonsView setAllSubviewToHeight:34];
     
     //NSLog(@"button.x = %i", (int)button.x);
@@ -83,7 +86,8 @@
     [_buttonsView stackSubviewsLeftToRightWithMargin:10];
     
     //[_buttonsView setHeight:self.maxYOfSubviews];
-    [_buttonsView setHeight:32];
+    //[_buttonsView setHeight:32];
+    [_buttonsView setHeight:h];
     
     [self layout];
     //NSLog(@"button.x = %i", (int)button.x);
@@ -109,7 +113,6 @@
     return [[NavTheme sharedNavTheme] attributesDictForPath:@"steps/status/title"];
 }
 
-
 - (void)drawRect:(NSRect)dirtyRect
 {
     [super drawRect:dirtyRect];
@@ -122,12 +125,11 @@
 {
     [[NSColor colorWithCalibratedWhite:.7 alpha:1.0] set];
     
-    [NSBezierPath setDefaultLineCapStyle:NSButtLineCapStyle];
-    
     NSBezierPath *aPath = [NSBezierPath bezierPath];
+    [aPath setLineCapStyle:NSSquareLineCapStyle];
+    [aPath setLineWidth:1.0];
     [aPath moveToPoint:NSMakePoint(0.0, y)];
     [aPath lineToPoint:NSMakePoint(self.width, y)];
-    [aPath setLineCapStyle:NSSquareLineCapStyle];
     [aPath stroke];
 }
 

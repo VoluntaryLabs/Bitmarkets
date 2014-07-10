@@ -15,4 +15,8 @@
 @property (assign, nonatomic) CGFloat marginTop;
 @property (assign, nonatomic) CGFloat marginBottom;
 
+@property (assign, nonatomic) CGFloat bottomLineWidth;
+@property (strong, nonatomic) NSColor *lineColor;
+
+
 @end

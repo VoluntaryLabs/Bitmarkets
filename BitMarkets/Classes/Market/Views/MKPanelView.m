@@ -16,7 +16,7 @@
     
     if (self)
     {
-        [self setAutoresizesSubviews:NO];
+        [self setAutoresizesSubviews:YES];
         [self setAutoresizingMask:NSViewHeightSizable | NSViewWidthSizable];
     }
     
