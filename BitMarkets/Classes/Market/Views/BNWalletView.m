@@ -94,6 +94,11 @@
         _tableView.rowHeight = 44; //33;
         [_tableView setAllowsColumnResizing:NO];
         //_tableView.cellClass = NSTextCell.class;
+        
+        _standinText = [[NavTextView alloc] init];
+        [self addSubview:_standinText];
+        [_standinText setThemePath:@"wallet/info"];
+
     }
     
     return self;
@@ -207,11 +212,28 @@
     [_scrollView setX:margin];
     [_scrollView setWidth:self.width - margin*2];
     
+
     [_tableView setWidth:_scrollView.width];
     
     CGFloat th = _tableView.rowHeight * (self.headerAndRows.count + 1);
     [_tableView setHeight:th];
-   
+    
+    [_standinText setWidth:self.width];
+    [_standinText setX:0];
+    [_standinText setY:_scrollView.y + _scrollView.height/2 - _standinText.height/2];
+    
+    
+    if (self.transactions.count)
+    {
+        [_scrollView setHidden:NO];
+        [_standinText setHidden:YES];
+    }
+    else
+    {
+        [_scrollView setHidden:YES];
+        [_standinText setHidden:NO];
+    }
+
     [self layoutColumns];
 }
 
@@ -221,6 +243,16 @@
     [_statusView syncFromNode];
     [self layout];
     [_tableView reloadData];
+    
+    if (self.transactions.count == 0)
+    {
+        [_standinText setString:@"no transactions"];
+    }
+    
+    if (self.wallet.isRunning == NO)
+    {
+        [_standinText setString:@"waiting for wallet to start..."];
+    }
 }
 
 - (void)drawRect:(NSRect)dirtyRect
