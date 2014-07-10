@@ -46,6 +46,11 @@
     return self;
 }
 
+- (void)updateActions
+{
+    
+}
+
 // addressDict
 
 - (void)setAddressKey:(NSString *)key to:(NSString *)value
@@ -114,10 +119,9 @@
 
 - (BOOL)isFilled
 {
-    for (NSString *key in self.addressDict)
+    for (NavDataSlot *dataSlot in self.navMirror.dataSlots)
     {
-        NSString *value = [self.addressDict objectForKey:key];
-        if (!value || [value isEqualToString:@""])
+        if ([dataSlot hasEmptyValue])
         {
             return NO;
         }
