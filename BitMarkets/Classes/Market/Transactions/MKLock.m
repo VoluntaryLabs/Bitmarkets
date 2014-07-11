@@ -102,9 +102,19 @@
 
 //MKLockEscrow delegation
 
+- (MKPost *)mkPost
+{
+    return nil;
+}
+
 - (NSNumber *)lockEscrowPriceInSatoshi //implement in subclass
 {
     return nil;
+}
+
+- (NSString *)txDescription:(NSString *)description
+{
+    return [self.mkPost txDescription:description];
 }
 
 //state machine
@@ -141,6 +151,7 @@
         MKSetupLockMsg *setupLockMsg = [[MKSetupLockMsg alloc] init];
         [self addChild:setupLockMsg];
         [setupLockMsg configureAndBroadcastTx];
+        setupLockMsg.tx.description = [self txDescription:@"Setup Escrow"];
     }
 }
 
@@ -225,6 +236,7 @@
     [self addChild:msg];
     [msg configureTx];
     [msg broadcast];
+    msg.tx.description = [self txDescription:@"Cancel Escrow"];
 }
 
 - (BOOL)canCancel

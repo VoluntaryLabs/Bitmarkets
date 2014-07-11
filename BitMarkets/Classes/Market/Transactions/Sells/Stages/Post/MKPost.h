@@ -59,4 +59,6 @@
 
 - (NSNumber *)priceInSatoshi;
 
+- (NSString *)txDescription:(NSString *)description;
+
 @end

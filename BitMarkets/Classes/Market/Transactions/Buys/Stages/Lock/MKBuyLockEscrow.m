@@ -70,9 +70,14 @@
 
 //MKLockEscrowMsg delegation
 
+- (MKPost *)mkPost
+{
+    return self.buy.mkPost;
+}
+
 - (NSNumber *)lockEscrowPriceInSatoshi
 {
-    return [NSNumber numberWithLong:2*self.buy.mkPost.priceInSatoshi.longLongValue];
+    return [NSNumber numberWithLong:2*self.mkPost.priceInSatoshi.longLongValue];
 }
 
 //messages
@@ -108,6 +113,7 @@
         self.setupLockMsg.isTxConfirmed)
     {
         [self postLock:[[MKBuyLockEscrowMsg alloc] init]];
+        self.buyLockEscrowMsg.tx.description = [self txDescription:@"Lock Escrow"];
     }
 }
 

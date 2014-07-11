@@ -194,6 +194,7 @@
     
     [releaseTx subtractFee];
     [releaseTx sign];
+    [releaseTx setDescription:[self.sell.mkPost txDescription:@"Payment"]];
     
     MKSellAcceptPaymentMsg *msg = [[MKSellAcceptPaymentMsg alloc] init];
     [msg copyThreadFrom:self.sell.acceptedBidMsg];
@@ -222,6 +223,7 @@
     
     [refundTx subtractFee];
     [refundTx sign];
+    [refundTx setDescription:[self.sell.mkPost txDescription:@"Refund"]];
     
     MKSellAcceptRefundRequestMsg *msg = [[MKSellAcceptRefundRequestMsg alloc] init];
     [msg copyThreadFrom:self.sell.acceptedBidMsg];

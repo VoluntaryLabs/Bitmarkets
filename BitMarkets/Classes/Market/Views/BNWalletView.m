@@ -138,21 +138,23 @@
     }
 
     {
+        NSTableColumn *column = [self newColumnWithIdentifier:@"tableAmount"];
+        [column.headerCell setStringValue:@"Amount"];
+        [column setWidthPercentage:@20];
+    }
+    
+    {
+        /*
         NSTableColumn *column = [self newColumnWithIdentifier:@"tableHashString"];
         [column.headerCell setStringValue:@"Address"];
         [column setWidthPercentage:@50];
+         */
     }
     
     {
         NSTableColumn *column = [self newColumnWithIdentifier:@"txTypeString"];
         [column.headerCell setStringValue:@"Description"];
-        [column setWidthPercentage:@20];
-    }
-    
-    {
-        NSTableColumn *column = [self newColumnWithIdentifier:@"tableAmount"];
-        [column.headerCell setStringValue:@"Amount"];
-        [column setWidthPercentage:@20];
+        [column setWidthPercentage:@70];
     }
     
     //column = [self newColumnWithIdentifier:@"tableConfirmsString"];
@@ -333,21 +335,25 @@
     //cell->_cFlags.vCentered = NSCenterTextAlignment;
     //NSLog(@"cell %@", cell.className);
     
+    /*
     if (aTableColumn == aTableView.tableColumns.lastObject)
     {
         //cell.alignment = NSRightTextAlignment;
         [cell setThemePath:@"table/cell-right"];
     }
+     */
     
     if (rowIndex == 0)
     {
         [cell setThemePath:@"table/header"];
     }
     
+    /*
     if (aTableColumn == aTableView.tableColumns.lastObject)
     {
         [cell setAlignment:NSRightTextAlignment];
     }
+     */
     
     //[cell setBackgroundColor:[NSColor whiteColor]];
     //[cell setDrawsBackground:YES];

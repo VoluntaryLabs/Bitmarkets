@@ -280,6 +280,7 @@
         releaseTx.wallet = wallet;
         [releaseTx sign];
         [releaseTx broadcast];
+        [releaseTx setDescription:[self.buy.mkPost txDescription:@"Payment"]];
         
         MKBuyPostPaymentMsg *msg = [[MKBuyPostPaymentMsg alloc] init];
         [msg copyThreadFrom:self.buy.bidMsg];
@@ -306,10 +307,11 @@
     
     if (!self.buyPostRefundMsg)
     {
-        BNTx *releaseTx = self.sellAcceptRefundRequestMsg.payload.asObjectFromJSONObject;
-        releaseTx.wallet = wallet;
-        [releaseTx sign];
-        [releaseTx broadcast];
+        BNTx *refundTx = self.sellAcceptRefundRequestMsg.payload.asObjectFromJSONObject;
+        refundTx.wallet = wallet;
+        [refundTx sign];
+        [refundTx broadcast];
+        [refundTx setDescription:[self.buy.mkPost txDescription:@"Refund"]];
         
         MKBuyPostRefundMsg *msg = [[MKBuyPostRefundMsg alloc] init];
         [msg copyThreadFrom:self.buy.bidMsg];

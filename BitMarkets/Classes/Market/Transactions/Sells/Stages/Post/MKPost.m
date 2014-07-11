@@ -300,4 +300,9 @@
     [self removeFromParent];
 }
 
+- (NSString *)txDescription:(NSString *)description
+{
+    return [description stringByAppendingFormat:@" - %@", self.title];
+}
+
 @end

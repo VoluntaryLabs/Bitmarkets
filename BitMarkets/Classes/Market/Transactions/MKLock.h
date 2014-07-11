@@ -7,6 +7,7 @@
 //
 
 #import "MKEscrow.h"
+#import "MKPost.h"
 
 @class MKSell;
 @class MKBuy;
@@ -53,6 +54,8 @@
 - (BOOL)isCancelConfirmed;
 - (MKCancelConfirmed *)cancelConfirmedMsg;
 
+- (NSString *)txDescription:(NSString *)description;
+- (MKPost *)mkPost;
 - (NSNumber *)lockEscrowPriceInSatoshi;
 
 @end
