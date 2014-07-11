@@ -12,6 +12,7 @@
 - Add support for recovering a wallet from its keys when wallet gets corrupted.
 - Deterministic Hierarchical Wallets
 - More robust peer connection (use DNS and list of ips?)
+- Use ANYONECANPAY
 
 ------ steve ------
 

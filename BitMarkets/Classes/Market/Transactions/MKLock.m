@@ -134,6 +134,7 @@
         [self broadcastLockIfNeeded];
         [self confirmLockIfNeeded];
         [self confirmCancellationIfNeeded];
+        [self unlockInputsIfNeeded];
         [self updateActions];
     }
 }
@@ -279,13 +280,27 @@
     return [self.children firstObjectOfClass:[MKCancelConfirmed class]];
 }
 
+- (void)confirmCancellation
+{
+    MKCancelConfirmed *msg = [[MKCancelConfirmed alloc] init];
+    [self addChild:msg];
+    [self postParentChainChanged];
+}
+
 - (void)confirmCancellationIfNeeded
 {
     if (self.cancelMsg && !self.cancelConfirmedMsg && self.cancelMsg.isTxConfirmed)
     {
-        MKCancelConfirmed *msg = [[MKCancelConfirmed alloc] init];
-        [self addChild:msg];
-        [self postParentChainChanged];
+        [self confirmCancellation];
+    }
+}
+
+- (void)unlockInputsIfNeeded
+{
+    if (self.isCancelConfirmed && self.lockEscrowMsgToConfirm.tx && !self.cancelConfirmedMsg)
+    {
+        [self confirmCancellation];
+        [self.lockEscrowMsgToConfirm.tx unlockInputs];
     }
 }
 
