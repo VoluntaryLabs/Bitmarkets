@@ -19,6 +19,12 @@
     self.addressDict = [NSMutableDictionary dictionary];
     [self addPropertyName:@"addressDict"];
 
+    NavDataSlot *slot = [self.navMirror newDataSlotWithName:@"addressee"];
+    [slot setUneditedValue:@"Full Address"];
+    [slot setVisibleName:@"Address"];
+    [slot setLineCount:@5];
+    
+    /*
     {
         NavDataSlot *slot = [self.navMirror newDataSlotWithName:@"addressee"];
         [slot setUneditedValue:@"Name"];
@@ -42,8 +48,15 @@
         [slot setVisibleName:@"Country"];
         [slot setUneditedValue:@"Country"];
     }
+     
+     */
          
     return self;
+}
+
+- (void)updateActions
+{
+    
 }
 
 // addressDict
@@ -114,10 +127,9 @@
 
 - (BOOL)isFilled
 {
-    for (NSString *key in self.addressDict)
+    for (NavDataSlot *dataSlot in self.navMirror.dataSlots)
     {
-        NSString *value = [self.addressDict objectForKey:key];
-        if (!value || [value isEqualToString:@""])
+        if ([dataSlot hasEmptyValue])
         {
             return NO;
         }

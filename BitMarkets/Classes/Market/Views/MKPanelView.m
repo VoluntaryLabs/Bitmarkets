@@ -106,7 +106,12 @@
 
 - (void)mouseDown:(NSEvent *)theEvent
 {
-    [self close];
+    NSPoint p = [self convertPoint:theEvent.locationInWindow fromView:nil];
+    
+    if (![_innerView hitTest:p])
+    {
+        [self close];
+    }
 }
 
 - (void)close

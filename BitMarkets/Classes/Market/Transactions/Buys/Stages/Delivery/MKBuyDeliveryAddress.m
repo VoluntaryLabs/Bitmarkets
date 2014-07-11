@@ -30,7 +30,22 @@
         self.addressDict = [NSMutableDictionary dictionary];
     }
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(changedDataSlotAttribute:)
+                                                 name:@"changedDataSlotAttribute"
+                                               object:self];
+    
     return self;
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)updatedSlot:aSlot
+{
+    [self updateApproveActionSlot];
 }
 
 - (void)setNodeParent:(NavNode *)nodeParent
@@ -43,7 +58,7 @@
 {
     NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"approve"];
     [slot setVisibleName:@"Send Address to Seller"];
-    slot.isActive = !self.isApproved;
+    slot.isActive = !self.isApproved && self.isFilled;
     [slot.slotView syncFromSlot];
 }
 

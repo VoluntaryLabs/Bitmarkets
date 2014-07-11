@@ -24,6 +24,7 @@
     
     NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"cancelEscrow"];
     [slot setVisibleName:@"Cancel Escrow"];
+    [slot setIsActive:NO];
     return self;
 }
 
@@ -77,7 +78,7 @@
 - (void)updateActions
 {
     NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"cancelEscrow"];
-    [slot setIsActive:self.canCancel];
+    [slot setIsActive:self.runningWallet != nil && self.canCancel];
 }
 
 //MKStage
