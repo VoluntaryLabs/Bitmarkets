@@ -36,14 +36,13 @@
     [self.tx lockInputs];
 }
 
-- (void)broadcast
+- (void)broadcast //This is actually called by seller in MKSellLockEscrow broadcastIfNeeded
 {
     @try
     {
         self.lockNode.error = nil;
         [self.tx sign]; //TODO verify tx meets expectations before signing
         [self.tx broadcast];
-        self.tx.description = [@"Escrow - " stringByAppendingString:self.lockNode.mkPost.title];
     }
     @catch (NSException *exception)
     {

@@ -107,8 +107,11 @@
 
 - (void)broadcastLockIfNeeded
 {
-    [self.buyLockEscrowMsg.tx broadcast];
-    self.buyLockEscrowMsg.tx.description = [self txDescription:@"Lock Escrow"];
+    if (self.buyLockEscrowMsg && !self.buyLockEscrowMsg.tx.wasBroadcast)
+    {
+        [self.buyLockEscrowMsg broadcast];
+        self.buyLockEscrowMsg.tx.description = [self txDescription:@"Lock Escrow"];
+    }
 }
 
 @end
