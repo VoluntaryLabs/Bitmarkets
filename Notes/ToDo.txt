@@ -4,7 +4,6 @@
 - consider security issues
 - consider edge cases for workflow (eg: what happens if a tx fails to broadcast ... etc)
 - wallet backups?
-- Fix Withdrawal UI
 - wallet withdraw ui
 	- validate amount / address
 - create a better system for extending BitcoinJ object persistence
@@ -13,8 +12,11 @@
 - Deterministic Hierarchical Wallets
 - More robust peer connection (use DNS and list of ips?)
 - Use ANYONECANPAY
+- Add dates to transactions list
 
 ------ steve ------
+
+- Status and action buttons don't update synchronously (see "Choose Bid" / "Accept First Bid" button when receiving a bid)
 
 - allow seller to see address of buyer
 
