@@ -132,6 +132,12 @@
 - (void)setupTableColumns
 {
     {
+        NSTableColumn *column = [self newColumnWithIdentifier:@"updateTimeDescription"];
+        [column.headerCell setStringValue:@"Time"];
+        [column setWidthPercentage:@15];
+    }
+    
+    {
         NSTableColumn *column = [self newColumnWithIdentifier:@"confirmations"];
         [column.headerCell setStringValue:@"Confirms"];
         [column setWidthPercentage:@10];
@@ -154,7 +160,7 @@
     {
         NSTableColumn *column = [self newColumnWithIdentifier:@"txTypeString"];
         [column.headerCell setStringValue:@"Description"];
-        [column setWidthPercentage:@70];
+        [column setWidthPercentage:@55];
     }
     
     //column = [self newColumnWithIdentifier:@"tableConfirmsString"];
