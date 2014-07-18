@@ -118,13 +118,19 @@
         self.setupLockMsg.isTxConfirmed)
     {
         [self postLock:[[MKBuyLockEscrowMsg alloc] init]];
-        self.buyLockEscrowMsg.tx.description = [self txDescription:@"Lock Escrow"];
+        self.buyLockEscrowMsg.tx.txType = @"Lock Escrow";
+        self.buyLockEscrowMsg.tx.description = self.txDescription;
     }
 }
 
 - (void)broadcastLockIfNeeded
 {
     /// need to override but buyer doesn't broadcast
+}
+
+- (BOOL)isBuyer
+{
+    return YES;
 }
 
 @end

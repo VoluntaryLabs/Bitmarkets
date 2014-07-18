@@ -11,6 +11,8 @@
 #import "MKMsgGroup.h"
 #import "MKPost.h"
 
+@class BNTx;
+
 @interface MKTransaction : MKMsgGroup
 
 @property (strong, nonatomic) MKPost *mkPost;
@@ -25,5 +27,8 @@
 - (NSString *)nodeSubtitleDetailed;
 
 - (void)update;
+
+- (BOOL)isBuy;
+- (NSString *)description;
 
 @end

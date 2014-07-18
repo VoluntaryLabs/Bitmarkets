@@ -54,8 +54,10 @@
 - (BOOL)isCancelConfirmed;
 - (MKCancelConfirmed *)cancelConfirmedMsg;
 
-- (NSString *)txDescription:(NSString *)description;
 - (MKPost *)mkPost;
 - (NSNumber *)lockEscrowPriceInSatoshi;
+
+- (NSString *)txDescription;
+- (BOOL)isBuyer;
 
 @end

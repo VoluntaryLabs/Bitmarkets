@@ -113,11 +113,6 @@
     return nil;
 }
 
-- (NSString *)txDescription:(NSString *)description
-{
-    return [self.mkPost txDescription:description];
-}
-
 //state machine
 
 //both: setup
@@ -153,7 +148,8 @@
         MKSetupLockMsg *setupLockMsg = [[MKSetupLockMsg alloc] init];
         [self addChild:setupLockMsg];
         [setupLockMsg configureAndBroadcastTx];
-        setupLockMsg.tx.description = [self txDescription:@"Setup Escrow"];
+        setupLockMsg.tx.txType = @"Setup Escrow";
+        setupLockMsg.tx.description = self.txDescription;
     }
 }
 
@@ -238,7 +234,8 @@
     [self addChild:msg];
     [msg configureTx];
     [msg broadcast];
-    msg.tx.description = [self txDescription:@"Cancel Escrow"];
+    msg.tx.txType = @"Cancel Escrow";
+    msg.tx.description = self.txDescription;
 }
 
 - (BOOL)canCancel
@@ -302,6 +299,17 @@
         [self confirmCancellation];
         [self.lockEscrowMsgToConfirm.tx unlockInputs];
     }
+}
+
+- (BOOL)isBuyer
+{
+    [NSException raise:@"Subclasses should override" format:nil];
+    return NO;
+}
+
+- (NSString *)txDescription
+{
+    return self.isBuyer ? self.buy.description : self.sell.description;
 }
 
 @end

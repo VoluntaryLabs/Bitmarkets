@@ -202,4 +202,22 @@
     return NO;
 }
 
+- (BOOL)isBuy
+{
+    [NSException raise:@"Subclasses should override" format:nil];
+    return NO;
+}
+
+- (NSString *)description
+{
+    if (self.isBuy)
+    {
+        return [@"Buying: "  stringByAppendingString:self.mkPost.title];
+    }
+    else
+    {
+        return [@"Selling: "  stringByAppendingString:self.mkPost.title];
+    }
+}
+
 @end

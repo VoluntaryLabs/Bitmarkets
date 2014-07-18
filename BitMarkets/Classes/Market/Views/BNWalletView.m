@@ -183,7 +183,7 @@
     }
     
     {
-        NSTableColumn *column = [self newColumnWithIdentifier:@"txTypeString"];
+        NSTableColumn *column = [self newColumnWithIdentifier:@"txType"];
         [column.headerCell setStringValue:@"Type"];
         [column setWidthPercentage:@15];
         [column setAlignment:NSLeftTextAlignment];

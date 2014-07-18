@@ -110,8 +110,14 @@
     if (self.buyLockEscrowMsg && !self.buyLockEscrowMsg.tx.wasBroadcast)
     {
         [self.buyLockEscrowMsg broadcast];
-        self.buyLockEscrowMsg.tx.description = [self txDescription:@"Lock Escrow"];
+        self.buyLockEscrowMsg.tx.txType = @"Lock Escrow";
+        self.buyLockEscrowMsg.tx.description = self.txDescription;
     }
+}
+
+- (BOOL)isBuyer
+{
+    return NO;
 }
 
 @end

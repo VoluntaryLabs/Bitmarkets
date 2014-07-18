@@ -148,4 +148,9 @@
     return NO;
 }
 
+- (BOOL)isBuy
+{
+    return YES;
+}
+
 @end

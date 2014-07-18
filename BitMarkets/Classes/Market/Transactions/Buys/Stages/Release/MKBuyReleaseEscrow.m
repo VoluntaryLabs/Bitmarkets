@@ -280,7 +280,8 @@
         releaseTx.wallet = wallet;
         [releaseTx sign];
         [releaseTx broadcast];
-        [releaseTx setDescription:[self.buy.mkPost txDescription:@"Payment"]];
+        releaseTx.txType = @"Payment";
+        releaseTx.description = self.buy.description;
         
         MKBuyPostPaymentMsg *msg = [[MKBuyPostPaymentMsg alloc] init];
         [msg copyThreadFrom:self.buy.bidMsg];
@@ -311,7 +312,7 @@
         refundTx.wallet = wallet;
         [refundTx sign];
         [refundTx broadcast];
-        [refundTx setDescription:[self.buy.mkPost txDescription:@"Refund"]];
+        refundTx.description = self.buy.description;
         
         MKBuyPostRefundMsg *msg = [[MKBuyPostRefundMsg alloc] init];
         [msg copyThreadFrom:self.buy.bidMsg];
