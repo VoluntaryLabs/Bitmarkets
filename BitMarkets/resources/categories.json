@@ -3,17 +3,49 @@
     "name": "For Sale",
     
     "children": [
-                 { "_type": "Category", "name" : "Antiques"},
-                 { "_type": "Category", "name" : "Appliances" },
-                 { "_type": "Category", "name" : "Arts and Crafts" },
-                 { "_type": "Category", "name" : "Auto Parts" },
-                 { "_type": "Category", "name" : "Beauty and Health" },
-                 { "_type": "Category", "name" : "Bikes" },
-                 { "_type": "Category", "name" : "Books" },
-                 { "_type": "Category", "name" : "Business" },
-                 { "_type": "Category", "name" : "Physical Media" },
-                 { "_type": "Category", "name" : "Cell Phones" },
-                 { "_type": "Category", "name" : "Clothing",  "nodeSuggestedWidth": 100,
+                 
+                 { "_type": "Category", "name" : "Media & Games",
+                 "children": [
+                                  { "_type": "Category", "name" : "Books" },
+                                  { "_type": "Category", "name" : "DVDs/CDs/Vinyl" },
+                                  { "_type": "Category", "name" : "Video Gaming" },
+                                  { "_type": "Category", "name" : "Musical Instruments" },
+                              ]
+                 },
+                 
+                 { "_type": "Category", "name" : "Electronics",
+                     "children":
+                     [
+                          { "_type": "Category", "name" : "Cell Phones" },
+                          { "_type": "Category", "name" : "Desktops" },
+                          { "_type": "Category", "name" : "Laptops" },
+                          { "_type": "Category", "name" : "Tablets" },
+                          { "_type": "Category", "name" : "TVs" },
+                          { "_type": "Category", "name" : "Stereos" },
+                          { "_type": "Category", "name" : "Cameras" },
+                      ]
+                 },
+                 
+                 { "_type": "Category", "name" : "Home",
+                     "children":
+                         [
+                            { "_type": "Category", "name" : "Antiques"},
+                            { "_type": "Category", "name" : "Arts and Crafts" },
+                            { "_type": "Category", "name" : "Appliances" },
+                            { "_type": "Category", "name" : "Household" },
+                            { "_type": "Category", "name" : "Furniture" },
+                            { "_type": "Category", "name" : "Farm and Garden" },
+                            { "_type": "Category", "name" : "Tools" },
+                            { "_type": "Category", "name" : "Collectibles" },
+                          
+                          { "_type": "Category", "name" : "Beauty & Health"
+                          
+                          },
+                         ]
+                 },
+
+                 
+                 { "_type": "Category", "name" : "Fashion",
                     "children":
                     [
                      { "_type": "Category", "name" : "Men's",
@@ -24,38 +56,45 @@
                                  { "_type": "Category", "name" : "Shoes" },
                                  { "_type": "Category", "name" : "Accessories" },
                                  { "_type": "Category", "name" : "Bags" },
+                                 { "_type": "Category", "name" : "Jewelry" },
                         ]
                      },
                      { "_type": "Category", "name" : "Women's",
                      "children": [
                                   { "_type": "Category", "name" : "Outerwear" },
+                                  { "_type": "Category", "name" : "Dresses" },
                                   { "_type": "Category", "name" : "Tops" },
                                   { "_type": "Category", "name" : "Pants" },
                                   { "_type": "Category", "name" : "Shoes" },
                                   { "_type": "Category", "name" : "Accessories" },
                                   { "_type": "Category", "name" : "Bags" },
+                                  { "_type": "Category", "name" : "Jewelry" },
                         ]
-                     }
+                     },
                     ]
                  },
-                 { "_type": "Category", "name" : "Collectibles" },
-                 { "_type": "Category", "name" : "Computer" },
-                 { "_type": "Category", "name" : "Electronics" },
-                 { "_type": "Category", "name" : "Farm and Garden" },
-                 { "_type": "Category", "name" : "Furniture" },
-                 { "_type": "Category", "name" : "General" },
-                 { "_type": "Category", "name" : "Household" },
-                 { "_type": "Category", "name" : "Jewelry" },
-                 { "_type": "Category", "name" : "Materials" },
-                 { "_type": "Category", "name" : "Motorcycles" },
-                 { "_type": "Category", "name" : "Musical Instruments" },
-                 { "_type": "Category", "name" : "Photo and Video" },
+                 
+                 { "_type": "Category", "name" : "Other" },
                  { "_type": "Category", "name" : "Sporting" },
-                 { "_type": "Category", "name" : "Services" },
+                 { "_type": "Category", "name" : "Services",
+                    "children":
+                    [
+                     { "_type": "Category", "name" : "Personal" },
+                     { "_type": "Category", "name" : "Transportation" },
+                     { "_type": "Category", "name" : "Delivery" },
+                     { "_type": "Category", "name" : "Moving" },
+                     { "_type": "Category", "name" : "Repair" },
+                     { "_type": "Category", "name" : "Tasks" },
+                    ]
+                 },
                  { "_type": "Category", "name" : "Tickets" },
-                 { "_type": "Category", "name" : "Tools" },
-                 { "_type": "Category", "name" : "Toys and Games" },
-                 { "_type": "Category", "name" : "Vehicles" },
-                 { "_type": "Category", "name" : "Video Gaming" }
+
+                 { "_type": "Category", "name" : "Automotive",
+                     "children":
+                     [
+                        { "_type": "Category", "name" : "Tools" },
+                        { "_type": "Category", "name" : "Auto Parts" },
+                     ]
+                 },
     ]
 }

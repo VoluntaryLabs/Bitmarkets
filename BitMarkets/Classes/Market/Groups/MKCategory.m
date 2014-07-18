@@ -20,7 +20,7 @@
 - (id)init
 {
     self = [super init];
-    self.shouldSortChildren = NO;
+    self.shouldSortChildren = YES;
     //self.sortChildrenKey = @"date";
     self.nodeSuggestedWidth = 150;
     return self;
@@ -32,6 +32,11 @@
     db.name = @"categories.json";
     db.location = JSONDB_IN_APP_WRAPPER;
     return db;
+}
+
+- (BOOL)shouldSortChildren
+{
+    return !self.isLeafCategory;
 }
 
 - (BOOL)isLeafCategory
