@@ -3,7 +3,6 @@
 	{
         "wallet":
         {
-            
             "info":
             {
                 "fontName" : "Open Sans",
@@ -11,7 +10,6 @@
                 "color" : "#cccccc",
                 "align" : "center",
             },
-            
         },
         
         "table":

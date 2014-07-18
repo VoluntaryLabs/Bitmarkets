@@ -9,7 +9,7 @@
         	"name" : "North America",
         	"children" : 
         	[
-        		{ "_type" : "Region",  "name" : "United States" },
+        		{ "_type" : "Region",  "name" : "US" },
         		{ "_type" : "Region",  "name" : "Canada" },
         	]
     	},
@@ -23,7 +23,7 @@
         		{ "_type" : "Region",  "name" : "Belgium" },
         		{ "_type" : "Region",  "name" : "Bulgaria" },
         		{ "_type" : "Region",  "name" : "Croatia" },
-        		{ "_type" : "Region",  "name" : "Czech Republic" },
+        		{ "_type" : "Region",  "name" : "Czech Rep" },
         		{ "_type" : "Region",  "name" : "Denmark" },
         		{ "_type" : "Region",  "name" : "Finland" },
         		{ "_type" : "Region",  "name" : "France" },
@@ -39,13 +39,13 @@
         		{ "_type" : "Region",  "name" : "Poland" },
         		{ "_type" : "Region",  "name" : "Portugal" },
         		{ "_type" : "Region",  "name" : "Romania" },
-        		{ "_type" : "Region",  "name" : "Russian Federation" },
+        		{ "_type" : "Region",  "name" : "Russian Fed" },
         		{ "_type" : "Region",  "name" : "Spain" },
         		{ "_type" : "Region",  "name" : "Sweden" },
         		{ "_type" : "Region",  "name" : "Switzerland" },
         		{ "_type" : "Region",  "name" : "Turkey" },
         		{ "_type" : "Region",  "name" : "Ukraine" },
-        		{ "_type" : "Region",  "name" : "United Kingdom" },
+        		{ "_type" : "Region",  "name" : "UK" },
         	]
     	},
 
@@ -68,7 +68,7 @@
         		{ "_type" : "Region",  "name" : "Argentina" },
         		{ "_type" : "Region",  "name" : "Bolivia" },
         		{ "_type" : "Region",  "name" : "Brazil" },
-        		{ "_type" : "Region",  "name" : "Caribbean Islands" },
+        		{ "_type" : "Region",  "name" : "Caribbean" },
         		{ "_type" : "Region",  "name" : "Chile" },
         		{ "_type" : "Region",  "name" : "Colombia" },
         		{ "_type" : "Region",  "name" : "Costa Rica" },
@@ -82,7 +82,7 @@
         		{ "_type" : "Region",  "name" : "Puerto Rico" },
         		{ "_type" : "Region",  "name" : "Uruguay" },
         		{ "_type" : "Region",  "name" : "Venezuela" },
-        		{ "_type" : "Region",  "name" : "Virgin Islands, U.S." },
+        		{ "_type" : "Region",  "name" : "Virgin Is, US" },
         	]
     	},    	
     	
@@ -115,10 +115,10 @@
         	"name" : "Middle East",
         	"children" : 
         	[
-        		{ "_type" : "Region",  "name" : "United Arab Emirates" },
+        		{ "_type" : "Region",  "name" : "UAE" },
         		{ "_type" : "Region",  "name" : "Iran" },
         		{ "_type" : "Region",  "name" : "Iraq" },
-        		{ "_type" : "Region",  "name" : "Israel and Palestine" },
+        		{ "_type" : "Region",  "name" : "Israel & Palestine" },
         	]
     	},
     	

@@ -242,7 +242,7 @@
     [_description useUneditedTextStringIfNeeded];
 
     _region.string      = self.mkPost.regionPath.lastObject ? self.mkPost.regionPath.lastObject : @"MISSING REGION ERROR";
-    NSString *cPath = [self.mkPost.categoryPath componentsJoinedByString:@"/"];
+    NSString *cPath = [self.mkPost.categoryPath componentsJoinedByString:@" / "];
     _category.string    = cPath;
     _fromAddress.string = self.mkPost.sellerAddress;
     [self setAttachments:self.mkPost.attachments];

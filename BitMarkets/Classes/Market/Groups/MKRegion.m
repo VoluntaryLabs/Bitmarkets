@@ -15,7 +15,7 @@
 {
     self = [super init];
     //[self setCanPost:NO];
-    self.nodeSuggestedWidth = 170;
+    self.nodeSuggestedWidth = 150;
     self.shouldSortChildren = NO;
     return self;
 }

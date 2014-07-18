@@ -22,6 +22,7 @@
     self = [super init];
     self.shouldSortChildren = NO;
     //self.sortChildrenKey = @"date";
+    self.nodeSuggestedWidth = 150;
     return self;
 }
 
@@ -80,7 +81,7 @@
         return 250;
     }
     
-    return 250;
+    return super.nodeSuggestedWidth;
 }
 
 - (NavView *)navView
@@ -94,15 +95,23 @@
 
 - (NSArray *)regionPath
 {
+    NSArray *path = [self pathOfClass:MKRegion.class];    
+    path = [path sansFirstObject];
+    return  [path map:@selector(nodeTitle)];
+/*
     NSMutableArray *path = [NSMutableArray arrayWithArray:self.groupNamePath];
     [path removeFirstObject]; // remove "Regions"
     [path removeLastObject];
     return path;
+ */
 }
 
 - (NSArray *)categoryPath
 {
-    return [NSArray arrayWithObject:self.groupNamePath.lastObject];
+    NSArray *path = [self pathOfClass:MKCategory.class];
+    return [path map:@selector(nodeTitle)];
+    
+    //return [NSArray arrayWithObject:self.groupNamePath.lastObject];
 }
 
 - (void)add
