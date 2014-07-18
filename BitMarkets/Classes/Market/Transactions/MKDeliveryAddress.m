@@ -19,12 +19,15 @@
     self.addressDict = [NSMutableDictionary dictionary];
     [self addPropertyName:@"addressDict"];
 
-    NavDataSlot *slot = [self.navMirror newDataSlotWithName:@"addressee"];
-    [slot setUneditedValue:@"Full Address"];
-    [slot setVisibleName:@"Address"];
-    [slot setLineCount:@5];
-    
     /*
+    {
+        NavDataSlot *slot = [self.navMirror newDataSlotWithName:@"addressee"];
+        [slot setUneditedValue:@"Full Address"];
+        [slot setVisibleName:@"Address"];
+        [slot setLineCount:@5];
+    }
+    */
+    
     {
         NavDataSlot *slot = [self.navMirror newDataSlotWithName:@"addressee"];
         [slot setUneditedValue:@"Name"];
@@ -33,14 +36,14 @@
     
     {
         NavDataSlot *slot = [self.navMirror newDataSlotWithName:@"address1"];
-        [slot setVisibleName:@"Street address"];
-        [slot setUneditedValue:@"Address Line 1"];
+        [slot setVisibleName:@"Street"];
+        [slot setUneditedValue:@"Address"];
     }
     
     {
         NavDataSlot *slot = [self.navMirror newDataSlotWithName:@"address2"];
-        [slot setVisibleName:@"City, province/state/county, postal code"];
-        [slot setUneditedValue:@"Address Line 2"];
+        [slot setVisibleName:@"Region"];
+        [slot setUneditedValue:@"City, Province/State/County, Postal Code"];
     }
     
     {
@@ -48,9 +51,14 @@
         [slot setVisibleName:@"Country"];
         [slot setUneditedValue:@"Country"];
     }
+    
+    {
+        NavDataSlot *slot = [self.navMirror newDataSlotWithName:@"country"];
+        [slot setVisibleName:@"Notes"];
+        [slot setUneditedValue:@"Notes"];
+    }
      
-     */
-         
+    
     return self;
 }
 

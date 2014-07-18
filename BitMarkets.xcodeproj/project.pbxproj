@@ -255,7 +255,7 @@
 		AA09C803192D41C600317130 /* MKAboutNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKAboutNode.m; sourceTree = "<group>"; };
 		AA0A76D219636C8200E044DB /* MKTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKTextFieldCell.h; sourceTree = "<group>"; };
 		AA0A76D319636C8200E044DB /* MKTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKTextFieldCell.m; sourceTree = "<group>"; };
-		AA0E584D18FDC0880095DEBD /* BitMarkets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitMarkets.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA0E584D18FDC0880095DEBD /* Bitmarkets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bitmarkets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA0E585018FDC0880095DEBD /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		AA0E585318FDC0880095DEBD /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		AA0E585418FDC0880095DEBD /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -506,7 +506,7 @@
 		AA0E584E18FDC0880095DEBD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AA0E584D18FDC0880095DEBD /* BitMarkets.app */,
+				AA0E584D18FDC0880095DEBD /* Bitmarkets.app */,
 				AA0E586E18FDC0890095DEBD /* BitMarketsTests.xctest */,
 			);
 			name = Products;
@@ -1038,7 +1038,7 @@
 			);
 			name = BitMarkets;
 			productName = BitMarkets;
-			productReference = AA0E584D18FDC0880095DEBD /* BitMarkets.app */;
+			productReference = AA0E584D18FDC0880095DEBD /* Bitmarkets.app */;
 			productType = "com.apple.product-type.application";
 		};
 		AA0E586D18FDC0890095DEBD /* BitMarketsTests */ = {
@@ -1453,7 +1453,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BitMarkets/BitMarkets-Prefix.pch";
 				INFOPLIST_FILE = "BitMarkets/BitMarkets-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Bitmarkets;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1470,7 +1470,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BitMarkets/BitMarkets-Prefix.pch";
 				INFOPLIST_FILE = "BitMarkets/BitMarkets-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Bitmarkets;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

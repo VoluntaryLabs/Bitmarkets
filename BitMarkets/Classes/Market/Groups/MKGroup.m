@@ -244,13 +244,13 @@
     return 180;
 }
 
-- (NSArray *)groupPath
+- (NSArray *)groupNamePath
 {
    // if ([self.nodeParent isKindOfClass:self.class])
-    if ([self.nodeParent respondsToSelector:@selector(groupPath)])
+    if ([self.nodeParent respondsToSelector:@selector(groupNamePath)])
     {
         MKGroup *parentCat = (MKGroup *)self.nodeParent;
-        return [[parentCat groupPath] arrayByAddingObject:self.name];
+        return [[parentCat groupNamePath] arrayByAddingObject:self.name];
     }
     
     return [NSArray arrayWithObject:self.name];
@@ -264,7 +264,7 @@
     {
         if ([cat isKindOfClass:self.class])
         {
-            [paths addObject:cat.groupPath];
+            [paths addObject:cat.groupNamePath];
         }
     }
     

@@ -94,7 +94,7 @@
 
 - (NSArray *)regionPath
 {
-    NSMutableArray *path = [NSMutableArray arrayWithArray:self.groupPath];
+    NSMutableArray *path = [NSMutableArray arrayWithArray:self.groupNamePath];
     [path removeFirstObject]; // remove "Regions"
     [path removeLastObject];
     return path;
@@ -102,7 +102,7 @@
 
 - (NSArray *)categoryPath
 {
-    return [NSArray arrayWithObject:self.groupPath.lastObject];
+    return [NSArray arrayWithObject:self.groupNamePath.lastObject];
 }
 
 - (void)add

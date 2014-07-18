@@ -42,19 +42,24 @@
         return @"Escrow confirmed.";
     }
     
-    if (self.sellLockEscrowMsg)
-    {
-        return @"Received seller escrow.  Sending escrow to seller.";
-    }
-    
     if (self.buyLockEscrowMsg)
     {
-        return @"Bid accepted and escrow sent.  Awaiting confirmation.";
+        return @"Bid accepted and escrow sent. Awaiting confirmation.";
+    }
+    
+    if (self.sellLockEscrowMsg)
+    {
+        return @"Received seller escrow. Completing and returning.";
     }
     
     if (self.setupLockMsg)
     {
-        return @"Awaiting seller escrow ...";
+        if (self.setupLockMsg.isTxConfirmed)
+        {
+            return @"Exact change ready for escrow lock. Awaiting seller escrow...";
+        }
+        
+        return @"Preparing exact change for escrow lock.";
     }
     
     return nil;
@@ -119,7 +124,7 @@
 
 - (void)broadcastLockIfNeeded
 {
-    
+    /// need to override but buyer doesn't broadcast
 }
 
 @end

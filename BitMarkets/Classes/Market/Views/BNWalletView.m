@@ -14,8 +14,13 @@
 
 
 @interface NSTableColumn (tags)
+
 - (void)setWidthPercentage:(NSNumber *)aNumber;
 - (NSNumber *)widthPercentage;
+
+- (void)setAlignment:(NSTextAlignment)aNumber;
+- (NSTextAlignment)alignment;
+
 @end
 
 @implementation NSTableColumn (tags)
@@ -28,6 +33,30 @@
 - (NSNumber *)widthPercentage
 {
     return objc_getAssociatedObject(self, @"widthPercentage");
+}
+
+- (void)setAlignment:(NSTextAlignment)anAlignment
+{
+    [self.headerCell setAlignment:anAlignment];
+/*
+    NSNumber *num = [NSNumber numberWithInteger:anAlignment];
+    objc_setAssociatedObject(self, @"alignment", num, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+ */
+}
+
+- (NSTextAlignment)alignment
+{
+    return ((NSCell *)self.headerCell).alignment;
+    /*
+    NSNumber *num = objc_getAssociatedObject(self, @"alignment");
+    
+    if (num)
+    {
+        return (NSTextAlignment)[num integerValue];
+    }
+    
+    return NSLeftTextAlignment;
+    */
 }
 
 @end
@@ -134,19 +163,15 @@
     {
         NSTableColumn *column = [self newColumnWithIdentifier:@"updateTimeDescription"];
         [column.headerCell setStringValue:@"Time"];
-        [column setWidthPercentage:@15];
+        [column setWidthPercentage:@20];
+        [column setAlignment:NSLeftTextAlignment];
     }
     
     {
         NSTableColumn *column = [self newColumnWithIdentifier:@"confirmations"];
         [column.headerCell setStringValue:@"Confirms"];
-        [column setWidthPercentage:@10];
-    }
-
-    {
-        NSTableColumn *column = [self newColumnWithIdentifier:@"tableAmount"];
-        [column.headerCell setStringValue:@"Amount"];
-        [column setWidthPercentage:@20];
+        [column setWidthPercentage:@15];
+        [column setAlignment:NSLeftTextAlignment];
     }
     
     {
@@ -159,8 +184,23 @@
     
     {
         NSTableColumn *column = [self newColumnWithIdentifier:@"txTypeString"];
+        [column.headerCell setStringValue:@"Type"];
+        [column setWidthPercentage:@15];
+        [column setAlignment:NSLeftTextAlignment];
+    }
+    
+    {
+        NSTableColumn *column = [self newColumnWithIdentifier:@"description"];
         [column.headerCell setStringValue:@"Description"];
-        [column setWidthPercentage:@55];
+        [column setWidthPercentage:@30];
+        [column setAlignment:NSLeftTextAlignment];
+    }
+    
+    {
+        NSTableColumn *column = [self newColumnWithIdentifier:@"tableAmount"];
+        [column.headerCell setStringValue:@"Amount"];
+        [column setWidthPercentage:@20];
+        [column setAlignment:NSRightTextAlignment];
     }
     
     //column = [self newColumnWithIdentifier:@"tableConfirmsString"];
@@ -341,13 +381,12 @@
     //cell->_cFlags.vCentered = NSCenterTextAlignment;
     //NSLog(@"cell %@", cell.className);
     
-    /*
-    if (aTableColumn == aTableView.tableColumns.lastObject)
+    //if (aTableColumn == aTableView.tableColumns.lastObject)
     {
         //cell.alignment = NSRightTextAlignment;
-        [cell setThemePath:@"table/cell-right"];
+        //[cell setThemePath:@"table/cell-right"];
+        [cell setAlignment:[aTableColumn alignment]];
     }
-     */
     
     if (rowIndex == 0)
     {

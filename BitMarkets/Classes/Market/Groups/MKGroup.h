@@ -34,7 +34,7 @@
 - (void)write;
 
 - (NSArray *)groupSubpaths;
-- (NSArray *)groupPath;
+- (NSArray *)groupNamePath;
 
 - (void)updateCounts;
 - (NSInteger)countOfLeafChildren;
