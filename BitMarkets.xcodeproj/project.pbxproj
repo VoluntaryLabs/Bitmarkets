@@ -124,6 +124,7 @@
 		AAB2816019220F04005C9D27 /* MKConfirmPaymentMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB2815F19220F04005C9D27 /* MKConfirmPaymentMsg.m */; };
 		AAB28163192242AF005C9D27 /* MKRelease.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB28162192242AF005C9D27 /* MKRelease.m */; };
 		AAB2816619224FA4005C9D27 /* MKEscrow.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB2816519224FA4005C9D27 /* MKEscrow.m */; };
+		AAC6A252197C6F9C0096701F /* MKPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC6A251197C6F9C0096701F /* MKPasswordView.m */; };
 		AAD784F8194F9E53004FE0F6 /* MKPanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD784F7194F9E53004FE0F6 /* MKPanelView.m */; };
 		AAD78505194FBF3E004FE0F6 /* MKNodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD78504194FBF3E004FE0F6 /* MKNodeView.m */; };
 		AAD785081950DAE2004FE0F6 /* MKPanelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD785071950DAE2004FE0F6 /* MKPanelManager.m */; };
@@ -436,6 +437,8 @@
 		AAB28162192242AF005C9D27 /* MKRelease.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKRelease.m; sourceTree = "<group>"; };
 		AAB2816419224FA4005C9D27 /* MKEscrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKEscrow.h; sourceTree = "<group>"; };
 		AAB2816519224FA4005C9D27 /* MKEscrow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKEscrow.m; sourceTree = "<group>"; };
+		AAC6A250197C6F9C0096701F /* MKPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKPasswordView.h; sourceTree = "<group>"; };
+		AAC6A251197C6F9C0096701F /* MKPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKPasswordView.m; sourceTree = "<group>"; };
 		AAD784F6194F9E53004FE0F6 /* MKPanelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKPanelView.h; sourceTree = "<group>"; };
 		AAD784F7194F9E53004FE0F6 /* MKPanelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKPanelView.m; sourceTree = "<group>"; };
 		AAD78503194FBF3E004FE0F6 /* MKNodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKNodeView.h; sourceTree = "<group>"; };
@@ -750,6 +753,8 @@
 		AAA2E6A019006F0A0098C357 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AAC6A250197C6F9C0096701F /* MKPasswordView.h */,
+				AAC6A251197C6F9C0096701F /* MKPasswordView.m */,
 				AA089C13196F156D00411A4F /* BNWalletView.h */,
 				AA089C14196F156D00411A4F /* BNWalletView.m */,
 				AA0A76D219636C8200E044DB /* MKTextFieldCell.h */,
@@ -1309,6 +1314,7 @@
 				AAD7850C195104E7004FE0F6 /* MKBuyComplete.m in Sources */,
 				AAB2816619224FA4005C9D27 /* MKEscrow.m in Sources */,
 				AA0A76D419636C8200E044DB /* MKTextFieldCell.m in Sources */,
+				AAC6A252197C6F9C0096701F /* MKPasswordView.m in Sources */,
 				AA447308194BCD91009A7F0D /* MKStage.m in Sources */,
 				AAB2814819217586005C9D27 /* MKSellLockEscrow.m in Sources */,
 				AAB2813119217586005C9D27 /* MKBuyDeliveryAddress.m in Sources */,

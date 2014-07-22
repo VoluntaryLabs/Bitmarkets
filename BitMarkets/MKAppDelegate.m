@@ -8,6 +8,7 @@
 
 #import "MKAppDelegate.h"
 #import "MKRootNode.h"
+#import "MKPasswordView.h"
 
 @implementation MKAppDelegate
 
@@ -16,6 +17,7 @@
     [super applicationDidFinishLaunching:aNote];
     
     [self setNavTitle:@"launching..."];
+    [self.navWindow setSplashView:[[MKPasswordView alloc] initWithFrame:NSMakeRect(0, 0, 100, 100)]];
     [self performSelector:@selector(setup) withObject:nil afterDelay:0.0];
 }
 

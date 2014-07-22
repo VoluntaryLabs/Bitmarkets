@@ -1,6 +1,25 @@
 {
 	"default": 
 	{
+        "password":
+        {
+            "info":
+            {
+                "fontName" : "Open Sans",
+                "fontSize" : 16,
+                "color" : "#cccccc",
+                "align" : "center",
+            },
+
+            "password":
+            {
+                "fontName" : "Open Sans",
+                "fontSize" : 16,
+                "color" : "#cccccc",
+                "align" : "center",
+            },
+        },
+        
         "wallet":
         {
             "info":
