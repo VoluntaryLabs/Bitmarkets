@@ -29,45 +29,55 @@
     NavInfoNode *about = self;
     
     {
+        NavInfoNode *version = [[NavInfoNode alloc] init];
+        version.nodeTitle = @"Version";
+        version.nodeSubtitle = @"0.8 beta";
+        [about addChild:version];
+        
         NavInfoNode *contributors = [[NavInfoNode alloc] init];
         [about addChild:contributors];
         contributors.nodeTitle = @"Credits";
         contributors.nodeSuggestedWidth = 200;
         contributors.shouldSortChildren = NO;
         
+        NavInfoNode *voluntary = [[NavInfoNode alloc] init];
+        voluntary.nodeTitle = @"Voluntary.net";
+        voluntary.nodeSubtitle = nil;
+        [contributors addChild:voluntary];
+        
         {
             NavInfoNode *contributor = [[NavInfoNode alloc] init];
             contributor.nodeTitle = @"Steve Dekorte";
             contributor.nodeSubtitle = @"Lead & UI Developer";
-            [contributors addChild:contributor];
+            [voluntary addChild:contributor];
         }
         
         {
             NavInfoNode *contributor = [[NavInfoNode alloc] init];
             contributor.nodeTitle = @"Rich Collins";
             contributor.nodeSubtitle = @"Bitcoin Integration";
-            [contributors addChild:contributor];
+            [voluntary addChild:contributor];
         }
         
         {
             NavInfoNode *contributor = [[NavInfoNode alloc] init];
             contributor.nodeTitle = @"Chris Robinson";
             contributor.nodeSubtitle = @"UI/UX Designer";
-            [contributors addChild:contributor];
+            [voluntary addChild:contributor];
         }
         
         {
             NavInfoNode *contributor = [[NavInfoNode alloc] init];
             contributor.nodeTitle = @"Adam Thorsen";
             contributor.nodeSubtitle = @"Tor, Bitmessage integration";
-            [contributors addChild:contributor];
+            [voluntary addChild:contributor];
         }
         
         {
             NavInfoNode *contributor = [[NavInfoNode alloc] init];
             contributor.nodeTitle = @"Dru Nelson";
             contributor.nodeSubtitle = @"Unix Guru";
-            [contributors addChild:contributor];
+            [voluntary addChild:contributor];
         }
  
         
