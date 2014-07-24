@@ -70,7 +70,7 @@
 
 - (NSString *)tableAmount
 {
-    return [NSString stringWithFormat:@"%@ BTC", self.netValue.satoshiToBtc];
+    return [NSString stringWithFormat:@"%@ BTC", [self.netValue.satoshiToBtc asFormattedStringWithFractionalDigits:4]];
 }
 
 - (NSString *)tableHashString

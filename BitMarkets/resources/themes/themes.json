@@ -339,7 +339,22 @@
             {
                 "unselectedBgColor": [0.03],
                 "selectedBgColor":   [0.0],
-            }
+            },
+         
+            {
+                "unselectedBgColor": [0.07],
+                "selectedBgColor":   [0.03],
+            },
+
+            {
+                "unselectedBgColor": [0.03],
+                "selectedBgColor":   [0.0],
+            },
+
+            {
+                "unselectedBgColor": [0.07],
+                "selectedBgColor":   [0.03],
+            },
 		],
         
 

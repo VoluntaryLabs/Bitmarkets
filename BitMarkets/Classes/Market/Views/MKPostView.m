@@ -9,7 +9,7 @@
 #import "MKPostView.h"
 #import <NavKit/NavKit.h>
 #import <BitmessageKit/BitmessageKit.h>
-//#import <BitmessageKit/NSData-Base64.h>
+#import <FoundationCategoriesKit/FoundationCategoriesKit.h>
 #import "MKRootNode.h"
 
 
@@ -152,6 +152,7 @@
     
     [_price setX:leftMargin];
     [_price placeYBelow:_title margin:0];
+    //[_price setWidth:self.width*.7];
 
     [_postOrBuyButton setWidth:84];
     [_postOrBuyButton setX:self.width - _postOrBuyButton.width - leftMargin];
@@ -226,7 +227,7 @@
     [_title textDidChange];
     [_title useUneditedTextStringIfNeeded];
     
-    NSString *priceString = [NSString stringWithFormat:@"%@", self.mkPost.priceInBtc].strip;
+    NSString *priceString = [self.mkPost.priceInBtc asFormattedStringWithFractionalDigits:4];
     _price.string = priceString;
     if ([_price.string isEqualToString:@"0"])
     {
@@ -241,7 +242,7 @@
     [_description textDidChange];
     [_description useUneditedTextStringIfNeeded];
 
-    _region.string      = self.mkPost.regionPath.lastObject ? self.mkPost.regionPath.lastObject : @"MISSING REGION ERROR";
+    _region.string = self.mkPost.regionPath.lastObject ? self.mkPost.regionPath.lastObject : @"MISSING REGION ERROR";
     NSString *cPath = [self.mkPost.categoryPath componentsJoinedByString:@" / "];
     _category.string    = cPath;
     _fromAddress.string = self.mkPost.sellerAddress;
@@ -251,10 +252,16 @@
     [self updatePriceSuffix];
 }
 
+- (NSNumber *)priceInBtc
+{
+    return [self.priceFormatter numberFromString:_price.stringSansUneditedString];
+}
+
 - (void)syncToNode
 {
     self.mkPost.title = _title.stringSansUneditedString;
-    self.mkPost.priceInBtc = [NSNumber numberWithDouble:_price.stringSansUneditedString.doubleValue];
+
+    self.mkPost.priceInBtc = self.priceInBtc;
     self.mkPost.description = _description.stringSansUneditedString;
     self.mkPost.isDirty = YES;
     
@@ -404,9 +411,13 @@
         
         if(nil != usdRate && nil != eurRate)
         {
-            float usd = btc * [usdRate floatValue];
-            float eur = btc * [eurRate floatValue];
-            [self.price setSuffix:[NSString stringWithFormat:@"BTC %1.1fUSD %1.1fEUR", usd, eur]];
+            NSNumber *usd = @(btc * [usdRate floatValue]);
+            NSNumber *eur = @(btc * [eurRate floatValue]);
+            
+            NSString *usdString = [usd asFormattedStringWithFractionalDigits:1];
+            NSString *eurString = [eur asFormattedStringWithFractionalDigits:1];
+            
+            [self.price setSuffix:[NSString stringWithFormat:@"BTC    %@USD    %@EUR", usdString, eurString]];
             //[self.price setSuffix:[NSString stringWithFormat:@"BTC    %1.2f USD    %1.2f EUR", usd, eur]];
         }
         else
@@ -438,8 +449,12 @@
 - (NSNumberFormatter *)priceFormatter
 {
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    //[formatter setLocalizesFormat:NO];
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
     [formatter setPartialStringValidationEnabled:YES];
+    [formatter setMinimum:0];
+    [formatter setMaximumFractionDigits:6];
+    [formatter setMaximumIntegerDigits:3];
     return formatter;
 }
 

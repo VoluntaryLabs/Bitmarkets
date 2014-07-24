@@ -140,7 +140,7 @@
 {
     if (self.canBuy)
     {
-        return [NSString stringWithFormat:@"%@BTC", self.priceInBtc];
+        return [NSString stringWithFormat:@"%@BTC", [self.priceInBtc asFormattedStringWithFractionalDigits:4]];
     }
     
     if (self.postMsg)

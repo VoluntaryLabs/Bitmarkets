@@ -82,7 +82,7 @@
         return self.error;
     }
     
-    return [NSString stringWithFormat:@"%@BTC", self.mkPost.priceInBtc];
+    return [NSString stringWithFormat:@"%@BTC", [self.mkPost.priceInBtc asFormattedStringWithFractionalDigits:4]];
 }
 
 - (NSString *)nodeNote

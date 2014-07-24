@@ -74,7 +74,8 @@
     {
         if (!self.hasAmountNeeded)
         {
-            return [NSString stringWithFormat:@"Insufficent funds for security deposit to accept bid, need to deposit %@BTC", self.amountNeeded.satoshiToBtc];
+            return [NSString stringWithFormat:@"Insufficent funds for security deposit to accept bid, need to deposit %@BTC",
+                    [self.amountNeeded.satoshiToBtc asFormattedStringWithFractionalDigits:4]];
         }
         
         return @"Choose bid.";
