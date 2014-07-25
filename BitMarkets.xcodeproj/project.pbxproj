@@ -27,6 +27,8 @@
 		AA2B1A211923682500D712D8 /* MKBuyPostRefundMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2B1A201923682500D712D8 /* MKBuyPostRefundMsg.m */; };
 		AA2B1A2E1923683500D712D8 /* MKBuyPostPaymentMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2B1A2D1923683500D712D8 /* MKBuyPostPaymentMsg.m */; };
 		AA2B1A3119236CB600D712D8 /* MKSellRejectRefundRequestMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2B1A3019236CB600D712D8 /* MKSellRejectRefundRequestMsg.m */; };
+		AA38C16B198307DA003CDA68 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA38C16A198307DA003CDA68 /* Sparkle.framework */; };
+		AA38C17619830853003CDA68 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AA38C16A198307DA003CDA68 /* Sparkle.framework */; };
 		AA4472EF1947C487009A7F0D /* MKStepsView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4472EE1947C487009A7F0D /* MKStepsView.m */; };
 		AA4472FC1947CF36009A7F0D /* MKCancelMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4472FB1947CF36009A7F0D /* MKCancelMsg.m */; };
 		AA4472FF1947D064009A7F0D /* MKCancelConfirmed.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4472FE1947D064009A7F0D /* MKCancelConfirmed.m */; };
@@ -234,6 +236,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				AA38C17619830853003CDA68 /* Sparkle.framework in CopyFiles */,
 				AA9F2B92190E0DCE008444F6 /* BitnashKit.framework in CopyFiles */,
 				AA9F2B93190E0DCE008444F6 /* FoundationCategoriesKit.framework in CopyFiles */,
 				AA9F2B94190E0DCE008444F6 /* NavNodeKit.framework in CopyFiles */,
@@ -284,6 +287,7 @@
 		AA2B1A2D1923683500D712D8 /* MKBuyPostPaymentMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKBuyPostPaymentMsg.m; sourceTree = "<group>"; };
 		AA2B1A2F19236CB600D712D8 /* MKSellRejectRefundRequestMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKSellRejectRefundRequestMsg.h; sourceTree = "<group>"; };
 		AA2B1A3019236CB600D712D8 /* MKSellRejectRefundRequestMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKSellRejectRefundRequestMsg.m; sourceTree = "<group>"; };
+		AA38C16A198307DA003CDA68 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Vendor/Sparkle/Sparkle.framework; sourceTree = "<group>"; };
 		AA4472ED1947C487009A7F0D /* MKStepsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKStepsView.h; sourceTree = "<group>"; };
 		AA4472EE1947C487009A7F0D /* MKStepsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKStepsView.m; sourceTree = "<group>"; };
 		AA4472FA1947CF36009A7F0D /* MKCancelMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKCancelMsg.h; sourceTree = "<group>"; };
@@ -469,6 +473,7 @@
 				AA5DFE24190DF0CF00383283 /* BitmessageKit.framework in Frameworks */,
 				AA5DFE26190DF0CF00383283 /* NavKit.framework in Frameworks */,
 				AA5DFE23190DF0CF00383283 /* NavNodeKit.framework in Frameworks */,
+				AA38C16B198307DA003CDA68 /* Sparkle.framework in Frameworks */,
 				AA5DFE25190DF0CF00383283 /* FoundationCategoriesKit.framework in Frameworks */,
 				AA5DFE22190DF0CF00383283 /* BitnashKit.framework in Frameworks */,
 				AA0E585118FDC0880095DEBD /* Cocoa.framework in Frameworks */,
@@ -518,6 +523,7 @@
 		AA0E584F18FDC0880095DEBD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AA38C16A198307DA003CDA68 /* Sparkle.framework */,
 				AA5DFE1D190DF0CF00383283 /* BitnashKit.framework */,
 				AA5DFE1E190DF0CF00383283 /* NavNodeKit.framework */,
 				AA5DFE1F190DF0CF00383283 /* BitmessageKit.framework */,
@@ -1455,6 +1461,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"./**",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/BitMarkets-eenrgxhlyrwgqccvbetldvfypzkj/Build/Products/Debug",
+					"$(PROJECT_DIR)/Vendor/Sparkle",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BitMarkets/BitMarkets-Prefix.pch";
@@ -1472,6 +1479,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"./**",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/BitMarkets-eenrgxhlyrwgqccvbetldvfypzkj/Build/Products/Debug",
+					"$(PROJECT_DIR)/Vendor/Sparkle",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BitMarkets/BitMarkets-Prefix.pch";
