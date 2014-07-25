@@ -32,9 +32,9 @@
 	<string>Copyright © 2014 voluntary.net. All rights reserved.</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
-	<key>SUFeedURL</key>
-	<string>http://voluntary.net/</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>SUFeedURL</key>
+	<string>http://voluntary.net/bitmarkets/sparkle/feed.rss</string>
 </dict>
 </plist>
