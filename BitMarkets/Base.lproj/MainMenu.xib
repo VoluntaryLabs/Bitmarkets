@@ -29,9 +29,6 @@
                             <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW"/>
                             <menuItem title="Check For Updates..." id="b7U-9I-saw">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <action selector="checkForUpdates:" target="jVG-bP-ymZ" id="HwX-Jr-WVZ"/>
-                                </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="wFC-TO-SCJ"/>
                             <menuItem title="Services" id="NMo-om-nkz">
@@ -676,6 +673,5 @@
                 <font key="font" metaFont="system"/>
             </buttonCell>
         </button>
-        <customObject id="jVG-bP-ymZ" customClass="SUUpdater"/>
     </objects>
 </document>

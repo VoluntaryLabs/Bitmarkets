@@ -21,6 +21,7 @@
     self = [super init];
     self.date = [NSDate date];
     
+    self.nodeMinWidth = 800;
     self.postUuid = [[NSUUID UUID] UUIDString];
     
     self.title = @"";

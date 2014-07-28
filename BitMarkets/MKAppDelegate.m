@@ -29,6 +29,8 @@
 
 - (void)showOpeningAlert
 {
+    return;
+    
     NSAlert *msgBox = [[NSAlert alloc] init];
     [msgBox setMessageText: @"This beta uses the Bitcoin testnet.\nDo not use this for real sales.\n\nFree testnet bitcoins are available at:\n\n     http://tpfaucet.appspot.com/"];
     [msgBox addButtonWithTitle: @"OK"];
