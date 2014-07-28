@@ -20,6 +20,12 @@
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
+	<key>TorPort</key>
+	<string>9051</string>
+	<key>BitmessagePort</key>
+	<integer>8455</integer>
+	<key>BitmessageAPIPort</key>
+	<integer>8453</integer>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
