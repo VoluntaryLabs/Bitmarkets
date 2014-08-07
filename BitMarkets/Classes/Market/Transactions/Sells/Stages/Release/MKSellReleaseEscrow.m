@@ -172,9 +172,23 @@
     [self updateActions];
 }
 
-
-
-// actions
+- (void)verifyBuyPaymentMsg
+{
+    BNTx *escrowTx = self.sell.lockEscrow.lockEscrowMsgToConfirm.tx;
+    escrowTx.wallet = self.runningWallet;
+    [escrowTx fetch]; //update subsuming tx
+    if (escrowTx.subsumingTx)
+    {
+        escrowTx = escrowTx.subsumingTx;
+    }
+    
+    BNTx *tx = self.buyPaymentMsg.tx;
+    assert(tx.inputs.count == 1);
+    
+    BNTxIn *txIn = (BNTxIn *)tx.inputs.firstObject;
+    assert(txIn.previousOutIndex.intValue == 0);
+    assert([txIn.previousTxHash isEqualToString:escrowTx.txHash]);
+}
 
 - (void)acceptPayment // automatic
 {
@@ -193,6 +207,7 @@
     [releaseTx addPayToAddressOutputWithValue:[NSNumber numberWithLongLong:2*escrowTx.firstOutput.value.longLongValue/3]];
     
     [releaseTx subtractFee];
+    [self verifyBuyPaymentMsg];
     [releaseTx sign];
     releaseTx.txType = @"Payment";
     releaseTx.description = self.sell.description;
@@ -223,6 +238,7 @@
     [refundTx addPayToAddressOutputWithValue:[NSNumber numberWithLongLong:escrowTx.firstOutput.value.longLongValue/3]];
     
     [refundTx subtractFee];
+    [self verifyBuyPaymentMsg];
     [refundTx sign];
     refundTx.txType = @"Refund";
     refundTx.description = self.sell.description;

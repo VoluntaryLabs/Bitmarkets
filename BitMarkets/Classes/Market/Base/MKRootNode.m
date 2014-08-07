@@ -122,7 +122,7 @@ static MKRootNode *sharedMKRootNode = nil;
         
         [BNMetaDataDb shared].path = [[[NSFileManager defaultManager] applicationSupportDirectory] stringByAppendingPathComponent:@"wallet/meta-data"];
         
-        _wallet.requiredConfirmations = @0; //this starts the wallet
+        _wallet.requiredConfirmations = @0;
         
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(walletChanged:)
