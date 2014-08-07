@@ -16,9 +16,10 @@ gender: M/F
 brand: string
 model: string
 year:  number [1900-next year?]
+age: number
 condition: string
-grade: string
-purity: number %?
+grade: string, grade metric: string
+purity/quality: number %?
 milage: number
 
 

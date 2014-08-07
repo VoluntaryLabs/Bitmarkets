@@ -557,6 +557,10 @@
     [self.navView selectNodePath:buy.nodePathArray];
 
     [MKRootNode.sharedMKRootNode.markets.buys write];
+    
+    // close the post
+    
+    [self.mkPost close];
 }
 
 @end

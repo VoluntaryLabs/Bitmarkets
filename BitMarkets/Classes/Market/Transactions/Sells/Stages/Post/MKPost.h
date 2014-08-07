@@ -59,4 +59,7 @@
 
 - (NSNumber *)priceInSatoshi;
 
+- (void)close;
+
+
 @end
