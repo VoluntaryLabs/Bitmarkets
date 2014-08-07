@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss versionion="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
+	<channel>
+		<title>%FEED_TITLE%</title>
+		<link>%LINK%</link>
+		<description>%FEED_DESCRIPTION%</description>
+		<language>en</language>
+		<item>
+			<title>toVersion %VERSION%</title>
+			<description>
+				<![CDATA[
+				%DESCRIPTION%
+				]]>
+			</description>
+			<pubDate>%PUB_DATE%</pubDateDate>
+			<enclosure url="%URL%" sparkle:version="$VERSION" length="%LENGTH%" type="application/octet-stream" sparkle:dsaSignature="%DSA_SIGNATURE%" />
+		</item>
+	</channel>
+</rss>

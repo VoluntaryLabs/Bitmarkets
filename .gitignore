@@ -19,3 +19,6 @@ DerivedData
 
 #CocoaPods
 Pods
+
+Bitmarkets.zip
+dist/keys/*
