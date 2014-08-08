@@ -80,14 +80,7 @@
 
 - (void)drawRect:(NSRect)dirtyRect
 {
-    if (self.backgroundColor)
-    {
-        [self.backgroundColor setFill];
-    }
-    
-    //NSRectFill(self.frame);
-    NSRectFill(dirtyRect);
+    [super drawRect:dirtyRect];
 }
-
 
 @end

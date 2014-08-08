@@ -82,10 +82,6 @@
     {
         [self drawArrowLine];
     }
-    else
-    {
-        NSLog(@"no arrow for '%@'", self.node.nodeTitle);
-    }
 }
 
 /*
@@ -141,7 +137,8 @@
         return self.completeFillColor;
     }
 
-    return [NSColor clearColor];
+    //return [NSColor clearColor];
+    return [NSColor whiteColor];
 }
 
 - (void)drawLeftFill
@@ -183,7 +180,8 @@
         return self.completeFillColor;
     }
     
-    return [NSColor clearColor];
+    //return [NSColor clearColor];
+    return [NSColor whiteColor];
 }
 
 - (void)drawRightFill
