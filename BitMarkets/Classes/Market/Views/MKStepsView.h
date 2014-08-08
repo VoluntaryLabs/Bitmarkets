@@ -13,5 +13,6 @@
 
 @property (assign, nonatomic) id delegate;
 
+- (void)syncFromNode;
 
 @end

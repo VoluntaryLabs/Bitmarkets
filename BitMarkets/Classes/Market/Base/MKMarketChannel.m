@@ -24,7 +24,7 @@
 - (id)init
 {
     self = [super init];
-    self.passphrase = @"bitmarkets beta 1";
+    self.passphrase = @"bitmarkets beta 2";
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(channelChanged:)

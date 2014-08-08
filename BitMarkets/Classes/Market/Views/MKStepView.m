@@ -24,9 +24,10 @@
     return self;
 }
 
-- (void)syncToNode
+- (void)syncFromNode
 {
     self.backgroundColor = [self.nodeTitleAttributes objectForKey:NSBackgroundColorAttributeName];
+    [self setNeedsDisplay:YES];
 }
 
 - (NSDictionary *)nodeTitleAttributes
@@ -81,19 +82,25 @@
     {
         [self drawArrowLine];
     }
+    else
+    {
+        NSLog(@"no arrow for '%@'", self.node.nodeTitle);
+    }
 }
 
+/*
 - (BOOL)hasArrow
 {
     return (self.superview.subviews.lastObject != self);
 }
+ */
 
 - (void)drawArrowLine
 {
     [[NSColor colorWithCalibratedWhite:.8 alpha:1.0] set];
     
     CGFloat right = 10.0;
-    CGFloat w = self.width;
+    CGFloat w = self.width - 1;
     CGFloat h = self.height;
     
     NSBezierPath *aPath = [NSBezierPath bezierPath];
@@ -183,7 +190,7 @@
 {
     [self.rightColor set];
     
-    CGFloat r = self.rightArrowOffset;
+    CGFloat r = self.rightArrowOffset + 1;
     CGFloat w = self.width;
     CGFloat h = self.height;
     

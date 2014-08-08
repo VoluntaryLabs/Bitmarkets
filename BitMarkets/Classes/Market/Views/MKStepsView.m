@@ -35,15 +35,30 @@
     [self setupViews];
 }
 
+- (void)syncFromNode
+{
+    for (MKStepView *stepView in self.subviews)
+    {
+        [stepView syncFromNode];
+    }
+}
+
 - (void)setupViews
 {
     [self removeAllSubviews];
+    MKStepView *stepView = nil;
     
     for (NavNode *subnode in self.transaction.visibleStages)
     {
-        MKStepView *stepView = [[MKStepView alloc] initWithFrame:NSMakeRect(0, 0, 100, self.height)];
+        stepView = [[MKStepView alloc] initWithFrame:NSMakeRect(0, 0, 100, self.height)];
         [stepView setNode:subnode];
         [self addSubview:stepView];
+        stepView.hasArrow = YES;
+    }
+    
+    if (stepView)
+    {
+        stepView.hasArrow = NO;
     }
     
     [self layout];
@@ -63,11 +78,16 @@
 }
 
 
-/*
 - (void)drawRect:(NSRect)dirtyRect
 {
-    [super drawRect:dirtyRect];
+    if (self.backgroundColor)
+    {
+        [self.backgroundColor setFill];
+    }
+    
+    //NSRectFill(self.frame);
+    NSRectFill(dirtyRect);
 }
-*/
+
 
 @end

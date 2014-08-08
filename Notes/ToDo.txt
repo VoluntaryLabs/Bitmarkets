@@ -1,4 +1,7 @@
 
+- progress bar not updating on sub-node changes
+
+
 ------ rich ------
 
 - consider security issues

@@ -43,14 +43,7 @@
         
         _title.nextKeyView = _price;
         
-        _postOrBuyButton = [[NavRoundButtonView alloc] initWithFrame:NSMakeRect(0, 0, 120, 32)];
-        //_postOrBuyButton.title = @"Buy Now";
-        _postOrBuyButton.title = @"Post";
-        //[_postOrBuyButton setThemePath:@"sell/button"];
-        [_postOrBuyButton setTitleAttributes:[NavTheme.sharedNavTheme attributesDictForPath:@"sell/button"]];
-        [self addSubview:_postOrBuyButton];
-        [_postOrBuyButton setTarget:self];
-        [_postOrBuyButton setAction:@selector(post)];
+
         
         self.separator = [[NavColoredView alloc] initWithFrame:NSMakeRect(0, 0, self.width, 1)];
         [self.separator setThemePath:@"sell/separator"];
@@ -108,6 +101,15 @@
         
         self.attachmentView = [[MKAttachmentView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
         [self addSubview:self.attachmentView];
+        
+        _postOrBuyButton = [[NavRoundButtonView alloc] initWithFrame:NSMakeRect(0, 0, 120, 32)];
+        //_postOrBuyButton.title = @"Buy Now";
+        _postOrBuyButton.title = @"Post";
+        //[_postOrBuyButton setThemePath:@"sell/button"];
+        [_postOrBuyButton setTitleAttributes:[NavTheme.sharedNavTheme attributesDictForPath:@"sell/button"]];
+        [self addSubview:_postOrBuyButton];
+        [_postOrBuyButton setTarget:self];
+        [_postOrBuyButton setAction:@selector(post)];
         
         // exchange rate calculator
         

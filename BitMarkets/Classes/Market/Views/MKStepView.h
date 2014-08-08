@@ -11,4 +11,6 @@
 
 @interface MKStepView : MKNodeView
 
+@property (assign, nonatomic) BOOL hasArrow;
+
 @end
