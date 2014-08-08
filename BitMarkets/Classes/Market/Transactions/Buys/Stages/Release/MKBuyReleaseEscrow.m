@@ -265,6 +265,17 @@
     return [self.children firstObjectOfClass:MKBuyPostPaymentMsg.class];
 }
 
+- (void)verifyAccept
+{
+    BNTx *buyerTx = self.buyPaymentMsg.payload.asObjectFromJSONObject;
+    
+    BNTx *sellerTx = self.sellAcceptPaymentMsg.payload.asObjectFromJSONObject;
+    
+    assert(sellerTx.inputs.count == 1);
+    assert([sellerTx.inputs containsObject:[buyerTx.inputs firstObject]]);
+    assert([sellerTx.outputs containsObject:[buyerTx.outputs firstObject]]);
+}
+
 - (void)signAndPostAcceptToBlockChain
 {
     BNWallet *wallet = [MKRootNode sharedMKRootNode].wallet;
@@ -278,6 +289,7 @@
     {
         BNTx *releaseTx = self.sellAcceptPaymentMsg.payload.asObjectFromJSONObject;
         releaseTx.wallet = wallet;
+        [self verifyAccept];
         [releaseTx sign];
         [releaseTx broadcast];
         releaseTx.txType = @"Payment";
@@ -288,6 +300,19 @@
         [self addChild:msg];
     }
 }
+
+
+- (void)verifyRefund
+{
+    BNTx *buyerTx = self.buyRequestRefundMsg.asObjectFromJSONObject;
+    
+    BNTx *sellerTx = self.sellAcceptRefundRequestMsg.payload.asObjectFromJSONObject;
+    
+    assert(sellerTx.inputs.count == 1);
+    assert([sellerTx.inputs containsObject:[buyerTx.inputs firstObject]]);
+    assert([sellerTx.outputs containsObject:[buyerTx.outputs firstObject]]);
+}
+
 
 // post refund
 
@@ -310,6 +335,7 @@
     {
         BNTx *refundTx = self.sellAcceptRefundRequestMsg.payload.asObjectFromJSONObject;
         refundTx.wallet = wallet;
+        [self verifyRefund];
         [refundTx sign];
         [refundTx broadcast];
         refundTx.description = self.buy.description;
