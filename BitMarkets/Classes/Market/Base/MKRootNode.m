@@ -105,10 +105,16 @@ static MKRootNode *sharedMKRootNode = nil;
     {
         _wallet  = [[BNWallet alloc] init];
         
+        _wallet.usesTestNet = NO;
         _wallet.refreshInterval = 5.0;
         _wallet.deepRefreshes = YES;
         
-        NSString *dataPath = [[[NSFileManager defaultManager] applicationSupportDirectory] stringByAppendingPathComponent:@"wallet"];
+        NSString *walletName = @"wallet-mainnet";
+        if (_wallet.usesTestNet)
+        {
+            walletName = @"wallet-testnet";
+        }
+        NSString *dataPath = [[[NSFileManager defaultManager] applicationSupportDirectory] stringByAppendingPathComponent:walletName];
         
         NSError *error;
         
@@ -118,11 +124,17 @@ static MKRootNode *sharedMKRootNode = nil;
                                                         error:&error];
         
         [_wallet setPath:dataPath];
-        [_wallet setCheckpointsPath:[[NSBundle bundleForClass:[BNWallet class]] pathForResource:@"checkpoints-testnet" ofType:nil]];
+        
+        NSString *checkpointsName = @"checkpoints-mainnet";
+        if (_wallet.usesTestNet)
+        {
+            checkpointsName = @"checkpoints-testnet";
+        }
+        [_wallet setCheckpointsPath:[[NSBundle bundleForClass:[BNWallet class]] pathForResource:checkpointsName ofType:nil]];
         
         [BNMetaDataDb shared].path = [[[NSFileManager defaultManager] applicationSupportDirectory] stringByAppendingPathComponent:@"wallet/meta-data"];
         
-        _wallet.requiredConfirmations = @0;
+        //_wallet.requiredConfirmations = @0; //This will start server
         
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(walletChanged:)
