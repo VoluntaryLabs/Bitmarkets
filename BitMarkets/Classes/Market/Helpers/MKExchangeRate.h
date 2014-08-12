@@ -15,10 +15,12 @@
 @property (strong, nonatomic) NSMutableDictionary *rates;
 @property (strong, nonatomic) NSTimer *repeatingTimer;
 
-- (NSNumber *)btcPerSymbol:(NSString *) symbol;
+- (NSNumber *)btcPerSymbol:(NSString *)symbol;
 - (void)startRepeatingTimer;
 - (void)update;
 
 + (MKExchangeRate *)shared;
+
+- (NSString *)formattedPriceForSymbol:(NSString *)aSymbol;
 
 @end

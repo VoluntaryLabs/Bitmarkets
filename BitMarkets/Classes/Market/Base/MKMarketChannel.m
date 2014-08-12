@@ -24,7 +24,15 @@
 - (id)init
 {
     self = [super init];
-    self.passphrase = @"bitmarkets beta 2";
+    
+    if (MKRootNode.sharedMKRootNode.wallet.usesTestNet)
+    {
+        self.passphrase = @"Bitmarkets beta testnet";
+    }
+    else
+    {
+        self.passphrase = @"Bitmarkets beta";
+    }
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(channelChanged:)
@@ -67,6 +75,20 @@
 {
     return 250;
 }
+
+/*
+- (void)setPassphrase:(NSString *)passphrase
+{
+    if (_channel)
+    {
+        _channel = nil;
+    }
+    
+    _passphrase = passphrase;
+    
+    //[self channel];
+}
+*/
 
 - (BMChannel *)channel
 {

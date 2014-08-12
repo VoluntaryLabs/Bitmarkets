@@ -1,5 +1,5 @@
 //
-//  MKWalletAddressView.m
+//  BNKeyView.m
 //  BitMarkets
 //
 //  Created by Steve Dekorte on 4/29/14.

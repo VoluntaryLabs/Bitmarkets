@@ -72,11 +72,12 @@
 		AA605AC5192A931F00798BCA /* MKClosePostMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AA605AC4192A931F00798BCA /* MKClosePostMsg.m */; };
 		AA753D9D1910779800D07CB5 /* BNKeyView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA753D9C1910779800D07CB5 /* BNKeyView.m */; };
 		AA803EAF194003F50090E619 /* MKTransactionProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA803EAE194003F50090E619 /* MKTransactionProgressView.m */; };
+		AA8DADF819999E5700C75CFE /* MKExchangeRate.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8DADF719999E5700C75CFE /* MKExchangeRate.m */; };
+		AA8DADFB19999E9000C75CFE /* MKCurrency.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8DADFA19999E9000C75CFE /* MKCurrency.m */; };
 		AA8F0E761939432F00B62302 /* MKConfirmMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8F0E751939432F00B62302 /* MKConfirmMsg.m */; };
 		AA9227081905F94900C3D9D7 /* categories.json in Resources */ = {isa = PBXBuildFile; fileRef = AA9226F61905F94900C3D9D7 /* categories.json */; };
 		AA9227171905F94900C3D9D7 /* regions.json in Resources */ = {isa = PBXBuildFile; fileRef = AA9227071905F94900C3D9D7 /* regions.json */; };
 		AA92271A1905F9C000C3D9D7 /* themes.json in Resources */ = {isa = PBXBuildFile; fileRef = AA9227191905F9C000C3D9D7 /* themes.json */; };
-		AA955E161914775500F6FB0F /* MKExchangeRate.m in Sources */ = {isa = PBXBuildFile; fileRef = AA955E0F1914775500F6FB0F /* MKExchangeRate.m */; };
 		AA955E171914775500F6FB0F /* MKMarketChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = AA955E111914775500F6FB0F /* MKMarketChannel.m */; };
 		AA955E181914775500F6FB0F /* MKMarkets.m in Sources */ = {isa = PBXBuildFile; fileRef = AA955E131914775500F6FB0F /* MKMarkets.m */; };
 		AA955E191914775500F6FB0F /* MKRootNode.m in Sources */ = {isa = PBXBuildFile; fileRef = AA955E151914775500F6FB0F /* MKRootNode.m */; };
@@ -345,14 +346,16 @@
 		AA753D9C1910779800D07CB5 /* BNKeyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNKeyView.m; sourceTree = "<group>"; };
 		AA803EAD194003F50090E619 /* MKTransactionProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKTransactionProgressView.h; sourceTree = "<group>"; };
 		AA803EAE194003F50090E619 /* MKTransactionProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKTransactionProgressView.m; sourceTree = "<group>"; };
+		AA8DADF619999E5700C75CFE /* MKExchangeRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKExchangeRate.h; sourceTree = "<group>"; };
+		AA8DADF719999E5700C75CFE /* MKExchangeRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKExchangeRate.m; sourceTree = "<group>"; };
+		AA8DADF919999E9000C75CFE /* MKCurrency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKCurrency.h; sourceTree = "<group>"; };
+		AA8DADFA19999E9000C75CFE /* MKCurrency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKCurrency.m; sourceTree = "<group>"; };
 		AA8F0E741939432F00B62302 /* MKConfirmMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKConfirmMsg.h; sourceTree = "<group>"; };
 		AA8F0E751939432F00B62302 /* MKConfirmMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKConfirmMsg.m; sourceTree = "<group>"; };
 		AA9226E61905F88200C3D9D7 /* NavNodeKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = NavNodeKit.xcodeproj; path = ../NavNodeKit/NavNodeKit.xcodeproj; sourceTree = "<group>"; };
 		AA9226F61905F94900C3D9D7 /* categories.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = categories.json; sourceTree = "<group>"; };
 		AA9227071905F94900C3D9D7 /* regions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = regions.json; sourceTree = "<group>"; };
 		AA9227191905F9C000C3D9D7 /* themes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = themes.json; sourceTree = "<group>"; };
-		AA955E0E1914775500F6FB0F /* MKExchangeRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKExchangeRate.h; sourceTree = "<group>"; };
-		AA955E0F1914775500F6FB0F /* MKExchangeRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKExchangeRate.m; sourceTree = "<group>"; };
 		AA955E101914775500F6FB0F /* MKMarketChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKMarketChannel.h; sourceTree = "<group>"; };
 		AA955E111914775500F6FB0F /* MKMarketChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKMarketChannel.m; sourceTree = "<group>"; };
 		AA955E121914775500F6FB0F /* MKMarkets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKMarkets.h; sourceTree = "<group>"; };
@@ -677,6 +680,17 @@
 			path = Top;
 			sourceTree = "<group>";
 		};
+		AA8DADF519999E5700C75CFE /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				AA8DADF619999E5700C75CFE /* MKExchangeRate.h */,
+				AA8DADF719999E5700C75CFE /* MKExchangeRate.m */,
+				AA8DADF919999E9000C75CFE /* MKCurrency.h */,
+				AA8DADFA19999E9000C75CFE /* MKCurrency.m */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		AA9226E71905F88200C3D9D7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -716,8 +730,6 @@
 				AA955E111914775500F6FB0F /* MKMarketChannel.m */,
 				AA955E121914775500F6FB0F /* MKMarkets.h */,
 				AA955E131914775500F6FB0F /* MKMarkets.m */,
-				AA955E0E1914775500F6FB0F /* MKExchangeRate.h */,
-				AA955E0F1914775500F6FB0F /* MKExchangeRate.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -733,6 +745,7 @@
 		AAA2E67E19006F0A0098C357 /* Market */ = {
 			isa = PBXGroup;
 			children = (
+				AA8DADF519999E5700C75CFE /* Helpers */,
 				AA955E0D1914775500F6FB0F /* Base */,
 				AAA2E68519006F0A0098C357 /* Groups */,
 				AAB280DD19217586005C9D27 /* Transactions */,
@@ -1273,7 +1286,9 @@
 				AAB2814119217586005C9D27 /* MKRejectBidMsg.m in Sources */,
 				AAB2814A19217586005C9D27 /* MKPostMsg.m in Sources */,
 				AAB2815D19220EF4005C9D27 /* MKConfirmRefundMsg.m in Sources */,
+				AA8DADFB19999E9000C75CFE /* MKCurrency.m in Sources */,
 				AA2B1A3119236CB600D712D8 /* MKSellRejectRefundRequestMsg.m in Sources */,
+				AA8DADF819999E5700C75CFE /* MKExchangeRate.m in Sources */,
 				AA605AC5192A931F00798BCA /* MKClosePostMsg.m in Sources */,
 				AAD785081950DAE2004FE0F6 /* MKPanelManager.m in Sources */,
 				AAB2813519217586005C9D27 /* MKBuyLockEscrow.m in Sources */,
@@ -1333,7 +1348,6 @@
 				AAB2813719217586005C9D27 /* MKDeliveryAddress.m in Sources */,
 				AAA2E6BB19006F0A0098C357 /* MKPostView.m in Sources */,
 				AAB2812D19217586005C9D27 /* MKBuys.m in Sources */,
-				AA955E161914775500F6FB0F /* MKExchangeRate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

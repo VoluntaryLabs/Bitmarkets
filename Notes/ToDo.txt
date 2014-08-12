@@ -1,7 +1,6 @@
 
 - progress bar not updating on sub-node changes
 
-
 ------ rich ------
 
 - consider security issues
@@ -21,9 +20,7 @@
 
 - Status and action buttons don't update synchronously (see "Choose Bid" / "Accept First Bid" button when receiving a bid)
 
-- allow seller to see address of buyer
-
-- wallet UI
+- allow seller to see address of buyer at any time
 
 - status view isn't getting dealloced when transaction view removed
 

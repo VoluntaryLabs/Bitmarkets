@@ -133,7 +133,8 @@ static MKExchangeRate *shared;
     self.responseData = nil;
 }
 
-- (void)dealloc {
+- (void)dealloc
+{
     [self.repeatingTimer invalidate];
     self.repeatingTimer = nil;
     self.connection = nil;
@@ -146,7 +147,7 @@ static MKExchangeRate *shared;
 // The list of acceptable symbols can be found here:
 // https://blockchain.info/api/exchange_rates_api
 
-- (NSNumber *) btcPerSymbol:(NSString *) symbol
+- (NSNumber *)btcPerSymbol:(NSString *) symbol
 {
     NSNumber * rate = nil;
     NSDictionary *currencyData = [self.rates objectForKey:symbol];
@@ -155,6 +156,21 @@ static MKExchangeRate *shared;
         rate = [NSNumber numberWithFloat:[rateString floatValue]];
     }
     return rate;
+}
+
+
+// ---------------------------------------------------
+
+- (NSNumberFormatter *)priceFormatter
+{
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    //[formatter setLocalizesFormat:NO];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    [formatter setPartialStringValidationEnabled:YES];
+    [formatter setMinimum:0];
+    [formatter setMaximumFractionDigits:6];
+    [formatter setMaximumIntegerDigits:3];
+    return formatter;
 }
 
 @end

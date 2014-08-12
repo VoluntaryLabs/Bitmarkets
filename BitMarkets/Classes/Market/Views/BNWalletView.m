@@ -11,6 +11,7 @@
 #import <BitnashKit/BitnashKit.h>
 #import <objc/runtime.h>
 #import "MKTextFieldCell.h"
+#import "MKCurrency.h"
 
 
 @interface NSTableColumn (tags)
@@ -111,10 +112,20 @@
         _tableView = [[NSTableView alloc] initWithFrame:NSMakeRect(0, 0, self.width, 60*2)];
         _tableView.autoresizingMask = NSViewMinYMargin | NSViewMaxXMargin;
         //_tableView.backgroundColor = [NSColor colorWithCalibratedWhite:0.9 alpha:1.0];
+        [_tableView setSelectionHighlightStyle:NSTableViewSelectionHighlightStyleNone];
         [_tableView setDelegate:self];
         [_tableView setDataSource:self];
         [_scrollView setDocumentView:_tableView];
         [_scrollView setHasVerticalScroller:YES];
+        
+        /*
+        [[NSNotificationCenter defaultCenter]
+            addObserver:self
+            selector:@selector(tableSelectionChanged:)
+            name:NSTableViewSelectionDidChangeNotification
+            object:_tableView];
+        */
+
         //[_scrollView setBackgroundColor:[NSColor whiteColor]];
         
         [_tableView setIntercellSpacing:NSMakeSize(0, 0)];
@@ -132,6 +143,78 @@
     
     return self;
 }
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (BOOL)selectionShouldChangeInTableView:(NSTableView *)aTableView
+{
+    return YES;
+}
+
+/*
+- (void)tableViewSelectionDidChange:(NSNotification *)aNote
+{
+    NSInteger rowIndex = [_tableView selectedRow];
+    
+    if (rowIndex > 0)
+    {
+        BNTx *tx = [self.headerAndRows objectAtIndex:rowIndex];
+        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:tx.webUrl]];
+    }
+}
+*/
+
+- (BOOL)tableView:(NSTableView *)aTableView shouldSelectRow:(NSInteger)rowIndex
+{
+    if (rowIndex > 0)
+    {
+        [self openUrlAlert];
+    }
+    return YES;
+}
+
+- (void)inspectRow
+{
+    NSInteger rowIndex = [_tableView selectedRow];
+    if (rowIndex > 0)
+    {
+        
+        BNTx *tx = [self.headerAndRows objectAtIndex:rowIndex];
+        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:tx.webUrl]];
+    }
+}
+- (void)openUrlAlert
+{
+    NSAlert *msgBox = [[NSAlert alloc] init];
+    [msgBox setMessageText: @"Inspect transaction on blockchain.info?\n\nWARNING:\nTHIS MAY EXPOSE YOUR LOCATION"];
+    [msgBox addButtonWithTitle: @"Inspect"];
+    [msgBox addButtonWithTitle: @"Cancel"];
+
+    [msgBox beginSheetModalForWindow:self.window
+                       modalDelegate:self
+                      didEndSelector:@selector(urlAlertDidEnd:returnCode:contextInfo:)
+                         contextInfo:nil];
+}
+
+- (void)urlAlertDidEnd:(NSAlert *)alert returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo
+{
+    if (returnCode == 1000)
+    {
+        [self inspectRow];
+    }
+}
+
+/*
+ - (BOOL)tableView:(NSTableView *)aTableView shouldEditTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
+ {
+ return YES;
+ }
+ */
+
+// ----------------------------------------------
 
 - (void)setNode:(NavNode *)node
 {
@@ -151,6 +234,8 @@
     [header setStringValue:name];
     [header setTextColor:[NSColor blackColor]];
     [column setHeaderCell:header];
+    [column setEditable:NO];
+
     
     [_tableView addTableColumn:column];
     
@@ -292,6 +377,27 @@
     [self layout];
     [_tableView reloadData];
     
+    if (self.wallet.usesTestNet)
+    {
+        _statusView.title = @"Bitcoin Testnet Balance";
+    }
+    else
+    {
+        _statusView.title = @"Balance";
+    }
+    
+    if (self.wallet.isRunning)
+    {
+        MKCurrency *currency = [[MKCurrency alloc] init];
+        currency.btcAmount = self.wallet.balance.satoshiToBtc;
+        NSString *s = currency.formattedPriceSetString;
+        
+        //NSLog(@"old subtitle: '%@'", _statusView.subtitleTextView.string);
+        _statusView.subtitleTextView.string = s;
+        //NSLog(@"new subtitle: '%@'", _statusView.subtitleTextView.string);
+        [ _statusView.subtitleTextView setNeedsDisplay:YES];
+    }
+    
     if (self.transactions.count == 0)
     {
         [_standinText setString:@"no transactions"];
@@ -407,11 +513,6 @@
     [cell setBottomLineWidth:isLastRow ? 0 : .5];
     cell.lineColor = [NSColor colorWithCalibratedWhite:.9 alpha:1.0];
     
-}
-
-- (BOOL)tableView:(NSTableView *)aTableView shouldSelectRow:(NSInteger)rowIndex
-{
-    return NO;
 }
 
 

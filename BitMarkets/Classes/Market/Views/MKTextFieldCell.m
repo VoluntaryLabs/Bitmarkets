@@ -26,6 +26,11 @@
 
 - (NSRect)drawingRectForBounds:(NSRect)rect
 {
+    return [self titleRectForBounds:rect];
+}
+
+- (NSRect)titleRectForBounds:(NSRect)rect
+{
     NSRect rectInset = NSMakeRect(
                                   rect.origin.x + self.marginLeft,
                                   rect.origin.y + _marginBottom,
@@ -63,6 +68,18 @@
         [aPath stroke];
     }
 }
+
+- (void)highlight:(BOOL)flag withFrame:(NSRect)cellFrame inView:(NSView *)controlView
+{
+    /*
+	[super drawRect:dirtyRect];
+    [[NSColor whiteColor] set];
+    NSRectFill(dirtyRect);
+    
+    [self drawInteriorWithFrame:cellFrame inView:controlView];
+    */
+}
+
 
 
 
