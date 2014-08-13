@@ -143,10 +143,13 @@
 
 - (void)setupLockIfNeeded
 {
-    if (self.bidMsg && !self.setupLockMsg)
+    if (self.bidMsg && (!self.setupLockMsg || !self.setupLockMsg.tx))
     {
-        MKSetupLockMsg *setupLockMsg = [[MKSetupLockMsg alloc] init];
-        [self addChild:setupLockMsg];
+        MKSetupLockMsg *setupLockMsg = self.setupLockMsg;
+        if (!self.setupLockMsg) {
+            setupLockMsg = [MKSetupLockMsg new];
+            [self addChild:setupLockMsg];
+        }
         [setupLockMsg configureAndBroadcastTx];
         setupLockMsg.tx.txType = @"Setup Escrow";
         setupLockMsg.tx.description = self.txDescription;
