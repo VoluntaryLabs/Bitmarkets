@@ -161,6 +161,7 @@ static MKExchangeRate *shared;
 
 // ---------------------------------------------------
 
+/*
 - (NSNumberFormatter *)priceFormatter
 {
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
@@ -172,5 +173,6 @@ static MKExchangeRate *shared;
     [formatter setMaximumIntegerDigits:3];
     return formatter;
 }
+*/
 
 @end

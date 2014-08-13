@@ -140,6 +140,14 @@
                 "color" : "#DD0000",
                 "align" : "left",
             },
+            
+            "line-invalid" :
+            {
+                "fontName" : "Open Sans Light Italic",
+                "fontSize" : 14,
+                "color" : "#DD0000",
+                "align" : "left",
+            },
         },
         
         "qr" :

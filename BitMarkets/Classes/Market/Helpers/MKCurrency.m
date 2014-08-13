@@ -9,9 +9,11 @@
 #import "MKCurrency.h"
 #import "MKExchangeRate.h"
 #import <FoundationCategoriesKit/FoundationCategoriesKit.h>
+#import <BitNashKit/BitNashKit.h>
 
 @implementation MKCurrency
 
+/*
 - (NSNumberFormatter *)priceFormatter
 {
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
@@ -23,6 +25,7 @@
     [formatter setMaximumIntegerDigits:3];
     return formatter;
 }
+*/
 
 - (NSString *)formattedPriceForSymbol:(NSString *)aSymbol
 {

@@ -12,7 +12,7 @@
 
 @property (strong, nonatomic) NSNumber *btcAmount;
 
-- (NSNumberFormatter *)priceFormatter;
+//- (NSNumberFormatter *)priceFormatter;
 - (NSString *)formattedPriceSetString;
 
 @end
