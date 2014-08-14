@@ -73,7 +73,7 @@
             }
             
             outputString = [outputString stringByAppendingString:price];
-            outputString = [outputString stringByAppendingString:@" "];
+            //outputString = [outputString stringByAppendingString:@" "];
             outputString = [outputString stringByAppendingString:symbol];
         }
     }

@@ -2,12 +2,14 @@
 {
 	"_type" : "Region",
 	"name" : "Markets",
+    "nodeSuggestedWidth" : 150,
 	"children" :
 	[
 	    {
             "_type" : "Region",
         	"name" : "North America",
-        	"children" : 
+            "nodeSuggestedWidth" : 120,
+        	"children" :
         	[
         		{ "_type" : "Region",  "name" : "US" },
         		{ "_type" : "Region",  "name" : "Canada" },
@@ -17,7 +19,8 @@
 	    {
             "_type" : "Region",
         	"name" : "Europe",
-        	"children" : 
+            "nodeSuggestedWidth" : 120,
+        	"children" :
         	[
         		{ "_type" : "Region",  "name" : "Austria" },
         		{ "_type" : "Region",  "name" : "Belgium" },
@@ -93,7 +96,7 @@
         	[
         		{ "_type" : "Region",  "name" : "Bangladesh" },
         		{ "_type" : "Region",  "name" : "China" },
-        		{ "_type" : "Region",  "name" : "Guam / Micronesia" },
+        		{ "_type" : "Region",  "name" : "Guam" },
         		{ "_type" : "Region",  "name" : "Hong Kong" },
         		{ "_type" : "Region",  "name" : "India" },
         		{ "_type" : "Region",  "name" : "Japan" },
@@ -113,19 +116,22 @@
 	    {
             "_type" : "Region",
         	"name" : "Middle East",
-        	"children" : 
+            "nodeSuggestedWidth" : 120,
+        	"children" :
         	[
         		{ "_type" : "Region",  "name" : "UAE" },
         		{ "_type" : "Region",  "name" : "Iran" },
         		{ "_type" : "Region",  "name" : "Iraq" },
-        		{ "_type" : "Region",  "name" : "Israel & Palestine" },
+                { "_type" : "Region",  "name" : "Israel" },
+                { "_type" : "Region",  "name" : "Palestine" },
         	]
     	},
     	
 	    {
             "_type" : "Region",
         	"name" : "Africa",
-        	"children" : 
+            "nodeSuggestedWidth" : 120,
+        	"children" :
         	[
         		{ "_type" : "Region",  "name" : "Egypt" },
         		{ "_type" : "Region",  "name" : "Ethiopia" },

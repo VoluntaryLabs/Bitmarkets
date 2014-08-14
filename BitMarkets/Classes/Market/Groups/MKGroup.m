@@ -81,6 +81,12 @@
         self.nodeSubtitle = subtitle;
     }
     
+    NSNumber *nodeSuggestedWidth = [dict objectForKey:@"nodeSuggestedWidth"];
+    if (nodeSuggestedWidth)
+    {
+        self.nodeSuggestedWidth = nodeSuggestedWidth.floatValue;
+    }
+    
     NSArray *childrenDicts = [dict objectForKey:@"children"];
     
     if (childrenDicts)
