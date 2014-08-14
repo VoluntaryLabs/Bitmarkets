@@ -25,12 +25,14 @@
         [_statusTextView setEditable:NO];
         [_statusTextView setThemePath:@"steps/status/title"];
         [self addSubview:_statusTextView];
+        _titleSelector = @selector(nodeTitle);
         
         _subtitleTextView = [[NavTextView alloc] initWithFrame:NSMakeRect(0, 0, 100, 30)];
         [_subtitleTextView setSelectable:NO];
         [_statusTextView setEditable:NO];
         [_subtitleTextView setThemePath:@"steps/status/subtitle"];
         [self addSubview:_subtitleTextView];
+        _subtitleSelector = @selector(nodeSubtitle);
         
         _buttonsView = [[NavColoredView alloc] initWithFrame:NSMakeRect(0, 0, 100, 30)];
         //_buttonsView.backgroundColor = [NSColor colorWithCalibratedWhite:.9 alpha:1.0];
@@ -47,7 +49,16 @@
 - (void)syncFromNode
 {
     _statusTextView.string   = _title;
-    _subtitleTextView.string = self.node.nodeSubtitle ? self.node.nodeSubtitle : @"";
+    
+    NSString *subtitle = (NSString *)[self.node performSelector:_subtitleSelector];
+    
+    if (subtitle == nil)
+    {
+        subtitle = @"";
+    }
+    
+    _subtitleTextView.string = subtitle;
+
     
     self.backgroundColor = [self.nodeTitleAttributes objectForKey:NSBackgroundColorAttributeName];
     [self setupButtons];

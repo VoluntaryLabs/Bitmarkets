@@ -16,6 +16,10 @@
 @property (strong, nonatomic) NavTextView *subtitleTextView;
 @property (strong, nonatomic) NSString *title;
 
+@property (assign, nonatomic) SEL titleSelector;
+@property (assign, nonatomic) SEL subtitleSelector;
+
+
 - (NSDictionary *)nodeTitleAttributes;
 - (void)setupButtons;
 

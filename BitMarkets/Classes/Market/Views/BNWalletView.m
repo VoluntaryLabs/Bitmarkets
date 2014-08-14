@@ -62,6 +62,36 @@
 
 @end
 
+@implementation BNWallet (UI)
+
+/*
+- (NSString *)nodeTitle
+{
+    if (self.usesTestNet)
+    {
+        return @"Bitcoin Testnet Balance";
+    }
+    
+    return @"Balance";
+}
+*/
+
+- (NSString *)nodeSubtitleDetailed
+{
+    if (self.isRunning)
+    {
+        MKCurrency *currency = [[MKCurrency alloc] init];
+        currency.btcAmount = self.balance.satoshiToBtc;
+        NSString *s = currency.formattedPriceSetString;
+        return s;
+    }
+    
+    return @"starting...";
+}
+
+
+@end
+
 @implementation BNTx (table)
 
 - (NSString *)tableConfirmsString
@@ -105,6 +135,7 @@
         _statusView.autoresizingMask = NSViewMaxXMargin;
         [self addSubview:_statusView];
         [_statusView setThemePath:@"sell/price"];
+        _statusView.subtitleSelector = @selector(nodeSubtitleDetailed);
         
         _scrollView = [[NSScrollView alloc] initWithFrame:NSMakeRect(0, 0, self.width, 60*2)];
         [self addSubview:_scrollView];
@@ -155,6 +186,8 @@
 }
 
 /*
+ // this doesn't seem to get called
+ 
 - (void)tableViewSelectionDidChange:(NSNotification *)aNote
 {
     NSInteger rowIndex = [_tableView selectedRow];
@@ -173,12 +206,14 @@
     {
         [self openUrlAlert];
     }
+    
     return YES;
 }
 
 - (void)inspectRow
 {
     NSInteger rowIndex = [_tableView selectedRow];
+    
     if (rowIndex > 0)
     {
         
@@ -186,10 +221,11 @@
         [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:tx.webUrl]];
     }
 }
+
 - (void)openUrlAlert
 {
     NSAlert *msgBox = [[NSAlert alloc] init];
-    [msgBox setMessageText: @"Inspect transaction on blockchain.info?\n\nWARNING:\nTHIS MAY EXPOSE YOUR LOCATION"];
+    [msgBox setMessageText: @"Inspect transaction on blockchain.info?\n\nWARNING:\nTHIS MAY ALLOW A PASSIVE OBSERVER TO CONNECT YOUR TRANSACTIONS TO YOUR LOCATION"];
     [msgBox addButtonWithTitle: @"Inspect"];
     [msgBox addButtonWithTitle: @"Cancel"];
 
@@ -205,6 +241,8 @@
     {
         [self inspectRow];
     }
+    
+    [_tableView deselectAll:nil];
 }
 
 /*
@@ -238,7 +276,6 @@
 
     
     [_tableView addTableColumn:column];
-    
     
     return column;
 }
@@ -381,22 +418,6 @@
     {
         _statusView.title = @"Bitcoin Testnet Balance";
     }
-    else
-    {
-        _statusView.title = @"Balance";
-    }
-    
-    if (self.wallet.isRunning)
-    {
-        MKCurrency *currency = [[MKCurrency alloc] init];
-        currency.btcAmount = self.wallet.balance.satoshiToBtc;
-        NSString *s = currency.formattedPriceSetString;
-        
-        //NSLog(@"old subtitle: '%@'", _statusView.subtitleTextView.string);
-        _statusView.subtitleTextView.string = s;
-        //NSLog(@"new subtitle: '%@'", _statusView.subtitleTextView.string);
-        [ _statusView.subtitleTextView setNeedsDisplay:YES];
-    }
     
     if (self.transactions.count == 0)
     {
@@ -465,7 +486,7 @@
     BNTx *tx = obj;
     
     NSString *columnName = aTableColumn.identifier;
-    id result = [tx performSelector:NSSelectorFromString(columnName) withObject:nil];
+    id result = [tx performSelector:NSSelectorFromString(columnName)];
     return result;
 }
 
@@ -476,6 +497,10 @@
 {
     MKTextFieldCell *cell = aCell;
     [cell setSelectable:YES];
+    
+    //BOOL isRowSelected = [aTableView selectedRow] == rowIndex;
+    //[cell setHighlighted:isRowSelected];
+
     /*
      cell.backgroundColor = [NSColor whiteColor];
     cell.textColor = [NSColor colorWithCalibratedWhite:.6 alpha:1.0];
@@ -535,7 +560,5 @@
 {
     [self openPanelForView:self.wallet.withdralNode.nodeView];
 }
-
-
 
 @end

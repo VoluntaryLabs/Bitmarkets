@@ -74,6 +74,13 @@
 {
     self.name = [dict objectForKey:@"name"];
     self.nodeTitle = self.name;
+    
+    NSString *subtitle = [dict objectForKey:@"subtitle"];
+    if (subtitle)
+    {
+        self.nodeSubtitle = subtitle;
+    }
+    
     NSArray *childrenDicts = [dict objectForKey:@"children"];
     
     if (childrenDicts)

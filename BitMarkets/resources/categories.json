@@ -13,6 +13,32 @@
                               ]
                  },
                  
+                 { "_type": "Category", "name" : "Currency", "suggestedWidth" : 300,
+                 "children":
+                 [
+                  { "_type": "Category", "name" : "ARS", "subtitle" : "Argentinian peso"},
+                  { "_type": "Category", "name" : "AUD", "subtitle" : "Australian dollar"},
+                  { "_type": "Category", "name" : "BRL", "subtitle" : "Brazilian real"},
+                  { "_type": "Category", "name" : "CAD", "subtitle" : "Canadian dollar"},
+                  { "_type": "Category", "name" : "CLP", "subtitle" : "Chilean peso"},
+                  { "_type": "Category", "name" : "CNY", "subtitle" : "Chinese yuan renminbi"},
+                  { "_type": "Category", "name" : "CRC", "subtitle" : "Costa Rican colon"},
+                  { "_type": "Category", "name" : "DKK", "subtitle" : "Danish krone"},
+                  { "_type": "Category", "name" : "EGP", "subtitle" : "Egyptian pound"},
+                  { "_type": "Category", "name" : "EUR", "subtitle" : "Euro-Zone euro"},
+                  { "_type": "Category", "name" : "HKD", "subtitle" : "Hong Kong dollar"},
+                  { "_type": "Category", "name" : "INR", "subtitle" : "Indian rupee"},
+                  { "_type": "Category", "name" : "IDR", "subtitle" : "Indonesian rupiah"},
+                  { "_type": "Category", "name" : "ILS", "subtitle" : "Israeli new shekel"},
+                  { "_type": "Category", "name" : "JPY", "subtitle" : "Japanese yen"},
+                  { "_type": "Category", "name" : "KES", "subtitle" : "Kenyan shilling"},
+                  { "_type": "Category", "name" : "KRW", "subtitle" : "S Korean won"},
+                  { "_type": "Category", "name" : "KWD", "subtitle" : "Kuwaiti dinar"},
+                  { "_type": "Category", "name" : "MXN", "subtitle" : "Mexican peso"},
+
+                  ]
+                 },
+                 
                  { "_type": "Category", "name" : "Electronics",
                      "children":
                      [
@@ -79,6 +105,7 @@
                  { "_type": "Category", "name" : "Services",
                     "children":
                     [
+                     { "_type": "Category", "name" : "Escort" },
                      { "_type": "Category", "name" : "Personal" },
                      { "_type": "Category", "name" : "Transportation" },
                      { "_type": "Category", "name" : "Delivery" },
