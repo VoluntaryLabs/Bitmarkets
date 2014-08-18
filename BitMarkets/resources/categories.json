@@ -9,20 +9,21 @@
                                 { "_type": "Category", "name" : "Paper", "subtitle" : "Books, Magazines..." },
                                 { "_type": "Category", "name" : "Plastic", "subtitle" : "DVD, CD, Vinyl" },
                                 { "_type": "Category", "name" : "Video Gaming", "subtitle" : "Games and Gear"  },
-                              { "_type": "Category", "name" : "Instruments", "subtitle" : "Musical Instruments" },
-                              { "_type": "Category", "name" : "Games", "subtitle" : "Cards, Board Games..." },
+                                { "_type": "Category", "name" : "Instruments", "subtitle" : "Musical Instruments" },
+                                { "_type": "Category", "name" : "Games", "subtitle" : "Cards, Board Games..." },
                               ]
                  },
                  
                  { "_type": "Category", "name" : "Currency",
                  "children":
                  [
+                    { "_type": "Category", "name" : "XBT", "subtitle" : "Bitcoin"},
                     { "_type": "Category", "name" : "ARS", "subtitle" : "Argentinian peso"},
                     { "_type": "Category", "name" : "AUD", "subtitle" : "Australian dollar"},
                     { "_type": "Category", "name" : "BRL", "subtitle" : "Brazilian real"},
                     { "_type": "Category", "name" : "CAD", "subtitle" : "Canadian dollar"},
                     { "_type": "Category", "name" : "CLP", "subtitle" : "Chilean peso"},
-                    { "_type": "Category", "name" : "CNY", "subtitle" : "Chinese yuan renminbi"},
+                    { "_type": "Category", "name" : "CNY", "subtitle" : "Chinese renminbi"},
                     { "_type": "Category", "name" : "CRC", "subtitle" : "Costa Rican colon"},
                     { "_type": "Category", "name" : "DKK", "subtitle" : "Danish krone"},
                     { "_type": "Category", "name" : "EGP", "subtitle" : "Egyptian pound"},

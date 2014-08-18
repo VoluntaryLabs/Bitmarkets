@@ -1,5 +1,8 @@
 
-- progress bar not updating on sub-node changes
+--- other ---
+
+- sharable todo - app url
+- menu bar item
 
 ------ rich ------
 
@@ -18,6 +21,8 @@
 
 ------ steve ------
 
+- avoid bitcoin dust via price formatters
+
 - Status and action buttons don't update synchronously (see "Choose Bid" / "Accept First Bid" button when receiving a bid)
 
 - allow seller to see address of buyer at any time
@@ -27,11 +32,7 @@
 if (escrowTx.error.insufficientValue)
 //TODO: prompt user for deposit
 
-- UI doesn't change when you click [Cancel Escrow]
-
-- The "Post" button remains active after posting
-
-- sharable todo - app url
+- UI doesn't change immediately when you click [Cancel Escrow]
 
 - validate post price
 
@@ -46,10 +47,7 @@ if (escrowTx.error.insufficientValue)
 - test all sale paths (pay, refund, cancel on both sides)
 - prevent delete of buy/sell until escrow unlocked 
 
-- delivery status / package tracking
-
-*- fix for category / region paths
-- better category set?
+- [FEATURE] delivery status / package tracking
 
 - add service and version fields to msgs?
 - add any needed auth checks on msgs
@@ -58,9 +56,7 @@ if (escrowTx.error.insufficientValue)
 - timeout for posting? auto-reposting until delete or bid accepted?
 - deposit address isn't changing even though the underlying object changes and calls postParentChainChanged
 
-[later]
-
-- replace NavNode base class with navMirror method on NSObject 
+- [CLEANUP] replace NavNode base class with navMirror method on NSObject 
    - use association slot for mirror cache 
 
 - update UI to new design spec
@@ -99,4 +95,3 @@ if (escrowTx.error.insufficientValue)
 - store front for given bm address
 
 - order book interface
-
