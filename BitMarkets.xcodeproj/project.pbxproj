@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8EBC9B02190DBBF200FE71FA /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 8EBC9B01190DBBF200FE71FA /* fonts */; };
 		8EBC9B08190DBC3000FE71FA /* fonts in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8EBC9B01190DBBF200FE71FA /* fonts */; };
 		AA089C15196F156D00411A4F /* BNWalletView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA089C14196F156D00411A4F /* BNWalletView.m */; };
 		AA09C7DB192BDC2800317130 /* MKAttachmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA09C7DA192BDC2800317130 /* MKAttachmentView.m */; };
@@ -24,6 +23,7 @@
 		AA0E587118FDC0890095DEBD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA0E585018FDC0880095DEBD /* Cocoa.framework */; };
 		AA0E587918FDC0890095DEBD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA0E587718FDC0890095DEBD /* InfoPlist.strings */; };
 		AA0E587B18FDC0890095DEBD /* BitMarketsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0E587A18FDC0890095DEBD /* BitMarketsTests.m */; };
+		AA27EF2A19A6C527000E0339 /* MKMarketChannel in Resources */ = {isa = PBXBuildFile; fileRef = AA27EF2919A6C527000E0339 /* MKMarketChannel */; };
 		AA2B1A211923682500D712D8 /* MKBuyPostRefundMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2B1A201923682500D712D8 /* MKBuyPostRefundMsg.m */; };
 		AA2B1A2E1923683500D712D8 /* MKBuyPostPaymentMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2B1A2D1923683500D712D8 /* MKBuyPostPaymentMsg.m */; };
 		AA2B1A3119236CB600D712D8 /* MKSellRejectRefundRequestMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2B1A3019236CB600D712D8 /* MKSellRejectRefundRequestMsg.m */; };
@@ -268,6 +268,7 @@
 		AA0E587618FDC0890095DEBD /* BitMarketsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BitMarketsTests-Info.plist"; sourceTree = "<group>"; };
 		AA0E587818FDC0890095DEBD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AA0E587A18FDC0890095DEBD /* BitMarketsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BitMarketsTests.m; sourceTree = "<group>"; };
+		AA27EF2919A6C527000E0339 /* MKMarketChannel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MKMarketChannel; sourceTree = "<group>"; };
 		AA2B1A1F1923682500D712D8 /* MKBuyPostRefundMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKBuyPostRefundMsg.h; sourceTree = "<group>"; };
 		AA2B1A201923682500D712D8 /* MKBuyPostRefundMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKBuyPostRefundMsg.m; sourceTree = "<group>"; };
 		AA2B1A2C1923683500D712D8 /* MKBuyPostPaymentMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKBuyPostPaymentMsg.h; sourceTree = "<group>"; };
@@ -488,12 +489,12 @@
 		AA0E584418FDC0880095DEBD = {
 			isa = PBXGroup;
 			children = (
+				AA0E585618FDC0880095DEBD /* BitMarkets */,
 				AA537A7619A570A400C438A8 /* NavNodeKit.xcodeproj */,
 				AA537A6D19A5709F00C438A8 /* NavKit.xcodeproj */,
 				AA537A6419A5709B00C438A8 /* FoundationCategoriesKit.xcodeproj */,
 				AA537A5819A5709600C438A8 /* BitnashKit.xcodeproj */,
 				AA537A4C19A5704500C438A8 /* BitmessageKit.xcodeproj */,
-				AA0E585618FDC0880095DEBD /* BitMarkets */,
 				AA5DFE1B190DF06300383283 /* NavKit.framework */,
 				AA5DFE19190DF05C00383283 /* FoundationCategoriesKit.framework */,
 				AA5DFE17190DF05300383283 /* NavNodeKit.framework */,
@@ -718,6 +719,7 @@
 				AA09C803192D41C600317130 /* MKAboutNode.m */,
 				AA955E101914775500F6FB0F /* MKMarketChannel.h */,
 				AA955E111914775500F6FB0F /* MKMarketChannel.m */,
+				AA27EF2919A6C527000E0339 /* MKMarketChannel */,
 				AA955E121914775500F6FB0F /* MKMarkets.h */,
 				AA955E131914775500F6FB0F /* MKMarkets.m */,
 			);
@@ -1227,6 +1229,7 @@
 				AA4A0E1D1909ADF600AB78D0 /* camera.png in Resources */,
 				AA5DFDA31909C83000383283 /* delete_inactive.png in Resources */,
 				AA5DFDA41909C83000383283 /* forward_active.png in Resources */,
+				AA27EF2A19A6C527000E0339 /* MKMarketChannel in Resources */,
 				AA4A0E201909ADF600AB78D0 /* litecoin.png in Resources */,
 				AA4A0E231909ADF600AB78D0 /* sports.png in Resources */,
 				AA0E586718FDC0880095DEBD /* MainMenu.xib in Resources */,
@@ -1238,7 +1241,6 @@
 				AA5DFDA01909C83000383283 /* compose_active.png in Resources */,
 				AA5DFDA51909C83000383283 /* message_active.png in Resources */,
 				AA4A0E1F1909ADF600AB78D0 /* computing.png in Resources */,
-				8EBC9B02190DBBF200FE71FA /* fonts in Resources */,
 				AA9227171905F94900C3D9D7 /* regions.json in Resources */,
 				AA5DFDA91909C83000383283 /* reply_active.png in Resources */,
 				AA4A0E271909ADF600AB78D0 /* profile_active.png in Resources */,

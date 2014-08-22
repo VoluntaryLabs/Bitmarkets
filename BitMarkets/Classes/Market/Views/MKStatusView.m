@@ -50,7 +50,7 @@
 {
     _statusTextView.string   = _title;
     
-    NSString *subtitle = (NSString *)[self.node performSelector:_subtitleSelector];
+    NSString *subtitle = (NSString *)[self.node idNoWarningPerformSelector:_subtitleSelector];
     
     if (subtitle == nil)
     {

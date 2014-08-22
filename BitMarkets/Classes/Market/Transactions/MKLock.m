@@ -269,10 +269,15 @@
 - (BOOL)isCancelConfirmed
 {
     BOOL lockIsCancelled = self.lockEscrowMsgToConfirm.tx && self.lockEscrowMsgToConfirm.tx.isCancelled;
+    return lockIsCancelled;
+    
+    /*
+    BOOL lockIsCancelled = self.lockEscrowMsgToConfirm.tx && self.lockEscrowMsgToConfirm.tx.isCancelled;
     BOOL cancelConfirmedMsgExists = self.cancelConfirmedMsg != nil;
     BOOL cancelMsgTxIsNil = (self.cancelMsg && (self.cancelMsg.tx == nil));
     
     return lockIsCancelled || cancelConfirmedMsgExists || cancelMsgTxIsNil;
+    */
 }
 
 - (MKCancelConfirmed *)cancelConfirmedMsg

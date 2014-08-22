@@ -297,14 +297,18 @@
     [m setMessage:self.dict.asJsonString];
     [m show];
 
-    NSLog(@"sending from %@ to channel %@", m.fromAddress, m.toAddress);
+    //NSLog(@"sending from %@ to channel %@", m.fromAddress, m.toAddress);
     
     [m send];
     
     self.ackData = m.ackData;
     [self addDate];
+    //NSLog(@"sending from %@ to channel %@ ackData %@", m.fromAddress, m.toAddress, self.ackData);
     
-    return YES;
+    
+    [self addDate];
+    
+    return self.ackData != nil;
 }
 
 - (BOOL)sendToBuyer
@@ -321,7 +325,12 @@
     
     [self addDate];
 
-    return YES;
+    if (!self.ackData)
+    {
+        NSLog(@"ERROR: no ack for msg send");
+    }
+    
+    return self.ackData != nil;
 }
 
 - (BOOL)sendToSeller
@@ -338,7 +347,12 @@
 
     [self addDate];
 
-    return YES;
+    if (!self.ackData)
+    {
+        NSLog(@"ERROR: no ack for msg send");
+    }
+    
+    return self.ackData != nil;
 }
 
 - (BOOL)isInBuy

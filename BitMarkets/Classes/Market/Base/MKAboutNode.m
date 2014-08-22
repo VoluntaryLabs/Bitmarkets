@@ -40,6 +40,12 @@
         contributors.nodeSuggestedWidth = 200;
         contributors.shouldSortChildren = NO;
         
+        NavInfoNode *legal = [[NavInfoNode alloc] init];
+        [about addChild:legal];
+        legal.nodeTitle = @"Legal";
+        legal.nodeSuggestedWidth = 200;
+        legal.shouldSortChildren = NO;
+        
         NavInfoNode *voluntary = [[NavInfoNode alloc] init];
         voluntary.nodeTitle = @"Voluntary.net";
         voluntary.nodeSubtitle = nil;

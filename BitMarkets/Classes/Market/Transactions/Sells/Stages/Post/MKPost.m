@@ -250,11 +250,19 @@
 {
     MKPostMsg *postMsg = [[MKPostMsg alloc] init];
     [postMsg sendPost:self];
-    [self addChild:postMsg];
     
-    [self postParentChanged];
+    if (postMsg.ackData)
+    {
+        [self addChild:postMsg];
+        [self postParentChanged];
+        [self.sell write];
+    }
+    else
+    {
+        NSBeep();
+        NSLog(@"unable to post msg - no ack?");
+    }
     
-    [self.sell write];
     return postMsg;
 }
 

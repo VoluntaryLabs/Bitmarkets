@@ -174,11 +174,13 @@
     
     MKAcceptBidMsg *msg = [[MKAcceptBidMsg alloc] init];
     [msg copyThreadFrom:self.bidMsg];
-    [msg send];
     
-    [self addChild:msg];
-    [self updateActions];
-    [self.sell write];
+    if ([msg send])
+    {
+        [self addChild:msg];
+        [self updateActions];
+        [self.sell write];
+    }
     
 }
 
@@ -186,11 +188,13 @@
 {
     MKRejectBidMsg *msg = [[MKRejectBidMsg alloc] init];
     [msg copyThreadFrom:self.bidMsg];
-    [msg send];
     
-    [self addChild:msg];
-    [self updateActions];
-    [self.sell write];
+    if ([msg send])
+    {
+        [self addChild:msg];
+        [self updateActions];
+        [self.sell write];
+    }
 }
 
 - (BOOL)nodeShouldIndent

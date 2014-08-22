@@ -235,6 +235,7 @@
     }
     
     [self update];
+    [self postParentChainChanged];
 }
 
 - (void)showInsufficientFundsPanel

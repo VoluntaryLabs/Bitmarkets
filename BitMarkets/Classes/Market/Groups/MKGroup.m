@@ -8,6 +8,7 @@
 
 #import "MKGroup.h"
 #import <BitmessageKit/BitmessageKit.h>
+#import <FoundationCategoriesKit/FoundationCategoriesKit.h>
 #import "MKCategory.h"
 #import "MKRootNode.h"
 
@@ -201,10 +202,7 @@
 
     if ([self respondsToSelector:setterSelector])
     {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-        [self performSelector:setterSelector withObject:aValue];
-#pragma clang diagnostic pop
+        [self noWarningPerformSelector:setterSelector withObject:aValue];
     }
     else
     {
@@ -219,10 +217,7 @@
     
     if ([self respondsToSelector:getterSelector])
     {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-        id value = [self performSelector:getterSelector withObject:nil];
-#pragma clang diagnostic pop
+        id value = [self idNoWarningPerformSelector:getterSelector];
         return value;
     }
     else

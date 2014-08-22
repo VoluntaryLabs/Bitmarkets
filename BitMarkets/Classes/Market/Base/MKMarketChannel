@@ -31,7 +31,7 @@
     }
     else
     {
-        self.passphrase = @"Bitmarkets beta 3";
+        self.passphrase = @"Bitmarkets beta 2";
     }
     
     [NSNotificationCenter.defaultCenter addObserver:self

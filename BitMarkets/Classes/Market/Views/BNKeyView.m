@@ -28,7 +28,7 @@
         self.qrCodeTextView = [[NSTextView alloc] initWithFrame:NSMakeRect(0, 0, _qrWidth, 20)];
         [self addSubview:self.qrCodeTextView];
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(syncToNode) name:nil object:self.node];
+        [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(syncToNode) name:nil object:self.node];
     }
     
     return self;
@@ -36,7 +36,7 @@
 
 - (void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [NSNotificationCenter.defaultCenter removeObserver:self];
 }
 
 - (void)syncToNode
@@ -59,9 +59,9 @@
 {
     if (_node != node)
     {
-        [[NSNotificationCenter defaultCenter] removeObserver:self name:nil object:_node];
+        [NSNotificationCenter.defaultCenter removeObserver:self name:nil object:_node];
         _node = node;
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(syncToNode) name:nil object:_node];
+        [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(syncToNode) name:nil object:_node];
         [self syncToNode];
     }
     

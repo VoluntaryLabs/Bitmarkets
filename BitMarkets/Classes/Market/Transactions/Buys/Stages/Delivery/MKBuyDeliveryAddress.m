@@ -30,17 +30,19 @@
         self.addressDict = [NSMutableDictionary dictionary];
     }
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
+    /*
+    [NSNotificationCenter.defaultCenter addObserver:self
                                              selector:@selector(changedDataSlotAttribute:)
                                                  name:@"changedDataSlotAttribute"
                                                object:self];
+    */
     
     return self;
 }
 
 - (void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [NSNotificationCenter.defaultCenter removeObserver:self];
 }
 
 - (void)updatedSlot:aSlot

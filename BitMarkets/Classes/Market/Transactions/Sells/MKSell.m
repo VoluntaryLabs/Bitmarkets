@@ -126,11 +126,11 @@
 
 - (void)setMkPost:(MKPost *)mkPost
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:nil object:self.mkPost];
+    [NSNotificationCenter.defaultCenter removeObserver:self name:nil object:self.mkPost];
     
     [super setMkPost:mkPost];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
+    [NSNotificationCenter.defaultCenter addObserver:self
                                              selector:@selector(changedPost:)
                                                  name:nil
                                                object:self.mkPost];
@@ -138,7 +138,7 @@
 
 - (void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [NSNotificationCenter.defaultCenter removeObserver:self];
 }
 
 - (void)changedPost:(NSNotification *)note

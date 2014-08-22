@@ -119,7 +119,7 @@ static MKExchangeRate *shared;
         else
         {
             self.rates = (NSMutableDictionary *)jsonObject;
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"ExchangeRatesFetched" object: self];
+            [NSNotificationCenter.defaultCenter postNotificationName:@"ExchangeRatesFetched" object: self];
         }
     }
     else {

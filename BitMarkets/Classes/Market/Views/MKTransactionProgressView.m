@@ -49,7 +49,7 @@
         _maskView.backgroundColor = [NSColor colorWithCalibratedWhite:0.5 alpha:1.0];
         _maskView.alphaValue = .05;
         
-        [[NSNotificationCenter defaultCenter] addObserver:self
+        [NSNotificationCenter.defaultCenter addObserver:self
                                                  selector:@selector(walletChanged:)
                                                      name:@"WalletChanged"
                                                    object:nil];

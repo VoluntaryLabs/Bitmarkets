@@ -60,7 +60,7 @@
         [_innerView setShadow:dropShadow];
         
         
-        [[NSNotificationCenter defaultCenter] addObserver:self
+        [NSNotificationCenter.defaultCenter addObserver:self
                                                  selector:@selector(sentNavAction:)
                                                      name:@"SentNavAction"
                                                    object:innerView.node];

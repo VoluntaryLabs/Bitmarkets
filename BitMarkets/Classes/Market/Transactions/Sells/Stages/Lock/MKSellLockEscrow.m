@@ -28,6 +28,21 @@
         return @"Waiting for wallet ...";
     }
     
+    if (self.confirmLockEscrowMsg)
+    {
+        return @"Escrow confirmed.";
+    }
+    
+    if (self.buyLockEscrowMsg)
+    {
+        return @"Buyer escrow received. Awaiting confirmation.";
+    }
+    
+    if (self.sellLockEscrowMsg || self.setupLockMsg)
+    {
+        return @"Awaiting buyer escrow ...";
+    }
+    
     if (self.isCancelling)
     {
         return @"Cancelling escrow ...";
@@ -36,21 +51,6 @@
     if (self.isCancelConfirmed)
     {
         return @"Escrow cancelled.";
-    }
-    
-    if (self.confirmLockEscrowMsg)
-    {
-        return @"Escrow confirmed.";
-    }
-    
-    if (self.buyLockEscrowMsg)
-    {
-        return @"Buyer escrow received.  Awaiting confirmation.";
-    }
-    
-    if (self.sellLockEscrowMsg || self.setupLockMsg)
-    {
-        return @"Awaiting buyer escrow ...";
     }
     
     return nil;

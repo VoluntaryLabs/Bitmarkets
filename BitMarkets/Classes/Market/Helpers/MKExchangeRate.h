@@ -21,6 +21,6 @@
 
 + (MKExchangeRate *)shared;
 
-- (NSString *)formattedPriceForSymbol:(NSString *)aSymbol;
+//- (NSString *)formattedPriceForSymbol:(NSString *)aSymbol;
 
 @end

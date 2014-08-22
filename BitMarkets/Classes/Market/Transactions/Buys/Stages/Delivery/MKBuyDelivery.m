@@ -113,9 +113,12 @@
         MKBuyerAddressMsg *msg = [[MKBuyerAddressMsg alloc] init];
         [msg copyThreadFrom:self.buy.bidMsg];
         [msg setAddressDict:self.address.addressDict];
-        [msg send];
-        [self addChild:msg];
-        [self postParentChainChanged];
+        
+        if ([msg send])
+        {
+            [self addChild:msg];
+            [self postParentChainChanged];
+        }
     }
 }
 

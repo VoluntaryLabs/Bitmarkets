@@ -150,7 +150,7 @@
         [_scrollView setHasVerticalScroller:YES];
         
         /*
-        [[NSNotificationCenter defaultCenter]
+        [NSNotificationCenter.defaultCenter
             addObserver:self
             selector:@selector(tableSelectionChanged:)
             name:NSTableViewSelectionDidChangeNotification
@@ -177,7 +177,7 @@
 
 - (void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [NSNotificationCenter.defaultCenter removeObserver:self];
 }
 
 - (BOOL)selectionShouldChangeInTableView:(NSTableView *)aTableView
@@ -486,7 +486,12 @@
     BNTx *tx = obj;
     
     NSString *columnName = aTableColumn.identifier;
+    
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
     id result = [tx performSelector:NSSelectorFromString(columnName)];
+#pragma clang diagnostic pop
+    
     return result;
 }
 

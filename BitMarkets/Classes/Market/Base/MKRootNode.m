@@ -71,7 +71,7 @@ static MKRootNode *sharedMKRootNode = nil;
     
     [self addChild:[[MKAboutNode alloc] init]];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
+    [NSNotificationCenter.defaultCenter addObserver:self
                                              selector:@selector(willShutdown)
                                                  name:NSApplicationWillTerminateNotification
                                                object:nil];
@@ -136,7 +136,7 @@ static MKRootNode *sharedMKRootNode = nil;
         
         //_wallet.requiredConfirmations = @0; //This will start server
         
-        [[NSNotificationCenter defaultCenter] addObserver:self
+        [NSNotificationCenter.defaultCenter addObserver:self
                                                  selector:@selector(walletChanged:)
                                                      name:nil
                                                    object:_wallet];
@@ -145,7 +145,7 @@ static MKRootNode *sharedMKRootNode = nil;
 
 - (void)walletChanged:(NSNotification *)aNote
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"WalletChanged" object:nil];
+    [NSNotificationCenter.defaultCenter postNotificationName:@"WalletChanged" object:nil];
 }
 
 - (void)willShutdown

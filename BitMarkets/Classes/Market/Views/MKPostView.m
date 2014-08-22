@@ -115,7 +115,7 @@
         
         self.exchangeRate = [MKExchangeRate shared];
         
-        [[NSNotificationCenter defaultCenter] addObserver:self
+        [NSNotificationCenter.defaultCenter addObserver:self
                                                  selector:@selector(updatePriceSuffix)
                                                      name:@"ExchangeRatesFetched"
                                                    object:nil];
@@ -200,7 +200,7 @@
 
 - (void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [NSNotificationCenter.defaultCenter removeObserver:self];
 }
 
 - (void)setFrame:(NSRect)frameRect
