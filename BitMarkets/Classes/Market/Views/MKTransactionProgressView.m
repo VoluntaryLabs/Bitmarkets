@@ -129,30 +129,13 @@
 
     if (!_postView)
     {
-        //_postView = (MKPostView *)self.transaction.mkPost.nodeView;
-        
         _postView = [[MKPostView alloc] initWithFrame:self.frame];
         [_postView setNode:mkPost];
         BOOL isBuy = [self.node.nodeParent isKindOfClass:MKBuys.class];
         [_postView setEditable:!isBuy && !mkPost.postMsg];
         
-        /*
-        [_bottomView  setWidth:self.width];
-        [_bottomView setHeight:1000];
-        
-        [_postView  setWidth:_bottomView.width];
-        [_postView setHeight:_bottomView.height];
-        */
         [_bottomView addSubview:_postView];
     }
-    
-    /*
-    [_bottomView  setWidth:self.width];
-    [_bottomView setHeight:1000];
-    
-    [_postView  setWidth:_bottomView.width];
-    [_postView setHeight:_bottomView.height];
-    */
     
     if (_postView.editable)
     {

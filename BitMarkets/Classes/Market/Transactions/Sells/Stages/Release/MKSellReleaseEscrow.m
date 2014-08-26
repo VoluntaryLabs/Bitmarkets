@@ -172,7 +172,7 @@
     [self updateActions];
 }
 
-- (void)verifyBuyPaymentMsg
+- (void)verifyBuyPaymentMsg // is this correct?
 {
     BNTx *escrowTx = self.sell.lockEscrow.lockEscrowMsgToConfirm.tx;
     escrowTx.wallet = self.runningWallet;
@@ -183,6 +183,24 @@
     }
     
     BNTx *tx = self.buyPaymentMsg.tx;
+    assert(tx.inputs.count == 1);
+    
+    BNTxIn *txIn = (BNTxIn *)tx.inputs.firstObject;
+    assert(txIn.previousOutIndex.intValue == 0);
+    assert([txIn.previousTxHash isEqualToString:escrowTx.txHash]);
+}
+
+- (void)verifRequestRefundMsg // is this correct?
+{
+    BNTx *escrowTx = self.sell.lockEscrow.lockEscrowMsgToConfirm.tx;
+    escrowTx.wallet = self.runningWallet;
+    [escrowTx fetch]; //update subsuming tx
+    if (escrowTx.subsumingTx)
+    {
+        escrowTx = escrowTx.subsumingTx;
+    }
+    
+    BNTx *tx = self.buyRequestRefundMsg.tx;
     assert(tx.inputs.count == 1);
     
     BNTxIn *txIn = (BNTxIn *)tx.inputs.firstObject;
@@ -238,7 +256,7 @@
     [refundTx addPayToAddressOutputWithValue:[NSNumber numberWithLongLong:escrowTx.firstOutput.value.longLongValue/3]];
     
     [refundTx subtractFee];
-    [self verifyBuyPaymentMsg];
+    [self verifRequestRefundMsg];
     [refundTx sign];
     refundTx.txType = @"Refund";
     refundTx.description = self.sell.description;

@@ -4,7 +4,7 @@
 //
 //  Created by Steve Dekorte on 4/15/14.
 //  Copyright (c) 2014 voluntary.net. All rights reserved.
-//<#(id)#>
+//
 
 #import "MKAppDelegate.h"
 #import "MKRootNode.h"

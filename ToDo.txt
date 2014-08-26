@@ -21,6 +21,10 @@
 
 ------ steve ------
 
+- fix bug where after sending address, refund and pay buttons not immediately avaiable
+- add confirm panels on: refund, pay, item posted and send address 
+- disable item posted button until view address button is used
+
 - avoid bitcoin dust via price formatters
 
 - Status and action buttons don't update synchronously (see "Choose Bid" / "Accept First Bid" button when receiving a bid)

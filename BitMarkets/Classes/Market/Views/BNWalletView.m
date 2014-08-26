@@ -167,9 +167,9 @@
         //_tableView.cellClass = NSTextCell.class;
         
         _standinText = [[NavTextView alloc] init];
+        [_standinText setSelectable:NO];
         [self addSubview:_standinText];
         [_standinText setThemePath:@"wallet/info"];
-
     }
     
     return self;
