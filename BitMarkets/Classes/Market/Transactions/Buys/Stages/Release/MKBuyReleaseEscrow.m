@@ -267,9 +267,9 @@
 
 - (void)verifyAccept
 {
-    BNTx *buyerTx = self.buyPaymentMsg.payload.asObjectFromJSONObject;
+    BNTx *buyerTx = self.buyPaymentMsg.tx;
     
-    BNTx *sellerTx = self.sellAcceptPaymentMsg.payload.asObjectFromJSONObject;
+    BNTx *sellerTx = self.sellAcceptPaymentMsg.tx;
     
     assert(sellerTx.inputs.count == 1);
     assert([sellerTx.inputs containsObject:[buyerTx.inputs firstObject]]);
@@ -304,9 +304,9 @@
 
 - (void)verifyRefund
 {
-    BNTx *buyerTx = self.buyRequestRefundMsg.asObjectFromJSONObject;
+    BNTx *buyerTx = self.buyRequestRefundMsg.tx;
     
-    BNTx *sellerTx = self.sellAcceptRefundRequestMsg.payload.asObjectFromJSONObject;
+    BNTx *sellerTx = self.sellAcceptRefundRequestMsg.tx;
     
     assert(sellerTx.inputs.count == 1);
     assert([sellerTx.inputs containsObject:[buyerTx.inputs firstObject]]);

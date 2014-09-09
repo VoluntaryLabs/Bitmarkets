@@ -172,7 +172,17 @@
     [self updateActions];
 }
 
-- (void)verifyBuyPaymentMsg // is this correct?
+- (void)verifyBuyPaymentMsg
+{
+    [self verifyReleaseToMeAtLeast:2*self.sell.mkPost.priceInSatoshi.longLongValue - 20000];
+}
+
+- (void)verifyRequestRefundMsg
+{
+    [self verifyReleaseToMeAtLeast:self.sell.mkPost.priceInSatoshi.longLongValue - 20000];
+}
+
+- (void)verifyReleaseToMeAtLeast:(long long)amountInSatoshi
 {
     BNTx *escrowTx = self.sell.lockEscrow.lockEscrowMsgToConfirm.tx;
     escrowTx.wallet = self.runningWallet;
@@ -188,24 +198,21 @@
     BNTxIn *txIn = (BNTxIn *)tx.inputs.firstObject;
     assert(txIn.previousOutIndex.intValue == 0);
     assert([txIn.previousTxHash isEqualToString:escrowTx.txHash]);
-}
-
-- (void)verifRequestRefundMsg // is this correct?
-{
-    BNTx *escrowTx = self.sell.lockEscrow.lockEscrowMsgToConfirm.tx;
-    escrowTx.wallet = self.runningWallet;
-    [escrowTx fetch]; //update subsuming tx
-    if (escrowTx.subsumingTx)
-    {
-        escrowTx = escrowTx.subsumingTx;
+    
+    long long sentToMe = 0;
+    NSArray *keys = [self.runningWallet keys];
+    for (BNTxOut *txOut in tx.outputs) {
+        if (!txOut.scriptPubKey.isMultisig) {
+            BNPayToAddressScriptPubKey *script = (BNPayToAddressScriptPubKey *)txOut.scriptPubKey;
+            for (BNKey *bnKey in keys) {
+                if ([bnKey.address isEqualToString:script.address]) {
+                    sentToMe += txOut.value.longLongValue;
+                }
+            }
+        }
     }
     
-    BNTx *tx = self.buyRequestRefundMsg.tx;
-    assert(tx.inputs.count == 1);
-    
-    BNTxIn *txIn = (BNTxIn *)tx.inputs.firstObject;
-    assert(txIn.previousOutIndex.intValue == 0);
-    assert([txIn.previousTxHash isEqualToString:escrowTx.txHash]);
+    assert(sentToMe - amountInSatoshi >= 0);
 }
 
 - (void)acceptPayment // automatic
@@ -256,7 +263,7 @@
     [refundTx addPayToAddressOutputWithValue:[NSNumber numberWithLongLong:escrowTx.firstOutput.value.longLongValue/3]];
     
     [refundTx subtractFee];
-    [self verifRequestRefundMsg];
+    [self verifyRequestRefundMsg];
     [refundTx sign];
     refundTx.txType = @"Refund";
     refundTx.description = self.sell.description;
