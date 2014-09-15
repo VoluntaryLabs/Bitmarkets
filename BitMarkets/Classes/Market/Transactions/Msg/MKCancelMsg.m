@@ -31,6 +31,7 @@
     if (self.tx)
     {
         self.payload = self.tx.asJSONObject;
+        [self write];
         [self.tx broadcast];
     }
 }
