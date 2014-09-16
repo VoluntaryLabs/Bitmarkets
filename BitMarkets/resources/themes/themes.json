@@ -191,6 +191,14 @@
                 "color" : "#DD0000",
             },
             
+            
+            "price-invalid" :
+            {
+                "fontName" : "Open Sans Light Italic",
+                "fontSize" : 22,
+                "color" : "#DD0000",
+            },
+            
             "description" :
             {
                 "fontName" : "Open Sans",

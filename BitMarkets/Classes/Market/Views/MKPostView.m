@@ -303,11 +303,21 @@
     return attachments;
 }
 
+- (BOOL)hasPriceError
+{
+    return self.price.string.doubleValue > 0.001; // dust
+}
+
 - (BOOL)readyToPost
 {
     BOOL hasTitle = self.title.isReady;
-    BOOL hasPrice = self.price.string.doubleValue > 0.0;
+    BOOL hasPrice = self.hasPriceError;
     BOOL hasDescription = self.description.isReady;
+    
+    if (!hasPrice)
+    {
+        // color the price text?
+    }
     
     return hasTitle && hasPrice && hasDescription;
 }
@@ -352,6 +362,11 @@
     
     
     [_postOrBuyButton setNeedsDisplay:YES];
+    
+    // price
+
+    [_price setIsValid:self.hasPriceError];
+    
 }
 
 - (MKSell *)sell
@@ -454,7 +469,7 @@
     //[formatter setLocalizesFormat:NO];
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
     [formatter setPartialStringValidationEnabled:YES];
-    [formatter setMinimum:0];
+    [formatter setMinimum:@0.0]; // dust fee 0.0001
     [formatter setMaximumFractionDigits:6];
     [formatter setMaximumIntegerDigits:3];
     return formatter;

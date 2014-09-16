@@ -94,6 +94,12 @@
     return self;
 }
 
+- (void)setPayload:(NSDictionary *)aDict
+{
+    _payload = aDict;
+    [self setIsDirty:YES];
+}
+
 - (BOOL)bmSenderIsBuyer // only works when first received
 {
     return [self.bmMessage.fromAddress isEqualToString:self.buyerAddress];

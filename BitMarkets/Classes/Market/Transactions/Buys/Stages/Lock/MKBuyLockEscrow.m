@@ -44,7 +44,7 @@
     
     if (self.buyLockEscrowMsg)
     {
-        return @"Bid accepted and escrow sent. Awaiting confirmation.";
+        return @"Bid accepted and escrow sent. Awaiting confirmation...";
     }
     
     if (self.sellLockEscrowMsg)
@@ -59,7 +59,7 @@
             return @"Exact change ready for escrow lock. Awaiting seller escrow...";
         }
         
-        return @"Preparing exact change for escrow lock.";
+        return @"Preparing exact change for escrow lock...";
     }
     
     return nil;
