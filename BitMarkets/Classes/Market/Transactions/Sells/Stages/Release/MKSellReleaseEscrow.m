@@ -174,15 +174,17 @@
 
 - (void)verifyBuyPaymentMsg
 {
-    [self verifyReleaseToMeAtLeast:2*self.sell.mkPost.priceInSatoshi.longLongValue - 20000];
+    [self verifyReleaseToMeAtLeast:2*self.sell.mkPost.priceInSatoshi.longLongValue - 20000
+                             forTx:self.buyPaymentMsg.tx];
 }
 
 - (void)verifyRequestRefundMsg
 {
-    [self verifyReleaseToMeAtLeast:self.sell.mkPost.priceInSatoshi.longLongValue - 20000];
+    [self verifyReleaseToMeAtLeast:self.sell.mkPost.priceInSatoshi.longLongValue - 20000
+                             forTx:self.buyRequestRefundMsg.tx];
 }
 
-- (void)verifyReleaseToMeAtLeast:(long long)amountInSatoshi
+- (void)verifyReleaseToMeAtLeast:(long long)amountInSatoshi forTx:(BNTx *)tx
 {
     BNTx *escrowTx = self.sell.lockEscrow.lockEscrowMsgToConfirm.tx;
     escrowTx.wallet = self.runningWallet;
@@ -192,7 +194,6 @@
         escrowTx = escrowTx.subsumingTx;
     }
     
-    BNTx *tx = self.buyPaymentMsg.tx;
     assert(tx.inputs.count == 1);
     
     BNTxIn *txIn = (BNTxIn *)tx.inputs.firstObject;

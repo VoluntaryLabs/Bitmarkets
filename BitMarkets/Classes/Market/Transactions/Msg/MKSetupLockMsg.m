@@ -38,8 +38,9 @@
     [self.tx subtractFee];
     [self.tx sign];
     [self.tx lockOutput:[self.tx firstOutput]];
-    [self.tx broadcast]; //TODO make sure that peers accepted it
     self.payload = self.tx.asJSONObject;
+    [self write];
+    [self.tx broadcast]; //TODO make sure that peers accepted it
 }
 
 @end
