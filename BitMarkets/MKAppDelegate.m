@@ -19,18 +19,20 @@
     [self setNavTitle:@"launching..."];
     [self.navWindow setSplashView:[[MKPasswordView alloc] initWithFrame:NSMakeRect(0, 0, 100, 100)]];
     [self performSelector:@selector(setup) withObject:nil afterDelay:0.0];
-    [self showOpeningAlert];
 }
 
 - (void)setup
 {
     [self setRootNode:[MKRootNode sharedMKRootNode]];
+    
+    if (MKRootNode.sharedMKRootNode.wallet.usesTestNet)
+    {
+        [self showOpeningAlert];
+    }
 }
 
 - (void)showOpeningAlert
 {
-    return;
-    
     NSAlert *msgBox = [[NSAlert alloc] init];
     [msgBox setMessageText: @"This beta uses the Bitcoin testnet.\nDo not use this for real sales.\n\nFree testnet bitcoins are available at:\n\n     http://tpfaucet.appspot.com/"];
     [msgBox addButtonWithTitle: @"OK"];
