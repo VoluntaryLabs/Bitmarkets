@@ -82,6 +82,7 @@
 {
     [self.sells update];
     [self.buys  update];
+    [self.mkChannel fetch];
 }
 
 
