@@ -22,8 +22,8 @@ static MKExchangeRate *shared;
     return shared;
 }
 
-- (void)startRepeatingTimer {
-    
+- (void)startRepeatingTimer
+{
     if(nil != self.repeatingTimer)
     {
         // Cancel a preexisting timer.
@@ -49,7 +49,9 @@ static MKExchangeRate *shared;
     [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
     
     self.connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-    if (!self.connection) {
+    
+    if (!self.connection)
+    {
         self.responseData = nil;
     }
 
@@ -57,13 +59,15 @@ static MKExchangeRate *shared;
 
 - (id) init
 {
-    if ( self = [super init] ) {
+    if (self = [super init])
+    {
         self.responseData = [[NSMutableData alloc] init];
         self.rates = [[NSMutableDictionary alloc] init];
         self.repeatingTimer = nil;
         [self update];
         [self startRepeatingTimer];
     }
+    
     return self;
 }
 
@@ -76,6 +80,7 @@ static MKExchangeRate *shared;
 {
     // Append the new data to receivedData.
     // receivedData is an instance variable declared elsewhere.
+    
     [self.responseData appendData:data];
 }
 
@@ -88,6 +93,7 @@ static MKExchangeRate *shared;
     // connection at a time, so these lines would
     // typically be replaced by code to iterate through
     // whatever data structures you are using.
+    
     self.connection = nil;
     self.responseData = nil;
     
@@ -99,9 +105,8 @@ static MKExchangeRate *shared;
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-
-    
-    if ([self.responseData length] > 0) {
+    if ([self.responseData length] > 0)
+    {
         // NSLog(@"Succeeded! Received %d bytes of data",[self.responseData length]);
         
         NSError *error;
@@ -122,7 +127,8 @@ static MKExchangeRate *shared;
             [NSNotificationCenter.defaultCenter postNotificationName:@"ExchangeRatesFetched" object: self];
         }
     }
-    else {
+    else
+    {
         // NSLog(@"Faild! Blockchain.info probably timed out.");
     }
 
@@ -136,6 +142,7 @@ static MKExchangeRate *shared;
 - (void)dealloc
 {
     [self.repeatingTimer invalidate];
+    
     self.repeatingTimer = nil;
     self.connection = nil;
     self.responseData = nil;
@@ -151,10 +158,13 @@ static MKExchangeRate *shared;
 {
     NSNumber * rate = nil;
     NSDictionary *currencyData = [self.rates objectForKey:symbol];
-    if (nil != currencyData) {
+    
+    if (nil != currencyData)
+    {
         NSString *rateString = [currencyData objectForKey:@"last"];
         rate = [NSNumber numberWithFloat:[rateString floatValue]];
     }
+    
     return rate;
 }
 
