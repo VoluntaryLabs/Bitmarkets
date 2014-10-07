@@ -172,18 +172,6 @@
     [self updateActions];
 }
 
-- (void)verifyBuyPaymentMsg
-{
-    [self verifyReleaseToMeAtLeast:2*self.sell.mkPost.priceInSatoshi.longLongValue - 20000
-                             forTx:self.buyPaymentMsg.tx];
-}
-
-- (void)verifyRequestRefundMsg
-{
-    [self verifyReleaseToMeAtLeast:self.sell.mkPost.priceInSatoshi.longLongValue - 20000
-                             forTx:self.buyRequestRefundMsg.tx];
-}
-
 - (void)verifyReleaseToMeAtLeast:(long long)amountInSatoshi forTx:(BNTx *)tx
 {
     BNTx *escrowTx = self.sell.lockEscrow.lockEscrowMsgToConfirm.tx;
@@ -233,7 +221,8 @@
     [releaseTx addPayToAddressOutputWithValue:[NSNumber numberWithLongLong:2*escrowTx.firstOutput.value.longLongValue/3]];
     
     [releaseTx subtractFee];
-    [self verifyBuyPaymentMsg];
+    [self verifyReleaseToMeAtLeast:2*self.sell.mkPost.priceInSatoshi.longLongValue - 20000
+                             forTx:releaseTx];
     [releaseTx sign];
     releaseTx.txType = @"Payment";
     releaseTx.description = self.sell.description;
@@ -264,7 +253,8 @@
     [refundTx addPayToAddressOutputWithValue:[NSNumber numberWithLongLong:escrowTx.firstOutput.value.longLongValue/3]];
     
     [refundTx subtractFee];
-    [self verifyRequestRefundMsg];
+    [self verifyReleaseToMeAtLeast:self.sell.mkPost.priceInSatoshi.longLongValue - 20000
+                             forTx:refundTx];
     [refundTx sign];
     refundTx.txType = @"Refund";
     refundTx.description = self.sell.description;
