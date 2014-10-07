@@ -338,6 +338,7 @@
         [self verifyRefund];
         [refundTx sign];
         [refundTx broadcast];
+        refundTx.txType = @"Refund";
         refundTx.description = self.buy.description;
         
         MKBuyPostRefundMsg *msg = [[MKBuyPostRefundMsg alloc] init];
