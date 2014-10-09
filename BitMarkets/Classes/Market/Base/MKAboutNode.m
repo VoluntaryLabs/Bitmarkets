@@ -24,6 +24,13 @@
     return self;
 }
 
+- (NSString *)versionString
+{
+    NSDictionary *info = NSBundle.mainBundle.infoDictionary;
+    NSString *versionString = [info objectForKey:@"CFBundleVersion"];
+    return versionString;
+}
+
 - (void)addAbout
 {
     NavInfoNode *about = self;
@@ -31,7 +38,7 @@
     {
         NavInfoNode *version = [[NavInfoNode alloc] init];
         version.nodeTitle = @"Version";
-        version.nodeSubtitle = @"0.8 beta";
+        version.nodeSubtitle = self.versionString;
         [about addChild:version];
         
         NavInfoNode *contributors = [[NavInfoNode alloc] init];

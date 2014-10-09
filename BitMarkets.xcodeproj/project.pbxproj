@@ -23,7 +23,6 @@
 		AA0E587118FDC0890095DEBD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA0E585018FDC0880095DEBD /* Cocoa.framework */; };
 		AA0E587918FDC0890095DEBD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA0E587718FDC0890095DEBD /* InfoPlist.strings */; };
 		AA0E587B18FDC0890095DEBD /* BitMarketsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0E587A18FDC0890095DEBD /* BitMarketsTests.m */; };
-		AA27EF2A19A6C527000E0339 /* MKMarketChannel in Resources */ = {isa = PBXBuildFile; fileRef = AA27EF2919A6C527000E0339 /* MKMarketChannel */; };
 		AA2B1A211923682500D712D8 /* MKBuyPostRefundMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2B1A201923682500D712D8 /* MKBuyPostRefundMsg.m */; };
 		AA2B1A2E1923683500D712D8 /* MKBuyPostPaymentMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2B1A2D1923683500D712D8 /* MKBuyPostPaymentMsg.m */; };
 		AA2B1A3119236CB600D712D8 /* MKSellRejectRefundRequestMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2B1A3019236CB600D712D8 /* MKSellRejectRefundRequestMsg.m */; };
@@ -125,7 +124,6 @@
 		AAE2D04819AD9D4B000DA9A4 /* FoundationCategoriesKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AA537A6A19A5709B00C438A8 /* FoundationCategoriesKit.framework */; };
 		AAE2D04919AD9D5D000DA9A4 /* NavKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA537A7319A5709F00C438A8 /* NavKit.framework */; };
 		AAE2D04A19AD9D63000DA9A4 /* NavKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AA537A7319A5709F00C438A8 /* NavKit.framework */; };
-		AAE2D04B19AD9D6C000DA9A4 /* NavNodeKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AA537A7C19A570A400C438A8 /* NavNodeKit.framework */; };
 		AAE2D04C19AD9D70000DA9A4 /* NavNodeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA537A7C19A570A400C438A8 /* NavNodeKit.framework */; };
 		AAE2D04D19AD9D73000DA9A4 /* NavNodeKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AA537A7C19A570A400C438A8 /* NavNodeKit.framework */; };
 		AAE2D04E19AD9D7F000DA9A4 /* BitnashKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA537A6119A5709600C438A8 /* BitnashKit.framework */; };
@@ -226,7 +224,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
-				AAE2D04B19AD9D6C000DA9A4 /* NavNodeKit.framework in CopyFiles */,
 				8EBC9B08190DBC3000FE71FA /* fonts in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,7 +274,6 @@
 		AA0E587618FDC0890095DEBD /* BitMarketsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BitMarketsTests-Info.plist"; sourceTree = "<group>"; };
 		AA0E587818FDC0890095DEBD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AA0E587A18FDC0890095DEBD /* BitMarketsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BitMarketsTests.m; sourceTree = "<group>"; };
-		AA27EF2919A6C527000E0339 /* MKMarketChannel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MKMarketChannel; sourceTree = "<group>"; };
 		AA2B1A1F1923682500D712D8 /* MKBuyPostRefundMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKBuyPostRefundMsg.h; sourceTree = "<group>"; };
 		AA2B1A201923682500D712D8 /* MKBuyPostRefundMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKBuyPostRefundMsg.m; sourceTree = "<group>"; };
 		AA2B1A2C1923683500D712D8 /* MKBuyPostPaymentMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKBuyPostPaymentMsg.h; sourceTree = "<group>"; };
@@ -727,7 +723,6 @@
 				AA09C803192D41C600317130 /* MKAboutNode.m */,
 				AA955E101914775500F6FB0F /* MKMarketChannel.h */,
 				AA955E111914775500F6FB0F /* MKMarketChannel.m */,
-				AA27EF2919A6C527000E0339 /* MKMarketChannel */,
 				AA955E121914775500F6FB0F /* MKMarkets.h */,
 				AA955E131914775500F6FB0F /* MKMarkets.m */,
 			);
@@ -1237,7 +1232,6 @@
 				AA4A0E1D1909ADF600AB78D0 /* camera.png in Resources */,
 				AA5DFDA31909C83000383283 /* delete_inactive.png in Resources */,
 				AA5DFDA41909C83000383283 /* forward_active.png in Resources */,
-				AA27EF2A19A6C527000E0339 /* MKMarketChannel in Resources */,
 				AA4A0E201909ADF600AB78D0 /* litecoin.png in Resources */,
 				AA4A0E231909ADF600AB78D0 /* sports.png in Resources */,
 				AA0E586718FDC0880095DEBD /* MainMenu.xib in Resources */,
@@ -1472,10 +1466,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"./**",
-					"$(PROJECT_DIR)/Vendor/Sparkle",
-				);
+				FRAMEWORK_SEARCH_PATHS = "./**";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BitMarkets/BitMarkets-Prefix.pch";
 				INFOPLIST_FILE = "BitMarkets/BitMarkets-Info.plist";
@@ -1489,10 +1480,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"./**",
-					"$(PROJECT_DIR)/Vendor/Sparkle",
-				);
+				FRAMEWORK_SEARCH_PATHS = "./**";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BitMarkets/BitMarkets-Prefix.pch";
 				INFOPLIST_FILE = "BitMarkets/BitMarkets-Info.plist";
