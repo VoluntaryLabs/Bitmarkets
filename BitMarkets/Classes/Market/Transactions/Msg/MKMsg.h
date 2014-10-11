@@ -23,6 +23,7 @@
 @property (strong, nonatomic) BMMessage *bmMessage;
 @property (strong, nonatomic) NSString *ackData;
 @property (assign, nonatomic) BOOL updatingStatus;
+@property (assign, nonatomic) BOOL debug;
 
 + (MKMsg *)withBMMessage:(BMMessage *)bmMessage;
 

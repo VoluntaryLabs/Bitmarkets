@@ -121,15 +121,15 @@
 		AAD7850C195104E7004FE0F6 /* MKBuyComplete.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD7850B195104E7004FE0F6 /* MKBuyComplete.m */; };
 		AAD785141951056B004FE0F6 /* MKSellComplete.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD785131951056B004FE0F6 /* MKSellComplete.m */; };
 		AAE2D04719AD9D39000DA9A4 /* FoundationCategoriesKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA537A6A19A5709B00C438A8 /* FoundationCategoriesKit.framework */; };
-		AAE2D04819AD9D4B000DA9A4 /* FoundationCategoriesKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AA537A6A19A5709B00C438A8 /* FoundationCategoriesKit.framework */; };
+		AAE2D04819AD9D4B000DA9A4 /* FoundationCategoriesKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AA537A6A19A5709B00C438A8 /* FoundationCategoriesKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		AAE2D04919AD9D5D000DA9A4 /* NavKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA537A7319A5709F00C438A8 /* NavKit.framework */; };
-		AAE2D04A19AD9D63000DA9A4 /* NavKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AA537A7319A5709F00C438A8 /* NavKit.framework */; };
+		AAE2D04A19AD9D63000DA9A4 /* NavKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AA537A7319A5709F00C438A8 /* NavKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		AAE2D04C19AD9D70000DA9A4 /* NavNodeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA537A7C19A570A400C438A8 /* NavNodeKit.framework */; };
-		AAE2D04D19AD9D73000DA9A4 /* NavNodeKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AA537A7C19A570A400C438A8 /* NavNodeKit.framework */; };
+		AAE2D04D19AD9D73000DA9A4 /* NavNodeKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AA537A7C19A570A400C438A8 /* NavNodeKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		AAE2D04E19AD9D7F000DA9A4 /* BitnashKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA537A6119A5709600C438A8 /* BitnashKit.framework */; };
-		AAE2D04F19AD9D82000DA9A4 /* BitnashKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AA537A6119A5709600C438A8 /* BitnashKit.framework */; };
+		AAE2D04F19AD9D82000DA9A4 /* BitnashKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AA537A6119A5709600C438A8 /* BitnashKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		AAE2D05019AD9D8A000DA9A4 /* BitmessageKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA537A5519A5704600C438A8 /* BitmessageKit.framework */; };
-		AAE2D05119AD9D8E000DA9A4 /* BitmessageKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AA537A5519A5704600C438A8 /* BitmessageKit.framework */; };
+		AAE2D05119AD9D8E000DA9A4 /* BitmessageKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AA537A5519A5704600C438A8 /* BitmessageKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		DC347154196C74A400C5C8B3 /* MKLockMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = DC347153196C74A400C5C8B3 /* MKLockMsg.m */; };
 		DC347157196C74E700C5C8B3 /* MKSetupLockMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = DC347156196C74E700C5C8B3 /* MKSetupLockMsg.m */; };
 		DC34715A196C750500C5C8B3 /* MKSellLockEscrowMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = DC347159196C750500C5C8B3 /* MKSellLockEscrowMsg.m */; };
@@ -1085,7 +1085,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = MK;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = voluntary.net;
 				TargetAttributes = {
 					AA0E586D18FDC0890095DEBD = {

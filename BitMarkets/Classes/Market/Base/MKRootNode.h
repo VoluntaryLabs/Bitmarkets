@@ -12,7 +12,6 @@
 #import <BitmessageKit/BitmessageKit.h>
 
 #import "MKMarkets.h"
-
 #import "MKSells.h"
 #import "MKBuys.h"
 
