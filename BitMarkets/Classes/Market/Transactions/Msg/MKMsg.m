@@ -90,6 +90,7 @@
     [self addDate];
     
     self.nodeViewClass = NavDescriptionView.class;
+    self.debug = NO;
     
     return self;
 }
@@ -301,7 +302,11 @@
     [m setFromAddress:self.sellerAddress];
     [m setSubject:self.subject];
     [m setMessage:self.dict.asJsonString];
-    [m show];
+    
+    if (self.debug)
+    {
+        [m show];
+    }
 
     //NSLog(@"sending from %@ to channel %@", m.fromAddress, m.toAddress);
     
@@ -325,7 +330,11 @@
     [m setSubject:self.subject];
     [m setMessage:self.dict.asJsonString];
     [m send];
-    [m show];
+
+    if (self.debug)
+    {
+        [m show];
+    }
     
     self.ackData = m.ackData;
     
@@ -347,8 +356,12 @@
     [m setSubject:self.subject];
     [m setMessage:self.dict.asJsonString];
     [m send];
-    [m show];
 
+    if (self.debug)
+    {
+        [m show];
+    }
+    
     self.ackData = m.ackData;
 
     [self addDate];

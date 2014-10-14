@@ -190,10 +190,13 @@
     
     long long sentToMe = 0;
     NSArray *keys = [self.runningWallet keys];
+    
     for (BNTxOut *txOut in tx.outputs) {
         if (!txOut.scriptPubKey.isMultisig) {
             BNPayToAddressScriptPubKey *script = (BNPayToAddressScriptPubKey *)txOut.scriptPubKey;
+            NSLog(@"scriptPubKey: %@", script.address);
             for (BNKey *bnKey in keys) {
+                NSLog(@"wallet key: %@", bnKey.address);
                 if ([bnKey.address isEqualToString:script.address]) {
                     sentToMe += txOut.value.longLongValue;
                 }

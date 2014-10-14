@@ -24,7 +24,7 @@
 - (id)init
 {
     self = [super init];
-    
+
     if (MKRootNode.sharedMKRootNode.wallet.usesTestNet)
     {
         self.passphrase = @"Bitmarkets beta testnet";
@@ -33,19 +33,19 @@
     {
         self.passphrase = @"Bitmarkets beta 3";
     }
-    
+
     [NSNotificationCenter.defaultCenter addObserver:self
                                              selector:@selector(channelChanged:)
                                                  name:nil
                                                  //name:@"NavNodeAddedChild"
                                                object:self.channel];
-      
+
     [NSNotificationCenter.defaultCenter addObserver:self
                                              selector:@selector(receivedMessagesChanged:)
                                                  //name:@"NavNodeAddedChild"
                                                  name:nil
                                                object:BMClient.sharedBMClient.messages.received];
-    
+
     self.needsToFetchChannelMessages = YES;
     self.needsToFetchDirectMessages  = YES;
     return self;
