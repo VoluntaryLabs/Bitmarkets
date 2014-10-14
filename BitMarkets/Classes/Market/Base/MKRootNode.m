@@ -109,10 +109,10 @@ static MKRootNode *sharedMKRootNode = nil;
         _wallet.refreshInterval = 5.0;
         _wallet.deepRefreshes = YES;
         
-        NSString *walletName = @"wallet-mainnet";
+        NSString *walletName = @"BitnashKit/mainnet";
         if (_wallet.usesTestNet)
         {
-            walletName = @"wallet-testnet";
+            walletName = @"BitnashKit/testnet";
         }
         NSString *dataPath = [[[NSFileManager defaultManager] applicationSupportDirectory] stringByAppendingPathComponent:walletName];
         
