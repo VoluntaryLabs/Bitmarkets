@@ -99,16 +99,6 @@
     return 250.0;
 }
 
-- (NSString *)verifyActionMessage:(NSString *)aString
-{
-    if ([aString isEqualToString:@"delete"])
-    {
-        return @"Are you sure you want to delete this Sell? If the sale is in progress, you may loose your escrow.";
-    }
-    
-    return nil;
-}
-
 // ------------------
 
 - (void)setDict:(NSDictionary *)dict

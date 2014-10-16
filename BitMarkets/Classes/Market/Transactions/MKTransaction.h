@@ -31,4 +31,7 @@
 - (BOOL)isBuy;
 - (NSString *)description;
 
+
+- (NSString *)deleteWarning;
+
 @end

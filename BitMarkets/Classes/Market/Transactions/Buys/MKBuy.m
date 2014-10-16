@@ -113,16 +113,6 @@
 
 // ----------------
 
-- (NSString *)verifyActionMessage:(NSString *)aString
-{
-    if ([aString isEqualToString:@"delete"])
-    {
-        return @"Are you sure you want to delete this? If the sale is in progress, you may loose your escrow.";
-    }
-    
-    return nil;
-}
-
 - (NSString *)myAddress
 {
     return MKRootNode.sharedMKRootNode.bmClient.identities.firstIdentity.address;

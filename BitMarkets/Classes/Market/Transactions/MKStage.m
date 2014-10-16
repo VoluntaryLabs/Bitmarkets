@@ -39,4 +39,10 @@
     return [self.transaction.stages objectBefore:self];
 }
 
+- (NSString *)deleteWarning
+{
+    
+    return nil;
+}
+
 @end

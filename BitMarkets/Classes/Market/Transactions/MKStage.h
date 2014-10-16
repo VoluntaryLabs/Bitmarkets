@@ -20,4 +20,6 @@
 - (MKStage *)nextStage;
 - (MKStage *)previousStage;
 
+- (NSString *)deleteWarning;
+
 @end

@@ -117,7 +117,14 @@
 
 - (NSArray *)modelActions
 {
-    return [NSArray arrayWithObjects:@"delete", nil];
+    NSMutableArray *actions = [NSMutableArray array];
+    
+    if (!self.deleteWarning)
+    {
+        [actions addObject:@"delete"];
+    }
+    
+    return actions;
 }
 
 // -------------------------
@@ -218,6 +225,38 @@
     {
         return [@"Selling: "  stringByAppendingString:self.mkPost.title];
     }
+}
+
+- (NSString *)deleteWarning
+{
+    for (MKStage *stage in self.stages)
+    {
+        NSString *warning = stage.deleteWarning;
+        
+        if (warning)
+        {
+            return warning;
+        }
+    }
+    
+    return nil;
+}
+
+// --- actions ---
+
+- (NSString *)verifyActionMessage:(NSString *)aString
+{
+    if ([aString isEqualToString:@"delete"]) // no longer needed as delete msg is removed
+    {
+        NSString *warning = self.deleteWarning;
+        
+        if (warning)
+        {
+            return warning;
+        }
+    }
+    
+    return nil;
 }
 
 @end

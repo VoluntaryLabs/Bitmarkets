@@ -1,4 +1,14 @@
 
+
+- on deleting a buy/sell:
+  - make sure to cancel the TX if it is waiting to be completed 
+  - maybe prevent deletion for any uncompleted tx?
+
+- change delete message in case that tx is complete 
+
+- finish info panels
+
+
 --- other ---
 
 - sharable todo - app url
@@ -16,7 +26,7 @@
 - Add support for recovering a wallet from its keys when wallet gets corrupted.
 - Deterministic Hierarchical Wallets
 - More robust peer connection (use DNS and list of ips?)
-- Use ANYONECANPAY
+- Use ANYONECANPAY?
 - Add dates to transactions list
 
 ------ steve ------

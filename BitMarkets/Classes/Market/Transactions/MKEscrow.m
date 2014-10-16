@@ -26,5 +26,14 @@
     return sell;
 }
 
+- (NSString *)deleteWarning
+{
+    if (!self.isComplete)
+    {
+        return @"Escrow is incomplete. Deleting this transaction could result is lost funds. Please cancel escrow before deleting is possible.";
+    }
+    
+    return nil;
+}
 
 @end
