@@ -1,11 +1,4 @@
 
-
-- on deleting a buy/sell:
-  - make sure to cancel the TX if it is waiting to be completed 
-  - maybe prevent deletion for any uncompleted tx?
-
-- change delete message in case that tx is complete 
-
 - finish info panels
 
 
