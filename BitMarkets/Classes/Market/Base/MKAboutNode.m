@@ -7,6 +7,7 @@
 //
 
 #import "MKAboutNode.h"
+#import <BitmessageKit/BitmessageKit.h>
 
 @implementation MKAboutNode
 
@@ -18,6 +19,7 @@
     self.shouldSortChildren = NO;
     self.nodeTitle = @"About";
     self.nodeSuggestedWidth = 150;
+    self.shouldSortChildren = NO;
     
     [self addAbout];
     
@@ -33,22 +35,26 @@
 
 - (void)addAbout
 {
-    NavInfoNode *about = self;
+    NavInfoNode *root = [[NavInfoNode alloc] init];
+    root.nodeTitle = @"Bitmarkets";
+    root.shouldSortChildren = NO;
+    [self addChild:root];
+    [self addChild:BMClient.sharedBMClient.aboutNode];
     
     {
         NavInfoNode *version = [[NavInfoNode alloc] init];
         version.nodeTitle = @"Version";
         version.nodeSubtitle = self.versionString;
-        [about addChild:version];
+        [root addChild:version];
         
         NavInfoNode *contributors = [[NavInfoNode alloc] init];
-        [about addChild:contributors];
+        [root addChild:contributors];
         contributors.nodeTitle = @"Credits";
         contributors.nodeSuggestedWidth = 200;
         contributors.shouldSortChildren = NO;
         
         NavInfoNode *legal = [[NavInfoNode alloc] init];
-        [about addChild:legal];
+        [root addChild:legal];
         legal.nodeTitle = @"Legal";
         legal.nodeSuggestedWidth = 200;
         legal.shouldSortChildren = NO;
@@ -151,9 +157,10 @@
         
     }
     
+    /*
     {
         NavInfoNode *howto = [[NavInfoNode alloc] init];
-        [about addChild:howto];
+        [root addChild:howto];
         howto.nodeTitle = @"How to";
         howto.nodeSuggestedWidth = 200;
         howto.shouldSortChildren = NO;
@@ -170,6 +177,7 @@
             [howto addChild:item];
         }
     }
+    */
 }
 
 @end

@@ -208,7 +208,6 @@
     {
         NSLog(@"no setter %@ found", setterName);
     }
-    
 }
 
 - getPropertyNamed:(NSString *)aName

@@ -10,5 +10,4 @@
 
 @interface MKCategory : MKMsgGroup
 
-
 @end
