@@ -26,14 +26,12 @@
     return sell;
 }
 
-- (NSString *)deleteWarning
+- (BOOL)isCancelConfirmed
 {
-    if (!self.isComplete)
-    {
-        return @"Escrow is incomplete. Deleting this transaction could result is lost funds. Please cancel escrow before deleting is possible.";
-    }
-    
-    return nil;
+    [NSException raise:@"MKEscrow subclasses should override isCancelled method" format:nil];
+    return NO;
 }
+
+
 
 @end

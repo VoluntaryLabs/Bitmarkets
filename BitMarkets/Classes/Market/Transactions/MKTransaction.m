@@ -119,7 +119,7 @@
 {
     NSMutableArray *actions = [NSMutableArray array];
     
-    if (!self.deleteWarning)
+    if (self.canDelete)
     {
         [actions addObject:@"delete"];
     }
@@ -174,34 +174,12 @@
 
 - (BOOL)isActive
 {
-    for (id child in self.children)
-    {
-        if ([child respondsToSelector:@selector(isActive)])
-        {
-            if ([child isActive])
-            {
-                return YES;
-            }
-        }
-    }
-    
-    return NO;
+    return [self.children firstTrueForSelector:@selector(isComplete)] != nil;
 }
 
 - (BOOL)isComplete
 {
-    for (id child in self.children)
-    {
-        if ([child respondsToSelector:@selector(isComplete)])
-        {
-            if (![child isComplete])
-            {
-                return NO;
-            }
-        }
-    }
-    
-    return YES;
+    return [self.children allTrueForSelector:@selector(isComplete)];
 }
 
 - (BOOL)didFail
@@ -227,25 +205,24 @@
     }
 }
 
-- (NSString *)deleteWarning
+- (BOOL)canDelete
 {
     for (MKStage *stage in self.stages)
     {
-        NSString *warning = stage.deleteWarning;
-        
-        if (warning)
+        if (!stage.canDelete)
         {
-            return warning;
+            return NO;
         }
     }
     
-    return nil;
+    return YES;
 }
 
 // --- actions ---
 
 - (NSString *)verifyActionMessage:(NSString *)aString
 {
+    /*
     if ([aString isEqualToString:@"delete"]) // no longer needed as delete msg is removed
     {
         NSString *warning = self.deleteWarning;
@@ -255,6 +232,7 @@
             return warning;
         }
     }
+    */
     
     return nil;
 }

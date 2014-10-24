@@ -27,6 +27,11 @@
         return @"Waiting for wallet ...";
     }
     
+    if (self.isConfirmed)
+    {
+        return @"Escrow confirmed.";
+    }
+    
     if (self.isCancelling)
     {
         return @"Cancelling escrow ...";
@@ -35,11 +40,6 @@
     if (self.isCancelConfirmed)
     {
         return @"Escrow cancelled.";
-    }
-    
-    if (self.isConfirmed)
-    {
-        return @"Escrow confirmed.";
     }
     
     if (self.buyLockEscrowMsg)

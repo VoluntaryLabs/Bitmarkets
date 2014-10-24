@@ -20,5 +20,6 @@
 - (MKSell *)sell;
 - (MKBuy *)buy;
 
+- (BOOL)isCancelConfirmed;
 
 @end

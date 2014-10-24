@@ -39,10 +39,9 @@
     return [self.transaction.stages objectBefore:self];
 }
 
-- (NSString *)deleteWarning
+- (BOOL)canDelete
 {
-    
-    return nil;
+    return YES;
 }
 
 @end

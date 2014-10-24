@@ -33,6 +33,16 @@
         return @"Escrow confirmed.";
     }
     
+    if (self.isCancelConfirmed)
+    {
+        return @"Escrow cancelled.";
+    }
+    
+    if (self.isCancelling)
+    {
+        return @"Cancelling escrow ...";
+    }
+    
     if (self.buyLockEscrowMsg)
     {
         return @"Buyer escrow received. Awaiting confirmation.";
@@ -42,16 +52,7 @@
     {
         return @"Awaiting buyer escrow ...";
     }
-    
-    if (self.isCancelling)
-    {
-        return @"Cancelling escrow ...";
-    }
-    
-    if (self.isCancelConfirmed)
-    {
-        return @"Escrow cancelled.";
-    }
+
     
     return nil;
 }

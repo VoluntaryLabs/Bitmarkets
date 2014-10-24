@@ -85,7 +85,7 @@
 
 - (BOOL)isComplete
 {
-    return self.isConfirmed;
+    return self.isConfirmed; //|| self.isCancelConfirmed;
 }
 
 // messages
@@ -268,17 +268,28 @@
 
 - (BOOL)isCancelConfirmed
 {
-    BOOL lockIsCancelled = self.lockEscrowMsgToConfirm.tx && self.lockEscrowMsgToConfirm.tx.isCancelled;
-    return lockIsCancelled;
+    BOOL lockIsCancelled = NO;
+    if (self.lockEscrowMsgToConfirm.tx)
+    {
+        [self.lockEscrowMsgToConfirm.tx refresh];
+        lockIsCancelled = self.lockEscrowMsgToConfirm.tx.isCancelled;
+    }
+    BOOL cancelConfirmedMsgExists = self.cancelConfirmedMsg != nil;
+    BOOL cancelMsgTxIsNil = (self.cancelMsg && (self.cancelMsg.tx == nil));
     
-    /*
+    return lockIsCancelled || cancelConfirmedMsgExists || cancelMsgTxIsNil;
+}
+
+/*
+- (BOOL)isCancelConfirmed
+{
     BOOL lockIsCancelled = self.lockEscrowMsgToConfirm.tx && self.lockEscrowMsgToConfirm.tx.isCancelled;
     BOOL cancelConfirmedMsgExists = self.cancelConfirmedMsg != nil;
     BOOL cancelMsgTxIsNil = (self.cancelMsg && (self.cancelMsg.tx == nil));
     
     return lockIsCancelled || cancelConfirmedMsgExists || cancelMsgTxIsNil;
-    */
 }
+ */
 
 - (MKCancelConfirmed *)cancelConfirmedMsg
 {
@@ -318,6 +329,21 @@
 - (NSString *)txDescription
 {
     return self.isBuyer ? self.buy.description : self.sell.description;
+}
+
+- (BOOL)canDelete
+{
+    if (self.setupLockMsg)
+    {
+        if (self.isComplete || self.isCancelConfirmed)
+        {
+            return YES;
+        }
+
+        return NO;
+    }
+    
+    return YES;
 }
 
 @end

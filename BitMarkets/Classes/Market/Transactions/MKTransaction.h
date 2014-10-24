@@ -32,6 +32,6 @@
 - (NSString *)description;
 
 
-- (NSString *)deleteWarning;
+- (BOOL)canDelete;
 
 @end
