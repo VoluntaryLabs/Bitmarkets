@@ -1,3 +1,2 @@
-echo "BitmessageKit"; cd BitmessageKit; git pull ; cd ..	
+echo "BitmessageKit"; cd BitmessageKit; git pull origin master; cd ..	
 echo "BitnashKit"; cd BitnashKit; git pull origin master; cd ..	
-echo "NavKit"; cd NavKit; git pull ; cd ..	
