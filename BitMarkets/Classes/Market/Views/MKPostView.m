@@ -49,14 +49,14 @@
         [self.separator setThemePath:@"sell/separator"];
         [self addSubview:self.separator];
         
-        _description = [[NavAdvTextView alloc] initWithFrame:NSMakeRect(0, 0, 500, 100)];
-        _description.uneditedTextString = @"Enter description";
-        [_description setDelegate:self];
+        _postDescription = [[NavAdvTextView alloc] initWithFrame:NSMakeRect(0, 0, 500, 100)];
+        _postDescription.uneditedTextString = @"Enter description";
+        [_postDescription setDelegate:self];
         //self.description.string = @"I've had this TOA amp in the closet for a while waiting to setup in my shop space but I need the space so my loss is your gain. Works fine and is in mostly decent condition with a few dings on the corners. I'm available during the day near 7th and Folsom but I can also meet up in the evening in the Mission.";
-        [self.description setEditedThemePath:@"sell/description"];
-        [self addSubview:_description];
+        [self.postDescription setEditedThemePath:@"sell/description"];
+        [self addSubview:_postDescription];
  
-        _price.nextKeyView = _description;
+        _price.nextKeyView = _postDescription;
 
         // region
         
@@ -129,7 +129,7 @@
 {
     _editable = isEditable;
     
-    [_description setEditable:isEditable];
+    [_postDescription setEditable:isEditable];
     [_title setEditable:isEditable];
     [_price setEditable:isEditable];
     [_attachmentView setEditable:isEditable];
@@ -165,21 +165,21 @@
     //[_separator placeYBelow:_price margin:20];
     [_separator setY:self.height-60*2];
     
-    // add code to adjust _description height to fit text?
+    // add code to adjust _postDescription height to fit text?
     
-    [_description setX:leftMargin];
-    [_description setWidth:self.width - leftMargin*2];
-    //[_description setHeight:100];
-    [_description placeYBelow:_separator margin:30];
+    [_postDescription setX:leftMargin];
+    [_postDescription setWidth:self.width - leftMargin*2];
+    //[_postDescription setHeight:100];
+    [_postDescription placeYBelow:_separator margin:30];
 
-    //NSLog(@"_description.height = %i", (int)_description.height);
+    //NSLog(@"_postDescription.height = %i", (int)_postDescription.height);
     
     CGFloat descriptionMargin = 50;
     CGFloat iconMargin = 5;
     
     [_regionIcon setX:leftMargin];
-    [_regionIcon placeYBelow:_description margin:descriptionMargin];
-    [_region placeYBelow:_description margin:descriptionMargin];
+    [_regionIcon placeYBelow:_postDescription margin:descriptionMargin];
+    [_region placeYBelow:_postDescription margin:descriptionMargin];
     [_region placeXRightOf:_regionIcon margin:iconMargin];
     
     [_categoryIcon setX:leftMargin];
@@ -240,9 +240,9 @@
     [_price textDidChange];
     [_price useUneditedTextStringIfNeeded];
     
-    self.description.string = self.mkPost.description;
-    [_description textDidChange];
-    [_description useUneditedTextStringIfNeeded];
+    self.postDescription.string = self.mkPost.postDescription;
+    [self.postDescription textDidChange];
+    [self.postDescription useUneditedTextStringIfNeeded];
 
     _region.string = self.mkPost.regionPath.lastObject ? self.mkPost.regionPath.lastObject : @"MISSING REGION ERROR";
     NSString *cPath = [self.mkPost.categoryPath componentsJoinedByString:@" / "];
@@ -264,7 +264,7 @@
     self.mkPost.title = _title.stringSansUneditedString;
 
     self.mkPost.priceInBtc = self.priceInBtc;
-    self.mkPost.description = _description.stringSansUneditedString;
+    self.mkPost.postDescription = self.postDescription.stringSansUneditedString;
     self.mkPost.isDirty = YES;
     
     self.mkPost.attachments = self.attachments;
@@ -312,7 +312,7 @@
 {
     BOOL hasTitle = self.title.isReady;
     BOOL hasPrice = self.hasPriceError;
-    BOOL hasDescription = self.description.isReady;
+    BOOL hasDescription = self.postDescription.isReady;
     
     if (!hasPrice)
     {

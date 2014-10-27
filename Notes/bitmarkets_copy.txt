@@ -1,5 +1,0 @@
-The current state of commerce is one of centralized marketplaces and money services that use their cartel positions to extract high fees, impose excessive control and take away any hope of privacy from users. 
-
-Fortunately, the creation of Bitcoin and Bitmessage have opened the door to replace them entirely. Bitmessage's decentralized messaging allows the posting of sales without a centralized service. And Bitcoin allows consumers and merchants to store and transfer value without credit cards or banks. 
-
-The last piece of the puzzle is fraud protection. Bitmarkets solves this problem with two party escrow transactions that lock payment and mutual security deposits so they can only be released with the consent of both parties. 

@@ -1,7 +1,4 @@
 
-- finish info panels
-
-
 --- other ---
 
 - sharable todo - app url

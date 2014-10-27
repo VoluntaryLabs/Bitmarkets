@@ -26,7 +26,7 @@
     
     self.title = @"";
     self.priceInSatoshi = @0;
-    self.description = @"";
+    self.postDescription = @"";
     
     self.regionPath = @[];
     self.categoryPath = @[];
@@ -50,6 +50,16 @@
      ];
     
     return self;
+}
+
+- (NSString *)description
+{
+    return self.postDescription;
+}
+
+- (void)setDescription:(NSString *)aString
+{
+    _postDescription = aString;
 }
 
 

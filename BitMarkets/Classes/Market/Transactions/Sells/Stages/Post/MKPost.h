@@ -24,7 +24,7 @@
 
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) NSNumber *priceInSatoshi;
-@property (strong, nonatomic) NSString *description;
+@property (strong, nonatomic) NSString *postDescription;
 
 @property (strong, nonatomic) NSArray  *regionPath;
 @property (strong, nonatomic) NSArray  *categoryPath;

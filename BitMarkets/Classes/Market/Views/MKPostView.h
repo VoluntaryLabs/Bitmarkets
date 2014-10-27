@@ -24,7 +24,7 @@
 
 @property (strong, nonatomic) NavColoredView *separator;
 
-@property (strong, nonatomic) NavAdvTextView *description;
+@property (strong, nonatomic) NavAdvTextView *postDescription;
 
 @property (strong, nonatomic) NSImageView *regionIcon;
 @property (strong, nonatomic) NSTextView *region;
