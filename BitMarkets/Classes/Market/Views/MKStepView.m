@@ -104,7 +104,7 @@
     [aPath lineToPoint:NSMakePoint(w, h/2)];
     [aPath lineToPoint:NSMakePoint(w- right, h)];
     [aPath setLineCapStyle:NSSquareLineCapStyle];
-    [aPath setLineJoinStyle:kCGLineJoinRound];
+    [aPath setLineJoinStyle:NSRoundLineJoinStyle];
     [aPath stroke];
 }
 
