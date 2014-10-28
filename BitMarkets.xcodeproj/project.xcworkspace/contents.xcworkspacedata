@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:BitMarkets.xcodeproj">
+      location = "self:Bitmarkets.xcodeproj">
    </FileRef>
 </Workspace>

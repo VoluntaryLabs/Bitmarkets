@@ -19,10 +19,6 @@
 		AA0E586418FDC0880095DEBD /* MKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0E586318FDC0880095DEBD /* MKAppDelegate.m */; };
 		AA0E586718FDC0880095DEBD /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA0E586518FDC0880095DEBD /* MainMenu.xib */; };
 		AA0E586918FDC0880095DEBD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA0E586818FDC0880095DEBD /* Images.xcassets */; };
-		AA0E587018FDC0890095DEBD /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA0E586F18FDC0890095DEBD /* XCTest.framework */; };
-		AA0E587118FDC0890095DEBD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA0E585018FDC0880095DEBD /* Cocoa.framework */; };
-		AA0E587918FDC0890095DEBD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA0E587718FDC0890095DEBD /* InfoPlist.strings */; };
-		AA0E587B18FDC0890095DEBD /* BitMarketsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0E587A18FDC0890095DEBD /* BitMarketsTests.m */; };
 		AA2B1A211923682500D712D8 /* MKBuyPostRefundMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2B1A201923682500D712D8 /* MKBuyPostRefundMsg.m */; };
 		AA2B1A2E1923683500D712D8 /* MKBuyPostPaymentMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2B1A2D1923683500D712D8 /* MKBuyPostPaymentMsg.m */; };
 		AA2B1A3119236CB600D712D8 /* MKSellRejectRefundRequestMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2B1A3019236CB600D712D8 /* MKSellRejectRefundRequestMsg.m */; };
@@ -142,13 +138,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		AA0E587218FDC0890095DEBD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AA0E584518FDC0880095DEBD /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = AA0E584C18FDC0880095DEBD;
-			remoteInfo = BitMarkets;
-		};
 		AA537A5419A5704600C438A8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AA537A4C19A5704500C438A8 /* BitmessageKit.xcodeproj */;
@@ -225,17 +214,16 @@
 		AA0E585318FDC0880095DEBD /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		AA0E585418FDC0880095DEBD /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		AA0E585518FDC0880095DEBD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		AA0E585818FDC0880095DEBD /* BitMarkets-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BitMarkets-Info.plist"; sourceTree = "<group>"; };
+		AA0E585818FDC0880095DEBD /* Bitmarkets.temp_caseinsensitive_rename-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bitmarkets.temp_caseinsensitive_rename-Info.plist"; sourceTree = "<group>"; };
 		AA0E585A18FDC0880095DEBD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AA0E585C18FDC0880095DEBD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		AA0E585E18FDC0880095DEBD /* BitMarkets-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BitMarkets-Prefix.pch"; sourceTree = "<group>"; };
+		AA0E585E18FDC0880095DEBD /* Bitmarkets.temp_caseinsensitive_rename-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bitmarkets.temp_caseinsensitive_rename-Prefix.pch"; sourceTree = "<group>"; };
 		AA0E586218FDC0880095DEBD /* MKAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKAppDelegate.h; sourceTree = "<group>"; };
 		AA0E586318FDC0880095DEBD /* MKAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKAppDelegate.m; sourceTree = "<group>"; };
 		AA0E586618FDC0880095DEBD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		AA0E586818FDC0880095DEBD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		AA0E586E18FDC0890095DEBD /* BitMarketsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitMarketsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA0E586F18FDC0890095DEBD /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		AA0E587618FDC0890095DEBD /* BitMarketsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BitMarketsTests-Info.plist"; sourceTree = "<group>"; };
+		AA0E587618FDC0890095DEBD /* Bitmarkets.temp_caseinsensitive_renameTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bitmarkets.temp_caseinsensitive_renameTests-Info.plist"; sourceTree = "<group>"; };
 		AA0E587818FDC0890095DEBD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AA0E587A18FDC0890095DEBD /* BitMarketsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BitMarketsTests.m; sourceTree = "<group>"; };
 		AA2B1A1F1923682500D712D8 /* MKBuyPostRefundMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKBuyPostRefundMsg.h; sourceTree = "<group>"; };
@@ -439,24 +427,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AA0E586B18FDC0890095DEBD /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AA0E587118FDC0890095DEBD /* Cocoa.framework in Frameworks */,
-				AA0E587018FDC0890095DEBD /* XCTest.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		AA0E584418FDC0880095DEBD = {
 			isa = PBXGroup;
 			children = (
-				AA0E585618FDC0880095DEBD /* BitMarkets */,
 				AA537A5819A5709600C438A8 /* BitnashKit.xcodeproj */,
 				AA537A4C19A5704500C438A8 /* BitmessageKit.xcodeproj */,
+				AA0E585618FDC0880095DEBD /* BitMarkets */,
 				AA0E587418FDC0890095DEBD /* BitMarketsTests */,
 				AA0E584F18FDC0880095DEBD /* Frameworks */,
 				AA0E584E18FDC0880095DEBD /* Products */,
@@ -467,7 +446,6 @@
 			isa = PBXGroup;
 			children = (
 				AA0E584D18FDC0880095DEBD /* Bitmarkets.app */,
-				AA0E586E18FDC0890095DEBD /* BitMarketsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -475,10 +453,10 @@
 		AA0E584F18FDC0880095DEBD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AA703B7E19F0AFB2009C82E3 /* FoundationCategoriesKit.framework */,
 				AA5DFE1F190DF0CF00383283 /* BitmessageKit.framework */,
 				AA5DFE15190DF04B00383283 /* BitnashKit.framework */,
 				AA0E585018FDC0880095DEBD /* Cocoa.framework */,
-				AA703B7E19F0AFB2009C82E3 /* FoundationCategoriesKit.framework */,
 				AA703B8219F0AFC6009C82E3 /* NavKit.framework */,
 				AA703B8019F0AFC0009C82E3 /* NavNodeKit.framework */,
 				AA38C16A198307DA003CDA68 /* Sparkle.framework */,
@@ -518,10 +496,10 @@
 				8EBC9B01190DBBF200FE71FA /* fonts */,
 				AA0E586518FDC0880095DEBD /* MainMenu.xib */,
 				AA9226F51905F94900C3D9D7 /* resources */,
-				AA0E585818FDC0880095DEBD /* BitMarkets-Info.plist */,
+				AA0E585818FDC0880095DEBD /* Bitmarkets.temp_caseinsensitive_rename-Info.plist */,
 				AA0E585918FDC0880095DEBD /* InfoPlist.strings */,
 				AA0E585C18FDC0880095DEBD /* main.m */,
-				AA0E585E18FDC0880095DEBD /* BitMarkets-Prefix.pch */,
+				AA0E585E18FDC0880095DEBD /* Bitmarkets.temp_caseinsensitive_rename-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -538,7 +516,7 @@
 		AA0E587518FDC0890095DEBD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				AA0E587618FDC0890095DEBD /* BitMarketsTests-Info.plist */,
+				AA0E587618FDC0890095DEBD /* Bitmarkets.temp_caseinsensitive_renameTests-Info.plist */,
 				AA0E587718FDC0890095DEBD /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -970,9 +948,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		AA0E584C18FDC0880095DEBD /* BitMarkets */ = {
+		AA0E584C18FDC0880095DEBD /* Bitmarkets */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AA0E587E18FDC0890095DEBD /* Build configuration list for PBXNativeTarget "BitMarkets" */;
+			buildConfigurationList = AA0E587E18FDC0890095DEBD /* Build configuration list for PBXNativeTarget "Bitmarkets" */;
 			buildPhases = (
 				AA0E584918FDC0880095DEBD /* Sources */,
 				AA0E584A18FDC0880095DEBD /* Frameworks */,
@@ -984,28 +962,10 @@
 			);
 			dependencies = (
 			);
-			name = BitMarkets;
+			name = Bitmarkets;
 			productName = BitMarkets;
 			productReference = AA0E584D18FDC0880095DEBD /* Bitmarkets.app */;
 			productType = "com.apple.product-type.application";
-		};
-		AA0E586D18FDC0890095DEBD /* BitMarketsTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = AA0E588118FDC0890095DEBD /* Build configuration list for PBXNativeTarget "BitMarketsTests" */;
-			buildPhases = (
-				AA0E586A18FDC0890095DEBD /* Sources */,
-				AA0E586B18FDC0890095DEBD /* Frameworks */,
-				AA0E586C18FDC0890095DEBD /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				AA0E587318FDC0890095DEBD /* PBXTargetDependency */,
-			);
-			name = BitMarketsTests;
-			productName = BitMarketsTests;
-			productReference = AA0E586E18FDC0890095DEBD /* BitMarketsTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -1016,13 +976,8 @@
 				CLASSPREFIX = MK;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = voluntary.net;
-				TargetAttributes = {
-					AA0E586D18FDC0890095DEBD = {
-						TestTargetID = AA0E584C18FDC0880095DEBD;
-					};
-				};
 			};
-			buildConfigurationList = AA0E584818FDC0880095DEBD /* Build configuration list for PBXProject "BitMarkets" */;
+			buildConfigurationList = AA0E584818FDC0880095DEBD /* Build configuration list for PBXProject "Bitmarkets" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1045,8 +1000,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				AA0E584C18FDC0880095DEBD /* BitMarkets */,
-				AA0E586D18FDC0890095DEBD /* BitMarketsTests */,
+				AA0E584C18FDC0880095DEBD /* Bitmarkets */,
 			);
 		};
 /* End PBXProject section */
@@ -1121,14 +1075,6 @@
 				AA9227171905F94900C3D9D7 /* regions.json in Resources */,
 				AA5DFDA91909C83000383283 /* reply_active.png in Resources */,
 				AA4A0E271909ADF600AB78D0 /* profile_active.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AA0E586C18FDC0890095DEBD /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AA0E587918FDC0890095DEBD /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1220,23 +1166,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AA0E586A18FDC0890095DEBD /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AA0E587B18FDC0890095DEBD /* BitMarketsTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		AA0E587318FDC0890095DEBD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = AA0E584C18FDC0880095DEBD /* BitMarkets */;
-			targetProxy = AA0E587218FDC0890095DEBD /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		AA0E585918FDC0880095DEBD /* InfoPlist.strings */ = {
@@ -1283,6 +1213,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "./**";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -1323,6 +1254,7 @@
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
+				FRAMEWORK_SEARCH_PATHS = "./**";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1341,16 +1273,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"./**",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/BitMarkets-eenrgxhlyrwgqccvbetldvfypzkj/Build/Products/Debug",
-					"/Users/steve/projects/hobby/bitmarkets/BitmessageKit/../../../../Library/Developer/Xcode/DerivedData/BitMarkets-eenrgxhlyrwgqccvbetldvfypzkj/Build/Products/Debug",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/BitMarkets-cdkqbnngnlqryagzbrrajxypnaiu/Build/Products/Debug",
-				);
+				FRAMEWORK_SEARCH_PATHS = "./**";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BitMarkets/BitMarkets-Prefix.pch";
-				INFOPLIST_FILE = "BitMarkets/BitMarkets-Info.plist";
+				GCC_PREFIX_HEADER = "Bitmarkets/Bitmarkets.temp_caseinsensitive_rename-Prefix.pch";
+				INFOPLIST_FILE = "Bitmarkets/Bitmarkets.temp_caseinsensitive_rename-Info.plist";
 				PRODUCT_NAME = Bitmarkets;
+				SDKROOT = macosx10.9;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1360,64 +1288,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"./**",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/BitMarkets-eenrgxhlyrwgqccvbetldvfypzkj/Build/Products/Debug",
-					"/Users/steve/projects/hobby/bitmarkets/BitmessageKit/../../../../Library/Developer/Xcode/DerivedData/BitMarkets-eenrgxhlyrwgqccvbetldvfypzkj/Build/Products/Debug",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/BitMarkets-cdkqbnngnlqryagzbrrajxypnaiu/Build/Products/Debug",
-				);
+				FRAMEWORK_SEARCH_PATHS = "./**";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BitMarkets/BitMarkets-Prefix.pch";
-				INFOPLIST_FILE = "BitMarkets/BitMarkets-Info.plist";
+				GCC_PREFIX_HEADER = "Bitmarkets/Bitmarkets.temp_caseinsensitive_rename-Prefix.pch";
+				INFOPLIST_FILE = "Bitmarkets/Bitmarkets.temp_caseinsensitive_rename-Info.plist";
 				PRODUCT_NAME = Bitmarkets;
+				SDKROOT = macosx10.9;
 				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
-		AA0E588218FDC0890095DEBD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BitMarkets.app/Contents/MacOS/BitMarkets";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BitMarkets/BitMarkets-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "BitMarketsTests/BitMarketsTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		AA0E588318FDC0890095DEBD /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BitMarkets.app/Contents/MacOS/BitMarkets";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BitMarkets/BitMarkets-Prefix.pch";
-				INFOPLIST_FILE = "BitMarketsTests/BitMarketsTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AA0E584818FDC0880095DEBD /* Build configuration list for PBXProject "BitMarkets" */ = {
+		AA0E584818FDC0880095DEBD /* Build configuration list for PBXProject "Bitmarkets" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AA0E587C18FDC0890095DEBD /* Debug */,
@@ -1426,20 +1310,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AA0E587E18FDC0890095DEBD /* Build configuration list for PBXNativeTarget "BitMarkets" */ = {
+		AA0E587E18FDC0890095DEBD /* Build configuration list for PBXNativeTarget "Bitmarkets" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AA0E587F18FDC0890095DEBD /* Debug */,
 				AA0E588018FDC0890095DEBD /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		AA0E588118FDC0890095DEBD /* Build configuration list for PBXNativeTarget "BitMarketsTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AA0E588218FDC0890095DEBD /* Debug */,
-				AA0E588318FDC0890095DEBD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
