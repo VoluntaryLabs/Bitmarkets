@@ -70,6 +70,7 @@
 		AA955E181914775500F6FB0F /* MKMarkets.m in Sources */ = {isa = PBXBuildFile; fileRef = AA955E131914775500F6FB0F /* MKMarkets.m */; };
 		AA955E191914775500F6FB0F /* MKRootNode.m in Sources */ = {isa = PBXBuildFile; fileRef = AA955E151914775500F6FB0F /* MKRootNode.m */; };
 		AA98D877195907430010697C /* MKSellPostedMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AA98D876195907430010697C /* MKSellPostedMsg.m */; };
+		AA9EB9611A0066D90052742B /* Bitmarkets.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9EB9601A0066D90052742B /* Bitmarkets.m */; };
 		AAA2E6AC19006F0A0098C357 /* MKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA2E68719006F0A0098C357 /* MKCategory.m */; };
 		AAA2E6AD19006F0A0098C357 /* MKGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA2E68919006F0A0098C357 /* MKGroup.m */; };
 		AAA2E6AE19006F0A0098C357 /* MKRegion.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA2E68B19006F0A0098C357 /* MKRegion.m */; };
@@ -307,6 +308,8 @@
 		AA955E151914775500F6FB0F /* MKRootNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKRootNode.m; sourceTree = "<group>"; };
 		AA98D875195907430010697C /* MKSellPostedMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKSellPostedMsg.h; sourceTree = "<group>"; };
 		AA98D876195907430010697C /* MKSellPostedMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKSellPostedMsg.m; sourceTree = "<group>"; };
+		AA9EB95F1A0066D90052742B /* Bitmarkets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bitmarkets.h; sourceTree = "<group>"; };
+		AA9EB9601A0066D90052742B /* Bitmarkets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bitmarkets.m; sourceTree = "<group>"; };
 		AAA2E68619006F0A0098C357 /* MKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKCategory.h; sourceTree = "<group>"; };
 		AAA2E68719006F0A0098C357 /* MKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKCategory.m; sourceTree = "<group>"; };
 		AAA2E68819006F0A0098C357 /* MKGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKGroup.h; sourceTree = "<group>"; };
@@ -624,6 +627,8 @@
 		AA955E0D1914775500F6FB0F /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				AA9EB95F1A0066D90052742B /* Bitmarkets.h */,
+				AA9EB9601A0066D90052742B /* Bitmarkets.m */,
 				AA955E141914775500F6FB0F /* MKRootNode.h */,
 				AA955E151914775500F6FB0F /* MKRootNode.m */,
 				AA09C802192D41C600317130 /* MKAboutNode.h */,
@@ -1135,6 +1140,7 @@
 				AAB2813819217586005C9D27 /* MKLock.m in Sources */,
 				AAB2813919217586005C9D27 /* MKTransaction.m in Sources */,
 				AAB2813F19217586005C9D27 /* MKSells.m in Sources */,
+				AA9EB9611A0066D90052742B /* Bitmarkets.m in Sources */,
 				DC347154196C74A400C5C8B3 /* MKLockMsg.m in Sources */,
 				AAB2812E19217586005C9D27 /* MKBidMsg.m in Sources */,
 				AAA2E6AD19006F0A0098C357 /* MKGroup.m in Sources */,

@@ -17,7 +17,8 @@
     self = [super init];
     
     self.shouldSortChildren = NO;
-    self.nodeTitle = @"About";
+    self.nodeTitle = @"Bitmarkets";
+    self.nodeSubtitle = self.versionString;
     self.nodeSuggestedWidth = 150;
     self.shouldSortChildren = NO;
     
@@ -26,32 +27,68 @@
     return self;
 }
 
+- (id)nodeRoot
+{
+    return nil;
+}
+
+- (id)nodeAbout
+{
+    return nil;
+}
+
+- (NSArray *)aboutNodes
+{
+    NSArray *allBundles = [NSBundle.allBundles arrayByAddingObjectsFromArray:NSBundle.allFrameworks];
+    NSMutableArray *results = [NSMutableArray array];
+    
+    for (NSBundle *bundle in allBundles)
+    {
+        NSLog(@"bundle: '%@'", bundle.bundleIdentifier);
+        NSString *bundleClassName = [bundle.bundleIdentifier componentsSeparatedByString:@"."].lastObject;
+        Class bundleClass = NSClassFromString(bundleClassName);
+        
+        if (bundleClass && [bundleClass respondsToSelector:@selector(nodeRoot)])
+        {
+            id bundleNode = [bundleClass nodeRoot];
+            if ([bundleNode respondsToSelector:@selector(nodeAbout)])
+            {
+                [results addObject:[bundleNode nodeAbout]];
+            }
+        }
+        
+    }
+    
+    return results;
+}
+
 - (NSString *)versionString
 {
-    NSDictionary *info = NSBundle.mainBundle.infoDictionary;
+    NSDictionary *info = [NSBundle bundleForClass:[self class]].infoDictionary;
     NSString *versionString = [info objectForKey:@"CFBundleVersion"];
-    return versionString;
+    return [NSString stringWithFormat:@"version %@", versionString];
 }
 
 - (void)addAbout
 {
+    NavInfoNode *root = self;
+    
+    /*
     NavInfoNode *root = [[NavInfoNode alloc] init];
     root.nodeTitle = @"Bitmarkets";
+    root.nodeSubtitle = self.versionString;
     root.shouldSortChildren = NO;
     [self addChild:root];
     [self addChild:BMClient.sharedBMClient.aboutNode];
+     */
     
     {
+        /*
         NavInfoNode *version = [[NavInfoNode alloc] init];
         version.nodeTitle = @"Version";
         version.nodeSubtitle = self.versionString;
         [root addChild:version];
-        
-        NavInfoNode *contributors = [[NavInfoNode alloc] init];
-        [root addChild:contributors];
-        contributors.nodeTitle = @"Credits";
-        contributors.nodeSuggestedWidth = 200;
-        contributors.shouldSortChildren = NO;
+        */
         
         NavInfoNode *legal = [[NavInfoNode alloc] init];
         [root addChild:legal];
@@ -59,44 +96,53 @@
         legal.nodeSuggestedWidth = 200;
         legal.shouldSortChildren = NO;
         
+        NavInfoNode *contributors = [[NavInfoNode alloc] init];
+        [root addChild:contributors];
+        contributors.nodeTitle = @"Credits";
+        contributors.nodeSuggestedWidth = 200;
+        contributors.shouldSortChildren = YES;
+        
+        
+        /*
         NavInfoNode *voluntary = [[NavInfoNode alloc] init];
         voluntary.nodeTitle = @"Voluntary.net";
         voluntary.nodeSubtitle = nil;
         [contributors addChild:voluntary];
+        */
         
         {
             NavInfoNode *contributor = [[NavInfoNode alloc] init];
             contributor.nodeTitle = @"Steve Dekorte";
             contributor.nodeSubtitle = @"Lead & UI Developer";
-            [voluntary addChild:contributor];
+            [contributors addChild:contributor];
         }
         
         {
             NavInfoNode *contributor = [[NavInfoNode alloc] init];
             contributor.nodeTitle = @"Rich Collins";
             contributor.nodeSubtitle = @"Bitcoin Integration";
-            [voluntary addChild:contributor];
+            [contributors addChild:contributor];
         }
         
         {
             NavInfoNode *contributor = [[NavInfoNode alloc] init];
             contributor.nodeTitle = @"Chris Robinson";
             contributor.nodeSubtitle = @"UI/UX Designer";
-            [voluntary addChild:contributor];
+            [contributors addChild:contributor];
         }
         
         {
             NavInfoNode *contributor = [[NavInfoNode alloc] init];
             contributor.nodeTitle = @"Adam Thorsen";
             contributor.nodeSubtitle = @"Tor, Bitmessage integration";
-            [voluntary addChild:contributor];
+            [contributors addChild:contributor];
         }
         
         {
             NavInfoNode *contributor = [[NavInfoNode alloc] init];
             contributor.nodeTitle = @"Dru Nelson";
             contributor.nodeSubtitle = @"Unix Guru";
-            [voluntary addChild:contributor];
+            [contributors addChild:contributor];
         }
  
         
@@ -112,46 +158,11 @@
             package.nodeSubtitle = @"github.com/bitcoinj";
             [others addChild:package];
         }
-        
-        {
-            NavInfoNode *package = [[NavInfoNode alloc] init];
-            package.nodeTitle = @"Bitmessage";
-            package.nodeSubtitle = @"bitmessage.org";
-            [others addChild:package];
-        }
  
         {
             NavInfoNode *package = [[NavInfoNode alloc] init];
             package.nodeTitle = @"Open Sans";
             package.nodeSubtitle = @"Steve Matteson, Google fonts";
-            [others addChild:package];
-        }
-        
-        {
-            NavInfoNode *package = [[NavInfoNode alloc] init];
-            package.nodeTitle = @"Python";
-            package.nodeSubtitle = @"python.org";
-            [others addChild:package];
-        }
-        
-        {
-            NavInfoNode *package = [[NavInfoNode alloc] init];
-            package.nodeTitle = @"Tor";
-            package.nodeSubtitle = @"torproject.org";
-            [others addChild:package];
-        }
-
-        {
-            NavInfoNode *package = [[NavInfoNode alloc] init];
-            package.nodeTitle = @"XmlPRC";
-            package.nodeSubtitle = @"Eric Czarny";
-            [others addChild:package];
-        }
-        
-        {
-            NavInfoNode *package = [[NavInfoNode alloc] init];
-            package.nodeTitle = @"ZipKit";
-            package.nodeSubtitle = @"Karl Moskowski";
             [others addChild:package];
         }
         

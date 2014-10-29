@@ -50,6 +50,11 @@ static MKRootNode *sharedMKRootNode = nil;
     return self;
 }
 
+- nodeAbout
+{
+    return [[MKAboutNode alloc] init];
+}
+
 - (void)setupMarkets
 {
     [self.appDelegate setNavTitle:@"setting up markets..."];
@@ -69,7 +74,7 @@ static MKRootNode *sharedMKRootNode = nil;
         [self addChild:_wallet];
     }
     
-    [self addChild:[[MKAboutNode alloc] init]];
+    [self addChild:[[NavAppAbout alloc] init]];
     
     [NSNotificationCenter.defaultCenter addObserver:self
                                              selector:@selector(willShutdown)
