@@ -17,6 +17,13 @@
 
     self.mkPost = [[MKPost alloc] init];
     [self addChild:self.mkPost];
+
+    
+    {
+         NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"delete"];
+         [slot setVisibleName:@"delete"];
+    }
+
     
     return self;
 }
@@ -115,16 +122,10 @@
 
 // -------------------------
 
-- (NSArray *)modelActions
+- (void)updateActions
 {
-    NSMutableArray *actions = [NSMutableArray array];
-    
-    if (self.canDelete)
-    {
-        [actions addObject:@"delete"];
-    }
-    
-    return actions;
+    NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"delete"];
+    [slot setIsActive:self.canDelete];
 }
 
 // -------------------------
@@ -169,6 +170,7 @@
         }
     }
     
+    [self updateActions];
     [self postSelfChanged];
 }
 

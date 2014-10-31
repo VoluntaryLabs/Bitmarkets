@@ -131,13 +131,6 @@
     return nil;
 }
 
-// actions
-
-- (NSArray *)modelActions
-{
-    return @[];
-}
-
 // update
 
 - (BOOL)handleMsg:(MKMsg *)msg

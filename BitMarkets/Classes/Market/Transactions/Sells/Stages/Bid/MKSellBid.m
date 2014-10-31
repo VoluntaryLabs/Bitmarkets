@@ -77,18 +77,6 @@
 
 // --- UI ------------------------------
 
-/*
-- (NSArray *)modelActions
-{
-    //if (!self.wasAccepted && !self.wasRejected)
-    {
-        return @[@"accept"];
-    }
-    
-    return @[];
-}
-*/
-
 - (CGFloat)nodeSuggestedWidth
 {
     return 450;

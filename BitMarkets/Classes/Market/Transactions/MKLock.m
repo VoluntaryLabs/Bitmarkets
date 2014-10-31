@@ -72,11 +72,6 @@
     return @"Lock Escrow";
 }
 
-- (NSArray *)modelActions
-{
-    return @[@"cancelEscrow"];
-}
-
 - (void)updateActions
 {
     NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"cancelEscrow"];

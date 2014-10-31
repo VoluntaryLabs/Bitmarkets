@@ -28,13 +28,6 @@
     return db;
 }
 
-/*
-- (NSArray *)modelActions
-{
-    
-}
-*/
-
 - (void)setDict:(NSDictionary *)dict
 {
     [super setDict:dict];

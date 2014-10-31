@@ -121,13 +121,6 @@
     return self.dict;
 }
 
-/*
-- (NSArray *)modelActions
-{
-    return @[@"resend"];
-}
-*/
-
 // equality
 
 - (NSString *)uniqueName

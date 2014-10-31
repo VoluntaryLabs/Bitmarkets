@@ -40,12 +40,6 @@
     return 300.0;
 }
 
-- (NSArray *)modelActions
-{
-    return @[];
-//    return @[@"requestRefund", @"makePayment"];
-}
-
 - (NSString *)nodeSubtitle
 {
     if (self.buyRequestRefundMsg)

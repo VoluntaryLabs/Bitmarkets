@@ -66,17 +66,16 @@
     return [super countOfLeafChildren];
 }
 
-- (NSArray *)uiActions
+- (NSArray *)actions
 {
+    NSMutableArray *actions = [NSMutableArray arrayWithArray:[super actions]];
+    
     if (self.isLeafCategory)
     {
-        NSArray *uiActions = [NSMutableArray arrayWithObjects:@"add", nil];
-        return  [uiActions arrayByAddingObjectsFromArray:super.uiActions];
+        [actions addObject:@"add"];
     }
-    else
-    {
-        return super.uiActions;
-    }
+
+    return actions;
 }
 
 - (CGFloat)nodeSuggestedWidth
