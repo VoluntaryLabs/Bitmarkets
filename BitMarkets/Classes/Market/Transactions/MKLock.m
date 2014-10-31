@@ -25,6 +25,8 @@
     NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"cancelEscrow"];
     [slot setVisibleName:@"Cancel Escrow"];
     [slot setIsActive:NO];
+    [slot setVerifyMessage:@"It can take a while for the other party to complete the escrow lock. Are you sure you want to cancel this transaction?"];
+    
     return self;
 }
 

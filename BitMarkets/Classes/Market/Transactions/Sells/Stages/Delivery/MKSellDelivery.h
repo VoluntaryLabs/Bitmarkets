@@ -11,6 +11,8 @@
 
 @interface MKSellDelivery : MKStage
 
+@property (strong, nonatomic) NSNumber *hasViewedAddress;
+
 - (BOOL)isComplete;
 
 - (MKSellPostedMsg *)postedMsg;

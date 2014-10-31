@@ -218,23 +218,4 @@
     return YES;
 }
 
-// --- actions ---
-
-- (NSString *)verifyActionMessage:(NSString *)aString
-{
-    /*
-    if ([aString isEqualToString:@"delete"]) // no longer needed as delete msg is removed
-    {
-        NSString *warning = self.deleteWarning;
-        
-        if (warning)
-        {
-            return warning;
-        }
-    }
-    */
-    
-    return nil;
-}
-
 @end

@@ -18,6 +18,8 @@
 {
     self = [super init];
     [self updateActions];
+    [self addPropertyName:@"hasViewedAddress"];
+    self.hasViewedAddress = [NSNumber numberWithBool:NO];
     return self;
 }
 
@@ -26,7 +28,7 @@
     {
         NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"markAsPosted"];
         [slot setVisibleName:@"I've Sent Item"];
-        [slot setIsActive:self.hasAddress && !self.hasPosted];
+        [slot setIsActive:self.hasAddress && self.hasViewedAddress && !self.hasPosted];
         [slot setIsVisible:YES];
     }
     
@@ -156,6 +158,9 @@
     [panel setInnerView:self.address.nodeView];
     [self.nodeView addSubview:panel];
     [panel layout];
+    
+    self.hasViewedAddress = [NSNumber numberWithBool:YES];
+    [self updateActions];
 }
 
 

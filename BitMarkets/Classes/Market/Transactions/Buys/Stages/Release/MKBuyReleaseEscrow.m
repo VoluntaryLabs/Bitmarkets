@@ -22,11 +22,14 @@
     {
         NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"requestRefund"];
         [slot setVisibleName:@"Request Refund"];
+        [slot setVerifyMessage:@"You should only request a refund if the seller has failed to deliver the item in a reasonable amount of time or the item was unsatifactory. Request a refund?"];
+
     }
     
     {
         NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"makePayment"];
         [slot setVisibleName:@"Make Payment"];
+        [slot setVerifyMessage:@"You should only send payment after your purchased good or service is delivered and you have found it satifactory. Make the payment?"];
     }
 
     return self;

@@ -42,6 +42,7 @@
         [acceptSlot setVisibleName:@"Accept Bid"];
         [acceptSlot setIsVisible:YES];
         [acceptSlot setIsActive:enabled];
+        //[acceptSlot setVerifyMessage:@"Accept this bid?"];
     }
 }
 
