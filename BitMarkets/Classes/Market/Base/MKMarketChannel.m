@@ -121,6 +121,8 @@
 {
     self.needsToFetchChannelMessages = NO;
     
+    [self expireOldMessages]; // really only need to do this once daily
+    
     NSArray *messages = self.channel.children.copy;
     
     NSMutableArray *closeMsgs = [NSMutableArray array];
@@ -173,10 +175,25 @@
         
         //NSLog(@"closeMsg.postUuid %@", closeMsg.postUuid);
         
-        NSTimeInterval ttlSeconds = 60*60*24*2.5;
+        NSTimeInterval ttlSeconds = 60*60*24*2.5; // 2.5 days
         if (closeMsg.bmMessage.ageInSeconds > ttlSeconds)
         {
             [closeMsg.bmMessage delete];
+        }
+    }
+}
+
+- (void)expireOldMessages
+{
+    NSArray *messages = self.channel.children.copy;
+
+    for (BMReceivedMessage *bmMsg in messages)
+    {
+        NSTimeInterval ttlSeconds = 60*60*24*30; // 30 days
+        
+        if (bmMsg.ageInSeconds > ttlSeconds)
+        {
+            [bmMsg delete];
         }
     }
 }
