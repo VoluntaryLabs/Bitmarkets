@@ -216,7 +216,6 @@
     
     if (rowIndex > 0)
     {
-        
         BNTx *tx = [self.headerAndRows objectAtIndex:rowIndex];
         [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:tx.webUrl]];
     }
@@ -235,7 +234,9 @@
                          contextInfo:nil];
 }
 
-- (void)urlAlertDidEnd:(NSAlert *)alert returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo
+- (void)urlAlertDidEnd:(NSAlert *)alert
+            returnCode:(NSInteger)returnCode
+           contextInfo:(void *)contextInfo
 {
     if (returnCode == 1000)
     {
@@ -487,10 +488,10 @@
     
     NSString *columnName = aTableColumn.identifier;
     
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+    #pragma clang diagnostic push
+    #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
     id result = [tx performSelector:NSSelectorFromString(columnName)];
-#pragma clang diagnostic pop
+    #pragma clang diagnostic pop
     
     return result;
 }
@@ -542,9 +543,7 @@
     BOOL isLastRow = (rowIndex == self.headerAndRows.count - 1);
     [cell setBottomLineWidth:isLastRow ? 0 : .5];
     cell.lineColor = [NSColor colorWithCalibratedWhite:.9 alpha:1.0];
-    
 }
-
 
 // actions
 

@@ -1,4 +1,7 @@
 
+- add way to view bitmessages in bitmarkets
+- auto go to path in markets
+
 --- adam ---
 
 - sharable todo - app url

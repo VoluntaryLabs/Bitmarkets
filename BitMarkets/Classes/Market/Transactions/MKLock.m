@@ -203,8 +203,9 @@
 
 - (void)confirmLockIfNeeded
 {
-    if (self.lockEscrowMsgToConfirm &&
+    if (!self.isConfirmed &&
         !self.cancelMsg &&
+        self.lockEscrowMsgToConfirm &&
         self.lockEscrowMsgToConfirm.isTxConfirmed)
     {
         MKConfirmLockEscrowMsg *msg = [[MKConfirmLockEscrowMsg alloc] init];
@@ -266,11 +267,13 @@
 - (BOOL)isCancelConfirmed
 {
     BOOL lockIsCancelled = NO;
+    
     if (self.lockEscrowMsgToConfirm.tx)
     {
         [self.lockEscrowMsgToConfirm.tx refresh];
         lockIsCancelled = self.lockEscrowMsgToConfirm.tx.isCancelled;
     }
+    
     BOOL cancelConfirmedMsgExists = self.cancelConfirmedMsg != nil;
     BOOL cancelMsgTxIsNil = (self.cancelMsg && (self.cancelMsg.tx == nil));
     

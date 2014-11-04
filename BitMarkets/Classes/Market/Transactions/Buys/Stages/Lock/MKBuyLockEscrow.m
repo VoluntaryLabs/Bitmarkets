@@ -113,9 +113,10 @@
 - (void)postLockIfNeeded
 {
     if (self.setupLockMsg &&
+        self.setupLockMsg.isTxConfirmed &&
         self.sellLockEscrowMsg &&
-        !self.buyLockEscrowMsg &&
-        self.setupLockMsg.isTxConfirmed)
+        !self.buyLockEscrowMsg
+        )
     {
         [self postLock:[[MKBuyLockEscrowMsg alloc] init]];
         self.buyLockEscrowMsg.tx.txType = @"Lock Escrow";
