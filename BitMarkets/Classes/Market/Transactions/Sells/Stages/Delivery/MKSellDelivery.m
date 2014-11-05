@@ -28,7 +28,7 @@
     {
         NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"markAsPosted"];
         [slot setVisibleName:@"I've Sent Item"];
-        [slot setIsActive:self.hasAddress && self.hasViewedAddress && !self.hasPosted];
+        [slot setIsActive:self.hasAddress && self.hasViewedAddress.boolValue && !self.hasPosted];
         [slot setIsVisible:YES];
     }
     
