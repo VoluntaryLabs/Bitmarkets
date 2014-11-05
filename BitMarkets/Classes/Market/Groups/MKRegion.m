@@ -14,7 +14,6 @@
 - (id)init
 {
     self = [super init];
-    //[self setCanPost:NO];
     self.nodeSuggestedWidth = 150;
     self.shouldSortChildren = NO;
     return self;
@@ -34,7 +33,6 @@
     
     if (self.children.count == 0)
     {
-        //[self addChild:[MKCategory rootInstance]];
         [self setChildren:[MKCategory rootInstance].children];
     }
 }
@@ -43,8 +41,7 @@
 
 - (BOOL)canSearch
 {
-    //return NO;
-    return YES;
+    return NO;
 }
 
 - (BOOL)nodeMatchesSearch:(NSString *)aString

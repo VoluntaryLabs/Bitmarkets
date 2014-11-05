@@ -37,12 +37,12 @@
     [NSNotificationCenter.defaultCenter addObserver:self
                                              selector:@selector(channelChanged:)
                                                  name:nil
-                                                 //name:@"NavNodeAddedChild"
+                                                 //name:NavNodeAddedChildNotification
                                                object:self.channel];
 
     [NSNotificationCenter.defaultCenter addObserver:self
                                              selector:@selector(receivedMessagesChanged:)
-                                                 //name:@"NavNodeAddedChild"
+                                                 //name:NavNodeAddedChildNotification
                                                  name:nil
                                                object:BMClient.sharedBMClient.messages.received];
 

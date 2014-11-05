@@ -44,7 +44,8 @@
     
     [self.mkChannel performSelector:@selector(fetch) withObject:nil afterDelay:0.0];
     [self.rootRegion updateCounts];
-    
+    self.rootRegion.doesRememberChildPath = YES;
+   
     //[MKExchangeRate shared];
 
     [self setRefreshInterval:10];
