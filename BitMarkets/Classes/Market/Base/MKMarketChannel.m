@@ -114,14 +114,15 @@
     //[BMClient.sharedBMClient refresh];
     
     [self fetchChannelMessages];
+    [self expireOldChannelMessages]; // really only need to do this once daily
+
     [self fetchDirectMessages];
+    [self expireDirectMessages]; // really only need to do this once daily
 }
 
 - (void)fetchChannelMessages
 {
     self.needsToFetchChannelMessages = NO;
-    
-    [self expireOldMessages]; // really only need to do this once daily
     
     NSArray *messages = self.channel.children.copy;
     
@@ -183,13 +184,14 @@
     }
 }
 
-- (void)expireOldMessages
+- (void)expireOldChannelMessages
 {
+    NSUInteger daysTillExpire = 30;
     NSArray *messages = self.channel.children.copy;
 
     for (BMReceivedMessage *bmMsg in messages)
     {
-        NSTimeInterval ttlSeconds = 60*60*24*30; // 30 days
+        NSTimeInterval ttlSeconds = 60*60*24*daysTillExpire;
         
         if (bmMsg.ageInSeconds > ttlSeconds)
         {
@@ -206,6 +208,22 @@
     [self handleBMMessages:inboxMessages];
 }
 
+- (void)expireDirectMessages
+{
+    NSUInteger daysTillExpire = 30;
+    NSArray *messages = BMClient.sharedBMClient.messages.received.children.copy;
+   
+    for (BMReceivedMessage *bmMsg in messages)
+    {
+        NSTimeInterval ttlSeconds = 60*60*24*daysTillExpire;
+        
+        if (bmMsg.ageInSeconds > ttlSeconds)
+        {
+            [bmMsg delete];
+        }
+    }
+}
+
 - (void)handleBMMessages:(NSArray *)bmMessages
 {
     NSArray *inboxMessages = BMClient.sharedBMClient.messages.received.children.copy;
@@ -213,36 +231,25 @@
     
     for (BMMessage *bmMessage in inboxMessages)
     {
-        MKMsg *msg = [MKMsg withBMMessage:bmMessage];
-        
-        if (!msg)
+        if (!bmMessage.isRead)
         {
-            NSLog(@"invalid message");
-            continue;
-        }
-        
-        BOOL didHandle = [markets handleMsg:msg];
-        
-        if (!didHandle)
-        {
-            [markets handleMsg:msg];
+            MKMsg *msg = [MKMsg withBMMessage:bmMessage];
             
-            if (![bmMessage.toAddress isEqualToString:self.channel.address])
+            if (!msg)
             {
-                [bmMessage delete];
+                NSLog(@"invalid message");
+                continue;
             }
-            else
+        
+
+            BOOL didHandle = [markets handleMsg:msg];
+           
+            if (!didHandle)
             {
-                NSLog(@"channel address %@", _channel.address);
-                
-                NSLog(@"can't place msg '%@' for thread '%@' to %@ from %@",
-                      msg.className, msg.postUuid, bmMessage.toAddress, bmMessage.fromAddress);
+                NSLog(@"unable to handle direct message");
             }
-        }
-        else
-        {
-            [bmMessage delete];
-            //NSLog(@"placed msg '%@' for thread '%@'", msg.className, msg.postUuid);
+            
+            [bmMessage markAsRead];
         }
     }
 }

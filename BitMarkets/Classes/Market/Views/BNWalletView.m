@@ -565,4 +565,9 @@
     [self openPanelForView:self.wallet.withdralNode.nodeView];
 }
 
+- (BOOL)handlesNodeActions
+{
+    return YES;
+}
+
 @end
