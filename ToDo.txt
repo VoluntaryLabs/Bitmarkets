@@ -1,9 +1,6 @@
 
-- add legal info to About
-- add panel to warn "experimental software, use at your own risk, don't put too more bitcoins in this than you're willing to lose"
-
-- add way to view bitmessages in bitmarkets
-- auto go to path in markets
+- fix drag expand weirdness when in sell view
+- deal with search field bug on new OSX
 
 --- adam ---
 
@@ -30,12 +27,12 @@
 
 ------ steve ------
 
-- disable item posted button until view address button is used
 - add confirm panels on: refund, pay, item posted and send address 
+
+- add any needed auth checks on msgs
 
 - Status and action buttons don't update synchronously (see "Choose Bid" / "Accept First Bid" button when receiving a bid)
 
-- allow seller to see address of buyer at any time
 
 - status view isn't getting dealloced when transaction view removed?
 
@@ -49,16 +46,16 @@
 - more general attachment format (dict)
 - [FEATURE] delivery status / package tracking
 - [FEATURE] add service and version fields to msgs?
-- add any needed auth checks on msgs
+- [FEATURE] allow seller to see address of buyer at any time
 
 - timeouts for bid, lock and await delivery + user warnings
 - timeout for posting? auto-reposting until delete or bid accepted?
 - deposit address isn't changing even though the underlying object changes and calls postParentChainChanged
 
-- [CLEANUP] replace NavNode base class with navMirror method on NSObject 
+- [LATER CLEANUP] replace NavNode base class with navMirror method on NSObject 
    - use association slot for mirror cache 
 
-- update UI to new design spec
+- [LATER] update UI to new design spec
 
 ------ dean ------
 

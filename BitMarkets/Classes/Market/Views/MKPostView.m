@@ -34,6 +34,7 @@
         
         _price = [[NavAdvTextView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
         _price.autoresizingMask = NSViewMinYMargin | NSViewMaxXMargin;
+        [_price setString:@"0"];
         [self addSubview:self.price];
         _price.uneditedTextString = @"Enter price in BTC";
         //_price.suffix = @"BTC";

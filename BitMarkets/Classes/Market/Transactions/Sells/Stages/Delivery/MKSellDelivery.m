@@ -30,6 +30,7 @@
         [slot setVisibleName:@"I've Sent Item"];
         [slot setIsActive:self.hasAddress && self.hasViewedAddress.boolValue && !self.hasPosted];
         [slot setIsVisible:YES];
+        [slot setVerifyMessage:@"You will not be able to view the buyer's address again if you continue. Are you sure you've already sent the item?"];
     }
     
     {

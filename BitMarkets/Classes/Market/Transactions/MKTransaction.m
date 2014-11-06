@@ -22,6 +22,8 @@
     {
          NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"delete"];
          [slot setVisibleName:@"delete"];
+         NSString *typeOfTx = [self.className after:@"MK"];
+         [slot setVerifyMessage:[NSString stringWithFormat:@"Are you sure you want to delete this %@?", typeOfTx]];
     }
 
     

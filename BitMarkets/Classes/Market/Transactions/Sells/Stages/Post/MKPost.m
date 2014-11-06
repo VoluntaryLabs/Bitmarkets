@@ -161,7 +161,7 @@
             return @"listing message sent";
         }
         
-        return @"sending listing message...";
+        return @"computing proof of work and sending listing message...";
     }
     
     return @"Complete your listing below";
