@@ -5,9 +5,23 @@
     	"nodeSuggestedWidth" : 150,
 	"children" :
 	[
+	    {
+            "_type" : "Region",
+        	"name" : "North America",
+            "nodeSuggestedWidth" : 120,
+        	"children" :
+        	[
         		{ "_type" : "Region",  "name" : "US" },
         		{ "_type" : "Region",  "name" : "Canada" },
+        	]
+    	},
 
+	    {
+            "_type" : "Region",
+        	"name" : "Europe",
+            "nodeSuggestedWidth" : 120,
+        	"children" :
+        	[
         		{ "_type" : "Region",  "name" : "Austria" },
         		{ "_type" : "Region",  "name" : "Belgium" },
         		{ "_type" : "Region",  "name" : "Bulgaria" },
@@ -35,10 +49,25 @@
         		{ "_type" : "Region",  "name" : "Turkey" },
         		{ "_type" : "Region",  "name" : "Ukraine" },
         		{ "_type" : "Region",  "name" : "UK" },
+        	]
+    	},
 
+    	
+	    {
+            "_type" : "Region",
+        	"name" : "Oceania",
+        	"children" : 
+        	[
         		{ "_type" : "Region",  "name" : "Australia" },
         		{ "_type" : "Region",  "name" : "New Zealand" },
-
+        	]
+    	},
+    	
+	    {
+            "_type" : "Region",
+        	"name" : "Latin America",
+        	"children" : 
+        	[
         		{ "_type" : "Region",  "name" : "Argentina" },
         		{ "_type" : "Region",  "name" : "Bolivia" },
         		{ "_type" : "Region",  "name" : "Brazil" },
@@ -57,7 +86,14 @@
         		{ "_type" : "Region",  "name" : "Uruguay" },
         		{ "_type" : "Region",  "name" : "Venezuela" },
         		{ "_type" : "Region",  "name" : "Virgin Is, US" },
-
+        	]
+    	},    	
+    	
+	    {
+            "_type" : "Region",
+        	"name" : "Asia",
+        	"children" : 
+        	[
         		{ "_type" : "Region",  "name" : "Bangladesh" },
         		{ "_type" : "Region",  "name" : "China" },
         		{ "_type" : "Region",  "name" : "Guam" },
@@ -74,15 +110,29 @@
         		{ "_type" : "Region",  "name" : "Taiwan" },
         		{ "_type" : "Region",  "name" : "Thailand" },
         		{ "_type" : "Region",  "name" : "Vietnam" },
-
+        	]
+    	},
+    	
+	    {
+            "_type" : "Region",
+        	"name" : "Middle East",
+            "nodeSuggestedWidth" : 120,
+        	"children" :
+        	[
         		{ "_type" : "Region",  "name" : "UAE" },
         		{ "_type" : "Region",  "name" : "Iran" },
         		{ "_type" : "Region",  "name" : "Iraq" },
-
-                	{ "_type" : "Region",  "name" : "Israel" },
-               		{ "_type" : "Region",  "name" : "Palestine" },
-	
-
+                { "_type" : "Region",  "name" : "Israel" },
+                { "_type" : "Region",  "name" : "Palestine" },
+        	]
+    	},
+    	
+	    {
+            "_type" : "Region",
+        	"name" : "Africa",
+            "nodeSuggestedWidth" : 120,
+        	"children" :
+        	[
         		{ "_type" : "Region",  "name" : "Egypt" },
         		{ "_type" : "Region",  "name" : "Ethiopia" },
         		{ "_type" : "Region",  "name" : "Ghana" },
@@ -90,6 +140,8 @@
         		{ "_type" : "Region",  "name" : "Morocco" },
         		{ "_type" : "Region",  "name" : "South Africa" },
         		{ "_type" : "Region",  "name" : "Tunisia" },
+        	]
+    	},
 
     ]
 }

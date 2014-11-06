@@ -1,4 +1,7 @@
 
+- add legal info to About
+- add panel to warn "experimental software, use at your own risk, don't put too more bitcoins in this than you're willing to lose"
+
 - add way to view bitmessages in bitmarkets
 - auto go to path in markets
 

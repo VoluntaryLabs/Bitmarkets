@@ -158,10 +158,24 @@
 
 // search
 
+/*
 - (BOOL)canSearch
 {
     return YES;
     //return self.isLeafCategory && (self.children.count > 0);
+}
+*/
+
+- (BOOL)canSearch
+{
+    NavNode *firstChild = [self.children firstObject];
+    
+    if (firstChild && ![firstChild isKindOfClass:self.class])
+    {
+        return YES;
+    }
+    
+    return NO;
 }
 
 - (BOOL)nodeMatchesSearch:(NSString *)aString

@@ -22,6 +22,7 @@
     self.shouldSortChildren = NO;
     
     _rootRegion = (MKRegion *)[MKRegion rootInstance];
+    
     [self addChild:self.rootRegion];
     
     if (NO)

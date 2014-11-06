@@ -15,7 +15,7 @@
 {
     self = [super init];
     self.nodeSuggestedWidth = 150;
-    self.shouldSortChildren = NO;
+    self.shouldSortChildren = YES;
     return self;
 }
 
@@ -41,9 +41,30 @@
 
 - (BOOL)canSearch
 {
+    NavNode *firstChild = [self.children firstObject];
+    
+    if (firstChild && [firstChild isKindOfClass:self.class])
+    {
+        return YES;
+    }
+    
     return NO;
 }
 
+- (BOOL)nodeMatchesSearch:(NSString *)aString
+{
+    for (NSString *word in [self.nodeTitle componentsSeparatedByString:@" "])
+    {
+        if ([word hasPrefix:aString])
+        {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
+/*
 - (BOOL)nodeMatchesSearch:(NSString *)aString
 {
     for (id child in self.children)
@@ -56,5 +77,6 @@
     
     return NO;
 }
+*/
 
 @end
