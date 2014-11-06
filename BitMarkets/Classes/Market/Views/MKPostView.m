@@ -564,6 +564,35 @@
 
 - (void)buy
 {
+    [self showConfirmBuyAlert];
+}
+
+- (void)showConfirmBuyAlert
+{
+    NSAlert *msgBox = [[NSAlert alloc] init];
+    
+    [msgBox setMessageText:@"A Bitmarkets transaction requires the buyer to lock 2x the amount of the item and the seller to lock 1x the amount of the item in escrow. These bitcoins cannot be spent by either party until both parties agree to release them either for payment or refund."];
+
+    [msgBox addButtonWithTitle: @"Buy"];
+    [msgBox addButtonWithTitle: @"Cancel"];
+    
+    [msgBox beginSheetModalForWindow:self.window
+                       modalDelegate:self
+                      didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:)
+                         contextInfo:nil];
+}
+
+- (void)alertDidEnd:(NSAlert *)alert returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo
+{    
+    if (returnCode == 1000) // 2nd choice
+    {
+        [self confirmedBuy];
+    }
+}
+
+
+- (void)confirmedBuy
+{
     // reorg this
     
     MKBuy *buy = MKRootNode.sharedMKRootNode.markets.buys.addBuy;

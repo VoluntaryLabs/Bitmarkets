@@ -42,7 +42,7 @@
         [acceptSlot setVisibleName:@"Accept Bid"];
         [acceptSlot setIsVisible:YES];
         [acceptSlot setIsActive:enabled];
-        //[acceptSlot setVerifyMessage:@"Accept this bid?"];
+        [acceptSlot setVerifyMessage:@"A Bitmarkets transaction requires the buyer to lock 2x the amount of the item and the seller to lock 1x the amount of the item in escrow. These bitcoins cannot be spent by either party until both parties agree to release them either for payment or refund."];
     }
 }
 

@@ -38,7 +38,6 @@ static MKRootNode *sharedMKRootNode = nil;
     self.nodeTitle = @"BitMarkets";
     self.nodeSuggestedWidth = 150;
     
-    
     [self.appDelegate setNavTitle:@"launching bitmessage server..."];
     [self setupBMClient];
 
@@ -75,7 +74,7 @@ static MKRootNode *sharedMKRootNode = nil;
     }
     
     [self addChild:[[NavAppAbout alloc] init]];
-    [self addChild:[BMClient sharedBMClient]];
+    //[self addChild:[BMClient sharedBMClient]];
     
     [NSNotificationCenter.defaultCenter addObserver:self
                                              selector:@selector(willShutdown)
@@ -88,6 +87,7 @@ static MKRootNode *sharedMKRootNode = nil;
 - (void)setupBMClient
 {
     _bmClient = [BMClient sharedBMClient];
+    
     if (!self.bitmarketsUserIdentity)
     {
         [_bmClient.identities createRandomAddressWithLabel:self.bitmarketsIdentityLabel];
@@ -116,10 +116,12 @@ static MKRootNode *sharedMKRootNode = nil;
         _wallet.deepRefreshes = YES;
         
         NSString *walletName = @"BitnashKit/mainnet";
+        
         if (_wallet.usesTestNet)
         {
             walletName = @"BitnashKit/testnet";
         }
+        
         NSString *dataPath = [[[NSFileManager defaultManager] applicationSupportDirectory] stringByAppendingPathComponent:walletName];
         
         NSError *error;
@@ -132,10 +134,12 @@ static MKRootNode *sharedMKRootNode = nil;
         [_wallet setPath:dataPath];
         
         NSString *checkpointsName = @"checkpoints-mainnet";
+        
         if (_wallet.usesTestNet)
         {
             checkpointsName = @"checkpoints-testnet";
         }
+        
         [_wallet setCheckpointsPath:[[NSBundle bundleForClass:[BNWallet class]] pathForResource:checkpointsName ofType:nil]];
         
         [BNMetaDataDb shared].path = [[[NSFileManager defaultManager] applicationSupportDirectory] stringByAppendingPathComponent:@"wallet/meta-data"];
