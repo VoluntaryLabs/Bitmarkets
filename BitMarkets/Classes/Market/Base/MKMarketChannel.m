@@ -130,36 +130,42 @@
     
     for (BMReceivedMessage *bmMsg in messages)
     {
-        MKMsg *msg = [MKMsg withBMMessage:bmMsg];
-        
-        if (msg)
+        //if (!bmMsg.isRead)
         {
-            if ([msg isKindOfClass:MKPostMsg.class])
+            MKMsg *msg = [MKMsg withBMMessage:bmMsg];
+            
+            if (msg)
             {
-                MKPostMsg *postMsg = (MKPostMsg *)msg;
-                MKPost *mkPost = [postMsg mkPost];
-                [mkPost addChild:postMsg];
-                
-                BOOL couldPlace = [mkPost placeInMarketsPath]; // deals with merging
-                
-                if (!couldPlace)
+                if ([msg isKindOfClass:MKPostMsg.class])
+                {
+                    MKPostMsg *postMsg = (MKPostMsg *)msg;
+                    MKPost *mkPost = [postMsg mkPost];
+                    [mkPost addChild:postMsg];
+                    
+                    BOOL couldPlace = [mkPost placeInMarketsPath]; // deals with merging
+                    
+                    if (!couldPlace)
+                    {
+                        // can't place this message
+                        [bmMsg delete];
+                    }
+                }
+                else if ([msg isKindOfClass:MKClosePostMsg.class])
+                {
+                    [closeMsgs addObject:msg];
+                }
+                else // don't know how to handle this Msg class, so delete it
                 {
                     [bmMsg delete];
                 }
             }
-            else if ([msg isKindOfClass:MKClosePostMsg.class])
-            {
-                [closeMsgs addObject:msg];
-            }
             else
             {
+                // it wasn't a valid bitmarkets message, so delete it
                 [bmMsg delete];
             }
-        }
-        else
-        {
-            // it wasn't a valid bitmarkets message, so delete it
-            [bmMsg delete];
+        
+            [bmMsg markAsRead];
         }
     }
     
@@ -173,6 +179,7 @@
         
         //NSLog(@"closeMsg.postUuid %@", closeMsg.postUuid);
         
+        // wait to delete it since the msg might arrive after the close msgS
         NSTimeInterval ttlSeconds = 60*60*24*2.5; // 2.5 days
         if (closeMsg.bmMessage.ageInSeconds > ttlSeconds)
         {

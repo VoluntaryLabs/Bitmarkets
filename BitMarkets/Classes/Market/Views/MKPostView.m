@@ -293,11 +293,14 @@
 {
     NSMutableArray *attachments = [NSMutableArray array];
     
-    NSData *imageData = [_attachmentView.image jpegImageDataUnderKb:200];
+    NSData *imageData = [_attachmentView.image jpegImageDataUnderKb:120];
+    
     NSString *uuString = [imageData encodedBase64String];
     
     if (uuString)
     {
+        //NSLog(@"imageData length = %iKB", (int)imageData.length/1024);
+        //NSLog(@"uuString length = %iKB", (int)uuString.length/1024);
         [attachments addObject:uuString];
     }
     
