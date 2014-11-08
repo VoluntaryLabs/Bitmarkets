@@ -44,5 +44,10 @@
     [super read];
 }
 
+- (void)delete
+{
+    return;
+}
+
 
 @end

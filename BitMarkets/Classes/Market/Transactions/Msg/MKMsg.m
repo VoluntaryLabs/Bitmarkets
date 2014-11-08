@@ -309,9 +309,6 @@
     [self addDate];
     //NSLog(@"sending from %@ to channel %@ ackData %@", m.fromAddress, m.toAddress, self.ackData);
     
-    
-    [self addDate];
-    
     return self.ackData != nil;
 }
 

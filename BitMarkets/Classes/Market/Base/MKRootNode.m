@@ -74,7 +74,13 @@ static MKRootNode *sharedMKRootNode = nil;
     }
     
     [self addChild:[[NavAppAbout alloc] init]];
-    //[self addChild:[BMClient sharedBMClient]];
+    
+    if (YES)
+    {
+        BMClient *client = [BMClient sharedBMClient];
+        //client.nodeTitle = @"debug client";
+        [self addChild:client];
+    }
     
     [NSNotificationCenter.defaultCenter addObserver:self
                                              selector:@selector(willShutdown)

@@ -1,6 +1,13 @@
 
+- warning for large tx
+- add comment about pow taking a while?
+- check on image resizing
+ - make sure remove post is sent on deleting sell even if no bids accepted (MKSellBids)
+ 
 - fix drag expand weirdness when in sell view
 - deal with search field bug on new OSX
+
+- fix the white paper architecture image
 
 --- adam ---
 

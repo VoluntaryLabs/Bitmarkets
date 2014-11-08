@@ -87,5 +87,9 @@
     [self.mkChannel fetch];
 }
 
+- (void)delete
+{
+    return;
+}
 
 @end

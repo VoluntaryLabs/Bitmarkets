@@ -31,4 +31,9 @@
     return buy;
 }
 
+- (void)delete
+{
+    return;
+}
+
 @end

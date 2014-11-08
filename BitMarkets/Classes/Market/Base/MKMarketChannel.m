@@ -132,8 +132,6 @@
     {
         MKMsg *msg = [MKMsg withBMMessage:bmMsg];
         
-        //[bmMsg delete]; continue;
-        
         if (msg)
         {
             if ([msg isKindOfClass:MKPostMsg.class])
@@ -142,7 +140,7 @@
                 MKPost *mkPost = [postMsg mkPost];
                 [mkPost addChild:postMsg];
                 
-                BOOL couldPlace = [mkPost placeInMarketsPath]; // deals with merging?
+                BOOL couldPlace = [mkPost placeInMarketsPath]; // deals with merging
                 
                 if (!couldPlace)
                 {
@@ -165,8 +163,7 @@
         }
     }
     
-    // process this after others in case it's before msg
-    // should probably keep around a 2.5 day database of these deletes to be safe
+    // process this after others in case it's before the message it's closing
     
     for (MKClosePostMsg *closeMsg in closeMsgs)
     {
@@ -231,7 +228,7 @@
     
     for (BMMessage *bmMessage in inboxMessages)
     {
-        if (!bmMessage.isRead)
+        if (!bmMessage.isRead) // keep around read messages for debugging
         {
             MKMsg *msg = [MKMsg withBMMessage:bmMessage];
             
@@ -240,7 +237,6 @@
                 NSLog(@"invalid message");
                 continue;
             }
-        
 
             BOOL didHandle = [markets handleMsg:msg];
            

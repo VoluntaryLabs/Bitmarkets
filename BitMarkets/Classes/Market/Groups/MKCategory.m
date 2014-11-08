@@ -23,6 +23,13 @@
     self.shouldSortChildren = YES;
     //self.sortChildrenKey = @"date";
     self.nodeSuggestedWidth = 150;
+    
+    {
+        NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"add"];
+        [slot setVisibleName:@"add"];
+        [slot setIsActive:NO];
+    }
+    
     return self;
 }
 
@@ -66,16 +73,16 @@
     return [super countOfLeafChildren];
 }
 
-- (NSArray *)actions
+- (void)setDict:(NSDictionary *)dict
 {
-    NSMutableArray *actions = [NSMutableArray arrayWithArray:[super actions]];
-    
-    if (self.isLeafCategory)
-    {
-        [actions addObject:@"add"];
-    }
+    [super setDict:dict];
+    [self updateActions];
+}
 
-    return actions;
+- (void)updateActions
+{
+    NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"add"];
+    slot.isActive = self.isLeafCategory;
 }
 
 - (CGFloat)nodeSuggestedWidth
@@ -129,16 +136,11 @@
     
     MKPost *mkPost = sell.mkPost;
     
-    NSLog(@"self.regionPath = %@", self.regionPath);
+    //NSLog(@"self.regionPath = %@", self.regionPath);
     mkPost.regionPath   = self.regionPath;
     mkPost.categoryPath = self.categoryPath;
     
     [self.navView selectNodePath:mkPost.nodePathArray];
-
-    
-    //NSArray *nodes = [NSArray arrayWithObjects:root, markets, sells, sell, nil];
-    //NSArray *nodes = [NSArray arrayWithObjects:root, sells, sell, nil];
-    //[self.navView selectNodePath:nodes];
 }
 
 - (BOOL)addChild:(NavNode *)child
@@ -157,14 +159,6 @@
 }
 
 // search
-
-/*
-- (BOOL)canSearch
-{
-    return YES;
-    //return self.isLeafCategory && (self.children.count > 0);
-}
-*/
 
 - (BOOL)canSearch
 {

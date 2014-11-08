@@ -110,6 +110,20 @@
     return NO;
 }
 
+- (void)rejectUnacceptedBids
+{
+    MKSellBid *sellBid = self.acceptedBid;
+    
+    for (MKSellBid *bid in self.children)
+    {
+        if (bid != sellBid)
+        {
+            [bid reject];
+        }
+    }
+}
+
+/*
 - (void)setAcceptedBid:(MKSellBid *)sellBid
 {
     for (MKSellBid *bid in self.children)
@@ -125,6 +139,7 @@
     [self postSelfChanged];
     [self postParentChanged];
 }
+*/
 
 - (MKSellBid *)acceptedBid
 {

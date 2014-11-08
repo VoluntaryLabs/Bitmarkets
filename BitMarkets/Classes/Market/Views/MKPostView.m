@@ -572,7 +572,7 @@
 {
     NSAlert *msgBox = [[NSAlert alloc] init];
     
-    [msgBox setMessageText:@"A Bitmarkets transaction requires the buyer to lock 2x the amount of the item and the seller to lock 1x the amount of the item in escrow. These bitcoins cannot be spent by either party until both parties agree to release them either for payment or refund."];
+    [msgBox setMessageText:@"A Bitmarkets transaction requires the buyer to lock 2x the amount of the item and the seller to lock 1x the amount of the item in escrow. This ensures both parties are incentivized to faithfully complete the transaction.\n\nThese bitcoins cannot be spent by either party until both parties agree to release them either for payment or refund."];
 
     [msgBox addButtonWithTitle: @"Buy"];
     [msgBox addButtonWithTitle: @"Cancel"];

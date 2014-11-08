@@ -16,4 +16,7 @@
 - (MKSellBid *)acceptedBid;
 - (BOOL)isComplete;
 
+- (void)sendClosePost;
+- (void)rejectUnacceptedBids;
+
 @end

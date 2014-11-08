@@ -174,5 +174,15 @@
     return NO;
 }
 
+- (void)delete
+{
+    if (!self.bids.isComplete)
+    {
+        [self.bids rejectUnacceptedBids];
+        [self.bids sendClosePost];
+    }
+    
+    [super delete];
+}
 
 @end

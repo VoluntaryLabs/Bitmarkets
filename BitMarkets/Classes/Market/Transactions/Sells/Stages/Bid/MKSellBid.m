@@ -42,7 +42,7 @@
         [acceptSlot setVisibleName:@"Accept Bid"];
         [acceptSlot setIsVisible:YES];
         [acceptSlot setIsActive:enabled];
-        [acceptSlot setVerifyMessage:@"A Bitmarkets transaction requires the buyer to lock 2x the amount of the item and the seller to lock 1x the amount of the item in escrow. These bitcoins cannot be spent by either party until both parties agree to release them either for payment or refund."];
+        [acceptSlot setVerifyMessage:@"A Bitmarkets transaction requires the buyer to lock 2x the amount of the item and the seller to lock 1x the amount of the item in escrow. This ensures both parties are incentivized to faithfully complete the transaction.\n\nThese bitcoins cannot be spent by either party until both parties agree to release them either for payment or refund."];
     }
 }
 
@@ -159,8 +159,6 @@
 
 - (void)accept
 {
-    [self.sellBids setAcceptedBid:self];
-    
     MKAcceptBidMsg *msg = [[MKAcceptBidMsg alloc] init];
     [msg copyThreadFrom:self.bidMsg];
     
@@ -171,6 +169,7 @@
         [self.sell write];
     }
     
+    [self.sellBids rejectUnacceptedBids];
 }
 
 - (void)reject

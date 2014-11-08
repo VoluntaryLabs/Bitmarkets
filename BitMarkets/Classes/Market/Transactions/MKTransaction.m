@@ -17,7 +17,6 @@
 
     self.mkPost = [[MKPost alloc] init];
     [self addChild:self.mkPost];
-
     
     {
          NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"delete"];
@@ -25,7 +24,6 @@
          NSString *typeOfTx = [self.className after:@"MK"];
          [slot setVerifyMessage:[NSString stringWithFormat:@"Are you sure you want to delete this %@?", typeOfTx]];
     }
-
     
     return self;
 }
