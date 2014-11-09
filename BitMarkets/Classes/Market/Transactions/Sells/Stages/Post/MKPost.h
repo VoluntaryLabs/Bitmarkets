@@ -30,7 +30,7 @@
 @property (strong, nonatomic) NSArray  *categoryPath;
 @property (strong, nonatomic) NSString *sellerAddress;
 @property (strong, nonatomic) NSArray  *attachments;
-@property (strong, nonatomic) BMMessage *bmMessage;
+@property (strong, nonatomic) BMMessage *bmMessage; // used only for browsable listing, so we can delete msg when receiving a close request
 
 - (BOOL)isEditable;
 - (BOOL)canBuy;

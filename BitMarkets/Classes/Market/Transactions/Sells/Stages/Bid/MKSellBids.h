@@ -11,7 +11,7 @@
 
 @interface MKSellBids : MKStage
 
-- (void)setAcceptedBid:(MKSellBid *)sellBid;
+//- (void)setAcceptedBid:(MKSellBid *)sellBid;
 
 - (MKSellBid *)acceptedBid;
 - (BOOL)isComplete;

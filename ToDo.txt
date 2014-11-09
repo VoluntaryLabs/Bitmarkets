@@ -1,4 +1,6 @@
-- check on image resizing
+
+- auto expand navwindow to fit column size hints
+
 - missing region error when restarting in mid post
 - warning for large tx
 - add comment about pow taking a while?

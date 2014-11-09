@@ -27,11 +27,11 @@
 
     if (MKRootNode.sharedMKRootNode.wallet.usesTestNet)
     {
-        self.passphrase = @"Bitmarkets beta 4 testnet";
+        self.passphrase = @"Bitmarkets beta 5 testnet";
     }
     else
     {
-        self.passphrase = @"Bitmarkets beta 4";
+        self.passphrase = @"Bitmarkets beta 5";
     }
 
     [NSNotificationCenter.defaultCenter addObserver:self
@@ -165,7 +165,7 @@
                 [bmMsg delete];
             }
         
-            [bmMsg markAsRead];
+            //[bmMsg markAsRead];
         }
     }
     
@@ -175,9 +175,13 @@
     {
         MKRegion *rootRegion = MKRootNode.sharedMKRootNode.markets.rootRegion;
         
-        [rootRegion handleMsg:closeMsg];
+        if ([rootRegion handleMsg:closeMsg])
+        {
+            [closeMsg.bmMessage delete];
+        }
         
-        //NSLog(@"closeMsg.postUuid %@", closeMsg.postUuid);
+        /*
+        NSLog(@"closeMsg.postUuid %@", closeMsg.postUuid);
         
         // wait to delete it since the msg might arrive after the close msgS
         NSTimeInterval ttlSeconds = 60*60*24*2.5; // 2.5 days
@@ -185,6 +189,7 @@
         {
             [closeMsg.bmMessage delete];
         }
+        */
     }
 }
 

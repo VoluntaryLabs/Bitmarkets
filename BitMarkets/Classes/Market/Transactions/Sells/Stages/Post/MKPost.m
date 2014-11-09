@@ -161,7 +161,11 @@
             return @"listing message sent";
         }
         
-        return @"computing proof of work and sending listing message...";
+        //NSNumber *secs = self.bmMessage.estimatedSecondsForPow;
+        
+        return [NSString stringWithFormat:@"Preparing post (%@)...", self.postMsg.sentMessage.getHumanReadbleStatus];
+        
+        //return [NSString stringWithFormat:@"computing proof of work for message (~%f mins)...", secs.floatValue/60.0];
     }
     
     return @"Complete your listing below";
@@ -303,9 +307,11 @@
             else
             {
                 // this message was an unauthorized attempt to delete a post
+                NSLog(@"Warning: %@ attempted unauthorized request to delete a post %@",
+                      msg.bmMessage.fromAddress, postUuid);
             }
 
-            [msg.bmMessage delete];
+            //[msg.bmMessage delete]; 
             return YES;
         }
     }
@@ -315,7 +321,11 @@
 
 - (void)close
 {
-    [self.bmMessage delete];
+    if (self.bmMessage)
+    {
+        [self.bmMessage delete];
+    }
+    
     [self removeFromParent];
 }
 
