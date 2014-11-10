@@ -1,14 +1,15 @@
 
+- deal with search field bug on new OSX
+- fix the white paper architecture image
+
 - auto expand navwindow to fit column size hints
 
-- missing region error when restarting in mid post
+- missing region error when restarting in mid post? repeatable?
 - warning for large tx
 - add comment about pow taking a while?
  
 - fix drag expand weirdness when in sell view
-- deal with search field bug on new OSX
 
-- fix the white paper architecture image
 
 --- adam ---
 
