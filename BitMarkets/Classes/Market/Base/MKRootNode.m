@@ -79,7 +79,7 @@ static MKRootNode *sharedMKRootNode = nil;
     {
         BMClient *client = [BMClient sharedBMClient];
         //client.nodeTitle = @"debug client";
-        [self addChild:client];
+        //[self addChild:client];
     }
     
     [NSNotificationCenter.defaultCenter addObserver:self

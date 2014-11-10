@@ -9,6 +9,7 @@
 #import "MKAppDelegate.h"
 #import "MKRootNode.h"
 #import "MKPasswordView.h"
+#import <BitnashKit/BitnashKit.h>
 
 @implementation MKAppDelegate
 
@@ -22,6 +23,11 @@
 }
 
 - (void)setup
+{
+    [self showJavaAlertIfNeeded];
+}
+
+- (void)finishSetup
 {
     [self setRootNode:[MKRootNode sharedMKRootNode]];
     
@@ -66,5 +72,43 @@
         [NSApplication.sharedApplication terminate:self];
     }
 }
+
+
+- (void)showJavaAlertIfNeeded
+{
+    BNJavaInstall *install = [[BNJavaInstall alloc] init];
+    
+    if (!install.isJavaInstalled)
+    {
+        NSAlert *msgBox = [[NSAlert alloc] init];
+        [msgBox setMessageText: @"This application requires Java to be installed."];
+        [msgBox addButtonWithTitle: @"I've installed Java"];
+        [msgBox addButtonWithTitle: @"Exit"];
+        
+        [msgBox beginSheetModalForWindow:self.navWindow
+                           modalDelegate:self
+                          didEndSelector:@selector(javaAlertDidEnd:returnCode:contextInfo:)
+                             contextInfo:nil];
+    }
+    else
+    {
+        [self finishSetup];
+    }
+}
+
+
+- (void)javaAlertDidEnd:(NSAlert *)alert returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo
+{
+    if (returnCode == 1001) // 2nd choice
+    {
+        [NSApplication.sharedApplication terminate:self];
+    }
+    else
+    {
+        [self showJavaAlertIfNeeded];
+    }
+}
+
+
 
 @end
