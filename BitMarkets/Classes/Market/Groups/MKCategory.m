@@ -13,6 +13,7 @@
 #import "MKMarkets.h"
 #import "MKRootNode.h"
 #import "MKAppDelegate.h"
+#import <sys/utsname.h>
 
 
 @implementation MKCategory
