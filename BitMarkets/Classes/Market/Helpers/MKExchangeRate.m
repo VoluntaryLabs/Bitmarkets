@@ -130,7 +130,7 @@ static MKExchangeRate *shared;
                   self.urlString,
                   responseString);
             
-            [NSException raise:@"JSON Parse Error" format:@""];
+            //[NSException raise:@"JSON Parse Error" format:@""];
         }
         else
         {

@@ -90,17 +90,19 @@
         [root addChild:version];
         */
         
+        /*
         NavInfoNode *legal = [[NavInfoNode alloc] init];
         [root addChild:legal];
         legal.nodeTitle = @"Legal";
         legal.nodeSuggestedWidth = 200;
         legal.shouldSortChildren = NO;
+        */
         
         NavInfoNode *contributors = [[NavInfoNode alloc] init];
         [root addChild:contributors];
         contributors.nodeTitle = @"Credits";
         contributors.nodeSuggestedWidth = 200;
-        contributors.shouldSortChildren = YES;
+        contributors.shouldSortChildren = NO;
         
         
         /*
@@ -127,7 +129,7 @@
         {
             NavInfoNode *contributor = [[NavInfoNode alloc] init];
             contributor.nodeTitle = @"Chris Robinson";
-            contributor.nodeSubtitle = @"UI/UX Designer";
+            contributor.nodeSubtitle = @"Designer";
             [contributors addChild:contributor];
         }
         
@@ -135,13 +137,6 @@
             NavInfoNode *contributor = [[NavInfoNode alloc] init];
             contributor.nodeTitle = @"Adam Thorsen";
             contributor.nodeSubtitle = @"Tor, Bitmessage integration";
-            [contributors addChild:contributor];
-        }
-        
-        {
-            NavInfoNode *contributor = [[NavInfoNode alloc] init];
-            contributor.nodeTitle = @"Dru Nelson";
-            contributor.nodeSubtitle = @"Unix Guru";
             [contributors addChild:contributor];
         }
  

@@ -78,12 +78,13 @@
 {
     BNJavaInstall *install = [[BNJavaInstall alloc] init];
     
-    if (!install.isJavaInstalled)
+    if (!install.isInstalled)
     {
         NSAlert *msgBox = [[NSAlert alloc] init];
-        [msgBox setMessageText: @"This application requires Java to be installed."];
-        [msgBox addButtonWithTitle: @"I've installed Java"];
-        [msgBox addButtonWithTitle: @"Exit"];
+        [msgBox setMessageText:@"This application requires Java to be installed in order to use the BitcoinJ  wallet."];
+        [msgBox addButtonWithTitle:@"I've installed Java"];
+        [msgBox addButtonWithTitle:@"Install Java"];
+        [msgBox addButtonWithTitle:@"Exit"];
         
         [msgBox beginSheetModalForWindow:self.navWindow
                            modalDelegate:self
@@ -99,14 +100,22 @@
 
 - (void)javaAlertDidEnd:(NSAlert *)alert returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo
 {
+    if (returnCode == 1000) // 1st choice
+    {
+    }
+    
     if (returnCode == 1001) // 2nd choice
+    {
+        //[[[BNJavaInstall alloc] init] openJavaInstallDmg];
+        [[[BNJavaInstall alloc] init] openJavaDmg];
+    }
+    
+    if (returnCode == 1002) // 3rd choice
     {
         [NSApplication.sharedApplication terminate:self];
     }
-    else
-    {
-        [self showJavaAlertIfNeeded];
-    }
+    
+    [self showJavaAlertIfNeeded];
 }
 
 
