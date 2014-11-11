@@ -1,15 +1,12 @@
 
-- deal with search field bug on new OSX
-- fix the white paper architecture image
+--- before public beta release ---
 
 - auto expand navwindow to fit column size hints
 
 - missing region error when restarting in mid post? repeatable?
 - warning for large tx
-- add comment about pow taking a while?
  
 - fix drag expand weirdness when in sell view
-
 
 --- adam ---
 
@@ -18,7 +15,6 @@
 
 - gen very high pow address for channel
 - gen high pow for user identities
-
 
 ------ rich ------
 
@@ -41,7 +37,6 @@
 - add any needed auth checks on msgs
 
 - Status and action buttons don't update synchronously (see "Choose Bid" / "Accept First Bid" button when receiving a bid)
-
 
 - status view isn't getting dealloced when transaction view removed?
 
@@ -90,6 +85,6 @@
   - buyer wire/ach (seller chooses options)
 
 - quantity options on sales?
-- store front for given bm address
+- store front for given bm address, url verification based?
 
-- order book interface
+- order book interface, eventual amazon support

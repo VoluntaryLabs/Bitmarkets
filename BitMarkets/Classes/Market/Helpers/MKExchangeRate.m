@@ -38,12 +38,17 @@ static MKExchangeRate *shared;
     self.repeatingTimer = timer;
 }
 
+- (NSString *)urlString
+{
+    return @"https://blockchain.info/ticker";
+}
+
 - (void)update
 {
     //NSLog(@"Updating BTC Exchange rate");
 
     NSString *url =
-    [NSString stringWithFormat:@"https://blockchain.info/ticker"];
+    [NSString stringWithFormat:self.urlString];
     
     NSURLRequest *request =
     [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
@@ -118,7 +123,13 @@ static MKExchangeRate *shared;
         
         if (error)
         {
-            NSLog(@"JSON Parse Error: %@", [[error userInfo] objectForKey:@"NSDebugDescription"]);
+            NSString *responseString = [[NSString alloc] initWithData:self.responseData encoding:NSUTF8StringEncoding];
+            
+            NSLog(@"JSON Parse Error: \n%@\nurl:%@\nresponse: '%@'",
+                  [[error userInfo] objectForKey:@"NSDebugDescription"],
+                  self.urlString,
+                  responseString);
+            
             [NSException raise:@"JSON Parse Error" format:@""];
         }
         else
