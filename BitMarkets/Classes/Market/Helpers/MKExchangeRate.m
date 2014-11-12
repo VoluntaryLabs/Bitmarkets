@@ -47,11 +47,8 @@ static MKExchangeRate *shared;
 {
     //NSLog(@"Updating BTC Exchange rate");
 
-    NSString *url =
-    [NSString stringWithFormat:self.urlString];
-    
-    NSURLRequest *request =
-    [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+    NSString *url = self.urlString;
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
     
     self.connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     
@@ -59,7 +56,6 @@ static MKExchangeRate *shared;
     {
         self.responseData = nil;
     }
-
 }
 
 - (id) init
