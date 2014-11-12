@@ -11,6 +11,7 @@
 @property (assign, nonatomic) id delegate;
 @property (assign, nonatomic) BOOL canDrag;
 @property (assign, nonatomic) BOOL canDrop;
+@property (assign, nonatomic) NSUInteger resizeImageUntilLessThanKb;
 
 - (void)filePaths:(NSArray *)array;
 - (NSArray *)filePaths;

@@ -293,7 +293,7 @@
 {
     NSMutableArray *attachments = [NSMutableArray array];
     
-    NSData *imageData = [_attachmentView.image jpegImageDataUnderKb:120];
+    NSData *imageData = [_attachmentView.image jpegImageData];
     
     NSString *uuString = [imageData encodedBase64String];
     
@@ -559,12 +559,45 @@
         return;
     }
     
+    [self showConfirmPostAlert];
+}
+    
+- (void)confirmedPost
+{
     [self syncToNode];
     
     [self.mkPost sendPostMsg];
     [self setEditable:NO];
     [self updateButton];
 }
+
+- (void)showConfirmPostAlert
+{
+    NSAlert *msgBox = [[NSAlert alloc] init];
+    
+    [msgBox setMessageText:@"All communications are done with Bitmessage over Tor, but if your post requires complete anonymity we recommend you post:\n- from a public wifi network\n- without your cellphone with you\n- where there are no surveilence cameras\n- only using that network for this purpose"];
+    
+    [msgBox addButtonWithTitle: @"Post Now"];
+    [msgBox addButtonWithTitle: @"Don't Post Now"];
+    
+    [msgBox beginSheetModalForWindow:self.window
+                       modalDelegate:self
+                      didEndSelector:@selector(postAlertDidEnd:returnCode:contextInfo:)
+                         contextInfo:nil];
+}
+
+- (void)postAlertDidEnd:(NSAlert *)alert
+             returnCode:(NSInteger)returnCode
+            contextInfo:(void *)contextInfo
+{
+    if (returnCode == 1000) // 2nd choice
+    {
+        [self confirmedPost];
+    }
+}
+
+
+// --- buy ---
 
 - (void)buy
 {
@@ -582,11 +615,13 @@
     
     [msgBox beginSheetModalForWindow:self.window
                        modalDelegate:self
-                      didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:)
+                      didEndSelector:@selector(buyAlertDidEnd:returnCode:contextInfo:)
                          contextInfo:nil];
 }
 
-- (void)alertDidEnd:(NSAlert *)alert returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo
+- (void)buyAlertDidEnd:(NSAlert *)alert
+            returnCode:(NSInteger)returnCode
+           contextInfo:(void *)contextInfo
 {    
     if (returnCode == 1000) // 2nd choice
     {

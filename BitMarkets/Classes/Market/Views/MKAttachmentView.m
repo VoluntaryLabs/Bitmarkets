@@ -29,6 +29,7 @@
             _dragWell.canDrop = YES;
             _dragWell.canDrag = NO;
             _dragWell.delegate = self;
+            _dragWell.resizeImageUntilLessThanKb = 120;
         }
         
         {

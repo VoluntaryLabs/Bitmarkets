@@ -1,4 +1,6 @@
 #import "MKDragFileWell.h"
+//#import <FoundationCategoriesKit/FoundationCategoriesKit.h>
+#import <NavKit/NavKit.h>
 
 @implementation MKDragFileWell
 
@@ -38,6 +40,13 @@
 
 - (void)setImage:(NSImage *)image
 {
+    if (self.resizeImageUntilLessThanKb != 0)
+    {
+        NSData *data = [image jpegImageDataUnderKb:self.resizeImageUntilLessThanKb];
+        image = [[NSImage alloc] initWithData:data];
+    }
+    
+    
     [super setImage:image];
 }
 
