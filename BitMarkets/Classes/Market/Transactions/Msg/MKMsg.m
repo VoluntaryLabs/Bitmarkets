@@ -154,24 +154,18 @@
 
 - (void)setDate:(NSDate *)aDate
 {
+    /*
     NSNumber *d = [NSNumber numberWithDouble:[aDate timeIntervalSince1970]];
     NSDate *newDate = [NSDate dateWithTimeIntervalSince1970:(NSTimeInterval)d.doubleValue];
     assert([aDate.description isEqualToString:newDate.description]);
-
-    self.dateNumber = d;
+*/
+    self.dateNumber = [aDate asNumber];
 }
 
 
 - (NSDate *)date
 {
-    NSNumber *d = self.dateNumber;
-    
-    if (d)
-    {
-        return [NSDate dateWithTimeIntervalSince1970:(NSTimeInterval)d.doubleValue];
-    }
-    
-    return nil;
+    return [NSDate fromNumber:self.dateNumber];
 }
 
 - (NSString *)dateString

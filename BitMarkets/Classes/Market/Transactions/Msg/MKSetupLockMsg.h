@@ -10,6 +10,9 @@
 
 @interface MKSetupLockMsg : MKLockMsg
 
+@property (strong, nonatomic) NSNumber *broadcastDateNumber;
+
 - (void)configureAndBroadcastTx;
+- (void)broadcastIfNeeded;
 
 @end

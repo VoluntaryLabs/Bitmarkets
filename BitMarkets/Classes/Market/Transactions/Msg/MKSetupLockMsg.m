@@ -11,6 +11,13 @@
 
 @implementation MKSetupLockMsg
 
+- (id)init
+{
+    self = [super init];
+    [self addPropertyName:@"broadcastDateNumber"];
+    return self;
+}
+
 - (void)configureAndBroadcastTx
 {
     BNTx *escrowTx = [self.runningWallet newTx];
@@ -25,7 +32,7 @@
         }
         else
         {
-            [NSException raise:@"tx configureForOutputWithValue failed" format:nil];
+            self.lockNode.error = @"unknown error while constructing change tx";
         }
         
         return;
@@ -41,7 +48,37 @@
     [self.tx lockOutput:[self.tx firstOutput]];
     self.payload = self.tx.asJSONObject;
     [self write];
-    [self.tx broadcast]; //TODO make sure that peers accepted it
+    //[self.tx broadcast]; //TODO make sure that peers accepted it
+    [self broadcastIfNeeded];
+}
+
+- (void)broadcastIfNeeded
+{
+    NSTimeInterval broadcastTimeoutInSeconds = 20*60;
+    
+    if (self.tx)
+    {
+        if (
+                !self.broadcastDate ||
+                ([self.broadcastDate ageInSeconds] > broadcastTimeoutInSeconds)
+            )
+        {
+            [self.tx broadcast]; //TODO make sure that peers accepted it
+            NSLog(@"MKSetupLockMsg broadcast change tx %@", self.tx.txHash);
+            [self setBroadcastDate:[NSDate date]];
+            [self write];
+        }
+    }
+}
+
+- (void)setBroadcastDate:(NSDate *)aDate
+{
+    self.broadcastDateNumber = [aDate asNumber];
+}
+
+- (NSDate *)broadcastDate
+{
+    return [NSDate fromNumber:self.broadcastDateNumber];
 }
 
 @end

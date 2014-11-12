@@ -156,11 +156,16 @@
         }
         @catch (NSException *exception)
         {
-            [self setError:@"Insufficient funds for transaction fee to make change."];
+            [self setError:exception.name];
         }
 
         setupLockMsg.tx.txType = @"Setup Escrow";
         setupLockMsg.tx.description = self.txDescription;
+    }
+    
+    if (self.setupLockMsg)
+    {
+        [self.setupLockMsg broadcastIfNeeded];
     }
 }
 
