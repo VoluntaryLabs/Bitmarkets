@@ -119,7 +119,7 @@
 //both: confirm
 - (void)update
 {
-    if (self.runningWallet)
+    if (self.runningWallet && !self.isComplete)
     {
         [self setupLockIfNeeded];
         [self postLockIfNeeded];
