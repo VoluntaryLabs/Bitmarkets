@@ -131,7 +131,7 @@
     }
 }
 
-//setup lock
+// --- setup lock ---
 
 - (MKSetupLockMsg *)setupLockMsg
 {
@@ -143,17 +143,28 @@
     if (self.bidMsg && (!self.setupLockMsg || !self.setupLockMsg.tx))
     {
         MKSetupLockMsg *setupLockMsg = self.setupLockMsg;
-        if (!self.setupLockMsg) {
+        
+        if (!self.setupLockMsg)
+        {
             setupLockMsg = [MKSetupLockMsg new];
             [self addChild:setupLockMsg];
         }
-        [setupLockMsg configureAndBroadcastTx];
+        
+        @try
+        {
+            [setupLockMsg configureAndBroadcastTx];
+        }
+        @catch (NSException *exception)
+        {
+            [self setError:@"Insufficient funds for transaction fee to make change."];
+        }
+
         setupLockMsg.tx.txType = @"Setup Escrow";
         setupLockMsg.tx.description = self.txDescription;
     }
 }
 
-//lock
+// --- lock ---
 
 - (MKBuyLockEscrowMsg *)buyLockEscrowMsg
 {
@@ -200,7 +211,6 @@
     return self.lockEscrowMsgToConfirm.tx.wasBroadcast;
 }
 
-
 - (void)confirmLockIfNeeded
 {
     if (!self.isConfirmed &&
@@ -218,9 +228,7 @@
     return self.lockEscrowMsgToConfirm.isTxConfirmed;
 }
 
-//cancel
-
-// lock cancel
+// --- lock cancel ---
 
 - (void)cancelEscrow
 {

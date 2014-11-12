@@ -575,7 +575,7 @@
 {
     NSAlert *msgBox = [[NSAlert alloc] init];
     
-    [msgBox setMessageText:@"All communications are done with Bitmessage over Tor, but if your post requires complete anonymity we recommend you post:\n- from a public wifi network\n- without your cellphone with you\n- where there are no surveilence cameras\n- only using that network for this purpose"];
+    [msgBox setMessageText:@"All communications are done with Bitmessage over Tor, but if your post requires full anonymity you will need to:\n- post from a public wifi network\n- without your cellphone with you\n- where there are no surveilence cameras\n- do not use credit cards around the same location and time\n- do not use bitcoins that have a recorded association with your identity"];
     
     [msgBox addButtonWithTitle: @"Post Now"];
     [msgBox addButtonWithTitle: @"Don't Post Now"];
@@ -642,9 +642,7 @@
     [self.navView selectNodePath:buy.nodePathArray];
 
     [MKRootNode.sharedMKRootNode.markets.buys write];
-    
-    // close the post
-    
+        
     [self.mkPost close];
 }
 

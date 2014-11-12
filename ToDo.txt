@@ -1,12 +1,13 @@
 
 --- before public beta release ---
 
-- have java check look for folder instead of running java exe
 - fix drag expand bug when in sell view
 - auto expand navwindow to fit column size hints
 
 - missing region error when restarting in mid post - repeatable?
 - warning for large tx
+
+- fix search field
  
 
 --- adam ---

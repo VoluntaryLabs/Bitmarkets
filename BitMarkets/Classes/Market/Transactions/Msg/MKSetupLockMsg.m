@@ -16,6 +16,7 @@
     BNTx *escrowTx = [self.runningWallet newTx];
     [escrowTx configureForEscrowWithValue:self.lockNode.lockEscrowPriceInSatoshi];
     self.lockNode.error = nil;
+    
     if (escrowTx.error)
     {
         if (escrowTx.error.insufficientValue)
