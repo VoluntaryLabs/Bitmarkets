@@ -63,10 +63,21 @@
                 ([self.broadcastDate ageInSeconds] > broadcastTimeoutInSeconds)
             )
         {
-            [self.tx broadcast]; //TODO make sure that peers accepted it
-            NSLog(@"MKSetupLockMsg broadcast change tx %@", self.tx.txHash);
-            [self setBroadcastDate:[NSDate date]];
-            [self write];
+            @try
+            {
+                [self.tx broadcast]; //TODO make sure that peers accepted it
+
+                NSLog(@"MKSetupLockMsg broadcast change tx '%@'", self.tx.txHash);
+                [self setBroadcastDate:[NSDate date]];
+                [self write];
+            }
+            @catch (NSException *exception)
+            {
+                [self lockNode].error = [exception description];
+                NSLog(@"MKSetupLockMsg broadcast error '%@'",[exception description]);
+            }
+
+
         }
     }
 }

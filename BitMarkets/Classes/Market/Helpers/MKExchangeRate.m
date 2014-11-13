@@ -153,7 +153,6 @@ static MKExchangeRate *shared;
     self.repeatingTimer = nil;
     self.connection = nil;
     self.responseData = nil;
-
 }
 
 // Accepts a currency symbol as a string.
@@ -174,22 +173,5 @@ static MKExchangeRate *shared;
     
     return rate;
 }
-
-
-// ---------------------------------------------------
-
-/*
-- (NSNumberFormatter *)priceFormatter
-{
-    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-    //[formatter setLocalizesFormat:NO];
-    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
-    [formatter setPartialStringValidationEnabled:YES];
-    [formatter setMinimum:0];
-    [formatter setMaximumFractionDigits:6];
-    [formatter setMaximumIntegerDigits:3];
-    return formatter;
-}
-*/
 
 @end

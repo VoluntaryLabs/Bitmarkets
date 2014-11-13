@@ -51,6 +51,11 @@
     return self;
 }
 
+- (void)dealloc
+{
+    [NSNotificationCenter.defaultCenter removeObserver:self];
+}
+
 - (void)channelChanged:(NSNotification *)note
 {
     //[self fetchChannelMessages];
