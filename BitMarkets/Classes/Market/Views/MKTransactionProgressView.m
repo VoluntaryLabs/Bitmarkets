@@ -127,6 +127,7 @@
     [_statusView setNode:self.transaction.currentStage];
     [_statusView syncFromNode];
     
+    /*
     // looks like a NavColumn is adding this nodeView - why?
     // here's a temp hack around it
     MKPost *mkPost = self.transaction.mkPost;
@@ -136,6 +137,21 @@
     {
         _postView = [[MKPostView alloc] initWithFrame:self.frame];
         [_postView setNode:mkPost];
+        BOOL isBuy = [self.node.nodeParent isKindOfClass:MKBuys.class];
+        [_postView setEditable:!isBuy && !mkPost.postMsg];
+        
+        [_bottomView addSubview:_postView];
+    }
+     */
+    
+    MKPost *mkPost = self.transaction.mkPost;
+    
+    if (!_postView)
+    {
+        _postView = (MKPostView *)mkPost.nodeView;
+        
+        [_postView setFrame:self.frame];
+        
         BOOL isBuy = [self.node.nodeParent isKindOfClass:MKBuys.class];
         [_postView setEditable:!isBuy && !mkPost.postMsg];
         

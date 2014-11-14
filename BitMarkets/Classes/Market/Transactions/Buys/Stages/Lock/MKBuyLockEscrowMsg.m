@@ -9,6 +9,8 @@
 #import "MKBuyLockEscrowMsg.h"
 #import "MKBuyLockEscrow.h"
 
+#define FEE_TOLERANCE 40000
+
 @implementation MKBuyLockEscrowMsg
 
 - (MKBuyLockEscrow *)buyLockEscrow
@@ -52,7 +54,7 @@
     
     assert(sellerTx.inputs.count == 1);
     
-    assert(ABS(sellerTx.firstOutput.value.longLongValue - self.lockNode.mkPost.priceInSatoshi.longLongValue) < 20000); //TODO more precise check
+    assert(ABS(sellerTx.firstOutput.value.longLongValue - self.lockNode.mkPost.priceInSatoshi.longLongValue) < FEE_TOLERANCE); //TODO more precise check
     
     assert(sellerScriptPubKey.isMultisig);
 }
@@ -93,7 +95,7 @@
     
     //assert(buyerTx.foreignInputCount.intValue == 1); TODO: This won't work if you're buying from yourself :-/
     
-    assert(ABS(buyerTx.firstOutput.value.longLongValue - 3*self.lockNode.mkPost.priceInSatoshi.longLongValue) <= 20000); //TODO more precise check
+    assert(ABS(buyerTx.firstOutput.value.longLongValue - 3*self.lockNode.mkPost.priceInSatoshi.longLongValue) <= FEE_TOLERANCE); //TODO more precise check
     if (sellerTx.outputs.count > 1)
     {
         assert([buyerTx.outputs containsObject:[sellerTx.outputs objectAtIndex:1]]);

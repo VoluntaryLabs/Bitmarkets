@@ -34,7 +34,7 @@
     
     self.shouldSortChildren = NO;
     
-    self.nodeSuggestedWidth = 150;
+    self.nodeSuggestedWidth = 550;
     self.attachments = [NSArray array];
     
     [self.dictPropertyNames addObjectsFromArray:@[

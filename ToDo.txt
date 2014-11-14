@@ -1,15 +1,10 @@
 
 --- before public beta release ---
 
-- make sure cancel available on unconfirmed lock (MKLock canCancel looks ok)
-
-- fix drag expand bug when in sell view
 - auto expand navwindow to fit column size hints
-
-- missing region error when restarting in mid post - repeatable?
 - warning for large tx
-
 - fix search field
+- fix for count updates
  
 -- dev path ---
 

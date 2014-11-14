@@ -96,9 +96,6 @@
         [self addSubview:self.fromAddress];
 
         // attachment
-
-        //self.attachedImage = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
-        //[self addSubview:self.attachedImage];
         
         self.attachmentView = [[MKAttachmentView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
         [self addSubview:self.attachmentView];
@@ -122,7 +119,7 @@
                                                    object:nil];
 
     }
-    
+        
     return self;
 }
 
@@ -575,7 +572,7 @@
 {
     NSAlert *msgBox = [[NSAlert alloc] init];
     
-    [msgBox setMessageText:@"All communications are done with Bitmessage over Tor, but if your post requires full anonymity you will need to:\n- post from a public wifi network\n- without your cellphone with you\n- where there are no surveilence cameras\n- do not use credit cards around the same location and time\n- do not use bitcoins that have a recorded association with your identity"];
+    [msgBox setMessageText:@"All communications are done with Bitmessage over Tor, but if your post requires full anonymity you will need to:\n- post from a public wifi network\n- without your cellphone with you\n- where there are no surveilence cameras\n- not use credit cards around the same location and time\n- not use bitcoins that have a recorded association with your identity"];
     
     [msgBox addButtonWithTitle: @"Post Now"];
     [msgBox addButtonWithTitle: @"Don't Post Now"];

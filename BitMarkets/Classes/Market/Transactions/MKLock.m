@@ -162,13 +162,6 @@
         setupLockMsg.tx.txType = @"Setup Escrow";
         setupLockMsg.tx.description = self.txDescription;
     }
-    
-    /*
-    if (self.setupLockMsg)
-    {
-        [self.setupLockMsg broadcastIfNeeded];
-    }
-    */
 }
 
 // --- lock ---
