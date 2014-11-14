@@ -11,6 +11,8 @@
 #import <BitnashKit/BitnashKit.h>
 #import "MKRootNode.h"
 
+#define FEE_TOLERANCE 40000
+
 @implementation MKSellReleaseEscrow
 
 - (id)init
@@ -217,7 +219,7 @@
     [releaseTx addPayToAddressOutputWithValue:[NSNumber numberWithLongLong:2*escrowTx.firstOutput.value.longLongValue/3]];
     
     [releaseTx subtractFee];
-    [self verifyReleaseToMeAtLeast:2*self.sell.mkPost.priceInSatoshi.longLongValue - 20000
+    [self verifyReleaseToMeAtLeast:2*self.sell.mkPost.priceInSatoshi.longLongValue - FEE_TOLERANCE
                              forTx:releaseTx];
     [releaseTx sign];
     releaseTx.txType = @"Payment";
@@ -249,7 +251,7 @@
     [refundTx addPayToAddressOutputWithValue:[NSNumber numberWithLongLong:escrowTx.firstOutput.value.longLongValue/3]];
     
     [refundTx subtractFee];
-    [self verifyReleaseToMeAtLeast:self.sell.mkPost.priceInSatoshi.longLongValue - 20000
+    [self verifyReleaseToMeAtLeast:self.sell.mkPost.priceInSatoshi.longLongValue - FEE_TOLERANCE
                              forTx:refundTx];
     [refundTx sign];
     refundTx.txType = @"Refund";
