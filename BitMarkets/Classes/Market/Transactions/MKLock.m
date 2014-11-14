@@ -163,10 +163,12 @@
         setupLockMsg.tx.description = self.txDescription;
     }
     
+    /*
     if (self.setupLockMsg)
     {
         [self.setupLockMsg broadcastIfNeeded];
     }
+    */
 }
 
 // --- lock ---

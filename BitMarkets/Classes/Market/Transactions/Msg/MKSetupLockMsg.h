@@ -13,6 +13,6 @@
 @property (strong, nonatomic) NSNumber *broadcastDateNumber;
 
 - (void)configureAndBroadcastTx;
-- (void)broadcastIfNeeded;
+//- (void)broadcastIfNeeded;
 
 @end

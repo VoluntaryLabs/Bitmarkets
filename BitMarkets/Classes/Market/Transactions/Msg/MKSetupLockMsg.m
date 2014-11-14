@@ -48,15 +48,16 @@
     [self.tx lockOutput:[self.tx firstOutput]];
     self.payload = self.tx.asJSONObject;
     [self write];
-    //[self.tx broadcast]; //TODO make sure that peers accepted it
-    [self broadcastIfNeeded];
+    [self.tx broadcast]; //TODO make sure that peers accepted it
+    //[self broadcastIfNeeded];
 }
 
+/*
 - (void)broadcastIfNeeded
 {
     NSTimeInterval broadcastTimeoutInSeconds = 20*60;
     
-    if (self.tx)
+    if (self.tx && !self.tx.isConfirmed)
     {
         if (
                 !self.broadcastDate ||
@@ -76,11 +77,10 @@
                 [self lockNode].error = [exception description];
                 NSLog(@"MKSetupLockMsg broadcast error '%@'",[exception description]);
             }
-
-
         }
     }
 }
+ */
 
 - (void)setBroadcastDate:(NSDate *)aDate
 {

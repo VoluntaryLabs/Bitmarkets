@@ -1,6 +1,8 @@
 
 --- before public beta release ---
 
+- make sure cancel available on unconfirmed lock (MKLock canCancel looks ok)
+
 - fix drag expand bug when in sell view
 - auto expand navwindow to fit column size hints
 
@@ -9,6 +11,14 @@
 
 - fix search field
  
+-- dev path ---
+
+- move to https://gitian.org for determistic builds
+- https for voluntary
+- sign tags
+
+- limit post title length
+
 
 --- adam ---
 
