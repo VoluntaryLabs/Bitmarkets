@@ -80,7 +80,6 @@
     {
         self.lockNode.error = @"escrow sign error";
     }
-
 }
 
 - (void)verifyForSeller

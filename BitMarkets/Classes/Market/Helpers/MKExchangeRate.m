@@ -47,11 +47,8 @@ static MKExchangeRate *shared;
 {
     //NSLog(@"Updating BTC Exchange rate");
 
-    NSString *url =
-    [NSString stringWithFormat:self.urlString];
-    
-    NSURLRequest *request =
-    [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+    NSString *url = self.urlString;
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
     
     self.connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     
@@ -59,7 +56,6 @@ static MKExchangeRate *shared;
     {
         self.responseData = nil;
     }
-
 }
 
 - (id) init
@@ -157,7 +153,6 @@ static MKExchangeRate *shared;
     self.repeatingTimer = nil;
     self.connection = nil;
     self.responseData = nil;
-
 }
 
 // Accepts a currency symbol as a string.
@@ -178,22 +173,5 @@ static MKExchangeRate *shared;
     
     return rate;
 }
-
-
-// ---------------------------------------------------
-
-/*
-- (NSNumberFormatter *)priceFormatter
-{
-    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-    //[formatter setLocalizesFormat:NO];
-    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
-    [formatter setPartialStringValidationEnabled:YES];
-    [formatter setMinimum:0];
-    [formatter setMaximumFractionDigits:6];
-    [formatter setMaximumIntegerDigits:3];
-    return formatter;
-}
-*/
 
 @end

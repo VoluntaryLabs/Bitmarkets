@@ -67,6 +67,11 @@
 
 - (NSString *)nodeSubtitleDetailed
 {
+    if (self.error)
+    {
+        return self.error;
+    }
+    
     NavNode *node = self.currentStage;
     
     if (node)

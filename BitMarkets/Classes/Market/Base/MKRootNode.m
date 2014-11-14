@@ -157,6 +157,11 @@ static MKRootNode *sharedMKRootNode = nil;
     }
 }
 
+- (void)dealloc
+{
+    [NSNotificationCenter.defaultCenter removeObserver:self];
+}
+
 - (void)walletChanged:(NSNotification *)aNote
 {
     [NSNotificationCenter.defaultCenter postNotificationName:@"WalletChanged" object:nil];

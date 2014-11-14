@@ -68,6 +68,11 @@
     }
 }
 
+- (void)dealloc
+{
+    [NSNotificationCenter.defaultCenter removeObserver:self];
+}
+
 - (void)sentNavAction:(NSNotification *)aNote
 {
     [self close];
