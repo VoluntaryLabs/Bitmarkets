@@ -398,6 +398,9 @@
         [self updatePriceSuffix];
     }
     
+    [self.postDescription setNeedsDisplay:YES];
+    [self setNeedsDisplay:YES];
+    
     [self updateButton];
     [self syncToNode]; // to show on table cell
     [self layout];
