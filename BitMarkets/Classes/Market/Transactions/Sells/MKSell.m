@@ -40,7 +40,6 @@
     [self addChild:self.complete];
     
     self.nodeViewClass = MKTransactionProgressView.class;
-
     return self;
 }
 

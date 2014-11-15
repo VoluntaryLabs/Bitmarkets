@@ -150,7 +150,7 @@
     {
         _postView = (MKPostView *)mkPost.nodeView;
         
-        [_postView setFrame:self.frame];
+        [_postView setFrame:self.bottomView.frame];
         
         BOOL isBuy = [self.node.nodeParent isKindOfClass:MKBuys.class];
         [_postView setEditable:!isBuy && !mkPost.postMsg];

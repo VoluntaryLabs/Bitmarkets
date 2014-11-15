@@ -25,6 +25,8 @@
          [slot setVerifyMessage:[NSString stringWithFormat:@"Are you sure you want to delete this %@?", typeOfTx]];
     }
     
+    self.doesRememberChildPath = YES;
+    
     return self;
 }
 

@@ -58,6 +58,7 @@
     return self.children.count > 0;
 }
 
+/*
 - (NSString *)verifyActionMessage:(NSString *)aString
 {
     if ([aString isEqualToString:@"delete"])
@@ -67,6 +68,7 @@
     
     return nil;
 }
+*/
 
 - (void)update
 {

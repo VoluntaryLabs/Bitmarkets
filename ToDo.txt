@@ -1,14 +1,20 @@
 
 --- before public beta release ---
 
-- auto expand navwindow to fit column size hints
+- Bid not accepted cancel
+- multiple buy click weirdness
+
 - warning for large tx
 - fix search field
 - fix for count updates
+
+- detect and display received deposit feature if window open?
+
+- image attachment resizing on window resize weirdness
  
 -- dev path ---
 
-- move to https://gitian.org for determistic builds
+- move to https://gitian.org for deterministic builds
 - https for voluntary
 - sign tags
 
