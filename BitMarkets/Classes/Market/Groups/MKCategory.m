@@ -141,7 +141,8 @@
     mkPost.regionPath   = self.regionPath;
     mkPost.categoryPath = self.categoryPath;
     
-    [self.navView selectNodePath:mkPost.nodePathArray];
+    //[self.navView selectNodePath:mkPost.nodePathArray];
+    [self.navView selectNodePath:sell.nodePathArray];
 }
 
 - (BOOL)addChild:(NavNode *)child

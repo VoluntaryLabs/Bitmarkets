@@ -1,6 +1,8 @@
 
 --- before public beta release ---
 
+- re-test post deletes
+
 - Bid not accepted cancel
 - multiple buy click weirdness
 
@@ -11,6 +13,8 @@
 - detect and display received deposit feature if window open?
 
 - image attachment resizing on window resize weirdness
+
+- when using remembered paths, try to show selected paths in scroll window?
  
 -- dev path ---
 
