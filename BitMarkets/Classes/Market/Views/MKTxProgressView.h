@@ -1,5 +1,5 @@
 //
-//  MKTransactionProgressView.h
+//  MKTxProgressView.h
 //  BitMarkets
 //
 //  Created by Steve Dekorte on 6/4/14.
@@ -14,7 +14,7 @@
 #import "MKStatusView.h"
 #import "MKPostView.h"
 
-@interface MKTransactionProgressView : MKNodeView
+@interface MKTxProgressView : MKNodeView
 
 @property (assign, nonatomic) NavView *navView;
 

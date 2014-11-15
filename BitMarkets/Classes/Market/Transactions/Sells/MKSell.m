@@ -22,7 +22,6 @@
 - (id)init
 {
     self = [super init];
-    self.nodeSuggestedWidth = 300;
 
     self.bids = [[MKSellBids alloc] init];
     [self addChild:self.bids];
@@ -39,7 +38,7 @@
     self.complete = [[MKSellComplete alloc] init];
     [self addChild:self.complete];
     
-    self.nodeViewClass = MKTransactionProgressView.class;
+    self.nodeViewClass = MKTxProgressView.class;
     return self;
 }
 
@@ -91,11 +90,6 @@
     }
     
     return subtitle;
-}
-
-- (CGFloat)nodeSuggestedWidth
-{
-    return 250.0;
 }
 
 // ------------------

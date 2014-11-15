@@ -1,19 +1,19 @@
 //
-//  MKTransactionProgressView.m
+//  MKTxProgressView.m
 //  BitMarkets
 //
 //  Created by Steve Dekorte on 6/4/14.
 //  Copyright (c) 2014 voluntary.net. All rights reserved.
 //
 
-#import "MKTransactionProgressView.h"
+#import "MKTxProgressView.h"
 #import "MKStepsView.h"
 #import <NavKit/NavKit.h>
 #import "MKPanelManager.h"
 #import "MKBuys.h"
 
 
-@implementation MKTransactionProgressView
+@implementation MKTxProgressView
 
 - (id)initWithFrame:(NSRect)frame
 {

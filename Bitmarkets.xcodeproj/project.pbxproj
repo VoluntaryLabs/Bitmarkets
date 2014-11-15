@@ -59,7 +59,7 @@
 		AA605AC2192A8CC700798BCA /* MKMsgGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = AA605AC1192A8CC700798BCA /* MKMsgGroup.m */; };
 		AA605AC5192A931F00798BCA /* MKClosePostMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AA605AC4192A931F00798BCA /* MKClosePostMsg.m */; };
 		AA753D9D1910779800D07CB5 /* BNKeyView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA753D9C1910779800D07CB5 /* BNKeyView.m */; };
-		AA803EAF194003F50090E619 /* MKTransactionProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA803EAE194003F50090E619 /* MKTransactionProgressView.m */; };
+		AA803EAF194003F50090E619 /* MKTxProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA803EAE194003F50090E619 /* MKTxProgressView.m */; };
 		AA8DADF819999E5700C75CFE /* MKExchangeRate.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8DADF719999E5700C75CFE /* MKExchangeRate.m */; };
 		AA8DADFB19999E9000C75CFE /* MKCurrency.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8DADFA19999E9000C75CFE /* MKCurrency.m */; };
 		AA8F0E761939432F00B62302 /* MKConfirmMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8F0E751939432F00B62302 /* MKConfirmMsg.m */; };
@@ -289,8 +289,8 @@
 		AA703B8219F0AFC6009C82E3 /* NavKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = NavKit.framework; path = "/Users/steve/Library/Developer/Xcode/DerivedData/BitMarkets-cdkqbnngnlqryagzbrrajxypnaiu/Build/Products/Debug/NavKit.framework"; sourceTree = "<absolute>"; };
 		AA753D9B1910779800D07CB5 /* BNKeyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNKeyView.h; sourceTree = "<group>"; };
 		AA753D9C1910779800D07CB5 /* BNKeyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNKeyView.m; sourceTree = "<group>"; };
-		AA803EAD194003F50090E619 /* MKTransactionProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKTransactionProgressView.h; sourceTree = "<group>"; };
-		AA803EAE194003F50090E619 /* MKTransactionProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKTransactionProgressView.m; sourceTree = "<group>"; };
+		AA803EAD194003F50090E619 /* MKTxProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKTxProgressView.h; sourceTree = "<group>"; };
+		AA803EAE194003F50090E619 /* MKTxProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKTxProgressView.m; sourceTree = "<group>"; };
 		AA8DADF619999E5700C75CFE /* MKExchangeRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKExchangeRate.h; sourceTree = "<group>"; };
 		AA8DADF719999E5700C75CFE /* MKExchangeRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKExchangeRate.m; sourceTree = "<group>"; };
 		AA8DADF919999E9000C75CFE /* MKCurrency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKCurrency.h; sourceTree = "<group>"; };
@@ -695,8 +695,8 @@
 				AA09C7DA192BDC2800317130 /* MKAttachmentView.m */,
 				AA09C7EA192BEC2B00317130 /* MKDragFileWell.h */,
 				AA09C7EB192BEC2B00317130 /* MKDragFileWell.m */,
-				AA803EAD194003F50090E619 /* MKTransactionProgressView.h */,
-				AA803EAE194003F50090E619 /* MKTransactionProgressView.m */,
+				AA803EAD194003F50090E619 /* MKTxProgressView.h */,
+				AA803EAE194003F50090E619 /* MKTxProgressView.m */,
 				AA4472ED1947C487009A7F0D /* MKStepsView.h */,
 				AA4472EE1947C487009A7F0D /* MKStepsView.m */,
 				AA447300194A804F009A7F0D /* MKStepView.h */,
@@ -1095,7 +1095,7 @@
 				AAB2816019220F04005C9D27 /* MKConfirmPaymentMsg.m in Sources */,
 				AA2B1A2E1923683500D712D8 /* MKBuyPostPaymentMsg.m in Sources */,
 				AAB2813D19217586005C9D27 /* MKMsg.m in Sources */,
-				AA803EAF194003F50090E619 /* MKTransactionProgressView.m in Sources */,
+				AA803EAF194003F50090E619 /* MKTxProgressView.m in Sources */,
 				AA0E585D18FDC0880095DEBD /* main.m in Sources */,
 				AAB2814E192190F0005C9D27 /* MKTransactions.m in Sources */,
 				AAB2814519217586005C9D27 /* MKSellDeliveryAddress.m in Sources */,

@@ -31,7 +31,7 @@
     self.complete = [[MKBuyComplete alloc] init];
     [self addChild:self.complete];
     
-    self.nodeViewClass = MKTransactionProgressView.class;
+    self.nodeViewClass = MKTxProgressView.class;
     
     return self;
 }
@@ -94,11 +94,6 @@
     }
     
     return subtitle;
-}
-
-- (CGFloat)nodeSuggestedWidth
-{
-    return 250.0;
 }
 
 - (void)setDict:(NSDictionary *)dict
