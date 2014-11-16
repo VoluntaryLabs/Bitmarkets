@@ -24,15 +24,16 @@
         [self setAutoresizesSubviews:YES];
         [self setAutoresizingMask:NSViewHeightSizable | NSViewWidthSizable];
 
-        _title = [[NavAdvTextView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
+        _title = [[NavAdvTextView alloc] initWithFrame:NSMakeRect(0, 0, 650, 24)];
         _title.uneditedTextString = @"Enter title";
         [self addSubview:_title];
         [_title setEditedThemePath:@"sell/title"];
         [_title setDelegate:self];
         _title.endsOnReturn = YES;
+        _title.maxStringLength = @55;
         //@property (strong) IBOutlet NSTextView *quantity;
         
-        _price = [[NavAdvTextView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
+        _price = [[NavAdvTextView alloc] initWithFrame:NSMakeRect(0, 0, 550, 24)];
         _price.autoresizingMask = NSViewMinYMargin | NSViewMaxXMargin;
         [_price setString:@"0"];
         [self addSubview:self.price];
@@ -117,7 +118,6 @@
                                                  selector:@selector(updatePriceSuffix)
                                                      name:@"ExchangeRatesFetched"
                                                    object:nil];
-
     }
         
     return self;
@@ -259,6 +259,8 @@
 
 - (void)syncToNode
 {
+    //NSDate *date = [NSDate date];
+    
     self.mkPost.title = _title.stringSansUneditedString;
 
     self.mkPost.priceInBtc = self.priceInBtc;
@@ -267,6 +269,8 @@
     
     self.mkPost.attachments = self.attachments;
     [self.mkPost postSelfChanged];
+    
+    //NSLog(@"==== syncToNode dt = %f", [date timeIntervalSinceNow]);
 }
 
 - (void)setAttachments:(NSArray *)attachments
@@ -386,6 +390,8 @@
 
 - (void)textDidChange:(NSNotification *)aNotification
 {
+    //NSDate *date = [NSDate date];
+    
     NSTextView *aTextView = [aNotification object];
     
     if ([aTextView respondsToSelector:@selector(textDidChange)])
@@ -404,14 +410,9 @@
     [self updateButton];
     [self syncToNode]; // to show on table cell
     [self layout];
-}
-
-/*
-- (void)validatePrice
-{
     
+    //NSLog(@"==== textDidChange dt = %f", [date timeIntervalSinceNow]);
 }
-*/
 
 - (void)updatePriceSuffix
 {
@@ -454,7 +455,6 @@
     {
         [(NavAdvTextView *)aTextView textShouldBeginEditing];
     }
-
     
     return YES;
 }
@@ -596,7 +596,6 @@
     }
 }
 
-
 // --- buy ---
 
 - (void)buy
@@ -628,7 +627,6 @@
         [self confirmedBuy];
     }
 }
-
 
 - (void)confirmedBuy
 {

@@ -3,18 +3,21 @@
 
 - re-test post deletes
 
+- [feature] eta for pow on posts?
+
 - Bid not accepted cancel
 - multiple buy click weirdness
 
 - warning for large tx
 - fix search field
+
 - fix for count updates
-
-- detect and display received deposit feature if window open?
-
-- image attachment resizing on window resize weirdness
-
 - when using remembered paths, try to show selected paths in scroll window?
+
+- [perf] interaction speed on post
+
+- [can't reproduce] image attachment resizing on window resize weirdness
+- [feature] detect and display received deposit feature if window open?
  
 -- dev path ---
 
@@ -23,7 +26,6 @@
 - sign tags
 
 - limit post title length
-
 
 --- adam ---
 
