@@ -102,6 +102,7 @@
             MKSellDeliveryAddress *address = [[MKSellDeliveryAddress alloc] init];
             address.addressDict = [NSMutableDictionary dictionaryWithDictionary:addressMsg.addressDict];
             [self addChild:address];
+            [self postParentChainChanged];
         }
 
         [self update];

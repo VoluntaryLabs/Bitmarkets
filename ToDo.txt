@@ -6,7 +6,6 @@
 - [feature] eta for pow on posts?
 
 - Bid not accepted cancel
-- multiple buy click weirdness
 
 - warning for large tx
 - fix search field
@@ -15,7 +14,6 @@
 - when using remembered paths, try to show selected paths in scroll window?
 
 - [perf] interaction speed on post
-
 - [can't reproduce] image attachment resizing on window resize weirdness
 - [feature] detect and display received deposit feature if window open?
  

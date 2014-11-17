@@ -148,6 +148,7 @@
         {
             setupLockMsg = [MKSetupLockMsg new];
             [self addChild:setupLockMsg];
+            [self postParentChainChanged];
         }
         
         @try
@@ -198,6 +199,8 @@
     [msg copyThreadFrom:self.bidMsg];
     msg.payload = msg.tx.asJSONObject;
     [self sendMsg:msg];
+    [self postParentChainChanged];
+
 }
 
 
@@ -220,6 +223,7 @@
     {
         MKConfirmLockEscrowMsg *msg = [[MKConfirmLockEscrowMsg alloc] init];
         [self addChild:msg];
+        [self postParentChainChanged];
     }
 }
 
@@ -245,6 +249,8 @@
     [msg broadcast];
     msg.tx.txType = @"Cancel Escrow";
     msg.tx.description = self.txDescription;
+    [self postParentChainChanged];
+
 }
 
 - (BOOL)canCancel

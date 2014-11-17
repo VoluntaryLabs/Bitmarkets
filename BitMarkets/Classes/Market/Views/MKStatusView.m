@@ -48,7 +48,7 @@
 
 - (void)syncFromNode
 {
-    _statusTextView.string   = _title;
+    _statusTextView.string = _title;
     
     NSString *subtitle = (NSString *)[self.node idNoWarningPerformSelector:_subtitleSelector];
     

@@ -30,7 +30,7 @@
         [_title setEditedThemePath:@"sell/title"];
         [_title setDelegate:self];
         _title.endsOnReturn = YES;
-        _title.maxStringLength = @55;
+        _title.maxStringLength = @40;
         //@property (strong) IBOutlet NSTextView *quantity;
         
         _price = [[NavAdvTextView alloc] initWithFrame:NSMakeRect(0, 0, 550, 24)];

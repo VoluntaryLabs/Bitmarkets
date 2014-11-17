@@ -102,6 +102,7 @@
     if ([msg isKindOfClass:[MKSellLockEscrowMsg class]])
     {
         [self addChild:msg];
+        [self postParentChainChanged];
         return YES;
     }
     

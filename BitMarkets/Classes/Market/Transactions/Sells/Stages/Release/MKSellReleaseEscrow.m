@@ -262,7 +262,6 @@
     [msg setPayload:refundTx.asJSONObject];
     [self addChild:msg];
     [msg sendToBuyer];
-    [self postSelfChanged];
     [self postParentChainChanged];
     [self updateActions];
 }

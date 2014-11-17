@@ -34,7 +34,7 @@
     
     self.shouldSortChildren = NO;
     
-    self.nodeSuggestedWidth = 550;
+    self.nodeSuggestedWidth = 665;
     self.attachments = [NSArray array];
     
     [self.dictPropertyNames addObjectsFromArray:@[
@@ -326,6 +326,7 @@
         [self.bmMessage delete];
     }
     
+    [self postParentChainChanged];
     [self removeFromParent];
 }
 
