@@ -37,6 +37,13 @@
 
 - (void)drawRect:(NSRect)dirtyRect
 {
+    /*
+    if ([self inLiveResize])
+    {
+        return;
+    }
+    */
+    
     CGFloat yOffset = 5;
     
     [super drawRect:dirtyRect];
@@ -53,6 +60,14 @@
         //[title drawAtPoint:NSMakePoint(self.bounds.origin.x + self.bounds.size.width/2.0 - titleWidth/2.0,
 //        [title drawAtPoint:NSMakePoint(self.bounds.origin.x + self.bounds.size.width/4.0,
         CGFloat margin = MKPostView.leftMargin;
+        
+        CGFloat smallWidth = 170.0;
+        if (self.width < smallWidth)
+        {
+            CGFloat r = self.width / smallWidth;
+            margin *= r*r*r*r*r*r*r;
+        }
+        
         [title drawAtPoint:NSMakePoint(self.bounds.origin.x + margin + 5,
                                        self.bounds.origin.y + self.bounds.size.height/2.0 - fontSize/2.0 - yOffset)
             withAttributes:att];
@@ -66,6 +81,8 @@
                                        self.bounds.origin.y + self.bounds.size.height/2.0 - fontSize/2.0 - yOffset)
             withAttributes:att];
     }
+    
+    //NSLog(@"%@ stage width: %i", self.node.nodeTitle, (int) self.width);
 }
 
 - (MKStage *)stage

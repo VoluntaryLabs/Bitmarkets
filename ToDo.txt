@@ -1,6 +1,12 @@
 
 --- before public beta release ---
 
+- no remove post sent when bid accepted?
+
+- [possibly fixed] brief graphic artifact in stages view on accepting bid
+
+- create unfinished post, et title, close and open app, (null) btc
+
 - re-test post deletes
 
 - [feature] eta for pow on posts?
@@ -8,22 +14,40 @@
 - Bid not accepted cancel
 
 - warning for large tx
-- fix search field
-
-- fix for count updates
-- when using remembered paths, try to show selected paths in scroll window?
 
 - [perf] interaction speed on post
 - [can't reproduce] image attachment resizing on window resize weirdness
 - [feature] detect and display received deposit feature if window open?
  
--- dev path ---
+- legal pages
+ 
+ ------ steve ------
 
-- move to https://gitian.org for deterministic builds
-- https for voluntary
-- sign tags
+- add any needed auth checks on msgs
 
-- limit post title length
+- UI sync
+    - Status and action buttons don't update synchronously (see "Choose Bid" / "Accept First Bid" button when receiving a bid)
+    - UI doesn't change immediately change when you click [Cancel Escrow]
+    - fix bug where after sending address, refund and pay buttons not immediately available
+
+- validate post price
+- remove .backups?
+
+- add remove post without accepting bid button
+- more general attachment format (dict)
+
+- deposit address isn't changing even though the underlying object changes and calls postParentChainChanged
+
+- [FEATURE] delivery status / package tracking
+- [FEATURE] add service and version fields to msgs?
+- [FEATURE] allow seller to see address of buyer at any time
+
+- [LATER] timeouts for bid, lock and await delivery + user warnings
+- [LATER] timeout for posting? auto-reposting until delete or bid accepted?
+
+- [LATER CLEANUP] replace NavNode base class with navMirror method on NSObject 
+   - use association slot for mirror cache 
+- [LATER] update UI to new design spec
 
 --- adam ---
 
@@ -47,46 +71,22 @@
 - More robust peer connection (use DNS and list of ips?)
 - Add dates to transactions list
 
------- steve ------
-
-- add confirm panels on: refund, pay, item posted and send address 
-
-- add any needed auth checks on msgs
-
-- Status and action buttons don't update synchronously (see "Choose Bid" / "Accept First Bid" button when receiving a bid)
-
-- status view isn't getting dealloced when transaction view removed?
-
-- UI doesn't change immediately when you click [Cancel Escrow]
-
-- validate post price
-- remove .backups?
-
-- fix bug where after sending address, refund and pay buttons not immediately available
-- add remove post without accepting bid button
-- more general attachment format (dict)
-- [FEATURE] delivery status / package tracking
-- [FEATURE] add service and version fields to msgs?
-- [FEATURE] allow seller to see address of buyer at any time
-
-- timeouts for bid, lock and await delivery + user warnings
-- timeout for posting? auto-reposting until delete or bid accepted?
-- deposit address isn't changing even though the underlying object changes and calls postParentChainChanged
-
-- [LATER CLEANUP] replace NavNode base class with navMirror method on NSObject 
-   - use association slot for mirror cache 
-
-- [LATER] update UI to new design spec
-
 ------ dean ------
 
 - short screencast intro/docs
+http://www.cnet.com/how-to/record-your-computers-screen-with-audio-on-a-mac/
 
 ------ chris ------
 
 - website
 - user docs
 - donation address
+
+-- dev path -----------------------
+
+- move to https://gitian.org for deterministic builds
+- https for voluntary
+- sign tags
 
 --- misc notes ---------------
 

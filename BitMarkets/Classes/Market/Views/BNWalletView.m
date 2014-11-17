@@ -224,7 +224,7 @@
 - (void)openUrlAlert
 {
     NSAlert *msgBox = [[NSAlert alloc] init];
-    [msgBox setMessageText: @"Inspect transaction on blockchain.info?\n\nWARNING:\nTHIS MAY ALLOW A PASSIVE OBSERVER TO CONNECT YOUR TRANSACTIONS TO YOUR LOCATION"];
+    [msgBox setMessageText: @"Inspect transaction on blockchain.info?\n\nWARNING\n\nThis may allow a passive observer to connect your transactions to your location."];
     [msgBox addButtonWithTitle: @"Inspect"];
     [msgBox addButtonWithTitle: @"Cancel"];
 

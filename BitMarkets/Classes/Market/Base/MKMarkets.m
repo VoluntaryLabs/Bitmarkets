@@ -28,9 +28,8 @@
     if (NO)
     {
         [_rootRegion setShouldInlineChildren:YES];
-        _rootRegion.nodeSuggestedWidth = 600;
+        _rootRegion.nodeSuggestedWidth = 250;
     }
-    //[self setShouldInlineChildren:YES];
     
     self.mkChannel = [[MKMarketChannel alloc] init];
     [self addChild:self.mkChannel];

@@ -247,6 +247,7 @@
         }
         
         [bid accept];
+        [self sendClosePost];
     }
     
     [self update];

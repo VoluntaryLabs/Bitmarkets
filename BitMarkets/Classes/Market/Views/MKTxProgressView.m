@@ -26,7 +26,6 @@
         [self setAutoresizesSubviews:NO];
         [self setAutoresizingMask:NSViewHeightSizable | NSViewWidthSizable];
         
-        
         _stepsView = [[MKStepsView alloc] initWithFrame:NSMakeRect(0, 0, self.width, 60)];
         [self addSubview:_stepsView];
         [_stepsView setThemePath:@"sell/title"];
@@ -69,7 +68,7 @@
 }
 
 - (void)layout
-{
+{    
     [_stepsView placeInTopOfSuperviewWithMargin:0];
     [_stepsView setWidth:self.width];
     [_stepsView layout];
@@ -80,9 +79,8 @@
     
     CGFloat h = 1000;
     CGFloat w = self.width;
-    //
     
-    [ _bottomView setX:0];
+    [_bottomView setX:0];
     [_bottomView  setWidth:self.width];
     
     [_bottomView setHeight:h];
@@ -127,23 +125,6 @@
     [_statusView setNode:self.transaction.currentStage];
     [_statusView syncFromNode];
     
-    /*
-    // looks like a NavColumn is adding this nodeView - why?
-    // here's a temp hack around it
-    MKPost *mkPost = self.transaction.mkPost;
-    [mkPost.nodeView removeFromSuperview];
-
-    if (!_postView)
-    {
-        _postView = [[MKPostView alloc] initWithFrame:self.frame];
-        [_postView setNode:mkPost];
-        BOOL isBuy = [self.node.nodeParent isKindOfClass:MKBuys.class];
-        [_postView setEditable:!isBuy && !mkPost.postMsg];
-        
-        [_bottomView addSubview:_postView];
-    }
-     */
-    
     MKPost *mkPost = self.transaction.mkPost;
     
     if (!_postView)
@@ -155,7 +136,10 @@
         BOOL isBuy = [self.node.nodeParent isKindOfClass:MKBuys.class];
         [_postView setEditable:!isBuy && !mkPost.postMsg];
         
-        [_bottomView addSubview:_postView];
+        if (![_bottomView.subviews containsObject:_postView])
+        {
+            [_bottomView addSubview:_postView];
+        }
     }
     
     if (_postView.editable)
@@ -166,7 +150,11 @@
     else
     {
         _postView.alphaValue = .5;
-        [_bottomView addSubview:_maskView];
+        
+        if (![_bottomView.subviews containsObject:_maskView])
+        {
+            [_bottomView addSubview:_maskView];
+        }
     }
     
     [self layout];

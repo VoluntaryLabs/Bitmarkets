@@ -94,7 +94,8 @@
     //NSLog(@"_buttonsView.width = %i", (int)_buttonsView.width);
     //NSLog(@"button.x = %i", (int)button.x);
     
-    [_buttonsView stackSubviewsLeftToRightWithMargin:10];
+    //[_buttonsView stackSubviewsLeftToRightWithMargin:10];
+    //[_buttonsView setWidth:_buttonsView.maxXOfSubviews];
     
     //[_buttonsView setHeight:self.maxYOfSubviews];
     //[_buttonsView setHeight:32];
@@ -106,6 +107,13 @@
 
 - (void)layout
 {
+    /*
+    if ([self inLiveResize])
+    {
+        return;
+    }
+    */
+    
     //[_statusTextView setX:[[MKPostView class] leftMargin]];
     [_statusTextView setX:MKPostView.leftMargin];
     [_statusTextView setWidth:self.width];
@@ -126,6 +134,13 @@
 
 - (void)drawRect:(NSRect)dirtyRect
 {
+    /*
+    if ([self inLiveResize])
+    {
+        return;
+    }
+    */
+    
     [super drawRect:dirtyRect];
 
     [self drawHorizontalLineAtY:self.height];

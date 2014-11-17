@@ -41,6 +41,16 @@
     {
         [stepView syncFromNode];
     }
+    
+    // are the stages looking at the nextStage to see how to render?
+    // if so, we might need to do a 2nd eval
+    
+    /*
+    for (MKStepView *stepView in self.subviews)
+    {
+        [stepView syncFromNode];
+    }
+    */
 }
 
 - (void)setupViews
@@ -65,7 +75,7 @@
 }
 
 - (void)layout
-{
+{    
     NSInteger count = self.transaction.visibleStages.count;
     
     for (MKStepView *stepView in self.subviews)
@@ -75,8 +85,21 @@
     
     [self stackSubviewsLeftToRightWithMargin:0.0];
     
+    NSView *lastView = self.subviews.lastObject;
+    
+    if (lastView)
+    {
+        [lastView setWidth:self.width - lastView.x];
+    }
+    
 }
 
+/*
+- (void)display
+{
+    return;
+}
+*/
 
 - (void)drawRect:(NSRect)dirtyRect
 {

@@ -26,7 +26,7 @@
     }
     
     self.doesRememberChildPath = YES;
-    self.nodeSuggestedWidth = 800;
+    self.nodeSuggestedWidth = 900;
     
     return self;
 }
