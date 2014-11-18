@@ -48,11 +48,20 @@
         return @"Buyer escrow received. Awaiting confirmation.";
     }
     
-    if (self.sellLockEscrowMsg || self.setupLockMsg)
+    if (self.sellLockEscrowMsg)
     {
-        return @"Awaiting buyer escrow ...";
+        return @"Awaiting buyer escrow...";
     }
-
+    
+    if (self.setupLockMsg)
+    {
+        if (self.setupLockMsg.isTxConfirmed)
+        {
+            return @"Exact change ready for escrow lock. Awaiting buyer escrow...";
+        }
+        
+        return @"Preparing exact change for escrow lock...";
+    }
     
     return nil;
 }

@@ -136,7 +136,7 @@
         {
             NavInfoNode *contributor = [[NavInfoNode alloc] init];
             contributor.nodeTitle = @"Adam Thorsen";
-            contributor.nodeSubtitle = @"Tor, Bitmessage integration";
+            contributor.nodeSubtitle = @"Generalist";
             [contributors addChild:contributor];
         }
  

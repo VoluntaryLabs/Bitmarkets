@@ -73,6 +73,7 @@
     {
         if (actionSlot.isVisible)
         {
+            [actionSlot.slotView syncFromSlot];
             [_buttonsView addSubview:actionSlot.slotView];
         }
     }
