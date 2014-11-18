@@ -41,6 +41,8 @@
 
 - (void)syncToNode
 {
+    NSLog(@"_node.address = %@", _node.address);
+    
     self.qrCodeImageView.image = [QRCodeGenerator qrImageForString:_node.address imageSize:_qrWidth];
     self.qrCodeTextView.string = _node.address;
     [_qrCodeTextView setThemePath:@"qr/address"];

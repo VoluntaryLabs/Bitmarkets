@@ -5,5 +5,15 @@ Bitmarkets is a protocol and client used to implement a p2p online marketplace c
 
 #compiling
 
-After cloning the git repo, you'll need to run init.sh to do a recursive init and pull of the submodules. Then you should be able to build and run in Xcode.
+After cloning the git repo, you'll need to init and pull all the submodules by running init.sh and pull.sh. Then you should be able to build and run in Xcode.
 
+To verify/audit the build you'll need to download and compile some of the statically built executables (e.g. python and tor in BitmessageKit) seperately.
+
+#development path
+
+- ability to choose between bid addresses
+- address whitelist&blacklist, personal ratings and comments
+- password client login, encrypt client data files
+- ui update, image browsing view option within a category
+- support stores with namecoin (a namecoin name to bitmessage address entry)
+- consider alternatives to tor e.g. onion routing via bitmessage?

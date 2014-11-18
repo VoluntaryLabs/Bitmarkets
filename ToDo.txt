@@ -1,41 +1,34 @@
 
 --- before public beta release ---
 
-- no remove post sent when bid accepted?
+- receiving a bid shows in status but doesn't enable accept first bid immediately?
+- choose bid doesn't immediately go to lock escrow
 
 - [possibly fixed] brief graphic artifact in stages view on accepting bid
 
-- create unfinished post, et title, close and open app, (null) btc
-
-- re-test post deletes
-
-- [feature] eta for pow on posts?
-
 - Bid not accepted cancel
+- legal pages
 
 - warning for large tx
 
-- [perf] interaction speed on post
-- [can't reproduce] image attachment resizing on window resize weirdness
-- [feature] detect and display received deposit feature if window open?
+- [PERF] interaction speed on post
+- [UNREPRODUCABLE] image attachment resizing on window resize weirdness
+- [FEATURE] detect and display received deposit feature if window open?
+- [FEATURE] eta for pow on posts?
  
-- legal pages
  
  ------ steve ------
 
 - add any needed auth checks on msgs
+- validate post price
 
 - UI sync
     - Status and action buttons don't update synchronously (see "Choose Bid" / "Accept First Bid" button when receiving a bid)
     - UI doesn't change immediately change when you click [Cancel Escrow]
     - fix bug where after sending address, refund and pay buttons not immediately available
 
-- validate post price
-- remove .backups?
-
-- add remove post without accepting bid button
 - more general attachment format (dict)
-
+- remove .backups?
 - deposit address isn't changing even though the underlying object changes and calls postParentChainChanged
 
 - [FEATURE] delivery status / package tracking
