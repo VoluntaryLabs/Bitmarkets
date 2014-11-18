@@ -151,6 +151,11 @@
 {
     if (self.canBuy)
     {
+        if (!self.priceInBtc)
+        {
+            return @"";
+        }
+        
         return [NSString stringWithFormat:@"%@BTC", [self.priceInBtc asFormattedStringWithFractionalDigits:4]];
     }
     

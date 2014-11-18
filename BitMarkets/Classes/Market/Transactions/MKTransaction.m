@@ -97,7 +97,13 @@
         return self.error;
     }
     
-    return [NSString stringWithFormat:@"%@BTC", [self.mkPost.priceInBtc asFormattedStringWithFractionalDigits:4]];
+    if (self.mkPost.priceInBtc)
+    {
+        NSString *amount = [self.mkPost.priceInBtc asFormattedStringWithFractionalDigits:4];
+        return [NSString stringWithFormat:@"%@BTC", amount];
+    }
+    
+    return @"";
 }
 
 - (NSString *)nodeNote
