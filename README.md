@@ -20,6 +20,9 @@ To verify/audit the build you'll need to download and compile some of the static
 - ability to choose between bid addresses
 - address whitelist&blacklist, personal ratings and comments
 - password client login, encrypt client data files
+- move to https://gitian.org for deterministic builds
+- https for voluntary
+- sign git tags
 - ui update, image browsing view option within a category
 - support stores with namecoin (a namecoin name to bitmessage address entry)
 - consider alternatives to tor e.g. onion routing via bitmessage?
