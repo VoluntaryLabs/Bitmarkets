@@ -88,7 +88,7 @@
     }
     else
     {
-        [self adjustHeightTo:20];
+        [self adjustHeightTo:40];
         self.backgroundColor = [NSColor colorWithCalibratedWhite:.96 alpha:1.0];
         [_instructions setHidden:NO];
         [_closeButton setHidden:YES];
