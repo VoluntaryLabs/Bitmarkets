@@ -25,3 +25,8 @@ To verify/audit the build you'll need to download and compile some of the static
 - consider alternatives to tor e.g. onion routing via bitmessage?
 - consider open source multi-platform options
 - user defined post filter 
+
+#links
+
+- website: http://voluntary.net
+- twitter: https://twitter.com/voluntarynet
