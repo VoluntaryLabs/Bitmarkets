@@ -69,10 +69,10 @@
 {
     if (self.usesTestNet)
     {
-        return @"Bitcoin Testnet Balance";
+        return @"Testnet Wallet";
     }
     
-    return @"Balance";
+    return @"Wallet";
 }
 */
 
@@ -101,7 +101,18 @@
 
 - (NSString *)tableAmount
 {
-    return [NSString stringWithFormat:@"%@ BTC", [self.netValue.satoshiToBtc asFormattedStringWithFractionalDigits:4]];
+    NSString *s = [self.netValue.satoshiToBtc asFormattedStringWithFractionalDigits:4];
+    
+    if ([s hasPrefix:@"-"])
+    {
+        s = [s stringByReplacingOccurrencesOfString:@"-" withString:@"- "];
+    }
+    else
+    {
+        s = [@"+ " stringByAppendingString:s];
+    }
+    
+    return [NSString stringWithFormat:@"%@ BTC", s];
 }
 
 - (NSString *)tableHashString

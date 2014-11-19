@@ -27,11 +27,11 @@
 
     if (MKRootNode.sharedMKRootNode.wallet.usesTestNet)
     {
-        self.passphrase = @"Bitmarkets beta 6 testnet";
+        self.passphrase = @"Bitmarkets beta 0.8";
     }
     else
     {
-        self.passphrase = @"Bitmarkets beta 6";
+        self.passphrase = @"Bitmarkets beta 0.8";
     }
 
     [NSNotificationCenter.defaultCenter addObserver:self

@@ -1,6 +1,7 @@
 
---- before public beta release ---
+--- steve ---
 
+- record close msg sent 
 - receiving a bid shows in status but doesn't enable accept first bid immediately?
 - choose bid doesn't immediately go to lock escrow
 
@@ -11,25 +12,20 @@
 
 - warning for large tx
 
-- [PERF] interaction speed on post
 - [UNREPRODUCABLE] image attachment resizing on window resize weirdness
 - [FEATURE] detect and display received deposit feature if window open?
 - [FEATURE] eta for pow on posts?
  
- 
- ------ steve ------
+--- steve ---
 
 - add any needed auth checks on msgs
 - validate post price
 
-- UI sync
-    - Status and action buttons don't update synchronously (see "Choose Bid" / "Accept First Bid" button when receiving a bid)
-    - UI doesn't change immediately change when you click [Cancel Escrow]
-    - fix bug where after sending address, refund and pay buttons not immediately available
-
 - more general attachment format (dict)
 - remove .backups?
 - deposit address isn't changing even though the underlying object changes and calls postParentChainChanged
+
+- [PERF] interaction speed on post
 
 - [FEATURE] delivery status / package tracking
 - [FEATURE] add service and version fields to msgs?

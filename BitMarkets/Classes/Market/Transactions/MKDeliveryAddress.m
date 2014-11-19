@@ -57,7 +57,6 @@
         [slot setVisibleName:@"Notes"];
         [slot setUneditedValue:@"Notes"];
     }
-     
     
     return self;
 }
