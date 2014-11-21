@@ -1,6 +1,12 @@
 
 --- steve ---
 
+
+- make sure project paths are relative
+- ~$20USD min for spam prevention
+- add max of ~$2000
+- disable purchasing own items (spam prevention)
+
 - record close msg sent 
 - receiving a bid shows in status but doesn't enable accept first bid immediately?
 - choose bid doesn't immediately go to lock escrow
@@ -68,14 +74,8 @@ http://www.cnet.com/how-to/record-your-computers-screen-with-audio-on-a-mac/
 ------ chris ------
 
 - website
-- user docs
-- donation address
-
--- dev path -----------------------
-
-- move to https://gitian.org for deterministic builds
-- https for voluntary
-- sign tags
+- user docs?
+- donation address?
 
 --- misc notes ---------------
 
@@ -93,4 +93,4 @@ http://www.cnet.com/how-to/record-your-computers-screen-with-audio-on-a-mac/
 - quantity options on sales?
 - store front for given bm address, url verification based?
 
-- order book interface, eventual amazon support
+- order book interface, amazon support
