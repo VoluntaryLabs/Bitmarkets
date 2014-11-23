@@ -1,9 +1,10 @@
 
 --- steve ---
 
-
-- make sure project paths are relative
+- downloading indicator
+- add a test folder?
 - ~$20USD min for spam prevention
+- don't allow a post before wallet has as much $
 - add max of ~$2000
 - disable purchasing own items (spam prevention)
 

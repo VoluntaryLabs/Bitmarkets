@@ -139,6 +139,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		AA1F98A21A22955500B0548C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA537A5819A5709600C438A8 /* BitnashKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DC90331E18CBD1A2005D82A2;
+			remoteInfo = BitnashKit;
+		};
+		AA1F98A41A22955500B0548C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA537A5819A5709600C438A8 /* BitnashKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DC90333518CBD1A2005D82A2;
+			remoteInfo = BitnashKitTests;
+		};
 		AA537A5419A5704600C438A8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AA537A4C19A5704500C438A8 /* BitmessageKit.xcodeproj */;
@@ -509,6 +523,15 @@
 				AA0E587718FDC0890095DEBD /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AA1F989C1A22955500B0548C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AA1F98A31A22955500B0548C /* BitnashKit.framework */,
+				AA1F98A51A22955500B0548C /* BitnashKitTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		AA4A0E0B1909ADF600AB78D0 /* icons */ = {
@@ -975,6 +998,10 @@
 					ProductGroup = AA537A4D19A5704500C438A8 /* Products */;
 					ProjectRef = AA537A4C19A5704500C438A8 /* BitmessageKit.xcodeproj */;
 				},
+				{
+					ProductGroup = AA1F989C1A22955500B0548C /* Products */;
+					ProjectRef = AA537A5819A5709600C438A8 /* BitnashKit.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -984,6 +1011,20 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		AA1F98A31A22955500B0548C /* BitnashKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = BitnashKit.framework;
+			remoteRef = AA1F98A21A22955500B0548C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AA1F98A51A22955500B0548C /* BitnashKitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = BitnashKitTests.xctest;
+			remoteRef = AA1F98A41A22955500B0548C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		AA537A5519A5704600C438A8 /* BitmessageKit.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
