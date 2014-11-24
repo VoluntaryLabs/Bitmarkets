@@ -42,6 +42,7 @@
 - (BOOL)hasPriceWithinMinMaxRange;
 
 - (BOOL)placeInMarketsPath;
+- (BOOL)isAlreadyInMarketsPath;
 
 - (void)copy:(MKPost *)aPost;
 - (NSString *)titleOrDefault;

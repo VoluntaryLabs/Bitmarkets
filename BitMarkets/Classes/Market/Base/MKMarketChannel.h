@@ -20,6 +20,7 @@
 
 @property (assign, nonatomic) BOOL needsToFetchChannelMessages;
 @property (assign, nonatomic) BOOL needsToFetchDirectMessages;
+@property (assign, nonatomic) long totalPostCount;
 
 - (void)fetch;
 

@@ -133,6 +133,8 @@
     
     NSMutableArray *closeMsgs = [NSMutableArray array];
     
+    int newPostCount = 0;
+    
     for (BMReceivedMessage *bmMsg in messages)
     {
         //if (!bmMsg.isRead)
@@ -150,6 +152,12 @@
 
                     if (mkPost.hasPriceWithinMinMaxRange) // generalize this later
                     {
+                        if (!mkPost.isAlreadyInMarketsPath)
+                        {
+                            newPostCount ++;
+                            _totalPostCount ++;
+                        }
+                        
                         BOOL couldPlace = [mkPost placeInMarketsPath]; // deals with merging
                         
                         if (!couldPlace)
@@ -181,6 +189,24 @@
         
             //[bmMsg markAsRead];
         }
+    }
+  
+    NSWindow *window = NSApplication.sharedApplication.mainWindow;
+    
+    if (newPostCount > 0)
+    {
+        NSString *title = [NSString stringWithFormat:@"received new %i posts", newPostCount];
+        if (newPostCount == 1)
+        {
+            title = @"received 1 new post";
+        }
+        
+        [window setTitle:title];
+        [window performSelector:@selector(setTitle:) withObject:@"" afterDelay:3.0];
+    }
+    else if (_totalPostCount == 0)
+    {
+        [window setTitle:@"syncing with bitmarkets channel..."];
     }
     
     // process this after others in case it's before the message it's closing

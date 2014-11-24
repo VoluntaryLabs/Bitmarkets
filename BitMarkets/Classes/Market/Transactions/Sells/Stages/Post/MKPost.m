@@ -217,7 +217,7 @@
     return path;
 }
 
-- (BOOL)placeInMarketsPath
+- (MKCategory *)categoryForPath
 {
     NavNode *root = MKRootNode.sharedMKRootNode.markets.rootRegion;
     NSArray *fullPath = self.fullPath;
@@ -231,13 +231,34 @@
     
     NSArray *nodePath = [root nodeTitlePath:fullPath];
     
-    
     if (nodePath)
     {
+        return nodePath.lastObject;
+    }
+    
+    return nil;
+}
+
+- (BOOL)isAlreadyInMarketsPath
+{
+    MKCategory *cat = self.categoryForPath;
+    
+    if (cat)
+    {
+        return [cat.children containsObject:self];
+    }
+
+    return NO;
+}
+
+- (BOOL)placeInMarketsPath
+{
+    MKCategory *cat = self.categoryForPath;
+    
+    if (cat)
+    {
         //NSLog(@"placing sell in path '%@'", self.fullPath);
-        MKCategory *cat = nodePath.lastObject;
         [cat addChild:self];
-        //[cat postParentChainChanged];
         return YES;
     }
     else
