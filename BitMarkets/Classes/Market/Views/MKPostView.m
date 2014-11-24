@@ -679,7 +679,7 @@
 {
     NSAlert *msgBox = [[NSAlert alloc] init];
     
-    [msgBox setMessageText:@"All communications are done with Bitmessage over Tor, but if your post requires full anonymity you will need to:\n- post from a public wifi network\n- without your cellphone with you\n- where there are no surveilence cameras\n- not use credit cards around the same location and time\n- not use bitcoins that have a recorded association with your identity"];
+    [msgBox setMessageText:@"All communications are done with Bitmessage over Tor, but if your post requires full anonymity you will need to:\n- post from a public wifi network\n- without your cellphone with you\n- where there are no surveilence cameras\n- not use credit cards around the same location and time\n- not use a ride service attached to your identity to travel to or from the location\n- not use bitcoins that have a recorded association with your identity"];
     
     [msgBox addButtonWithTitle: @"Post Now"];
     [msgBox addButtonWithTitle: @"Don't Post Now"];

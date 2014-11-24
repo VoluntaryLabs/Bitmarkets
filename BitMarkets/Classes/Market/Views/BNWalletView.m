@@ -80,9 +80,12 @@
 {
     if (self.isRunning)
     {
+        //NSString *s = = [NSString stringWithFormat:@"%.4f BTC", self.balance.satoshiToBtc];
+        
         MKCurrency *currency = [[MKCurrency alloc] init];
         currency.btcAmount = self.balance.satoshiToBtc;
         NSString *s = currency.formattedPriceSetString;
+        
         return s;
     }
     

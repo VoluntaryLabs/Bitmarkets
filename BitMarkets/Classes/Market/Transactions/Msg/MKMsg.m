@@ -86,7 +86,7 @@
     [self addPropertyName:@"postUuid"];
     [self addPropertyName:@"sellerAddress"];
     [self addPropertyName:@"buyerAddress"];
-    [self addPropertyName:@"dateNumber"];
+    //[self addPropertyName:@"dateNumber"];
     [self addDate];
     
     self.nodeViewClass = NavDescriptionView.class;

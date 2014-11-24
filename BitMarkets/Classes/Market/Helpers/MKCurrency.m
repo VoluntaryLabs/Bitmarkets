@@ -30,10 +30,12 @@
 - (NSString *)formattedPriceForSymbol:(NSString *)aSymbol
 {
     NSNumber *rateForSymbol = @1.0;
-    
+    NSInteger sigDigits = 1;
+   
     if ([aSymbol isEqualToString:@"BTC"] || [aSymbol isEqualToString:@"XBT"])
     {
         rateForSymbol = @1.0;
+        sigDigits = 4;
     }
     else
     {
@@ -45,9 +47,9 @@
     {
         return nil;
     }
-    
+
     NSNumber *priceForSymbol = @(self.btcAmount.floatValue * rateForSymbol.floatValue);
-    NSString *formattedPrice = [priceForSymbol asFormattedStringWithFractionalDigits:1];
+    NSString *formattedPrice = [priceForSymbol asFormattedStringWithFractionalDigits:sigDigits];
     return formattedPrice;
 }
 
