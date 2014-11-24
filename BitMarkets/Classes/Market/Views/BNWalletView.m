@@ -99,6 +99,11 @@
 
 - (NSString *)tableConfirmsString
 {
+    if (self.confirmations.integerValue == 0)
+    {
+        return @"Unconfirmed";
+    }
+    
     return [NSString stringWithFormat:@"%@", self.confirmations];
 }
 
@@ -305,7 +310,7 @@
     }
     
     {
-        NSTableColumn *column = [self newColumnWithIdentifier:@"confirmations"];
+        NSTableColumn *column = [self newColumnWithIdentifier:@"tableConfirmsString"];
         [column.headerCell setStringValue:@"Confirms"];
         [column setWidthPercentage:@15];
         [column setAlignment:NSLeftTextAlignment];
