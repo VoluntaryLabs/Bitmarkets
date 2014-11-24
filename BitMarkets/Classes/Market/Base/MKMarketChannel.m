@@ -145,6 +145,14 @@
             {
                 if ([msg isKindOfClass:MKPostMsg.class])
                 {
+                    if (![msg bmSenderIsSeller]) // generalize this
+                    {
+                        NSLog(@"attempt to forge sender address on post %@", msg.bmMessage.messageString);
+                        //[msg bmSenderIsSeller];
+                        [bmMsg delete];
+                        continue;
+                    }
+                    
                     MKPostMsg *postMsg = (MKPostMsg *)msg;
                     MKPost *mkPost = [postMsg mkPost];
                     
@@ -174,6 +182,14 @@
                 }
                 else if ([msg isKindOfClass:MKClosePostMsg.class])
                 {
+                    if (![msg bmSenderIsSeller]) // generalize this
+                    {
+                        NSLog(@"attempt to forge sender address on close post %@", msg.bmMessage.messageString);
+                        //[msg bmSenderIsSeller];
+                        [bmMsg delete];
+                        continue;
+                    }
+                    
                     [closeMsgs addObject:msg];
                 }
                 else // don't know how to handle this Msg class, so delete it
