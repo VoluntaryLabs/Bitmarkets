@@ -144,7 +144,7 @@
     {
         MKSetupLockMsg *setupLockMsg = self.setupLockMsg;
         
-        if (!self.setupLockMsg)
+        if (!setupLockMsg)
         {
             setupLockMsg = [MKSetupLockMsg new];
             [self addChild:setupLockMsg];
@@ -347,16 +347,49 @@
 
 - (BOOL)canDelete
 {
-    if (self.setupLockMsg)
+    if (self.setupLockMsg) // make change
     {
-        if (self.isComplete || self.isCancelConfirmed)
+        if (self.buyLockEscrowMsg && self.sellLockEscrowMsg)
+        {
+            if (self.isComplete || self.isCancelConfirmed)
+            {
+                return YES;
+            }
+            
+            return NO;
+        }
+        else
         {
             return YES;
         }
-
-        return NO;
     }
     
+    return YES;
+}
+
+- (BOOL)prepareToDelete
+{
+    if (self.setupLockMsg) // make change
+    {
+        if (self.buyLockEscrowMsg && self.sellLockEscrowMsg)
+        {
+            if (self.isComplete || self.isCancelConfirmed)
+            {
+                // nothing to cleanup
+                return YES;
+            }
+            
+            [NSException raise:@"attempt to delete uncompleted lock escrow" format:nil];
+            return NO;
+        }
+        else
+        {
+            [self.setupLockMsg returnChangeToWallet];
+            return YES;
+        }
+    }
+    
+    // nothing to cleanup
     return YES;
 }
 

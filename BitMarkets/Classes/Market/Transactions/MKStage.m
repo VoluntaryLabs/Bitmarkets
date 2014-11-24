@@ -44,4 +44,8 @@
     return YES;
 }
 
+- (void)prepareToDelete
+{
+}
+
 @end

@@ -12,6 +12,8 @@
 
 @implementation MKEscrow
 
+// buy
+
 - (MKBuy *)buy
 {
     MKBuy *buy = (MKBuy *)[self firstInParentChainOfClass:MKBuy.class];
@@ -19,12 +21,25 @@
     return buy;
 }
 
+- (BOOL)isBuy
+{
+    return self.buy != nil;
+}
+
+// sell
+
 - (MKSell *)sell
 {
     MKSell *sell = (MKSell *)[self firstInParentChainOfClass:MKSell.class];
     assert(sell != nil);
     return sell;
 }
+
+- (BOOL)isSell
+{
+    return self.sell != nil;
+}
+
 
 - (BOOL)isCancelConfirmed
 {

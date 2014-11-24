@@ -15,4 +15,6 @@
 - (void)configureAndBroadcastTx;
 //- (void)broadcastIfNeeded;
 
+- (void)returnChangeToWallet;
+
 @end

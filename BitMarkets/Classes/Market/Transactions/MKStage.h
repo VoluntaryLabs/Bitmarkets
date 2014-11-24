@@ -21,5 +21,6 @@
 - (MKStage *)previousStage;
 
 - (BOOL)canDelete;
+- (BOOL)prepareToDelete;
 
 @end

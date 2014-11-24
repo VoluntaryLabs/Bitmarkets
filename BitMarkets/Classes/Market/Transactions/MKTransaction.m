@@ -234,4 +234,14 @@
     return YES;
 }
 
+- (void)delete
+{
+    for (MKStage *stage in self.stages)
+    {
+        [stage prepareToDelete]; // these raise exception on error
+    }
+    
+    [super delete];
+}
+
 @end

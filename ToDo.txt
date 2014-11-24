@@ -6,24 +6,22 @@
 - [DONE] seller can only post if they have sufficient funds for escrow
 - [DONE] increased minimum price for posts
 - [DONE] added a simple channel syncing indicator
+- [DONE] fix for wallet balance formatting
+- [DONE] changed 0 confirms to Unconfirmed string
+- [DONE] use ... on long post names for nodeTitle 
 
 - rebroadcast if no bid after two days [adam looking into bm cache time api]
-
-- use ... on long post names for nodeTitle 
-
-- add max of ~$2000
+- bid not accepted cancel
+- scrollable post window
+- legal and info pages
+- add max of ~$2000 or warning for large tx
 - disable purchasing own items (spam prevention)
 
-- record close msg sent 
+- record the actual close msg that was sent 
 - receiving a bid shows in status but doesn't enable accept first bid immediately?
 - choose bid doesn't immediately go to lock escrow
 
 - [possibly fixed] brief graphic artifact in stages view on accepting bid
-
-- Bid not accepted cancel
-- legal pages
-
-- warning for large tx
 
 - [UNREPRODUCABLE] image attachment resizing on window resize weirdness
 - [FEATURE] detect and display received deposit feature if window open?

@@ -52,6 +52,13 @@
     //[self broadcastIfNeeded];
 }
 
+- (void)returnChangeToWallet
+{
+    if (self.tx)
+    {
+        [self.tx cancellationTx];
+    }
+}
 /*
 - (void)broadcastIfNeeded
 {

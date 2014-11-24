@@ -17,8 +17,12 @@
 
 @property (strong, nonatomic) NSString *error;
 
-- (MKSell *)sell;
 - (MKBuy *)buy;
+- (BOOL)isBuy;
+
+- (MKSell *)sell;
+- (BOOL)isSell;
+
 
 - (BOOL)isCancelConfirmed;
 
