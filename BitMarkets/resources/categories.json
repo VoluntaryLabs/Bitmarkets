@@ -4,6 +4,10 @@
     
     "children": [
                  
+                 { "_type": "Category", "name" : "Tests",
+
+                 },
+                 
                  { "_type": "Category", "name" : "Media & Games",
                  "children": [
                                 { "_type": "Category", "name" : "Paper", "subtitle" : "Books, Magazines..." },

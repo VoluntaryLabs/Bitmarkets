@@ -45,6 +45,13 @@
         
         _title.nextKeyView = _price;
         
+        _errorText = [[NavAdvTextView alloc] initWithFrame:NSMakeRect(0, 0, 550, 24)];
+        _errorText.autoresizingMask = NSViewMinYMargin | NSViewMaxXMargin;
+        [self addSubview:_errorText];
+        _errorText.string = @"";
+        [_errorText setEditable:NO];
+        [_errorText setEditedThemePath:@"sell/error"];
+        
 
         
         self.separator = [[NavColoredView alloc] initWithFrame:NSMakeRect(0, 0, self.width, 1)];
@@ -118,6 +125,11 @@
                                                  selector:@selector(updatePriceSuffix)
                                                      name:@"ExchangeRatesFetched"
                                                    object:nil];
+
+        [NSNotificationCenter.defaultCenter addObserver:self
+                                               selector:@selector(updateButton)
+                                                   name:BNWalletStartedNotification
+                                                 object:nil];
     }
         
     return self;
@@ -153,6 +165,10 @@
     [_price setX:leftMargin];
     [_price placeYBelow:_title margin:0];
     //[_price setWidth:self.width*.7];
+    
+    [_errorText setX:leftMargin];
+    [_errorText placeYBelow:_price margin:0];
+    
 
     [_postOrBuyButton setWidth:84];
     [_postOrBuyButton setX:self.width - _postOrBuyButton.width - leftMargin];
@@ -271,6 +287,7 @@
     [self.mkPost postSelfChanged];
     
     //NSLog(@"==== syncToNode dt = %f", [date timeIntervalSinceNow]);
+    [self updateButton];
 }
 
 - (void)setAttachments:(NSArray *)attachments
@@ -308,23 +325,54 @@
     return attachments;
 }
 
-- (BOOL)hasPriceError
+- (BOOL)hasValidPrice
 {
-    return self.price.string.doubleValue > 0.001; // dust
+    BOOL isLargeEnough = self.price.string.doubleValue > 0.001; // dust
+    BOOL isSmallEnough = NO;
+    
+    self.errorText.string = @"";
+ 
+    if (!isLargeEnough)
+    {
+        self.errorText.string = @"price too small";
+    }
+    
+    BNWallet *wallet = [MKRootNode sharedMKRootNode].wallet;
+
+    if (wallet.isRunning)
+    {
+        NSNumber *balanceInSatoshi = [MKRootNode sharedMKRootNode].wallet.cachedBalanceInSatoshi;
+        NSNumber *priceInSatoshi = self.mkPost.priceInSatoshi;
+
+        isSmallEnough = [balanceInSatoshi isGreaterThan:priceInSatoshi];
+
+        if (!isSmallEnough)
+        {
+            self.errorText.string = @"insufficient funds in wallet for escrow";
+        }
+    }
+    else
+    {
+        self.errorText.string = @"waiting for wallet to start...";
+    }
+    
+    [self.errorText setNeedsDisplay:YES];
+
+    return isLargeEnough && isSmallEnough;
 }
 
 - (BOOL)readyToPost
 {
     BOOL hasTitle = self.title.isReady;
-    BOOL hasPrice = self.hasPriceError;
     BOOL hasDescription = self.postDescription.isReady;
+    BOOL hasValidPrice = self.hasValidPrice;
     
-    if (!hasPrice)
+    if (self.mkPost.isEditable)
     {
-        // color the price text?
+        [_price setIsValid:hasValidPrice];
     }
     
-    return hasTitle && hasPrice && hasDescription;
+    return hasTitle && hasValidPrice && hasDescription;
 }
 
 - (void)updateButton
@@ -370,8 +418,12 @@
     
     // price
 
-    [_price setIsValid:self.hasPriceError];
-    
+    /*
+    if (self.mkPost.isEditable)
+    {
+        [_price setIsValid:self.hasValidPrice];
+    }
+    */
 }
 
 - (MKSell *)sell
@@ -391,6 +443,7 @@
 - (void)textDidChange:(NSNotification *)aNotification
 {
     //NSDate *date = [NSDate date];
+    //NSLog(@"textDidChange price = %@", self.price.string);
     
     NSTextView *aTextView = [aNotification object];
     
@@ -407,7 +460,6 @@
     [self.postDescription setNeedsDisplay:YES];
     [self setNeedsDisplay:YES];
     
-    [self updateButton];
     [self syncToNode]; // to show on table cell
     [self layout];
     

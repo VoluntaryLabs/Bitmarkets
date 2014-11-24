@@ -206,6 +206,13 @@
                 "color" : "#DD0000",
             },
             
+            "error" :
+            {
+                "fontName" : "Open Sans Light Italic",
+                "fontSize" : 13,
+                "color" : "#DD0000",
+            },
+            
             "description" :
             {
                 "fontName" : "Open Sans",

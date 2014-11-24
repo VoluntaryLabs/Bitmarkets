@@ -260,7 +260,7 @@
 /*
  - (BOOL)tableView:(NSTableView *)aTableView shouldEditTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
  {
- return YES;
+ return NO;
  }
  */
 

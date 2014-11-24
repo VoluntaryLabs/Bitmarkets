@@ -1,10 +1,14 @@
 
 --- steve ---
 
+- [DONE] window size now remembered
+- [DONE] added a test category folder
+- [DONE] seller can only post if they have sufficient funds for escrow
+
+- rebroadcast if no bid after two days [adam looking into bm cache time api]
+
 - downloading indicator
-- add a test folder?
 - ~$20USD min for spam prevention
-- don't allow a post before wallet has as much $
 - add max of ~$2000
 - disable purchasing own items (spam prevention)
 

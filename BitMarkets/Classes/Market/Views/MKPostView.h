@@ -20,6 +20,7 @@
 @property (strong, nonatomic) NavAdvTextView *title;
 //@property (strong, nonatomic) IBOutlet NSTextView *quantity;
 @property (strong, nonatomic) NavAdvTextView *price;
+@property (strong, nonatomic) NavAdvTextView *errorText;
 @property (strong, nonatomic) NavRoundButtonView *postOrBuyButton;
 
 @property (strong, nonatomic) NavColoredView *separator;
