@@ -145,14 +145,23 @@
                 {
                     MKPostMsg *postMsg = (MKPostMsg *)msg;
                     MKPost *mkPost = [postMsg mkPost];
+                    
                     [mkPost addChild:postMsg];
-                    
-                    BOOL couldPlace = [mkPost placeInMarketsPath]; // deals with merging
-                    
-                    if (!couldPlace)
+
+                    if (mkPost.hasPriceWithinMinMaxRange) // generalize this later
                     {
-                        // can't place this message
-                        [bmMsg delete];
+                        BOOL couldPlace = [mkPost placeInMarketsPath]; // deals with merging
+                        
+                        if (!couldPlace)
+                        {
+                            // can't place this message
+                            [bmMsg delete];
+                        }
+                    }
+                    else
+                    {
+                        //[bmMsg delete];
+                        NSLog(@"price too small");
                     }
                 }
                 else if ([msg isKindOfClass:MKClosePostMsg.class])

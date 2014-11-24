@@ -1,11 +1,14 @@
 
 --- steve ---
 
-- [DONE] window size now remembered
+- [DONE] window size now remembered and min window size fix
 - [DONE] added a test category folder
 - [DONE] seller can only post if they have sufficient funds for escrow
+- [DONE] updated minimum price for posts
 
 - rebroadcast if no bid after two days [adam looking into bm cache time api]
+
+- use ... on long post names for nodeTitle 
 
 - downloading indicator
 - ~$20USD min for spam prevention

@@ -325,40 +325,85 @@
     return attachments;
 }
 
-- (BOOL)hasValidPrice
+// --- error text ---
+
+- (NSNumber *)minimumPriceInBtc
 {
-    BOOL isLargeEnough = self.price.string.doubleValue > 0.001; // dust
-    BOOL isSmallEnough = NO;
+    // too small to be worth shipping
+    return self.mkPost.minimumPriceInBtc;
+}
+
+- (BOOL)priceIsLargeEnough
+{
+    return self.price.string.floatValue > self.minimumPriceInBtc.floatValue;
+}
+
+- (BNWallet *)wallet
+{
+    return MKRootNode.sharedMKRootNode.wallet;
+}
+
+- (NSNumber *)escrowInBtc
+{
+    NSNumber *escrowInBtc = self.mkPost.priceInBtc;
     
-    self.errorText.string = @"";
- 
-    if (!isLargeEnough)
+    if ([self.mkPost canBuy])
     {
-        self.errorText.string = @"price too small";
+        escrowInBtc = [escrowInBtc multipliedBy:@2];
     }
     
-    BNWallet *wallet = [MKRootNode sharedMKRootNode].wallet;
+    return escrowInBtc;
+}
 
-    if (wallet.isRunning)
+- (BOOL)hasFundsForEscrow
+{
+    if (self.wallet.isRunning)
     {
-        NSNumber *balanceInSatoshi = [MKRootNode sharedMKRootNode].wallet.cachedBalanceInSatoshi;
-        NSNumber *priceInSatoshi = self.mkPost.priceInSatoshi;
+        NSNumber *balanceInSatoshi = self.wallet.cachedBalanceInSatoshi;
 
-        isSmallEnough = [balanceInSatoshi isGreaterThan:priceInSatoshi];
-
-        if (!isSmallEnough)
+        
+        if ([balanceInSatoshi isGreaterThan:self.escrowInBtc.btcToSatoshi])
         {
-            self.errorText.string = @"insufficient funds in wallet for escrow";
+            return YES;
         }
     }
-    else
-    {
-        self.errorText.string = @"waiting for wallet to start...";
-    }
     
-    [self.errorText setNeedsDisplay:YES];
+    return NO;
+}
 
-    return isLargeEnough && isSmallEnough;
+- (void)updateErrorText
+{
+    self.errorText.string = @"";
+    
+    if (!self.wallet.isRunning)
+    {
+        self.errorText.string = @"waiting for wallet...";
+    }
+    else if ([self.wallet.cachedBalanceInSatoshi.satoshiToBtc isLessThan:self.minimumPriceInBtc])
+    {
+        self.errorText.string = [NSString stringWithFormat:
+                                 @"insufficient funds in wallet for minimum price of %@BTC",
+                                 self.minimumPriceInBtc];
+    }
+    else if (!self.priceIsLargeEnough)
+    {
+        self.errorText.string = [NSString stringWithFormat:
+                                 @"price must be above %@BTC",
+                                 self.minimumPriceInBtc];
+    }
+    else if (!self.hasFundsForEscrow)
+    {
+        self.errorText.string = [NSString stringWithFormat:
+                                 @"insufficient funds in wallet for escrow of %@BTC",
+                                 self.escrowInBtc];
+    }
+
+    [self.errorText setNeedsDisplay:YES];
+}
+
+- (BOOL)hasValidPrice
+{
+    return self.hasFundsForEscrow && self.priceIsLargeEnough;
 }
 
 - (BOOL)readyToPost
@@ -405,6 +450,12 @@
             [self.postOrBuyButton setTitle:@"Buy"];
             [self.postOrBuyButton setAction:@selector(buy)];
             [_postOrBuyButton setTitleAttributes:[NavTheme.sharedNavTheme attributesDictForPath:@"sell/button"]];
+            
+            if (!self.hasValidPrice)
+            {
+                [_postOrBuyButton setTitleAttributes:[NavTheme.sharedNavTheme attributesDictForPath:@"sell/button-disabled"]];
+                [_postOrBuyButton setEnabled:YES];
+            }
         }
         else
         {
@@ -413,6 +464,7 @@
         }
     }
     
+    [self updateErrorText];
     
     [_postOrBuyButton setNeedsDisplay:YES];
     

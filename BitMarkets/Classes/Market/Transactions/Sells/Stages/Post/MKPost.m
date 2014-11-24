@@ -156,7 +156,8 @@
             return @"";
         }
         
-        return [NSString stringWithFormat:@"%@BTC", [self.priceInBtc asFormattedStringWithFractionalDigits:4]];
+        return [NSString stringWithFormat:@"%@BTC",
+                [self.priceInBtc asFormattedStringWithFractionalDigits:4]];
     }
     
     if (self.postMsg)
@@ -168,9 +169,8 @@
         
         //NSNumber *secs = self.bmMessage.estimatedSecondsForPow;
         
-        return [NSString stringWithFormat:@"Preparing post (%@)...", self.postMsg.sentMessage.getHumanReadbleStatus];
-        
-        //return [NSString stringWithFormat:@"computing proof of work for message (~%f mins)...", secs.floatValue/60.0];
+        return [NSString stringWithFormat:@"Preparing post (%@)...",
+                self.postMsg.sentMessage.getHumanReadbleStatus];
     }
     
     return @"Complete your listing below";
@@ -184,6 +184,17 @@
 - (NSNumber *)priceInBtc
 {
     return [self.priceInSatoshi satoshiToBtc];
+}
+
+- (NSNumber *)minimumPriceInBtc
+{
+    // too small to be worth shipping
+    return @0.04;
+}
+
+- (BOOL)hasPriceWithinMinMaxRange
+{
+    return [self.priceInSatoshi isGreaterThan:self.minimumPriceInBtc.btcToSatoshi];
 }
 
 - (NSString *)titleOrDefault
