@@ -17,6 +17,13 @@
 @property (assign, nonatomic) NavView *navView;
 @property (assign, nonatomic) NavNode *node;
 
+// scrolling
+
+@property (strong, nonatomic) NavColoredView *documentView;
+@property (strong, nonatomic) NSScrollView *scrollView;
+
+// content
+
 @property (strong, nonatomic) NavAdvTextView *title;
 //@property (strong, nonatomic) IBOutlet NSTextView *quantity;
 @property (strong, nonatomic) NavAdvTextView *price;

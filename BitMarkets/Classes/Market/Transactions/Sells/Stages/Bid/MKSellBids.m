@@ -256,7 +256,7 @@
 
 - (void)showInsufficientFundsPanel
 {
-    
+    [NSException raise:@"insufficient funds for bid - this action shouldn't be possible" format:nil];
 }
 
 - (void)removePost

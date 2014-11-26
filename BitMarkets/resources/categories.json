@@ -5,7 +5,6 @@
     "children": [
                  
                  { "_type": "Category", "name" : "Tests",
-
                  },
                  
                  { "_type": "Category", "name" : "Media & Games",
@@ -18,10 +17,14 @@
                               ]
                  },
                  
-                 { "_type": "Category", "name" : "Currency",
+                 { "_type": "Category", "name" : "Currency", "shouldSortChildren" : false,
                  "children":
                  [
                     { "_type": "Category", "name" : "XBT", "subtitle" : "Bitcoin"},
+                    { "_type": "Category", "name" : "Gold", "subtitle" : "coins "},
+                    { "_type": "Category", "name" : "Silver", "subtitle" : ""},
+                    { "_type": "Category", "name" : "Platinum", "subtitle" : ""},
+                  
                     { "_type": "Category", "name" : "ARS", "subtitle" : "Argentinian peso"},
                     { "_type": "Category", "name" : "AUD", "subtitle" : "Australian dollar"},
                     { "_type": "Category", "name" : "BRL", "subtitle" : "Brazilian real"},

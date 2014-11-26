@@ -56,7 +56,9 @@
 {
     if (self.tx)
     {
-        [self.tx cancellationTx];
+        //[self.tx cancellationTx];
+        [self.tx unlockInputs];
+        #warning Rich, is using unlockInputs correct?
     }
 }
 /*

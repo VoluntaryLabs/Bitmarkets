@@ -24,9 +24,29 @@
         [self setAutoresizesSubviews:YES];
         [self setAutoresizingMask:NSViewHeightSizable | NSViewWidthSizable];
 
+        
+        // scrolling
+
+        _documentView = [[NavColoredView alloc] initWithFrame:NSMakeRect(0, 0, self.width, self.height)];
+        [_documentView setAutoresizesSubviews:NO];
+        [_documentView setAutoresizingMask:NSViewHeightSizable | NSViewWidthSizable];
+
+        
+        _documentView.backgroundColor = nil;
+        _scrollView = [[NSScrollView alloc] initWithFrame:NSMakeRect(0, 0, self.width, self.height)];
+        [self addSubview:_scrollView];
+        [_scrollView setAutoresizesSubviews:YES];
+        [_scrollView setAutoresizingMask:NSViewHeightSizable | NSViewWidthSizable];
+        [_scrollView setDocumentView:_documentView];
+        [_scrollView setHasVerticalScroller:YES];
+        
+        // content
+        
+        
         _title = [[NavAdvTextView alloc] initWithFrame:NSMakeRect(0, 0, 650, 24)];
+        [_title setAutoresizingMask:NSViewNotSizable];
         _title.uneditedTextString = @"Enter title";
-        [self addSubview:_title];
+        [_documentView addSubview:_title];
         [_title setEditedThemePath:@"sell/title"];
         [_title setDelegate:self];
         _title.endsOnReturn = YES;
@@ -34,9 +54,11 @@
         //@property (strong) IBOutlet NSTextView *quantity;
         
         _price = [[NavAdvTextView alloc] initWithFrame:NSMakeRect(0, 0, 550, 24)];
-        _price.autoresizingMask = NSViewMinYMargin | NSViewMaxXMargin;
+        [_price setAutoresizingMask:NSViewNotSizable];
+        [_price setAutoresizesSubviews:NO];
+        //_price.autoresizingMask = NSViewMinYMargin | NSViewMaxXMargin;
         [_price setString:@"0"];
-        [self addSubview:self.price];
+        [_documentView addSubview:_price];
         _price.uneditedTextString = @"Enter price in BTC";
         //_price.suffix = @"BTC";
         [_price setDelegate:self];
@@ -47,73 +69,73 @@
         
         _errorText = [[NavAdvTextView alloc] initWithFrame:NSMakeRect(0, 0, 550, 24)];
         _errorText.autoresizingMask = NSViewMinYMargin | NSViewMaxXMargin;
-        [self addSubview:_errorText];
+        [_documentView addSubview:_errorText];
         _errorText.string = @"";
         [_errorText setEditable:NO];
         [_errorText setEditedThemePath:@"sell/error"];
         
 
         
-        self.separator = [[NavColoredView alloc] initWithFrame:NSMakeRect(0, 0, self.width, 1)];
-        [self.separator setThemePath:@"sell/separator"];
-        [self addSubview:self.separator];
+        _separator = [[NavColoredView alloc] initWithFrame:NSMakeRect(0, 0, self.width, 1)];
+        [_separator setThemePath:@"sell/separator"];
+        [_documentView addSubview:_separator];
         
         _postDescription = [[NavAdvTextView alloc] initWithFrame:NSMakeRect(0, 0, 500, 100)];
         _postDescription.uneditedTextString = @"Enter description";
         [_postDescription setDelegate:self];
         //self.description.string = @"I've had this TOA amp in the closet for a while waiting to setup in my shop space but I need the space so my loss is your gain. Works fine and is in mostly decent condition with a few dings on the corners. I'm available during the day near 7th and Folsom but I can also meet up in the evening in the Mission.";
         [self.postDescription setEditedThemePath:@"sell/description"];
-        [self addSubview:_postDescription];
+        [_documentView addSubview:_postDescription];
  
         _price.nextKeyView = _postDescription;
 
         // region
         
-        self.regionIcon = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 0, 16, 16)];
+        _regionIcon = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 0, 16, 16)];
         [_regionIcon setImage:[NSImage imageNamed:@"location_active.png"]];
-        [self addSubview:self.regionIcon];
+        [_documentView addSubview:_regionIcon];
  
-        self.region = [[NavTextView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
-        [self.region setEditable:NO];
-        //self.region.string = @"United States";
-        [self.region setThemePath:@"sell/label"];
-        [self addSubview:self.region];
+        _region = [[NavTextView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
+        [_region setEditable:NO];
+        //[_region setSuffix:@" Shipping"];
+        [_region setThemePath:@"sell/label"];
+        [_documentView addSubview:_region];
         
         // category
         
-        self.categoryIcon = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 0, 16, 16)];
+        _categoryIcon = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 0, 16, 16)];
         [_categoryIcon setImage:[NSImage imageNamed:@"right_active.png"]];
-        [self addSubview:self.categoryIcon];
+        [_documentView addSubview:_categoryIcon];
         
-        self.category = [[NavTextView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
+        _category = [[NavTextView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
         //self.category.string = @"Electronics";
-        [self.category setEditable:NO];
-        [self.category setThemePath:@"sell/label"];
-        [self addSubview:self.category];
+        [_category setEditable:NO];
+        [_category setThemePath:@"sell/label"];
+        [_documentView addSubview:_category];
         
         // fromAddress
         
-        self.fromAddressIcon = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 0, 16, 16)];
+        _fromAddressIcon = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 0, 16, 16)];
         [_fromAddressIcon setImage:[NSImage imageNamed:@"profile_active.png"]];
-        [self addSubview:self.fromAddressIcon];
+        [_documentView addSubview:_fromAddressIcon];
         
-        self.fromAddress = [[NavTextView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
-        [self.fromAddress setEditable:NO];
-        //self.fromAddress.string = @"fromAddress";
-        [self.fromAddress setThemePath:@"sell/address"];
-        [self addSubview:self.fromAddress];
+        _fromAddress = [[NavTextView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
+        [_fromAddress setEditable:NO];
+        [_fromAddress setThemePath:@"sell/address"];
+        [_documentView addSubview:_fromAddress];
 
         // attachment
         
-        self.attachmentView = [[MKAttachmentView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
-        [self addSubview:self.attachmentView];
+        _attachmentView = [[MKAttachmentView alloc] initWithFrame:NSMakeRect(0, 0, 500, 24)];
+        [_attachmentView setAutoresizesSubviews:NO];
+        [_documentView addSubview:_attachmentView];
         
         _postOrBuyButton = [[NavRoundButtonView alloc] initWithFrame:NSMakeRect(0, 0, 120, 32)];
         //_postOrBuyButton.title = @"Buy Now";
         _postOrBuyButton.title = @"Post";
         //[_postOrBuyButton setThemePath:@"sell/button"];
         [_postOrBuyButton setTitleAttributes:[NavTheme.sharedNavTheme attributesDictForPath:@"sell/button"]];
-        [self addSubview:_postOrBuyButton];
+        [_documentView addSubview:_postOrBuyButton];
         [_postOrBuyButton setTarget:self];
         [_postOrBuyButton setAction:@selector(post)];
         
@@ -157,59 +179,97 @@
 
 - (void)layout
 {
+    [_scrollView setX:0];
+    [_scrollView setY:0];
+    [_scrollView setWidth:self.width];
+    [_scrollView setHeight:self.height];
+    
+    [_documentView setX:0];
+    [_documentView setY:0];
+    [_documentView setWidth:self.width];
+    [_documentView setHeight:self.height];
+    
+    [self layoutSubviewsBottomToTop];
+    
+    // resize height in a way that maintains the maxY of the documentView
+    CGFloat maxY = _documentView.maxY;
+    CGFloat newHeight = _title.maxY + 20;
+    
+    if (self.height > newHeight)
+    {
+        newHeight = self.height;
+        [_documentView setHeight:newHeight];
+        [_documentView setMaxY:maxY];
+        [_documentView adjustSubviewsY:self.height - (_title.maxY + 20)];
+    }
+    else
+    {
+        [_documentView setHeight:newHeight];
+        [_documentView setMaxY:maxY];
+    }
+    
+    [_price updateSuffixView];
+}
+
+- (void)layoutSubviewsBottomToTop
+{
     CGFloat leftMargin = self.class.leftMargin;
+    CGFloat bottomMargin = 20;
+    CGFloat descriptionMargin = 30;
+    CGFloat iconMargin = 5;
     
-    [_title setX:leftMargin];
-    [_title placeInTopOfSuperviewWithMargin:leftMargin];
+    [_attachmentView setX:leftMargin+2];
+    [_attachmentView setWidth:_documentView.width - _attachmentView.x*2];
+    [_attachmentView setHeight:300];
+    [_attachmentView setY:bottomMargin];
+
+    [_categoryIcon setX:leftMargin+2];
+    [_categoryIcon placeYAbove:_attachmentView margin:descriptionMargin];
+    [_category placeXRightOf:_categoryIcon margin:iconMargin];
+    [_category setY:_categoryIcon.y-5];
+
     
-    [_price setX:leftMargin];
-    [_price placeYBelow:_title margin:0];
-    //[_price setWidth:self.width*.7];
+    [_fromAddressIcon setX:leftMargin+2];
+    [_fromAddressIcon placeYAbove:_categoryIcon margin:iconMargin];
+    [_fromAddress placeXRightOf:_fromAddressIcon margin:iconMargin];
+    [_fromAddress setY:_fromAddressIcon.y-5];
     
-    [_errorText setX:leftMargin];
-    [_errorText placeYBelow:_price margin:0];
+    [_regionIcon setX:leftMargin+2];
+    [_regionIcon placeYAbove:_fromAddressIcon margin:iconMargin];
+    [_region placeXRightOf:_regionIcon margin:iconMargin];
+    [_region setY:_regionIcon.y-5];
     
 
-    [_postOrBuyButton setWidth:84];
-    [_postOrBuyButton setX:self.width - _postOrBuyButton.width - leftMargin];
-    [_postOrBuyButton placeInTopOfSuperviewWithMargin:40];
-    
-    [_separator setX:0];
-    [_separator setWidth:self.width];
-    //[_separator placeYBelow:_price margin:20];
-    [_separator setY:self.height-60*2];
-    
     // add code to adjust _postDescription height to fit text?
     
     [_postDescription setX:leftMargin];
-    [_postDescription setWidth:self.width - leftMargin*2];
-    //[_postDescription setHeight:100];
-    [_postDescription placeYBelow:_separator margin:30];
-
+    [_postDescription setWidth:_documentView.width - leftMargin*2];
+    [_postDescription placeYAbove:_regionIcon margin:descriptionMargin];
+    
     //NSLog(@"_postDescription.height = %i", (int)_postDescription.height);
+
+    [_separator setX:0];
+    [_separator setWidth:_documentView.width];
+//    [_separator setY:_documentView.height-60*2];
+    [_separator placeYAbove:_postDescription margin:descriptionMargin];
     
-    CGFloat descriptionMargin = 50;
-    CGFloat iconMargin = 5;
     
-    [_regionIcon setX:leftMargin];
-    [_regionIcon placeYBelow:_postDescription margin:descriptionMargin];
-    [_region placeYBelow:_postDescription margin:descriptionMargin];
-    [_region placeXRightOf:_regionIcon margin:iconMargin];
+    [_postOrBuyButton setWidth:84];
+    [_postOrBuyButton setX:_documentView.width - _postOrBuyButton.width - leftMargin];
+    [_postOrBuyButton placeYAbove:_separator margin:30];
     
-    [_categoryIcon setX:leftMargin];
-    [_categoryIcon placeYBelow:_regionIcon margin:iconMargin];
-    [_category placeYBelow:_regionIcon margin:iconMargin];
-    [_category placeXRightOf:_categoryIcon margin:iconMargin];
     
-    [_fromAddressIcon setX:leftMargin];
-    [_fromAddressIcon placeYBelow:_categoryIcon margin:iconMargin];
-    [_fromAddress placeYBelow:_categoryIcon margin:iconMargin];
-    [_fromAddress placeXRightOf:_fromAddressIcon margin:iconMargin];
+    [_errorText setX:leftMargin];
+    [_errorText placeYAbove:_separator margin:5];
     
-    [_attachmentView setX:_fromAddressIcon.x+2];
-    [_attachmentView setWidth:self.width - _attachmentView.x*2];
-    [_attachmentView setHeight:300];
-    [_attachmentView placeYBelow:_fromAddressIcon margin:20.0];
+    
+    [_price setX:leftMargin];
+    //[_price placeYBelow:_title margin:0];
+    [_price placeYAbove:_errorText margin:0];
+    //[_price setWidth:_documentView.width*.7];
+    
+    [_title setX:leftMargin];
+    [_title placeYAbove:_price margin:0];
 }
 
 - (void)dealloc
@@ -259,6 +319,8 @@
     [self.postDescription useUneditedTextStringIfNeeded];
 
     _region.string = self.mkPost.regionPath.lastObject ? self.mkPost.regionPath.lastObject : @"MISSING REGION ERROR";
+    
+    _region.string = [@"Shipping within " stringByAppendingString:_region.string];
     NSString *cPath = [self.mkPost.categoryPath componentsJoinedByString:@" / "];
     _category.string    = cPath;
     _fromAddress.string = self.mkPost.sellerAddress;

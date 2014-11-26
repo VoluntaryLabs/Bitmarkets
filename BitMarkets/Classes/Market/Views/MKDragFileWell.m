@@ -1,5 +1,4 @@
 #import "MKDragFileWell.h"
-//#import <FoundationCategoriesKit/FoundationCategoriesKit.h>
 #import <NavKit/NavKit.h>
 
 @implementation MKDragFileWell
@@ -7,11 +6,12 @@
 - (id)initWithFrame:(NSRect)frameRect
 {
     self = [super initWithFrame:frameRect];
+    [self setAutoresizingMask:NSViewNotSizable];
+    [self setAutoresizesSubviews:NO];
     //[self setImageFrameStyle:NSImageFrameGrayBezel];
     [self setImageFrameStyle:NSImageFrameNone];
     [self setImageScaling:NSScaleToFit]; //NSScaleProportionally]; //NSScaleNone];
     [self setImageScaling:NSScaleProportionally]; //NSScaleNone];
-    
     
     _canDrag = YES;
     _canDrop = YES;
