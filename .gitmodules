@@ -1,6 +1,6 @@
 [submodule "submodules/BitmessageKit"]
 	path = submodules/BitmessageKit
-	url = git@github.com:Voluntarynet/FoundationCategoriesKit.git
+	url = git@github.com:Voluntarynet/BitmessageKit.git
 [submodule "submodules/FoundationCategoriesKit"]
 	path = submodules/FoundationCategoriesKit
 	url = git@github.com:Voluntarynet/FoundationCategoriesKit.git
