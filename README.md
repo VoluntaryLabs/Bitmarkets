@@ -9,10 +9,6 @@ After cloning the git repo, you'll need to init and pull all the submodules by r
 
 To verify/audit the build you'll need to download and compile some of the statically built executables (e.g. python and tor in BitmessageKit) seperately.
 
-#notes
-
-- no, we don't trust tor
-
 #development path
 
 - sparkle or other auto-update integration
@@ -33,3 +29,7 @@ To verify/audit the build you'll need to download and compile some of the static
 
 - website: http://voluntary.net
 - twitter: https://twitter.com/voluntarynet
+
+#notes
+
+- no, we don't trust tor

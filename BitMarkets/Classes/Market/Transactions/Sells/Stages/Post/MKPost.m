@@ -37,19 +37,28 @@
     self.nodeSuggestedWidth = 665;
     self.attachments = [NSArray array];
     
-    [self.dictPropertyNames addObjectsFromArray:@[
-     @"postUuid",
-     @"title",
-     @"priceInSatoshi",
-     @"description",
-     @"regionPath",
-     @"categoryPath",
-     @"sellerAddress",
-     @"attachments"
-     ]
-     ];
+    [self.dictPropertyNames addObjectsFromArray:self.postMessagePropertyNames];
+
+    /*
+    [self addPropertyName:@"firstPostDateNumber"];
+    [self addPropertyName:@"lastPostDateNumber"];
+    */
     
     return self;
+}
+
+- (NSArray *)postMessagePropertyNames
+{
+    return @[
+          @"postUuid",
+          @"title",
+          @"priceInSatoshi",
+          @"description",
+          @"regionPath",
+          @"categoryPath",
+          @"sellerAddress",
+          @"attachments"
+      ];
 }
 
 - (NSString *)description

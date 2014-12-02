@@ -166,7 +166,9 @@
 {
     NavNode *firstChild = [self.children firstObject];
     
-    if (firstChild && ![firstChild isKindOfClass:self.class])
+    if (firstChild
+        && ![firstChild isKindOfClass:self.class]
+        && self.children.count > 1)
     {
         return YES;
     }

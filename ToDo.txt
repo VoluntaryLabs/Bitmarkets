@@ -9,9 +9,20 @@
 - [DONE] fix for wallet balance formatting
 - [DONE] changed 0 confirms to Unconfirmed string
 - [DONE] use ... on long post names for nodeTitle 
+- [DONE] withdraw network warning
+
+- move addProperty group code to NavNode 
+
+- add text about shipping (all prices include shipping anywhere within country)
+
+- add ability to cancel accept bid
+- wait until lock escrow to post closemsg
 
 - rebroadcast if no bid after two days [adam looking into bm cache time api]
+
+- not seeing bid on self-buy?
 - bid not accepted cancel
+
 - scrollable post window
 - legal and info pages
 - add max of ~$2000 or warning for large tx
@@ -20,6 +31,8 @@
 - record the actual close msg that was sent 
 - receiving a bid shows in status but doesn't enable accept first bid immediately?
 - choose bid doesn't immediately go to lock escrow
+
+- use unique address for every post (if not a store?)
 
 - [possibly fixed] brief graphic artifact in stages view on accepting bid
 

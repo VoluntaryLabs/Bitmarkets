@@ -33,6 +33,11 @@
 @property (strong, nonatomic) BMMessage *bmMessage; // used only for browsable listing, so we can delete msg when receiving a close request
 @property (strong, nonatomic) NSString *composeError;
 
+//@property (strong, nonatomic) NSNumber *firstPostDateNumber;
+//@property (strong, nonatomic) NSNumber *lastPostDateNumber;
+
+- (NSArray *)postMessagePropertyNames;
+
 - (BOOL)isEditable;
 - (BOOL)canBuy;
 

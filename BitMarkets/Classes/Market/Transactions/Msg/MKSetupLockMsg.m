@@ -48,7 +48,7 @@
     [self.tx lockOutput:[self.tx firstOutput]];
     self.payload = self.tx.asJSONObject;
     [self write];
-    [self.tx broadcast]; //TODO make sure that peers accepted it
+    //[self.tx broadcast]; //TODO make sure that peers accepted it
     //[self broadcastIfNeeded];
 }
 

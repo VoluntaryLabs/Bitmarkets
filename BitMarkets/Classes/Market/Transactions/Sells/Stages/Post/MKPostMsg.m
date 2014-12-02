@@ -43,17 +43,15 @@
 }
 
 - (void)sendPost:(MKPost *)mkPost
-{
-    // clean this up
-    
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:mkPost.propertiesDict];
+{    
+    NSMutableDictionary *payload = [NSMutableDictionary dictionaryWithDictionary:mkPost.propertiesDict];
+    [payload removeKeysNotInArray:mkPost.postMessagePropertyNames];
     
     self.sellerAddress = self.myAddress;
     self.buyerAddress = nil;
     self.postUuid = mkPost.postUuid;
     
-    [dict removeObjectForKey:@"status"];
-    [self setPayload:dict];
+    [self setPayload:payload];
     [self send];
 }
 

@@ -178,7 +178,8 @@
             }
             @catch (NSException *exception)
             {
-                self.error = @"update error";
+                self.error = [exception description];
+                [self showError];
             }
 
         }
@@ -186,6 +187,29 @@
     
     [self updateActions];
     [self postSelfChanged];
+}
+
+- (void)showError
+{
+        NSAlert *msgBox = [[NSAlert alloc] init];
+        NSString *m = [NSString stringWithFormat:@"Exception while updating %@ '%@': %@",
+                       self.isBuy ? @"Buy" : @"Sell",
+                       self.nodeTitle,
+                       self.error
+                       ];
+        [msgBox setMessageText:m];
+        [msgBox addButtonWithTitle: @"OK"];
+        
+        [msgBox beginSheetModalForWindow:NSApplication.sharedApplication.mainWindow
+                           modalDelegate:self
+                          didEndSelector:@selector(errorAlertDidEnd:returnCode:contextInfo:)
+                             contextInfo:nil];
+}
+    
+- (void)errorAlertDidEnd:(NSAlert *)alert
+    returnCode:(NSInteger)returnCode
+    contextInfo:(void *)contextInfo
+{
 }
 
 - (BOOL)isActive

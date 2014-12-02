@@ -201,14 +201,18 @@
         [_documentView setHeight:newHeight];
         [_documentView setMaxY:maxY];
         [_documentView adjustSubviewsY:self.height - (_title.maxY + 20)];
+        [_scrollView setHasVerticalScroller:NO];
+        [_scrollView setVerticalScrollElasticity:NO];
     }
     else
     {
         [_documentView setHeight:newHeight];
         [_documentView setMaxY:maxY];
+        [_scrollView setHasVerticalScroller:YES];
+        [_scrollView setVerticalScrollElasticity:YES];
     }
     
-    [_price updateSuffixView];
+    [_price updateSuffixView]; // hack until suffix view cleanup
 }
 
 - (void)layoutSubviewsBottomToTop
@@ -256,7 +260,7 @@
     
     [_postOrBuyButton setWidth:84];
     [_postOrBuyButton setX:_documentView.width - _postOrBuyButton.width - leftMargin];
-    [_postOrBuyButton placeYAbove:_separator margin:30];
+    [_postOrBuyButton placeYAbove:_separator margin:37];
     
     
     [_errorText setX:leftMargin];
@@ -740,8 +744,9 @@
 - (void)showConfirmPostAlert
 {
     NSAlert *msgBox = [[NSAlert alloc] init];
+    //[msgBox setAlertStyle:NSCriticalAlertStyle];
     
-    [msgBox setMessageText:@"All communications are done with Bitmessage over Tor, but if your post requires full anonymity you will need to:\n- post from a public wifi network\n- without your cellphone with you\n- where there are no surveilence cameras\n- not use credit cards around the same location and time\n- not use a ride service attached to your identity to travel to or from the location\n- not use bitcoins that have a recorded association with your identity"];
+    [msgBox setMessageText:@"All communications are done with Bitmessage over Tor, but for full privacy protection:\n\nDo not use bitcoins that have a recorded association with your identity.\n\nPost from a public wifi network where there are no surveilence cameras.\n\nBefore going there, use LittleSnitch to block all outbound traffic exept for Bitmarkets.\n\nGo without other communication devices (cellphone, vehicles with tracking, etc).\n\nDo not use credit cards around the same location and time.\n\nDo not use a ride service attached to your identity to travel to or from the location."];
     
     [msgBox addButtonWithTitle: @"Post Now"];
     [msgBox addButtonWithTitle: @"Don't Post Now"];
@@ -800,6 +805,7 @@
     
     MKBuy *buy = MKRootNode.sharedMKRootNode.markets.buys.addBuy;
     [buy.mkPost copy:self.mkPost];
+    
     MKBidMsg *bidMsg = [buy.mkPost sendBidMsg];
     [buy.bid addChild:bidMsg];
     
