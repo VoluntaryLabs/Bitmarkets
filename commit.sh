@@ -38,6 +38,14 @@ cd TorServerKit
 pwd
 git add .
 git commit .
+
+cd submodules/SystemInfoKit
+pwd
+git add .
+git commit .
+cd ../..
+
+
 cd ..
 
 cd ..
