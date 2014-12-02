@@ -2,6 +2,12 @@ cd submodules
 cd BitmessageKit
 cd submodules
 
+cd BitnashKit
+pwd
+git add .
+git commit .
+cd ..
+
 cd FoundationCategoriesKit
 pwd
 git add .
