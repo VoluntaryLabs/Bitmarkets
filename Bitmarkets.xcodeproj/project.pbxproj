@@ -112,6 +112,16 @@
 		AAB28163192242AF005C9D27 /* MKRelease.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB28162192242AF005C9D27 /* MKRelease.m */; };
 		AAB2816619224FA4005C9D27 /* MKEscrow.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB2816519224FA4005C9D27 /* MKEscrow.m */; };
 		AAC6A252197C6F9C0096701F /* MKPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC6A251197C6F9C0096701F /* MKPasswordView.m */; };
+		AAD594391A2FEAFA0020D84C /* FoundationCategoriesKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD594341A2FEAFA0020D84C /* FoundationCategoriesKit.framework */; };
+		AAD5943A1A2FEAFA0020D84C /* NavKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD594351A2FEAFA0020D84C /* NavKit.framework */; };
+		AAD5943B1A2FEAFA0020D84C /* NavNodeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD594361A2FEAFA0020D84C /* NavNodeKit.framework */; };
+		AAD5943C1A2FEAFA0020D84C /* SystemInfoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD594371A2FEAFA0020D84C /* SystemInfoKit.framework */; };
+		AAD5943D1A2FEAFA0020D84C /* TorServerKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD594381A2FEAFA0020D84C /* TorServerKit.framework */; };
+		AAD5943E1A2FEB140020D84C /* FoundationCategoriesKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AAD594341A2FEAFA0020D84C /* FoundationCategoriesKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AAD5943F1A2FEB140020D84C /* NavKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AAD594351A2FEAFA0020D84C /* NavKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AAD594401A2FEB140020D84C /* NavNodeKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AAD594361A2FEAFA0020D84C /* NavNodeKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AAD594411A2FEB140020D84C /* SystemInfoKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AAD594371A2FEAFA0020D84C /* SystemInfoKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AAD594421A2FEB140020D84C /* TorServerKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AAD594381A2FEAFA0020D84C /* TorServerKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AAD784F8194F9E53004FE0F6 /* MKPanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD784F7194F9E53004FE0F6 /* MKPanelView.m */; };
 		AAD78505194FBF3E004FE0F6 /* MKNodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD78504194FBF3E004FE0F6 /* MKNodeView.m */; };
 		AAD785081950DAE2004FE0F6 /* MKPanelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD785071950DAE2004FE0F6 /* MKPanelManager.m */; };
@@ -119,18 +129,8 @@
 		AAD785141951056B004FE0F6 /* MKSellComplete.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD785131951056B004FE0F6 /* MKSellComplete.m */; };
 		AAE2D05019AD9D8A000DA9A4 /* BitmessageKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA537A5519A5704600C438A8 /* BitmessageKit.framework */; };
 		AAE2D05119AD9D8E000DA9A4 /* BitmessageKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AA537A5519A5704600C438A8 /* BitmessageKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		AAF6351E1A2D94BE00D99DF7 /* FoundationCategoriesKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAF6351D1A2D94BE00D99DF7 /* FoundationCategoriesKit.framework */; };
-		AAF635201A2D94CC00D99DF7 /* FoundationCategoriesKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AAF6351F1A2D94CC00D99DF7 /* FoundationCategoriesKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AAF635211A2D94ED00D99DF7 /* BitnashKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA1F98A31A22955500B0548C /* BitnashKit.framework */; };
 		AAF635221A2D94F000D99DF7 /* BitnashKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AA1F98A31A22955500B0548C /* BitnashKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		AAF635241A2D950E00D99DF7 /* TorServerKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAF635231A2D950E00D99DF7 /* TorServerKit.framework */; };
-		AAF635261A2D951200D99DF7 /* TorServerKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AAF635251A2D951200D99DF7 /* TorServerKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		AAF635281A2D951500D99DF7 /* SystemInfoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAF635271A2D951500D99DF7 /* SystemInfoKit.framework */; };
-		AAF6352A1A2D951A00D99DF7 /* SystemInfoKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AAF635291A2D951A00D99DF7 /* SystemInfoKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		AAF6352C1A2D951D00D99DF7 /* NavNodeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAF6352B1A2D951D00D99DF7 /* NavNodeKit.framework */; };
-		AAF6352E1A2D952200D99DF7 /* NavNodeKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AAF6352D1A2D952200D99DF7 /* NavNodeKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		AAF635301A2D952D00D99DF7 /* NavKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AAF6352F1A2D952D00D99DF7 /* NavKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		AAF635311A2D953000D99DF7 /* NavKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAF6352F1A2D952D00D99DF7 /* NavKit.framework */; };
 		DC347154196C74A400C5C8B3 /* MKLockMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = DC347153196C74A400C5C8B3 /* MKLockMsg.m */; };
 		DC347157196C74E700C5C8B3 /* MKSetupLockMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = DC347156196C74E700C5C8B3 /* MKSetupLockMsg.m */; };
 		DC34715A196C750500C5C8B3 /* MKSellLockEscrowMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = DC347159196C750500C5C8B3 /* MKSellLockEscrowMsg.m */; };
@@ -186,12 +186,12 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				AAF635261A2D951200D99DF7 /* TorServerKit.framework in CopyFiles */,
-				AAF6352A1A2D951A00D99DF7 /* SystemInfoKit.framework in CopyFiles */,
-				AAF6352E1A2D952200D99DF7 /* NavNodeKit.framework in CopyFiles */,
-				AAF635301A2D952D00D99DF7 /* NavKit.framework in CopyFiles */,
+				AAD5943E1A2FEB140020D84C /* FoundationCategoriesKit.framework in CopyFiles */,
+				AAD5943F1A2FEB140020D84C /* NavKit.framework in CopyFiles */,
+				AAD594401A2FEB140020D84C /* NavNodeKit.framework in CopyFiles */,
+				AAD594411A2FEB140020D84C /* SystemInfoKit.framework in CopyFiles */,
+				AAD594421A2FEB140020D84C /* TorServerKit.framework in CopyFiles */,
 				AAF635221A2D94F000D99DF7 /* BitnashKit.framework in CopyFiles */,
-				AAF635201A2D94CC00D99DF7 /* FoundationCategoriesKit.framework in CopyFiles */,
 				AAE2D05119AD9D8E000DA9A4 /* BitmessageKit.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -392,6 +392,11 @@
 		AAB2816519224FA4005C9D27 /* MKEscrow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKEscrow.m; sourceTree = "<group>"; };
 		AAC6A250197C6F9C0096701F /* MKPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKPasswordView.h; sourceTree = "<group>"; };
 		AAC6A251197C6F9C0096701F /* MKPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKPasswordView.m; sourceTree = "<group>"; };
+		AAD594341A2FEAFA0020D84C /* FoundationCategoriesKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FoundationCategoriesKit.framework; path = "../../../../../../Library/Developer/Xcode/DerivedData/Bitmarkets-cbgxknmllwmbgnaquuubzediulbo/Build/Products/Debug/FoundationCategoriesKit.framework"; sourceTree = "<group>"; };
+		AAD594351A2FEAFA0020D84C /* NavKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NavKit.framework; path = "../../../../../../Library/Developer/Xcode/DerivedData/Bitmarkets-cbgxknmllwmbgnaquuubzediulbo/Build/Products/Debug/NavKit.framework"; sourceTree = "<group>"; };
+		AAD594361A2FEAFA0020D84C /* NavNodeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NavNodeKit.framework; path = "../../../../../../Library/Developer/Xcode/DerivedData/Bitmarkets-cbgxknmllwmbgnaquuubzediulbo/Build/Products/Debug/NavNodeKit.framework"; sourceTree = "<group>"; };
+		AAD594371A2FEAFA0020D84C /* SystemInfoKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemInfoKit.framework; path = "../../../../../../Library/Developer/Xcode/DerivedData/Bitmarkets-cbgxknmllwmbgnaquuubzediulbo/Build/Products/Debug/SystemInfoKit.framework"; sourceTree = "<group>"; };
+		AAD594381A2FEAFA0020D84C /* TorServerKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TorServerKit.framework; path = "../../../../../../Library/Developer/Xcode/DerivedData/Bitmarkets-cbgxknmllwmbgnaquuubzediulbo/Build/Products/Debug/TorServerKit.framework"; sourceTree = "<group>"; };
 		AAD784F6194F9E53004FE0F6 /* MKPanelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKPanelView.h; sourceTree = "<group>"; };
 		AAD784F7194F9E53004FE0F6 /* MKPanelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKPanelView.m; sourceTree = "<group>"; };
 		AAD78503194FBF3E004FE0F6 /* MKNodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKNodeView.h; sourceTree = "<group>"; };
@@ -403,14 +408,9 @@
 		AAD785121951056B004FE0F6 /* MKSellComplete.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKSellComplete.h; sourceTree = "<group>"; };
 		AAD785131951056B004FE0F6 /* MKSellComplete.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKSellComplete.m; sourceTree = "<group>"; };
 		AAF6351D1A2D94BE00D99DF7 /* FoundationCategoriesKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FoundationCategoriesKit.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/Bitmarkets-acxrvqszqivovgacbivmfgssynhn/Build/Products/Debug/FoundationCategoriesKit.framework"; sourceTree = "<group>"; };
-		AAF6351F1A2D94CC00D99DF7 /* FoundationCategoriesKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = FoundationCategoriesKit.framework; path = "/Users/steve/Library/Developer/Xcode/DerivedData/Bitmarkets-acxrvqszqivovgacbivmfgssynhn/Build/Products/Debug/FoundationCategoriesKit.framework"; sourceTree = "<absolute>"; };
 		AAF635231A2D950E00D99DF7 /* TorServerKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TorServerKit.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/Bitmarkets-acxrvqszqivovgacbivmfgssynhn/Build/Products/Debug/TorServerKit.framework"; sourceTree = "<group>"; };
-		AAF635251A2D951200D99DF7 /* TorServerKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = TorServerKit.framework; path = "/Users/steve/Library/Developer/Xcode/DerivedData/Bitmarkets-acxrvqszqivovgacbivmfgssynhn/Build/Products/Debug/TorServerKit.framework"; sourceTree = "<absolute>"; };
 		AAF635271A2D951500D99DF7 /* SystemInfoKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemInfoKit.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/Bitmarkets-acxrvqszqivovgacbivmfgssynhn/Build/Products/Debug/SystemInfoKit.framework"; sourceTree = "<group>"; };
-		AAF635291A2D951A00D99DF7 /* SystemInfoKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = SystemInfoKit.framework; path = "/Users/steve/Library/Developer/Xcode/DerivedData/Bitmarkets-acxrvqszqivovgacbivmfgssynhn/Build/Products/Debug/SystemInfoKit.framework"; sourceTree = "<absolute>"; };
 		AAF6352B1A2D951D00D99DF7 /* NavNodeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NavNodeKit.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/Bitmarkets-acxrvqszqivovgacbivmfgssynhn/Build/Products/Debug/NavNodeKit.framework"; sourceTree = "<group>"; };
-		AAF6352D1A2D952200D99DF7 /* NavNodeKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = NavNodeKit.framework; path = "/Users/steve/Library/Developer/Xcode/DerivedData/Bitmarkets-acxrvqszqivovgacbivmfgssynhn/Build/Products/Debug/NavNodeKit.framework"; sourceTree = "<absolute>"; };
-		AAF6352F1A2D952D00D99DF7 /* NavKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = NavKit.framework; path = "/Users/steve/Library/Developer/Xcode/DerivedData/Bitmarkets-acxrvqszqivovgacbivmfgssynhn/Build/Products/Debug/NavKit.framework"; sourceTree = "<absolute>"; };
 		DC347152196C74A400C5C8B3 /* MKLockMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKLockMsg.h; sourceTree = "<group>"; };
 		DC347153196C74A400C5C8B3 /* MKLockMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKLockMsg.m; sourceTree = "<group>"; };
 		DC347155196C74E700C5C8B3 /* MKSetupLockMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKSetupLockMsg.h; sourceTree = "<group>"; };
@@ -428,12 +428,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAF635241A2D950E00D99DF7 /* TorServerKit.framework in Frameworks */,
-				AAF635281A2D951500D99DF7 /* SystemInfoKit.framework in Frameworks */,
-				AAF6352C1A2D951D00D99DF7 /* NavNodeKit.framework in Frameworks */,
-				AAF635311A2D953000D99DF7 /* NavKit.framework in Frameworks */,
+				AAD594391A2FEAFA0020D84C /* FoundationCategoriesKit.framework in Frameworks */,
+				AAD5943A1A2FEAFA0020D84C /* NavKit.framework in Frameworks */,
+				AAD5943B1A2FEAFA0020D84C /* NavNodeKit.framework in Frameworks */,
+				AAD5943C1A2FEAFA0020D84C /* SystemInfoKit.framework in Frameworks */,
+				AAD5943D1A2FEAFA0020D84C /* TorServerKit.framework in Frameworks */,
 				AAF635211A2D94ED00D99DF7 /* BitnashKit.framework in Frameworks */,
-				AAF6351E1A2D94BE00D99DF7 /* FoundationCategoriesKit.framework in Frameworks */,
 				AA0E585118FDC0880095DEBD /* Cocoa.framework in Frameworks */,
 				AAE2D05019AD9D8A000DA9A4 /* BitmessageKit.framework in Frameworks */,
 			);
@@ -445,11 +445,6 @@
 		AA0E584418FDC0880095DEBD = {
 			isa = PBXGroup;
 			children = (
-				AAF6352F1A2D952D00D99DF7 /* NavKit.framework */,
-				AAF6352D1A2D952200D99DF7 /* NavNodeKit.framework */,
-				AAF635291A2D951A00D99DF7 /* SystemInfoKit.framework */,
-				AAF635251A2D951200D99DF7 /* TorServerKit.framework */,
-				AAF6351F1A2D94CC00D99DF7 /* FoundationCategoriesKit.framework */,
 				AA537A5819A5709600C438A8 /* BitnashKit.xcodeproj */,
 				AA537A4C19A5704500C438A8 /* BitmessageKit.xcodeproj */,
 				AA0E585618FDC0880095DEBD /* BitMarkets */,
@@ -470,6 +465,11 @@
 		AA0E584F18FDC0880095DEBD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AAD594341A2FEAFA0020D84C /* FoundationCategoriesKit.framework */,
+				AAD594351A2FEAFA0020D84C /* NavKit.framework */,
+				AAD594361A2FEAFA0020D84C /* NavNodeKit.framework */,
+				AAD594371A2FEAFA0020D84C /* SystemInfoKit.framework */,
+				AAD594381A2FEAFA0020D84C /* TorServerKit.framework */,
 				AAF6352B1A2D951D00D99DF7 /* NavNodeKit.framework */,
 				AAF635271A2D951500D99DF7 /* SystemInfoKit.framework */,
 				AAF635231A2D950E00D99DF7 /* TorServerKit.framework */,
@@ -1301,6 +1301,7 @@
 					"./**",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/BitMarkets-eenrgxhlyrwgqccvbetldvfypzkj/Build/Products/Debug",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Bitmarkets-acxrvqszqivovgacbivmfgssynhn/Build/Products/Debug",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Bitmarkets-cbgxknmllwmbgnaquuubzediulbo/Build/Products/Debug",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Bitmarkets/Bitmarkets.temp_caseinsensitive_rename-Prefix.pch";
@@ -1320,6 +1321,7 @@
 					"./**",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/BitMarkets-eenrgxhlyrwgqccvbetldvfypzkj/Build/Products/Debug",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Bitmarkets-acxrvqszqivovgacbivmfgssynhn/Build/Products/Debug",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Bitmarkets-cbgxknmllwmbgnaquuubzediulbo/Build/Products/Debug",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Bitmarkets/Bitmarkets.temp_caseinsensitive_rename-Prefix.pch";
