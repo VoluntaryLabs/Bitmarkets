@@ -997,7 +997,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = MK;
-				LastUpgradeCheck = 0600;
+				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = voluntary.net;
 			};
 			buildConfigurationList = AA0E584818FDC0880095DEBD /* Build configuration list for PBXProject "Bitmarkets" */;
