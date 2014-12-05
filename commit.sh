@@ -41,9 +41,8 @@ cd submodules/SystemInfoKit
 pwd
 git add .
 git commit .
-cd ..
-
 cd ../..
+
 pwd
 git add .
 git commit .
@@ -53,7 +52,7 @@ pwd
 git add .
 git commit .
 
-cd ../../..
+cd ../..
 pwd
 git add .
 git commit .
