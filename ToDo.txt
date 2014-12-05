@@ -11,6 +11,9 @@
 - [DONE] use ... on long post names for nodeTitle 
 - [DONE] withdraw network warning
 
+- auto reposting
+
+
 - move addProperty group code to NavNode 
 
 - add text about shipping (all prices include shipping anywhere within country)

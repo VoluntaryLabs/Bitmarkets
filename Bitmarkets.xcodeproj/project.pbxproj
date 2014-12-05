@@ -64,6 +64,10 @@
 		AA605AC2192A8CC700798BCA /* MKMsgGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = AA605AC1192A8CC700798BCA /* MKMsgGroup.m */; };
 		AA605AC5192A931F00798BCA /* MKClosePostMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = AA605AC4192A931F00798BCA /* MKClosePostMsg.m */; };
 		AA753D9D1910779800D07CB5 /* BNKeyView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA753D9C1910779800D07CB5 /* BNKeyView.m */; };
+		AA754ED91A313849003F126F /* NavKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AA2E75E11A2FFDCA006F23F0 /* NavKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AA754EDA1A313849003F126F /* FoundationCategoriesKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AA2E75D51A2FFDC5006F23F0 /* FoundationCategoriesKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AA754EDB1A313849003F126F /* TorServerKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AA2E75FD1A2FFDD6006F23F0 /* TorServerKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AA754EDC1A313849003F126F /* SystemInfoKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AA2E75F31A2FFDD2006F23F0 /* SystemInfoKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AA803EAF194003F50090E619 /* MKTxProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA803EAE194003F50090E619 /* MKTxProgressView.m */; };
 		AA8DADF819999E5700C75CFE /* MKExchangeRate.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8DADF719999E5700C75CFE /* MKExchangeRate.m */; };
 		AA8DADFB19999E9000C75CFE /* MKCurrency.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8DADFA19999E9000C75CFE /* MKCurrency.m */; };
@@ -251,6 +255,10 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				AA754EDA1A313849003F126F /* FoundationCategoriesKit.framework in CopyFiles */,
+				AA754ED91A313849003F126F /* NavKit.framework in CopyFiles */,
+				AA754EDB1A313849003F126F /* TorServerKit.framework in CopyFiles */,
+				AA754EDC1A313849003F126F /* SystemInfoKit.framework in CopyFiles */,
 				AAF635221A2D94F000D99DF7 /* BitnashKit.framework in CopyFiles */,
 				AAE2D05119AD9D8E000DA9A4 /* BitmessageKit.framework in CopyFiles */,
 			);
