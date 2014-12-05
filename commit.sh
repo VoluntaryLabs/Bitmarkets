@@ -11,6 +11,7 @@ cd ..
 cd BitmessageKit
 cd submodules
 
+
 cd FoundationCategoriesKit
 pwd
 git add .
@@ -36,24 +37,23 @@ git commit .
 cd ..
 
 cd TorServerKit
-pwd
-git add .
-git commit .
-
 cd submodules/SystemInfoKit
 pwd
 git add .
 git commit .
+cd ..
+
 cd ../..
-
-cd ..
-
-cd ..
 pwd
 git add .
 git commit .
 
-cd ../..
+cd ../../../BitmessageKit
+pwd
+git add .
+git commit .
+
+cd ../../..
 pwd
 git add .
 git commit .
