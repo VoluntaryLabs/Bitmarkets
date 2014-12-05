@@ -273,6 +273,8 @@
     //[_price setWidth:_documentView.width*.7];
     
     [_title setX:leftMargin];
+    CGFloat w = (_postOrBuyButton.x - _title.x) - 10;
+    [_title setWidth:w];
     [_title placeYAbove:_price margin:0];
 }
 

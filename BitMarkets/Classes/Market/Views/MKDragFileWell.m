@@ -189,8 +189,18 @@
     [pboard declareTypes:[NSArray arrayWithObject:NSFilenamesPboardType] owner:self];
     [pboard setPropertyList:_filePaths forType:NSFilenamesPboardType];
     //[pboard setData:[[self image] TIFFRepresentation] forType:NSTIFFPboardType];
+    /*
     [self dragImage:[self image] at:imageLocation
-             offset:NSMakeSize(0, 0) event:theEvent pasteboard:pboard source:self slideBack:YES];
+             offset:NSMakeSize(0, 0)
+              event:theEvent
+         pasteboard:pboard
+             source:self
+          slideBack:YES];
+    */
+    
+    //NSDraggingSession *draggingSession =
+    [self beginDraggingSessionWithItems:pboard.pasteboardItems event:theEvent source:self];
+
 }
 
 // --
@@ -213,6 +223,12 @@
 - (void)draggedImage:(NSImage *)draggedImage
              movedTo:(NSPoint)screenPoint
 {
+}
+
+- (NSDragOperation)draggingSession:(NSDraggingSession *)session
+sourceOperationMaskForDraggingContext:(NSDraggingContext)context
+{
+    return NSDragOperationCopy; //Generic;
 }
 
 - (NSDragOperation)draggingSourceOperationMaskForLocal:(BOOL)flag

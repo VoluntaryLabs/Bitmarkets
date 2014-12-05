@@ -44,8 +44,9 @@
     return YES;
 }
 
-- (void)prepareToDelete
+- (BOOL)prepareToDelete
 {
+    return YES;
 }
 
 @end

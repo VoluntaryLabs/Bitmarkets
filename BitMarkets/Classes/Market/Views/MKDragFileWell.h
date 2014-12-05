@@ -5,7 +5,7 @@
 - (BOOL)acceptsDrop:sender;
 @end
 
-@interface MKDragFileWell : NSImageView
+@interface MKDragFileWell : NSImageView <NSDraggingSource, NSDraggingDestination>
 
 @property (strong, nonatomic) NSArray *filePaths;
 @property (assign, nonatomic) id delegate;
@@ -20,6 +20,9 @@
 //- (NSImage *)image;
 
 // -- dragging destination
+
+- (NSDragOperation)draggingSession:(NSDraggingSession *)session
+sourceOperationMaskForDraggingContext:(NSDraggingContext)context;
 
 - (NSDragOperation)draggingSourceOperationMaskForLocal:(BOOL)isLocal;
 - (unsigned int)draggingEntered:(id <NSDraggingInfo>)sender;

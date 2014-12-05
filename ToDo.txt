@@ -11,8 +11,11 @@
 - [DONE] use ... on long post names for nodeTitle 
 - [DONE] withdraw network warning
 
+- fix button overlap bug
+
 - auto reposting
 
+- set to no minimum on test groups
 
 - move addProperty group code to NavNode 
 
