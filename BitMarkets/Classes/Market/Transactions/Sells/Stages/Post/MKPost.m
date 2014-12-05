@@ -198,12 +198,18 @@
 - (NSNumber *)minimumPriceInBtc
 {
     // too small to be worth shipping
-    return @0.04;
+    return @0.039;
+}
+
+- (NSNumber *)minimumTestPriceInBtc
+{
+    // too small to be worth shipping
+    return @0.004;
 }
 
 - (BOOL)hasPriceWithinMinMaxRange
 {
-    return [self.priceInSatoshi isGreaterThan:self.minimumPriceInBtc.btcToSatoshi];
+    return [self.priceInSatoshi isGreaterThan:self.minimumTestPriceInBtc.btcToSatoshi];
 }
 
 - (NSString *)titleOrDefault
@@ -329,6 +335,7 @@
 - (MKBidMsg *)sendBidMsg
 {
     MKBidMsg *bidMsg = [[MKBidMsg alloc] init];
+    bidMsg.debug = YES;
     [bidMsg setupForPost:self];
     [bidMsg send];
     return bidMsg;

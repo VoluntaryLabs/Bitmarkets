@@ -44,6 +44,7 @@
 - (void)setPriceInBtc:(NSNumber *)btcNumber;
 - (NSNumber *)priceInBtc;
 - (NSNumber *)minimumPriceInBtc;
+- (NSNumber *)minimumTestPriceInBtc;
 - (BOOL)hasPriceWithinMinMaxRange;
 
 - (BOOL)placeInMarketsPath;

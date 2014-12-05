@@ -49,6 +49,7 @@
 
 - (BOOL)send
 {
+    self.debug = YES;
     return [self sendToSeller];
 }
 

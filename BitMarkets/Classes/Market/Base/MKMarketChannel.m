@@ -177,14 +177,16 @@
                     else
                     {
                         //[bmMsg delete];
-                        NSLog(@"price too small");
+                        NSLog(@"invalid price on post");
+                        [bmMsg delete];
                     }
                 }
                 else if ([msg isKindOfClass:MKClosePostMsg.class])
                 {
                     if (![msg bmSenderIsSeller]) // generalize this
                     {
-                        NSLog(@"attempt to forge sender address on close post %@", msg.bmMessage.messageString);
+                        NSLog(@"attempt to forge sender address on close post %@",
+                              msg.bmMessage.messageString);
                         //[msg bmSenderIsSeller];
                         [bmMsg delete];
                         continue;
@@ -296,22 +298,29 @@
     
     for (BMMessage *bmMessage in inboxMessages)
     {
-        if (!bmMessage.isRead) // keep around read messages for debugging
+        //if (!bmMessage.isRead) // keep around read messages for debugging
         {
             MKMsg *msg = [MKMsg withBMMessage:bmMessage];
             
             if (!msg)
             {
-                NSLog(@"invalid message");
+                NSLog(@"invalid message '%@'", bmMessage.subjectString);
+                [bmMessage delete];
                 continue;
             }
 
             BOOL didHandle = [markets handleMsg:msg];
            
-            if (!didHandle)
+            if (didHandle)
             {
-                NSLog(@"unable to handle direct message");
+                //[bmMessage delete];
             }
+            else
+            {
+                NSLog(@"unable to handle direct message '%@'", bmMessage.subjectString);
+                [bmMessage delete];
+            }
+        
             
             [bmMessage markAsRead];
         }

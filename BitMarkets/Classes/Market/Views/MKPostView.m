@@ -400,6 +400,11 @@
 - (NSNumber *)minimumPriceInBtc
 {
     // too small to be worth shipping
+    if ([self.category.string containsString:@"Test"])
+    {
+        return self.mkPost.minimumTestPriceInBtc;
+    }
+    
     return self.mkPost.minimumPriceInBtc;
 }
 
@@ -453,19 +458,19 @@
     {
         self.errorText.string = [NSString stringWithFormat:
                                  @"insufficient funds in wallet for minimum price of %@BTC",
-                                 self.minimumPriceInBtc];
+                                 [self.priceFormatter stringForObjectValue:self.minimumPriceInBtc]];
     }
     else if (!self.priceIsLargeEnough)
     {
         self.errorText.string = [NSString stringWithFormat:
                                  @"price must be above %@BTC",
-                                 self.minimumPriceInBtc];
+                                 [self.priceFormatter stringForObjectValue:self.minimumPriceInBtc]];
     }
     else if (!self.hasFundsForEscrow)
     {
         self.errorText.string = [NSString stringWithFormat:
                                  @"insufficient funds in wallet for escrow of %@BTC",
-                                 self.escrowInBtc];
+                                 [self.priceFormatter stringForObjectValue:self.escrowInBtc]];
     }
 
     [self.errorText setNeedsDisplay:YES];
