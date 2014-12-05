@@ -506,13 +506,9 @@
 		AA0E584418FDC0880095DEBD = {
 			isa = PBXGroup;
 			children = (
+				AAF1DBD21A324F5500B63FDD /* subprojects */,
 				AA537A5819A5709600C438A8 /* BitnashKit.xcodeproj */,
 				AA537A4C19A5704500C438A8 /* BitmessageKit.xcodeproj */,
-				AA2E75CF1A2FFDC4006F23F0 /* FoundationCategoriesKit.xcodeproj */,
-				AA2E75D81A2FFDCA006F23F0 /* NavKit.xcodeproj */,
-				AA2E75E41A2FFDCE006F23F0 /* NavNodeKit.xcodeproj */,
-				AA2E75F61A2FFDD6006F23F0 /* TorServerKit.xcodeproj */,
-				AA2E75ED1A2FFDD2006F23F0 /* SystemInfoKit.xcodeproj */,
 				AA0E585618FDC0880095DEBD /* BitMarkets */,
 				AA0E587418FDC0890095DEBD /* BitMarketsTests */,
 				AA0E584F18FDC0880095DEBD /* Frameworks */,
@@ -1065,6 +1061,18 @@
 				AAD785131951056B004FE0F6 /* MKSellComplete.m */,
 			);
 			path = Complete;
+			sourceTree = "<group>";
+		};
+		AAF1DBD21A324F5500B63FDD /* subprojects */ = {
+			isa = PBXGroup;
+			children = (
+				AA2E75CF1A2FFDC4006F23F0 /* FoundationCategoriesKit.xcodeproj */,
+				AA2E75D81A2FFDCA006F23F0 /* NavKit.xcodeproj */,
+				AA2E75E41A2FFDCE006F23F0 /* NavNodeKit.xcodeproj */,
+				AA2E75F61A2FFDD6006F23F0 /* TorServerKit.xcodeproj */,
+				AA2E75ED1A2FFDD2006F23F0 /* SystemInfoKit.xcodeproj */,
+			);
+			name = subprojects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

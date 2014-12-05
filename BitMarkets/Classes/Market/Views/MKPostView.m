@@ -268,6 +268,8 @@
     
     
     [_price setX:leftMargin];
+    CGFloat sw = (_postOrBuyButton.x - _price.suffixView.x) - 10;
+    [_price.suffixView setWidth:sw];
     //[_price placeYBelow:_title margin:0];
     [_price placeYAbove:_errorText margin:0];
     //[_price setWidth:_documentView.width*.7];
@@ -522,7 +524,7 @@
             if (!self.hasValidPrice)
             {
                 [_postOrBuyButton setTitleAttributes:[NavTheme.sharedNavTheme attributesDictForPath:@"sell/button-disabled"]];
-                [_postOrBuyButton setEnabled:YES];
+                [_postOrBuyButton setEnabled:NO];
             }
         }
         else
