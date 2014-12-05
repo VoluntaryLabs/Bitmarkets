@@ -1502,7 +1502,7 @@
 				GCC_PREFIX_HEADER = "Bitmarkets/Bitmarkets.temp_caseinsensitive_rename-Prefix.pch";
 				INFOPLIST_FILE = "Bitmarkets/Bitmarkets.temp_caseinsensitive_rename-Info.plist";
 				PRODUCT_NAME = Bitmarkets;
-				SDKROOT = macosx10.10;
+				SDKROOT = macosx10.9;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1520,7 +1520,7 @@
 				GCC_PREFIX_HEADER = "Bitmarkets/Bitmarkets.temp_caseinsensitive_rename-Prefix.pch";
 				INFOPLIST_FILE = "Bitmarkets/Bitmarkets.temp_caseinsensitive_rename-Info.plist";
 				PRODUCT_NAME = Bitmarkets;
-				SDKROOT = macosx10.10;
+				SDKROOT = macosx10.9;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
