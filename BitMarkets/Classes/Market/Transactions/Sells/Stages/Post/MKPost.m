@@ -39,13 +39,77 @@
     
     [self.dictPropertyNames addObjectsFromArray:self.postMessagePropertyNames];
 
-    /*
     [self addPropertyName:@"firstPostDateNumber"];
     [self addPropertyName:@"lastPostDateNumber"];
-    */
     
     return self;
 }
+
+// --- repost & expire ---
+
++ (NSNumber *)repostPeriodInSeconds
+{
+    NSInteger days = 2.5;
+    NSInteger secondsPerDay = 24*60*60;
+    return [NSNumber numberWithLong:days*secondsPerDay];
+}
+
++ (NSNumber *)expirePeriodInSeconds
+{
+    NSInteger days = 30;
+    NSInteger secondsPerDay = 24*60*60;
+    return [NSNumber numberWithLong:days*secondsPerDay];
+}
+
+- (void)updatePostDates
+{
+    if (!self.firstPostDateNumber)
+    {
+        self.firstPostDateNumber = [[NSDate date] asNumber];
+    }
+    
+    self.lastPostDateNumber = [[NSDate date] asNumber];
+}
+
+- (BOOL)needsExpire
+{
+    if (self.firstPostDateNumber)
+    {
+        NSTimeInterval age = -[[NSDate fromNumber:self.firstPostDateNumber] timeIntervalSinceNow];
+        return age > self.class.expirePeriodInSeconds.longValue;
+    }
+    
+    return NO;
+}
+
+- (BOOL)needsRepost
+{
+    if (self.firstPostDateNumber)
+    {
+        NSTimeInterval repostAge = -[[NSDate fromNumber:self.lastPostDateNumber] timeIntervalSinceNow];
+        return repostAge > self.class.repostPeriodInSeconds.longValue;
+    }
+    
+    return NO;
+}
+
+- (void)repostIfNeeded
+{
+    if (self.needsRepost)
+    {
+        [self sendPostMsg];
+    }
+}
+
+- (void)expireIfNeeded
+{
+    if (self.needsExpire)
+    {
+        
+    }
+}
+
+// -----------------------------------------------
 
 - (NSArray *)postMessagePropertyNames
 {
@@ -319,6 +383,7 @@
     
     if (postMsg.ackData)
     {
+        [self updatePostDates];
         [self addChild:postMsg];
         [self postParentChanged];
         [self.sell write];

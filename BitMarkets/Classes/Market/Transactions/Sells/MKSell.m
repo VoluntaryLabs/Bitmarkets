@@ -178,4 +178,10 @@
     [super delete];
 }
 
+- (void)update
+{
+    [self.mkPost repostIfNeeded];
+    //[self.mkPost expireIfNeeded];
+    [super update];
+}
 @end

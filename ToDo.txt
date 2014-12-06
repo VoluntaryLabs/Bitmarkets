@@ -11,12 +11,8 @@
 - [DONE] use ... on long post names for nodeTitle 
 - [DONE] withdraw network warning
 - [DONE] fix button overlap bug
-
-- use lower limit when posting to Tests
-
-- fix vertical scrolling issue???
-
-- issue with sending bid to self?
+- [DONE] use lower limit when posting to Tests
+- [DONE] fixed issue with sending bid to self
 
 - auto reposting
 

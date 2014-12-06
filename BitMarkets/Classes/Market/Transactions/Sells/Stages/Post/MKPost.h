@@ -33,8 +33,20 @@
 @property (strong, nonatomic) BMMessage *bmMessage; // used only for browsable listing, so we can delete msg when receiving a close request
 @property (strong, nonatomic) NSString *composeError;
 
-//@property (strong, nonatomic) NSNumber *firstPostDateNumber;
-//@property (strong, nonatomic) NSNumber *lastPostDateNumber;
+@property (strong, nonatomic) NSNumber *firstPostDateNumber;
+@property (strong, nonatomic) NSNumber *lastPostDateNumber;
+
+
+// --- repost & expire ---
+
++ (NSNumber *)repostPeriodInSeconds;
++ (NSNumber *)expirePeriodInSeconds;
+- (BOOL)needsExpire;
+- (BOOL)needsRepost;
+- (void)repostIfNeeded;
+- (void)expireIfNeeded;
+
+// ------------------------
 
 - (NSArray *)postMessagePropertyNames;
 
