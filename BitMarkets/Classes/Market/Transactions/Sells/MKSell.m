@@ -180,8 +180,12 @@
 
 - (void)update
 {
-    [self.mkPost repostIfNeeded];
-    //[self.mkPost expireIfNeeded];
+    if (!self.bids.acceptedBid)
+    {
+        [self.mkPost repostIfNeeded];
+        //[self.mkPost expireIfNeeded];
+    }
+    
     [super update];
 }
 @end
