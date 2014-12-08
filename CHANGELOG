@@ -1,1 +1,15 @@
-This is the change log
+version 0.8.7.14
+- automatic periodic reposting until a bid is accepted
+- window size now remembered and min window size fix
+- added a test category folder
+- seller can only post if they have sufficient funds for escrow
+- increased minimum price for posts
+- added a simple channel syncing indicator
+- fix for wallet balance formatting
+- changed "0 confirms" to "Unconfirmed" string in UI
+- use ... on long post names for nodeTitle 
+- withdraw network warning
+- fix button overlap bug
+- use lower limit when posting to Tests
+- fixed issue with sending bid to self
+
