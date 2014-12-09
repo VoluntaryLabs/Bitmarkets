@@ -21,6 +21,13 @@
     return @"Channel";
 }
 
+- (CGFloat)nodeSuggestedWidth
+{
+    return 250;
+}
+
+
+
 - (id)init
 {
     self = [super init];
@@ -33,21 +40,23 @@
     {
         self.passphrase = @"Bitmarkets beta 0.8";
     }
-
+    
     [NSNotificationCenter.defaultCenter addObserver:self
                                              selector:@selector(channelChanged:)
                                                  name:nil
                                                  //name:NavNodeAddedChildNotification
-                                               object:self.channel];
-
-    [NSNotificationCenter.defaultCenter addObserver:self
-                                             selector:@selector(receivedMessagesChanged:)
-                                                 //name:NavNodeAddedChildNotification
-                                                 name:nil
-                                               object:BMClient.sharedBMClient.messages.received];
-
+                                             object:self.channel];
     self.needsToFetchChannelMessages = YES;
-    self.needsToFetchDirectMessages  = YES;
+    
+    /*
+    [NSNotificationCenter.defaultCenter addObserver:self
+                                           selector:@selector(receivedMessagesChanged:)
+     //name:NavNodeAddedChildNotification
+                                               name:nil
+                                             object:BMClient.sharedBMClient.messages.received];
+     self.needsToFetchDirectMessages  = YES;
+    */
+    
     return self;
 }
 
@@ -66,6 +75,7 @@
     }
 }
 
+/*
 - (void)receivedMessagesChanged:(NSNotification *)note
 {
     if (!self.needsToFetchDirectMessages)
@@ -74,12 +84,7 @@
         [self performSelector:@selector(fetchDirectMessages) withObject:self afterDelay:0.0];
     }
 }
-
-
-- (CGFloat)nodeSuggestedWidth
-{
-    return 250;
-}
+*/
 
 /*
 - (void)setPassphrase:(NSString *)passphrase
@@ -95,17 +100,26 @@
 }
 */
 
+- (void)cleanupChannels
+{
+    // the updates are a subscription, so this won't remove it
+    // this is just to clean up old test channels
+    
+    BMChannels *channels = BMClient.sharedBMClient.channels;
+
+    if (![channels channelWithPassphrase:self.passphrase])
+    {
+        [channels leaveAllChannels];
+    }
+}
+
 - (BMChannel *)channel
 {
     if (!_channel)
     {
-        BMChannels *channels = BMClient.sharedBMClient.channels;
+        [self cleanupChannels];
 
-        if (![channels channelWithPassphrase:self.passphrase])
-        {
-            [channels leaveAllChannels];
-        }
-        
+        BMChannels *channels = BMClient.sharedBMClient.channels;
         _channel = [channels channelWithPassphraseJoinIfNeeded:self.passphrase];
     }
     
@@ -121,12 +135,17 @@
     [self fetchChannelMessages];
     [self expireOldChannelMessages]; // really only need to do this once daily
 
-    [self fetchDirectMessages];
-    [self expireDirectMessages]; // really only need to do this once daily
+    //[self fetchDirectMessages];
+    //[self expireDirectMessages]; // really only need to do this once daily
 }
 
 - (void)fetchChannelMessages
 {
+    // clean this up
+    // by closemsg order independent
+    // via checking if msg deleted when processing postmsg
+    // and move price check into postmsg
+    
     self.needsToFetchChannelMessages = NO;
     
     NSArray *messages = self.channel.children.copy;
@@ -267,6 +286,7 @@
     }
 }
 
+/*
 - (void)fetchDirectMessages
 {
     self.needsToFetchDirectMessages = NO;
@@ -326,5 +346,6 @@
         }
     }
 }
+*/
 
 @end

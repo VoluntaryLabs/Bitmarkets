@@ -9,6 +9,7 @@
 #import <BitMessageKit/BitMessageKit.h>
 
 #import "MKMarketChannel.h"
+#import "MKDirectMessages.h"
 
 #import "MKRegion.h"
 #import "MKCategory.h"
@@ -25,6 +26,7 @@
 
 //@property (strong, nonatomic) MKCategory *rootCategory;
 @property (strong, nonatomic) MKMarketChannel *mkChannel;
+@property (strong, nonatomic) MKDirectMessages *mkDirectMessages;
 
 @property (strong, nonatomic) MKBuys *buys;
 @property (strong, nonatomic) MKSells *sells;

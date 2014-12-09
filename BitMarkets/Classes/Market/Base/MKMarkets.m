@@ -34,6 +34,9 @@
     self.mkChannel = [[MKMarketChannel alloc] init];
     [self addChild:self.mkChannel];
 
+    self.mkDirectMessages = [[MKDirectMessages alloc] init];
+    //[self addChild:self.mkDirectMessages];
+    
     self.buys  = [[MKBuys alloc] init];
     //[_buys read];
     [self addChild:_buys];

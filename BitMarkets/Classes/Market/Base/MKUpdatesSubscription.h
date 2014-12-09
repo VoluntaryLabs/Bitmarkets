@@ -1,5 +1,5 @@
 //
-//  MKMarketChannel.h
+//  MKUpdatesSubscription.h
 //  Bitmessage
 //
 //  Created by Steve Dekorte on 3/13/14.
@@ -13,14 +13,12 @@
 #import <BitMessageKit/BitMessageKit.h>
 #import <NavKit/NavKit.h>
 
-@interface MKMarketChannel : NavNode
+@interface MKUpdatesSubscription : NavNode
 
-@property (strong, nonatomic) NSString *passphrase;
-@property (strong, nonatomic) BMChannel *channel;
+@property (strong, nonatomic) NSString *updatesAddress;
+@property (strong, nonatomic) BMSubscription *subscription;
 
-@property (assign, nonatomic) BOOL needsToFetchChannelMessages;
-//@property (assign, nonatomic) BOOL needsToFetchDirectMessages;
-@property (assign, nonatomic) long totalPostCount;
+@property (assign) BOOL needsToFetch;
 
 - (void)fetch;
 

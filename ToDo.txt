@@ -1,3 +1,9 @@
+--- help needed ---
+
+- signing with dev key
+- posting on app store
+- https for website
+
 
 --- steve ---
 

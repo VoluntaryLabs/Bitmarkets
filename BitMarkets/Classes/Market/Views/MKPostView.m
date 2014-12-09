@@ -780,6 +780,7 @@
 
 - (void)buy
 {
+    [[NSApplication sharedApplication] restart];
     [self showConfirmBuyAlert];
 }
 
