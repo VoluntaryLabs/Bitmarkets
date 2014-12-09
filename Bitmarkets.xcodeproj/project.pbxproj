@@ -122,6 +122,7 @@
 		AAB2816619224FA4005C9D27 /* MKEscrow.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB2816519224FA4005C9D27 /* MKEscrow.m */; };
 		AAB735871A3690BD00C024BB /* MKUpdatesSubscription.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB735861A3690BD00C024BB /* MKUpdatesSubscription.m */; };
 		AAB7358A1A3695E300C024BB /* MKDirectMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB735891A3695E300C024BB /* MKDirectMessages.m */; };
+		AAB7358D1A36A13100C024BB /* MKUpdateMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB7358C1A36A13100C024BB /* MKUpdateMessage.m */; };
 		AAC6A252197C6F9C0096701F /* MKPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC6A251197C6F9C0096701F /* MKPasswordView.m */; };
 		AAD784F8194F9E53004FE0F6 /* MKPanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD784F7194F9E53004FE0F6 /* MKPanelView.m */; };
 		AAD78505194FBF3E004FE0F6 /* MKNodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD78504194FBF3E004FE0F6 /* MKNodeView.m */; };
@@ -466,6 +467,8 @@
 		AAB735861A3690BD00C024BB /* MKUpdatesSubscription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKUpdatesSubscription.m; sourceTree = "<group>"; };
 		AAB735881A3695E300C024BB /* MKDirectMessages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKDirectMessages.h; sourceTree = "<group>"; };
 		AAB735891A3695E300C024BB /* MKDirectMessages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKDirectMessages.m; sourceTree = "<group>"; };
+		AAB7358B1A36A13100C024BB /* MKUpdateMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKUpdateMessage.h; sourceTree = "<group>"; };
+		AAB7358C1A36A13100C024BB /* MKUpdateMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKUpdateMessage.m; sourceTree = "<group>"; };
 		AAC6A250197C6F9C0096701F /* MKPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKPasswordView.h; sourceTree = "<group>"; };
 		AAC6A251197C6F9C0096701F /* MKPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKPasswordView.m; sourceTree = "<group>"; };
 		AAD784F6194F9E53004FE0F6 /* MKPanelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKPanelView.h; sourceTree = "<group>"; };
@@ -746,6 +749,8 @@
 		AA955E0D1914775500F6FB0F /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				AAB7358B1A36A13100C024BB /* MKUpdateMessage.h */,
+				AAB7358C1A36A13100C024BB /* MKUpdateMessage.m */,
 				AAB735851A3690BD00C024BB /* MKUpdatesSubscription.h */,
 				AAB735861A3690BD00C024BB /* MKUpdatesSubscription.m */,
 				AA9EB95F1A0066D90052742B /* Bitmarkets.h */,
@@ -1327,6 +1332,7 @@
 				AA09C7DB192BDC2800317130 /* MKAttachmentView.m in Sources */,
 				AA955E171914775500F6FB0F /* MKMarketChannel.m in Sources */,
 				AAA2E6AE19006F0A0098C357 /* MKRegion.m in Sources */,
+				AAB7358D1A36A13100C024BB /* MKUpdateMessage.m in Sources */,
 				AA09C804192D41C600317130 /* MKAboutNode.m in Sources */,
 				AAB2814119217586005C9D27 /* MKRejectBidMsg.m in Sources */,
 				AAB2814A19217586005C9D27 /* MKPostMsg.m in Sources */,

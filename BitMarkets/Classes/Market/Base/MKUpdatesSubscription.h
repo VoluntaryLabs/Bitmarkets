@@ -20,6 +20,8 @@
 
 @property (assign) BOOL needsToFetch;
 
+@property (strong, nonatomic) NSMutableDictionary *shownMessages;
+
 - (void)fetch;
 
 @end

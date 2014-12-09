@@ -11,6 +11,7 @@
 #import "MKMsg.h"
 #import "MKMarkets.h"
 #import "MKRootNode.h"
+#import "MKUpdateMessage.h"
 
 @implementation MKUpdatesSubscription
 
@@ -29,6 +30,7 @@
     self = [super init];
     
     self.updatesAddress = @"";
+    self.shownMessages = [NSMutableDictionary dictionary];
     
     [NSNotificationCenter.defaultCenter addObserver:self
                                              selector:@selector(subscriptionChanged:)
@@ -65,28 +67,55 @@
     return _subscription;
 }
 
+- (NSString *)currentVersion
+{
+    NSDictionary *info = [NSBundle bundleForClass:[self class]].infoDictionary;
+    NSString *versionString = [info objectForKey:@"CFBundleVersion"];
+    return versionString;
+}
+
+- (NSArray *)updateMessagesNewestVersionFirst
+{
+    NSMutableArray *updateMessages = [NSMutableArray array];
+    
+    NSArray *bmMessages = self.subscription.children.copy;
+    
+    for (BMReceivedMessage *bmMessage in bmMessages)
+    {
+        NSMutableDictionary *updateDict = [NSMutableDictionary dictionaryWithJsonString:bmMessage.messageString];
+        MKUpdateMessage *message = [[MKUpdateMessage alloc] init];
+        [message setDict:updateDict];
+        [message setBmMessage:bmMessage];
+        [updateMessages addObject:message];
+    }
+
+    return [updateMessages sortedArrayUsingSelector:@selector(compare:)];
+}
+
 - (void)fetch
 {
+    // need to get them all and sort them to avoid showing
+    // the user old update messages
+    
     self.needsToFetch = NO;
     
-    NSArray *messages = self.subscription.children.copy;
+    NSArray *messages = [self updateMessagesNewestVersionFirst];
     
-    for (BMReceivedMessage *bmMsg in messages)
+    MKUpdateMessage *topMessage = messages.firstObject;
+    
+    if (topMessage && topMessage.isNewer)
     {
-        MKMsg *msg = [MKMsg withBMMessage:bmMsg];
-        
-        /*
-        if (msg)
+        if (![self.shownMessages objectForKey:topMessage.version])
         {
-            if ([msg isKindOfClass:MKUpdateMsg.class])
-            {
-                [MKUpdateMsg handle]; // this will delete it if it's an older version
-            }
+            [topMessage showAlert];
+            [self.shownMessages setObject:topMessage forKey:topMessage.version];
         }
-        */
     }
-  
-    //NSWindow *window = NSApplication.sharedApplication.mainWindow;
+    
+    for (MKUpdateMessage *message in messages)
+    {
+        [message deleteIfOlder];
+    }
 }
 
 @end
