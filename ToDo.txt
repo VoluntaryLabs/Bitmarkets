@@ -8,7 +8,8 @@
 
 --- steve ---
 
-- global category
+- [DONE] global category
+
 
 - update subscription support
 - legal and info pages

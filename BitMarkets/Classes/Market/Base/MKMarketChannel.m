@@ -86,41 +86,13 @@
 }
 */
 
-/*
-- (void)setPassphrase:(NSString *)passphrase
-{
-    if (_channel)
-    {
-        _channel = nil;
-    }
-    
-    _passphrase = passphrase;
-    
-    //[self channel];
-}
-*/
-
-- (void)cleanupChannels
-{
-    // the updates are a subscription, so this won't remove it
-    // this is just to clean up old test channels
-    
-    BMChannels *channels = BMClient.sharedBMClient.channels;
-
-    if (![channels channelWithPassphrase:self.passphrase])
-    {
-        [channels leaveAllChannels];
-    }
-}
-
 - (BMChannel *)channel
 {
     if (!_channel)
     {
-        [self cleanupChannels];
-
         BMChannels *channels = BMClient.sharedBMClient.channels;
         _channel = [channels channelWithPassphraseJoinIfNeeded:self.passphrase];
+        [channels leaveAllExceptThoseInSet:[NSSet setWithObject:_channel]];
     }
     
     return _channel;

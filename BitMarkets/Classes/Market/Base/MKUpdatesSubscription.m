@@ -62,6 +62,7 @@
     {
         BMSubscriptions *subscriptions = BMClient.sharedBMClient.subscriptions;
         _subscription = [subscriptions subscriptionWithAddressAddIfNeeded:self.updatesAddress];
+        [subscriptions leaveAllExceptThoseInSet:[NSSet setWithObject:_subscription]];
     }
     
     return _subscription;
