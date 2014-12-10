@@ -70,23 +70,30 @@
 
 // dict
 
+- (void)setName:(NSString *)name
+{
+    _name = name;
+    self.nodeTitle = name;
+}
 
 - (void)setDict:(NSDictionary *)dict
 {
-    self.name = [dict objectForKey:@"name"];
-    self.nodeTitle = self.name;
-    
-    NSString *subtitle = [dict objectForKey:@"subtitle"];
-    if (subtitle)
+    for (NSString *key in dict.allKeys)
     {
-        self.nodeSubtitle = subtitle;
+        // need to generalize children/type properties
+        
+        if (![key isEqualToString:@"children"] && ![key isEqualToString:@"_type"])
+        {
+            id value = [dict objectForKey:key];
+
+            //if ([self respondsToSelector:key.asSetterString])
+            {
+                [self callSetter:key withValue:value];
+            }
+        }
     }
     
-    NSNumber *nodeSuggestedWidth = [dict objectForKey:@"nodeSuggestedWidth"];
-    if (nodeSuggestedWidth)
-    {
-        self.nodeSuggestedWidth = nodeSuggestedWidth.floatValue;
-    }
+    
     
     NSArray *childrenDicts = [dict objectForKey:@"children"];
     

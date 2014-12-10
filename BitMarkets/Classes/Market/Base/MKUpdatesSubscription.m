@@ -29,7 +29,7 @@
 {
     self = [super init];
     
-    self.updatesAddress = @"";
+    self.updatesAddress = @"BM-2cXCTDAitr8PidWfVDiSLdnAADhmSk29iG";
     self.shownMessages = [NSMutableDictionary dictionary];
     
     [NSNotificationCenter.defaultCenter addObserver:self
@@ -82,7 +82,19 @@
     
     for (BMReceivedMessage *bmMessage in bmMessages)
     {
-        NSMutableDictionary *updateDict = [NSMutableDictionary dictionaryWithJsonString:bmMessage.messageString];
+        NSMutableDictionary *updateDict;
+        
+        @try
+        {
+            updateDict = [NSMutableDictionary dictionaryWithJsonString:bmMessage.messageString];
+        }
+        @catch (NSException *exception)
+        {
+            NSLog(@"error reading update message %@", exception);
+            [bmMessage delete];
+            continue;
+        }
+
         MKUpdateMessage *message = [[MKUpdateMessage alloc] init];
         [message setDict:updateDict];
         [message setBmMessage:bmMessage];

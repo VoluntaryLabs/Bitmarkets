@@ -1,5 +1,6 @@
 --- help needed ---
 
+- tutorial/intro videos
 - signing with dev key
 - posting on app store
 - https for website
@@ -7,6 +8,9 @@
 
 --- steve ---
 
+- global category
+
+- update subscription support
 - legal and info pages
 
 - ability to view and pick bid to accept
