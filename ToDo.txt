@@ -12,6 +12,11 @@
 
 
 - update subscription support
+  * double layout didn't work
+  * setNeedsDisplay didn't work
+  * setNeedsLayout didn't work
+  * moving -layout to -justLayout and calling didn't work
+
 - legal and info pages
 
 - ability to view and pick bid to accept

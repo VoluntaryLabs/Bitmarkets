@@ -177,7 +177,15 @@
     return 30.0;
 }
 
+/*
 - (void)layout
+{
+    [self justLayout];
+    [super layout];
+}
+*/
+
+- (void)justLayout
 {
     [_scrollView setX:0];
     [_scrollView setY:0];
@@ -213,6 +221,8 @@
     }
     
     [_price updateSuffixView]; // hack until suffix view cleanup
+    
+    //[super layout];
 }
 
 - (void)layoutSubviewsBottomToTop
@@ -226,11 +236,14 @@
     [_attachmentView setWidth:_documentView.width - _attachmentView.x*2];
     [_attachmentView setHeight:300];
     [_attachmentView setY:bottomMargin];
+    //[_attachmentView setNeedsDisplay:YES];
 
     [_categoryIcon setX:leftMargin+2];
     [_categoryIcon placeYAbove:_attachmentView margin:descriptionMargin];
+    //[_categoryIcon setNeedsDisplay:YES];
     [_category placeXRightOf:_categoryIcon margin:iconMargin];
     [_category setY:_categoryIcon.y-5];
+    //[_category setNeedsDisplay:YES];
 
     
     [_fromAddressIcon setX:leftMargin+2];
@@ -240,8 +253,10 @@
     
     [_regionIcon setX:leftMargin+2];
     [_regionIcon placeYAbove:_fromAddressIcon margin:iconMargin];
+    [_regionIcon setNeedsDisplay:YES];
     [_region placeXRightOf:_regionIcon margin:iconMargin];
     [_region setY:_regionIcon.y-5];
+    //[_region setNeedsDisplay:YES];
     
 
     // add code to adjust _postDescription height to fit text?
@@ -249,6 +264,7 @@
     [_postDescription setX:leftMargin];
     [_postDescription setWidth:_documentView.width - leftMargin*2];
     [_postDescription placeYAbove:_regionIcon margin:descriptionMargin];
+    //[_postDescription setNeedsDisplay:YES];
     
     //NSLog(@"_postDescription.height = %i", (int)_postDescription.height);
 
@@ -256,15 +272,18 @@
     [_separator setWidth:_documentView.width];
 //    [_separator setY:_documentView.height-60*2];
     [_separator placeYAbove:_postDescription margin:descriptionMargin];
-    
+    //[_separator setNeedsDisplay:YES];
+   
     
     [_postOrBuyButton setWidth:84];
     [_postOrBuyButton setX:_documentView.width - _postOrBuyButton.width - leftMargin];
     [_postOrBuyButton placeYAbove:_separator margin:37];
+    //[_postOrBuyButton setNeedsDisplay:YES];
     
     
     [_errorText setX:leftMargin];
     [_errorText placeYAbove:_separator margin:5];
+    //[_errorText setNeedsDisplay:YES];
     
     
     [_price setX:leftMargin];
@@ -273,11 +292,13 @@
     //[_price placeYBelow:_title margin:0];
     [_price placeYAbove:_errorText margin:0];
     //[_price setWidth:_documentView.width*.7];
+    //[_price setNeedsDisplay:YES];
     
     [_title setX:leftMargin];
     CGFloat w = (_postOrBuyButton.x - _title.x) - 10;
     [_title setWidth:w];
     [_title placeYAbove:_price margin:0];
+    //[_title setNeedsDisplay:YES];
 }
 
 - (void)dealloc
@@ -285,16 +306,32 @@
     [NSNotificationCenter.defaultCenter removeObserver:self];
 }
 
+/*
+- (void)setFrameOrigin:(NSPoint)aPoint
+{
+    [super setFrameOrigin:aPoint];
+    [self justLayout];
+}
+
+- (void)setFrameSize:(NSSize)newSize
+{
+    [super setFrameSize:newSize];
+    [self justLayout];
+}
+*/
+
 - (void)setFrame:(NSRect)frameRect
 {
     [super setFrame:frameRect];
-    [self layout];
+    //[self layout];
+    //[self setNeedsLayout:YES];
+    //[self setNeedsDisplay:YES];
+    [self justLayout];
 }
 
 - (void)setNode:(NavNode *)node
 {
     _node = node;
-    
     [self syncFromNode];
 }
 
@@ -336,6 +373,9 @@
     
     [self updateButton];
     [self updatePriceSuffix];
+    
+    //[self setNeedsLayout:YES];
+    [self justLayout];
 }
 
 - (NSNumber *)priceInBtc
@@ -588,7 +628,9 @@
     [self setNeedsDisplay:YES];
     
     [self syncToNode]; // to show on table cell
-    [self layout];
+    //[self layout];
+    //[self setNeedsLayout:YES];
+    [self justLayout];
     
     //NSLog(@"==== textDidChange dt = %f", [date timeIntervalSinceNow]);
 }

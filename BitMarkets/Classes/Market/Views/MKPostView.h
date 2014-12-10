@@ -50,6 +50,9 @@
 
 @property (strong, nonatomic) MKExchangeRate * exchangeRate;
 
+@property (assign, nonatomic) BOOL needsLocalLayout;
+
+
 + (CGFloat)leftMargin;
 
 - (MKSell *)sell;
