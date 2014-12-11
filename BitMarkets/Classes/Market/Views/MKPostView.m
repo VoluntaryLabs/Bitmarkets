@@ -822,7 +822,7 @@
 
 - (void)buy
 {
-    [[NSApplication sharedApplication] restart];
+    //[[NSApplication sharedApplication] restart];
     [self showConfirmBuyAlert];
 }
 
