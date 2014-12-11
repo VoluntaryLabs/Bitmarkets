@@ -39,11 +39,9 @@
 - receiving a bid shows in status but doesn't enable accept first bid immediately?
 - choose bid doesn't immediately go to lock escrow
 
-- use unique address for every post (if not a store?)
+- optional unique address for every post?
 
 - [possibly fixed] brief graphic artifact in stages view on accepting bid
-
-- [UNREPRODUCABLE] image attachment resizing on window resize weirdness
 - [FEATURE] detect and display received deposit feature if window open?
 - [FEATURE] eta for pow on posts?
  
