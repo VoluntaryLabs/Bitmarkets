@@ -10,6 +10,7 @@
 
 #import "MKMarketChannel.h"
 #import "MKDirectMessages.h"
+#import "MKUpdatesSubscription.h"
 
 #import "MKRegion.h"
 #import "MKCategory.h"
@@ -27,6 +28,7 @@
 //@property (strong, nonatomic) MKCategory *rootCategory;
 @property (strong, nonatomic) MKMarketChannel *mkChannel;
 @property (strong, nonatomic) MKDirectMessages *mkDirectMessages;
+@property (strong, nonatomic) MKUpdatesSubscription *mkUpdatesSubscription;
 
 @property (strong, nonatomic) MKBuys *buys;
 @property (strong, nonatomic) MKSells *sells;

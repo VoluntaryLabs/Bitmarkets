@@ -1,3 +1,8 @@
+version 0.8.7.15 (Dec 10, 2014)
+- added Global region
+- fix for post layout bug
+- initial work on app updates via subscription
+
 version 0.8.7.14
 - automatic periodic reposting until a bid is accepted
 - window size now remembered and min window size fix

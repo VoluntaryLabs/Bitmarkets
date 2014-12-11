@@ -37,6 +37,8 @@
     self.mkDirectMessages = [[MKDirectMessages alloc] init];
     //[self addChild:self.mkDirectMessages];
     
+    //self.mkUpdatesSubscription = [[MKUpdatesSubscription alloc] init];
+    
     self.buys  = [[MKBuys alloc] init];
     //[_buys read];
     [self addChild:_buys];

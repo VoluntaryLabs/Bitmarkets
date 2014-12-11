@@ -10,16 +10,20 @@
 
 - [DONE] global category
 
-
 - update subscription support
-  * double layout didn't work
-  * setNeedsDisplay didn't work
-  * setNeedsLayout didn't work
-  * moving -layout to -justLayout and calling didn't work
-
 - legal and info pages
-
 - ability to view and pick bid to accept
+
+- structured buyer/seller communications
+  - seller can send tracking number/ETA
+  - buyer can multi-choose from list of refund reasons
+    - package did not arrive
+    - quality too low
+    - quantity too low
+  - buyer can multi-choose from list of feedback after payment
+    - happy with quantity
+    - happy with quality 
+    - happy with delivery time
 
 - verify bid not accepted cancel
 - verify closemsg post code
