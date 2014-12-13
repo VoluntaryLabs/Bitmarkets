@@ -10,6 +10,8 @@
 
 - [DONE] global category
 
+- fix cell title "..." clipping when there is no subtitle etc
+
 - update subscription support
 - legal and info pages
 - ability to view and pick bid to accept

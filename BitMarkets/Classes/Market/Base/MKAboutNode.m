@@ -151,6 +151,8 @@
             NavInfoNode *package = [[NavInfoNode alloc] init];
             package.nodeTitle = @"BitcoinJ";
             package.nodeSubtitle = @"github.com/bitcoinj";
+            package.nodeResourceName = @"licenses/bitcoinj_license.txt";
+
             [others addChild:package];
         }
  
@@ -158,6 +160,7 @@
             NavInfoNode *package = [[NavInfoNode alloc] init];
             package.nodeTitle = @"Open Sans";
             package.nodeSubtitle = @"Steve Matteson, Google fonts";
+            package.nodeResourceName = @"licenses/opensans_license.txt";
             [others addChild:package];
         }
         
