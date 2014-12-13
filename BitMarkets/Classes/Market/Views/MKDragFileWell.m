@@ -175,7 +175,7 @@
     NSPasteboard *pboard = [NSPasteboard pasteboardWithName:NSDragPboard];
     NSPoint locationInWindow = [theEvent locationInWindow];
     NSPoint imageLocation;
-    id image = [self image];
+    NSImage *image = [self image];
     [image setSize:[self frame].size];
     
     if (!_canDrag)

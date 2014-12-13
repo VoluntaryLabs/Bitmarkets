@@ -13,8 +13,9 @@
 - fix cell title "..." clipping when there is no subtitle etc
 
 - update subscription support
-- legal and info pages
-- ability to view and pick bid to accept
+- [DONE] legal pages 
+- docs & info pages? a url link?
+- ability to view all bids before accept
 
 - structured buyer/seller communications
   - seller can send tracking number/ETA

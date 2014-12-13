@@ -152,7 +152,7 @@
             package.nodeTitle = @"BitcoinJ";
             package.nodeSubtitle = @"github.com/bitcoinj";
             package.nodeResourceName = @"licenses/bitcoinj_license.txt";
-
+            package.nodeViewClass = NavResourceView.class;
             [others addChild:package];
         }
  
@@ -161,12 +161,12 @@
             package.nodeTitle = @"Open Sans";
             package.nodeSubtitle = @"Steve Matteson, Google fonts";
             package.nodeResourceName = @"licenses/opensans_license.txt";
+            package.nodeViewClass = NavResourceView.class;
             [others addChild:package];
         }
         
     }
     
-    /*
     {
         NavInfoNode *howto = [[NavInfoNode alloc] init];
         [root addChild:howto];
@@ -177,16 +177,18 @@
         {
             NavInfoNode *item = [[NavInfoNode alloc] init];
             item.nodeTitle = @"Post a sale";
+            item.nodeResourceName = @"http://voluntary.net/bitmarkets";
+            item.nodeViewClass = NavWebView.class;
             [howto addChild:item];
         }
         
         {
             NavInfoNode *item = [[NavInfoNode alloc] init];
             item.nodeTitle = @"Buy an item";
+            item.nodeResourceName = @"http://voluntary.net/";
             [howto addChild:item];
         }
     }
-    */
 }
 
 @end
