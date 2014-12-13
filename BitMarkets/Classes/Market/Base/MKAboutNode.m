@@ -169,23 +169,23 @@
     
     {
         NavInfoNode *howto = [[NavInfoNode alloc] init];
-        [root addChild:howto];
+        //[root addChild:howto];
         howto.nodeTitle = @"How to";
         howto.nodeSuggestedWidth = 200;
         howto.shouldSortChildren = NO;
         
         {
             NavInfoNode *item = [[NavInfoNode alloc] init];
-            item.nodeTitle = @"Post a sale";
-            item.nodeResourceName = @"http://voluntary.net/bitmarkets";
-            item.nodeViewClass = NavWebView.class;
+            item.nodeTitle = @"Selling";
+            item.nodeResourceName = @"http://voluntary.net/docs/sell";
+            //item.nodeViewClass = NavWebView.class;
             [howto addChild:item];
         }
         
         {
             NavInfoNode *item = [[NavInfoNode alloc] init];
-            item.nodeTitle = @"Buy an item";
-            item.nodeResourceName = @"http://voluntary.net/";
+            item.nodeTitle = @"Buying";
+            item.nodeResourceName = @"http://voluntary.net/docs/buy";
             [howto addChild:item];
         }
     }
