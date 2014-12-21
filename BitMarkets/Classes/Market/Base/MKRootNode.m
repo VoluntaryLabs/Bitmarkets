@@ -38,7 +38,7 @@ static MKRootNode *sharedMKRootNode = nil;
 
     self.nodeShouldSortChildren = @NO;
     self.nodeTitle = @"BitMarkets";
-    self.nodeSuggestedWidth = 150;
+    self.nodeSuggestedWidth = @150;
     
     [self.appDelegate setNavTitle:@"launching bitmessage server..."];
     [self setupBMClient];

@@ -77,9 +77,9 @@
 
 // --- UI ------------------------------
 
-- (CGFloat)nodeSuggestedWidth
+- (NSNumber *)nodeSuggestedWidth
 {
-    return 450;
+    return @450;
 }
 
 - (NSString *)nodeTitle

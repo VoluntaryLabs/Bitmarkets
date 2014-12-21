@@ -32,9 +32,9 @@
 
 // --- titles -------------
 
-- (CGFloat)nodeSuggestedWidth
+- (NSNumber *)nodeSuggestedWidth
 {
-    return 350;
+    return @350;
 }
 
 - (NSString *)nodeTitle

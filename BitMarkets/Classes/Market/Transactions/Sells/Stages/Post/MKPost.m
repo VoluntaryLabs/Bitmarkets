@@ -21,7 +21,7 @@
     self = [super init];
     self.date = [NSDate date];
     
-    self.nodeMinWidth = 800;
+    self.nodeMinWidth = @800;
     self.postUuid = [[NSUUID UUID] UUIDString];
     
     self.title = @"";
@@ -34,7 +34,7 @@
     
     self.nodeShouldSortChildren = @NO;
     
-    self.nodeSuggestedWidth = 665;
+    self.nodeSuggestedWidth = @665;
     self.attachments = [NSArray array];
     
     [self.dictPropertyNames addObjectsFromArray:self.postMessagePropertyNames];

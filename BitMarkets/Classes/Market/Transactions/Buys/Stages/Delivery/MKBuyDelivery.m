@@ -39,9 +39,9 @@
 
 // node
 
-- (CGFloat)nodeSuggestedWidth
+- (NSNumber *)nodeSuggestedWidth
 {
-    return 300;
+    return @300;
 }
 
 - (NSString *)nodeTitle

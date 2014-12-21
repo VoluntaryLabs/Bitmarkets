@@ -2,7 +2,7 @@
 {
 	"_type" : "Region",
 	"name" : "Markets",
-    "nodeSuggestedWidthNumber" : 160,
+    "nodeSuggestedWidth" : 160,
     "nodeShouldSortChildren" : false,
 	"children" :
 	[

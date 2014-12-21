@@ -14,13 +14,12 @@
 - (id)init
 {
     self = [super init];
-    //self.nodeSuggestedWidth = 500;
     return self;
 }
 
-- (CGFloat)nodeSuggestedWidth
+- (NSNumber *)nodeSuggestedWidth
 {
-    return 360;
+    return @360;
 }
 
 - (NSString *)nodeTitle

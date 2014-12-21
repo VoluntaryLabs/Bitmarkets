@@ -20,9 +20,9 @@
     return @"UpdateChannel";
 }
 
-- (CGFloat)nodeSuggestedWidth
+- (NSNumber *)nodeSuggestedWidth
 {
-    return 250;
+    return @250;
 }
 
 - (id)init

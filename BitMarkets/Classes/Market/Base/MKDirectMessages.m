@@ -22,9 +22,9 @@
     return @"Direct Messages";
 }
 
-- (CGFloat)nodeSuggestedWidth
+- (NSNumber *)nodeSuggestedWidth
 {
-    return 250;
+    return @250;
 }
 
 

@@ -19,7 +19,7 @@
     self.nodeShouldSortChildren = @NO;
     self.nodeTitle = @"Bitmarkets";
     self.nodeSubtitle = self.versionString;
-    self.nodeSuggestedWidth = 150;
+    self.nodeSuggestedWidth = @150;
     
     [self addAbout];
     
@@ -93,13 +93,13 @@
         NavInfoNode *legal = [[NavInfoNode alloc] init];
         [root addChild:legal];
         legal.nodeTitle = @"Legal";
-        legal.nodeSuggestedWidth = 200;
+        legal.nodeSuggestedWidth = @200;
         */
         
         NavInfoNode *contributors = [[NavInfoNode alloc] init];
         [root addChild:contributors];
         contributors.nodeTitle = @"Credits";
-        contributors.nodeSuggestedWidth = 200;
+        contributors.nodeSuggestedWidth = @200;
         contributors.nodeShouldSortChildren = @NO;
         
         
@@ -142,7 +142,7 @@
         NavInfoNode *others = [[NavInfoNode alloc] init];
         [contributors addChild:others];
         others.nodeTitle = @"3rd Party";
-        others.nodeSuggestedWidth = 200;
+        others.nodeSuggestedWidth = @200;
         others.nodeShouldSortChildren = @NO;
         
         {
@@ -169,7 +169,7 @@
         NavInfoNode *howto = [[NavInfoNode alloc] init];
         //[root addChild:howto];
         howto.nodeTitle = @"How to";
-        howto.nodeSuggestedWidth = 200;
+        howto.nodeSuggestedWidth = @200;
         howto.nodeShouldSortChildren = @NO;
         
         {

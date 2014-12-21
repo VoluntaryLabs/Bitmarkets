@@ -23,7 +23,7 @@
     self = [super init];
     self.nodeShouldSortChildren = @YES;
     //self.nodeSortChildrenKey = @"date";
-    self.nodeSuggestedWidth = 150;
+    self.nodeSuggestedWidth = @150;
     
     {
         NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"add"];
@@ -86,11 +86,11 @@
     slot.isActive = self.isLeafCategory;
 }
 
-- (CGFloat)nodeSuggestedWidth
+- (NSNumber *)nodeSuggestedWidth
 {
     if (self.isLeafCategory)
     {
-        return 250;
+        return @250;
     }
     
     return super.nodeSuggestedWidth;

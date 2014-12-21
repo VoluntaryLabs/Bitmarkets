@@ -57,9 +57,9 @@
 
 // node
 
-- (CGFloat)nodeSuggestedWidth
+- (NSNumber *)nodeSuggestedWidth
 {
-    return 350;
+    return @350;
 }
 
 - (void)sortChildren

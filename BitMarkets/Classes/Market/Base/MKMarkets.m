@@ -17,7 +17,7 @@
 {
     self = [super init];
     self.nodeTitle = @"BitMarkets";
-    self.nodeSuggestedWidth = 150;
+    self.nodeSuggestedWidth = @150;
     
     self.nodeShouldSortChildren = @NO;
     
@@ -28,7 +28,7 @@
     if (NO)
     {
         [_rootRegion setShouldInlineChildren:YES];
-        _rootRegion.nodeSuggestedWidth = 250;
+        _rootRegion.nodeSuggestedWidth = @250;
     }
     
     self.mkChannel = [[MKMarketChannel alloc] init];

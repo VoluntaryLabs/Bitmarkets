@@ -38,9 +38,9 @@
     return @"Bids";
 }
 
-- (CGFloat)nodeSuggestedWidth
+- (NSNumber *)nodeSuggestedWidth
 {
-    return 380.0;
+    return @380.0;
 }
 
 - (NSString *)nodeNote

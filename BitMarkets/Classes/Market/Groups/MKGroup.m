@@ -27,7 +27,7 @@
     self.dictPropertyNames = [NSMutableArray array];
     //self.actions = [NSMutableArray arrayWithObjects:@"add", nil];
     //self.count = 0;
-    self.nodeSuggestedWidth = 180;
+    self.nodeSuggestedWidth = @180;
     return self;
 }
 
