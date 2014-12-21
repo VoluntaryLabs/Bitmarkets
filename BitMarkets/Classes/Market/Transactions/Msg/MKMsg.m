@@ -98,7 +98,7 @@
 - (void)setPayload:(NSDictionary *)aDict
 {
     _payload = aDict;
-    [self setIsDirty:YES];
+    [self setNodeIsDirty:@YES];
 }
 
 - (BOOL)bmSenderIsBuyer // only works when first received

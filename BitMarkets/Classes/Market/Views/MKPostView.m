@@ -391,7 +391,7 @@
 
     self.mkPost.priceInBtc = self.priceInBtc;
     self.mkPost.postDescription = self.postDescription.stringSansUneditedString;
-    self.mkPost.isDirty = YES;
+    self.mkPost.nodeIsDirty = @YES;
     
     self.mkPost.attachments = self.attachments;
     [self.mkPost postSelfChanged];
