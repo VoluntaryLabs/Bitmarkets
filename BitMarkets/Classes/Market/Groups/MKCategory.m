@@ -22,7 +22,7 @@
 {
     self = [super init];
     self.nodeShouldSortChildren = @YES;
-    //self.sortChildrenKey = @"date";
+    //self.nodeSortChildrenKey = @"date";
     self.nodeSuggestedWidth = 150;
     
     {

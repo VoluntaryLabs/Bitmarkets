@@ -103,14 +103,14 @@
         
         for (NSDictionary *childDict in childrenDicts)
         {
-            Class childClass = nil;
+            Class nodeChildClass = nil;
             NSString *childType = [childDict objectForKey:@"_type"];
             NSString *className = nil;
             
             if (childType)
             {
                 className = [childType withPrefix:@"MK"];
-                childClass = NSClassFromString(className);
+                nodeChildClass = NSClassFromString(className);
             }
             else
             {
@@ -118,16 +118,16 @@
 
             }
 
-            if (childClass)
+            if (nodeChildClass)
             {
-                self.childClass = childClass;
+                self.nodeChildClass = nodeChildClass;
             }
             else
             {
                 [NSException raise:@"Error unserializing dictionary" format:@"Can't find _type class '%@'", className];
             }
             
-            NavNode *child = [childClass withDict:childDict];
+            NavNode *child = [nodeChildClass withDict:childDict];
             [children addObject:child];
             [child setNodeParent:self];
             //NSLog(@"read child %@ %@", NSStringFromClass(child.class), child.nodeTitle);

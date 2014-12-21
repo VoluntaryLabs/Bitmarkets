@@ -14,7 +14,7 @@
 - (id)init
 {
     self = [super init];
-    self.childClass = MKBuy.class;
+    self.nodeChildClass = MKBuy.class;
 //    [self read];
     return self;
 }

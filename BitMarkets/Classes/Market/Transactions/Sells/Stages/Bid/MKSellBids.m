@@ -22,7 +22,7 @@
     self = [super init];
     self.nodeShouldUseCountForNodeNote = @YES;
     self.nodeShouldSortChildren = @YES;
-    self.sortChildrenKey = @"date";
+    self.nodeSortChildrenKey = @"date";
     self.sortAccending = NO;
     
     {

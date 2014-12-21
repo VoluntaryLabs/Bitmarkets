@@ -16,7 +16,7 @@
 - (id)init
 {
     self = [super init];
-    self.childClass = MKSell.class;
+    self.nodeChildClass = MKSell.class;
     return self;
 }
 
