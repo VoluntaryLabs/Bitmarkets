@@ -13,7 +13,7 @@
 - (id)init
 {
     self = [super init];
-    self.shouldUseCountForNodeNote = YES;
+    self.nodeShouldUseCountForNodeNote = @YES;
     return self;
 }
 

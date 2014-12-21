@@ -151,7 +151,7 @@
     
     if (result)
     {
-        //if (self.nodeParent.shouldUseCountForNodeNote)
+        //if (self.nodeParent.nodeShouldUseCountForNodeNote.boolValue)
         {
             [self postParentChainChanged]; 
         }
