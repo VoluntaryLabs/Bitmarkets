@@ -49,7 +49,7 @@
     
     [self.mkChannel performSelector:@selector(fetch) withObject:nil afterDelay:0.0];
     [self.rootRegion updateCounts];
-    self.rootRegion.doesRememberChildPath = YES;
+    self.rootRegion.nodeDoesRememberChildPath = @YES;
    
     //[MKExchangeRate shared];
 

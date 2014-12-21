@@ -25,7 +25,7 @@
          [slot setVerifyMessage:[NSString stringWithFormat:@"Are you sure you want to delete this %@?", typeOfTx]];
     }
     
-    self.doesRememberChildPath = YES;
+    self.nodeDoesRememberChildPath = @YES;
     self.nodeSuggestedWidth = 900;
     
     return self;
