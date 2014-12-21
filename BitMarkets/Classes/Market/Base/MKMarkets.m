@@ -19,7 +19,7 @@
     self.nodeTitle = @"BitMarkets";
     self.nodeSuggestedWidth = 150;
     
-    self.shouldSortChildren = NO;
+    self.nodeShouldSortChildren = @NO;
     
     _rootRegion = (MKRegion *)[MKRegion rootInstance];
     
@@ -86,9 +86,23 @@
 
 - (void)refresh
 {
-    [self.sells update];
-    [self.buys  update];
-    [self.mkChannel fetch];
+    if (BNErrorReport.sharedBNErrorReport.isOpen)
+    {
+        return;
+    }
+    
+    @try
+    {
+        [self.sells update];
+        [self.buys  update];
+        [self.mkChannel fetch];
+        
+        //[NSException raise:@"test error report" format:nil];
+    }
+    @catch (NSException *exception)
+    {
+        [BNErrorReport.sharedBNErrorReport reportException:exception];
+    }
 }
 
 - (void)delete

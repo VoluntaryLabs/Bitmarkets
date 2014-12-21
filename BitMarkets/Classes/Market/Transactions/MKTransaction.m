@@ -13,7 +13,7 @@
 - (id)init
 {
     self = [super init];
-    self.shouldSortChildren = NO;
+    self.nodeShouldSortChildren = @NO;
 
     self.mkPost = [[MKPost alloc] init];
     [self addChild:self.mkPost];
@@ -179,7 +179,8 @@
             @catch (NSException *exception)
             {
                 self.error = [exception description];
-                [self showError];
+                //[self showError];
+                [BNErrorReport.sharedBNErrorReport reportException:exception];
             }
 
         }

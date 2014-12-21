@@ -17,7 +17,7 @@
                               ]
                  },
                  
-                 { "_type": "Category", "name" : "Currencies", "shouldSortChildren" : false,
+                 { "_type": "Category", "name" : "Currencies", "nodeShouldSortChildren" : false,
                  "children":
                  [
                     { "_type": "Category", "name" : "Crypto",

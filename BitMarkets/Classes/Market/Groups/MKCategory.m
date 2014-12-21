@@ -21,7 +21,7 @@
 - (id)init
 {
     self = [super init];
-    self.shouldSortChildren = YES;
+    self.nodeShouldSortChildren = @YES;
     //self.sortChildrenKey = @"date";
     self.nodeSuggestedWidth = 150;
     
@@ -42,9 +42,9 @@
     return db;
 }
 
-- (BOOL)shouldSortChildren
+- (NSNumber *)nodeShouldSortChildren
 {
-    return !self.isLeafCategory;
+    return [NSNumber numberWithBool:!self.isLeafCategory];
 }
 
 - (BOOL)isLeafCategory

@@ -18,7 +18,7 @@
 {
     self = [super init];
     
-    self.shouldSortChildren = NO;
+    self.nodeShouldSortChildren = @NO;
     //self.sortChildrenKey = @"date";
     //self.sortAccending = YES;
     

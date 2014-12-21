@@ -32,7 +32,7 @@
     self.categoryPath = @[];
     self.sellerAddress = BMClient.sharedBMClient.identities.firstIdentity.address; // make this tx specific later
     
-    self.shouldSortChildren = NO;
+    self.nodeShouldSortChildren = @NO;
     
     self.nodeSuggestedWidth = 665;
     self.attachments = [NSArray array];

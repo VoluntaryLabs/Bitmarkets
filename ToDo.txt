@@ -8,12 +8,15 @@
 
 --- steve ---
 
-- [DONE] global category
+- [DONE] legal pages 
+
+- error reporter, prompt user, option to send bitcoin log?
+- unit tests
+- 
+- update subscription support
 
 - fix cell title "..." clipping when there is no subtitle etc
 
-- update subscription support
-- [DONE] legal pages 
 - docs & info pages? a url link?
 - ability to view all bids before accept
 
@@ -36,7 +39,7 @@
 
 - add text about shipping (all prices include shipping anywhere within country)
 - add max of ~$2000 or warning for large tx
-- disable purchasing own items (spam prevention)
+- warning for purchasing own items 
 
 - record the actual close msg that was sent 
 - receiving a bid shows in status but doesn't enable accept first bid immediately?

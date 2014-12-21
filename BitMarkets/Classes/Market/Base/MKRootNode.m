@@ -34,7 +34,9 @@ static MKRootNode *sharedMKRootNode = nil;
 {
     self = [super init];
     
-    self.shouldSortChildren = NO;
+    BNErrorReport.sharedBNErrorReport.reportAddress = @"BM-2cXnWu868ux2P71UVJsZVxnv9zjKWv2xPW";
+
+    self.nodeShouldSortChildren = @NO;
     self.nodeTitle = @"BitMarkets";
     self.nodeSuggestedWidth = 150;
     

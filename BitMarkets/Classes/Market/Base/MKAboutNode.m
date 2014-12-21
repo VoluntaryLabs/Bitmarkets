@@ -16,11 +16,10 @@
 {
     self = [super init];
     
-    self.shouldSortChildren = NO;
+    self.nodeShouldSortChildren = @NO;
     self.nodeTitle = @"Bitmarkets";
     self.nodeSubtitle = self.versionString;
     self.nodeSuggestedWidth = 150;
-    self.shouldSortChildren = NO;
     
     [self addAbout];
     
@@ -77,7 +76,7 @@
     NavInfoNode *root = [[NavInfoNode alloc] init];
     root.nodeTitle = @"Bitmarkets";
     root.nodeSubtitle = self.versionString;
-    root.shouldSortChildren = NO;
+    root.nodeShouldSortChildren = @NO;
     [self addChild:root];
     [self addChild:BMClient.sharedBMClient.aboutNode];
      */
@@ -95,14 +94,13 @@
         [root addChild:legal];
         legal.nodeTitle = @"Legal";
         legal.nodeSuggestedWidth = 200;
-        legal.shouldSortChildren = NO;
         */
         
         NavInfoNode *contributors = [[NavInfoNode alloc] init];
         [root addChild:contributors];
         contributors.nodeTitle = @"Credits";
         contributors.nodeSuggestedWidth = 200;
-        contributors.shouldSortChildren = NO;
+        contributors.nodeShouldSortChildren = @NO;
         
         
         /*
@@ -145,7 +143,7 @@
         [contributors addChild:others];
         others.nodeTitle = @"3rd Party";
         others.nodeSuggestedWidth = 200;
-        others.shouldSortChildren = NO;
+        others.nodeShouldSortChildren = @NO;
         
         {
             NavInfoNode *package = [[NavInfoNode alloc] init];
@@ -172,7 +170,7 @@
         //[root addChild:howto];
         howto.nodeTitle = @"How to";
         howto.nodeSuggestedWidth = 200;
-        howto.shouldSortChildren = NO;
+        howto.nodeShouldSortChildren = @NO;
         
         {
             NavInfoNode *item = [[NavInfoNode alloc] init];

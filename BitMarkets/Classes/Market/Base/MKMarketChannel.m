@@ -215,7 +215,7 @@
     }
     else if (_totalPostCount == 0)
     {
-        [window setTitle:@"syncing with bitmarkets channel..."];
+        [window setTitle:@"syncing with bitmarkets channel (this can take a while the first time)..."];
     }
     
     // process this after others in case it's before the message it's closing

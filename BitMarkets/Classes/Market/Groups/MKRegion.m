@@ -15,7 +15,7 @@
 {
     self = [super init];
     self.nodeSuggestedWidth = 150;
-    self.shouldSortChildren = YES;
+    self.nodeShouldSortChildren = @YES;
     return self;
 }
 

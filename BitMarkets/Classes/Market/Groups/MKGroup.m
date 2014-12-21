@@ -135,7 +135,7 @@
         
         [self setChildren:children];
         
-        if (self.shouldSortChildren)
+        if (self.nodeShouldSortChildren.boolValue)
         {
             [self sortChildren];
         }
