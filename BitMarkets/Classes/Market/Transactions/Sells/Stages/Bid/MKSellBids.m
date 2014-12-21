@@ -23,7 +23,7 @@
     self.nodeShouldUseCountForNodeNote = @YES;
     self.nodeShouldSortChildren = @YES;
     self.nodeSortChildrenKey = @"date";
-    self.sortAccending = NO;
+    self.nodeSortAccending = @NO;
     
     {
         NavActionSlot *slot = [self.navMirror newActionSlotWithName:@"acceptFirstBid"];

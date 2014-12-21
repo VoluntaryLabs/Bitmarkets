@@ -20,7 +20,7 @@
     
     self.nodeShouldSortChildren = @NO;
     //self.nodeSortChildrenKey = @"date";
-    //self.sortAccending = YES;
+    //self.nodeSortAccending = @YES;
     
     self.nodeViewClass = NavMirrorView.class;
     
