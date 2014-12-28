@@ -1,20 +1,20 @@
 [submodule "submodules/BitmessageKit"]
 	path = submodules/BitmessageKit
 	url = git@github.com:Voluntarynet/BitmessageKit.git
-    branch = master
+	branch = master
 [submodule "submodules/FoundationCategoriesKit"]
 	path = submodules/FoundationCategoriesKit
 	url = git@github.com:Voluntarynet/FoundationCategoriesKit.git
-    branch = master
+	branch = master
 [submodule "submodules/NavKit"]
 	path = submodules/NavKit
 	url = git@github.com:Voluntarynet/NavKit.git
-    branch = master
+	branch = master
 [submodule "submodules/NavNodeKit"]
 	path = submodules/NavNodeKit
 	url = git@github.com:Voluntarynet/NavNodeKit.git
-    branch = master
+	branch = master
 [submodule "submodules/BitnashKit"]
 	path = submodules/BitnashKit
 	url = git@github.com:richcollins/BitnashKit.git
-    branch = master
+	branch = master
