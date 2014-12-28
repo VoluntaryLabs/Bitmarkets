@@ -182,7 +182,6 @@
                 //[self showError];
                 [BNErrorReport.sharedBNErrorReport reportException:exception];
             }
-
         }
     }
     

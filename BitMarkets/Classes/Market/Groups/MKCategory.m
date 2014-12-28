@@ -107,7 +107,7 @@
 
 - (NSArray *)regionPath
 {
-    NSArray *path = [self pathOfClass:MKRegion.class];    
+    NSArray *path = [self nodePathOfClass:MKRegion.class];    
     path = [path sansFirstObject];
     return  [path map:@selector(nodeTitle)];
 /*
@@ -120,7 +120,7 @@
 
 - (NSArray *)categoryPath
 {
-    NSArray *path = [self pathOfClass:MKCategory.class];
+    NSArray *path = [self nodePathOfClass:MKCategory.class];
     return [path map:@selector(nodeTitle)];
     
     //return [NSArray arrayWithObject:self.groupNamePath.lastObject];
