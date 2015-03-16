@@ -16,5 +16,5 @@
 	branch = master
 [submodule "submodules/BitnashKit"]
 	path = submodules/BitnashKit
-	url = git@github.com:richcollins/BitnashKit.git
+	url = git@github.com:Voluntarynet/BitnashKit.git
 	branch = master

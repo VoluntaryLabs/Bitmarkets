@@ -98,7 +98,9 @@
 }
 
 
-- (void)javaAlertDidEnd:(NSAlert *)alert returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo
+- (void)javaAlertDidEnd:(NSAlert *)alert
+             returnCode:(NSInteger)returnCode
+            contextInfo:(void *)contextInfo
 {
     if (returnCode == 1000) // 1st choice
     {
@@ -117,7 +119,5 @@
     
     [self showJavaAlertIfNeeded];
 }
-
-
 
 @end

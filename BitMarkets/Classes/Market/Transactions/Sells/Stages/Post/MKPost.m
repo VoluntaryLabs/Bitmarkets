@@ -87,7 +87,11 @@
     if (self.firstPostDateNumber)
     {
         NSTimeInterval repostAge = -[[NSDate fromNumber:self.lastPostDateNumber] timeIntervalSinceNow];
-        return repostAge > self.class.repostPeriodInSeconds.longValue;
+        
+        if(repostAge > self.class.repostPeriodInSeconds.longValue)
+        {
+            return YES;
+        }
     }
     
     return NO;
