@@ -9,19 +9,22 @@ After cloning the git repo, you'll need to init and pull all the submodules by r
 
 To verify/audit the build you'll need to download and compile some of the statically built executables (e.g. python and tor in BitmessageKit) seperately.
 
-#development path
+#development path high priority
 
-- sparkle or other auto-update integration
+- auto-updates 
+- code signed release
+- app store release
 - automated tests
 - ability to choose between bid addresses
-- address whitelist&blacklist, personal ratings and comments
-- password client login, encrypt client data files
+- encrypt all client data files and add password login
 - move to https://gitian.org for deterministic builds
 - https for voluntary
-- sign git tags
+
+#development path low priority
+
+- option for using separate pubkey for each post
 - ui update, image browsing view option within a category
 - support stores with namecoin (a namecoin name to bitmessage address entry)
-- consider alternatives to tor e.g. onion routing via bitmessage?
 - consider open source multi-platform options
 - user defined post filter 
 
