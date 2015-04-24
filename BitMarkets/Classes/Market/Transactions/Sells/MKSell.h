@@ -20,7 +20,7 @@
 
 @interface MKSell : MKTransaction
 
-@property (strong, nonatomic) MKPost *mkPost;
+//@property (strong, nonatomic) MKPost *mkPost;
 @property (strong, nonatomic) MKSellBids *bids;
 @property (strong, nonatomic) MKSellLockEscrow *lockEscrow;
 @property (strong, nonatomic) MKSellDelivery *delivery;
