@@ -370,6 +370,7 @@
 
 - (BOOL)isComplete
 {
+    [self checkAttachmentSizes];
     return self.postMsg && self.postMsg.wasSent;
 }
 
@@ -380,9 +381,37 @@
 
 // actions
 
+- (void)resizeAttachmentsIfNeeded
+{
+    NSMutableArray *outAttachments = [NSMutableArray array];
+    
+    for (NSString *uuString in self.attachments)
+    {
+        int maxKb = 32;
+        
+        if ([uuString length]/1024 > maxKb)
+        {
+            NSData *inData = [uuString decodedBase64Data];
+            NSImage *inImage = [[NSImage alloc] initWithData:inData];
+            NSData *outData = [inImage jpegImageDataUnderKb:maxKb];
+            NSString *outUuString = [outData encodedBase64String];
+            [outAttachments addObject:outUuString];
+        }
+        else
+        {
+            [outAttachments addObject:uuString];
+        }
+    }
+    
+    [self setAttachments:outAttachments];
+}
+
 - (MKPostMsg *)sendPostMsg
 {
     MKPostMsg *postMsg = [[MKPostMsg alloc] init];
+    
+    [self resizeAttachmentsIfNeeded];
+    
     [postMsg sendPost:self];
     
     if (postMsg.ackData)
