@@ -117,13 +117,7 @@ static MKRootNode *sharedMKRootNode = nil;
     {
         _wallet  = [[BNWallet alloc] init];
  
-        NSNumber *torSocksPort = _bmClient.server.torProcess.torSocksPort;
-        
-        if ([_wallet respondsToSelector:@selector(setTorSocksPort:)])
-        {
-            [_wallet performSelector:@selector(setTorSocksPort:) withObject:torSocksPort];
-        }
-        
+        _wallet.server.torSocksPort = _bmClient.server.torProcess.torSocksPort;
         _wallet.usesTestNet = NO;
         _wallet.refreshInterval = 5.0;
         _wallet.deepRefreshes = YES;
