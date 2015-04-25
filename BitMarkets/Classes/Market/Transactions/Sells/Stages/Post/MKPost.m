@@ -370,7 +370,6 @@
 
 - (BOOL)isComplete
 {
-    [self checkAttachmentSizes];
     return self.postMsg && self.postMsg.wasSent;
 }
 
