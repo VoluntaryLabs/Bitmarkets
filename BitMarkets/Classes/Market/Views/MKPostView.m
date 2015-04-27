@@ -797,7 +797,7 @@
     NSAlert *msgBox = [[NSAlert alloc] init];
     //[msgBox setAlertStyle:NSCriticalAlertStyle];
     
-    [msgBox setMessageText:@"All communications are done with Bitmessage over Tor, but for full privacy protection:\n\nDo not use bitcoins that have a recorded association with your identity.\n\nPost from a public wifi network where there are no surveilence cameras.\n\nBefore going there, use LittleSnitch to block all outbound traffic exept for Bitmarkets.\n\nGo without other communication devices (cellphone, vehicles with tracking, etc).\n\nDo not use credit cards around the same location and time.\n\nDo not use a ride service attached to your identity to travel to or from the location."];
+    [msgBox setMessageText:@"All communications are done with Bitmessage over Tor, but for full privacy protection:\n\nDo not use bitcoins that have a recorded association with your identity.\n\nPost from a public wifi network where there are no surveilence cameras.\n\nBefore going there, use LittleSnitch to block all outbound traffic exept for Bitmarkets.\n\nGo without other communication devices (cellphone, vehicles with tracking, etc).\n\nDo not use credit cards around the same location and time.\n\nDo not use a ride service or electronic bus pass attached to your identity to travel to/from the location.\n\nDisable any electronic toll collection devices if driving."];
     
     [msgBox addButtonWithTitle: @"Post Now"];
     [msgBox addButtonWithTitle: @"Don't Post Now"];

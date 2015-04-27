@@ -386,11 +386,12 @@
     
     for (NSString *uuString in self.attachments)
     {
-        int maxKb = 32;
+        NSData *inData = [uuString decodedBase64Data];
+        unsigned long maxKb = 32;
+        unsigned long dataKb = [inData length]/1024;
         
-        if ([uuString length]/1024 > maxKb)
+        if (dataKb > maxKb)
         {
-            NSData *inData = [uuString decodedBase64Data];
             NSImage *inImage = [[NSImage alloc] initWithData:inData];
             NSData *outData = [inImage jpegImageDataUnderKb:maxKb];
             NSString *outUuString = [outData encodedBase64String];
