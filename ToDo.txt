@@ -8,6 +8,8 @@
 
 --- steve ---
 
+- refresh nodes on wallet sync (so buy and sell subtitles update)
+
 - [DONE] legal pages 
 
 - error reporter, prompt user, option to send bitcoin log?

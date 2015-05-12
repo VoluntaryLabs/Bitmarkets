@@ -14,6 +14,7 @@
 {
     self = [super init];
     self.nodeShouldUseCountForNodeNote = @YES;
+    self.nodeSuggestedWidth = @350;
     return self;
 }
 

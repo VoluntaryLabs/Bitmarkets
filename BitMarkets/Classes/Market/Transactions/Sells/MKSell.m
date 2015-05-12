@@ -77,6 +77,15 @@
 - (NSString *)nodeSubtitle
 {
     NSString *subtitle = [super nodeSubtitle];
+    
+    NSString *stageStatus = self.currentStage.nodeSubtitle;
+//    NSLog(@"stageStatus = %@", stageStatus);
+    if (stageStatus)
+    {
+        return stageStatus;
+    }
+    
+    /*
     NSString *status = self.releaseEscrow.shortStatus;
     
     if (self.isCanceled)
@@ -88,6 +97,7 @@
     {
         subtitle = [NSString stringWithFormat:@"%@ %@", subtitle, status];
     }
+     */
     
     return subtitle;
 }

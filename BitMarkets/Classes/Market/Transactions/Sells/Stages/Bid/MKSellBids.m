@@ -62,12 +62,12 @@
 {
     if (self.acceptedBid)
     {
-        return @"Accepted bid.";
+        return @"Accepted bid";
     }
     
     if (!self.runningWallet)
     {
-        return @"Waiting for wallet to sync...";
+        return @"Awaiting wallet sync...";
     }
     
     if (self.children.count > 0)
@@ -78,12 +78,12 @@
                     [self.amountNeeded.satoshiToBtc asFormattedStringWithFractionalDigits:4]];
         }
         
-        return @"Choose bid.";
+        return @"Choose bid";
     }
     
     if (self.sell.mkPost.isComplete)
     {
-        return @"Awaiting bids.";
+        return @"Awaiting bids";
     }
     
     return nil;
