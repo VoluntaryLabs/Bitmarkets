@@ -1,5 +1,4 @@
 
-
 region: array
 category: array
 
@@ -9,6 +8,7 @@ quantity: number
 price: number
 attachments: [{}, ...]
 
+considering adding these:
 
 size:  string 
 color: string

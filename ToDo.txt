@@ -8,6 +8,25 @@
 
 --- steve ---
 
+- show resend status on sells?
+
+test this code:
+----------------
+        MKPostMsg *oldPostMsg = nil;
+        
+        do
+        {
+            oldPostMsg = [self firstChildWithKindOfClass:[MKPostMsg class]];
+            
+            if (oldPostMsg)
+            {
+                [self removeChild:oldPostMsg];
+            }
+            
+        } while (oldPostMsg);
+
+--------------
+
 - refresh nodes on wallet sync (so buy and sell subtitles update)
 
 - [DONE] legal pages 

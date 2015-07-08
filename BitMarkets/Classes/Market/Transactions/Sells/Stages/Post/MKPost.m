@@ -417,6 +417,20 @@
     if (postMsg.ackData)
     {
         [self updatePostDates];
+        
+        MKPostMsg *oldPostMsg = nil;
+        
+        do
+        {
+            oldPostMsg = [self firstChildWithKindOfClass:[MKPostMsg class]];
+            
+            if (oldPostMsg)
+            {
+                [self removeChild:oldPostMsg];
+            }
+            
+        } while (oldPostMsg);
+        
         [self addChild:postMsg];
         [self postParentChanged];
         [self.sell write];
