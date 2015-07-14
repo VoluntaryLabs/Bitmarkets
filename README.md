@@ -1,4 +1,6 @@
 
+[![Join the chat at https://gitter.im/Voluntarynet](https://badges.gitter.im/Join%20Chat.svg)]
+
 #Bitmarkets
 
 Bitmarkets is a protocol and client used to implement a p2p online marketplace client using Bitmessage for communications and Bitcoin for payments.
