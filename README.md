@@ -14,9 +14,9 @@ To verify/audit the build you'll need to download and compile some of the static
 #security notes
 
 Bitmarkets talks to the network in three ways:
-1. BitcoinJ talks to other Bitcoin nodes via Tor
-2. Bitmessage talks to other Bitmessage nodes via Tor
-3. Plain HTTP requests to blockchain.info are periodically made to get the current Bitcoin exchange rate.
+- BitcoinJ talks to other Bitcoin nodes via Tor
+- Bitmessage talks to other Bitmessage nodes via Tor
+- HTTP requests to blockchain.info are used get the current Bitcoin exchange rate.
 
 Client side files are not currently encrypted. We recommend at least using FileVault.
 
@@ -26,19 +26,18 @@ Client side files are not currently encrypted. We recommend at least using FileV
 - GNUstep port to Linux and Windows
 - ability to choose between bid addresses
 - auto-updates 
-- code signed release
 - app store release
 - automated tests
-- encrypt all client data files and add password login
-- move to https://gitian.org for deterministic builds
-- https for voluntary
+- encrypt all local data files and add password login
+- deterministic builds (see https://gitian.org) 
 
 #dev path low priority
 
-- use ntimelock to (among other things) avoid utx pollution for transactions that fail to reach agreement
-- option for using separate pubkey for each post
+- UI for accepting multiple sales on a single post?
 - support stores with namecoin (a namecoin name to bitmessage address entry)
+- option for using separate pubkey for each post
 - ui update, image browsing view option within a category
+- use ntimelock to avoid utx pollution for transactions that fail to reach agreement?
 
 
 #links
