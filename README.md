@@ -30,6 +30,7 @@ Client side files are not currently encrypted. We recommend at least using FileV
 - automated tests
 - encrypt all local data files and add password login
 - deterministic builds (see https://gitian.org) 
+- use tor for blockchain.info bitcoin price updates
 
 #dev path low priority
 
