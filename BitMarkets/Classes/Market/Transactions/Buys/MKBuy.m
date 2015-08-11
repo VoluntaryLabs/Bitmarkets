@@ -53,8 +53,20 @@
 
 - (NSArray *)visibleStages
 {
+    NSArray *visibleStages = [self.children sansFirstObject];
+
+    /*
     NSMutableArray *visibleStages = [NSMutableArray arrayWithArray:self.children];
-    [visibleStages removeFirstObject];
+    @try
+    {
+        [visibleStages removeFirstObject];
+    }
+    @catch (NSException *exception)
+    {
+        NSLog(@"MKBuy.visibleStages exception: why did this happen?");
+    }
+     */
+
     return visibleStages;
 }
 

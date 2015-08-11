@@ -472,7 +472,7 @@
 
 - (BOOL)hasFundsForEscrow
 {
-    if (self.wallet.isRunning)
+    if (self.wallet.isRunning && self.escrowInBtc)
     {
         NSNumber *balanceInSatoshi = self.wallet.cachedBalanceInSatoshi;
 
@@ -847,7 +847,10 @@
 {    
     if (returnCode == 1000) // 2nd choice
     {
-        [self confirmedBuy];
+        [self performSelectorOnMainThread:@selector(confirmedBuy)
+                               withObject:nil
+                            waitUntilDone:NO];
+        
     }
 }
 
