@@ -1,0 +1,79 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "35A04E0517CEEBD5525EA0FC23993A820B308357+++7D6A1D6",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "AE54CF568057E049D07E8D7A462718F01736434E+++58C713D" : 0,
+    "D196C8C20E8DD9EA1BCA8C3DA2BF4C27CFC08EF7+++1FFE97D" : 0,
+    "AE54CF568057E049D07E8D7A462718F01736434E+++10449B0" : 0,
+    "EAAFDC9479D1EB80E5F305F4B217979549BDCF86+++2014801" : 0,
+    "69200729DE2B90975D29C2B6D8339DE9E8D0F72F+++209AB40" : 0,
+    "4DE41FEEEAE7CC654240CA8A6C6B99C937943D6B+++18C7DF2" : 0,
+    "D10B41A2BDB0833500745D63A772EBCD5E799E05+++0AA7B98" : 0,
+    "35A04E0517CEEBD5525EA0FC23993A820B308357+++7D6A1D6" : 0,
+    "37DC2010DB38C43B485C614639C29BF85EB11897+++EC37471" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "69799D24-030B-400A-B330-D7101B7D50D3",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "AE54CF568057E049D07E8D7A462718F01736434E+++58C713D" : "Bitmarkets\/submodules\/BitmessageKit\/submodules\/TorServerKit\/submodules\/SystemInfoKit\/",
+    "D196C8C20E8DD9EA1BCA8C3DA2BF4C27CFC08EF7+++1FFE97D" : "Bitmarkets\/submodules\/BitmessageKit\/",
+    "AE54CF568057E049D07E8D7A462718F01736434E+++10449B0" : "Bitmarkets\/submodules\/BitmessageKit\/submodules\/SystemInfoKit\/",
+    "EAAFDC9479D1EB80E5F305F4B217979549BDCF86+++2014801" : "Bitmarkets\/submodules\/BitmessageKit\/submodules\/FoundationCategoriesKit\/",
+    "69200729DE2B90975D29C2B6D8339DE9E8D0F72F+++209AB40" : "Bitmarkets\/submodules\/BitnashKit\/",
+    "4DE41FEEEAE7CC654240CA8A6C6B99C937943D6B+++18C7DF2" : "Bitmarkets\/submodules\/BitmessageKit\/submodules\/TorServerKit\/",
+    "D10B41A2BDB0833500745D63A772EBCD5E799E05+++0AA7B98" : "Bitmarkets\/submodules\/BitmessageKit\/submodules\/NavKit\/",
+    "35A04E0517CEEBD5525EA0FC23993A820B308357+++7D6A1D6" : "Bitmarkets\/",
+    "37DC2010DB38C43B485C614639C29BF85EB11897+++EC37471" : "Bitmarkets\/submodules\/BitmessageKit\/submodules\/NavNodeKit\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Bitmarkets",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Bitmarkets.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:Voluntarynet\/Bitmarkets.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "35A04E0517CEEBD5525EA0FC23993A820B308357+++7D6A1D6"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:Voluntarynet\/NavNodeKit.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "37DC2010DB38C43B485C614639C29BF85EB11897+++EC37471"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:Voluntarynet\/TorServerKit.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4DE41FEEEAE7CC654240CA8A6C6B99C937943D6B+++18C7DF2"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:richcollins\/BitnashKit.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "69200729DE2B90975D29C2B6D8339DE9E8D0F72F+++209AB40"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:Voluntarynet\/SystemInfoKit.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "AE54CF568057E049D07E8D7A462718F01736434E+++10449B0"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:Voluntarynet\/SystemInfoKit.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "AE54CF568057E049D07E8D7A462718F01736434E+++58C713D"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:Voluntarynet\/NavKit.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D10B41A2BDB0833500745D63A772EBCD5E799E05+++0AA7B98"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:Voluntarynet\/BitmessageKit.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D196C8C20E8DD9EA1BCA8C3DA2BF4C27CFC08EF7+++1FFE97D"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:Voluntarynet\/FoundationCategoriesKit.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "EAAFDC9479D1EB80E5F305F4B217979549BDCF86+++2014801"
+    }
+  ]
+}
