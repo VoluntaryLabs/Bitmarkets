@@ -229,7 +229,7 @@
 
 - (BOOL)isBuy
 {
-    [NSException raise:@"Subclasses should override" format:nil];
+    [NSException raise:@"Subclasses should override" format:@""];
     return NO;
 }
 

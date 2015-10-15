@@ -89,12 +89,12 @@
 
 - (void)sendMsg:(MKMsg *)msg
 {
-    [NSException raise:@"Subclasses should override" format:nil];
+    [NSException raise:@"Subclasses should override" format:@""];
 }
 
 - (MKBidMsg *)bidMsg
 {
-    [NSException raise:@"Subclasses should override" format:nil];
+    [NSException raise:@"Subclasses should override" format:@""];
     return nil;
 }
 
@@ -189,7 +189,7 @@
 
 - (void)postLockIfNeeded
 {
-    [NSException raise:@"Subclasses should override" format:nil];
+    [NSException raise:@"Subclasses should override" format:@""];
 }
 
 - (void)postLock:(MKLockMsg *)msg
@@ -206,7 +206,7 @@
 
 - (void)broadcastLockIfNeeded
 {
-    [NSException raise:@"Subclasses should override" format:nil];
+    [NSException raise:@"Subclasses should override" format:@""];
 }
 
 - (BOOL)isConfirming
@@ -240,7 +240,7 @@
     
     if (!wallet)
     {
-        [NSException raise:@"Can't cancelEscrow until wallet is running" format:nil];
+        [NSException raise:@"Can't cancelEscrow until wallet is running" format:@""];
     }
     
     MKCancelMsg *msg = [[MKCancelMsg alloc] init];
@@ -336,7 +336,7 @@
 
 - (BOOL)isBuyer
 {
-    [NSException raise:@"Subclasses should override" format:nil];
+    [NSException raise:@"Subclasses should override" format:@""];
     return NO;
 }
 
@@ -379,7 +379,7 @@
                 return YES;
             }
             
-            [NSException raise:@"attempt to delete uncompleted lock escrow" format:nil];
+            [NSException raise:@"attempt to delete uncompleted lock escrow" format:@""];
             return NO;
         }
         else

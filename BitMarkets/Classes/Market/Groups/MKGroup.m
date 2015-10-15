@@ -114,7 +114,7 @@
             }
             else
             {
-                [NSException raise:@"Missing _type slot in persisted dictionary" format:nil];
+                [NSException raise:@"Missing _type slot in persisted dictionary" format:@""];
 
             }
 

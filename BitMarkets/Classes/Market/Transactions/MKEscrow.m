@@ -43,7 +43,7 @@
 
 - (BOOL)isCancelConfirmed
 {
-    [NSException raise:@"MKEscrow subclasses should override isCancelled method" format:nil];
+    [NSException raise:@"MKEscrow subclasses should override isCancelled method" format:@""];
     return NO;
 }
 

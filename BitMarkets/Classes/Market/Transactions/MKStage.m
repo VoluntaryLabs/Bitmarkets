@@ -14,13 +14,13 @@
 
 - (BOOL)isActive
 {
-    [NSException raise:@"subclasses must override" format:nil];
+    [NSException raise:@"subclasses must override" format:@""];
     return YES;
 }
 
 - (BOOL)isComplete
 {
-    [NSException raise:@"subclasses must override" format:nil];
+    [NSException raise:@"subclasses must override" format:@""];
     return NO;
 }
 

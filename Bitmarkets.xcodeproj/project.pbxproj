@@ -1519,7 +1519,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Bitmarkets/Bitmarkets.temp_caseinsensitive_rename-Prefix.pch";
 				INFOPLIST_FILE = "Bitmarkets/Bitmarkets.temp_caseinsensitive_rename-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = Bitmarkets;
 				SDKROOT = macosx10.11;
 				VALID_ARCHS = x86_64;
@@ -1539,7 +1539,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Bitmarkets/Bitmarkets.temp_caseinsensitive_rename-Prefix.pch";
 				INFOPLIST_FILE = "Bitmarkets/Bitmarkets.temp_caseinsensitive_rename-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = Bitmarkets;
 				SDKROOT = macosx10.11;
 				VALID_ARCHS = x86_64;

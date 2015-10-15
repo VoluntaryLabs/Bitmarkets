@@ -268,7 +268,7 @@
 
 - (BOOL)send
 {
-    [NSException raise:@"subclasses should override send" format:nil];
+    [NSException raise:@"subclasses should override send" format:@""];
     return NO;
 }
 

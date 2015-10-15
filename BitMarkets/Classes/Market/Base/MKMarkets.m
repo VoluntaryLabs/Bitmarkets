@@ -97,7 +97,7 @@
         [self.buys  update];
         [self.mkChannel fetch];
         
-        //[NSException raise:@"test error report" format:nil];
+        //[NSException raise:@"test error report" format:@""];
     }
     @catch (NSException *exception)
     {

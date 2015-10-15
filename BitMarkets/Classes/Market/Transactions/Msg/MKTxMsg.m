@@ -46,7 +46,7 @@
 
 - (void)configureTx
 {
-    [NSException raise:@"Subclasses should override" format:nil];
+    [NSException raise:@"Subclasses should override" format:@""];
 }
 
 @end
