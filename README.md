@@ -1,7 +1,13 @@
 
+#Note
+
+This OSX repo has been deprecated as we are working on a Javascript/Electron implementation of Bitmarkets now. We'll be releasing that repo when it's ready.
+
+
 #Bitmarkets
 
 Bitmarkets is a protocol and client used to implement a p2p online marketplace client using Bitmessage for communications and Bitcoin for payments.
+
 
 #compiling
 
